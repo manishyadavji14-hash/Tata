@@ -16,9 +16,9 @@ import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
 import android.support.v4.media.MediaBrowserCompat
-import android.support.v4.media.session.MediaSessionCompat
 import android.util.Log
 import androidx.media.MediaBrowserServiceCompat
+import androidx.media3.session.MediaSession
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.player.PlaybackController
 import com.bitperfect.android.player.PlaybackState
@@ -364,5 +364,5 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     fun getPlaybackController(): PlaybackController = playbackController
     fun getEngine(): NativeAudioEngine = engine
     fun getUsbManager(): UsbAudioManager = usbAudioManager
-    fun getMediaSession(): MediaSessionCompat = mediaSessionManager.getSession()
+    fun getMediaSession(): MediaSession = mediaSessionManager.getSession()
 }
