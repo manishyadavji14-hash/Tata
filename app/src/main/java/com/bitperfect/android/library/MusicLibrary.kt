@@ -2,6 +2,9 @@ package com.bitperfect.android.library
 
 import com.bitperfect.android.library.model.*
 import com.bitperfect.android.library.scanner.LibraryScanner
+import java.util.concurrent.locks.ReentrantReadWriteLock
+import kotlin.concurrent.read
+import kotlin.concurrent.write
 
 /**
  * MusicLibrary - facade for the music library system.
@@ -14,13 +17,21 @@ import com.bitperfect.android.library.scanner.LibraryScanner
  *
  * This class coordinates between the scanner, metadata extractor,
  * and database layer to provide a clean API to the UI layer.
+ *
+ * Thread-safety: All cache mutations are protected by a ReentrantReadWriteLock.
+ * Write operations (scan, add, remove) hold the write lock. Read operations
+ * (getAllTracks, getAlbums, etc.) hold the read lock and return defensive copies,
+ * ensuring UI reads on the main thread never encounter ConcurrentModificationException.
  */
 class MusicLibrary {
 
     private val scanner = LibraryScanner()
     private val metadataExtractor = MetadataExtractor()
 
-    // In-memory cache for fast access
+    // Lock protecting all in-memory cache mutations and reads
+    private val cacheLock = ReentrantReadWriteLock()
+
+    // In-memory cache for fast access (guarded by cacheLock)
     private val trackCache = mutableListOf<Track>()
     private val albumCache = mutableListOf<Album>()
     private val artistCache = mutableListOf<Artist>()
@@ -28,7 +39,7 @@ class MusicLibrary {
     private val composerCache = mutableListOf<Composer>()
     private val playlistCache = mutableListOf<Playlist>()
 
-    // Auto-incrementing IDs for cache entities
+    // Auto-incrementing IDs for cache entities (guarded by cacheLock write)
     private var nextTrackId = 1L
     private var nextAlbumId = 1L
     private var nextArtistId = 1L
@@ -48,7 +59,7 @@ class MusicLibrary {
         if (progressCallback != null) {
             scanner.setProgressCallback(progressCallback)
         }
-        val existingPaths = trackCache.map { it.path }.toSet()
+        val existingPaths = cacheLock.read { trackCache.map { it.path }.toSet() }
         val scanResultWithTracks = scanner.scanWithTracks(directories, existingPaths)
 
         // Add newly discovered tracks to the cache
@@ -71,23 +82,27 @@ class MusicLibrary {
      * @param tracks List of tracks discovered by the scanner
      */
     fun addScannedTracks(tracks: List<Track>) {
-        // Assign unique IDs to new tracks and add to cache
-        for (track in tracks) {
-            val trackWithId = track.copy(id = nextTrackId++)
-            trackCache.add(trackWithId)
-        }
+        cacheLock.write {
+            // Assign unique IDs to new tracks and add to cache
+            for (track in tracks) {
+                val trackWithId = track.copy(id = nextTrackId++)
+                trackCache.add(trackWithId)
+            }
 
-        // Rebuild derived caches from the full track list
-        rebuildDerivedCaches()
+            // Rebuild derived caches from the full track list
+            rebuildDerivedCaches()
+        }
     }
 
     /**
      * Remove tracks by their file paths (files that no longer exist).
      */
     private fun removeTracksByPaths(paths: List<String>) {
-        val pathSet = paths.toSet()
-        trackCache.removeAll { it.path in pathSet }
-        rebuildDerivedCaches()
+        cacheLock.write {
+            val pathSet = paths.toSet()
+            trackCache.removeAll { it.path in pathSet }
+            rebuildDerivedCaches()
+        }
     }
 
     /**
@@ -195,15 +210,17 @@ class MusicLibrary {
      * Get all unique folder paths in the library.
      */
     fun getFolders(): List<String> {
-        return trackCache.map { it.folder }.distinct().sorted()
+        return cacheLock.read { trackCache.map { it.folder }.distinct().sorted() }
     }
 
     /**
      * Get tracks in a specific folder.
      */
     fun getTracksByFolder(folderPath: String): List<Track> {
-        return trackCache.filter { it.folder == folderPath }
-            .sortedBy { it.path }
+        return cacheLock.read {
+            trackCache.filter { it.folder == folderPath }
+                .sortedBy { it.path }
+        }
     }
 
     // --- Browse by Artists ---
@@ -212,23 +229,27 @@ class MusicLibrary {
      * Get all artists.
      */
     fun getArtists(): List<Artist> {
-        return artistCache.sortedBy { it.name }
+        return cacheLock.read { artistCache.sortedBy { it.name } }
     }
 
     /**
      * Get tracks by a specific artist.
      */
     fun getTracksByArtist(artistName: String): List<Track> {
-        return trackCache.filter { it.artist == artistName }
-            .sortedWith(compareBy({ it.albumTitle }, { it.discNumber }, { it.trackNumber }))
+        return cacheLock.read {
+            trackCache.filter { it.artist == artistName }
+                .sortedWith(compareBy({ it.albumTitle }, { it.discNumber }, { it.trackNumber }))
+        }
     }
 
     /**
      * Get albums by a specific artist.
      */
     fun getAlbumsByArtist(artistName: String): List<Album> {
-        return albumCache.filter { it.artist == artistName }
-            .sortedByDescending { it.year }
+        return cacheLock.read {
+            albumCache.filter { it.artist == artistName }
+                .sortedByDescending { it.year }
+        }
     }
 
     // --- Browse by Albums ---
@@ -237,15 +258,17 @@ class MusicLibrary {
      * Get all albums.
      */
     fun getAlbums(): List<Album> {
-        return albumCache.sortedBy { it.title }
+        return cacheLock.read { albumCache.sortedBy { it.title } }
     }
 
     /**
      * Get tracks in a specific album.
      */
     fun getTracksByAlbum(albumId: Long): List<Track> {
-        return trackCache.filter { it.albumId == albumId }
-            .sortedWith(compareBy({ it.discNumber }, { it.trackNumber }))
+        return cacheLock.read {
+            trackCache.filter { it.albumId == albumId }
+                .sortedWith(compareBy({ it.discNumber }, { it.trackNumber }))
+        }
     }
 
     // --- Browse by Genres ---
@@ -254,15 +277,17 @@ class MusicLibrary {
      * Get all genres.
      */
     fun getGenres(): List<Genre> {
-        return genreCache.sortedBy { it.name }
+        return cacheLock.read { genreCache.sortedBy { it.name } }
     }
 
     /**
      * Get tracks in a specific genre.
      */
     fun getTracksByGenre(genreName: String): List<Track> {
-        return trackCache.filter { it.genre == genreName }
-            .sortedBy { it.title }
+        return cacheLock.read {
+            trackCache.filter { it.genre == genreName }
+                .sortedBy { it.title }
+        }
     }
 
     // --- Browse by Composers ---
@@ -271,15 +296,17 @@ class MusicLibrary {
      * Get all composers.
      */
     fun getComposers(): List<Composer> {
-        return composerCache.sortedBy { it.name }
+        return cacheLock.read { composerCache.sortedBy { it.name } }
     }
 
     /**
      * Get tracks by a specific composer.
      */
     fun getTracksByComposer(composerName: String): List<Track> {
-        return trackCache.filter { it.composer == composerName }
-            .sortedBy { it.title }
+        return cacheLock.read {
+            trackCache.filter { it.composer == composerName }
+                .sortedBy { it.title }
+        }
     }
 
     // --- Browse all tracks ---
@@ -288,21 +315,21 @@ class MusicLibrary {
      * Get all tracks.
      */
     fun getAllTracks(): List<Track> {
-        return trackCache.sortedBy { it.title }
+        return cacheLock.read { trackCache.sortedBy { it.title } }
     }
 
     /**
      * Get a track by its ID.
      */
     fun getTrackById(id: Long): Track? {
-        return trackCache.find { it.id == id }
+        return cacheLock.read { trackCache.find { it.id == id } }
     }
 
     /**
      * Get a track by its file path.
      */
     fun getTrackByPath(path: String): Track? {
-        return trackCache.find { it.path == path }
+        return cacheLock.read { trackCache.find { it.path == path } }
     }
 
     // --- Search ---
@@ -314,20 +341,22 @@ class MusicLibrary {
      */
     fun search(query: String): SearchResults {
         val lowerQuery = query.lowercase()
-        return SearchResults(
-            tracks = trackCache.filter {
-                it.title.lowercase().contains(lowerQuery) ||
-                it.artist.lowercase().contains(lowerQuery) ||
-                it.albumTitle.lowercase().contains(lowerQuery)
-            },
-            albums = albumCache.filter {
-                it.title.lowercase().contains(lowerQuery) ||
-                it.artist.lowercase().contains(lowerQuery)
-            },
-            artists = artistCache.filter {
-                it.name.lowercase().contains(lowerQuery)
-            }
-        )
+        return cacheLock.read {
+            SearchResults(
+                tracks = trackCache.filter {
+                    it.title.lowercase().contains(lowerQuery) ||
+                    it.artist.lowercase().contains(lowerQuery) ||
+                    it.albumTitle.lowercase().contains(lowerQuery)
+                },
+                albums = albumCache.filter {
+                    it.title.lowercase().contains(lowerQuery) ||
+                    it.artist.lowercase().contains(lowerQuery)
+                },
+                artists = artistCache.filter {
+                    it.name.lowercase().contains(lowerQuery)
+                }
+            )
+        }
     }
 
     // --- Playlists ---
@@ -336,29 +365,33 @@ class MusicLibrary {
      * Get all playlists.
      */
     fun getPlaylists(): List<Playlist> {
-        return playlistCache.sortedByDescending { it.modifiedAt }
+        return cacheLock.read { playlistCache.sortedByDescending { it.modifiedAt } }
     }
 
     /**
      * Create a new playlist.
      */
     fun createPlaylist(name: String, trackIds: List<Long> = emptyList()): Playlist {
-        val playlist = Playlist(
-            id = (playlistCache.maxOfOrNull { it.id } ?: 0) + 1,
-            name = name,
-            trackIds = Playlist.trackIdsToJson(trackIds)
-        )
-        playlistCache.add(playlist)
-        return playlist
+        return cacheLock.write {
+            val playlist = Playlist(
+                id = (playlistCache.maxOfOrNull { it.id } ?: 0) + 1,
+                name = name,
+                trackIds = Playlist.trackIdsToJson(trackIds)
+            )
+            playlistCache.add(playlist)
+            playlist
+        }
     }
 
     /**
      * Update a playlist.
      */
     fun updatePlaylist(playlist: Playlist) {
-        val index = playlistCache.indexOfFirst { it.id == playlist.id }
-        if (index >= 0) {
-            playlistCache[index] = playlist.copy(modifiedAt = System.currentTimeMillis())
+        cacheLock.write {
+            val index = playlistCache.indexOfFirst { it.id == playlist.id }
+            if (index >= 0) {
+                playlistCache[index] = playlist.copy(modifiedAt = System.currentTimeMillis())
+            }
         }
     }
 
@@ -366,16 +399,20 @@ class MusicLibrary {
      * Delete a playlist.
      */
     fun deletePlaylist(id: Long) {
-        playlistCache.removeAll { it.id == id }
+        cacheLock.write {
+            playlistCache.removeAll { it.id == id }
+        }
     }
 
     /**
      * Get tracks in a playlist.
      */
     fun getPlaylistTracks(playlistId: Long): List<Track> {
-        val playlist = playlistCache.find { it.id == playlistId } ?: return emptyList()
-        val trackIds = playlist.getTrackIdList()
-        return trackIds.mapNotNull { id -> trackCache.find { it.id == id } }
+        return cacheLock.read {
+            val playlist = playlistCache.find { it.id == playlistId } ?: return@read emptyList()
+            val trackIds = playlist.getTrackIdList()
+            trackIds.mapNotNull { id -> trackCache.find { it.id == id } }
+        }
     }
 
     // --- Library statistics ---
@@ -384,23 +421,25 @@ class MusicLibrary {
      * Get library statistics.
      */
     fun getStats(): LibraryStats {
-        return LibraryStats(
-            totalTracks = trackCache.size,
-            totalAlbums = albumCache.size,
-            totalArtists = artistCache.size,
-            totalGenres = genreCache.size,
-            totalComposers = composerCache.size,
-            totalPlaylists = playlistCache.size,
-            totalDuration = trackCache.sumOf { it.duration },
-            highResCount = trackCache.count { it.isHighRes },
-            dsdCount = trackCache.count { it.isDsd }
-        )
+        return cacheLock.read {
+            LibraryStats(
+                totalTracks = trackCache.size,
+                totalAlbums = albumCache.size,
+                totalArtists = artistCache.size,
+                totalGenres = genreCache.size,
+                totalComposers = composerCache.size,
+                totalPlaylists = playlistCache.size,
+                totalDuration = trackCache.sumOf { it.duration },
+                highResCount = trackCache.count { it.isHighRes },
+                dsdCount = trackCache.count { it.isDsd }
+            )
+        }
     }
 
     /**
      * Check if the library is empty (no tracks loaded).
      */
-    fun isEmpty(): Boolean = trackCache.isEmpty()
+    fun isEmpty(): Boolean = cacheLock.read { trackCache.isEmpty() }
 
     /**
      * Search results container.

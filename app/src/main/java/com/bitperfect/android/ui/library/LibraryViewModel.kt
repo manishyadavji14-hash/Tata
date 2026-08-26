@@ -202,7 +202,6 @@ class LibraryViewModel(
                 settingsRepository.scanDirectories.first().toList()
             } else {
                 listOf(
-                    "/storage/emulated/0",
                     "/storage/emulated/0/Music",
                     "/storage/emulated/0/Download"
                 )

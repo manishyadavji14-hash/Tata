@@ -85,20 +85,28 @@ object ServiceLocator {
     /**
      * Set only the music library (available before service bind).
      * Called during Application.onCreate().
+     * Uses compareAndSet loop for atomic read-modify-write.
      */
     fun setMusicLibrary(musicLibrary: MusicLibrary) {
-        val current = componentsRef.get()
-        componentsRef.set(current.copy(musicLibrary = musicLibrary))
+        while (true) {
+            val current = componentsRef.get()
+            val updated = current.copy(musicLibrary = musicLibrary)
+            if (componentsRef.compareAndSet(current, updated)) break
+        }
     }
 
     /**
      * Clear service-provided references (called on service disconnect).
+     * Uses compareAndSet loop for atomic read-modify-write.
      */
     fun clearServiceReferences() {
-        val current = componentsRef.get()
-        componentsRef.set(current.copy(
-            playbackController = null,
-            engine = null
-        ))
+        while (true) {
+            val current = componentsRef.get()
+            val updated = current.copy(
+                playbackController = null,
+                engine = null
+            )
+            if (componentsRef.compareAndSet(current, updated)) break
+        }
     }
 }
