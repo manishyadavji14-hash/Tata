@@ -139,6 +139,22 @@ if(STANDALONE_TEST)
     target_link_libraries(test_replaygain PRIVATE bitperfect_engine GTest::gtest_main)
     target_include_directories(test_replaygain PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
+    add_executable(test_isochronous_transfer tests/test_isochronous_transfer.cpp)
+    target_link_libraries(test_isochronous_transfer PRIVATE bitperfect_engine GTest::gtest_main)
+    target_include_directories(test_isochronous_transfer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+    add_executable(test_buffer_manager tests/test_buffer_manager.cpp)
+    target_link_libraries(test_buffer_manager PRIVATE bitperfect_engine GTest::gtest_main)
+    target_include_directories(test_buffer_manager PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+    add_executable(test_full_pipeline tests/test_full_pipeline.cpp)
+    target_link_libraries(test_full_pipeline PRIVATE bitperfect_engine GTest::gtest_main)
+    target_include_directories(test_full_pipeline PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+    add_executable(benchmark_ring_buffer tests/benchmark_ring_buffer.cpp)
+    target_link_libraries(benchmark_ring_buffer PRIVATE bitperfect_engine GTest::gtest_main)
+    target_include_directories(benchmark_ring_buffer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
     # Add tests to CTest
     include(GoogleTest)
     gtest_discover_tests(test_ring_buffer)
@@ -153,12 +169,20 @@ if(STANDALONE_TEST)
     gtest_discover_tests(test_flac_decoder)
     gtest_discover_tests(test_gapless)
     gtest_discover_tests(test_replaygain)
+    gtest_discover_tests(test_isochronous_transfer)
+    gtest_discover_tests(test_buffer_manager)
+    gtest_discover_tests(test_full_pipeline)
+    gtest_discover_tests(benchmark_ring_buffer)
 
     # Link threading library for ring buffer tests
     find_package(Threads REQUIRED)
     target_link_libraries(test_ring_buffer PRIVATE Threads::Threads)
     target_link_libraries(test_dop_encoder PRIVATE Threads::Threads)
     target_link_libraries(test_gapless PRIVATE Threads::Threads)
+    target_link_libraries(test_isochronous_transfer PRIVATE Threads::Threads)
+    target_link_libraries(test_buffer_manager PRIVATE Threads::Threads)
+    target_link_libraries(test_full_pipeline PRIVATE Threads::Threads)
+    target_link_libraries(benchmark_ring_buffer PRIVATE Threads::Threads)
 
 else()
     # Android NDK build

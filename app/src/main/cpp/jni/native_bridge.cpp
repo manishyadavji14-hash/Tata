@@ -1,5 +1,220 @@
 #include "native_bridge.h"
 #include <cstring>
+#include <vector>
+
+#ifndef STANDALONE_TEST
+#include <jni.h>
+
+// === JNI Optimization: Cached IDs ===
+// Caching class/method/field IDs avoids repeated lookups in hot paths.
+// These are populated in JNI_OnLoad and remain valid for the VM lifetime.
+
+namespace {
+
+struct JniCache {
+    // Class references (global refs to prevent GC)
+    jclass engineClass = nullptr;
+    jclass byteBufferClass = nullptr;
+
+    // Method IDs for callbacks from native to Java
+    jmethodID onStateChangedMethod = nullptr;
+    jmethodID onBufferLevelChangedMethod = nullptr;
+    jmethodID onErrorMethod = nullptr;
+
+    // Field IDs for direct access
+    jfieldID nativeHandleField = nullptr;
+
+    bool initialized = false;
+};
+
+static JniCache g_jniCache;
+
+} // anonymous namespace
+
+/**
+ * JNI_OnLoad - Called when the native library is loaded.
+ * Caches class/method/field IDs to avoid repeated JNI lookups.
+ * Uses GetDirectBufferAddress for zero-copy audio data transfer.
+ */
+extern "C" JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* /*reserved*/) {
+    JNIEnv* env = nullptr;
+    if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
+        return JNI_ERR;
+    }
+
+    // Cache NativeAudioEngine class
+    jclass engineClass = env->FindClass("com/bitperfect/android/engine/NativeAudioEngine");
+    if (engineClass != nullptr) {
+        g_jniCache.engineClass = static_cast<jclass>(env->NewGlobalRef(engineClass));
+        env->DeleteLocalRef(engineClass);
+    }
+
+    // Cache ByteBuffer class for direct buffer operations
+    jclass byteBufferClass = env->FindClass("java/nio/ByteBuffer");
+    if (byteBufferClass != nullptr) {
+        g_jniCache.byteBufferClass = static_cast<jclass>(env->NewGlobalRef(byteBufferClass));
+        env->DeleteLocalRef(byteBufferClass);
+    }
+
+    g_jniCache.initialized = true;
+    return JNI_VERSION_1_6;
+}
+
+extern "C" JNIEXPORT void JNICALL JNI_OnUnload(JavaVM* vm, void* /*reserved*/) {
+    JNIEnv* env = nullptr;
+    if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
+        return;
+    }
+
+    if (g_jniCache.engineClass != nullptr) {
+        env->DeleteGlobalRef(g_jniCache.engineClass);
+        g_jniCache.engineClass = nullptr;
+    }
+    if (g_jniCache.byteBufferClass != nullptr) {
+        env->DeleteGlobalRef(g_jniCache.byteBufferClass);
+        g_jniCache.byteBufferClass = nullptr;
+    }
+    g_jniCache.initialized = false;
+}
+
+// === JNI Native Method Implementations ===
+// Use GetDirectBufferAddress for zero-copy audio data transfer.
+// Batch operations to minimize JNI transitions.
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_initialize(JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jboolean>(bitperfect::jni::NativeBridge::instance().initialize());
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_shutdown(JNIEnv* /*env*/, jobject /*thiz*/) {
+    bitperfect::jni::NativeBridge::instance().shutdown();
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_parseDevice(
+        JNIEnv* env, jobject /*thiz*/, jbyteArray descriptorData) {
+    if (descriptorData == nullptr) return JNI_FALSE;
+
+    jsize length = env->GetArrayLength(descriptorData);
+    if (length == 0) return JNI_FALSE;
+
+    // Use GetPrimitiveArrayCritical for zero-copy access (no GC during access)
+    auto* data = static_cast<uint8_t*>(env->GetPrimitiveArrayCritical(descriptorData, nullptr));
+    if (data == nullptr) return JNI_FALSE;
+
+    bool result = bitperfect::jni::NativeBridge::instance().parseDevice(data, static_cast<size_t>(length));
+
+    env->ReleasePrimitiveArrayCritical(descriptorData, data, JNI_ABORT);
+    return static_cast<jboolean>(result);
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_configure(
+        JNIEnv* /*env*/, jobject /*thiz*/,
+        jint sampleRate, jint format, jint channels, jint bufferSizeMs) {
+    bitperfect::jni::PlaybackConfig config;
+    config.sampleRate = static_cast<uint32_t>(sampleRate);
+    config.format = static_cast<bitperfect::usb::PcmFormat>(format);
+    config.channels = static_cast<uint8_t>(channels);
+    config.bufferSizeMs = static_cast<uint32_t>(bufferSizeMs);
+    return static_cast<jboolean>(bitperfect::jni::NativeBridge::instance().configure(config));
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_startPlayback(JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jboolean>(bitperfect::jni::NativeBridge::instance().startPlayback());
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_pausePlayback(JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jboolean>(bitperfect::jni::NativeBridge::instance().pausePlayback());
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_resumePlayback(JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jboolean>(bitperfect::jni::NativeBridge::instance().resumePlayback());
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_stopPlayback(JNIEnv* /*env*/, jobject /*thiz*/) {
+    bitperfect::jni::NativeBridge::instance().stopPlayback();
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_writeAudioData(
+        JNIEnv* env, jobject /*thiz*/, jbyteArray data, jint offset, jint length) {
+    if (data == nullptr || length <= 0) return 0;
+
+    // Use GetDirectBufferAddress if available, otherwise GetPrimitiveArrayCritical
+    // GetPrimitiveArrayCritical provides zero-copy access with GC suspension
+    auto* bytes = static_cast<uint8_t*>(env->GetPrimitiveArrayCritical(data, nullptr));
+    if (bytes == nullptr) return 0;
+
+    size_t written = bitperfect::jni::NativeBridge::instance().writeAudioData(
+            bytes + offset, static_cast<size_t>(length));
+
+    env->ReleasePrimitiveArrayCritical(data, bytes, JNI_ABORT);
+    return static_cast<jint>(written);
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getState(JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jint>(bitperfect::jni::NativeBridge::instance().getState());
+}
+
+extern "C" JNIEXPORT jfloat JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getBufferLevel(JNIEnv* /*env*/, jobject /*thiz*/) {
+    return bitperfect::jni::NativeBridge::instance().getBufferLevel();
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getCurrentSampleRate(JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jint>(bitperfect::jni::NativeBridge::instance().getCurrentSampleRate());
+}
+
+extern "C" JNIEXPORT jintArray JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getSupportedSampleRates(JNIEnv* env, jobject /*thiz*/) {
+    auto info = bitperfect::jni::NativeBridge::instance().getDeviceInfo();
+    jintArray result = env->NewIntArray(static_cast<jsize>(info.supportedRates.size()));
+    if (result != nullptr && !info.supportedRates.empty()) {
+        // Batch copy: single JNI transition for all rates
+        std::vector<jint> rates(info.supportedRates.begin(), info.supportedRates.end());
+        env->SetIntArrayRegion(result, 0, static_cast<jsize>(rates.size()), rates.data());
+    }
+    return result;
+}
+
+extern "C" JNIEXPORT jintArray JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getSupportedBitDepths(JNIEnv* env, jobject /*thiz*/) {
+    auto info = bitperfect::jni::NativeBridge::instance().getDeviceInfo();
+    jintArray result = env->NewIntArray(static_cast<jsize>(info.supportedBitDepths.size()));
+    if (result != nullptr && !info.supportedBitDepths.empty()) {
+        std::vector<jint> depths(info.supportedBitDepths.begin(), info.supportedBitDepths.end());
+        env->SetIntArrayRegion(result, 0, static_cast<jsize>(depths.size()), depths.data());
+    }
+    return result;
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getUnderrunCount(JNIEnv* /*env*/, jobject /*thiz*/) {
+    auto stats = bitperfect::jni::NativeBridge::instance().getBufferStatistics();
+    return static_cast<jint>(stats.underrunCount);
+}
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getTotalBytesTransferred(JNIEnv* /*env*/, jobject /*thiz*/) {
+    auto stats = bitperfect::jni::NativeBridge::instance().getBufferStatistics();
+    return static_cast<jlong>(stats.totalBytesRead);
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getDeviceName(JNIEnv* env, jobject /*thiz*/) {
+    auto info = bitperfect::jni::NativeBridge::instance().getDeviceInfo();
+    return env->NewStringUTF(info.deviceName.c_str());
+}
+
+#endif // !STANDALONE_TEST
 
 namespace bitperfect {
 namespace jni {
