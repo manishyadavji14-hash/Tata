@@ -23,6 +23,14 @@ set(AUDIO_SOURCES
     audio/sample_rate_manager.cpp
     audio/playback_mode.cpp
     audio/format_detector.cpp
+    audio/gapless_engine.cpp
+    audio/replaygain.cpp
+)
+
+set(DECODER_SOURCES
+    decoder/wav_decoder.cpp
+    decoder/flac_decoder.cpp
+    decoder/decoder_factory.cpp
 )
 
 set(DSD_SOURCES
@@ -55,6 +63,7 @@ set(ALL_ENGINE_SOURCES
     ${USB_SOURCES}
     ${PCM_SOURCES}
     ${AUDIO_SOURCES}
+    ${DECODER_SOURCES}
     ${DSD_SOURCES}
     ${DOP_SOURCES}
     ${NATIVE_DSD_SOURCES}
@@ -114,6 +123,22 @@ if(STANDALONE_TEST)
     target_link_libraries(test_playback_mode PRIVATE bitperfect_engine GTest::gtest_main)
     target_include_directories(test_playback_mode PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
+    add_executable(test_wav_decoder tests/test_wav_decoder.cpp)
+    target_link_libraries(test_wav_decoder PRIVATE bitperfect_engine GTest::gtest_main)
+    target_include_directories(test_wav_decoder PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+    add_executable(test_flac_decoder tests/test_flac_decoder.cpp)
+    target_link_libraries(test_flac_decoder PRIVATE bitperfect_engine GTest::gtest_main)
+    target_include_directories(test_flac_decoder PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+    add_executable(test_gapless tests/test_gapless.cpp)
+    target_link_libraries(test_gapless PRIVATE bitperfect_engine GTest::gtest_main)
+    target_include_directories(test_gapless PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+    add_executable(test_replaygain tests/test_replaygain.cpp)
+    target_link_libraries(test_replaygain PRIVATE bitperfect_engine GTest::gtest_main)
+    target_include_directories(test_replaygain PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
     # Add tests to CTest
     include(GoogleTest)
     gtest_discover_tests(test_ring_buffer)
@@ -124,11 +149,16 @@ if(STANDALONE_TEST)
     gtest_discover_tests(test_dsf_parser)
     gtest_discover_tests(test_native_dsd)
     gtest_discover_tests(test_playback_mode)
+    gtest_discover_tests(test_wav_decoder)
+    gtest_discover_tests(test_flac_decoder)
+    gtest_discover_tests(test_gapless)
+    gtest_discover_tests(test_replaygain)
 
     # Link threading library for ring buffer tests
     find_package(Threads REQUIRED)
     target_link_libraries(test_ring_buffer PRIVATE Threads::Threads)
     target_link_libraries(test_dop_encoder PRIVATE Threads::Threads)
+    target_link_libraries(test_gapless PRIVATE Threads::Threads)
 
 else()
     # Android NDK build
