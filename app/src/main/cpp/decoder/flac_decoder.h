@@ -78,6 +78,16 @@ private:
 
     bool parseStreamInfo(const uint8_t* data, size_t size);
     bool parseMetadataBlocks(const uint8_t* data, size_t size);
+
+    /**
+     * Parse metadata blocks directly from the open file.
+     *
+     * Unlike parseMetadataBlocks(), this does not require the whole metadata
+     * region to fit in a fixed buffer. Large PICTURE or SEEKTABLE blocks are
+     * skipped with fseek, so files with embedded artwork resolve the correct
+     * first-frame offset.
+     */
+    bool parseMetadataBlocksFromFile();
     size_t decodeFrame(const uint8_t* frameData, size_t available,
                        uint8_t* output, size_t maxFrames);
     bool decodeSubframe(FlacBitReader& reader, std::vector<int32_t>& output,

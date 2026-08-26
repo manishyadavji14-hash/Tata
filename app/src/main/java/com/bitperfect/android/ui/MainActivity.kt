@@ -71,6 +71,7 @@ class MainActivity : ComponentActivity() {
         private const val TAG = "MainActivity"
         private const val PICKED_AUDIO_DIRECTORY = "picked-audio"
         private val SUPPORTED_FILE_EXTENSIONS = setOf("wav", "wave", "flac")
+        private val UNSAFE_FILE_NAME_CHARACTERS = Regex("""[/\\:*?"<>|\x00-\x1F]""")
     }
 
     private val openAudioDocument = registerForActivityResult(
@@ -260,12 +261,30 @@ class MainActivity : ComponentActivity() {
             .lowercase()
             .takeIf { it in SUPPORTED_FILE_EXTENSIONS }
             ?: "audio"
+
+        // Preserve the original file name so the player shows the real title
+        // rather than an internal cache name.
+        val baseName = displayName
+            .substringAfterLast('/')
+            .substringBeforeLast('.', displayName.substringAfterLast('/'))
+            .replace(UNSAFE_FILE_NAME_CHARACTERS, "_")
+            .trim()
+            .take(120)
+            .ifBlank { "track" }
+
         val cacheDirectory = File(cacheDir, PICKED_AUDIO_DIRECTORY)
         if (!cacheDirectory.exists() && !cacheDirectory.mkdirs()) {
             throw IOException("Could not create audio cache directory")
         }
 
-        val target = File.createTempFile("picked-", ".$extension", cacheDirectory)
+        // Each import gets its own subdirectory, so the visible file name can
+        // match the source document without colliding with other imports.
+        val importDirectory = File(cacheDirectory, System.currentTimeMillis().toString())
+        if (!importDirectory.exists() && !importDirectory.mkdirs()) {
+            throw IOException("Could not create audio import directory")
+        }
+
+        val target = File(importDirectory, "$baseName.$extension")
         try {
             val input = contentResolver.openInputStream(uri)
                 ?: throw IOException("Content provider returned no input stream")
@@ -283,8 +302,11 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun cleanupPickedAudioCache(currentFile: File) {
-        currentFile.parentFile?.listFiles()?.forEach { cachedFile ->
-            if (cachedFile != currentFile) cachedFile.delete()
+        val currentImportDirectory = currentFile.parentFile ?: return
+        val cacheRoot = currentImportDirectory.parentFile ?: return
+
+        cacheRoot.listFiles()?.forEach { entry ->
+            if (entry != currentImportDirectory) entry.deleteRecursively()
         }
     }
 
