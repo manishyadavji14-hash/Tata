@@ -98,14 +98,28 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         super.onCreate()
         Log.i(TAG, "PlaybackService created")
 
-        initializeComponents()
+        // IMPORTANT: Create notification channel FIRST, before any other initialization.
+        // On Android 16 (API 36), the system requires the foreground notification to be
+        // posted very quickly after service start, so the channel must exist immediately.
         createNotificationChannel()
+
+        initializeComponents()
         registerReceivers()
         // WakeLock is NOT acquired here; it is acquired only during active playback.
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.d(TAG, "onStartCommand: action=${intent?.action}")
+
+        // Immediately call startForeground with a basic notification so Android
+        // does not kill the service. On Android 16+, the system enforces strict
+        // timing for foreground service notifications.
+        try {
+            val notification = buildBasicNotification()
+            startForeground(NOTIFICATION_ID, notification)
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to start foreground: ${e.message}", e)
+        }
 
         when (intent?.action) {
             ACTION_PLAY -> playbackController.play()
@@ -120,6 +134,28 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         }
 
         return START_STICKY
+    }
+
+    /**
+     * Builds a minimal notification for immediate foreground promotion.
+     * This ensures the service is not killed by the system before the full
+     * media notification can be built.
+     */
+    private fun buildBasicNotification(): Notification {
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            0,
+            packageManager.getLaunchIntentForPackage(packageName),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        return Notification.Builder(this, CHANNEL_ID)
+            .setContentTitle("BitPerfect")
+            .setContentText("Audio service running")
+            .setSmallIcon(android.R.drawable.ic_media_play)
+            .setContentIntent(pendingIntent)
+            .setOngoing(true)
+            .build()
     }
 
     override fun onBind(intent: Intent): IBinder {

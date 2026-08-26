@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.bitperfect.android.BitPerfectApp
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
@@ -34,11 +36,19 @@ import com.bitperfect.android.usb.UsbAudioManager
  * - Sets up edge-to-edge display
  * - Applies BitPerfect Material 3 theme
  * - Creates and provides ViewModels
- * - Binds to PlaybackService for audio control
+ * - Binds to PlaybackService for audio control (deferred until playback starts)
  * - Manages service lifecycle (start/bind/unbind)
  * - Handles system bar insets
+ *
+ * Note: On Android 16 (API 36), foreground service start is deferred to avoid
+ * the app being killed when the service cannot post a notification in time.
+ * The service is only started when playback actually begins.
  */
 class MainActivity : ComponentActivity() {
+
+    companion object {
+        private const val TAG = "MainActivity"
+    }
 
     private var playbackService: PlaybackService? = null
     private var isBound = false
@@ -72,12 +82,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Initialize core components
-        initializeComponents()
+        // Initialize core components with safety wrapper
+        try {
+            initializeComponents()
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to initialize components: ${e.message}", e)
+            // Continue to show UI even if initialization fails
+        }
 
-        // Start and bind to PlaybackService
-        startPlaybackService()
-        bindPlaybackService()
+        // NOTE: startPlaybackService() and bindPlaybackService() are intentionally
+        // NOT called here. On Android 16+, starting a foreground service in onCreate()
+        // causes the app to be killed if the service cannot post a foreground
+        // notification quickly enough (e.g., when no DAC is connected).
+        // The service should be started only when playback actually begins.
 
         setContent {
             BitPerfectApp()
@@ -95,7 +112,17 @@ class MainActivity : ComponentActivity() {
     private fun initializeComponents() {
         // Initialize engine and managers
         engine = NativeAudioEngine()
-        engine.initialize()
+
+        // Wrap engine.initialize() specifically - JNI may fail if native library
+        // did not load or if the device lacks required capabilities
+        try {
+            engine.initialize()
+        } catch (e: UnsatisfiedLinkError) {
+            Log.e(TAG, "Native engine initialization failed (link error): ${e.message}", e)
+        } catch (e: Exception) {
+            Log.e(TAG, "Native engine initialization failed: ${e.message}", e)
+        }
+
         dsdManager = DsdManager()
         usbAudioManager = UsbAudioManager(this)
         settingsRepository = SettingsRepository(this)
@@ -112,12 +139,20 @@ class MainActivity : ComponentActivity() {
         diagnosticsViewModel = DiagnosticsViewModel(engine, dsdManager, usbAudioManager)
     }
 
-    private fun startPlaybackService() {
+    /**
+     * Start the PlaybackService as a foreground service.
+     * Should only be called when playback is about to begin, not during onCreate().
+     */
+    fun startPlaybackService() {
         val intent = Intent(this, PlaybackService::class.java)
         startForegroundService(intent)
     }
 
-    private fun bindPlaybackService() {
+    /**
+     * Bind to the PlaybackService for direct communication.
+     * Should only be called after startPlaybackService().
+     */
+    fun bindPlaybackService() {
         val intent = Intent(this, PlaybackService::class.java)
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
     }
