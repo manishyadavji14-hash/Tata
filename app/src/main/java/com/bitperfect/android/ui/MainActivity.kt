@@ -15,17 +15,18 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.bitperfect.android.BitPerfectApp
+import com.bitperfect.android.ServiceLocator
 import com.bitperfect.android.engine.DsdManager
-import com.bitperfect.android.engine.NativeAudioEngine
-import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.service.PlaybackService
 import com.bitperfect.android.ui.diagnostics.DiagnosticsViewModel
 import com.bitperfect.android.ui.library.LibraryViewModel
@@ -43,14 +44,21 @@ import com.bitperfect.android.usb.UsbAudioManager
  * Responsibilities:
  * - Sets up edge-to-edge display
  * - Applies BitPerfect Material 3 theme
- * - Creates and provides ViewModels
- * - Binds to PlaybackService for audio control (deferred until playback starts)
+ * - Starts and binds to PlaybackService (the single owner of engine + controller)
+ * - Creates ViewModels AFTER the service is bound and ServiceLocator is populated
  * - Manages service lifecycle (start/bind/unbind)
  * - Handles system bar insets
  *
- * Note: On Android 16 (API 36), foreground service start is deferred to avoid
- * the app being killed when the service cannot post a notification in time.
- * The service is only started when playback actually begins.
+ * Architecture:
+ * PlaybackService owns the single NativeAudioEngine and PlaybackController.
+ * When this Activity binds to the service, it populates ServiceLocator so that
+ * ViewModels can access shared instances without passing service references
+ * through deep Compose trees.
+ *
+ * Note: On Android 16 (API 36), foreground service start requires the notification
+ * channel to exist and the service to call startForeground() quickly. The service
+ * is started here in onCreate so it is ready when playback begins, but actual
+ * foreground promotion happens inside the service's onStartCommand.
  */
 class MainActivity : ComponentActivity() {
 
@@ -61,17 +69,16 @@ class MainActivity : ComponentActivity() {
     private var playbackService: PlaybackService? = null
     private var isBound = false
 
-    // ViewModels (in production, use Hilt/Koin DI)
-    // Nullable to prevent UninitializedPropertyAccessException if initializeComponents() fails
+    // Reactive state for Compose: true once service is bound and ViewModels are ready
+    private val isServiceReady = mutableStateOf(false)
+
+    // ViewModels - created only after service binding completes
     private var playerViewModel: PlayerViewModel? = null
     private var libraryViewModel: LibraryViewModel? = null
     private var settingsViewModel: SettingsViewModel? = null
     private var diagnosticsViewModel: DiagnosticsViewModel? = null
 
-    // Core components
-    private var engine: NativeAudioEngine? = null
-    private var dsdManager: DsdManager? = null
-    private var usbAudioManager: UsbAudioManager? = null
+    // Settings repository (Activity-scoped, needs Context)
     private var settingsRepository: SettingsRepository? = null
 
     private val serviceConnection = object : ServiceConnection {
@@ -79,11 +86,28 @@ class MainActivity : ComponentActivity() {
             val binder = service as PlaybackService.PlaybackBinder
             playbackService = binder.getService()
             isBound = true
+
+            // Populate ServiceLocator with the service's single engine and controller
+            ServiceLocator.engine = binder.getEngine()
+            ServiceLocator.playbackController = binder.getPlaybackController()
+
+            Log.i(TAG, "Bound to PlaybackService - ServiceLocator populated")
+
+            // Now create ViewModels with the shared instances
+            try {
+                initializeViewModels()
+                isServiceReady.value = true
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to initialize ViewModels: ${e.message}", e)
+            }
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
             playbackService = null
             isBound = false
+            isServiceReady.value = false
+            ServiceLocator.clearServiceReferences()
+            Log.w(TAG, "Disconnected from PlaybackService")
         }
     }
 
@@ -91,19 +115,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Initialize core components with safety wrapper
-        try {
-            initializeComponents()
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to initialize components: ${e.message}", e)
-            // Continue to show UI even if initialization fails
-        }
+        // Start the PlaybackService. It will call startForeground() in onStartCommand.
+        // This ensures the single engine + controller are created and available for binding.
+        startPlaybackService()
 
-        // NOTE: startPlaybackService() and bindPlaybackService() are intentionally
-        // NOT called here. On Android 16+, starting a foreground service in onCreate()
-        // causes the app to be killed if the service cannot post a foreground
-        // notification quickly enough (e.g., when no DAC is connected).
-        // The service should be started only when playback actually begins.
+        // Bind to the service to get access to its engine and controller.
+        bindPlaybackService()
 
         setContent {
             BitPerfectApp()
@@ -114,70 +131,59 @@ class MainActivity : ComponentActivity() {
         if (isBound) {
             unbindService(serviceConnection)
             isBound = false
+            ServiceLocator.clearServiceReferences()
         }
         super.onDestroy()
     }
 
-    private fun initializeComponents() {
-        // Initialize engine and managers
-        val localEngine = NativeAudioEngine()
-        engine = localEngine
+    /**
+     * Initialize ViewModels using shared instances from ServiceLocator.
+     * Called only after the service is bound and ServiceLocator is populated.
+     */
+    private fun initializeViewModels() {
+        val controller = ServiceLocator.playbackController
+            ?: throw IllegalStateException("PlaybackController not available in ServiceLocator")
+        val engine = ServiceLocator.engine
+            ?: throw IllegalStateException("NativeAudioEngine not available in ServiceLocator")
+        val musicLibrary = ServiceLocator.musicLibrary
+            ?: throw IllegalStateException("MusicLibrary not available in ServiceLocator")
 
-        // Wrap engine.initialize() specifically - JNI may fail if native library
-        // did not load or if the device lacks required capabilities
-        try {
-            localEngine.initialize()
-        } catch (e: UnsatisfiedLinkError) {
-            Log.e(TAG, "Native engine initialization failed (link error): ${e.message}", e)
-        } catch (e: Exception) {
-            Log.e(TAG, "Native engine initialization failed: ${e.message}", e)
-        }
-
-        // DsdManager methods are safe (no external/JNI calls), but wrap creation
-        // in try-catch for any future issues
-        val localDsdManager = try {
-            DsdManager()
-        } catch (e: UnsatisfiedLinkError) {
-            Log.e(TAG, "DsdManager creation failed (link error): ${e.message}", e)
-            DsdManager() // DsdManager no longer has external funs, so this is safe
-        } catch (e: Exception) {
-            Log.e(TAG, "DsdManager creation failed: ${e.message}", e)
-            DsdManager()
-        }
-        dsdManager = localDsdManager
-
-        val localUsbAudioManager = UsbAudioManager(this)
-        usbAudioManager = localUsbAudioManager
+        // DsdManager is a pure-Kotlin helper (no JNI) - safe to create here
+        val dsdManager = DsdManager()
 
         val localSettingsRepository = SettingsRepository(this)
         settingsRepository = localSettingsRepository
 
-        // Create music library
-        val musicLibrary = MusicLibrary()
+        // Get UsbAudioManager from service for diagnostics
+        val usbManager = playbackService?.getUsbManager()
 
-        // Initialize ViewModels
-        val playbackController = com.bitperfect.android.player.PlaybackController(localEngine)
-
-        playerViewModel = PlayerViewModel(playbackController, localEngine, localDsdManager)
+        playerViewModel = PlayerViewModel(controller, engine, dsdManager)
         libraryViewModel = LibraryViewModel(musicLibrary)
         settingsViewModel = SettingsViewModel(localSettingsRepository)
-        diagnosticsViewModel = DiagnosticsViewModel(localEngine, localDsdManager, localUsbAudioManager)
+        diagnosticsViewModel = if (usbManager != null) {
+            DiagnosticsViewModel(engine, dsdManager, usbManager)
+        } else {
+            // Fallback: create UsbAudioManager with the service's engine
+            DiagnosticsViewModel(engine, dsdManager, UsbAudioManager(this, engine))
+        }
     }
 
     /**
      * Start the PlaybackService as a foreground service.
-     * Should only be called when playback is about to begin, not during onCreate().
      */
-    fun startPlaybackService() {
-        val intent = Intent(this, PlaybackService::class.java)
-        startForegroundService(intent)
+    private fun startPlaybackService() {
+        try {
+            val intent = Intent(this, PlaybackService::class.java)
+            startForegroundService(intent)
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to start PlaybackService: ${e.message}", e)
+        }
     }
 
     /**
      * Bind to the PlaybackService for direct communication.
-     * Should only be called after startPlaybackService().
      */
-    fun bindPlaybackService() {
+    private fun bindPlaybackService() {
         val intent = Intent(this, PlaybackService::class.java)
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
     }
@@ -189,22 +195,54 @@ class MainActivity : ComponentActivity() {
             dynamicColor = true
         ) {
             Surface(modifier = Modifier.fillMaxSize()) {
-                val pvm = playerViewModel
-                val lvm = libraryViewModel
-                val svm = settingsViewModel
-                val dvm = diagnosticsViewModel
+                if (isServiceReady.value) {
+                    val pvm = playerViewModel
+                    val lvm = libraryViewModel
+                    val svm = settingsViewModel
+                    val dvm = diagnosticsViewModel
 
-                if (pvm != null && lvm != null && svm != null && dvm != null) {
-                    BitPerfectNavGraph(
-                        playerViewModel = pvm,
-                        libraryViewModel = lvm,
-                        settingsViewModel = svm,
-                        diagnosticsViewModel = dvm
-                    )
+                    if (pvm != null && lvm != null && svm != null && dvm != null) {
+                        BitPerfectNavGraph(
+                            playerViewModel = pvm,
+                            libraryViewModel = lvm,
+                            settingsViewModel = svm,
+                            diagnosticsViewModel = dvm
+                        )
+                    } else {
+                        InitializationErrorScreen()
+                    }
                 } else {
-                    // Show a safe fallback screen when ViewModels failed to initialize
-                    InitializationErrorScreen()
+                    // Show loading while waiting for service to bind
+                    ServiceBindingScreen()
                 }
+            }
+        }
+    }
+
+    @Composable
+    private fun ServiceBindingScreen() {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(48.dp),
+                    color = MaterialTheme.colorScheme.primary
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "BitPerfect",
+                    style = MaterialTheme.typography.headlineMedium
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "Initializing audio engine...",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         }
     }

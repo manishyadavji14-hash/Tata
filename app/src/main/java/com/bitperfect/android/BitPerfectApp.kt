@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import com.bitperfect.android.library.MusicLibrary
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -66,6 +67,9 @@ class BitPerfectApp : Application() {
         // 2. Native library second, guarded so a failure is never fatal.
         loadNativeLibrary()
 
+        // 3. Initialize application-scoped components in ServiceLocator.
+        initializeAppComponents()
+
         writeStartupLog()
         Log.i(TAG, "BitPerfect application started (native loaded: $isNativeLoaded)")
     }
@@ -87,6 +91,17 @@ class BitPerfectApp : Application() {
             nativeLoadError = "${t.javaClass.simpleName}: ${t.message}"
             Log.e(TAG, "Failed to load native library: $nativeLoadError")
         }
+    }
+
+    /**
+     * Initializes application-scoped components and registers them
+     * in the ServiceLocator. MusicLibrary is app-scoped because it
+     * survives service restarts and is needed by the library UI.
+     */
+    private fun initializeAppComponents() {
+        val musicLibrary = MusicLibrary()
+        ServiceLocator.musicLibrary = musicLibrary
+        Log.i(TAG, "ServiceLocator.musicLibrary initialized")
     }
 
     /**

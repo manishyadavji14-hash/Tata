@@ -308,7 +308,7 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
         // Initialize USB components
-        usbAudioManager = UsbAudioManager(this)
+        usbAudioManager = UsbAudioManager(this, engine)
         usbPermissionHandler = UsbPermissionHandler(this, usbAudioManager)
         usbErrorRecovery = UsbErrorRecovery(usbAudioManager, playbackController, engine)
 
