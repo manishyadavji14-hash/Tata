@@ -101,7 +101,7 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         initializeComponents()
         createNotificationChannel()
         registerReceivers()
-        acquireWakeLock()
+        // WakeLock is NOT acquired here; it is acquired only during active playback.
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -297,17 +297,24 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         // Handle state-specific actions
         when (state) {
             is PlaybackState.Playing -> {
+                acquireWakeLock()
                 startForegroundPlayback()
             }
+            is PlaybackState.Paused -> {
+                releaseWakeLock()
+                // Keep foreground notification while paused
+            }
             is PlaybackState.Stopped, is PlaybackState.Idle -> {
+                releaseWakeLock()
                 releaseAudioFocus()
                 stopForeground(STOP_FOREGROUND_REMOVE)
             }
             is PlaybackState.Error -> {
+                releaseWakeLock()
                 Log.e(TAG, "Playback error: ${state.message}")
                 usbErrorRecovery.handlePlaybackError(state.message)
             }
-            else -> { /* Paused, Loading - keep foreground */ }
+            else -> { /* Loading - keep current wake lock state */ }
         }
     }
 

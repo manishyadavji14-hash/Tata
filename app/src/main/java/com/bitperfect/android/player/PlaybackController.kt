@@ -199,8 +199,8 @@ class PlaybackController(
             positionMs = 0L
             val format = AudioFormatInfo(
                 sampleRate = engine.getCurrentSampleRate(),
-                bitDepth = 16,  // Will be updated from actual format
-                channels = 2
+                bitDepth = engine.getCurrentBitDepth(),
+                channels = engine.getCurrentChannels()
             )
             setState(PlaybackState.Playing(
                 trackPath = nextTrack,
@@ -235,8 +235,8 @@ class PlaybackController(
             engine.resumePlayback()
             val format = AudioFormatInfo(
                 sampleRate = engine.getCurrentSampleRate(),
-                bitDepth = 16,
-                channels = 2
+                bitDepth = engine.getCurrentBitDepth(),
+                channels = engine.getCurrentChannels()
             )
             setState(PlaybackState.Playing(
                 trackPath = currentState.trackPath,
@@ -251,16 +251,21 @@ class PlaybackController(
         setState(PlaybackState.Loading(trackPath))
         positionMs = 0L
 
-        // In a full implementation, this would:
-        // 1. Create a decoder for the file
-        // 2. Configure the engine with the detected format
-        // 3. Start playback
-        // For now, we transition through the states correctly
+        // Query the native engine for the actual format of the file.
+        // The engine opens the appropriate decoder (WAV/FLAC/DSF),
+        // detects sample rate, bit depth, and channels, then runs
+        // mode selection (PCM/DoP/Native DSD) based on DAC capabilities.
+
+        // Determine format from file extension/content via native engine
+        val detectedFormat = engine.detectFileFormat(trackPath)
+        val sampleRate = if (detectedFormat.sampleRate > 0) detectedFormat.sampleRate else 44100
+        val format = detectedFormat.nativeFormat
+        val channels = if (detectedFormat.channels > 0) detectedFormat.channels else 2
 
         val configured = engine.configure(
-            engine.getCurrentSampleRate().takeIf { it > 0 } ?: 44100,
-            NativeAudioEngine.FORMAT_S16_LE,
-            2,
+            sampleRate,
+            format,
+            channels,
             50  // 50ms buffer
         )
 
@@ -274,16 +279,22 @@ class PlaybackController(
             return
         }
 
-        val format = AudioFormatInfo(
+        val bitDepth = when (format) {
+            NativeAudioEngine.FORMAT_S16_LE -> 16
+            NativeAudioEngine.FORMAT_S24_3LE, NativeAudioEngine.FORMAT_S24_LE -> 24
+            NativeAudioEngine.FORMAT_S32_LE -> 32
+            else -> 16
+        }
+        val formatInfo = AudioFormatInfo(
             sampleRate = engine.getCurrentSampleRate(),
-            bitDepth = 16,
-            channels = 2
+            bitDepth = bitDepth,
+            channels = channels
         )
         setState(PlaybackState.Playing(
             trackPath = trackPath,
             positionMs = 0L,
             durationMs = durationMs,
-            format = format
+            format = formatInfo
         ))
     }
 

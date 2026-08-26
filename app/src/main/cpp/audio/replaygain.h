@@ -17,7 +17,7 @@ struct ReplayGainConfig {
     bool useAlbumGain = false;      // True to use album gain instead of track gain
     bool enableLimiter = true;      // Prevent clipping
     bool enabled = true;            // Master enable
-    bool bitPerfectMode = false;    // When true, bypasses all processing
+    bool bitPerfectMode = true;     // When true, bypasses all processing (default: true for audiophile use)
     bool forceInBitPerfect = false; // User override to force in bit-perfect mode
 };
 

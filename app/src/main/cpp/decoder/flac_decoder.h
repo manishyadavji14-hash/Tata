@@ -7,17 +7,23 @@
 namespace bitperfect {
 namespace decoder {
 
+// Forward declaration - defined in flac_decoder.cpp
+class FlacBitReader;
+
 /**
- * FLAC Decoder - Minimal implementation for BitPerfect.
+ * FLAC Decoder for BitPerfect.
  *
  * Implements FLAC decoding by parsing:
  * - STREAMINFO metadata block (sample rate, channels, bits per sample, total samples)
  * - Frame headers for synchronization
- * - Fixed-predictor subframes (orders 0-4) for basic decoding
+ * - Verbatim subframes (uncompressed passthrough)
+ * - Fixed-predictor subframes (orders 0-4) with residual coding
+ * - Rice/Rice2 entropy coding for residuals
  *
- * For production use, this would integrate with libFLAC for full decoding
- * of all predictor types and entropy coding. The current implementation
- * demonstrates the interface and handles STREAMINFO extraction correctly.
+ * LPC (linear prediction) subframes are not yet supported and will
+ * output silence for those specific subframes. For full LPC support,
+ * integrate with libFLAC. Verbatim and fixed-predictor subframes cover
+ * the majority of simple FLAC encodings and all uncompressed FLAC streams.
  *
  * Supports:
  * - Up to 32-bit / 384kHz
@@ -74,6 +80,15 @@ private:
     bool parseMetadataBlocks(const uint8_t* data, size_t size);
     size_t decodeFrame(const uint8_t* frameData, size_t available,
                        uint8_t* output, size_t maxFrames);
+    bool decodeSubframe(FlacBitReader& reader, std::vector<int32_t>& output,
+                        uint32_t blockSize, uint8_t bps);
+    bool decodeFixedSubframe(FlacBitReader& reader, std::vector<int32_t>& output,
+                             uint32_t blockSize, uint8_t bps, uint8_t order);
+    bool decodeLpcSubframe(FlacBitReader& reader, std::vector<int32_t>& output,
+                           uint32_t blockSize, uint8_t bps, uint8_t order);
+    bool decodeResidual(FlacBitReader& reader, std::vector<int32_t>& residual,
+                        uint32_t blockSize, uint8_t predictorOrder);
+    size_t readInternal(uint8_t* buffer, size_t frames);
 
     static uint32_t readU24BE(const uint8_t* p) {
         return (static_cast<uint32_t>(p[0]) << 16) | (p[1] << 8) | p[2];
@@ -101,6 +116,9 @@ private:
     std::vector<uint8_t> decodeBuffer_;
     size_t decodeBufferFrames_ = 0;
     size_t decodeBufferOffset_ = 0;
+
+    // File read buffer
+    std::vector<uint8_t> fileReadBuffer_;
 };
 
 } // namespace decoder

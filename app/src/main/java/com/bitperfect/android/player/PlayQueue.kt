@@ -1,5 +1,8 @@
 package com.bitperfect.android.player
 
+import java.util.concurrent.locks.ReentrantLock
+import kotlin.concurrent.withLock
+
 /**
  * Repeat modes for queue playback.
  */
@@ -18,52 +21,58 @@ enum class RepeatMode {
  * - Repeat modes: Off, One, All
  * - Current index tracking with next/previous logic
  *
- * Thread safety: All methods should be called from the same thread
- * (typically the main/UI thread). Use proper synchronization if accessed
- * from multiple threads.
+ * Thread safety: All public methods are synchronized using a ReentrantLock
+ * to allow safe concurrent access from multiple threads (UI thread,
+ * playback service callbacks, native gapless engine callbacks).
  */
 class PlayQueue {
 
+    private val lock = ReentrantLock()
     private val originalOrder = mutableListOf<String>()
     private val playOrder = mutableListOf<String>()
     private var currentIndex: Int = -1
     private var isShuffled: Boolean = false
-    var repeatMode: RepeatMode = RepeatMode.OFF
+    var repeatMode: RepeatMode
+        get() = lock.withLock { _repeatMode }
+        set(value) { lock.withLock { _repeatMode = value } }
+    private var _repeatMode: RepeatMode = RepeatMode.OFF
 
     /**
      * Get the current track path, or null if queue is empty.
      */
     val currentTrack: String?
-        get() = if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
+        get() = lock.withLock {
+            if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
+        }
 
     /**
      * Get the current position in the queue (0-indexed).
      */
     val position: Int
-        get() = currentIndex
+        get() = lock.withLock { currentIndex }
 
     /**
      * Get the total number of tracks in the queue.
      */
     val size: Int
-        get() = playOrder.size
+        get() = lock.withLock { playOrder.size }
 
     /**
      * Check if the queue is empty.
      */
     val isEmpty: Boolean
-        get() = playOrder.isEmpty()
+        get() = lock.withLock { playOrder.isEmpty() }
 
     /**
      * Get all tracks in current play order.
      */
     val tracks: List<String>
-        get() = playOrder.toList()
+        get() = lock.withLock { playOrder.toList() }
 
     /**
      * Add a track to the end of the queue.
      */
-    fun add(trackPath: String) {
+    fun add(trackPath: String) = lock.withLock {
         originalOrder.add(trackPath)
         playOrder.add(trackPath)
         if (currentIndex == -1) {
@@ -74,7 +83,7 @@ class PlayQueue {
     /**
      * Add multiple tracks to the end of the queue.
      */
-    fun addAll(trackPaths: List<String>) {
+    fun addAll(trackPaths: List<String>) = lock.withLock {
         originalOrder.addAll(trackPaths)
         playOrder.addAll(trackPaths)
         if (currentIndex == -1 && playOrder.isNotEmpty()) {
@@ -86,8 +95,8 @@ class PlayQueue {
      * Remove a track at the specified index.
      * Adjusts currentIndex as needed.
      */
-    fun removeAt(index: Int): Boolean {
-        if (index !in playOrder.indices) return false
+    fun removeAt(index: Int): Boolean = lock.withLock {
+        if (index !in playOrder.indices) return@withLock false
 
         val track = playOrder[index]
         playOrder.removeAt(index)
@@ -98,15 +107,15 @@ class PlayQueue {
             index < currentIndex -> currentIndex--
             index == currentIndex && currentIndex >= playOrder.size -> currentIndex = playOrder.size - 1
         }
-        return true
+        true
     }
 
     /**
      * Move a track from one position to another.
      */
-    fun move(fromIndex: Int, toIndex: Int): Boolean {
-        if (fromIndex !in playOrder.indices || toIndex !in playOrder.indices) return false
-        if (fromIndex == toIndex) return true
+    fun move(fromIndex: Int, toIndex: Int): Boolean = lock.withLock {
+        if (fromIndex !in playOrder.indices || toIndex !in playOrder.indices) return@withLock false
+        if (fromIndex == toIndex) return@withLock true
 
         val track = playOrder.removeAt(fromIndex)
         playOrder.add(toIndex, track)
@@ -117,13 +126,13 @@ class PlayQueue {
             fromIndex < currentIndex && toIndex >= currentIndex -> currentIndex--
             fromIndex > currentIndex && toIndex <= currentIndex -> currentIndex++
         }
-        return true
+        true
     }
 
     /**
      * Clear the queue.
      */
-    fun clear() {
+    fun clear() = lock.withLock {
         originalOrder.clear()
         playOrder.clear()
         currentIndex = -1
@@ -133,7 +142,7 @@ class PlayQueue {
     /**
      * Set the queue to a new list of tracks.
      */
-    fun setQueue(trackPaths: List<String>, startIndex: Int = 0) {
+    fun setQueue(trackPaths: List<String>, startIndex: Int = 0) = lock.withLock {
         originalOrder.clear()
         originalOrder.addAll(trackPaths)
         playOrder.clear()
@@ -146,24 +155,24 @@ class PlayQueue {
      * Advance to the next track.
      * @return The next track path, or null if at end (respects repeat mode)
      */
-    fun next(): String? {
-        if (playOrder.isEmpty()) return null
+    fun next(): String? = lock.withLock {
+        if (playOrder.isEmpty()) return@withLock null
 
-        when (repeatMode) {
+        when (_repeatMode) {
             RepeatMode.ONE -> {
                 // Stay on current track
-                return currentTrack
+                return@withLock if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
             }
             RepeatMode.ALL -> {
                 currentIndex = (currentIndex + 1) % playOrder.size
-                return currentTrack
+                return@withLock if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
             }
             RepeatMode.OFF -> {
                 if (currentIndex < playOrder.size - 1) {
                     currentIndex++
-                    return currentTrack
+                    return@withLock if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
                 }
-                return null  // End of queue
+                return@withLock null  // End of queue
             }
         }
     }
@@ -172,23 +181,22 @@ class PlayQueue {
      * Go to the previous track.
      * @return The previous track path, or null if at beginning
      */
-    fun previous(): String? {
-        if (playOrder.isEmpty()) return null
+    fun previous(): String? = lock.withLock {
+        if (playOrder.isEmpty()) return@withLock null
 
-        when (repeatMode) {
+        when (_repeatMode) {
             RepeatMode.ONE -> {
-                return currentTrack
+                return@withLock if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
             }
             RepeatMode.ALL -> {
                 currentIndex = if (currentIndex > 0) currentIndex - 1 else playOrder.size - 1
-                return currentTrack
+                return@withLock if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
             }
             RepeatMode.OFF -> {
                 if (currentIndex > 0) {
                     currentIndex--
-                    return currentTrack
                 }
-                return currentTrack  // Stay at first track
+                return@withLock if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
             }
         }
     }
@@ -196,10 +204,10 @@ class PlayQueue {
     /**
      * Jump to a specific index in the queue.
      */
-    fun jumpTo(index: Int): String? {
-        if (index !in playOrder.indices) return null
+    fun jumpTo(index: Int): String? = lock.withLock {
+        if (index !in playOrder.indices) return@withLock null
         currentIndex = index
-        return currentTrack
+        playOrder[currentIndex]
     }
 
     /**
@@ -207,11 +215,11 @@ class PlayQueue {
      * Fisher-Yates shuffle on a copy of the list, preserving original order.
      * Current track remains at the current position after shuffle.
      */
-    fun setShuffle(enabled: Boolean) {
-        if (enabled == isShuffled) return
+    fun setShuffle(enabled: Boolean) = lock.withLock {
+        if (enabled == isShuffled) return@withLock
 
         if (enabled) {
-            val currentTrackPath = currentTrack
+            val currentTrackPath = if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
             val remaining = playOrder.toMutableList()
 
             // Remove current track so we can put it first
@@ -235,7 +243,7 @@ class PlayQueue {
             }
         } else {
             // Restore original order
-            val currentTrackPath = currentTrack
+            val currentTrackPath = if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
             playOrder.clear()
             playOrder.addAll(originalOrder)
             currentIndex = if (currentTrackPath != null) {
@@ -251,14 +259,14 @@ class PlayQueue {
     /**
      * Check if shuffle is enabled.
      */
-    fun isShuffleEnabled(): Boolean = isShuffled
+    fun isShuffleEnabled(): Boolean = lock.withLock { isShuffled }
 
     /**
      * Check if there is a next track available (considering repeat mode).
      */
-    fun hasNext(): Boolean {
-        if (playOrder.isEmpty()) return false
-        return when (repeatMode) {
+    fun hasNext(): Boolean = lock.withLock {
+        if (playOrder.isEmpty()) return@withLock false
+        when (_repeatMode) {
             RepeatMode.ONE -> true
             RepeatMode.ALL -> true
             RepeatMode.OFF -> currentIndex < playOrder.size - 1
@@ -268,9 +276,9 @@ class PlayQueue {
     /**
      * Check if there is a previous track available.
      */
-    fun hasPrevious(): Boolean {
-        if (playOrder.isEmpty()) return false
-        return when (repeatMode) {
+    fun hasPrevious(): Boolean = lock.withLock {
+        if (playOrder.isEmpty()) return@withLock false
+        when (_repeatMode) {
             RepeatMode.ONE -> true
             RepeatMode.ALL -> true
             RepeatMode.OFF -> currentIndex > 0
@@ -280,10 +288,10 @@ class PlayQueue {
     /**
      * Get the next track path without advancing the position.
      */
-    fun peekNext(): String? {
-        if (playOrder.isEmpty()) return null
-        return when (repeatMode) {
-            RepeatMode.ONE -> currentTrack
+    fun peekNext(): String? = lock.withLock {
+        if (playOrder.isEmpty()) return@withLock null
+        when (_repeatMode) {
+            RepeatMode.ONE -> if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
             RepeatMode.ALL -> playOrder[(currentIndex + 1) % playOrder.size]
             RepeatMode.OFF -> if (currentIndex < playOrder.size - 1) playOrder[currentIndex + 1] else null
         }

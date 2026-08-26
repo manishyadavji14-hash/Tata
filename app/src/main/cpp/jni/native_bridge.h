@@ -7,11 +7,14 @@
 #include "../audio/sample_rate_manager.h"
 #include "../buffer/audio_buffer_manager.h"
 #include "../diagnostics/diagnostics.h"
+#include "../audio/format_detector.h"
+#include "../decoder/decoder_factory.h"
 
 #include <memory>
 #include <string>
 #include <vector>
 #include <atomic>
+#include <functional>
 
 namespace bitperfect {
 namespace jni {
@@ -154,6 +157,47 @@ public:
      */
     usb::PcmFormat getCurrentFormat() const { return currentConfig_.format; }
 
+    /**
+     * Get current channels.
+     */
+    uint8_t getCurrentChannels() const { return currentConfig_.channels; }
+
+    /**
+     * Detect the format of an audio file.
+     */
+    struct FormatInfo {
+        uint32_t sampleRate = 0;
+        uint8_t bitsPerSample = 0;
+        uint8_t channels = 0;
+    };
+    FormatInfo detectFormat(const std::string& path) const;
+
+    /**
+     * Track transition callback type for gapless playback.
+     */
+    using TrackTransitionJniCallback = std::function<void(void*)>;
+
+    /**
+     * Set the track transition callback (called from JNI registration).
+     */
+    void setTrackTransitionCallback(std::function<void(void*)> callback) {
+        trackTransitionCallback_ = std::move(callback);
+    }
+
+    /**
+     * Notify of a track transition (called from gapless engine).
+     */
+    void notifyTrackTransition() {
+        if (trackTransitionCallback_) {
+            trackTransitionCallback_(javaVm_);
+        }
+    }
+
+    /**
+     * Store the JavaVM pointer for JNI callbacks.
+     */
+    void setJavaVm(void* vm) { javaVm_ = vm; }
+
 private:
     NativeBridge() = default;
     ~NativeBridge() = default;
@@ -171,6 +215,10 @@ private:
     // Configuration
     PlaybackConfig currentConfig_;
     usb::ControlTransferFunc controlTransferFunc_;
+
+    // Track transition callback for gapless playback JNI notification
+    std::function<void(void*)> trackTransitionCallback_;
+    void* javaVm_ = nullptr;
 };
 
 } // namespace jni

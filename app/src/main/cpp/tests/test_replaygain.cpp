@@ -14,6 +14,7 @@ TEST(ReplayGain, ApplyPositiveGain16Bit) {
     ReplayGainConfig config;
     config.trackGainDb = 6.0f;  // +6 dB (approximately double amplitude)
     config.enabled = true;
+    config.bitPerfectMode = false;
     config.enableLimiter = false;
     processor.configure(config);
 
@@ -34,6 +35,7 @@ TEST(ReplayGain, ApplyNegativeGain16Bit) {
     ReplayGainConfig config;
     config.trackGainDb = -6.0f;  // -6 dB (approximately half amplitude)
     config.enabled = true;
+    config.bitPerfectMode = false;
     config.enableLimiter = false;
     processor.configure(config);
 
@@ -51,6 +53,7 @@ TEST(ReplayGain, ZeroGainNoChange) {
     ReplayGainConfig config;
     config.trackGainDb = 0.0f;
     config.enabled = true;
+    config.bitPerfectMode = false;
     config.enableLimiter = false;
     processor.configure(config);
 
@@ -73,6 +76,7 @@ TEST(ReplayGain, ClippingPrevention16Bit) {
     ReplayGainConfig config;
     config.trackGainDb = 12.0f;  // +12 dB (4x amplitude)
     config.enabled = true;
+    config.bitPerfectMode = false;
     config.enableLimiter = true;
     processor.configure(config);
 
@@ -92,6 +96,7 @@ TEST(ReplayGain, ClippingPrevention24Bit) {
     ReplayGainConfig config;
     config.trackGainDb = 12.0f;
     config.enabled = true;
+    config.bitPerfectMode = false;
     config.enableLimiter = true;
     processor.configure(config);
 
@@ -124,6 +129,7 @@ TEST(ReplayGain, ClippingPrevention32Bit) {
     ReplayGainConfig config;
     config.trackGainDb = 12.0f;
     config.enabled = true;
+    config.bitPerfectMode = false;
     config.enableLimiter = true;
     processor.configure(config);
 
@@ -204,6 +210,7 @@ TEST(ReplayGain, UseAlbumGain) {
     config.albumGainDb = -3.0f;
     config.useAlbumGain = true;
     config.enabled = true;
+    config.bitPerfectMode = false;
     config.enableLimiter = false;
     processor.configure(config);
 
@@ -218,6 +225,7 @@ TEST(ReplayGain, UseTrackGainByDefault) {
     config.albumGainDb = -3.0f;
     config.useAlbumGain = false;
     config.enabled = true;
+    config.bitPerfectMode = false;
     processor.configure(config);
 
     float effectiveGain = processor.getEffectiveGainDb();
@@ -232,6 +240,7 @@ TEST(ReplayGain, PreampAddsToGain) {
     config.trackGainDb = -3.0f;
     config.preampDb = 5.0f;
     config.enabled = true;
+    config.bitPerfectMode = false;
     processor.configure(config);
 
     float effectiveGain = processor.getEffectiveGainDb();
@@ -262,6 +271,7 @@ TEST(ReplayGain, TracksPeakLevel) {
     ReplayGainConfig config;
     config.trackGainDb = 0.0f;
     config.enabled = true;
+    config.bitPerfectMode = false;
     config.enableLimiter = false;
     processor.configure(config);
     processor.resetStats();
@@ -278,6 +288,7 @@ TEST(ReplayGain, CountsSamplesProcessed) {
     ReplayGainConfig config;
     config.trackGainDb = 3.0f;
     config.enabled = true;
+    config.bitPerfectMode = false;
     processor.configure(config);
     processor.resetStats();
 
@@ -295,6 +306,7 @@ TEST(ReplayGain, ProcessGenericInterface) {
     ReplayGainConfig config;
     config.trackGainDb = 6.0f;
     config.enabled = true;
+    config.bitPerfectMode = false;
     config.enableLimiter = false;
     processor.configure(config);
 

@@ -134,4 +134,60 @@ class NativeAudioEngine {
      * @return Device name or empty string if no device connected
      */
     external fun getDeviceName(): String
+
+    /**
+     * Detect the audio format of a file.
+     * Opens the file with the appropriate decoder and returns format info.
+     * @param path File path to analyze
+     * @return DetectedFormat with sample rate, channels, and native format code
+     */
+    fun detectFileFormat(path: String): DetectedFormat {
+        val formatInfo = nativeDetectFormat(path)
+        // formatInfo is [sampleRate, bitsPerSample, channels]
+        if (formatInfo == null || formatInfo.size < 3) {
+            return DetectedFormat(0, FORMAT_S16_LE, 0)
+        }
+        val sampleRate = formatInfo[0]
+        val bitsPerSample = formatInfo[1]
+        val channels = formatInfo[2]
+        val nativeFormat = when {
+            bitsPerSample >= 32 -> FORMAT_S32_LE
+            bitsPerSample >= 24 -> FORMAT_S24_3LE
+            else -> FORMAT_S16_LE
+        }
+        return DetectedFormat(sampleRate, nativeFormat, channels)
+    }
+
+    /**
+     * Get current bit depth configured in the engine.
+     * @return Bit depth (16, 24, or 32)
+     */
+    external fun getCurrentBitDepth(): Int
+
+    /**
+     * Get current channel count configured in the engine.
+     * @return Number of channels
+     */
+    external fun getCurrentChannels(): Int
+
+    /**
+     * Native method to detect file format.
+     * @return IntArray of [sampleRate, bitsPerSample, channels] or null
+     */
+    private external fun nativeDetectFormat(path: String): IntArray?
+
+    /**
+     * Native callback registration for track transitions (gapless playback).
+     * Called from native code when a gapless track transition occurs.
+     */
+    external fun registerTrackTransitionCallback(controller: Any): Boolean
+
+    /**
+     * Data class for detected audio format.
+     */
+    data class DetectedFormat(
+        val sampleRate: Int,
+        val nativeFormat: Int,
+        val channels: Int
+    )
 }

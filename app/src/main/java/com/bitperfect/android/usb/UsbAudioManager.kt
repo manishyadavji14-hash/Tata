@@ -17,7 +17,11 @@ import android.util.Log
  * Handles USB device enumeration, permission requests, connection management,
  * and passes raw descriptors to the native layer via JNI.
  */
-class UsbAudioManager(private val context: Context) {
+class UsbAudioManager(
+    private val context: Context,
+    private val nativeEngine: com.bitperfect.android.engine.NativeAudioEngine =
+        com.bitperfect.android.engine.NativeAudioEngine()
+) {
 
     companion object {
         private const val TAG = "UsbAudioManager"
@@ -104,10 +108,10 @@ class UsbAudioManager(private val context: Context) {
         currentDevice = device
         currentConnection = connection
 
-        // Get raw descriptors and pass to native layer
+        // Get raw descriptors and pass to native layer via NativeAudioEngine
         val rawDescriptors = connection.rawDescriptors
         if (rawDescriptors != null && rawDescriptors.isNotEmpty()) {
-            val parsed = nativeParseDevice(rawDescriptors)
+            val parsed = nativeEngine.parseDevice(rawDescriptors)
             if (parsed) {
                 Log.i(TAG, "Device parsed successfully: ${device.deviceName}")
                 return true
@@ -223,6 +227,5 @@ class UsbAudioManager(private val context: Context) {
         }
     }
 
-    // Native methods
-    private external fun nativeParseDevice(descriptorData: ByteArray): Boolean
+    // Device descriptor parsing is handled via NativeAudioEngine.parseDevice()
 }

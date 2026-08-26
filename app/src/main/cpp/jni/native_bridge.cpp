@@ -42,6 +42,9 @@ extern "C" JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* /*reserved*/) {
         return JNI_ERR;
     }
 
+    // Store JavaVM for callbacks
+    bitperfect::jni::NativeBridge::instance().setJavaVm(static_cast<void*>(vm));
+
     // Cache NativeAudioEngine class
     jclass engineClass = env->FindClass("com/bitperfect/android/engine/NativeAudioEngine");
     if (engineClass != nullptr) {
@@ -212,6 +215,81 @@ extern "C" JNIEXPORT jstring JNICALL
 Java_com_bitperfect_android_engine_NativeAudioEngine_getDeviceName(JNIEnv* env, jobject /*thiz*/) {
     auto info = bitperfect::jni::NativeBridge::instance().getDeviceInfo();
     return env->NewStringUTF(info.deviceName.c_str());
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getCurrentBitDepth(JNIEnv* /*env*/, jobject /*thiz*/) {
+    auto format = bitperfect::jni::NativeBridge::instance().getCurrentFormat();
+    return static_cast<jint>(bitperfect::pcm::PcmEngine::getBitsPerSample(format));
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_getCurrentChannels(JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jint>(bitperfect::jni::NativeBridge::instance().getCurrentChannels());
+}
+
+extern "C" JNIEXPORT jintArray JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeDetectFormat(JNIEnv* env, jobject /*thiz*/, jstring path) {
+    if (path == nullptr) return nullptr;
+
+    const char* pathStr = env->GetStringUTFChars(path, nullptr);
+    if (pathStr == nullptr) return nullptr;
+
+    auto formatInfo = bitperfect::jni::NativeBridge::instance().detectFormat(pathStr);
+    env->ReleaseStringUTFChars(path, pathStr);
+
+    if (formatInfo.sampleRate == 0) return nullptr;
+
+    jintArray result = env->NewIntArray(3);
+    if (result == nullptr) return nullptr;
+
+    jint values[3] = {
+        static_cast<jint>(formatInfo.sampleRate),
+        static_cast<jint>(formatInfo.bitsPerSample),
+        static_cast<jint>(formatInfo.channels)
+    };
+    env->SetIntArrayRegion(result, 0, 3, values);
+    return result;
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_registerTrackTransitionCallback(
+        JNIEnv* env, jobject /*thiz*/, jobject controller) {
+    if (controller == nullptr) return JNI_FALSE;
+
+    // Store a global reference to the controller for callbacks
+    jobject globalRef = env->NewGlobalRef(controller);
+    if (globalRef == nullptr) return JNI_FALSE;
+
+    // Cache the onTrackTransition method ID
+    jclass clazz = env->GetObjectClass(controller);
+    jmethodID method = env->GetMethodID(clazz, "onTrackTransition", "()V");
+    env->DeleteLocalRef(clazz);
+
+    if (method == nullptr) {
+        env->DeleteGlobalRef(globalRef);
+        return JNI_FALSE;
+    }
+
+    bitperfect::jni::NativeBridge::instance().setTrackTransitionCallback(
+        [globalRef, method](JavaVM* vm) {
+            JNIEnv* callbackEnv = nullptr;
+            bool attached = false;
+            jint result = vm->GetEnv(reinterpret_cast<void**>(&callbackEnv), JNI_VERSION_1_6);
+            if (result == JNI_EDETACHED) {
+                vm->AttachCurrentThread(reinterpret_cast<void**>(&callbackEnv), nullptr);
+                attached = true;
+            }
+            if (callbackEnv != nullptr) {
+                callbackEnv->CallVoidMethod(globalRef, method);
+            }
+            if (attached) {
+                vm->DetachCurrentThread();
+            }
+        }
+    );
+
+    return JNI_TRUE;
 }
 
 #endif // !STANDALONE_TEST
@@ -388,6 +466,29 @@ bool NativeBridge::startPlayback() {
 
     state_.store(EngineState::PLAYING);
 
+    // Activate isochronous transfer with supply/complete callbacks
+    if (isoTransfer_ && bufferManager_) {
+        auto supplyCallback = [this](uint8_t* buffer, size_t maxLength) -> size_t {
+            // Read audio data from the buffer manager to supply to USB
+            return bufferManager_->read(buffer, maxLength);
+        };
+
+        auto completeCallback = [this](const uint8_t* /*data*/, size_t length,
+                                        usb::TransferStatus status) {
+            if (status != usb::TransferStatus::COMPLETED) {
+                diagnostics::Diagnostics::instance().recordError(
+                    diagnostics::LogCategory::TRANSFER,
+                    "Transfer completion error"
+                );
+            }
+            (void)length;
+        };
+
+        if (!isoTransfer_->isActive()) {
+            isoTransfer_->start(supplyCallback, completeCallback);
+        }
+    }
+
     diagnostics::Diagnostics::instance().logMessage(
         diagnostics::LogLevel::INFO,
         diagnostics::LogCategory::PCM,
@@ -460,6 +561,33 @@ void NativeBridge::setControlTransferFunction(usb::ControlTransferFunc func) {
     if (controlTransferFunc_) {
         usbControl_ = std::make_unique<usb::UsbControl>(controlTransferFunc_);
     }
+}
+
+NativeBridge::FormatInfo NativeBridge::detectFormat(const std::string& path) const {
+    FormatInfo info;
+
+    // Use decoder factory to create appropriate decoder
+    auto type = decoder::DecoderFactory::detectFromExtension(path);
+    if (type == decoder::DecoderType::UNKNOWN) {
+        return info;
+    }
+
+    auto dec = decoder::DecoderFactory::create(type);
+    if (!dec) {
+        return info;
+    }
+
+    if (!dec->open(path)) {
+        return info;
+    }
+
+    auto format = dec->getFormat();
+    info.sampleRate = format.sampleRate;
+    info.bitsPerSample = format.bitsPerSample;
+    info.channels = format.channels;
+
+    dec->close();
+    return info;
 }
 
 } // namespace jni
