@@ -134,17 +134,20 @@ void Diagnostics::setLogCallback(LogCallback callback) {
 
 const char* Diagnostics::categoryName(LogCategory category) {
     switch (category) {
-        case LogCategory::BOOT:     return "BOOT";
-        case LogCategory::USB:      return "USB";
-        case LogCategory::CLOCK:    return "CLOCK";
-        case LogCategory::FORMAT:   return "FORMAT";
-        case LogCategory::PCM:      return "PCM";
-        case LogCategory::BUFFER:   return "BUFFER";
-        case LogCategory::TRANSFER: return "TRANSFER";
-        case LogCategory::ERROR:    return "ERROR";
-        case LogCategory::RECOVERY: return "RECOVERY";
-        case LogCategory::JNI:      return "JNI";
-        default:                    return "UNKNOWN";
+        case LogCategory::BOOT:       return "BOOT";
+        case LogCategory::USB:        return "USB";
+        case LogCategory::CLOCK:      return "CLOCK";
+        case LogCategory::FORMAT:     return "FORMAT";
+        case LogCategory::PCM:        return "PCM";
+        case LogCategory::DSD:        return "DSD";
+        case LogCategory::DOP:        return "DOP";
+        case LogCategory::NATIVE_DSD: return "NATIVE_DSD";
+        case LogCategory::BUFFER:     return "BUFFER";
+        case LogCategory::TRANSFER:   return "TRANSFER";
+        case LogCategory::ERROR:      return "ERROR";
+        case LogCategory::RECOVERY:   return "RECOVERY";
+        case LogCategory::JNI:        return "JNI";
+        default:                      return "UNKNOWN";
     }
 }
 
