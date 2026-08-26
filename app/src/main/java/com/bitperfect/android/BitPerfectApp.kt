@@ -8,6 +8,9 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import com.bitperfect.android.library.MusicLibrary
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -56,6 +59,17 @@ class BitPerfectApp : Application() {
         @Volatile
         var lastCrashReport: String = ""
             internal set
+
+        /**
+         * Scope for work that must finish even though the screen that started it
+         * has gone away, such as persisting a setting.
+         *
+         * A ViewModel's own scope is cancelled in `onCleared`, which silently
+         * drops an in-flight write. This scope lives as long as the process, and
+         * uses a SupervisorJob so one failed write cannot cancel the rest.
+         */
+        val applicationScope: CoroutineScope =
+            CoroutineScope(SupervisorJob() + Dispatchers.IO)
     }
 
     override fun onCreate() {
@@ -97,9 +111,13 @@ class BitPerfectApp : Application() {
      * Initializes application-scoped components and registers them
      * in the ServiceLocator. MusicLibrary is app-scoped because it
      * survives service restarts and is needed by the library UI.
+     *
+     * It takes the application context, so holding it here leaks nothing.
+     * Creating it once at this level also means an Activity recreation
+     * reuses the same Room instance instead of opening another.
      */
     private fun initializeAppComponents() {
-        val musicLibrary = MusicLibrary()
+        val musicLibrary = MusicLibrary(this)
         ServiceLocator.setMusicLibrary(musicLibrary)
         Log.i(TAG, "ServiceLocator.musicLibrary initialized")
     }

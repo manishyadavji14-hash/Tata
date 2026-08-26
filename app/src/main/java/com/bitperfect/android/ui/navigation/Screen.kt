@@ -1,5 +1,7 @@
 package com.bitperfect.android.ui.navigation
 
+import java.util.Base64
+
 /**
  * Screen - Sealed class defining all navigation routes in BitPerfect.
  *
@@ -22,17 +24,31 @@ sealed class Screen(val route: String) {
     data object ArtistAlbums : Screen("library/artist/{artistId}") {
         fun createRoute(artistId: Long): String = "library/artist/$artistId"
     }
-    data object GenreTracks : Screen("library/genre/{genreId}") {
-        fun createRoute(genreId: Long): String = "library/genre/$genreId"
+    /**
+     * Genres, composers and folders are addressed by free text rather than an
+     * id, so their routes go through [encodeNavArg]. See that function for why
+     * plain URL-encoding is not enough.
+     */
+    data object GenreTracks : Screen("library/genre/{genreName}") {
+        fun createRoute(name: String): String = "library/genre/${encodeNavArg(name)}"
     }
-    data object ComposerTracks : Screen("library/composer/{composerId}") {
-        fun createRoute(composerId: Long): String = "library/composer/$composerId"
+    data object ComposerTracks : Screen("library/composer/{composerName}") {
+        fun createRoute(name: String): String = "library/composer/${encodeNavArg(name)}"
+    }
+    data object FolderTracks : Screen("library/folder/{folderPath}") {
+        fun createRoute(path: String): String = "library/folder/${encodeNavArg(path)}"
     }
 
     // Standalone screens
     data object Diagnostics : Screen("diagnostics")
+    data object Equalizer : Screen("equalizer")
     data object Queue : Screen("queue")
     data object Licenses : Screen("licenses")
+    data object Favourites : Screen("favourites")
+    data object Playlists : Screen("playlists")
+    data object PlaylistDetail : Screen("playlists/{playlistId}") {
+        fun createRoute(playlistId: Long): String = "playlists/$playlistId"
+    }
 
     companion object {
         /**
@@ -73,5 +89,54 @@ sealed class Screen(val route: String) {
             Settings -> "ic_settings"
             else -> ""
         }
+    }
+}
+
+
+/**
+ * Marks an encoded navigation argument so the path segment is never empty.
+ *
+ * `~` is safe in a URL path and is not part of the Base64 URL-safe alphabet,
+ * so it can always be told apart from the payload that follows it.
+ */
+private const val NAV_ARG_MARKER = "~"
+
+/**
+ * Encodes a free-text value for use as a single path segment.
+ *
+ * Plain `Uri.encode` is not sufficient here for two reasons:
+ *
+ * 1. `Uri.encode("")` returns `""`, which produces a route like `library/genre/`
+ *    with an empty segment. That matches no destination and `navigate` throws.
+ *    A blank genre is the normal case below API 30, where the genre column does
+ *    not exist, so this is a routine input rather than an edge case.
+ * 2. Percent-encoded values are fragile to decode: whether Navigation has
+ *    already decoded a captured argument determines if a second decode is
+ *    correct or corrupting, and a value containing a literal `%` is silently
+ *    mangled if it is decoded twice.
+ *
+ * Base64 URL-safe output contains only `A-Z a-z 0-9 - _`, so it survives any
+ * number of percent-decodes unchanged, and the leading marker guarantees a
+ * non-empty segment. Padding is dropped because `=` is awkward in a path.
+ */
+internal fun encodeNavArg(value: String): String =
+    NAV_ARG_MARKER + Base64.getUrlEncoder()
+        .withoutPadding()
+        .encodeToString(value.toByteArray(Charsets.UTF_8))
+
+/**
+ * Reverses [encodeNavArg].
+ *
+ * Returns an empty string for a malformed argument rather than throwing, so a
+ * hand-typed or stale deep link lands on an empty collection instead of
+ * crashing.
+ */
+internal fun decodeNavArg(encoded: String): String {
+    val payload = encoded.removePrefix(NAV_ARG_MARKER)
+    if (payload.isEmpty()) return ""
+    return try {
+        String(Base64.getUrlDecoder().decode(payload), Charsets.UTF_8)
+    } catch (_: IllegalArgumentException) {
+        ""
     }
 }

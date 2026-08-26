@@ -133,15 +133,11 @@ bool FlacDecoder::open(const std::string& path) {
         return false;
     }
 
-    // Read header to parse STREAMINFO (first 8KB should be enough for metadata)
-    uint8_t headerBuf[8192];
-    size_t bytesRead = fread(headerBuf, 1, sizeof(headerBuf), file_);
-    if (bytesRead < 42) {  // Minimum: 4 (fLaC) + 4 (block header) + 34 (STREAMINFO)
-        close();
-        return false;
-    }
-
-    if (!parseMetadataBlocks(headerBuf, bytesRead)) {
+    // Stream the metadata blocks. A fixed window cannot be used here: FLAC
+    // files with embedded cover art carry PICTURE blocks far larger than any
+    // reasonable header buffer, and truncating the walk yields a first-frame
+    // offset pointing into the artwork.
+    if (!parseMetadataBlocksFromFile()) {
         close();
         return false;
     }
@@ -174,6 +170,59 @@ bool FlacDecoder::openFromMemory(const uint8_t* data, size_t size) {
     return true;
 }
 
+bool FlacDecoder::parseMetadataBlocksFromFile() {
+    if (!file_) return false;
+
+    if (fseek(file_, 0, SEEK_SET) != 0) return false;
+
+    uint8_t marker[4];
+    if (fread(marker, 1, sizeof(marker), file_) != sizeof(marker)) return false;
+    if (marker[0] != 'f' || marker[1] != 'L' ||
+        marker[2] != 'a' || marker[3] != 'C') {
+        return false;
+    }
+
+    bool foundStreamInfo = false;
+    bool lastBlock = false;
+    uint64_t offset = sizeof(marker);
+
+    while (!lastBlock) {
+        uint8_t blockHeader[4];
+        if (fread(blockHeader, 1, sizeof(blockHeader), file_) != sizeof(blockHeader)) {
+            return false;
+        }
+
+        lastBlock = (blockHeader[0] & 0x80) != 0;
+        const uint8_t blockType = blockHeader[0] & 0x7F;
+        const uint32_t blockLength = readU24BE(blockHeader + 1);
+        offset += sizeof(blockHeader);
+
+        if (blockType == 0) {  // STREAMINFO
+            if (blockLength < 34 || blockLength > 4096) return false;
+
+            std::vector<uint8_t> streamInfoBlock(blockLength);
+            if (fread(streamInfoBlock.data(), 1, blockLength, file_) != blockLength) {
+                return false;
+            }
+            if (!parseStreamInfo(streamInfoBlock.data(), blockLength)) return false;
+            foundStreamInfo = true;
+        } else {
+            // Skip PADDING, APPLICATION, SEEKTABLE, VORBIS_COMMENT,
+            // CUESHEET and PICTURE without buffering them.
+            if (fseek(file_, static_cast<long>(blockLength), SEEK_CUR) != 0) {
+                return false;
+            }
+        }
+
+        offset += blockLength;
+    }
+
+    if (!foundStreamInfo) return false;
+
+    audioDataOffset_ = static_cast<size_t>(offset);
+    return true;
+}
+
 bool FlacDecoder::parseMetadataBlocks(const uint8_t* data, size_t size) {
     if (size < 4) return false;
 
@@ -193,7 +242,10 @@ bool FlacDecoder::parseMetadataBlocks(const uint8_t* data, size_t size) {
         uint32_t blockLength = readU24BE(data + offset + 1);
         offset += 4;
 
-        if (offset + blockLength > size) break;
+        // A truncated block means the caller's buffer does not cover the whole
+        // metadata region. Fail instead of reporting an audio offset that
+        // points into the middle of a metadata block.
+        if (offset + blockLength > size) return false;
 
         if (blockType == 0) {  // STREAMINFO
             if (blockLength >= 34) {
@@ -208,7 +260,7 @@ bool FlacDecoder::parseMetadataBlocks(const uint8_t* data, size_t size) {
         offset += blockLength;
     }
 
-    if (!foundStreamInfo) return false;
+    if (!foundStreamInfo || !lastBlock) return false;
 
     audioDataOffset_ = offset;
     return true;

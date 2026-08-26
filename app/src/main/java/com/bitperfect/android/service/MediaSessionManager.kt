@@ -11,6 +11,7 @@ import androidx.media3.common.MediaMetadata
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.Timeline
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.session.MediaSession
 import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionResult
@@ -33,6 +34,7 @@ import com.google.common.util.concurrent.ListenableFuture
  *
  * Uses a custom Player implementation that delegates commands to PlaybackController.
  */
+@androidx.annotation.OptIn(UnstableApi::class)
 class MediaSessionManager(
     private val context: Context,
     private val playbackController: PlaybackController

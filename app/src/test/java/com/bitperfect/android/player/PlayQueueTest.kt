@@ -356,4 +356,131 @@ class PlayQueueTest {
         queue.repeatMode = RepeatMode.OFF
         assertNull(queue.peekNext())
     }
+
+    // === insertAt / insertAfterCurrent ===
+
+    @Test
+    @DisplayName("insertAt places a track at the given index")
+    fun insertAtPlacesTrack() {
+        queue.addAll(listOf("/a.flac", "/b.flac", "/c.flac"))
+        queue.insertAt(1, "/new.flac")
+        assertEquals(listOf("/a.flac", "/new.flac", "/b.flac", "/c.flac"), queue.tracks)
+    }
+
+    @Test
+    @DisplayName("insertAt before the current track shifts the position")
+    fun insertAtShiftsCurrentIndex() {
+        queue.addAll(listOf("/a.flac", "/b.flac", "/c.flac"))
+        queue.jumpTo(2)
+        assertEquals("/c.flac", queue.currentTrack)
+
+        queue.insertAt(0, "/new.flac")
+
+        // The same track must still be playing after an insert above it.
+        assertEquals("/c.flac", queue.currentTrack)
+        assertEquals(3, queue.position)
+    }
+
+    @Test
+    @DisplayName("insertAt clamps an out-of-range index")
+    fun insertAtClampsIndex() {
+        queue.add("/a.flac")
+        queue.insertAt(99, "/end.flac")
+        queue.insertAt(-5, "/start.flac")
+        assertEquals(listOf("/start.flac", "/a.flac", "/end.flac"), queue.tracks)
+    }
+
+    @Test
+    @DisplayName("insertAfterCurrent queues directly behind the playing track")
+    fun insertAfterCurrentQueuesBehindCurrent() {
+        queue.addAll(listOf("/a.flac", "/b.flac", "/c.flac"))
+        queue.jumpTo(1)
+
+        assertTrue(queue.insertAfterCurrent("/next.flac"))
+
+        assertEquals(listOf("/a.flac", "/b.flac", "/next.flac", "/c.flac"), queue.tracks)
+        // Position must not move; the current track keeps playing.
+        assertEquals(1, queue.position)
+        assertEquals("/b.flac", queue.currentTrack)
+        assertEquals("/next.flac", queue.peekNext())
+    }
+
+    @Test
+    @DisplayName("insertAfterCurrent reports false on an empty queue")
+    fun insertAfterCurrentEmptyQueue() {
+        assertFalse(queue.insertAfterCurrent("/only.flac"))
+        // Nothing was queued, so the caller starts the track instead.
+        assertTrue(queue.isEmpty)
+    }
+
+    // === removeAtTrackingCurrent ===
+
+    @Test
+    @DisplayName("Removing a track above the current one does not disturb playback")
+    fun removeAboveCurrent() {
+        queue.addAll(listOf("/a.flac", "/b.flac", "/c.flac"))
+        queue.jumpTo(2)
+
+        val outcome = queue.removeAtTrackingCurrent(0)
+
+        assertTrue(outcome.removed)
+        assertFalse(outcome.wasCurrent)
+        assertEquals("/c.flac", queue.currentTrack)
+        assertEquals(1, queue.position)
+    }
+
+    @Test
+    @DisplayName("Removing the current track reports its replacement")
+    fun removeCurrentReportsReplacement() {
+        queue.addAll(listOf("/a.flac", "/b.flac", "/c.flac"))
+        queue.jumpTo(1)
+
+        val outcome = queue.removeAtTrackingCurrent(1)
+
+        assertTrue(outcome.removed)
+        assertTrue(outcome.wasCurrent)
+        assertEquals("/c.flac", outcome.replacement)
+        assertEquals("/c.flac", queue.currentTrack)
+    }
+
+    @Test
+    @DisplayName("Removing the last remaining track reports no replacement")
+    fun removeLastTrackHasNoReplacement() {
+        queue.add("/only.flac")
+
+        val outcome = queue.removeAtTrackingCurrent(0)
+
+        assertTrue(outcome.removed)
+        assertTrue(outcome.wasCurrent)
+        assertNull(outcome.replacement)
+        assertTrue(queue.isEmpty)
+        assertEquals(-1, queue.position)
+    }
+
+    @Test
+    @DisplayName("Removing the current last track falls back to the new last track")
+    fun removeCurrentAtEndFallsBack() {
+        queue.addAll(listOf("/a.flac", "/b.flac"))
+        queue.jumpTo(1)
+
+        val outcome = queue.removeAtTrackingCurrent(1)
+
+        assertTrue(outcome.wasCurrent)
+        assertEquals("/a.flac", outcome.replacement)
+        assertEquals(0, queue.position)
+    }
+
+    @Test
+    @DisplayName("Removing an out-of-range index changes nothing")
+    fun removeOutOfRangeIsNoOp() {
+        queue.addAll(listOf("/a.flac", "/b.flac"))
+
+        val outcome = queue.removeAtTrackingCurrent(7)
+
+        assertFalse(outcome.removed)
+        assertFalse(outcome.wasCurrent)
+        assertNull(outcome.replacement)
+        assertEquals(2, queue.size)
+    }
 }
+

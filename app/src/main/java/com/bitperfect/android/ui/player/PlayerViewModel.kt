@@ -2,8 +2,10 @@ package com.bitperfect.android.ui.player
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bitperfect.android.ServiceLocator
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
+import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.player.AudioFormatInfo
 import com.bitperfect.android.player.PlaybackController
 import com.bitperfect.android.player.PlaybackState
@@ -12,6 +14,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
@@ -26,9 +29,10 @@ import kotlinx.coroutines.launch
  * - Periodically updates position for seek bar
  */
 class PlayerViewModel(
-    private val playbackController: PlaybackController,
-    private val engine: NativeAudioEngine,
-    private val dsdManager: DsdManager
+    internal val playbackController: PlaybackController,
+    internal val engine: NativeAudioEngine,
+    internal val dsdManager: DsdManager,
+    private val musicLibrary: MusicLibrary
 ) : ViewModel() {
 
     /**
@@ -45,9 +49,9 @@ class PlayerViewModel(
         val durationMs: Long = 0L,
         val positionText: String = "0:00",
         val durationText: String = "0:00",
-        val formatBadge: String = "BITPERFECT",
-        val formatDetail: String = "",
-        val outputMode: OutputMode = OutputMode.BITPERFECT,
+        val formatBadge: String = "ANDROID PCM",
+        val formatDetail: String = "Select a WAV or FLAC file",
+        val outputMode: OutputMode = OutputMode.PCM,
         val sampleRate: Int = 0,
         val bitDepth: Int = 0,
         val channels: Int = 0,
@@ -57,7 +61,12 @@ class PlayerViewModel(
         val hasPrevious: Boolean = false,
         val artworkUri: String? = null,
         val bufferLevel: Float = 0f,
-        val deviceName: String = ""
+        val deviceName: String = "",
+        val errorMessage: String? = null,
+        val isFavourite: Boolean = false,
+        val isInLibrary: Boolean = false,
+        val sleepTimerRemainingMs: Long? = null,
+        val statusMessage: String? = null
     )
 
     /**
@@ -72,12 +81,54 @@ class PlayerViewModel(
 
     private val _uiState = MutableStateFlow(PlayerUiState())
     val uiState: StateFlow<PlayerUiState> = _uiState.asStateFlow()
+    private val playbackStateListener: (PlaybackState) -> Unit = { state ->
+        updateUiState(state)
+    }
+
+    /**
+     * Path whose details have been requested, so a lookup is not repeated and a
+     * late result for a superseded track can be discarded.
+     */
+    @Volatile
+    private var detailsPath: String? = null
+
+    /** Path whose lookup has actually completed and been applied to the UI. */
+    @Volatile
+    private var detailsResolvedPath: String? = null
+
+    /**
+     * Load title, artist, album and artwork for a track being played.
+     */
+    private fun resolveTrackDetails(trackPath: String) {
+        if (detailsPath == trackPath) return
+        detailsPath = trackPath
+
+        viewModelScope.launch {
+            val details = try {
+                musicLibrary.getTrackDetails(trackPath)
+            } catch (error: Exception) {
+                MusicLibrary.TrackDetails(title = extractTrackTitle(trackPath))
+            }
+
+            // A different track started while this lookup was in flight.
+            if (detailsPath != trackPath) return@launch
+
+            detailsResolvedPath = trackPath
+            _uiState.update { current ->
+                current.copy(
+                    isFavourite = details.isFavourite,
+                    isInLibrary = details.isInLibrary,
+                    trackTitle = details.title.ifBlank { extractTrackTitle(trackPath) },
+                    artist = details.artist,
+                    album = details.album,
+                    artworkUri = details.artworkUri
+                )
+            }
+        }
+    }
 
     init {
-        // Listen for playback state changes
-        playbackController.addStateListener { state ->
-            updateUiState(state)
-        }
+        playbackController.addStateListener(playbackStateListener)
 
         // Start position update loop
         viewModelScope.launch {
@@ -89,6 +140,81 @@ class PlayerViewModel(
     }
 
     // --- User Actions ---
+
+    fun playFile(path: String) {
+        playbackController.playFile(path)
+    }
+
+    /**
+     * Toggle the favourite flag for the track being played.
+     *
+     * Only library tracks can be favourited; a file opened directly has no row
+     * to mark, which is reported rather than silently ignored.
+     */
+    fun toggleFavourite() {
+        val path = detailsResolvedPath ?: return
+        viewModelScope.launch {
+            val updated = musicLibrary.toggleFavouriteByPath(path)
+            if (updated == null) {
+                _uiState.update { current ->
+                    current.copy(
+                        statusMessage = "Add this file to your library to favourite it"
+                    )
+                }
+                return@launch
+            }
+            _uiState.update { current ->
+                current.copy(
+                    isFavourite = updated,
+                    statusMessage = if (updated) "Added to favourites" else "Removed from favourites"
+                )
+            }
+        }
+    }
+
+    /**
+     * Start a sleep timer.
+     *
+     * @param minutes Zero or less cancels any running timer.
+     */
+    fun setSleepTimer(minutes: Int) {
+        if (minutes <= 0) {
+            playbackController.cancelSleepTimer()
+            _uiState.update { current ->
+                current.copy(
+                    sleepTimerRemainingMs = null,
+                    statusMessage = "Sleep timer off"
+                )
+            }
+            return
+        }
+
+        playbackController.setSleepTimer(minutes * 60_000L)
+        _uiState.update { current ->
+            current.copy(
+                sleepTimerRemainingMs = playbackController.getSleepTimerRemaining(),
+                statusMessage = "Pausing in $minutes minutes"
+            )
+        }
+    }
+
+    /**
+     * Add time to a running sleep timer.
+     */
+    fun extendSleepTimer(minutes: Int) {
+        if (!playbackController.isSleepTimerActive()) return
+        playbackController.extendSleepTimer(minutes * 60_000L)
+        _uiState.update { current ->
+            current.copy(
+                sleepTimerRemainingMs = playbackController.getSleepTimerRemaining(),
+                statusMessage = "Extended by $minutes minutes"
+            )
+        }
+    }
+
+    fun dismissStatusMessage() {
+        _uiState.update { current -> current.copy(statusMessage = null) }
+    }
 
     fun play() {
         playbackController.play()
@@ -121,9 +247,11 @@ class PlayerViewModel(
 
     fun toggleShuffle() {
         playbackController.toggleShuffle()
-        _uiState.value = _uiState.value.copy(
-            isShuffleEnabled = playbackController.isShuffleEnabled()
-        )
+        _uiState.update { current ->
+            current.copy(
+                isShuffleEnabled = playbackController.isShuffleEnabled()
+            )
+        }
     }
 
     fun cycleRepeatMode() {
@@ -133,103 +261,146 @@ class PlayerViewModel(
             RepeatMode.ONE -> RepeatMode.OFF
         }
         playbackController.setRepeatMode(nextMode)
-        _uiState.value = _uiState.value.copy(repeatMode = nextMode)
+        _uiState.update { current -> current.copy(repeatMode = nextMode) }
     }
 
-    // --- Sleep Timer ---
-
-    fun setSleepTimer(durationMs: Long) {
-        playbackController.setSleepTimer(durationMs)
-    }
-
-    fun cancelSleepTimer() {
-        playbackController.cancelSleepTimer()
-    }
-
-    fun getSleepTimerRemaining(): Long? {
-        return playbackController.getSleepTimerRemaining()
-    }
+    // The sleep timer API lives above: setSleepTimer(minutes) and
+    // extendSleepTimer(minutes), with the remaining time exposed through
+    // uiState.sleepTimerRemainingMs so the UI re-renders as it counts down.
+    // A millisecond-based setSleepTimer overload used to sit here too, which
+    // made `setSleepTimer(0)` resolve by argument type rather than by meaning.
 
     /**
      * Play a track from the library.
-     * Replaces the current queue with the provided track list and starts playback
-     * from the selected index.
      *
-     * @param tracks List of track paths representing the current visible list
-     * @param selectedIndex Index of the track the user tapped
+     * Replaces the queue with the list the track was shown in, so playback
+     * continues through that list instead of stopping after the one tapped
+     * track.
+     *
+     * @param tracks Track paths of the list the user was looking at
+     * @param selectedIndex Index within [tracks] of the track the user tapped
      */
     fun playFromLibrary(tracks: List<String>, selectedIndex: Int) {
-        playbackController.playTrackFromList(tracks, selectedIndex)
+        playbackController.playQueue(tracks, selectedIndex)
     }
 
     // --- State Updates ---
 
     private fun updateUiState(state: PlaybackState) {
-        val currentState = _uiState.value
-        val newState = when (state) {
-            is PlaybackState.Playing -> {
-                val formatInfo = buildFormatDisplay(state.format)
-                currentState.copy(
-                    isPlaying = true,
-                    isPaused = false,
-                    isLoading = false,
-                    trackTitle = extractTrackTitle(state.trackPath),
-                    positionMs = state.positionMs,
-                    durationMs = state.durationMs,
-                    positionText = formatTime(state.positionMs),
-                    durationText = formatTime(state.durationMs),
-                    formatBadge = formatInfo.badge,
-                    formatDetail = formatInfo.detail,
-                    outputMode = formatInfo.mode,
-                    sampleRate = state.format.sampleRate,
-                    bitDepth = state.format.bitDepth,
-                    channels = state.format.channels,
-                    hasNext = playbackController.queue.hasNext(),
-                    hasPrevious = playbackController.queue.hasPrevious(),
-                    bufferLevel = engine.getBufferLevel(),
-                    deviceName = engine.getDeviceName()
-                )
-            }
-            is PlaybackState.Paused -> {
-                currentState.copy(
-                    isPlaying = false,
-                    isPaused = true,
-                    isLoading = false,
-                    positionMs = state.positionMs,
-                    positionText = formatTime(state.positionMs)
-                )
-            }
-            is PlaybackState.Loading -> {
-                currentState.copy(
-                    isPlaying = false,
-                    isPaused = false,
-                    isLoading = true,
-                    trackTitle = extractTrackTitle(state.trackPath)
-                )
-            }
+        // This runs on the audio worker while the UI thread also updates state,
+        // so the write below goes through `update` to avoid clobbering a
+        // concurrent change. `update` may re-run its lambda under contention,
+        // so the side effects and the bookkeeping they mutate are hoisted out
+        // of it and performed exactly once here.
+        val detailsMatchTrack = when (state) {
+            is PlaybackState.Playing -> detailsResolvedPath == state.trackPath
+            is PlaybackState.Loading -> detailsResolvedPath == state.trackPath
+            else -> false
+        }
+
+        when (state) {
+            is PlaybackState.Playing -> resolveTrackDetails(state.trackPath)
+            is PlaybackState.Loading -> resolveTrackDetails(state.trackPath)
             is PlaybackState.Stopped, is PlaybackState.Idle -> {
-                PlayerUiState() // Reset to defaults
+                detailsPath = null
+                detailsResolvedPath = null
             }
-            is PlaybackState.Error -> {
-                currentState.copy(
-                    isPlaying = false,
-                    isPaused = false,
-                    isLoading = false
-                )
+            is PlaybackState.Error, is PlaybackState.Paused -> Unit
+        }
+
+        _uiState.update { currentState ->
+            when (state) {
+                is PlaybackState.Playing -> {
+                    val formatInfo = buildFormatDisplay(state.format)
+                    currentState.copy(
+                        isPlaying = true,
+                        isPaused = false,
+                        isLoading = false,
+                        // Keep resolved tags if they belong to this track; otherwise
+                        // show the file name until the lookup lands.
+                        trackTitle = if (detailsMatchTrack) {
+                            currentState.trackTitle
+                        } else {
+                            extractTrackTitle(state.trackPath)
+                        },
+                        artist = if (detailsMatchTrack) currentState.artist else "",
+                        album = if (detailsMatchTrack) currentState.album else "",
+                        artworkUri = if (detailsMatchTrack) currentState.artworkUri else null,
+                        positionMs = state.positionMs,
+                        durationMs = state.durationMs,
+                        positionText = formatTime(state.positionMs),
+                        durationText = formatTime(state.durationMs),
+                        formatBadge = formatInfo.badge,
+                        formatDetail = formatInfo.detail,
+                        outputMode = formatInfo.mode,
+                        sampleRate = state.format.sampleRate,
+                        bitDepth = state.format.bitDepth,
+                        channels = state.format.channels,
+                        hasNext = playbackController.queue.hasNext(),
+                        hasPrevious = playbackController.queue.hasPrevious(),
+                        bufferLevel = 0f,
+                        deviceName = "Android AudioTrack",
+                        errorMessage = null
+                    )
+                }
+                is PlaybackState.Paused -> {
+                    currentState.copy(
+                        isPlaying = false,
+                        isPaused = true,
+                        isLoading = false,
+                        positionMs = state.positionMs,
+                        positionText = formatTime(state.positionMs)
+                    )
+                }
+                is PlaybackState.Loading -> {
+                    val isSameTrack = detailsMatchTrack
+                    currentState.copy(
+                        isPlaying = false,
+                        isPaused = false,
+                        isLoading = true,
+                        trackTitle = if (isSameTrack) {
+                            currentState.trackTitle
+                        } else {
+                            extractTrackTitle(state.trackPath)
+                        },
+                        // Do not carry the previous track's tags into a new load.
+                        artist = if (isSameTrack) currentState.artist else "",
+                        album = if (isSameTrack) currentState.album else "",
+                        artworkUri = if (isSameTrack) currentState.artworkUri else null,
+                        errorMessage = null
+                    )
+                }
+                is PlaybackState.Stopped, is PlaybackState.Idle -> {
+                    PlayerUiState() // Reset to defaults
+                }
+                is PlaybackState.Error -> {
+                    currentState.copy(
+                        isPlaying = false,
+                        isPaused = false,
+                        isLoading = false,
+                        errorMessage = state.message
+                    )
+                }
             }
         }
-        _uiState.value = newState
     }
 
     private fun updatePositionIfPlaying() {
         val state = playbackController.state
+        val sleepRemaining = playbackController.getSleepTimerRemaining()
+
         if (state is PlaybackState.Playing) {
             val currentPos = state.positionMs
-            _uiState.value = _uiState.value.copy(
-                positionMs = currentPos,
-                positionText = formatTime(currentPos),
-                bufferLevel = engine.getBufferLevel()
-            )
+            _uiState.update { current ->
+                current.copy(
+                    positionMs = currentPos,
+                    positionText = formatTime(currentPos),
+                    bufferLevel = 0f,
+                    sleepTimerRemainingMs = sleepRemaining
+                )
+            }
+        } else if (_uiState.value.sleepTimerRemainingMs != sleepRemaining) {
+            _uiState.update { current -> current.copy(sleepTimerRemainingMs = sleepRemaining) }
         }
     }
 
@@ -278,7 +449,7 @@ class PlayerViewModel(
                 val codec = format.codec
                 val khz = formatFrequency(format.sampleRate)
                 FormatDisplay(
-                    badge = "BITPERFECT",
+                    badge = "ANDROID PCM",
                     detail = "$codec . ${format.bitDepth}-bit . $khz . ${format.channels}ch",
                     mode = OutputMode.PCM
                 )
@@ -318,7 +489,13 @@ class PlayerViewModel(
     }
 
     override fun onCleared() {
+        playbackController.removeStateListener(playbackStateListener)
+        playbackController.release()
+        // This ViewModel owns the engine and controller published in the
+        // ServiceLocator, so the reference is dropped here rather than in the
+        // Activity: the Activity is destroyed on every rotation while this
+        // ViewModel, and the engine it holds, survive.
+        ServiceLocator.clearServiceReferences()
         super.onCleared()
-        playbackController.removeStateListener { }
     }
 }

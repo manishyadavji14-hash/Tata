@@ -1,24 +1,18 @@
 #pragma once
 
 #include "usb_types.h"
+#include "usb_iso_backend.h"
 #include <cstdint>
 #include <functional>
 #include <vector>
 #include <atomic>
 #include <memory>
+#include <thread>
 
 namespace bitperfect {
 namespace usb {
 
-// Transfer completion status
-enum class TransferStatus : uint8_t {
-    COMPLETED = 0,
-    CANCELLED = 1,
-    ERROR = 2,
-    STALL = 3,
-    OVERFLOW = 4,
-    SHORT_PACKET = 5
-};
+// TransferStatus is defined in usb_types.h.
 
 // Individual isochronous packet result
 struct IsoPacketResult {
@@ -85,6 +79,26 @@ public:
     ~IsochronousTransfer();
 
     /**
+     * Install the transport that actually moves bytes.
+     *
+     * Must be called before configure(). Defaults to LoopbackIsoBackend, which
+     * discards data — so callers that care whether audio reaches hardware must
+     * check isHardwareBacked() rather than assuming start() succeeding means
+     * anything is being transmitted.
+     */
+    void setBackend(std::shared_ptr<UsbIsoBackend> backend);
+
+    /**
+     * Whether the installed backend transmits to a real device.
+     */
+    bool isHardwareBacked() const;
+
+    /**
+     * Name of the installed backend, for diagnostics.
+     */
+    const char* backendName() const;
+
+    /**
      * Configure the transfer parameters.
      */
     bool configure(const IsoTransferConfig& config);
@@ -142,6 +156,9 @@ public:
      */
     static uint32_t calculateNominalPacketSize(uint32_t sampleRate, uint32_t bytesPerFrame);
 
+    /** Monotonic microsecond clock used for transfer latency. */
+    static uint64_t nowMicros();
+
     /**
      * Process a completed transfer (called from USB completion thread).
      */
@@ -162,8 +179,14 @@ private:
     std::atomic<bool> active_{false};
     std::atomic<uint32_t> outstandingTransfers_{0};
 
+    std::shared_ptr<UsbIsoBackend> backend_;
+    std::thread reaperThread_;
+    std::atomic<bool> reaperRunning_{false};
+
     bool submitTransfer(size_t index);
     void resubmitTransfer(size_t index);
+    void runReaperLoop();
+    void stopReaper();
 };
 
 } // namespace usb

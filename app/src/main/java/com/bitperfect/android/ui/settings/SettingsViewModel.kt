@@ -45,17 +45,9 @@ class SettingsViewModel(
         val clippingPrevention: Boolean = true,
         val crossfadeMs: Int = 0,
 
-        // Equalizer
-        val eqEnabled: Boolean = false,
-        val eqPreset: String = "flat",
-        val eqBands: String = "0,0,0,0,0,0,0,0,0,0",
-
         // Interface
         val themeMode: String = "system",
         val debugLogging: Boolean = false,
-
-        // Library
-        val scanDirectories: Set<String> = emptySet(),
 
         // Warnings
         val showBitPerfectWarning: Boolean = false,
@@ -94,11 +86,6 @@ class SettingsViewModel(
             val crossfade = repository.crossfadeMs.first()
             val theme = repository.themeMode.first()
             val debug = repository.debugLogging.first()
-            val scanDirs = repository.scanDirectories.first()
-            val eqEnabled = repository.eqEnabled.first()
-            val eqPreset = repository.eqPreset.first()
-            val eqBands = repository.eqBands.first()
-
             _uiState.value = SettingsUiState(
                 bitPerfectMode = bitPerfect,
                 bufferSizeMs = bufferSize,
@@ -113,11 +100,7 @@ class SettingsViewModel(
                 clippingPrevention = clipping,
                 crossfadeMs = crossfade,
                 themeMode = theme,
-                debugLogging = debug,
-                scanDirectories = scanDirs,
-                eqEnabled = eqEnabled,
-                eqPreset = eqPreset,
-                eqBands = eqBands
+                debugLogging = debug
             )
         }
     }
@@ -259,57 +242,12 @@ class SettingsViewModel(
         }
     }
 
-    // --- Equalizer ---
-
-    fun setEqEnabled(enabled: Boolean) {
-        if (enabled && _uiState.value.bitPerfectMode) {
-            showBitPerfectWarning(
-                "Enabling the equalizer modifies the audio signal. " +
-                "This disables bit-perfect playback mode."
-            )
-        }
-        viewModelScope.launch {
-            repository.setEqEnabled(enabled)
-            _uiState.value = _uiState.value.copy(eqEnabled = enabled)
-        }
-    }
-
-    fun setEqPreset(preset: String) {
-        viewModelScope.launch {
-            repository.setEqPreset(preset)
-            _uiState.value = _uiState.value.copy(eqPreset = preset)
-        }
-    }
-
-    fun setEqBands(bands: String) {
-        viewModelScope.launch {
-            repository.setEqBands(bands)
-            _uiState.value = _uiState.value.copy(eqBands = bands)
-        }
-    }
-
-    // --- Library ---
-
-    fun addScanDirectory(path: String) {
-        if (path.isBlank()) return
-        viewModelScope.launch {
-            repository.addScanDirectory(path)
-            val updated = repository.scanDirectories.first()
-            _uiState.value = _uiState.value.copy(scanDirectories = updated)
-        }
-    }
-
-    fun removeScanDirectory(path: String) {
-        viewModelScope.launch {
-            repository.removeScanDirectory(path)
-            val updated = repository.scanDirectories.first()
-            _uiState.value = _uiState.value.copy(scanDirectories = updated)
-        }
-    }
-
-    fun getScanDirectories(): Set<String> {
-        return _uiState.value.scanDirectories
-    }
+    // Equalizer settings are owned by EqualizerViewModel, which drives a real
+    // AudioEffectsController on the AudioTrack session. Settings only links to
+    // that screen, so there is one place where the curve can be changed.
+    //
+    // Scan directories are owned by LibraryViewModel, behind the folder picker
+    // on the Library screen. It writes the same SCAN_DIRECTORIES preference.
 
     // --- Warnings ---
 

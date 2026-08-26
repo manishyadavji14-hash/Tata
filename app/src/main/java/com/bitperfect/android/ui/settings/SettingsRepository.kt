@@ -10,6 +10,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.bitperfect.android.player.AudioEffectsController
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -28,6 +29,9 @@ import kotlinx.coroutines.flow.map
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "bitperfect_settings")
 
 class SettingsRepository(private val context: Context) {
+
+    // Equalizer state is stored as the controller's own settings type so the
+    // repository and the effect layer cannot drift apart.
 
     // --- Keys ---
 
@@ -50,14 +54,15 @@ class SettingsRepository(private val context: Context) {
         val CLIPPING_PREVENTION = booleanPreferencesKey("clipping_prevention")
         val CROSSFADE_MS = intPreferencesKey("crossfade_ms")
 
+        // Equalizer (Android output path only; never applied to bit-perfect USB)
+        val EQ_ENABLED = booleanPreferencesKey("eq_enabled")
+        val EQ_BAND_LEVELS = stringPreferencesKey("eq_band_levels")
+        val EQ_BASS_BOOST = intPreferencesKey("eq_bass_boost")
+        val EQ_TREBLE = intPreferencesKey("eq_treble")
+
         // Interface
         val THEME_MODE = stringPreferencesKey("theme_mode")
         val DEBUG_LOGGING = booleanPreferencesKey("debug_logging")
-
-        // Equalizer
-        val EQ_ENABLED = booleanPreferencesKey("eq_enabled")
-        val EQ_PRESET = stringPreferencesKey("eq_preset")
-        val EQ_BANDS = stringPreferencesKey("eq_bands")
 
         // Library
         val SCAN_DIRECTORIES = stringSetPreferencesKey("scan_directories")
@@ -77,16 +82,48 @@ class SettingsRepository(private val context: Context) {
         const val PREAMP_DB = 0f
         const val CLIPPING_PREVENTION = true
         const val CROSSFADE_MS = 0
+        const val EQ_ENABLED = false
+        const val EQ_BAND_LEVELS = ""    // Empty means a flat curve
+        const val EQ_BASS_BOOST = 0      // 0-1000
+        const val EQ_TREBLE = 0          // 0-1000
         const val THEME_MODE = "system"  // "system", "light", "dark"
         const val DEBUG_LOGGING = false
-        const val EQ_ENABLED = false
-        const val EQ_PRESET = "flat"
-        const val EQ_BANDS = "0,0,0,0,0,0,0,0,0,0"  // 10-band gains in dB
 
         val SCAN_DIRECTORIES = setOf(
             "/storage/emulated/0/Music",
             "/storage/emulated/0/Download"
         )
+    }
+
+    // --- Equalizer Settings ---
+    //
+    // These apply to the Android output path only. Platform audio effects bind
+    // to an AudioTrack session, so they cannot alter bit-perfect USB output.
+
+    val equalizerSettings: Flow<AudioEffectsController.Settings> =
+        context.dataStore.data.map { prefs ->
+            AudioEffectsController.Settings(
+                isEnabled = prefs[Keys.EQ_ENABLED] ?: Defaults.EQ_ENABLED,
+                bandLevelsMillibel = parseBandLevels(
+                    prefs[Keys.EQ_BAND_LEVELS] ?: Defaults.EQ_BAND_LEVELS
+                ),
+                bassBoostStrength = prefs[Keys.EQ_BASS_BOOST] ?: Defaults.EQ_BASS_BOOST,
+                trebleStrength = prefs[Keys.EQ_TREBLE] ?: Defaults.EQ_TREBLE
+            )
+        }
+
+    suspend fun setEqualizerSettings(settings: AudioEffectsController.Settings) {
+        context.dataStore.edit { prefs ->
+            prefs[Keys.EQ_ENABLED] = settings.isEnabled
+            prefs[Keys.EQ_BAND_LEVELS] = settings.bandLevelsMillibel.joinToString(",")
+            prefs[Keys.EQ_BASS_BOOST] = settings.bassBoostStrength
+            prefs[Keys.EQ_TREBLE] = settings.trebleStrength
+        }
+    }
+
+    private fun parseBandLevels(raw: String): List<Int> {
+        if (raw.isBlank()) return emptyList()
+        return raw.split(',').mapNotNull { it.trim().toIntOrNull() }
     }
 
     // --- Audio Output Settings ---
@@ -240,37 +277,10 @@ class SettingsRepository(private val context: Context) {
         }
     }
 
-    // --- Equalizer Settings ---
-
-    val eqEnabled: Flow<Boolean> = context.dataStore.data.map { prefs ->
-        prefs[Keys.EQ_ENABLED] ?: Defaults.EQ_ENABLED
-    }
-
-    suspend fun setEqEnabled(enabled: Boolean) {
-        context.dataStore.edit { prefs ->
-            prefs[Keys.EQ_ENABLED] = enabled
-        }
-    }
-
-    val eqPreset: Flow<String> = context.dataStore.data.map { prefs ->
-        prefs[Keys.EQ_PRESET] ?: Defaults.EQ_PRESET
-    }
-
-    suspend fun setEqPreset(preset: String) {
-        context.dataStore.edit { prefs ->
-            prefs[Keys.EQ_PRESET] = preset
-        }
-    }
-
-    val eqBands: Flow<String> = context.dataStore.data.map { prefs ->
-        prefs[Keys.EQ_BANDS] ?: Defaults.EQ_BANDS
-    }
-
-    suspend fun setEqBands(bands: String) {
-        context.dataStore.edit { prefs ->
-            prefs[Keys.EQ_BANDS] = bands
-        }
-    }
+    // Equalizer state lives above, in `equalizerSettings`, typed as the
+    // AudioEffectsController's own settings class. The preset/band-string pair
+    // that used to live here described an equalizer that was never wired to an
+    // output, so it is gone: the Equalizer screen is the single UI for it.
 
     // --- Library Settings ---
 

@@ -65,6 +65,37 @@ BitPerfect uses the following open-source libraries and specifications. All code
 - **Source**: https://github.com/Kotlin/kotlinx.coroutines
 - **Copyright**: Copyright 2016-2024 JetBrains s.r.o.
 
+### Coil
+- **License**: Apache License 2.0
+- **Usage**: Album artwork loading and in-memory image caching
+- **Libraries used**:
+  - io.coil-kt:coil-compose
+- **Source**: https://github.com/coil-kt/coil
+- **Copyright**: Copyright Coil Contributors
+
+### AndroidX DataStore
+- **License**: Apache License 2.0
+- **Usage**: Persisting user settings, including the equalizer curve
+- **Libraries used**:
+  - androidx.datastore:datastore-preferences
+- **Source**: https://github.com/androidx/androidx
+- **Copyright**: Copyright The Android Open Source Project
+
+### AndroidX Media3
+- **License**: Apache License 2.0
+- **Usage**: Media session and notification integration
+- **Libraries used**:
+  - androidx.media3:media3-common
+  - androidx.media3:media3-session
+- **Source**: https://github.com/androidx/media
+- **Copyright**: Copyright The Android Open Source Project
+
+### Guava
+- **License**: Apache License 2.0
+- **Usage**: ListenableFuture, required by the media session APIs
+- **Source**: https://github.com/google/guava
+- **Copyright**: Copyright Google LLC
+
 ## Specifications Used
 
 ### USB Audio Class Specifications

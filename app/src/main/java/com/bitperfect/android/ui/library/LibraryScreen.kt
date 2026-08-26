@@ -1,5 +1,11 @@
 package com.bitperfect.android.ui.library
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +17,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -19,27 +26,28 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.QueueMusic
 import androidx.compose.material.icons.filled.Album
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.AudioFile
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Folder
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Piano
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Sort
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScrollableTabRow
@@ -47,10 +55,12 @@ import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -60,9 +70,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.bitperfect.android.ui.components.AlbumArtImage
+import com.bitperfect.android.ui.theme.BitPerfectMotion
 import com.bitperfect.android.ui.theme.BitPerfectShapeTokens
 
 /**
@@ -83,39 +95,68 @@ fun LibraryScreen(
     viewModel: LibraryViewModel,
     onAlbumClick: (Long) -> Unit = {},
     onArtistClick: (Long) -> Unit = {},
-    onTrackClick: (String) -> Unit = {},
-    onPlayNext: (String) -> Unit = {},
-    onAddToQueue: (String) -> Unit = {}
+    onGenreClick: (String) -> Unit = {},
+    onComposerClick: (String) -> Unit = {},
+    onFolderClick: (String) -> Unit = {},
+    onFavouritesClick: () -> Unit = {},
+    onPlaylistsClick: () -> Unit = {},
+    /** Receives the full visible track list and the index that was tapped. */
+    onTrackClick: (tracks: List<String>, index: Int) -> Unit = { _, _ -> }
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var selectedTab by remember { mutableIntStateOf(0) }
     var searchQuery by remember { mutableStateOf("") }
     var isSearchActive by remember { mutableStateOf(false) }
-    var currentFolderPath by remember { mutableStateOf<String?>(null) }
 
     val tabs = listOf("Folders", "Artists", "Albums", "Genres", "Composers", "Tracks")
 
     val pullRefreshState = rememberPullToRefreshState()
 
+    // Pull-to-refresh triggers a real rescan and is released when it finishes.
+    if (pullRefreshState.isRefreshing) {
+        LaunchedEffect(Unit) { viewModel.rescan() }
+    }
+    // Release the gesture when the scan finishes, and also when it was declined
+    // outright (missing permission, or a scan already running).
+    LaunchedEffect(uiState.isScanning, uiState.scanRequestRejected) {
+        if (!uiState.isScanning && pullRefreshState.isRefreshing) {
+            pullRefreshState.endRefresh()
+        }
+        if (uiState.scanRequestRejected) {
+            viewModel.acknowledgeScanRejection()
+        }
+    }
+
+    if (uiState.isFolderPickerVisible) {
+        FolderPickerDialog(
+            folders = uiState.availableFolders,
+            onToggle = viewModel::toggleFolderSelection,
+            onSelectAll = { viewModel.selectAllFolders(true) },
+            onSelectNone = { viewModel.selectAllFolders(false) },
+            onConfirm = { viewModel.confirmFolderSelection() },
+            onDismiss = { viewModel.hideFolderPicker() }
+        )
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("Library") },
-                navigationIcon = {
-                    // Show back button when browsing inside a folder
-                    if (selectedTab == 0 && currentFolderPath != null) {
-                        IconButton(onClick = {
-                            // Navigate up one level
-                            val parentPath = currentFolderPath?.substringBeforeLast('/')
-                            currentFolderPath = if (parentPath == currentFolderPath) null else parentPath
-                        }) {
-                            Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                        }
-                    }
-                },
                 actions = {
                     IconButton(onClick = { isSearchActive = !isSearchActive }) {
                         Icon(Icons.Default.Search, contentDescription = "Search")
+                    }
+                    IconButton(onClick = onFavouritesClick) {
+                        Icon(Icons.Default.Favorite, contentDescription = "Favourites")
+                    }
+                    IconButton(onClick = onPlaylistsClick) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.QueueMusic,
+                            contentDescription = "Playlists"
+                        )
+                    }
+                    IconButton(onClick = { viewModel.showFolderPicker() }) {
+                        Icon(Icons.Default.Folder, contentDescription = "Choose folders")
                     }
                     IconButton(onClick = { viewModel.cycleSortOrder() }) {
                         Icon(Icons.Default.Sort, contentDescription = "Sort")
@@ -149,7 +190,8 @@ fun LibraryScreen(
                 Spacer(modifier = Modifier.height(8.dp))
             }
 
-            // Library stats header (when library is not empty)
+            // Library totals. Hidden while empty, where the empty state already
+            // explains what to do, and while loading, where every count is 0.
             if (!uiState.isEmpty && !uiState.isLoading) {
                 LibraryStatsHeader(uiState = uiState)
             }
@@ -164,7 +206,6 @@ fun LibraryScreen(
                         selected = selectedTab == index,
                         onClick = {
                             selectedTab = index
-                            currentFolderPath = null
                             viewModel.selectTab(LibraryViewModel.LibraryTab.entries[index])
                         },
                         text = { Text(title) }
@@ -188,88 +229,72 @@ fun LibraryScreen(
                         }
                     }
                     uiState.isEmpty -> {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Icon(
-                                    imageVector = Icons.Default.MusicNote,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(64.dp),
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-                                )
-                                Spacer(modifier = Modifier.height(16.dp))
-                                Text(
-                                    text = "No music found",
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Text(
-                                    text = "Scan your device for music files",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
-                                )
-                                Spacer(modifier = Modifier.height(24.dp))
-                                Button(
-                                    onClick = { viewModel.rescan() }
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.Search,
-                                        contentDescription = null,
-                                        modifier = Modifier.size(18.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(8.dp))
-                                    Text("Scan Library")
+                        LibraryEmptyState(
+                            hasAudioPermission = uiState.hasAudioPermission,
+                            isScanning = uiState.isScanning,
+                            scanStatus = uiState.scanStatus,
+                            statusMessage = uiState.statusMessage,
+                            onScan = { viewModel.rescan() },
+                            onChooseFolders = { viewModel.showFolderPicker() }
+                        )
+                    }
+                    else -> {
+                        // Tab content slides in the direction of travel, which
+                        // makes the tab row feel connected to what it changes.
+                        AnimatedContent(
+                            targetState = selectedTab,
+                            transitionSpec = {
+                                val forward = targetState > initialState
+                                val slide = { width: Int ->
+                                    if (forward) width / 6 else -width / 6
                                 }
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Text(
-                                    text = "Or pull down to refresh",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                                (slideInHorizontally(
+                                    animationSpec = tween(
+                                        BitPerfectMotion.DURATION_STANDARD,
+                                        easing = BitPerfectMotion.EmphasisedDecelerate
+                                    ),
+                                    initialOffsetX = slide
+                                ) + fadeIn(BitPerfectMotion.standard())) togetherWith
+                                    (fadeOut(BitPerfectMotion.exiting()))
+                            },
+                            label = "libraryTabContent"
+                        ) { tabIndex ->
+                            when (LibraryViewModel.LibraryTab.entries[tabIndex]) {
+                                LibraryViewModel.LibraryTab.FOLDERS -> FolderList(
+                                    folders = uiState.folders,
+                                    onFolderClick = onFolderClick
+                                )
+                                LibraryViewModel.LibraryTab.ARTISTS -> ArtistList(
+                                    artists = uiState.artists,
+                                    onArtistClick = onArtistClick
+                                )
+                                LibraryViewModel.LibraryTab.ALBUMS -> AlbumGrid(
+                                    albums = uiState.albums,
+                                    onAlbumClick = onAlbumClick
+                                )
+                                LibraryViewModel.LibraryTab.GENRES -> GenreList(
+                                    genres = uiState.genres,
+                                    onGenreClick = onGenreClick
+                                )
+                                LibraryViewModel.LibraryTab.COMPOSERS -> ComposerList(
+                                    composers = uiState.composers,
+                                    onComposerClick = onComposerClick
+                                )
+                                LibraryViewModel.LibraryTab.TRACKS -> TrackList(
+                                    tracks = uiState.tracks,
+                                    onTrackClick = onTrackClick
                                 )
                             }
                         }
                     }
-                    else -> {
-                        when (LibraryViewModel.LibraryTab.entries[selectedTab]) {
-                            LibraryViewModel.LibraryTab.FOLDERS -> FolderBrowser(
-                                folders = uiState.folders,
-                                tracks = uiState.tracks,
-                                currentPath = currentFolderPath,
-                                onFolderClick = { path -> currentFolderPath = path },
-                                onTrackClick = onTrackClick,
-                                onPlayAll = { folderPath ->
-                                    viewModel.playAllInFolder(folderPath)
-                                },
-                                onPlayNext = onPlayNext,
-                                onAddToQueue = onAddToQueue
-                            )
-                            LibraryViewModel.LibraryTab.ARTISTS -> ArtistList(
-                                artists = uiState.artists,
-                                onArtistClick = onArtistClick
-                            )
-                            LibraryViewModel.LibraryTab.ALBUMS -> AlbumGrid(
-                                albums = uiState.albums,
-                                onAlbumClick = onAlbumClick
-                            )
-                            LibraryViewModel.LibraryTab.GENRES -> GenreList(
-                                genres = uiState.genres,
-                                onGenreClick = {}
-                            )
-                            LibraryViewModel.LibraryTab.COMPOSERS -> ComposerList(
-                                composers = uiState.composers,
-                                onComposerClick = {}
-                            )
-                            LibraryViewModel.LibraryTab.TRACKS -> TrackListWithMenu(
-                                tracks = uiState.tracks,
-                                onTrackClick = onTrackClick,
-                                onPlayNext = onPlayNext,
-                                onAddToQueue = onAddToQueue
-                            )
-                        }
-                    }
+                }
+
+                if (uiState.isScanning && !uiState.isEmpty) {
+                    ScanProgressBanner(
+                        scanStatus = uiState.scanStatus,
+                        progress = uiState.scanProgress,
+                        modifier = Modifier.align(Alignment.BottomCenter)
+                    )
                 }
 
                 PullToRefreshContainer(
@@ -278,53 +303,6 @@ fun LibraryScreen(
                 )
             }
         }
-    }
-}
-
-@Composable
-private fun LibraryStatsHeader(uiState: LibraryViewModel.LibraryUiState) {
-    val hiResCount = uiState.tracks.count { it.sampleRate > 48000 || it.bitDepth > 16 }
-    val dsdCount = uiState.tracks.count { it.codec.lowercase().contains("dsd") || it.codec.lowercase().contains("dsf") }
-    val albumCount = uiState.albums.size
-    val artistCount = uiState.artists.size
-
-    Surface(
-        modifier = Modifier.fillMaxWidth(),
-        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            StatItem(count = "${uiState.totalTracks}", label = "Tracks")
-            StatItem(count = "$albumCount", label = "Albums")
-            StatItem(count = "$artistCount", label = "Artists")
-            if (hiResCount > 0) {
-                StatItem(count = "$hiResCount", label = "Hi-Res")
-            }
-            if (dsdCount > 0) {
-                StatItem(count = "$dsdCount", label = "DSD")
-            }
-        }
-    }
-}
-
-@Composable
-private fun StatItem(count: String, label: String) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(
-            text = count,
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.primary
-        )
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
     }
 }
 
@@ -339,7 +317,7 @@ private fun AlbumGrid(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        items(albums) { album ->
+        items(albums, key = { it.id }) { album ->
             AlbumCard(album = album, onClick = { onAlbumClick(album.id) })
         }
     }
@@ -356,20 +334,12 @@ private fun AlbumCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column {
-            // Album artwork placeholder
-            Box(
+            AlbumArtImage(
+                artworkUri = album.artworkUri,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .aspectRatio(1f),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Album,
-                    contentDescription = null,
-                    modifier = Modifier.size(48.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
-                )
-            }
+                    .aspectRatio(1f)
+            )
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
                     text = album.title,
@@ -378,14 +348,17 @@ private fun AlbumCard(
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = album.artist,
+                    text = album.artist.ifEmpty { "Unknown Artist" },
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "${album.trackCount} tracks",
+                    text = buildString {
+                        if (album.year > 0) append("${album.year} · ")
+                        append("${album.trackCount} tracks")
+                    },
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                 )
@@ -436,20 +409,69 @@ private fun ArtistList(
     }
 }
 
+/**
+ * Library-wide totals, shown above the tabs.
+ *
+ * The hi-res and DSD counts are omitted when zero rather than shown as "0",
+ * so the row stays meaningful for a library that has neither.
+ */
+@Composable
+private fun LibraryStatsHeader(uiState: LibraryViewModel.LibraryUiState) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            LibraryStatItem(count = uiState.totalTracks, label = "Tracks")
+            LibraryStatItem(count = uiState.totalAlbums, label = "Albums")
+            LibraryStatItem(count = uiState.totalArtists, label = "Artists")
+            if (uiState.highResCount > 0) {
+                LibraryStatItem(count = uiState.highResCount, label = "Hi-Res")
+            }
+            if (uiState.dsdCount > 0) {
+                LibraryStatItem(count = uiState.dsdCount, label = "DSD")
+            }
+        }
+    }
+}
+
+@Composable
+private fun LibraryStatItem(count: Int, label: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            text = count.toString(),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
 @Composable
 private fun TrackList(
     tracks: List<LibraryViewModel.TrackItem>,
-    onTrackClick: (String) -> Unit
+    onTrackClick: (tracks: List<String>, index: Int) -> Unit
 ) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        items(tracks) { track ->
+        itemsIndexed(tracks) { index, track ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onTrackClick(track.path) }
+                    // Reports the whole visible list, not just this path, so
+                    // playback continues through the list the user tapped in.
+                    .clickable { onTrackClick(tracks.map { it.path }, index) }
                     .padding(vertical = 10.dp, horizontal = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -487,171 +509,15 @@ private fun TrackList(
 }
 
 @Composable
-private fun TrackListWithMenu(
-    tracks: List<LibraryViewModel.TrackItem>,
-    onTrackClick: (String) -> Unit,
-    onPlayNext: (String) -> Unit,
-    onAddToQueue: (String) -> Unit
-) {
-    LazyColumn(
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(2.dp)
-    ) {
-        items(tracks) { track ->
-            TrackItemWithMenu(
-                track = track,
-                onTrackClick = onTrackClick,
-                onPlayNext = onPlayNext,
-                onAddToQueue = onAddToQueue
-            )
-        }
-    }
-}
-
-@Composable
-private fun TrackItemWithMenu(
-    track: LibraryViewModel.TrackItem,
-    onTrackClick: (String) -> Unit,
-    onPlayNext: (String) -> Unit,
-    onAddToQueue: (String) -> Unit
-) {
-    var showMenu by remember { mutableStateOf(false) }
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onTrackClick(track.path) }
-            .padding(vertical = 10.dp, horizontal = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            imageVector = Icons.Default.AudioFile,
-            contentDescription = null,
-            modifier = Modifier.size(36.dp),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Spacer(modifier = Modifier.width(12.dp))
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = track.title,
-                style = MaterialTheme.typography.bodyLarge,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                text = "${track.artist} - ${track.album}",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-        // Format info
-        Text(
-            text = track.formatInfo,
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
-        )
-        // More options button
-        Box {
-            IconButton(onClick = { showMenu = true }) {
-                Icon(
-                    imageVector = Icons.Default.MoreVert,
-                    contentDescription = "More options",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-            DropdownMenu(
-                expanded = showMenu,
-                onDismissRequest = { showMenu = false }
-            ) {
-                DropdownMenuItem(
-                    text = { Text("Play Next") },
-                    onClick = {
-                        onPlayNext(track.path)
-                        showMenu = false
-                    }
-                )
-                DropdownMenuItem(
-                    text = { Text("Add to Queue") },
-                    onClick = {
-                        onAddToQueue(track.path)
-                        showMenu = false
-                    }
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun FolderBrowser(
+private fun FolderList(
     folders: List<LibraryViewModel.FolderItem>,
-    tracks: List<LibraryViewModel.TrackItem>,
-    currentPath: String?,
-    onFolderClick: (String) -> Unit,
-    onTrackClick: (String) -> Unit,
-    onPlayAll: (String?) -> Unit,
-    onPlayNext: (String) -> Unit,
-    onAddToQueue: (String) -> Unit
+    onFolderClick: (String) -> Unit
 ) {
-    // Filter folders and tracks based on current path
-    val displayFolders = if (currentPath == null) {
-        folders
-    } else {
-        folders.filter { folder ->
-            val parent = folder.path.substringBeforeLast('/')
-            parent == currentPath && folder.path != currentPath
-        }
-    }
-
-    val displayTracks = if (currentPath == null) {
-        emptyList()
-    } else {
-        tracks.filter { track ->
-            val trackFolder = track.path.substringBeforeLast('/')
-            trackFolder == currentPath
-        }
-    }
-
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        // Play All button when inside a folder
-        if (currentPath != null && (displayFolders.isNotEmpty() || displayTracks.isNotEmpty())) {
-            item {
-                Surface(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onPlayAll(currentPath) },
-                    shape = MaterialTheme.shapes.small,
-                    color = MaterialTheme.colorScheme.primaryContainer
-                ) {
-                    Row(
-                        modifier = Modifier.padding(12.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.PlayArrow,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Play All",
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Medium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-            }
-        }
-
-        // Subfolders
-        items(displayFolders) { folder ->
+        items(folders) { folder ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -681,23 +547,13 @@ private fun FolderBrowser(
                 }
             }
         }
-
-        // Tracks within current folder
-        items(displayTracks) { track ->
-            TrackItemWithMenu(
-                track = track,
-                onTrackClick = onTrackClick,
-                onPlayNext = onPlayNext,
-                onAddToQueue = onAddToQueue
-            )
-        }
     }
 }
 
 @Composable
 private fun GenreList(
     genres: List<LibraryViewModel.GenreItem>,
-    onGenreClick: (Long) -> Unit
+    onGenreClick: (String) -> Unit
 ) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -707,7 +563,7 @@ private fun GenreList(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onGenreClick(genre.id) }
+                    .clickable { onGenreClick(genre.name) }
                     .padding(vertical = 12.dp, horizontal = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -739,7 +595,7 @@ private fun GenreList(
 @Composable
 private fun ComposerList(
     composers: List<LibraryViewModel.ComposerItem>,
-    onComposerClick: (Long) -> Unit
+    onComposerClick: (String) -> Unit
 ) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -749,7 +605,7 @@ private fun ComposerList(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onComposerClick(composer.id) }
+                    .clickable { onComposerClick(composer.name) }
                     .padding(vertical = 12.dp, horizontal = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -776,4 +632,216 @@ private fun ComposerList(
             }
         }
     }
+}
+
+
+/**
+ * Shown when the library has no tracks yet.
+ *
+ * The message and actions depend on why it is empty: a missing permission needs
+ * a grant, whereas a granted permission just needs a scan.
+ */
+@Composable
+private fun LibraryEmptyState(
+    hasAudioPermission: Boolean,
+    isScanning: Boolean,
+    scanStatus: String,
+    statusMessage: String?,
+    onScan: () -> Unit,
+    onChooseFolders: () -> Unit
+) {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(32.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.MusicNote,
+                contentDescription = null,
+                modifier = Modifier.size(64.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+
+            if (isScanning) {
+                Text(
+                    text = scanStatus.ifEmpty { "Scanning…" },
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                CircularProgressIndicator()
+                return@Column
+            }
+
+            Text(
+                text = if (hasAudioPermission) "No music found" else "Music access needed",
+                style = MaterialTheme.typography.titleMedium,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = if (hasAudioPermission) {
+                    "Scan this device for audio files, or pick specific folders."
+                } else {
+                    "Allow access to audio files so your music can be listed here. " +
+                        "You can grant it in Settings › Apps › BitPerfect › Permissions."
+                },
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center
+            )
+
+            if (statusMessage != null) {
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = statusMessage,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                    textAlign = TextAlign.Center
+                )
+            }
+
+            if (hasAudioPermission) {
+                Spacer(modifier = Modifier.height(24.dp))
+                Button(onClick = onScan) {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("Scan for music")
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                TextButton(onClick = onChooseFolders) {
+                    Icon(
+                        imageVector = Icons.Default.Folder,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("Choose folders")
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Progress shown while rescanning a library that already has content.
+ */
+@Composable
+private fun ScanProgressBanner(
+    scanStatus: String,
+    progress: Float,
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        modifier = modifier.fillMaxWidth(),
+        color = MaterialTheme.colorScheme.surfaceVariant,
+        tonalElevation = 3.dp
+    ) {
+        Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp)) {
+            Text(
+                text = scanStatus.ifEmpty { "Scanning…" },
+                style = MaterialTheme.typography.labelMedium
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            if (progress > 0f) {
+                LinearProgressIndicator(
+                    progress = { progress.coerceIn(0f, 1f) },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            } else {
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+            }
+        }
+    }
+}
+
+/**
+ * Lets the user restrict scanning to specific folders on the device.
+ */
+@Composable
+private fun FolderPickerDialog(
+    folders: List<LibraryViewModel.SelectableFolder>,
+    onToggle: (String) -> Unit,
+    onSelectAll: () -> Unit,
+    onSelectNone: () -> Unit,
+    onConfirm: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Folders to scan") },
+        text = {
+            if (folders.isEmpty()) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(vertical = 8.dp)
+                ) {
+                    CircularProgressIndicator(modifier = Modifier.size(20.dp))
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Text(
+                        text = "Looking for folders containing audio…",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            } else {
+                Column {
+                    Row {
+                        TextButton(onClick = onSelectAll) { Text("All") }
+                        TextButton(onClick = onSelectNone) { Text("None") }
+                    }
+                    LazyColumn(modifier = Modifier.heightIn(max = 360.dp)) {
+                        items(folders) { folder ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { onToggle(folder.path) }
+                                    .padding(vertical = 6.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Checkbox(
+                                    checked = folder.isSelected,
+                                    onCheckedChange = { onToggle(folder.path) }
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = folder.name,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                    Text(
+                                        text = "${folder.trackCount} tracks · ${folder.path}",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(
+                onClick = onConfirm,
+                enabled = folders.any { it.isSelected }
+            ) {
+                Text("Scan selected")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text("Cancel") }
+        }
+    )
 }

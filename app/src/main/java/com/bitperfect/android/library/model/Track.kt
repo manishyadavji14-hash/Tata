@@ -1,26 +1,38 @@
 package com.bitperfect.android.library.model
 
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
+
 /**
  * Track entity - represents a single audio file in the library.
  *
  * Room entity with proper indices for common queries.
  * Stores both file metadata and audio format information.
+ *
+ * The computed properties below (isHighRes, isDsd, displayBitrate, folder)
+ * have no backing field, so Room does not persist them.
  */
-// @Entity(tableName = "tracks", indices = [
-//     Index(value = ["albumId"]),
-//     Index(value = ["artist"]),
-//     Index(value = ["genre"]),
-//     Index(value = ["composer"]),
-//     Index(value = ["path"], unique = true)
-// ])
+@Entity(
+    tableName = "tracks",
+    indices = [
+        Index(value = ["albumId"]),
+        Index(value = ["artist"]),
+        Index(value = ["genre"]),
+        Index(value = ["composer"]),
+        Index(value = ["path"], unique = true)
+    ]
+)
 data class Track(
-    // @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val path: String,
     val title: String,
     val artist: String = "",
     val albumId: Long = 0,
     val albumTitle: String = "",
+    /** Album artist, used to group compilations under one album. */
+    val albumArtist: String = "",
     val genre: String = "",
     val composer: String = "",
     val trackNumber: Int = 0,
@@ -34,7 +46,9 @@ data class Track(
     val lyrics: String? = null,
     val year: Int = 0,
     val fileSize: Long = 0,
-    val lastModified: Long = 0         // File last modified timestamp
+    val lastModified: Long = 0,        // File last modified timestamp
+    /** User-marked favourite. Survives rescans because track ids are stable. */
+    val isFavourite: Boolean = false
 ) {
     val isHighRes: Boolean
         get() = sampleRate > 48000 || bitDepth > 16

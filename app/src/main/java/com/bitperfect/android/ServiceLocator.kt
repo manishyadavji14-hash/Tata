@@ -8,13 +8,18 @@ import java.util.concurrent.atomic.AtomicReference
 /**
  * ServiceLocator - Application-scoped singleton for shared component access.
  *
- * Provides centralized access to components owned by PlaybackService,
- * avoiding the need to pass service references through deep Compose trees.
+ * Provides one place to reach the shared audio components, so nothing has to be
+ * threaded through deep Compose trees and no second engine gets constructed.
  *
  * Lifecycle:
- * - musicLibrary is set during Application.onCreate() (always available)
- * - playbackController and engine are set when MainActivity binds to PlaybackService
- * - All nullable references are cleared when the service unbinds
+ * - `musicLibrary` is set during Application.onCreate(), so it is always available.
+ * - `playbackController` and `engine` are set by MainActivity once the retained
+ *   PlayerViewModel that owns them has been created. They are NOT owned by
+ *   PlaybackService: the service is only started when playback begins, and the
+ *   UI must work before that.
+ * - PlayerViewModel.onCleared() clears them, because it owns them. Clearing from
+ *   the Activity would drop the reference on every rotation while the engine
+ *   behind it is still alive.
  *
  * Thread-safety: Uses a single AtomicReference to an immutable holder to guarantee
  * that consumers never observe a partial state (e.g., engine set but controller null).
@@ -58,17 +63,15 @@ object ServiceLocator {
         get() = componentsRef.get().musicLibrary
 
     /**
-     * Returns true when all service-provided components are available.
-     * UI should wait for this before creating ViewModels that depend on
-     * the engine or controller.
+     * Returns true when every shared component is available.
      */
     fun isReady(): Boolean {
         return componentsRef.get().isReady
     }
 
     /**
-     * Set all service-provided components atomically.
-     * Called when the Activity binds to PlaybackService.
+     * Set all shared components atomically.
+     * Called by MainActivity once the retained PlayerViewModel exists.
      */
     fun setServiceComponents(
         playbackController: PlaybackController,
@@ -96,7 +99,8 @@ object ServiceLocator {
     }
 
     /**
-     * Clear service-provided references (called on service disconnect).
+     * Clear the engine and controller references. Called from
+     * PlayerViewModel.onCleared(), which owns them.
      * Uses compareAndSet loop for atomic read-modify-write.
      */
     fun clearServiceReferences() {

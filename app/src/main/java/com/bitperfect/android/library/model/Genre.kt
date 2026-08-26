@@ -1,13 +1,12 @@
 package com.bitperfect.android.library.model
 
 /**
- * Genre entity - represents a music genre.
+ * Genre - represents a music genre.
+ *
+ * Not a database table. Genres are derived from the tracks table with a
+ * GROUP BY query, so they can never drift out of sync with the library.
  */
-// @Entity(tableName = "genres", indices = [
-//     Index(value = ["name"], unique = true)
-// ])
 data class Genre(
-    // @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val name: String,
     val trackCount: Int = 0

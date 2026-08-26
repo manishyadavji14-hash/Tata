@@ -18,6 +18,7 @@ set(USB_SOURCES
     usb/usb_audio_device.cpp
     usb/usb_control.cpp
     usb/isochronous_transfer.cpp
+    usb/usbdevfs_iso_backend.cpp
 )
 
 set(PCM_SOURCES
@@ -148,6 +149,10 @@ if(STANDALONE_TEST)
     target_link_libraries(test_isochronous_transfer PRIVATE bitperfect_engine GTest::gtest_main)
     target_include_directories(test_isochronous_transfer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
+    add_executable(test_usb_iso_backend tests/test_usb_iso_backend.cpp)
+    target_link_libraries(test_usb_iso_backend PRIVATE bitperfect_engine GTest::gtest_main)
+    target_include_directories(test_usb_iso_backend PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
     add_executable(test_buffer_manager tests/test_buffer_manager.cpp)
     target_link_libraries(test_buffer_manager PRIVATE bitperfect_engine GTest::gtest_main)
     target_include_directories(test_buffer_manager PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
@@ -175,6 +180,7 @@ if(STANDALONE_TEST)
     gtest_discover_tests(test_gapless)
     gtest_discover_tests(test_replaygain)
     gtest_discover_tests(test_isochronous_transfer)
+    gtest_discover_tests(test_usb_iso_backend)
     gtest_discover_tests(test_buffer_manager)
     gtest_discover_tests(test_full_pipeline)
     gtest_discover_tests(benchmark_ring_buffer)
@@ -185,6 +191,7 @@ if(STANDALONE_TEST)
     target_link_libraries(test_dop_encoder PRIVATE Threads::Threads)
     target_link_libraries(test_gapless PRIVATE Threads::Threads)
     target_link_libraries(test_isochronous_transfer PRIVATE Threads::Threads)
+    target_link_libraries(test_usb_iso_backend PRIVATE Threads::Threads)
     target_link_libraries(test_buffer_manager PRIVATE Threads::Threads)
     target_link_libraries(test_full_pipeline PRIVATE Threads::Threads)
     target_link_libraries(benchmark_ring_buffer PRIVATE Threads::Threads)

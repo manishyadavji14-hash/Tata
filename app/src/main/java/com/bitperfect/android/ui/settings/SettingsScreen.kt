@@ -239,64 +239,14 @@ fun SettingsScreen(
                 }
             }
 
-            // Equalizer section
-            item {
-                SectionHeader("Equalizer")
-            }
-            item {
-                SettingsCard {
-                    Text(
-                        text = "(Coming soon - audio engine support pending)",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Medium
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    ToggleSetting(
-                        title = "Enable Equalizer",
-                        description = "Apply frequency adjustments to audio output",
-                        checked = uiState.eqEnabled,
-                        onCheckedChange = { viewModel.setEqEnabled(it) }
-                    )
-                    if (uiState.eqEnabled) {
-                        Spacer(modifier = Modifier.height(12.dp))
-                        DropdownSetting(
-                            title = "EQ Preset",
-                            selectedValue = uiState.eqPreset,
-                            options = listOf(
-                                "flat" to "Flat",
-                                "rock" to "Rock",
-                                "pop" to "Pop",
-                                "jazz" to "Jazz",
-                                "classical" to "Classical",
-                                "bass_boost" to "Bass Boost",
-                                "treble_boost" to "Treble Boost",
-                                "custom" to "Custom"
-                            ),
-                            onValueChange = { viewModel.setEqPreset(it) }
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "Note: Enabling equalizer disables bit-perfect mode. " +
-                                "Audio will be processed before reaching the DAC.",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.error.copy(alpha = 0.8f)
-                        )
-                    }
-                }
-            }
-
-            // Library section
-            item {
-                SectionHeader("Library")
-            }
-            item {
-                ScanDirectoriesCard(
-                    scanDirectories = uiState.scanDirectories,
-                    onAddDirectory = { viewModel.addScanDirectory(it) },
-                    onRemoveDirectory = { viewModel.removeScanDirectory(it) }
-                )
-            }
+            // Two sections deliberately do NOT appear here:
+            //
+            // - Equalizer, which has its own screen reached from the Player. A
+            //   second toggle used to sit in this list, wired to nothing.
+            // - Scan directories, which are chosen from the Library screen's
+            //   folder picker. That picker lists the folders actually found on
+            //   the device with their track counts, so it replaces asking the
+            //   user to type an absolute path correctly.
 
             // About section
             item {
@@ -320,116 +270,6 @@ fun SettingsScreen(
             // Bottom padding
             item {
                 Spacer(modifier = Modifier.height(32.dp))
-            }
-        }
-    }
-}
-
-@Composable
-private fun ScanDirectoriesCard(
-    scanDirectories: Set<String>,
-    onAddDirectory: (String) -> Unit,
-    onRemoveDirectory: (String) -> Unit
-) {
-    var showAddDialog by remember { mutableStateOf(false) }
-    var newDirPath by remember { mutableStateOf("") }
-
-    if (showAddDialog) {
-        AlertDialog(
-            onDismissRequest = { showAddDialog = false },
-            title = { Text("Add Scan Directory") },
-            text = {
-                Column {
-                    Text(
-                        "Enter the full path to a directory to scan for music files.",
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    OutlinedTextField(
-                        value = newDirPath,
-                        onValueChange = { newDirPath = it },
-                        label = { Text("Directory Path") },
-                        placeholder = { Text("/storage/emulated/0/Music") },
-                        modifier = Modifier.fillMaxWidth(),
-                        singleLine = true
-                    )
-                }
-            },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        if (newDirPath.isNotBlank()) {
-                            onAddDirectory(newDirPath.trim())
-                            newDirPath = ""
-                            showAddDialog = false
-                        }
-                    }
-                ) {
-                    Text("Add")
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = {
-                    newDirPath = ""
-                    showAddDialog = false
-                }) {
-                    Text("Cancel")
-                }
-            }
-        )
-    }
-
-    SettingsCard {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = "Scan Directories",
-                    style = MaterialTheme.typography.bodyLarge
-                )
-                Text(
-                    text = "Directories to scan for audio files",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-            TextButton(onClick = { showAddDialog = true }) {
-                Text("Add")
-            }
-        }
-        Spacer(modifier = Modifier.height(8.dp))
-        if (scanDirectories.isEmpty()) {
-            Text(
-                text = "No directories configured. Default paths will be used.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        } else {
-            for (dir in scanDirectories.sorted()) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 4.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = dir,
-                        style = MaterialTheme.typography.bodySmall,
-                        modifier = Modifier.weight(1f),
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    TextButton(onClick = { onRemoveDirectory(dir) }) {
-                        Text(
-                            "Remove",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.error
-                        )
-                    }
-                }
             }
         }
     }

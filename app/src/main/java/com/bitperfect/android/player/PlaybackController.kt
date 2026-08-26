@@ -1,457 +1,395 @@
 package com.bitperfect.android.player
 
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import com.bitperfect.android.engine.NativeAudioEngine
+import java.util.concurrent.CopyOnWriteArrayList
 
 /**
- * PlaybackController - Player state machine managing playback lifecycle.
+ * Player state machine for the Android PCM validation path.
  *
- * States: Idle -> Loading -> Playing <-> Paused -> Stopped
- *                                    -> Error
- *
- * Responsibilities:
- * - Manages play/pause/stop/seek/next/previous operations
- * - Coordinates with NativeAudioEngine for audio output
- * - Manages the AudioDecodeThread for feeding PCM data to the engine
- * - Manages shuffle and repeat modes via PlayQueue
- * - Notifies listeners of state changes
- * - Handles track transitions (gapless when possible)
+ * WAV/FLAC files are decoded by the native engine and streamed to AudioTrack.
+ * USB bit-perfect transport remains a separate output backend.
  */
 class PlaybackController(
     private val engine: NativeAudioEngine
 ) {
-    companion object {
-        private const val TAG = "PlaybackController"
-    }
-
-    // Handler for dispatching decode thread callbacks to the main thread
-    private val mainHandler = Handler(Looper.getMainLooper())
-
+    @Volatile
     private var _state: PlaybackState = PlaybackState.Idle
-    val state: PlaybackState get() = _state
+
+    val state: PlaybackState
+        get() {
+            val snapshot = _state
+            return when (snapshot) {
+                is PlaybackState.Playing -> snapshot.copy(positionMs = playbackSink.positionMs)
+                is PlaybackState.Paused -> snapshot.copy(positionMs = playbackSink.positionMs)
+                else -> snapshot
+            }
+        }
 
     val queue: PlayQueue = PlayQueue()
-    private var sleepTimer: SleepTimer? = null
-    private val stateListeners = mutableListOf<(PlaybackState) -> Unit>()
-    private var positionMs: Long = 0L
-    private var durationMs: Long = 0L
-
-    // Audio decode thread - feeds PCM data to the native engine
-    private var decodeThread: AudioDecodeThread? = null
 
     /**
-     * Add a state change listener.
+     * Equalizer and bass boost for the Android output path.
+     *
+     * Null while a USB DAC is the output: platform effects bind to an AudioTrack
+     * session, and applying them would stop the stream being bit-perfect.
      */
+    val audioEffects: AudioEffectsController? get() = playbackSink.audioEffects
+
+    /** Name of the output currently in use, for the UI. */
+    val outputName: String get() = playbackSink.outputName
+
+    /** Whether the current output delivers unmodified samples. */
+    val isBitPerfectOutput: Boolean get() = playbackSink.isBitPerfect
+
+    private var sleepTimer: SleepTimer? = null
+    private val stateListeners = CopyOnWriteArrayList<(PlaybackState) -> Unit>()
+
+    @Volatile
+    private var durationMs: Long = 0L
+
+    @Volatile
+    private var currentFormat: AudioFormatInfo? = null
+
+    /**
+     * Shared by both outputs, so a track transition or an error is handled the
+     * same way regardless of where the audio is going.
+     */
+    private val sinkListener = object : PlaybackSink.Listener {
+            override fun onPrepared(
+                trackPath: String,
+                format: AudioFormatInfo,
+                durationMs: Long
+            ) {
+                val loading = _state as? PlaybackState.Loading
+                if (loading?.trackPath != trackPath) return
+
+                this@PlaybackController.durationMs = durationMs
+                currentFormat = format
+                setState(
+                    PlaybackState.Playing(
+                        trackPath = trackPath,
+                        positionMs = 0L,
+                        durationMs = durationMs,
+                        format = format
+                    )
+                )
+            }
+
+            override fun onCompleted(trackPath: String) {
+                val currentPath = when (val current = _state) {
+                    is PlaybackState.Playing -> current.trackPath
+                    is PlaybackState.Paused -> current.trackPath
+                    else -> null
+                }
+                if (currentPath != trackPath) return
+
+                val nextTrack = queue.next()
+                if (nextTrack == null) stop() else startTrack(nextTrack)
+            }
+
+            override fun onError(trackPath: String, message: String) {
+                setState(PlaybackState.Error(message, trackPath))
+            }
+        }
+
+    private val audioTrackSink = AudioTrackPlaybackSink(engine, sinkListener)
+    private val usbSink = UsbPlaybackSink(engine, sinkListener)
+
+    /**
+     * The output for the current track.
+     *
+     * Chosen per track rather than once, because a DAC can be plugged in or
+     * pulled out between tracks. It is deliberately not switched mid-track: the
+     * sinks own their own worker threads and buffered audio, so swapping under a
+     * running stream would drop or duplicate whatever is in flight.
+     */
+    @Volatile
+    private var playbackSink: PlaybackSink = audioTrackSink
+
+    /**
+     * Pick the output for the next track.
+     *
+     * USB wins when a DAC is attached, because bit-perfect output is the reason
+     * the app exists. Otherwise Android's mixer is the fallback so the app is
+     * still usable with no DAC.
+     */
+    private fun selectSinkForNextTrack(): PlaybackSink =
+        if (engine.isUsbDeviceAttached()) usbSink else audioTrackSink
+
     fun addStateListener(listener: (PlaybackState) -> Unit) {
         stateListeners.add(listener)
     }
 
-    /**
-     * Remove a state change listener.
-     */
     fun removeStateListener(listener: (PlaybackState) -> Unit) {
         stateListeners.remove(listener)
     }
 
+    /** Replace the queue with one local file and begin playback. */
+    fun playFile(trackPath: String) {
+        if (trackPath.isBlank()) return
+        queue.setQueue(listOf(trackPath))
+        startTrack(trackPath)
+    }
+
     /**
-     * Play the current track in the queue.
-     * If paused, resumes. If stopped/idle, starts from current queue position.
+     * Replace the queue with a list of tracks and start at one of them.
+     *
+     * @param startIndex Index within [trackPaths] to begin from.
      */
-    fun play() {
-        when (_state) {
-            is PlaybackState.Paused -> resume()
-            is PlaybackState.Idle, is PlaybackState.Stopped -> {
-                val track = queue.currentTrack ?: return
-                startTrack(track)
-            }
-            is PlaybackState.Playing -> { /* Already playing */ }
-            else -> { /* Cannot play from Loading or Error state */ }
+    fun playQueue(trackPaths: List<String>, startIndex: Int = 0) {
+        val playable = trackPaths.filter { it.isNotBlank() }
+        if (playable.isEmpty()) return
+
+        val safeIndex = startIndex.coerceIn(0, playable.lastIndex)
+        queue.setQueue(playable, safeIndex)
+        queue.currentTrack?.let(::startTrack)
+    }
+
+    /**
+     * Insert a track directly after the one playing.
+     *
+     * Starts playback when nothing is queued, so the action is never silent.
+     */
+    fun playNext(trackPath: String) {
+        if (trackPath.isBlank()) return
+
+        // Returns false only when the queue is empty, in which case there is
+        // nothing to queue behind and the track just starts.
+        if (!queue.insertAfterCurrent(trackPath)) {
+            playFile(trackPath)
         }
     }
 
     /**
-     * Pause playback.
+     * Append a track to the end of the queue.
      */
-    fun pause() {
-        val currentState = _state
-        if (currentState is PlaybackState.Playing) {
-            decodeThread?.pauseDecoding()
-            engine.pausePlayback()
-            setState(PlaybackState.Paused(
-                trackPath = currentState.trackPath,
-                positionMs = positionMs
-            ))
-        }
-    }
+    fun addToQueue(trackPath: String) {
+        if (trackPath.isBlank()) return
 
-    /**
-     * Stop playback completely.
-     */
-    fun stop() {
-        stopDecodeThread()
-        engine.stopPlayback()
-        positionMs = 0L
-        setState(PlaybackState.Stopped)
-    }
-
-    /**
-     * Seek to a position in the current track.
-     * @param positionMs Target position in milliseconds
-     */
-    fun seek(positionMs: Long) {
-        this.positionMs = positionMs
-        // Tell the decode thread to seek
-        decodeThread?.seekTo(positionMs)
-        // State remains the same (playing or paused)
-        val currentState = _state
-        when (currentState) {
-            is PlaybackState.Playing -> {
-                setState(PlaybackState.Playing(
-                    trackPath = currentState.trackPath,
-                    positionMs = positionMs,
-                    durationMs = currentState.durationMs,
-                    format = currentState.format
-                ))
-            }
-            is PlaybackState.Paused -> {
-                setState(PlaybackState.Paused(
-                    trackPath = currentState.trackPath,
-                    positionMs = positionMs
-                ))
-            }
-            else -> { }
-        }
-    }
-
-    /**
-     * Skip to the next track.
-     */
-    fun next() {
-        val nextTrack = queue.next() ?: run {
-            stop()
+        if (queue.isEmpty) {
+            playFile(trackPath)
             return
         }
-        startTrack(nextTrack)
+        queue.add(trackPath)
     }
 
     /**
-     * Go to the previous track.
-     * If position > 3 seconds, restart current track instead.
+     * Append several tracks to the end of the queue.
      */
-    fun previous() {
-        if (positionMs > 3000) {
-            // Restart current track
-            seek(0)
+    fun addAllToQueue(trackPaths: List<String>) {
+        val playable = trackPaths.filter { it.isNotBlank() }
+        if (playable.isEmpty()) return
+
+        if (queue.isEmpty) {
+            playQueue(playable)
             return
         }
-        val prevTrack = queue.previous() ?: return
-        startTrack(prevTrack)
+        queue.addAll(playable)
     }
 
     /**
-     * Set the repeat mode.
+     * Jump to a queue entry and play it.
      */
-    fun setRepeatMode(mode: RepeatMode) {
-        queue.repeatMode = mode
-    }
-
-    /**
-     * Get the current repeat mode.
-     */
-    fun getRepeatMode(): RepeatMode = queue.repeatMode
-
-    /**
-     * Toggle shuffle on/off.
-     */
-    fun toggleShuffle() {
-        queue.setShuffle(!queue.isShuffleEnabled())
-    }
-
-    /**
-     * Set shuffle state explicitly.
-     */
-    fun setShuffle(enabled: Boolean) {
-        queue.setShuffle(enabled)
-    }
-
-    /**
-     * Check if shuffle is enabled.
-     */
-    fun isShuffleEnabled(): Boolean = queue.isShuffleEnabled()
-
-    /**
-     * Set a sleep timer.
-     * @param durationMs Duration in milliseconds before pausing
-     */
-    fun setSleepTimer(durationMs: Long) {
-        sleepTimer = SleepTimer(durationMs) {
-            pause()
-        }
-        sleepTimer?.start()
-    }
-
-    /**
-     * Cancel the sleep timer.
-     */
-    fun cancelSleepTimer() {
-        sleepTimer?.cancel()
-        sleepTimer = null
-    }
-
-    /**
-     * Get remaining sleep timer time in milliseconds.
-     * @return Remaining time, or null if no timer is active
-     */
-    fun getSleepTimerRemaining(): Long? = sleepTimer?.remainingMs
-
-    /**
-     * Play a track from a list context (e.g., library track click).
-     * Replaces the current queue with the given track list, sets the start position,
-     * stops any current playback without emitting a Stopped state, and begins
-     * playing the selected track.
-     *
-     * @param trackPaths The full list of track paths to populate the queue with
-     * @param startIndex The index of the track to begin playback from
-     */
-    fun playTrackFromList(trackPaths: List<String>, startIndex: Int) {
-        queue.setQueue(trackPaths, startIndex)
-        // Stop current decode thread and engine without emitting Stopped state
-        // to avoid a spurious UI flash (mini player disappearing for one frame)
-        stopDecodeThread()
-        engine.stopPlayback()
-        positionMs = 0L
-        // Start the selected track directly
-        val track = queue.currentTrack ?: return
-        startTrack(track)
-    }
-
-    /**
-     * Jump to a specific track in the current queue by index.
-     * Stops current playback and starts the track at the given index.
-     *
-     * @param index The queue index to jump to
-     */
-    fun jumpToQueueIndex(index: Int) {
+    fun playQueueIndex(index: Int) {
         val track = queue.jumpTo(index) ?: return
-        stopDecodeThread()
         startTrack(track)
     }
 
     /**
-     * Remove a track from the queue at the given index.
-     * If the removed track is the currently playing track, advance to next.
+     * Remove a queue entry.
      *
-     * @param index The queue index to remove
+     * Removing the entry being played advances to whatever now occupies that
+     * position, so playback does not continue on a track no longer queued.
      */
     fun removeFromQueue(index: Int) {
-        val wasCurrentIndex = queue.position
-        val removed = queue.removeAt(index)
-        if (!removed) return
+        // One locked operation, so a track finishing on the audio worker cannot
+        // change the current position between the removal and the decision
+        // about what to play next.
+        val outcome = queue.removeAtTrackingCurrent(index)
+        if (!outcome.removed || !outcome.wasCurrent) return
 
-        if (index == wasCurrentIndex) {
-            // The currently playing track was removed, play next or stop
-            val nextTrack = queue.currentTrack
-            if (nextTrack != null) {
-                stopDecodeThread()
-                startTrack(nextTrack)
-            } else {
-                stop()
-            }
-        }
+        val replacement = outcome.replacement
+        if (replacement == null) stop() else startTrack(replacement)
     }
 
     /**
-     * Move a track in the queue from one position to another.
-     *
-     * @param fromIndex Source index
-     * @param toIndex Destination index
+     * Reorder the queue without interrupting playback.
      */
     fun moveInQueue(fromIndex: Int, toIndex: Int) {
         queue.move(fromIndex, toIndex)
     }
 
     /**
-     * Called when a track transition occurs (from native gapless engine or decode thread).
-     * Stops the current decode thread and starts the next track.
+     * Clear the queue and stop.
      */
-    fun onTrackTransition() {
-        // Stop the current decode thread (it has finished or will be replaced)
-        stopDecodeThread()
+    fun clearQueue() {
+        queue.clear()
+        stop()
+    }
 
-        val nextTrack = queue.next()
-        if (nextTrack != null) {
-            startTrack(nextTrack)
-        } else {
-            // No more tracks in queue
-            engine.stopPlayback()
-            positionMs = 0L
-            durationMs = 0L
-            setState(PlaybackState.Stopped)
+    fun play() {
+        when (_state) {
+            is PlaybackState.Paused -> resume()
+            is PlaybackState.Idle,
+            is PlaybackState.Stopped,
+            is PlaybackState.Error -> {
+                val track = queue.currentTrack ?: return
+                startTrack(track)
+            }
+            is PlaybackState.Playing -> Unit
+            is PlaybackState.Loading -> Unit
         }
     }
 
+    fun pause() {
+        val currentState = state
+        if (currentState is PlaybackState.Playing && playbackSink.pause()) {
+            setState(
+                PlaybackState.Paused(
+                    trackPath = currentState.trackPath,
+                    positionMs = playbackSink.positionMs
+                )
+            )
+        }
+    }
+
+    fun stop() {
+        playbackSink.stop()
+        durationMs = 0L
+        currentFormat = null
+        setState(PlaybackState.Stopped)
+    }
+
+    fun seek(positionMs: Long) {
+        val clampedPosition = positionMs.coerceIn(0L, durationMs)
+        if (!playbackSink.seekTo(clampedPosition)) return
+
+        when (val currentState = _state) {
+            is PlaybackState.Playing -> {
+                setState(currentState.copy(positionMs = clampedPosition))
+            }
+            is PlaybackState.Paused -> {
+                setState(currentState.copy(positionMs = clampedPosition))
+            }
+            else -> Unit
+        }
+    }
+
+    fun next() {
+        val nextTrack = queue.next()
+        if (nextTrack == null) stop() else startTrack(nextTrack)
+    }
+
+    fun previous() {
+        if (playbackSink.positionMs > PREVIOUS_RESTART_THRESHOLD_MS) {
+            seek(0L)
+            return
+        }
+        val previousTrack = queue.previous() ?: return
+        startTrack(previousTrack)
+    }
+
+    fun setRepeatMode(mode: RepeatMode) {
+        queue.repeatMode = mode
+    }
+
+    fun getRepeatMode(): RepeatMode = queue.repeatMode
+
+    fun toggleShuffle() {
+        queue.setShuffle(!queue.isShuffleEnabled())
+    }
+
+    fun setShuffle(enabled: Boolean) {
+        queue.setShuffle(enabled)
+    }
+
+    fun isShuffleEnabled(): Boolean = queue.isShuffleEnabled()
+
+    fun setSleepTimer(durationMs: Long) {
+        sleepTimer?.cancel()
+        sleepTimer = SleepTimer(durationMs) { pause() }
+        sleepTimer?.start()
+    }
+
+    fun cancelSleepTimer() {
+        sleepTimer?.cancel()
+        sleepTimer = null
+    }
+
+    fun getSleepTimerRemaining(): Long? = sleepTimer?.remainingMs
+
     /**
-     * Update the current playback position (called periodically from a timer).
+     * Whether a sleep timer is counting down.
      */
-    fun updatePosition(newPositionMs: Long) {
-        positionMs = newPositionMs
+    fun isSleepTimerActive(): Boolean = sleepTimer?.active == true
+
+    /**
+     * Add time to a running sleep timer.
+     */
+    fun extendSleepTimer(additionalMs: Long) {
+        sleepTimer?.extend(additionalMs)
+    }
+
+    /** Legacy native gapless callback; advance through the same output path. */
+    fun onTrackTransition() {
+        next()
     }
 
     /**
-     * Release all resources.
+     * Retained for MediaSession/tests that provide an external position.
+     * Real playback position comes from AudioTrack's playback head.
      */
+    fun updatePosition(newPositionMs: Long) {
+        playbackSink.overridePosition(newPositionMs.coerceIn(0L, durationMs))
+    }
+
     fun release() {
-        stopDecodeThread()
-        stop()
+        audioTrackSink.release()
+        usbSink.release()
         cancelSleepTimer()
+        durationMs = 0L
+        currentFormat = null
+        setState(PlaybackState.Stopped)
         stateListeners.clear()
     }
 
     private fun resume() {
-        val currentState = _state
-        if (currentState is PlaybackState.Paused) {
-            engine.resumePlayback()
-            decodeThread?.resumeDecoding()
-            val format = AudioFormatInfo(
-                sampleRate = engine.getCurrentSampleRate(),
-                bitDepth = engine.getCurrentBitDepth(),
-                channels = engine.getCurrentChannels()
-            )
-            setState(PlaybackState.Playing(
-                trackPath = currentState.trackPath,
-                positionMs = currentState.positionMs,
+        val pausedState = state as? PlaybackState.Paused ?: return
+        val format = currentFormat ?: return
+        if (!playbackSink.resume()) return
+
+        setState(
+            PlaybackState.Playing(
+                trackPath = pausedState.trackPath,
+                positionMs = playbackSink.positionMs,
                 durationMs = durationMs,
                 format = format
-            ))
-        }
+            )
+        )
     }
 
     private fun startTrack(trackPath: String) {
-        // Stop any existing decode thread before starting a new one
-        stopDecodeThread()
-
         setState(PlaybackState.Loading(trackPath))
-        positionMs = 0L
         durationMs = 0L
+        currentFormat = null
 
-        // Query the native engine for the actual format of the file.
-        // The engine opens the appropriate decoder (WAV/FLAC/DSF),
-        // detects sample rate, bit depth, and channels, then runs
-        // mode selection (PCM/DoP/Native DSD) based on DAC capabilities.
-
-        // Determine format from file extension/content via native engine
-        val detectedFormat = engine.detectFileFormat(trackPath)
-        val sampleRate = if (detectedFormat.sampleRate > 0) detectedFormat.sampleRate else 44100
-        val format = detectedFormat.nativeFormat
-        val channels = if (detectedFormat.channels > 0) detectedFormat.channels else 2
-
-        val configured = engine.configure(
-            sampleRate,
-            format,
-            channels,
-            50  // 50ms buffer
-        )
-
-        if (!configured) {
-            setState(PlaybackState.Error("Failed to configure audio engine", trackPath))
-            return
+        // Stop whatever was playing before deciding, so a switch of output does
+        // not leave the previous sink's worker running.
+        val nextSink = selectSinkForNextTrack()
+        if (nextSink !== playbackSink) {
+            playbackSink.stop()
+            playbackSink = nextSink
         }
 
-        if (!engine.startPlayback()) {
-            setState(PlaybackState.Error("Failed to start playback", trackPath))
-            return
-        }
-
-        val bitDepth = when (format) {
-            NativeAudioEngine.FORMAT_S16_LE -> 16
-            NativeAudioEngine.FORMAT_S24_3LE, NativeAudioEngine.FORMAT_S24_LE -> 24
-            NativeAudioEngine.FORMAT_S32_LE -> 32
-            else -> 16
-        }
-
-        // Create and start the decode thread to feed PCM data to the engine
-        decodeThread = AudioDecodeThread(
-            engine = engine,
-            trackPath = trackPath,
-            sampleRate = sampleRate,
-            channels = channels,
-            bitDepth = bitDepth,
-            onPositionUpdate = { newPositionMs ->
-                mainHandler.post {
-                    positionMs = newPositionMs
-                    // Update the Playing state so UI reflects current position
-                    val currentState = _state
-                    if (currentState is PlaybackState.Playing) {
-                        setState(PlaybackState.Playing(
-                            trackPath = currentState.trackPath,
-                            positionMs = newPositionMs,
-                            durationMs = durationMs,
-                            format = currentState.format
-                        ))
-                    }
-                }
-            },
-            onDurationDetected = { detectedDurationMs ->
-                mainHandler.post {
-                    durationMs = detectedDurationMs
-                    // Re-emit Playing state with the correct duration
-                    val currentState = _state
-                    if (currentState is PlaybackState.Playing) {
-                        setState(PlaybackState.Playing(
-                            trackPath = currentState.trackPath,
-                            positionMs = currentState.positionMs,
-                            durationMs = detectedDurationMs,
-                            format = currentState.format
-                        ))
-                    }
-                }
-            },
-            onTrackComplete = {
-                Log.d(TAG, "Track complete: $trackPath")
-                mainHandler.post {
-                    onTrackTransition()
-                }
-            },
-            onError = { errorMessage ->
-                Log.e(TAG, "Decode error: $errorMessage")
-                mainHandler.post {
-                    setState(PlaybackState.Error(errorMessage, trackPath))
-                }
-            }
-        ).also { it.start() }
-
-        val formatInfo = AudioFormatInfo(
-            sampleRate = engine.getCurrentSampleRate(),
-            bitDepth = bitDepth,
-            channels = channels
-        )
-        setState(PlaybackState.Playing(
-            trackPath = trackPath,
-            positionMs = 0L,
-            durationMs = durationMs,
-            format = formatInfo
-        ))
+        playbackSink.play(trackPath)
     }
 
     private fun setState(newState: PlaybackState) {
         _state = newState
-        stateListeners.forEach { it(newState) }
+        stateListeners.forEach { listener -> listener(newState) }
     }
 
-    /**
-     * Stop and clean up the current decode thread.
-     */
-    private fun stopDecodeThread() {
-        decodeThread?.let { thread ->
-            thread.stopDecoding()
-            try {
-                thread.join(1000) // Wait up to 1 second for graceful shutdown
-            } catch (e: InterruptedException) {
-                Log.w(TAG, "Interrupted while waiting for decode thread to stop")
-            }
-        }
-        decodeThread = null
+    private companion object {
+        const val PREVIOUS_RESTART_THRESHOLD_MS = 3_000L
     }
 }

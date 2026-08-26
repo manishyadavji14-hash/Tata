@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -61,6 +62,11 @@ android {
     }
 }
 
+ksp {
+    // Export the Room schema so migrations can be reviewed in version control.
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 dependencies {
     // Material 3
     implementation("com.google.android.material:material:1.11.0")
@@ -80,9 +86,13 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
 
-    // Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
+    // Room (KSP-processed; see the `ksp` block above for the schema location)
+    implementation("androidx.room:room-runtime:2.7.2")
+    implementation("androidx.room:room-ktx:2.7.2")
+    ksp("androidx.room:room-compiler:2.7.2")
+
+    // Coil - album artwork loading for Compose
+    implementation("io.coil-kt:coil-compose:2.7.0")
 
     // Media3
     implementation("androidx.media3:media3-common:1.2.1")
@@ -121,7 +131,19 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     // Testing
-    testImplementation("junit:junit:4.13.2")
+    // The unit tests under src/test are written against JUnit 5 (Jupiter).
+    // Only JUnit 4 used to be declared here, so they never compiled or ran.
+    testImplementation(platform("org.junit:junit-bom:5.10.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+}
+
+
+// The JVM unit tests use JUnit 5, which needs the JUnit Platform runner.
+// Instrumented tests keep the default JUnit 4 runner.
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
