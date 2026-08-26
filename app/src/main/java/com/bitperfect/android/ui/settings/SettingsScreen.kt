@@ -239,6 +239,46 @@ fun SettingsScreen(
                 }
             }
 
+            // Equalizer section
+            item {
+                SectionHeader("Equalizer")
+            }
+            item {
+                SettingsCard {
+                    ToggleSetting(
+                        title = "Enable Equalizer",
+                        description = "Apply frequency adjustments to audio output",
+                        checked = uiState.eqEnabled,
+                        onCheckedChange = { viewModel.setEqEnabled(it) }
+                    )
+                    if (uiState.eqEnabled) {
+                        Spacer(modifier = Modifier.height(12.dp))
+                        DropdownSetting(
+                            title = "EQ Preset",
+                            selectedValue = uiState.eqPreset,
+                            options = listOf(
+                                "flat" to "Flat",
+                                "rock" to "Rock",
+                                "pop" to "Pop",
+                                "jazz" to "Jazz",
+                                "classical" to "Classical",
+                                "bass_boost" to "Bass Boost",
+                                "treble_boost" to "Treble Boost",
+                                "custom" to "Custom"
+                            ),
+                            onValueChange = { viewModel.setEqPreset(it) }
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = "Note: Enabling equalizer disables bit-perfect mode. " +
+                                "Audio will be processed before reaching the DAC.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.error.copy(alpha = 0.8f)
+                        )
+                    }
+                }
+            }
+
             // Library section
             item {
                 SectionHeader("Library")

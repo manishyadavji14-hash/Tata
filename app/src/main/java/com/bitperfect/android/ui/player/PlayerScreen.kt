@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.QueueMusic
 import androidx.compose.material.icons.filled.Repeat
 import androidx.compose.material.icons.filled.RepeatOne
@@ -53,6 +54,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bitperfect.android.R
 import com.bitperfect.android.player.RepeatMode
+import com.bitperfect.android.ui.components.SleepTimerDialog
+import com.bitperfect.android.ui.components.formatSleepTimerRemaining
 import com.bitperfect.android.ui.theme.BitPerfectGreen
 import com.bitperfect.android.ui.theme.BitPerfectShapeTokens
 import com.bitperfect.android.ui.theme.DsdBlue
@@ -79,6 +82,19 @@ fun PlayerScreen(
     onDiagnosticsClick: () -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    var showSleepTimerDialog by remember { mutableStateOf(false) }
+
+    // Sleep timer dialog
+    if (showSleepTimerDialog) {
+        val sleepTimerRemaining = viewModel.getSleepTimerRemaining()
+        SleepTimerDialog(
+            isTimerActive = sleepTimerRemaining != null,
+            remainingMs = sleepTimerRemaining,
+            onSetTimer = { durationMs -> viewModel.setSleepTimer(durationMs) },
+            onCancelTimer = { viewModel.cancelSleepTimer() },
+            onDismiss = { showSleepTimerDialog = false }
+        )
+    }
 
     Scaffold { paddingValues ->
         Column(
@@ -147,11 +163,13 @@ fun PlayerScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Bottom row: device info and queue button
+            // Bottom row: device info, sleep timer, and queue button
             BottomRow(
                 deviceName = uiState.deviceName,
+                sleepTimerRemainingMs = viewModel.getSleepTimerRemaining(),
                 onQueueClick = onQueueClick,
-                onDiagnosticsClick = onDiagnosticsClick
+                onDiagnosticsClick = onDiagnosticsClick,
+                onSleepTimerClick = { showSleepTimerDialog = true }
             )
         }
     }
@@ -434,8 +452,10 @@ private fun TransportControls(
 @Composable
 private fun BottomRow(
     deviceName: String,
+    sleepTimerRemainingMs: Long?,
     onQueueClick: () -> Unit,
-    onDiagnosticsClick: () -> Unit
+    onDiagnosticsClick: () -> Unit,
+    onSleepTimerClick: () -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -467,13 +487,38 @@ private fun BottomRow(
             }
         }
 
-        // Queue button
-        IconButton(onClick = onQueueClick) {
-            Icon(
-                imageVector = Icons.Default.QueueMusic,
-                contentDescription = "Queue",
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            // Sleep timer button
+            IconButton(onClick = onSleepTimerClick) {
+                Icon(
+                    imageVector = Icons.Default.Bedtime,
+                    contentDescription = "Sleep Timer",
+                    tint = if (sleepTimerRemainingMs != null) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                    }
+                )
+            }
+
+            // Show remaining time when timer is active
+            if (sleepTimerRemainingMs != null) {
+                Text(
+                    text = formatSleepTimerRemaining(sleepTimerRemainingMs),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+            }
+
+            // Queue button
+            IconButton(onClick = onQueueClick) {
+                Icon(
+                    imageVector = Icons.Default.QueueMusic,
+                    contentDescription = "Queue",
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }

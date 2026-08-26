@@ -54,6 +54,11 @@ class SettingsRepository(private val context: Context) {
         val THEME_MODE = stringPreferencesKey("theme_mode")
         val DEBUG_LOGGING = booleanPreferencesKey("debug_logging")
 
+        // Equalizer
+        val EQ_ENABLED = booleanPreferencesKey("eq_enabled")
+        val EQ_PRESET = stringPreferencesKey("eq_preset")
+        val EQ_BANDS = stringPreferencesKey("eq_bands")
+
         // Library
         val SCAN_DIRECTORIES = stringSetPreferencesKey("scan_directories")
     }
@@ -74,6 +79,9 @@ class SettingsRepository(private val context: Context) {
         const val CROSSFADE_MS = 0
         const val THEME_MODE = "system"  // "system", "light", "dark"
         const val DEBUG_LOGGING = false
+        const val EQ_ENABLED = false
+        const val EQ_PRESET = "flat"
+        const val EQ_BANDS = "0,0,0,0,0,0,0,0,0,0"  // 10-band gains in dB
 
         val SCAN_DIRECTORIES = setOf(
             "/storage/emulated/0",
@@ -230,6 +238,38 @@ class SettingsRepository(private val context: Context) {
     suspend fun setDebugLogging(enabled: Boolean) {
         context.dataStore.edit { prefs ->
             prefs[Keys.DEBUG_LOGGING] = enabled
+        }
+    }
+
+    // --- Equalizer Settings ---
+
+    val eqEnabled: Flow<Boolean> = context.dataStore.data.map { prefs ->
+        prefs[Keys.EQ_ENABLED] ?: Defaults.EQ_ENABLED
+    }
+
+    suspend fun setEqEnabled(enabled: Boolean) {
+        context.dataStore.edit { prefs ->
+            prefs[Keys.EQ_ENABLED] = enabled
+        }
+    }
+
+    val eqPreset: Flow<String> = context.dataStore.data.map { prefs ->
+        prefs[Keys.EQ_PRESET] ?: Defaults.EQ_PRESET
+    }
+
+    suspend fun setEqPreset(preset: String) {
+        context.dataStore.edit { prefs ->
+            prefs[Keys.EQ_PRESET] = preset
+        }
+    }
+
+    val eqBands: Flow<String> = context.dataStore.data.map { prefs ->
+        prefs[Keys.EQ_BANDS] ?: Defaults.EQ_BANDS
+    }
+
+    suspend fun setEqBands(bands: String) {
+        context.dataStore.edit { prefs ->
+            prefs[Keys.EQ_BANDS] = bands
         }
     }
 

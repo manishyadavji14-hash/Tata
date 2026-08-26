@@ -1,5 +1,6 @@
 package com.bitperfect.android.ui.navigation
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -8,6 +9,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -21,6 +23,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.bitperfect.android.R
+import com.bitperfect.android.ui.components.MiniPlayerBar
 import com.bitperfect.android.ui.diagnostics.DacDiagnosticsScreen
 import com.bitperfect.android.ui.diagnostics.DiagnosticsViewModel
 import com.bitperfect.android.ui.library.LibraryScreen
@@ -60,13 +63,38 @@ fun BitPerfectNavGraph(
         Screen.Settings.route
     )
 
+    // Determine if mini player should be shown (on non-Player screens when a track is playing/paused)
+    val playerUiState by playerViewModel.uiState.collectAsState()
+    val showMiniPlayer = currentDestination?.route != Screen.Player.route &&
+        currentDestination?.route != Screen.Queue.route &&
+        (playerUiState.isPlaying || playerUiState.isPaused)
+
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
-                BitPerfectBottomNav(
-                    navController = navController,
-                    currentRoute = currentDestination?.route
-                )
+                Column {
+                    // Mini player bar above the navigation bar
+                    if (showMiniPlayer) {
+                        MiniPlayerBar(
+                            uiState = playerUiState,
+                            onBarClick = {
+                                navController.navigate(Screen.Player.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            },
+                            onPlayPauseClick = { playerViewModel.togglePlayPause() }
+                        )
+                    }
+
+                    BitPerfectBottomNav(
+                        navController = navController,
+                        currentRoute = currentDestination?.route
+                    )
+                }
             }
         }
     ) { paddingValues ->

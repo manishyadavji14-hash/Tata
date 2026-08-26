@@ -177,6 +177,19 @@ class LibraryViewModel(
     }
 
     /**
+     * Play all tracks in a folder.
+     * Returns the list of track paths for the specified folder (or all if null).
+     */
+    fun playAllInFolder(folderPath: String?): List<String> {
+        val tracksInFolder = if (folderPath == null) {
+            allTracks
+        } else {
+            allTracks.filter { it.path.substringBeforeLast('/') == folderPath }
+        }
+        return tracksInFolder.map { it.path }
+    }
+
+    /**
      * Trigger a library rescan (pull-to-refresh).
      * Reads scan directories from SettingsRepository or uses defaults.
      */

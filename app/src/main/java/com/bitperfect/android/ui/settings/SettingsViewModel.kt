@@ -45,6 +45,11 @@ class SettingsViewModel(
         val clippingPrevention: Boolean = true,
         val crossfadeMs: Int = 0,
 
+        // Equalizer
+        val eqEnabled: Boolean = false,
+        val eqPreset: String = "flat",
+        val eqBands: String = "0,0,0,0,0,0,0,0,0,0",
+
         // Interface
         val themeMode: String = "system",
         val debugLogging: Boolean = false,
@@ -90,6 +95,9 @@ class SettingsViewModel(
             val theme = repository.themeMode.first()
             val debug = repository.debugLogging.first()
             val scanDirs = repository.scanDirectories.first()
+            val eqEnabled = repository.eqEnabled.first()
+            val eqPreset = repository.eqPreset.first()
+            val eqBands = repository.eqBands.first()
 
             _uiState.value = SettingsUiState(
                 bitPerfectMode = bitPerfect,
@@ -106,7 +114,10 @@ class SettingsViewModel(
                 crossfadeMs = crossfade,
                 themeMode = theme,
                 debugLogging = debug,
-                scanDirectories = scanDirs
+                scanDirectories = scanDirs,
+                eqEnabled = eqEnabled,
+                eqPreset = eqPreset,
+                eqBands = eqBands
             )
         }
     }
@@ -245,6 +256,35 @@ class SettingsViewModel(
         viewModelScope.launch {
             repository.setDebugLogging(enabled)
             _uiState.value = _uiState.value.copy(debugLogging = enabled)
+        }
+    }
+
+    // --- Equalizer ---
+
+    fun setEqEnabled(enabled: Boolean) {
+        if (enabled && _uiState.value.bitPerfectMode) {
+            showBitPerfectWarning(
+                "Enabling the equalizer modifies the audio signal. " +
+                "This disables bit-perfect playback mode."
+            )
+        }
+        viewModelScope.launch {
+            repository.setEqEnabled(enabled)
+            _uiState.value = _uiState.value.copy(eqEnabled = enabled)
+        }
+    }
+
+    fun setEqPreset(preset: String) {
+        viewModelScope.launch {
+            repository.setEqPreset(preset)
+            _uiState.value = _uiState.value.copy(eqPreset = preset)
+        }
+    }
+
+    fun setEqBands(bands: String) {
+        viewModelScope.launch {
+            repository.setEqBands(bands)
+            _uiState.value = _uiState.value.copy(eqBands = bands)
         }
     }
 

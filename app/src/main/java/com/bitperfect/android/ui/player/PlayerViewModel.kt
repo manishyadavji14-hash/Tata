@@ -136,6 +136,20 @@ class PlayerViewModel(
         _uiState.value = _uiState.value.copy(repeatMode = nextMode)
     }
 
+    // --- Sleep Timer ---
+
+    fun setSleepTimer(durationMs: Long) {
+        playbackController.setSleepTimer(durationMs)
+    }
+
+    fun cancelSleepTimer() {
+        playbackController.cancelSleepTimer()
+    }
+
+    fun getSleepTimerRemaining(): Long? {
+        return playbackController.getSleepTimerRemaining()
+    }
+
     /**
      * Play a track from the library.
      * Replaces the current queue with the provided track list and starts playback
