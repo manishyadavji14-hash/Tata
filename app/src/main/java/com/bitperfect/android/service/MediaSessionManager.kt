@@ -44,7 +44,6 @@ class MediaSessionManager(
     }
 
     private val playerAdapter: PlaybackControllerPlayer = PlaybackControllerPlayer(playbackController)
-    private val mediaSession: MediaSession
 
     // Current metadata state
     private var currentTitle: String = ""
@@ -52,6 +51,35 @@ class MediaSessionManager(
     private var currentAlbum: String = ""
     private var currentDurationMs: Long = 0L
     private var currentArtwork: Bitmap? = null
+
+    private val mediaSessionCallback = object : MediaSession.Callback {
+        override fun onConnect(
+            session: MediaSession,
+            controller: MediaSession.ControllerInfo
+        ): MediaSession.ConnectionResult {
+            // Accept all connections
+            return MediaSession.ConnectionResult.AcceptedResultBuilder(session)
+                .setAvailableSessionCommands(
+                    MediaSession.ConnectionResult.DEFAULT_SESSION_COMMANDS
+                )
+                .setAvailablePlayerCommands(
+                    MediaSession.ConnectionResult.DEFAULT_PLAYER_COMMANDS
+                )
+                .build()
+        }
+
+        override fun onCustomCommand(
+            session: MediaSession,
+            controller: MediaSession.ControllerInfo,
+            customCommand: SessionCommand,
+            args: Bundle
+        ): ListenableFuture<SessionResult> {
+            Log.d(TAG, "MediaSession callback: onCustomCommand(${customCommand.customAction})")
+            return Futures.immediateFuture(SessionResult(SessionResult.RESULT_ERROR_NOT_SUPPORTED))
+        }
+    }
+
+    private val mediaSession: MediaSession
 
     init {
         mediaSession = MediaSession.Builder(context, playerAdapter)
@@ -131,33 +159,6 @@ class MediaSessionManager(
         val stream = java.io.ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
         return stream.toByteArray()
-    }
-
-    private val mediaSessionCallback = object : MediaSession.Callback {
-        override fun onConnect(
-            session: MediaSession,
-            controller: MediaSession.ControllerInfo
-        ): MediaSession.ConnectionResult {
-            // Accept all connections
-            return MediaSession.ConnectionResult.AcceptedResultBuilder(session)
-                .setAvailableSessionCommands(
-                    MediaSession.ConnectionResult.DEFAULT_SESSION_COMMANDS
-                )
-                .setAvailablePlayerCommands(
-                    MediaSession.ConnectionResult.DEFAULT_PLAYER_COMMANDS
-                )
-                .build()
-        }
-
-        override fun onCustomCommand(
-            session: MediaSession,
-            controller: MediaSession.ControllerInfo,
-            customCommand: SessionCommand,
-            args: Bundle
-        ): ListenableFuture<SessionResult> {
-            Log.d(TAG, "MediaSession callback: onCustomCommand(${customCommand.customAction})")
-            return Futures.immediateFuture(SessionResult(SessionResult.RESULT_ERROR_NOT_SUPPORTED))
-        }
     }
 
     /**
@@ -558,7 +559,7 @@ class MediaSessionManager(
 
         override fun getVideoSize(): androidx.media3.common.VideoSize = androidx.media3.common.VideoSize.UNKNOWN
 
-        override fun getSurfaceSize(): android.util.Size = android.util.Size(0, 0)
+        override fun getSurfaceSize(): androidx.media3.common.util.Size = androidx.media3.common.util.Size(0, 0)
 
         override fun getCurrentCues(): androidx.media3.common.text.CueGroup =
             androidx.media3.common.text.CueGroup.EMPTY_TIME_ZERO
