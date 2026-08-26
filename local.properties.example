@@ -1,0 +1,8 @@
+# Local configuration for Termux build environment
+# Copy this file to local.properties and adjust paths if needed.
+#
+# These paths are for building on aarch64 Android device via Termux.
+# Adjust them to match your actual SDK/NDK installation paths.
+
+sdk.dir=/data/data/com.termux/files/home/android-sdk
+ndk.dir=/data/data/com.termux/files/home/android-sdk/ndk/android-ndk-r29

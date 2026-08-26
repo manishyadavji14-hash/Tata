@@ -1,9 +1,14 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.22)
 project(bitperfect_engine VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+# NDK r29 compatibility: suppress deprecated declarations warnings from NDK headers
+if(ANDROID)
+    add_compile_options(-Wno-deprecated-declarations)
+endif()
 
 # Option for standalone testing (without Android NDK)
 option(STANDALONE_TEST "Build standalone tests with Google Test" OFF)
