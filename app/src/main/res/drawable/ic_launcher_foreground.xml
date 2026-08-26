@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Music note with audio wave design representing BitPerfect -->
+    <!-- Musical note body -->
+    <path
+        android:fillColor="#E0E0FF"
+        android:pathData="M12,3v10.55c-0.59,-0.34 -1.27,-0.55 -2,-0.55c-2.21,0 -4,1.79 -4,4s1.79,4 4,4s4,-1.79 4,-4V7h4V3H12z"/>
+    <!-- Audio wave left -->
+    <path
+        android:fillColor="#8080FF"
+        android:pathData="M3,9v6h2v-6H3z"/>
+    <!-- Audio wave right -->
+    <path
+        android:fillColor="#8080FF"
+        android:pathData="M19,7v10h2V7H19z"/>
+    <!-- Audio wave inner left -->
+    <path
+        android:fillColor="#A0A0FF"
+        android:pathData="M6,8v8h1.5v-8H6z"/>
+    <!-- Audio wave inner right -->
+    <path
+        android:fillColor="#A0A0FF"
+        android:pathData="M16.5,6v12H18V6H16.5z"/>
+</vector>
