@@ -37,8 +37,22 @@ sealed class Screen(val route: String) {
     companion object {
         /**
          * All bottom navigation items.
+         *
+         * MUST stay lazy. An eager initializer here deadlocks on class-init
+         * ordering: touching any subclass (e.g. `Screen.Player.route`) starts
+         * `Screen$Player.<clinit>`, whose constructor triggers `Screen.<clinit>`,
+         * which would then read `Screen$Player.INSTANCE` while that field is
+         * still unassigned. The JVM returns immediately from the re-entrant
+         * init rather than re-running it, so the reference comes back null and
+         * the list is permanently poisoned with a null element -- which type
+         * erasure lets through unnoticed until something dereferences it.
+         *
+         * Deferring evaluation guarantees every object is fully constructed
+         * before the list is built.
          */
-        val bottomNavItems = listOf(Player, Library, Settings)
+        val bottomNavItems: List<Screen> by lazy {
+            listOf(Player, Library, Settings)
+        }
 
         /**
          * Get the display label for a bottom nav item.
