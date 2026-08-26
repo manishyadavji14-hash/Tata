@@ -10,10 +10,18 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.bitperfect.android.BitPerfectApp
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
@@ -54,16 +62,17 @@ class MainActivity : ComponentActivity() {
     private var isBound = false
 
     // ViewModels (in production, use Hilt/Koin DI)
-    private lateinit var playerViewModel: PlayerViewModel
-    private lateinit var libraryViewModel: LibraryViewModel
-    private lateinit var settingsViewModel: SettingsViewModel
-    private lateinit var diagnosticsViewModel: DiagnosticsViewModel
+    // Nullable to prevent UninitializedPropertyAccessException if initializeComponents() fails
+    private var playerViewModel: PlayerViewModel? = null
+    private var libraryViewModel: LibraryViewModel? = null
+    private var settingsViewModel: SettingsViewModel? = null
+    private var diagnosticsViewModel: DiagnosticsViewModel? = null
 
     // Core components
-    private lateinit var engine: NativeAudioEngine
-    private lateinit var dsdManager: DsdManager
-    private lateinit var usbAudioManager: UsbAudioManager
-    private lateinit var settingsRepository: SettingsRepository
+    private var engine: NativeAudioEngine? = null
+    private var dsdManager: DsdManager? = null
+    private var usbAudioManager: UsbAudioManager? = null
+    private var settingsRepository: SettingsRepository? = null
 
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
@@ -111,32 +120,48 @@ class MainActivity : ComponentActivity() {
 
     private fun initializeComponents() {
         // Initialize engine and managers
-        engine = NativeAudioEngine()
+        val localEngine = NativeAudioEngine()
+        engine = localEngine
 
         // Wrap engine.initialize() specifically - JNI may fail if native library
         // did not load or if the device lacks required capabilities
         try {
-            engine.initialize()
+            localEngine.initialize()
         } catch (e: UnsatisfiedLinkError) {
             Log.e(TAG, "Native engine initialization failed (link error): ${e.message}", e)
         } catch (e: Exception) {
             Log.e(TAG, "Native engine initialization failed: ${e.message}", e)
         }
 
-        dsdManager = DsdManager()
-        usbAudioManager = UsbAudioManager(this)
-        settingsRepository = SettingsRepository(this)
+        // DsdManager methods are safe (no external/JNI calls), but wrap creation
+        // in try-catch for any future issues
+        val localDsdManager = try {
+            DsdManager()
+        } catch (e: UnsatisfiedLinkError) {
+            Log.e(TAG, "DsdManager creation failed (link error): ${e.message}", e)
+            DsdManager() // DsdManager no longer has external funs, so this is safe
+        } catch (e: Exception) {
+            Log.e(TAG, "DsdManager creation failed: ${e.message}", e)
+            DsdManager()
+        }
+        dsdManager = localDsdManager
+
+        val localUsbAudioManager = UsbAudioManager(this)
+        usbAudioManager = localUsbAudioManager
+
+        val localSettingsRepository = SettingsRepository(this)
+        settingsRepository = localSettingsRepository
 
         // Create music library
         val musicLibrary = MusicLibrary()
 
         // Initialize ViewModels
-        val playbackController = com.bitperfect.android.player.PlaybackController(engine)
+        val playbackController = com.bitperfect.android.player.PlaybackController(localEngine)
 
-        playerViewModel = PlayerViewModel(playbackController, engine, dsdManager)
+        playerViewModel = PlayerViewModel(playbackController, localEngine, localDsdManager)
         libraryViewModel = LibraryViewModel(musicLibrary)
-        settingsViewModel = SettingsViewModel(settingsRepository)
-        diagnosticsViewModel = DiagnosticsViewModel(engine, dsdManager, usbAudioManager)
+        settingsViewModel = SettingsViewModel(localSettingsRepository)
+        diagnosticsViewModel = DiagnosticsViewModel(localEngine, localDsdManager, localUsbAudioManager)
     }
 
     /**
@@ -164,11 +189,43 @@ class MainActivity : ComponentActivity() {
             dynamicColor = true
         ) {
             Surface(modifier = Modifier.fillMaxSize()) {
-                BitPerfectNavGraph(
-                    playerViewModel = playerViewModel,
-                    libraryViewModel = libraryViewModel,
-                    settingsViewModel = settingsViewModel,
-                    diagnosticsViewModel = diagnosticsViewModel
+                val pvm = playerViewModel
+                val lvm = libraryViewModel
+                val svm = settingsViewModel
+                val dvm = diagnosticsViewModel
+
+                if (pvm != null && lvm != null && svm != null && dvm != null) {
+                    BitPerfectNavGraph(
+                        playerViewModel = pvm,
+                        libraryViewModel = lvm,
+                        settingsViewModel = svm,
+                        diagnosticsViewModel = dvm
+                    )
+                } else {
+                    // Show a safe fallback screen when ViewModels failed to initialize
+                    InitializationErrorScreen()
+                }
+            }
+        }
+    }
+
+    @Composable
+    private fun InitializationErrorScreen() {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "BitPerfect",
+                    style = MaterialTheme.typography.headlineMedium
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "Initialization failed. Please restart the app.",
+                    style = MaterialTheme.typography.bodyLarge
                 )
             }
         }

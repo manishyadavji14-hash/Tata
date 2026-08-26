@@ -219,11 +219,15 @@ class PlayerViewModel(
     )
 
     private fun buildFormatDisplay(format: AudioFormatInfo): FormatDisplay {
-        val dsdMode = dsdManager.getCurrentMode()
+        val dsdMode = try {
+            dsdManager.getCurrentMode()
+        } catch (e: Exception) {
+            DsdManager.MODE_PCM
+        }
 
         return when (dsdMode) {
             DsdManager.MODE_DOP -> {
-                val dsdRate = dsdManager.getTransportRate()
+                val dsdRate = try { dsdManager.getTransportRate() } catch (e: Exception) { 0 }
                 val dsdDesc = dsdManager.getDsdDescription(dsdRate)
                 val transportRate = dsdManager.calculateDopRate(dsdRate)
                 val transportKhz = formatFrequency(transportRate)
@@ -234,7 +238,7 @@ class PlayerViewModel(
                 )
             }
             DsdManager.MODE_NATIVE_DSD -> {
-                val dsdRate = dsdManager.getTransportRate()
+                val dsdRate = try { dsdManager.getTransportRate() } catch (e: Exception) { 0 }
                 val dsdDesc = dsdManager.getDsdDescription(dsdRate)
                 val dsdMhz = formatDsdFrequency(dsdRate)
                 FormatDisplay(

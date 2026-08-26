@@ -35,29 +35,45 @@ class DsdManager {
      * @param headerBytes First 128+ bytes of the file
      * @return Format info array: [fileType, contentType, sampleRate, bitDepth, channels]
      *         or null if detection failed
+     *
+     * Note: Returns safe default (null) until JNI native implementation is available.
      */
-    external fun detectFormat(headerBytes: ByteArray): IntArray?
+    fun detectFormat(headerBytes: ByteArray): IntArray? {
+        return null
+    }
 
     /**
      * Check if the connected DAC supports native DSD.
      * Must be called after device descriptors have been parsed.
      * @return true if native DSD is available
+     *
+     * Note: Returns safe default (false) until JNI native implementation is available.
      */
-    external fun isNativeDsdAvailable(): Boolean
+    fun isNativeDsdAvailable(): Boolean {
+        return false
+    }
 
     /**
      * Get supported native DSD rates.
      * @return Array of supported DSD rates (e.g., [2822400, 5644800])
+     *
+     * Note: Returns safe default (empty) until JNI native implementation is available.
      */
-    external fun getSupportedDsdRates(): IntArray
+    fun getSupportedDsdRates(): IntArray {
+        return intArrayOf()
+    }
 
     /**
      * Select the best playback mode for a given source.
      * @param sampleRate Source sample rate (DSD rate for DSD files)
      * @param isDsd true if source is DSD content
      * @return Selected mode (MODE_PCM, MODE_DOP, or MODE_NATIVE_DSD)
+     *
+     * Note: Returns safe default (MODE_PCM) until JNI native implementation is available.
      */
-    external fun selectPlaybackMode(sampleRate: Int, isDsd: Boolean): Int
+    fun selectPlaybackMode(sampleRate: Int, isDsd: Boolean): Int {
+        return MODE_PCM
+    }
 
     /**
      * Get the transport rate for the current mode.
@@ -65,14 +81,22 @@ class DsdManager {
      * For DoP: the PCM transport rate (176400, 352800, or 705600)
      * For Native DSD: the DSD sample rate
      * @return Transport rate in Hz
+     *
+     * Note: Returns safe default (0) until JNI native implementation is available.
      */
-    external fun getTransportRate(): Int
+    fun getTransportRate(): Int {
+        return 0
+    }
 
     /**
      * Get current playback mode.
      * @return One of MODE_PCM, MODE_DOP, MODE_NATIVE_DSD
+     *
+     * Note: Returns safe default (MODE_PCM) until JNI native implementation is available.
      */
-    external fun getCurrentMode(): Int
+    fun getCurrentMode(): Int {
+        return MODE_PCM
+    }
 
     /**
      * Get human-readable mode name for display.
