@@ -272,12 +272,15 @@ Java_com_bitperfect_android_engine_NativeAudioEngine_registerTrackTransitionCall
     }
 
     bitperfect::jni::NativeBridge::instance().setTrackTransitionCallback(
-        [globalRef, method](JavaVM* vm) {
+        [globalRef, method](void* vmPtr) {
+            JavaVM* vm = static_cast<JavaVM*>(vmPtr);
             JNIEnv* callbackEnv = nullptr;
             bool attached = false;
             jint result = vm->GetEnv(reinterpret_cast<void**>(&callbackEnv), JNI_VERSION_1_6);
             if (result == JNI_EDETACHED) {
-                vm->AttachCurrentThread(reinterpret_cast<void**>(&callbackEnv), nullptr);
+                JNIEnv* attachEnv = nullptr;
+                vm->AttachCurrentThread(&attachEnv, nullptr);
+                callbackEnv = attachEnv;
                 attached = true;
             }
             if (callbackEnv != nullptr) {
