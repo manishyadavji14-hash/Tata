@@ -2,6 +2,7 @@ package com.bitperfect.android.ui.equalizer
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bitperfect.android.BitPerfectApp
 import com.bitperfect.android.player.AudioEffectsController
 import com.bitperfect.android.player.PlaybackController
 import com.bitperfect.android.player.PlaybackState
@@ -9,6 +10,8 @@ import com.bitperfect.android.ui.settings.SettingsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -60,6 +63,16 @@ class EqualizerViewModel(
 
     private val playbackListener: (PlaybackState) -> Unit = { refreshFromController() }
 
+    /** Pending debounce timer, cancelled and replaced by each new change. */
+    private var persistJob: Job? = null
+
+    /**
+     * True while a debounced write is waiting. Distinct from `persistJob`
+     * being active, which cannot tell a pending debounce from a write already
+     * in flight.
+     */
+    private var hasPendingDebounce: Boolean = false
+
     init {
         playbackController.addStateListener(playbackListener)
 
@@ -73,38 +86,89 @@ class EqualizerViewModel(
 
     fun setEnabled(enabled: Boolean) {
         effects.setEnabled(enabled)
-        persistAndRefresh()
+        applyAndPersistNow()
     }
 
+    /**
+     * Applies a band level immediately but only schedules the save.
+     *
+     * A slider drag emits a value for every pixel of travel. The effect has to
+     * follow the finger so the change is audible at once, while the on-disk
+     * copy only needs the value the drag settles on.
+     */
     fun setBandLevel(bandIndex: Int, levelMillibel: Int) {
         effects.setBandLevel(bandIndex, levelMillibel)
-        persistAndRefresh()
+        applyAndSchedulePersist()
     }
 
     fun setBassBoost(strength: Int) {
         effects.setBassBoostStrength(strength)
-        persistAndRefresh()
+        applyAndSchedulePersist()
     }
 
     fun setTreble(strength: Int) {
         effects.setTrebleStrength(strength)
-        persistAndRefresh()
+        applyAndSchedulePersist()
+    }
+
+    /**
+     * Flushes a pending slider value as soon as a drag ends, so the setting is
+     * on disk without waiting out the debounce.
+     */
+    fun commitPendingChanges() {
+        // Only a debounced write is worth flushing. An immediate write is
+        // already on its way, and re-issuing it would store the same value
+        // twice.
+        if (!hasPendingDebounce) return
+        persistNow()
     }
 
     fun applyPreset(presetIndex: Int) {
         effects.applyPreset(presetIndex)
-        persistAndRefresh()
+        applyAndPersistNow()
     }
 
     fun resetToFlat() {
         effects.resetToFlat()
-        persistAndRefresh()
+        applyAndPersistNow()
     }
 
-    private fun persistAndRefresh() {
-        val current = effects.settings
-        viewModelScope.launch { settingsRepository.setEqualizerSettings(current) }
+    /**
+     * Discrete actions such as a preset or a toggle happen once, so they are
+     * written straight away rather than debounced.
+     */
+    private fun applyAndPersistNow() {
+        persistNow()
         refreshFromController()
+    }
+
+    private fun applyAndSchedulePersist() {
+        persistJob?.cancel()
+        hasPendingDebounce = true
+        // The delay is tied to the ViewModel, but the write it triggers is not:
+        // see persistNow.
+        persistJob = viewModelScope.launch {
+            delay(PERSIST_DEBOUNCE_MS)
+            persistNow()
+        }
+        refreshFromController()
+    }
+
+    /**
+     * Writes the current curve on the application scope.
+     *
+     * Deliberately not viewModelScope: clearing the ViewModel would cancel the
+     * write and silently lose the setting. Reading `effects.settings` here
+     * rather than at schedule time means the newest value is stored, not
+     * whichever change happened to trigger this write.
+     */
+    private fun persistNow() {
+        persistJob?.cancel()
+        hasPendingDebounce = false
+        val snapshot = effects.settings
+        BitPerfectApp.applicationScope.launch {
+            settingsRepository.setEqualizerSettings(snapshot)
+        }
     }
 
     private fun refreshFromController() {
@@ -145,7 +209,19 @@ class EqualizerViewModel(
     }
 
     override fun onCleared() {
+        // Flush rather than drop: a value changed through accessibility or a
+        // keyboard never fires onValueChangeFinished, so this may be the only
+        // chance to store it.
+        if (hasPendingDebounce) persistNow()
         playbackController.removeStateListener(playbackListener)
         super.onCleared()
+    }
+
+    private companion object {
+        /**
+         * Long enough to collapse a whole drag into one write, short enough
+         * that the value is on disk before the user can leave the screen.
+         */
+        const val PERSIST_DEBOUNCE_MS = 300L
     }
 }

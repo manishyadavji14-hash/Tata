@@ -92,6 +92,32 @@ class PlayQueue {
     }
 
     /**
+     * Insert a track at a specific position.
+     *
+     * Used by "play next", which places a track immediately after the current
+     * one. The insert shifts the current index when it lands before it, so the
+     * track being played is unaffected.
+     */
+    fun insertAt(index: Int, trackPath: String) = lock.withLock {
+        insertAtLocked(index, trackPath)
+    }
+
+    /** Insert body shared by [insertAt] and [insertAfterCurrent]. Caller holds the lock. */
+    private fun insertAtLocked(index: Int, trackPath: String) {
+        val target = index.coerceIn(0, playOrder.size)
+        playOrder.add(target, trackPath)
+
+        // Keep the original order meaningful for un-shuffling.
+        if (isShuffled) originalOrder.add(trackPath) else originalOrder.add(target, trackPath)
+
+        if (currentIndex == -1) {
+            currentIndex = 0
+        } else if (target <= currentIndex) {
+            currentIndex++
+        }
+    }
+
+    /**
      * Remove a track at the specified index.
      * Adjusts currentIndex as needed.
      */
@@ -107,6 +133,69 @@ class PlayQueue {
             index < currentIndex -> currentIndex--
             index == currentIndex && currentIndex >= playOrder.size -> currentIndex = playOrder.size - 1
         }
+        true
+    }
+
+    /**
+     * Outcome of [removeAtTrackingCurrent].
+     *
+     * @property removed false when the index was out of range and nothing changed.
+     * @property wasCurrent true when the removed entry was the one playing, so
+     *   the caller must start [replacement] or stop.
+     * @property replacement the track now at the current position, or null when
+     *   the queue is empty.
+     */
+    data class RemoveOutcome(
+        val removed: Boolean,
+        val wasCurrent: Boolean,
+        val replacement: String?
+    )
+
+    /**
+     * Removes an entry and reports, under one lock acquisition, whether it was
+     * the entry being played and what replaced it.
+     *
+     * Reading `position`, calling `removeAt` and then reading `currentTrack`
+     * takes the lock three times. The audio worker can finish a track and
+     * advance the queue in between, so the caller would decide based on a
+     * position that has already moved - leaving a removed track playing, or
+     * starting the wrong replacement.
+     */
+    fun removeAtTrackingCurrent(index: Int): RemoveOutcome = lock.withLock {
+        if (index !in playOrder.indices) {
+            return@withLock RemoveOutcome(removed = false, wasCurrent = false, replacement = null)
+        }
+
+        val wasCurrent = index == currentIndex
+        val track = playOrder[index]
+        playOrder.removeAt(index)
+        originalOrder.remove(track)
+
+        when {
+            playOrder.isEmpty() -> currentIndex = -1
+            index < currentIndex -> currentIndex--
+            index == currentIndex && currentIndex >= playOrder.size ->
+                currentIndex = playOrder.size - 1
+        }
+
+        RemoveOutcome(
+            removed = true,
+            wasCurrent = wasCurrent,
+            replacement = if (currentIndex in playOrder.indices) playOrder[currentIndex] else null
+        )
+    }
+
+    /**
+     * Inserts a track directly after the one playing, atomically.
+     *
+     * Returns false when the queue is empty, so the caller can decide to start
+     * the track instead of queuing it. Reading `isEmpty` and `position`
+     * separately before inserting would let the audio worker advance in
+     * between and place the track after the wrong entry.
+     */
+    fun insertAfterCurrent(trackPath: String): Boolean = lock.withLock {
+        if (playOrder.isEmpty()) return@withLock false
+        insertAtLocked(currentIndex + 1, trackPath)
         true
     }
 

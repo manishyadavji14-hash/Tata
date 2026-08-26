@@ -31,6 +31,8 @@ data class Track(
     val artist: String = "",
     val albumId: Long = 0,
     val albumTitle: String = "",
+    /** Album artist, used to group compilations under one album. */
+    val albumArtist: String = "",
     val genre: String = "",
     val composer: String = "",
     val trackNumber: Int = 0,
@@ -44,7 +46,9 @@ data class Track(
     val lyrics: String? = null,
     val year: Int = 0,
     val fileSize: Long = 0,
-    val lastModified: Long = 0         // File last modified timestamp
+    val lastModified: Long = 0,        // File last modified timestamp
+    /** User-marked favourite. Survives rescans because track ids are stable. */
+    val isFavourite: Boolean = false
 ) {
     val isHighRes: Boolean
         get() = sampleRate > 48000 || bitDepth > 16

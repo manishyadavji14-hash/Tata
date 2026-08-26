@@ -38,6 +38,12 @@ interface PlaylistDao {
     @Query("SELECT COUNT(*) FROM playlists")
     fun count(): Int
 
-    @Query("SELECT * FROM playlists WHERE name LIKE '%' || :query || '%'")
-    fun search(query: String): List<Playlist>
+    /**
+     * @param pattern Escaped LIKE pattern from [SqlPatterns.contains].
+     */
+    @Query("SELECT * FROM playlists WHERE name LIKE :pattern ESCAPE '\\' ORDER BY name ASC")
+    fun search(pattern: String): List<Playlist>
+
+    @Query("SELECT * FROM playlists WHERE name = :name LIMIT 1")
+    fun findByName(name: String): Playlist?
 }

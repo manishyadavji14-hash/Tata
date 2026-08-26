@@ -39,6 +39,7 @@ class MediaStoreAudioSource(private val context: Context) {
         val title: String,
         val artist: String,
         val album: String,
+        val albumArtist: String,
         val mediaStoreAlbumId: Long,
         val composer: String,
         val genre: String,
@@ -117,7 +118,11 @@ class MediaStoreAudioSource(private val context: Context) {
         )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // GENRE and ALBUM_ARTIST were both added in API 30. MediaProvider
+            // rejects a projection naming a column it does not know, which
+            // fails the whole query, so neither may be requested below R.
             columns.add(MediaStore.Audio.Media.GENRE)
+            columns.add(MediaStore.Audio.Media.ALBUM_ARTIST)
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             columns.add(MediaStore.Audio.Media.BITS_PER_SAMPLE)
@@ -158,10 +163,17 @@ class MediaStoreAudioSource(private val context: Context) {
         val trackNumber =
             if (packedTrack >= DISC_MULTIPLIER) packedTrack % DISC_MULTIPLIER else packedTrack
 
-        val genre = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            cursor.stringOrNull(MediaStore.Audio.Media.GENRE).orEmpty()
+        // Both of these columns only exist from API 30, and are only present in
+        // the projection there. Below R the tag reader supplies the album
+        // artist instead, and genre stays blank.
+        val genre: String
+        val albumArtist: String
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            genre = cursor.stringOrNull(MediaStore.Audio.Media.GENRE).orEmpty()
+            albumArtist = cursor.normalisedTag(MediaStore.Audio.Media.ALBUM_ARTIST)
         } else {
-            ""
+            genre = ""
+            albumArtist = ""
         }
 
         val sampleRate: Int
@@ -182,6 +194,7 @@ class MediaStoreAudioSource(private val context: Context) {
             title = cursor.stringOrNull(MediaStore.Audio.Media.TITLE).orEmpty(),
             artist = cursor.normalisedTag(MediaStore.Audio.Media.ARTIST),
             album = cursor.normalisedTag(MediaStore.Audio.Media.ALBUM),
+            albumArtist = albumArtist,
             mediaStoreAlbumId = cursor.longOrZero(MediaStore.Audio.Media.ALBUM_ID),
             composer = cursor.normalisedTag(MediaStore.Audio.Media.COMPOSER),
             genre = genre,

@@ -7,6 +7,9 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -55,6 +58,17 @@ class BitPerfectApp : Application() {
         @Volatile
         var lastCrashReport: String = ""
             internal set
+
+        /**
+         * Scope for work that must finish even though the screen that started it
+         * has gone away, such as persisting a setting.
+         *
+         * A ViewModel's own scope is cancelled in `onCleared`, which silently
+         * drops an in-flight write. This scope lives as long as the process, and
+         * uses a SupervisorJob so one failed write cannot cancel the rest.
+         */
+        val applicationScope: CoroutineScope =
+            CoroutineScope(SupervisorJob() + Dispatchers.IO)
     }
 
     override fun onCreate() {

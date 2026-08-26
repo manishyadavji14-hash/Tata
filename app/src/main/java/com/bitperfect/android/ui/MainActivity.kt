@@ -100,6 +100,7 @@ class MainActivity : ComponentActivity() {
     private var settingsViewModel: SettingsViewModel? = null
     private var diagnosticsViewModel: DiagnosticsViewModel? = null
     private var equalizerViewModel: EqualizerViewModel? = null
+    private var musicLibrary: MusicLibrary? = null
 
     // Core components
     private var engine: NativeAudioEngine? = null
@@ -182,6 +183,7 @@ class MainActivity : ComponentActivity() {
     private fun initializeComponents() {
         // Room-backed and safe to share; holds only the application context.
         val musicLibrary = MusicLibrary(applicationContext)
+        this.musicLibrary = musicLibrary
 
         val playbackFactory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
@@ -394,14 +396,18 @@ class MainActivity : ComponentActivity() {
                 val svm = settingsViewModel
                 val dvm = diagnosticsViewModel
                 val evm = equalizerViewModel
+                val library = musicLibrary
 
-                if (pvm != null && lvm != null && svm != null && dvm != null && evm != null) {
+                if (pvm != null && lvm != null && svm != null && dvm != null &&
+                    evm != null && library != null
+                ) {
                     BitPerfectNavGraph(
                         playerViewModel = pvm,
                         libraryViewModel = lvm,
                         settingsViewModel = svm,
                         diagnosticsViewModel = dvm,
                         equalizerViewModel = evm,
+                        musicLibrary = library,
                         onOpenFile = ::launchAudioPicker
                     )
                 } else {

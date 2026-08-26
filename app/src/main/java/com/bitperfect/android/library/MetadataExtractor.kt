@@ -76,6 +76,7 @@ class MetadataExtractor {
         val title: String = "",
         val artist: String = "",
         val album: String = "",
+        val albumArtist: String = "",
         val genre: String = "",
         val composer: String = "",
         val trackNumber: Int = 0,
@@ -126,6 +127,9 @@ class MetadataExtractor {
                     ?: fallbackTitle,
                 artist = retriever.string(MediaMetadataRetriever.METADATA_KEY_ARTIST).orEmpty(),
                 album = retriever.string(MediaMetadataRetriever.METADATA_KEY_ALBUM).orEmpty(),
+                albumArtist = retriever
+                    .string(MediaMetadataRetriever.METADATA_KEY_ALBUMARTIST)
+                    .orEmpty(),
                 genre = retriever.string(MediaMetadataRetriever.METADATA_KEY_GENRE).orEmpty(),
                 composer = retriever.string(MediaMetadataRetriever.METADATA_KEY_COMPOSER)
                     .orEmpty(),
@@ -164,27 +168,28 @@ class MetadataExtractor {
     fun extractDsfMetadata(path: String): Metadata? = extract(path)
 
     /**
-     * Extract embedded artwork from an audio file into a cache directory.
+     * Extract embedded artwork from an audio file into a cache.
      *
      * Only needed for files MediaStore has not indexed; for indexed files the
      * album artwork content URI is used directly and nothing is written.
      *
-     * @return Path to the written artwork file, or null if none is embedded.
+     * A cache hit avoids opening the file at all. Entries are keyed on the
+     * source's size and modification time, so editing a file's tags produces a
+     * miss rather than serving its previous cover.
+     *
+     * @return Path to the cached artwork, or null if none is embedded.
      */
-    fun extractArtwork(audioPath: String, cacheDir: String): String? {
+    fun extractArtwork(audioPath: String, cache: ArtworkCache): String? {
+        val sourceFile = File(audioPath)
+        if (!sourceFile.isFile) return null
+
+        cache.find(sourceFile)?.let { return it }
+
         val retriever = MediaMetadataRetriever()
         return try {
             retriever.setDataSource(audioPath)
             val picture = retriever.embeddedPicture ?: return null
-
-            val directory = File(cacheDir)
-            if (!directory.exists() && !directory.mkdirs()) return null
-
-            val target = File(directory, "art_${audioPath.hashCode()}.jpg")
-            if (!target.exists()) {
-                target.outputStream().use { it.write(picture) }
-            }
-            target.absolutePath
+            cache.put(sourceFile, picture)
         } catch (error: Exception) {
             Log.w(TAG, "Could not extract artwork from $audioPath: ${error.message}")
             null
@@ -205,6 +210,9 @@ class MetadataExtractor {
             artist = metadata.artist,
             albumId = albumId,
             albumTitle = metadata.album,
+            // Fall back to the track artist so albums without an album-artist
+            // tag still group under a stable key.
+            albumArtist = metadata.albumArtist.ifBlank { metadata.artist },
             genre = metadata.genre,
             composer = metadata.composer,
             trackNumber = metadata.trackNumber,

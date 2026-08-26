@@ -20,7 +20,12 @@ import com.bitperfect.android.library.model.Track
 class LibraryScanner(
     private val context: Context,
     private val metadataExtractor: MetadataExtractor = MetadataExtractor(),
-    private val audioSource: MediaStoreAudioSource = MediaStoreAudioSource(context)
+    private val audioSource: MediaStoreAudioSource = MediaStoreAudioSource(context),
+    /**
+     * Fills in sample rate and bit depth that MediaStore cannot report below
+     * Android 12. Optional: without it those fields stay zero.
+     */
+    private val formatProbe: AudioFormatProbe? = null
 ) {
 
     /**
@@ -205,7 +210,18 @@ class LibraryScanner(
      */
     fun scanSingleFile(path: String): Track? {
         val metadata = metadataExtractor.extract(path) ?: return null
-        return metadataExtractor.buildTrack(path, metadata)
+        val track = metadataExtractor.buildTrack(path, metadata)
+
+        // Files reached this way are typically not in the media index, so the
+        // decoder is the only source of exact format details.
+        if (track.sampleRate > 0 && track.bitDepth > 0) return track
+
+        val probed = formatProbe?.probe(path) ?: return track
+        return track.copy(
+            sampleRate = probed.sampleRate,
+            bitDepth = probed.bitDepth,
+            channels = probed.channels
+        )
     }
 
     /**
@@ -266,6 +282,16 @@ class LibraryScanner(
         existingId: Long
     ): Track {
         val fallbackTitle = entry.path.substringAfterLast('/').substringBeforeLast('.')
+
+        // Only open the file when the media index left the format blank, which
+        // is every track below Android 12. Probing is per-file I/O, so it is
+        // limited to new and modified entries by the caller.
+        val probed = if (entry.sampleRate <= 0 || entry.bitDepth <= 0) {
+            formatProbe?.probe(entry.path)
+        } else {
+            null
+        }
+
         return Track(
             id = existingId,
             path = entry.path,
@@ -273,15 +299,18 @@ class LibraryScanner(
             artist = entry.artist,
             albumId = 0L,
             albumTitle = entry.album,
+            // Fall back to the track artist so albums without an ALBUM_ARTIST
+            // tag still group under a stable key.
+            albumArtist = entry.albumArtist.ifBlank { entry.artist },
             genre = entry.genre,
             composer = entry.composer,
             trackNumber = entry.trackNumber,
             discNumber = entry.discNumber,
             duration = entry.durationMs,
             format = entry.format,
-            sampleRate = entry.sampleRate,
-            bitDepth = entry.bitDepth,
-            channels = 0,
+            sampleRate = entry.sampleRate.takeIf { it > 0 } ?: probed?.sampleRate ?: 0,
+            bitDepth = entry.bitDepth.takeIf { it > 0 } ?: probed?.bitDepth ?: 0,
+            channels = probed?.channels ?: 0,
             artworkPath = entry.artworkUri,
             year = entry.year,
             fileSize = entry.fileSize,

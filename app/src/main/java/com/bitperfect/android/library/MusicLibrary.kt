@@ -6,6 +6,9 @@ import com.bitperfect.android.library.model.Artist
 import com.bitperfect.android.library.model.Composer
 import com.bitperfect.android.library.model.Genre
 import com.bitperfect.android.library.model.Playlist
+import com.bitperfect.android.engine.NativeAudioFormatProbe
+import com.bitperfect.android.library.dao.SqlPatterns
+import com.bitperfect.android.library.scanner.AudioFormatProbe
 import com.bitperfect.android.library.model.Track
 import com.bitperfect.android.library.scanner.LibraryScanner
 import kotlinx.coroutines.Dispatchers
@@ -26,12 +29,21 @@ import kotlinx.coroutines.withContext
  */
 class MusicLibrary(
     context: Context,
-    private val database: LibraryDatabase = LibraryDatabase.getInstance(context)
+    private val database: LibraryDatabase = LibraryDatabase.getInstance(context),
+    /**
+     * Supplies exact sample rate and bit depth for files the media index does
+     * not describe, which is all of them below Android 12.
+     */
+    formatProbe: AudioFormatProbe? = NativeAudioFormatProbe()
 ) {
 
     private val applicationContext = context.applicationContext
     private val metadataExtractor = MetadataExtractor()
-    private val scanner = LibraryScanner(applicationContext, metadataExtractor)
+    private val scanner = LibraryScanner(
+        context = applicationContext,
+        metadataExtractor = metadataExtractor,
+        formatProbe = formatProbe
+    )
 
     private val trackDao get() = database.trackDao()
     private val albumDao get() = database.albumDao()
@@ -107,7 +119,9 @@ class MusicLibrary(
         }
 
     suspend fun getTracksByFolder(folderPath: String): List<Track> =
-        withContext(Dispatchers.IO) { trackDao.getByFolder(folderPath) }
+        withContext(Dispatchers.IO) {
+            trackDao.getByFolder(SqlPatterns.directoryPrefix(folderPath))
+        }
 
     // --- Browse by Artists ---
 
@@ -118,6 +132,9 @@ class MusicLibrary(
 
     suspend fun getAlbumsByArtist(artistName: String): List<Album> =
         withContext(Dispatchers.IO) { albumDao.getByArtist(artistName) }
+
+    suspend fun getArtistById(artistId: Long): Artist? =
+        withContext(Dispatchers.IO) { artistDao.getById(artistId) }
 
     // --- Browse by Albums ---
 
@@ -174,7 +191,9 @@ class MusicLibrary(
                 artist = track.artist,
                 album = track.albumTitle,
                 year = track.year,
-                artworkUri = track.artworkPath
+                artworkUri = track.artworkPath,
+                isFavourite = track.isFavourite,
+                isInLibrary = true
             )
         }
 
@@ -182,7 +201,7 @@ class MusicLibrary(
             ?: return@withContext TrackDetails(title = fallbackTitle)
 
         val artwork = if (metadata.hasArtwork) {
-            metadataExtractor.extractArtwork(path, artworkCacheDirectory())
+            metadataExtractor.extractArtwork(path, artworkCache)
         } else {
             null
         }
@@ -196,8 +215,17 @@ class MusicLibrary(
         )
     }
 
-    private fun artworkCacheDirectory(): String =
-        java.io.File(applicationContext.cacheDir, "artwork").absolutePath
+    /**
+     * Cache for covers extracted from files the media index does not describe.
+     */
+    private val artworkCache = ArtworkCache(
+        java.io.File(applicationContext.cacheDir, "artwork")
+    )
+
+    /**
+     * Drop cached artwork, for example from a settings action.
+     */
+    suspend fun clearArtworkCache() = withContext(Dispatchers.IO) { artworkCache.clear() }
 
     /**
      * Display details for the currently playing file.
@@ -207,30 +235,69 @@ class MusicLibrary(
         val artist: String = "",
         val album: String = "",
         val year: Int = 0,
-        val artworkUri: String? = null
+        val artworkUri: String? = null,
+        val isFavourite: Boolean = false,
+        /**
+         * False for files opened directly, which have no library row and so
+         * cannot be favourited or added to a playlist.
+         */
+        val isInLibrary: Boolean = false
     )
 
     // --- Search ---
 
     suspend fun search(query: String): SearchResults = withContext(Dispatchers.IO) {
         if (query.isBlank()) return@withContext SearchResults()
+        val pattern = SqlPatterns.contains(query)
         SearchResults(
-            tracks = trackDao.search(query),
-            albums = albumDao.search(query),
-            artists = artistDao.search(query)
+            tracks = trackDao.search(pattern),
+            albums = albumDao.search(pattern),
+            artists = artistDao.search(pattern)
         )
     }
+
+    // --- Favourites ---
+
+    suspend fun getFavourites(): List<Track> =
+        withContext(Dispatchers.IO) { trackDao.getFavourites() }
+
+    suspend fun setFavourite(trackId: Long, isFavourite: Boolean) =
+        withContext(Dispatchers.IO) { trackDao.setFavourite(trackId, isFavourite) }
+
+    /**
+     * Toggle the favourite flag for a file path.
+     *
+     * @return The new state, or null when the path is not in the library.
+     */
+    suspend fun toggleFavouriteByPath(path: String): Boolean? = withContext(Dispatchers.IO) {
+        val track = trackDao.getByPath(path) ?: return@withContext null
+        val updated = !track.isFavourite
+        trackDao.setFavourite(track.id, updated)
+        updated
+    }
+
+    suspend fun isFavouriteByPath(path: String): Boolean =
+        withContext(Dispatchers.IO) { trackDao.getByPath(path)?.isFavourite == true }
 
     // --- Playlists ---
 
     suspend fun getPlaylists(): List<Playlist> =
         withContext(Dispatchers.IO) { playlistDao.getAll() }
 
+    /**
+     * Creates a playlist, discarding repeated track ids.
+     *
+     * A playlist must hold each track at most once. The queue may legitimately
+     * contain the same track twice, so saving a queue as a playlist would
+     * otherwise store a duplicate, and the detail screen keys its rows by track
+     * id - two identical keys crash the list. [addTracksToPlaylist] enforces the
+     * same rule, so both insert paths agree.
+     */
     suspend fun createPlaylist(name: String, trackIds: List<Long> = emptyList()): Playlist =
         withContext(Dispatchers.IO) {
             val playlist = Playlist(
                 name = name,
-                trackIds = Playlist.trackIdsToJson(trackIds)
+                trackIds = Playlist.trackIdsToJson(trackIds.distinct())
             )
             val id = playlistDao.insert(playlist)
             playlist.copy(id = id)
@@ -244,31 +311,91 @@ class MusicLibrary(
         playlistDao.deleteById(id)
     }
 
+    suspend fun findPlaylistByName(name: String): Playlist? =
+        withContext(Dispatchers.IO) { playlistDao.findByName(name) }
+
+    suspend fun renamePlaylist(playlistId: Long, newName: String) = withContext(Dispatchers.IO) {
+        database.runInTransaction {
+            val playlist = playlistDao.getById(playlistId) ?: return@runInTransaction
+            playlistDao.update(
+                playlist.copy(name = newName, modifiedAt = System.currentTimeMillis())
+            )
+        }
+    }
+
+    /**
+     * Resolve file paths to library track ids, preserving order.
+     *
+     * Paths that are not in the library are dropped: a playlist entry needs a
+     * stable id, which only scanned tracks have.
+     */
+    suspend fun resolveTrackIds(paths: List<String>): List<Long> = withContext(Dispatchers.IO) {
+        paths.mapNotNull { path -> trackDao.getByPath(path)?.id }
+    }
+
     /**
      * Add tracks to the end of a playlist, ignoring ones already present.
+     *
+     * The read-modify-write runs in a transaction so two concurrent edits
+     * cannot each overwrite the other's additions.
+     *
+     * @return How many tracks were actually added.
      */
-    suspend fun addTracksToPlaylist(playlistId: Long, trackIds: List<Long>) =
+    suspend fun addTracksToPlaylist(playlistId: Long, trackIds: List<Long>): Int =
         withContext(Dispatchers.IO) {
-            val playlist = playlistDao.getById(playlistId) ?: return@withContext
-            val merged = playlist.getTrackIdList() + trackIds.filterNot { it in playlist.getTrackIdList() }
-            playlistDao.update(
-                playlist.copy(
-                    trackIds = Playlist.trackIdsToJson(merged),
-                    modifiedAt = System.currentTimeMillis()
+            var addedCount = 0
+            database.runInTransaction {
+                val playlist = playlistDao.getById(playlistId) ?: return@runInTransaction
+
+                // Parse once rather than per candidate.
+                val existing = playlist.getTrackIdList()
+                val existingSet = existing.toHashSet()
+                val additions = trackIds.filter { existingSet.add(it) }
+                if (additions.isEmpty()) return@runInTransaction
+
+                addedCount = additions.size
+                playlistDao.update(
+                    playlist.copy(
+                        trackIds = Playlist.trackIdsToJson(existing + additions),
+                        modifiedAt = System.currentTimeMillis()
+                    )
                 )
-            )
+            }
+            addedCount
         }
 
     suspend fun removeTrackFromPlaylist(playlistId: Long, trackId: Long) =
         withContext(Dispatchers.IO) {
-            val playlist = playlistDao.getById(playlistId) ?: return@withContext
-            val remaining = playlist.getTrackIdList().filterNot { it == trackId }
-            playlistDao.update(
-                playlist.copy(
-                    trackIds = Playlist.trackIdsToJson(remaining),
-                    modifiedAt = System.currentTimeMillis()
+            database.runInTransaction {
+                val playlist = playlistDao.getById(playlistId) ?: return@runInTransaction
+                val remaining = playlist.getTrackIdList().filterNot { it == trackId }
+                playlistDao.update(
+                    playlist.copy(
+                        trackIds = Playlist.trackIdsToJson(remaining),
+                        modifiedAt = System.currentTimeMillis()
+                    )
                 )
-            )
+            }
+        }
+
+    /**
+     * Reorder a playlist entry.
+     */
+    suspend fun movePlaylistTrack(playlistId: Long, fromIndex: Int, toIndex: Int) =
+        withContext(Dispatchers.IO) {
+            database.runInTransaction {
+                val playlist = playlistDao.getById(playlistId) ?: return@runInTransaction
+                val ids = playlist.getTrackIdList().toMutableList()
+                if (fromIndex !in ids.indices || toIndex !in ids.indices) return@runInTransaction
+
+                ids.add(toIndex, ids.removeAt(fromIndex))
+                playlistDao.update(
+                    playlist.copy(
+                        trackIds = Playlist.trackIdsToJson(ids),
+                        modifiedAt = System.currentTimeMillis()
+                    )
+                )
+            }
         }
 
     /**
@@ -337,53 +464,93 @@ class MusicLibrary(
     }
 
     /**
+     * Rebuilds albums and artists if they are missing while tracks exist.
+     *
+     * The v1 to v2 migration drops the albums table, because the unique index
+     * moved to album artist and SQLite cannot alter an index in place. Albums
+     * are derived data, so they are recoverable from the tracks table alone -
+     * no storage permission and no file reads, unlike a full rescan. Without
+     * this, an upgrading user opens an empty Albums tab and has no way to know
+     * a reindex is needed.
+     */
+    suspend fun ensureAggregates(): Boolean = withContext(Dispatchers.IO) {
+        if (trackDao.count() == 0 || albumDao.count() > 0) return@withContext false
+        database.runInTransaction { rebuildAggregates() }
+        true
+    }
+
+    /**
      * Derive albums and artists from the current tracks and link tracks to
      * their album row.
+     *
+     * Rows are upserted on their unique key rather than cleared and
+     * reinserted, so album and artist ids stay stable across rescans. Album
+     * ids appear in navigation routes, so reassigning them would leave an open
+     * album screen pointing at a different album.
      */
     private fun rebuildAggregates() {
         val tracks = trackDao.getAll()
 
-        albumDao.deleteAll()
-        artistDao.deleteAll()
-
-        // Albums are keyed by title + artist, matching the unique index.
+        // Albums group on album artist, which is what identifies an album.
+        // Grouping on the per-track artist splits compilations into one album
+        // per featured artist.
         val albumGroups = tracks
             .filter { it.albumTitle.isNotBlank() }
-            .groupBy { it.albumTitle to it.artist }
+            .groupBy { it.albumTitle to it.albumArtist }
 
         for ((key, albumTracks) in albumGroups) {
-            val (title, artist) = key
-            val albumId = albumDao.insert(
-                Album(
-                    title = title,
-                    artist = artist,
-                    artworkPath = albumTracks.firstNotNullOfOrNull { it.artworkPath },
-                    year = albumTracks.maxOfOrNull { it.year } ?: 0,
-                    trackCount = albumTracks.size,
-                    totalDuration = albumTracks.sumOf { it.duration }
-                )
+            val (title, albumArtist) = key
+
+            // Only credit a single artist when every track agrees; otherwise
+            // leave it blank to mark the album as a compilation.
+            val distinctArtists = albumTracks.map { it.artist }.distinct()
+            val creditedArtist = distinctArtists.singleOrNull().orEmpty()
+
+            val existing = albumDao.findByTitleAndAlbumArtist(title, albumArtist)
+            val album = Album(
+                id = existing?.id ?: 0L,
+                title = title,
+                albumArtist = albumArtist,
+                artist = creditedArtist,
+                artworkPath = albumTracks.firstNotNullOfOrNull { it.artworkPath },
+                year = albumTracks.maxOfOrNull { it.year } ?: 0,
+                trackCount = albumTracks.size,
+                totalDuration = albumTracks.sumOf { it.duration }
             )
-            albumTracks.forEach { track ->
-                trackDao.update(track.copy(albumId = albumId))
+
+            val albumId = if (existing != null) {
+                albumDao.update(album)
+                existing.id
+            } else {
+                albumDao.insert(album)
             }
+
+            // One statement per album instead of one per track.
+            trackDao.assignAlbumId(albumId, title, albumArtist)
         }
+
+        trackDao.clearAlbumIdForUngrouped()
+        albumDao.deleteOrphans()
 
         val artistGroups = tracks
             .filter { it.artist.isNotBlank() }
             .groupBy { it.artist }
 
         for ((name, artistTracks) in artistGroups) {
-            artistDao.insert(
-                Artist(
-                    name = name,
-                    albumCount = artistTracks.map { it.albumTitle }
-                        .filter { it.isNotBlank() }
-                        .distinct()
-                        .size,
-                    trackCount = artistTracks.size
-                )
+            val existing = artistDao.findByName(name)
+            val artist = Artist(
+                id = existing?.id ?: 0L,
+                name = name,
+                albumCount = artistTracks.map { it.albumTitle }
+                    .filter { it.isNotBlank() }
+                    .distinct()
+                    .size,
+                trackCount = artistTracks.size
             )
+            if (existing != null) artistDao.update(artist) else artistDao.insert(artist)
         }
+
+        artistDao.deleteOrphans()
     }
 
     /**

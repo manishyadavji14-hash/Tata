@@ -40,15 +40,46 @@ interface TrackDao {
     @Query("SELECT * FROM tracks WHERE composer = :composer ORDER BY title ASC")
     fun getByComposer(composer: String): List<Track>
 
-    @Query("SELECT * FROM tracks WHERE path LIKE :folderPath || '%' ORDER BY path ASC")
-    fun getByFolder(folderPath: String): List<Track>
+    /**
+     * Tracks under a directory.
+     *
+     * @param pathPattern Escaped LIKE pattern from [SqlPatterns.directoryPrefix].
+     */
+    @Query("SELECT * FROM tracks WHERE path LIKE :pathPattern ESCAPE '\\' ORDER BY path ASC")
+    fun getByFolder(pathPattern: String): List<Track>
 
+    /**
+     * @param pattern Escaped LIKE pattern from [SqlPatterns.contains].
+     */
     @Query(
-        "SELECT * FROM tracks WHERE title LIKE '%' || :query || '%' " +
-            "OR artist LIKE '%' || :query || '%' " +
-            "OR albumTitle LIKE '%' || :query || '%'"
+        "SELECT * FROM tracks WHERE title LIKE :pattern ESCAPE '\\' " +
+            "OR artist LIKE :pattern ESCAPE '\\' " +
+            "OR albumTitle LIKE :pattern ESCAPE '\\' " +
+            "ORDER BY title ASC"
     )
-    fun search(query: String): List<Track>
+    fun search(pattern: String): List<Track>
+
+    @Query("SELECT * FROM tracks WHERE isFavourite != 0 ORDER BY title ASC")
+    fun getFavourites(): List<Track>
+
+    @Query("UPDATE tracks SET isFavourite = :isFavourite WHERE id = :id")
+    fun setFavourite(id: Long, isFavourite: Boolean)
+
+    @Query("SELECT COUNT(*) FROM tracks WHERE isFavourite != 0")
+    fun favouriteCount(): Int
+
+    @Query("SELECT * FROM tracks WHERE albumArtist = :albumArtist ORDER BY albumTitle ASC, discNumber ASC, trackNumber ASC")
+    fun getByAlbumArtist(albumArtist: String): List<Track>
+
+    /**
+     * Link every track of an album group to its album row in one statement.
+     */
+    @Query("UPDATE tracks SET albumId = :albumId WHERE albumTitle = :title AND albumArtist = :albumArtist")
+    fun assignAlbumId(albumId: Long, title: String, albumArtist: String)
+
+    // albumTitle is NOT NULL in the schema, so only the empty case can occur.
+    @Query("UPDATE tracks SET albumId = 0 WHERE albumTitle = ''")
+    fun clearAlbumIdForUngrouped()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(track: Track): Long

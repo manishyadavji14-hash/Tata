@@ -99,6 +99,102 @@ class PlaybackController(
         startTrack(trackPath)
     }
 
+    /**
+     * Replace the queue with a list of tracks and start at one of them.
+     *
+     * @param startIndex Index within [trackPaths] to begin from.
+     */
+    fun playQueue(trackPaths: List<String>, startIndex: Int = 0) {
+        val playable = trackPaths.filter { it.isNotBlank() }
+        if (playable.isEmpty()) return
+
+        val safeIndex = startIndex.coerceIn(0, playable.lastIndex)
+        queue.setQueue(playable, safeIndex)
+        queue.currentTrack?.let(::startTrack)
+    }
+
+    /**
+     * Insert a track directly after the one playing.
+     *
+     * Starts playback when nothing is queued, so the action is never silent.
+     */
+    fun playNext(trackPath: String) {
+        if (trackPath.isBlank()) return
+
+        // Returns false only when the queue is empty, in which case there is
+        // nothing to queue behind and the track just starts.
+        if (!queue.insertAfterCurrent(trackPath)) {
+            playFile(trackPath)
+        }
+    }
+
+    /**
+     * Append a track to the end of the queue.
+     */
+    fun addToQueue(trackPath: String) {
+        if (trackPath.isBlank()) return
+
+        if (queue.isEmpty) {
+            playFile(trackPath)
+            return
+        }
+        queue.add(trackPath)
+    }
+
+    /**
+     * Append several tracks to the end of the queue.
+     */
+    fun addAllToQueue(trackPaths: List<String>) {
+        val playable = trackPaths.filter { it.isNotBlank() }
+        if (playable.isEmpty()) return
+
+        if (queue.isEmpty) {
+            playQueue(playable)
+            return
+        }
+        queue.addAll(playable)
+    }
+
+    /**
+     * Jump to a queue entry and play it.
+     */
+    fun playQueueIndex(index: Int) {
+        val track = queue.jumpTo(index) ?: return
+        startTrack(track)
+    }
+
+    /**
+     * Remove a queue entry.
+     *
+     * Removing the entry being played advances to whatever now occupies that
+     * position, so playback does not continue on a track no longer queued.
+     */
+    fun removeFromQueue(index: Int) {
+        // One locked operation, so a track finishing on the audio worker cannot
+        // change the current position between the removal and the decision
+        // about what to play next.
+        val outcome = queue.removeAtTrackingCurrent(index)
+        if (!outcome.removed || !outcome.wasCurrent) return
+
+        val replacement = outcome.replacement
+        if (replacement == null) stop() else startTrack(replacement)
+    }
+
+    /**
+     * Reorder the queue without interrupting playback.
+     */
+    fun moveInQueue(fromIndex: Int, toIndex: Int) {
+        queue.move(fromIndex, toIndex)
+    }
+
+    /**
+     * Clear the queue and stop.
+     */
+    fun clearQueue() {
+        queue.clear()
+        stop()
+    }
+
     fun play() {
         when (_state) {
             is PlaybackState.Paused -> resume()
@@ -189,6 +285,18 @@ class PlaybackController(
     }
 
     fun getSleepTimerRemaining(): Long? = sleepTimer?.remainingMs
+
+    /**
+     * Whether a sleep timer is counting down.
+     */
+    fun isSleepTimerActive(): Boolean = sleepTimer?.active == true
+
+    /**
+     * Add time to a running sleep timer.
+     */
+    fun extendSleepTimer(additionalMs: Long) {
+        sleepTimer?.extend(additionalMs)
+    }
 
     /** Legacy native gapless callback; advance through the same output path. */
     fun onTrackTransition() {

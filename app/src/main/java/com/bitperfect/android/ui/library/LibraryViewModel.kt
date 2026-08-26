@@ -375,6 +375,11 @@ class LibraryViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true) }
 
+            // Recover albums if a schema upgrade dropped them. This is a no-op
+            // in the normal case and needs no permission, since albums are
+            // derived from the tracks already in the database.
+            musicLibrary.ensureAggregates()
+
             // Mapping a large library is CPU work, so it stays off the main
             // dispatcher. Only the resulting state write happens on Main.
             val snapshot = withContext(Dispatchers.Default) { buildSnapshot() }
@@ -422,7 +427,10 @@ class LibraryViewModel(
                 AlbumItem(
                     id = album.id,
                     title = album.title,
-                    artist = album.artist,
+                    // displayArtist, not artist: `artist` is deliberately left
+                    // blank for multi-artist albums to mark them as
+                    // compilations, and it falls back to the album artist.
+                    artist = album.displayArtist,
                     year = album.year,
                     trackCount = album.trackCount,
                     artworkUri = album.artworkPath,

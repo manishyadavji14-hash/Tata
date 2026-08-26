@@ -163,7 +163,8 @@ fun EqualizerScreen(
                         minLevelMillibel = uiState.minLevelMillibel,
                         maxLevelMillibel = uiState.maxLevelMillibel,
                         enabled = uiState.isAttached && uiState.isEnabled,
-                        onLevelChange = { viewModel.setBandLevel(band.index, it) }
+                        onLevelChange = { viewModel.setBandLevel(band.index, it) },
+                        onLevelCommit = { viewModel.commitPendingChanges() }
                     )
                 }
             }
@@ -181,7 +182,8 @@ fun EqualizerScreen(
                 },
                 strength = uiState.bassBoostStrength,
                 enabled = uiState.isAttached && uiState.isEnabled && uiState.supportsBassBoost,
-                onStrengthChange = { viewModel.setBassBoost(it) }
+                onStrengthChange = { viewModel.setBassBoost(it) },
+                onStrengthCommit = { viewModel.commitPendingChanges() }
             )
 
             StrengthSlider(
@@ -190,7 +192,8 @@ fun EqualizerScreen(
                     "since Android has no dedicated treble effect",
                 strength = uiState.trebleStrength,
                 enabled = uiState.isAttached && uiState.isEnabled && uiState.bands.isNotEmpty(),
-                onStrengthChange = { viewModel.setTreble(it) }
+                onStrengthChange = { viewModel.setTreble(it) },
+                onStrengthCommit = { viewModel.commitPendingChanges() }
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -228,7 +231,8 @@ private fun BandSlider(
     minLevelMillibel: Int,
     maxLevelMillibel: Int,
     enabled: Boolean,
-    onLevelChange: (Int) -> Unit
+    onLevelChange: (Int) -> Unit,
+    onLevelCommit: () -> Unit
 ) {
     Column(modifier = Modifier.padding(vertical = 4.dp)) {
         Row(
@@ -245,6 +249,7 @@ private fun BandSlider(
         Slider(
             value = band.levelMillibel.toFloat(),
             onValueChange = { onLevelChange(it.toInt()) },
+            onValueChangeFinished = onLevelCommit,
             valueRange = minLevelMillibel.toFloat()..maxLevelMillibel.toFloat(),
             enabled = enabled,
             modifier = Modifier.fillMaxWidth()
@@ -258,7 +263,8 @@ private fun StrengthSlider(
     description: String?,
     strength: Int,
     enabled: Boolean,
-    onStrengthChange: (Int) -> Unit
+    onStrengthChange: (Int) -> Unit,
+    onStrengthCommit: () -> Unit
 ) {
     Column(modifier = Modifier.padding(vertical = 6.dp)) {
         Row(
@@ -282,6 +288,7 @@ private fun StrengthSlider(
         Slider(
             value = strength.toFloat(),
             onValueChange = { onStrengthChange(it.toInt()) },
+            onValueChangeFinished = onStrengthCommit,
             valueRange = 0f..AudioEffectsController.MAX_STRENGTH.toFloat(),
             enabled = enabled,
             modifier = Modifier.fillMaxWidth()

@@ -1,7 +1,16 @@
 package com.bitperfect.android.ui.player
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +25,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bedtime
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.FolderOpen
 import androidx.compose.material.icons.filled.QueueMusic
 import androidx.compose.material.icons.filled.Repeat
@@ -24,6 +36,7 @@ import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -34,9 +47,13 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -46,6 +63,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -58,9 +76,10 @@ import com.bitperfect.android.R
 import com.bitperfect.android.player.RepeatMode
 import com.bitperfect.android.ui.components.AlbumArtImage
 import com.bitperfect.android.ui.theme.BitPerfectGreen
+import com.bitperfect.android.ui.theme.BitPerfectMotion
 import com.bitperfect.android.ui.theme.BitPerfectShapeTokens
-import com.bitperfect.android.ui.theme.DsdBlue
 import com.bitperfect.android.ui.theme.DopPurple
+import com.bitperfect.android.ui.theme.DsdBlue
 import com.bitperfect.android.ui.theme.SeekBarActive
 
 /**
@@ -76,6 +95,7 @@ import com.bitperfect.android.ui.theme.SeekBarActive
  *    or "DSD64 . Native DSD . 2.8224 MHz . 2ch")
  * - Queue access button
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PlayerScreen(
     viewModel: PlayerViewModel,
@@ -85,8 +105,33 @@ fun PlayerScreen(
     onDiagnosticsClick: () -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    var isSleepTimerSheetVisible by remember { mutableStateOf(false) }
 
-    Scaffold { paddingValues ->
+    LaunchedEffect(uiState.statusMessage) {
+        val message = uiState.statusMessage ?: return@LaunchedEffect
+        snackbarHostState.showSnackbar(message)
+        viewModel.dismissStatusMessage()
+    }
+
+    if (isSleepTimerSheetVisible) {
+        SleepTimerDialog(
+            remainingMs = uiState.sleepTimerRemainingMs,
+            onSelectMinutes = { minutes ->
+                viewModel.setSleepTimer(minutes)
+                isSleepTimerSheetVisible = false
+            },
+            onExtend = { minutes ->
+                viewModel.extendSleepTimer(minutes)
+                isSleepTimerSheetVisible = false
+            },
+            onDismiss = { isSleepTimerSheetVisible = false }
+        )
+    }
+
+    Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) }
+    ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -127,13 +172,20 @@ fun PlayerScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Album artwork
+            // Album artwork, which lifts slightly while playing
+            val artworkScale by animateFloatAsState(
+                targetValue = if (uiState.isPlaying) 1f else 0.92f,
+                animationSpec = BitPerfectMotion.responsive(),
+                label = "artworkScale"
+            )
+
             AlbumArtwork(
                 artworkUri = uiState.artworkUri,
                 isPlaying = uiState.isPlaying,
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
                     .aspectRatio(1f)
+                    .scale(artworkScale)
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -178,6 +230,10 @@ fun PlayerScreen(
             // Bottom row: device info and queue button
             BottomRow(
                 deviceName = uiState.deviceName,
+                isFavourite = uiState.isFavourite,
+                sleepTimerRemainingMs = uiState.sleepTimerRemainingMs,
+                onToggleFavourite = { viewModel.toggleFavourite() },
+                onSleepTimerClick = { isSleepTimerSheetVisible = true },
                 onEqualizerClick = onEqualizerClick,
                 onQueueClick = onQueueClick,
                 onDiagnosticsClick = onDiagnosticsClick
@@ -245,6 +301,7 @@ private fun AlbumArtwork(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun TrackInfo(
     title: String,
@@ -255,13 +312,14 @@ private fun TrackInfo(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Long titles scroll rather than truncate, so the full name is readable.
         Text(
             text = title,
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE)
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
@@ -391,21 +449,43 @@ private fun TransportControls(
             onClick = onPlayPause
         ) {
             Box(contentAlignment = Alignment.Center) {
-                if (isLoading) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(32.dp),
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        strokeWidth = 3.dp
-                    )
-                } else {
-                    Icon(
-                        painter = painterResource(
-                            id = if (isPlaying) R.drawable.ic_pause else R.drawable.ic_play
-                        ),
-                        contentDescription = if (isPlaying) "Pause" else "Play",
-                        modifier = Modifier.size(32.dp),
-                        tint = MaterialTheme.colorScheme.onPrimary
-                    )
+                // Cross-fade between loading, play and pause so the primary
+                // control never jumps between states.
+                AnimatedContent(
+                    targetState = when {
+                        isLoading -> TransportIconState.LOADING
+                        isPlaying -> TransportIconState.PAUSE
+                        else -> TransportIconState.PLAY
+                    },
+                    transitionSpec = {
+                        (fadeIn(BitPerfectMotion.quick()) +
+                            scaleIn(BitPerfectMotion.quick(), initialScale = 0.75f)) togetherWith
+                            (fadeOut(BitPerfectMotion.quick()) +
+                                scaleOut(BitPerfectMotion.quick(), targetScale = 0.75f))
+                    },
+                    label = "transportIcon"
+                ) { iconState ->
+                    when (iconState) {
+                        TransportIconState.LOADING -> CircularProgressIndicator(
+                            modifier = Modifier.size(32.dp),
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            strokeWidth = 3.dp
+                        )
+
+                        TransportIconState.PAUSE -> Icon(
+                            painter = painterResource(id = R.drawable.ic_pause),
+                            contentDescription = "Pause",
+                            modifier = Modifier.size(32.dp),
+                            tint = MaterialTheme.colorScheme.onPrimary
+                        )
+
+                        TransportIconState.PLAY -> Icon(
+                            painter = painterResource(id = R.drawable.ic_play),
+                            contentDescription = "Play",
+                            modifier = Modifier.size(32.dp),
+                            tint = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
                 }
             }
         }
@@ -444,6 +524,10 @@ private fun TransportControls(
 @Composable
 private fun BottomRow(
     deviceName: String,
+    isFavourite: Boolean,
+    sleepTimerRemainingMs: Long?,
+    onToggleFavourite: () -> Unit,
+    onSleepTimerClick: () -> Unit,
     onEqualizerClick: () -> Unit,
     onQueueClick: () -> Unit,
     onDiagnosticsClick: () -> Unit
@@ -479,6 +563,32 @@ private fun BottomRow(
         }
 
         Row(verticalAlignment = Alignment.CenterVertically) {
+            IconButton(onClick = onToggleFavourite) {
+                Icon(
+                    imageVector = if (isFavourite) {
+                        Icons.Default.Favorite
+                    } else {
+                        Icons.Default.FavoriteBorder
+                    },
+                    contentDescription = if (isFavourite) "Remove favourite" else "Add favourite",
+                    tint = if (isFavourite) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                    }
+                )
+            }
+            IconButton(onClick = onSleepTimerClick) {
+                Icon(
+                    imageVector = Icons.Default.Bedtime,
+                    contentDescription = "Sleep timer",
+                    tint = if (sleepTimerRemainingMs != null) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                    }
+                )
+            }
             IconButton(onClick = onEqualizerClick) {
                 Icon(
                     imageVector = Icons.Default.Tune,
@@ -496,3 +606,94 @@ private fun BottomRow(
         }
     }
 }
+
+
+/**
+ * Sleep timer picker.
+ *
+ * Offers the common presets rather than a free-form duration, and when a timer
+ * is already running it shows the remaining time and offers to extend it.
+ */
+@Composable
+private fun SleepTimerDialog(
+    remainingMs: Long?,
+    onSelectMinutes: (Int) -> Unit,
+    onExtend: (Int) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val presets = listOf(15, 30, 45, 60, 90)
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Sleep timer") },
+        text = {
+            Column {
+                if (remainingMs != null) {
+                    Text(
+                        text = "Pausing in ${formatRemaining(remainingMs)}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlinedButton(onClick = { onExtend(15) }) { Text("+15 min") }
+                        OutlinedButton(onClick = { onExtend(30) }) { Text("+30 min") }
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = "Or choose a new duration",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                } else {
+                    Text(
+                        text = "Pause playback after",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                presets.forEach { minutes ->
+                    Surface(
+                        onClick = { onSelectMinutes(minutes) },
+                        color = Color.Transparent,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(
+                            text = "$minutes minutes",
+                            style = MaterialTheme.typography.bodyLarge,
+                            modifier = Modifier.padding(vertical = 12.dp)
+                        )
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            if (remainingMs != null) {
+                TextButton(onClick = { onSelectMinutes(0) }) { Text("Turn off") }
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text("Cancel") }
+        }
+    )
+}
+
+/**
+ * Remaining sleep time, rounded up to the minute above one minute.
+ */
+private fun formatRemaining(milliseconds: Long): String {
+    val totalSeconds = milliseconds / 1000
+    return if (totalSeconds < 60) {
+        "$totalSeconds sec"
+    } else {
+        "${(totalSeconds + 59) / 60} min"
+    }
+}
+
+
+/**
+ * The three states the primary transport button animates between.
+ */
+private enum class TransportIconState { LOADING, PLAY, PAUSE }

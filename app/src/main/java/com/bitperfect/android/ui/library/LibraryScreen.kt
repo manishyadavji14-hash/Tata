@@ -1,5 +1,11 @@
 package com.bitperfect.android.ui.library
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +17,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -20,39 +27,39 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.QueueMusic
 import androidx.compose.material.icons.filled.Album
 import androidx.compose.material.icons.filled.AudioFile
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Piano
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Sort
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.Surface
-import androidx.compose.material3.TextButton
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.SearchBar
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -62,9 +69,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bitperfect.android.ui.components.AlbumArtImage
+import com.bitperfect.android.ui.theme.BitPerfectMotion
 import com.bitperfect.android.ui.theme.BitPerfectShapeTokens
 
 /**
@@ -85,6 +94,11 @@ fun LibraryScreen(
     viewModel: LibraryViewModel,
     onAlbumClick: (Long) -> Unit = {},
     onArtistClick: (Long) -> Unit = {},
+    onGenreClick: (String) -> Unit = {},
+    onComposerClick: (String) -> Unit = {},
+    onFolderClick: (String) -> Unit = {},
+    onFavouritesClick: () -> Unit = {},
+    onPlaylistsClick: () -> Unit = {},
     onTrackClick: (String) -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -129,6 +143,15 @@ fun LibraryScreen(
                 actions = {
                     IconButton(onClick = { isSearchActive = !isSearchActive }) {
                         Icon(Icons.Default.Search, contentDescription = "Search")
+                    }
+                    IconButton(onClick = onFavouritesClick) {
+                        Icon(Icons.Default.Favorite, contentDescription = "Favourites")
+                    }
+                    IconButton(onClick = onPlaylistsClick) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.QueueMusic,
+                            contentDescription = "Playlists"
+                        )
                     }
                     IconButton(onClick = { viewModel.showFolderPicker() }) {
                         Icon(Icons.Default.Folder, contentDescription = "Choose folders")
@@ -208,31 +231,52 @@ fun LibraryScreen(
                         )
                     }
                     else -> {
-                        when (LibraryViewModel.LibraryTab.entries[selectedTab]) {
-                            LibraryViewModel.LibraryTab.FOLDERS -> FolderList(
-                                folders = uiState.folders,
-                                onFolderClick = {}
-                            )
-                            LibraryViewModel.LibraryTab.ARTISTS -> ArtistList(
-                                artists = uiState.artists,
-                                onArtistClick = onArtistClick
-                            )
-                            LibraryViewModel.LibraryTab.ALBUMS -> AlbumGrid(
-                                albums = uiState.albums,
-                                onAlbumClick = onAlbumClick
-                            )
-                            LibraryViewModel.LibraryTab.GENRES -> GenreList(
-                                genres = uiState.genres,
-                                onGenreClick = {}
-                            )
-                            LibraryViewModel.LibraryTab.COMPOSERS -> ComposerList(
-                                composers = uiState.composers,
-                                onComposerClick = {}
-                            )
-                            LibraryViewModel.LibraryTab.TRACKS -> TrackList(
-                                tracks = uiState.tracks,
-                                onTrackClick = onTrackClick
-                            )
+                        // Tab content slides in the direction of travel, which
+                        // makes the tab row feel connected to what it changes.
+                        AnimatedContent(
+                            targetState = selectedTab,
+                            transitionSpec = {
+                                val forward = targetState > initialState
+                                val slide = { width: Int ->
+                                    if (forward) width / 6 else -width / 6
+                                }
+                                (slideInHorizontally(
+                                    animationSpec = tween(
+                                        BitPerfectMotion.DURATION_STANDARD,
+                                        easing = BitPerfectMotion.EmphasisedDecelerate
+                                    ),
+                                    initialOffsetX = slide
+                                ) + fadeIn(BitPerfectMotion.standard())) togetherWith
+                                    (fadeOut(BitPerfectMotion.exiting()))
+                            },
+                            label = "libraryTabContent"
+                        ) { tabIndex ->
+                            when (LibraryViewModel.LibraryTab.entries[tabIndex]) {
+                                LibraryViewModel.LibraryTab.FOLDERS -> FolderList(
+                                    folders = uiState.folders,
+                                    onFolderClick = onFolderClick
+                                )
+                                LibraryViewModel.LibraryTab.ARTISTS -> ArtistList(
+                                    artists = uiState.artists,
+                                    onArtistClick = onArtistClick
+                                )
+                                LibraryViewModel.LibraryTab.ALBUMS -> AlbumGrid(
+                                    albums = uiState.albums,
+                                    onAlbumClick = onAlbumClick
+                                )
+                                LibraryViewModel.LibraryTab.GENRES -> GenreList(
+                                    genres = uiState.genres,
+                                    onGenreClick = onGenreClick
+                                )
+                                LibraryViewModel.LibraryTab.COMPOSERS -> ComposerList(
+                                    composers = uiState.composers,
+                                    onComposerClick = onComposerClick
+                                )
+                                LibraryViewModel.LibraryTab.TRACKS -> TrackList(
+                                    tracks = uiState.tracks,
+                                    onTrackClick = onTrackClick
+                                )
+                            }
                         }
                     }
                 }
@@ -265,7 +309,7 @@ private fun AlbumGrid(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        items(albums) { album ->
+        items(albums, key = { it.id }) { album ->
             AlbumCard(album = album, onClick = { onAlbumClick(album.id) })
         }
     }
@@ -452,7 +496,7 @@ private fun FolderList(
 @Composable
 private fun GenreList(
     genres: List<LibraryViewModel.GenreItem>,
-    onGenreClick: (Long) -> Unit
+    onGenreClick: (String) -> Unit
 ) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -462,7 +506,7 @@ private fun GenreList(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onGenreClick(genre.id) }
+                    .clickable { onGenreClick(genre.name) }
                     .padding(vertical = 12.dp, horizontal = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -494,7 +538,7 @@ private fun GenreList(
 @Composable
 private fun ComposerList(
     composers: List<LibraryViewModel.ComposerItem>,
-    onComposerClick: (Long) -> Unit
+    onComposerClick: (String) -> Unit
 ) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -504,7 +548,7 @@ private fun ComposerList(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onComposerClick(composer.id) }
+                    .clickable { onComposerClick(composer.name) }
                     .padding(vertical = 12.dp, horizontal = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {

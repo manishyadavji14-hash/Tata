@@ -131,7 +131,19 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     // Testing
-    testImplementation("junit:junit:4.13.2")
+    // The unit tests under src/test are written against JUnit 5 (Jupiter).
+    // Only JUnit 4 used to be declared here, so they never compiled or ran.
+    testImplementation(platform("org.junit:junit-bom:5.10.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+}
+
+
+// The JVM unit tests use JUnit 5, which needs the JUnit Platform runner.
+// Instrumented tests keep the default JUnit 4 runner.
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }

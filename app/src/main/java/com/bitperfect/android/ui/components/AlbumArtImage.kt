@@ -1,5 +1,6 @@
 package com.bitperfect.android.ui.components
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +21,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.bitperfect.android.ui.theme.BitPerfectMotion
 
 /**
  * Album artwork with a graceful placeholder.
@@ -48,21 +50,35 @@ fun AlbumArtImage(
         ),
         contentAlignment = Alignment.Center
     ) {
-        if (artworkUri.isNullOrBlank() || hasFailed) {
-            Icon(
-                imageVector = Icons.Default.Album,
-                contentDescription = contentDescription,
-                modifier = Modifier.size(placeholderIconSize),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
-            )
-        } else {
-            AsyncImage(
-                model = artworkUri,
-                contentDescription = contentDescription,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize(),
-                onError = { hasFailed = true }
-            )
+        // Crossfade between covers so a track change does not flash.
+        Crossfade(
+            targetState = artworkUri.takeUnless { it.isNullOrBlank() || hasFailed },
+            animationSpec = BitPerfectMotion.standard(),
+            label = "albumArtwork"
+        ) { resolvedUri ->
+            if (resolvedUri == null) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Album,
+                        contentDescription = contentDescription,
+                        modifier = Modifier.size(placeholderIconSize),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
+                    )
+                }
+            } else {
+                AsyncImage(
+                    model = resolvedUri,
+                    contentDescription = contentDescription,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize(),
+                    // Coil's own fade covers the load; the crossfade above
+                    // covers the swap between two different covers.
+                    onError = { hasFailed = true }
+                )
+            }
         }
     }
 }
