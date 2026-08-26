@@ -8,9 +8,12 @@ import com.bitperfect.android.library.model.Artist
 import com.bitperfect.android.library.model.Composer
 import com.bitperfect.android.library.model.Genre
 import com.bitperfect.android.library.model.Track
+import com.bitperfect.android.ui.settings.SettingsRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 /**
@@ -25,7 +28,8 @@ import kotlinx.coroutines.launch
  * - Handles tab selection and content switching
  */
 class LibraryViewModel(
-    private val musicLibrary: MusicLibrary
+    private val musicLibrary: MusicLibrary,
+    private val settingsRepository: SettingsRepository? = null
 ) : ViewModel() {
 
     /**
@@ -132,6 +136,13 @@ class LibraryViewModel(
 
     init {
         loadLibrary()
+        // Auto-scan on first launch when library is empty
+        viewModelScope.launch {
+            // Check if library is empty after initial load attempt
+            if (musicLibrary.isEmpty()) {
+                rescan()
+            }
+        }
     }
 
     /**
@@ -167,12 +178,25 @@ class LibraryViewModel(
 
     /**
      * Trigger a library rescan (pull-to-refresh).
+     * Reads scan directories from SettingsRepository or uses defaults.
      */
     fun rescan() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = _uiState.value.copy(isScanning = true)
+
+            // Get scan directories from settings, or use defaults
+            val scanDirs = if (settingsRepository != null) {
+                settingsRepository.scanDirectories.first().toList()
+            } else {
+                listOf(
+                    "/storage/emulated/0",
+                    "/storage/emulated/0/Music",
+                    "/storage/emulated/0/Download"
+                )
+            }
+
             musicLibrary.triggerScan(
-                directories = listOf("/storage/emulated/0/Music"),
+                directories = scanDirs,
                 progressCallback = { progress ->
                     _uiState.value = _uiState.value.copy(scanProgress = progress.progressPercent)
                 }

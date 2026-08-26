@@ -49,6 +49,9 @@ class SettingsViewModel(
         val themeMode: String = "system",
         val debugLogging: Boolean = false,
 
+        // Library
+        val scanDirectories: Set<String> = emptySet(),
+
         // Warnings
         val showBitPerfectWarning: Boolean = false,
         val bitPerfectWarningMessage: String = "",
@@ -86,6 +89,7 @@ class SettingsViewModel(
             val crossfade = repository.crossfadeMs.first()
             val theme = repository.themeMode.first()
             val debug = repository.debugLogging.first()
+            val scanDirs = repository.scanDirectories.first()
 
             _uiState.value = SettingsUiState(
                 bitPerfectMode = bitPerfect,
@@ -101,7 +105,8 @@ class SettingsViewModel(
                 clippingPrevention = clipping,
                 crossfadeMs = crossfade,
                 themeMode = theme,
-                debugLogging = debug
+                debugLogging = debug,
+                scanDirectories = scanDirs
             )
         }
     }
@@ -241,6 +246,29 @@ class SettingsViewModel(
             repository.setDebugLogging(enabled)
             _uiState.value = _uiState.value.copy(debugLogging = enabled)
         }
+    }
+
+    // --- Library ---
+
+    fun addScanDirectory(path: String) {
+        if (path.isBlank()) return
+        viewModelScope.launch {
+            repository.addScanDirectory(path)
+            val updated = repository.scanDirectories.first()
+            _uiState.value = _uiState.value.copy(scanDirectories = updated)
+        }
+    }
+
+    fun removeScanDirectory(path: String) {
+        viewModelScope.launch {
+            repository.removeScanDirectory(path)
+            val updated = repository.scanDirectories.first()
+            _uiState.value = _uiState.value.copy(scanDirectories = updated)
+        }
+    }
+
+    fun getScanDirectories(): Set<String> {
+        return _uiState.value.scanDirectories
     }
 
     // --- Warnings ---

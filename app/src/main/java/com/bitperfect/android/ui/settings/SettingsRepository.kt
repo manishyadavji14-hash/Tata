@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -52,6 +53,9 @@ class SettingsRepository(private val context: Context) {
         // Interface
         val THEME_MODE = stringPreferencesKey("theme_mode")
         val DEBUG_LOGGING = booleanPreferencesKey("debug_logging")
+
+        // Library
+        val SCAN_DIRECTORIES = stringSetPreferencesKey("scan_directories")
     }
 
     // --- Default Values ---
@@ -70,6 +74,12 @@ class SettingsRepository(private val context: Context) {
         const val CROSSFADE_MS = 0
         const val THEME_MODE = "system"  // "system", "light", "dark"
         const val DEBUG_LOGGING = false
+
+        val SCAN_DIRECTORIES = setOf(
+            "/storage/emulated/0",
+            "/storage/emulated/0/Music",
+            "/storage/emulated/0/Download"
+        )
     }
 
     // --- Audio Output Settings ---
@@ -220,6 +230,32 @@ class SettingsRepository(private val context: Context) {
     suspend fun setDebugLogging(enabled: Boolean) {
         context.dataStore.edit { prefs ->
             prefs[Keys.DEBUG_LOGGING] = enabled
+        }
+    }
+
+    // --- Library Settings ---
+
+    val scanDirectories: Flow<Set<String>> = context.dataStore.data.map { prefs ->
+        prefs[Keys.SCAN_DIRECTORIES] ?: Defaults.SCAN_DIRECTORIES
+    }
+
+    suspend fun setScanDirectories(directories: Set<String>) {
+        context.dataStore.edit { prefs ->
+            prefs[Keys.SCAN_DIRECTORIES] = directories
+        }
+    }
+
+    suspend fun addScanDirectory(path: String) {
+        context.dataStore.edit { prefs ->
+            val current = prefs[Keys.SCAN_DIRECTORIES] ?: Defaults.SCAN_DIRECTORIES
+            prefs[Keys.SCAN_DIRECTORIES] = current + path
+        }
+    }
+
+    suspend fun removeScanDirectory(path: String) {
+        context.dataStore.edit { prefs ->
+            val current = prefs[Keys.SCAN_DIRECTORIES] ?: Defaults.SCAN_DIRECTORIES
+            prefs[Keys.SCAN_DIRECTORIES] = current - path
         }
     }
 }

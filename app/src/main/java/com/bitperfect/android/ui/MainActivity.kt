@@ -158,7 +158,7 @@ class MainActivity : ComponentActivity() {
         val usbManager = playbackService?.getUsbManager()
 
         playerViewModel = PlayerViewModel(controller, engine, dsdManager)
-        libraryViewModel = LibraryViewModel(musicLibrary)
+        libraryViewModel = LibraryViewModel(musicLibrary, localSettingsRepository)
         settingsViewModel = SettingsViewModel(localSettingsRepository)
         diagnosticsViewModel = if (usbManager != null) {
             DiagnosticsViewModel(engine, dsdManager, usbManager)

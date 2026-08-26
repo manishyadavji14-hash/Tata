@@ -1,5 +1,8 @@
 package com.bitperfect.android.library
 
+import android.media.MediaMetadataRetriever
+import android.os.Build
+import android.util.Log
 import com.bitperfect.android.library.model.Track
 
 /**
@@ -11,15 +14,15 @@ import com.bitperfect.android.library.model.Track
  * - Artwork: extracts embedded artwork to cache directory
  * - Lyrics: extracts embedded lyrics if available
  *
- * For PCM formats (WAV, FLAC, AIFF): uses Android MediaMetadataRetriever
- * or file header parsing for format info.
- *
+ * Uses android.media.MediaMetadataRetriever for real metadata extraction.
  * For DSD formats (DSF, DFF): uses native JNI call to parse DSD metadata
  * blocks (ID3v2 tags in DSF).
  */
 class MetadataExtractor {
 
     companion object {
+        private const val TAG = "MetadataExtractor"
+
         /** Audio file extensions recognized by the scanner. */
         val SUPPORTED_EXTENSIONS = setOf(
             "wav", "wave",
@@ -66,7 +69,7 @@ class MetadataExtractor {
     )
 
     /**
-     * Extract metadata from an audio file.
+     * Extract metadata from an audio file using MediaMetadataRetriever.
      *
      * @param path Full file path
      * @return Extracted metadata, or null if file is not a supported audio format
@@ -76,29 +79,94 @@ class MetadataExtractor {
         if (!isSupportedExtension(extension)) return null
 
         // Determine format from extension
-        val format = when (extension) {
-            "wav", "wave" -> "WAV"
-            "flac" -> "FLAC"
-            "dsf" -> "DSF"
-            "dff" -> "DFF"
-            "aiff", "aif" -> "AIFF"
-            "alac" -> "ALAC"
-            "m4a" -> "M4A"
-            "ape" -> "APE"
-            "mp3" -> "MP3"
-            "aac" -> "AAC"
-            "ogg", "oga" -> "OGG"
-            "opus" -> "OPUS"
-            "wv" -> "WavPack"
-            else -> extension.uppercase()
-        }
+        val format = extensionToFormat(extension)
 
-        // In production, this would use MediaMetadataRetriever or native parsing.
-        // For DSF files, would call native JNI to parse ID3v2 metadata block.
-        return Metadata(
-            title = extractTitleFromPath(path),
-            format = format
-        )
+        val retriever = MediaMetadataRetriever()
+        return try {
+            retriever.setDataSource(path)
+
+            val title = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE) ?: ""
+            val artist = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST) ?: ""
+            val album = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM) ?: ""
+            val genre = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE) ?: ""
+            val composer = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_COMPOSER) ?: ""
+            val durationStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
+            val yearStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_YEAR)
+            val trackNumberStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_CD_TRACK_NUMBER)
+            val discNumberStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DISC_NUMBER)
+            val channelsStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_NUM_TRACKS)
+
+            // Parse duration
+            val duration = durationStr?.toLongOrNull() ?: 0L
+
+            // Parse track number (may be in format "3/12")
+            val trackNumber = parseSlashNumber(trackNumberStr)
+
+            // Parse disc number (may be in format "1/2")
+            val discNumber = parseSlashNumber(discNumberStr).let { if (it == 0) 1 else it }
+
+            // Parse year
+            val year = parseYear(yearStr)
+
+            // Parse channels - try METADATA_KEY_NUM_TRACKS first, not reliable for channels
+            // Use bitrate-based estimation or API 31+ keys
+            var sampleRate = 0
+            var bitDepth = 0
+            var channels = 0
+
+            // API 31+ provides sample rate and bit depth directly
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val sampleRateStr = retriever.extractMetadata(
+                    MediaMetadataRetriever.METADATA_KEY_SAMPLERATE
+                )
+                val bitsPerSampleStr = retriever.extractMetadata(
+                    MediaMetadataRetriever.METADATA_KEY_BITS_PER_SAMPLE
+                )
+                sampleRate = sampleRateStr?.toIntOrNull() ?: 0
+                bitDepth = bitsPerSampleStr?.toIntOrNull() ?: 0
+            }
+
+            // Estimate channels from MIME type or set defaults based on format
+            val mimeType = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_MIMETYPE)
+            if (channels == 0) {
+                // Most music is stereo
+                channels = 2
+            }
+
+            // Check if artwork exists
+            val hasArtwork = retriever.embeddedPicture != null
+
+            Metadata(
+                title = title.ifEmpty { extractTitleFromPath(path) },
+                artist = artist,
+                album = album,
+                genre = genre,
+                composer = composer,
+                trackNumber = trackNumber,
+                discNumber = discNumber,
+                year = year,
+                duration = duration,
+                sampleRate = sampleRate,
+                bitDepth = bitDepth,
+                channels = channels,
+                format = format,
+                lyrics = null,
+                hasArtwork = hasArtwork
+            )
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to extract metadata from: $path", e)
+            // Fall back to filename-based metadata
+            Metadata(
+                title = extractTitleFromPath(path),
+                format = format
+            )
+        } finally {
+            try {
+                retriever.release()
+            } catch (e: Exception) {
+                // Ignore release errors
+            }
+        }
     }
 
     /**
@@ -117,9 +185,25 @@ class MetadataExtractor {
      * @return Path to the saved artwork, or null if no artwork found
      */
     fun extractArtwork(audioPath: String, cacheDir: String): String? {
-        // In production: use MediaMetadataRetriever.getEmbeddedPicture()
-        // or parse FLAC PICTURE block, DSF ID3v2 APIC frame, etc.
-        return null
+        val retriever = MediaMetadataRetriever()
+        return try {
+            retriever.setDataSource(audioPath)
+            val artBytes = retriever.embeddedPicture ?: return null
+
+            val artFile = java.io.File(cacheDir, "art_${audioPath.hashCode()}.jpg")
+            artFile.parentFile?.mkdirs()
+            artFile.writeBytes(artBytes)
+            artFile.absolutePath
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to extract artwork from: $audioPath", e)
+            null
+        } finally {
+            try {
+                retriever.release()
+            } catch (e: Exception) {
+                // Ignore release errors
+            }
+        }
     }
 
     /**
@@ -127,6 +211,7 @@ class MetadataExtractor {
      */
     fun buildTrack(path: String, metadata: Metadata, albumId: Long = 0): Track {
         val fileName = path.substringAfterLast('/')
+        val file = java.io.File(path)
         return Track(
             path = path,
             title = metadata.title.ifEmpty { fileName.substringBeforeLast('.') },
@@ -144,12 +229,54 @@ class MetadataExtractor {
             channels = metadata.channels,
             year = metadata.year,
             lyrics = metadata.lyrics,
-            lastModified = System.currentTimeMillis()
+            fileSize = if (file.exists()) file.length() else 0L,
+            lastModified = if (file.exists()) file.lastModified() else System.currentTimeMillis()
         )
     }
 
     private fun extractTitleFromPath(path: String): String {
         val fileName = path.substringAfterLast('/')
         return fileName.substringBeforeLast('.')
+    }
+
+    private fun extensionToFormat(extension: String): String {
+        return when (extension) {
+            "wav", "wave" -> "WAV"
+            "flac" -> "FLAC"
+            "dsf" -> "DSF"
+            "dff" -> "DFF"
+            "aiff", "aif" -> "AIFF"
+            "alac" -> "ALAC"
+            "m4a" -> "M4A"
+            "ape" -> "APE"
+            "mp3" -> "MP3"
+            "aac" -> "AAC"
+            "ogg", "oga" -> "OGG"
+            "opus" -> "OPUS"
+            "wv" -> "WavPack"
+            else -> extension.uppercase()
+        }
+    }
+
+    /**
+     * Parse a track/disc number that may be in "N/M" format.
+     * Returns just the N part.
+     */
+    private fun parseSlashNumber(value: String?): Int {
+        if (value.isNullOrBlank()) return 0
+        val parts = value.split("/")
+        return parts[0].trim().toIntOrNull() ?: 0
+    }
+
+    /**
+     * Parse a year from various date formats (e.g., "2023", "2023-01-15").
+     */
+    private fun parseYear(value: String?): Int {
+        if (value.isNullOrBlank()) return 0
+        // Try direct integer parse first
+        value.toIntOrNull()?.let { return it }
+        // Try extracting first 4 digits (handles "2023-01-15" format)
+        val yearMatch = Regex("(\\d{4})").find(value)
+        return yearMatch?.groupValues?.get(1)?.toIntOrNull() ?: 0
     }
 }

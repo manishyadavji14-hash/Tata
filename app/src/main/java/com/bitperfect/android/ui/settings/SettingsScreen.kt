@@ -239,6 +239,18 @@ fun SettingsScreen(
                 }
             }
 
+            // Library section
+            item {
+                SectionHeader("Library")
+            }
+            item {
+                ScanDirectoriesCard(
+                    scanDirectories = uiState.scanDirectories,
+                    onAddDirectory = { viewModel.addScanDirectory(it) },
+                    onRemoveDirectory = { viewModel.removeScanDirectory(it) }
+                )
+            }
+
             // About section
             item {
                 SectionHeader("About")
@@ -261,6 +273,116 @@ fun SettingsScreen(
             // Bottom padding
             item {
                 Spacer(modifier = Modifier.height(32.dp))
+            }
+        }
+    }
+}
+
+@Composable
+private fun ScanDirectoriesCard(
+    scanDirectories: Set<String>,
+    onAddDirectory: (String) -> Unit,
+    onRemoveDirectory: (String) -> Unit
+) {
+    var showAddDialog by remember { mutableStateOf(false) }
+    var newDirPath by remember { mutableStateOf("") }
+
+    if (showAddDialog) {
+        AlertDialog(
+            onDismissRequest = { showAddDialog = false },
+            title = { Text("Add Scan Directory") },
+            text = {
+                Column {
+                    Text(
+                        "Enter the full path to a directory to scan for music files.",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    OutlinedTextField(
+                        value = newDirPath,
+                        onValueChange = { newDirPath = it },
+                        label = { Text("Directory Path") },
+                        placeholder = { Text("/storage/emulated/0/Music") },
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        if (newDirPath.isNotBlank()) {
+                            onAddDirectory(newDirPath.trim())
+                            newDirPath = ""
+                            showAddDialog = false
+                        }
+                    }
+                ) {
+                    Text("Add")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = {
+                    newDirPath = ""
+                    showAddDialog = false
+                }) {
+                    Text("Cancel")
+                }
+            }
+        )
+    }
+
+    SettingsCard {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = "Scan Directories",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Text(
+                    text = "Directories to scan for audio files",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            TextButton(onClick = { showAddDialog = true }) {
+                Text("Add")
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        if (scanDirectories.isEmpty()) {
+            Text(
+                text = "No directories configured. Default paths will be used.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        } else {
+            for (dir in scanDirectories.sorted()) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = dir,
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.weight(1f),
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                    TextButton(onClick = { onRemoveDirectory(dir) }) {
+                        Text(
+                            "Remove",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
+                }
             }
         }
     }

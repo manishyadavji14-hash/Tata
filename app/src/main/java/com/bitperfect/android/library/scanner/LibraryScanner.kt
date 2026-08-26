@@ -2,6 +2,7 @@ package com.bitperfect.android.library.scanner
 
 import com.bitperfect.android.library.MetadataExtractor
 import com.bitperfect.android.library.model.Track
+import java.io.File
 
 /**
  * LibraryScanner - scans storage directories for audio files.
@@ -72,6 +73,15 @@ class LibraryScanner(
     }
 
     /**
+     * Scan result including discovered tracks for cache population.
+     */
+    data class ScanResultWithTracks(
+        val result: ScanResult,
+        val newTracks: List<Track>,
+        val removedPaths: List<String>
+    )
+
+    /**
      * Scan the given directories for audio files.
      *
      * @param directories List of directory paths to scan
@@ -79,6 +89,17 @@ class LibraryScanner(
      * @return Scan result with statistics
      */
     fun scan(directories: List<String>, existingPaths: Set<String> = emptySet()): ScanResult {
+        return scanWithTracks(directories, existingPaths).result
+    }
+
+    /**
+     * Scan directories and return both statistics and discovered tracks.
+     *
+     * @param directories List of directory paths to scan
+     * @param existingPaths Set of paths already in the database (for incremental scan)
+     * @return Scan result with statistics and the list of newly discovered tracks
+     */
+    fun scanWithTracks(directories: List<String>, existingPaths: Set<String> = emptySet()): ScanResultWithTracks {
         val startTime = System.currentTimeMillis()
         currentState = ScanState.SCANNING
         isCancelled = false
@@ -86,7 +107,7 @@ class LibraryScanner(
         val discoveredFiles = mutableListOf<String>()
         val newTracks = mutableListOf<Track>()
         var tracksUpdated = 0
-        var tracksRemoved = 0
+        val removedPaths = mutableListOf<String>()
 
         // Phase 1: Discover audio files
         for (dir in directories) {
@@ -96,10 +117,14 @@ class LibraryScanner(
 
         if (isCancelled) {
             currentState = ScanState.CANCELLED
-            return ScanResult(success = false, error = "Scan cancelled")
+            return ScanResultWithTracks(
+                result = ScanResult(success = false, error = "Scan cancelled"),
+                newTracks = emptyList(),
+                removedPaths = emptyList()
+            )
         }
 
-        // Phase 2: Process discovered files
+        // Phase 2: Process discovered files - extract metadata for new files
         currentState = ScanState.PROCESSING
         val discoveredPaths = discoveredFiles.toSet()
 
@@ -113,7 +138,7 @@ class LibraryScanner(
                 currentFile = filePath,
                 tracksAdded = newTracks.size,
                 tracksUpdated = tracksUpdated,
-                tracksRemoved = tracksRemoved
+                tracksRemoved = removedPaths.size
             ))
 
             if (filePath !in existingPaths) {
@@ -130,7 +155,7 @@ class LibraryScanner(
         // Phase 3: Find removed files
         for (existingPath in existingPaths) {
             if (existingPath !in discoveredPaths) {
-                tracksRemoved++
+                removedPaths.add(existingPath)
             }
         }
 
@@ -141,7 +166,7 @@ class LibraryScanner(
             success = !isCancelled,
             tracksAdded = newTracks.size,
             tracksUpdated = tracksUpdated,
-            tracksRemoved = tracksRemoved,
+            tracksRemoved = removedPaths.size,
             totalTracks = discoveredFiles.size,
             durationMs = duration
         )
@@ -152,10 +177,14 @@ class LibraryScanner(
             filesProcessed = discoveredFiles.size,
             tracksAdded = newTracks.size,
             tracksUpdated = tracksUpdated,
-            tracksRemoved = tracksRemoved
+            tracksRemoved = removedPaths.size
         ))
 
-        return result
+        return ScanResultWithTracks(
+            result = result,
+            newTracks = newTracks,
+            removedPaths = removedPaths
+        )
     }
 
     /**
@@ -172,26 +201,34 @@ class LibraryScanner(
 
     /**
      * Discover audio files recursively in a directory.
-     * Skips directories with .nomedia files.
+     * Skips directories with .nomedia files and hidden directories.
      */
     private fun discoverAudioFiles(directory: String, result: MutableList<String>) {
-        // In production, this would use java.io.File or DocumentFile
-        // to recursively walk the directory tree.
-        //
-        // Pseudocode:
-        // val dir = File(directory)
-        // if (!dir.isDirectory) return
-        // if (File(dir, ".nomedia").exists()) return
-        //
-        // dir.listFiles()?.forEach { file ->
-        //     if (file.isDirectory) {
-        //         discoverAudioFiles(file.absolutePath, result)
-        //     } else {
-        //         val ext = file.extension.lowercase()
-        //         if (MetadataExtractor.isSupportedExtension(ext)) {
-        //             result.add(file.absolutePath)
-        //         }
-        //     }
-        // }
+        val dir = File(directory)
+        if (!dir.isDirectory) return
+        if (!dir.canRead()) return
+
+        // Respect .nomedia - skip this directory and all subdirectories
+        if (File(dir, ".nomedia").exists()) return
+
+        val files = dir.listFiles() ?: return
+
+        for (file in files) {
+            if (isCancelled) return
+
+            if (file.isDirectory) {
+                // Skip hidden directories (e.g., .thumbnails, .cache)
+                if (file.name.startsWith(".")) continue
+                // Skip known non-music system directories to speed up scan
+                val dirName = file.name
+                if (dirName == "Android" || dirName == "data" || dirName == "obb") continue
+                discoverAudioFiles(file.absolutePath, result)
+            } else if (file.isFile) {
+                val ext = file.extension.lowercase()
+                if (MetadataExtractor.isSupportedExtension(ext)) {
+                    result.add(file.absolutePath)
+                }
+            }
+        }
     }
 }
