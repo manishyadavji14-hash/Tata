@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- USB Audio Class 1 devices -->
+    <usb-device class="1" subclass="1" />
+    <!-- USB Audio Class 2 devices -->
+    <usb-device class="1" subclass="2" />
+</resources>
