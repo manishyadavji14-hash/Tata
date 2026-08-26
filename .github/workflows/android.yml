@@ -10,6 +10,12 @@ on:
   pull_request:
   workflow_dispatch:
 
+# Read-only by default; the release step below needs write access to attach the
+# APK to a tag, and without this it fails on repos whose default token is
+# read-only.
+permissions:
+  contents: write
+
 jobs:
   native-tests:
     name: Native C++ tests
