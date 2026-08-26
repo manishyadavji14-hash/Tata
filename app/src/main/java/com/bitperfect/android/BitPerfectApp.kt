@@ -1,6 +1,11 @@
 package com.bitperfect.android
 
 import android.app.Application
+import android.content.ContentValues
+import android.content.Intent
+import android.os.Build
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import java.io.File
 import java.io.PrintWriter
@@ -9,16 +14,22 @@ import java.util.Date
 
 /**
  * BitPerfect Application class.
- * Initializes application-wide components and the native audio engine.
  *
- * Installs an uncaught exception handler that writes crash reports to the
- * app's external files directory so they can be inspected on devices where
- * logcat is not accessible (e.g. Android 16 restrictions).
+ * IMPORTANT ORDER OF OPERATIONS:
+ *  1. Install the uncaught exception handler (must be first).
+ *  2. Load the native library (guarded, never fatal).
  *
- * Crash report path (readable without root):
+ * The native library is deliberately NOT loaded from a `companion object`
+ * initializer. Static initializers run during class loading, i.e. before
+ * onCreate(), so a failure there produces an ExceptionInInitializerError that
+ * kills the process before any handler is installed and before any diagnostic
+ * can be written. Loading it explicitly inside onCreate() keeps startup
+ * recoverable.
+ *
+ * Crash reports are written to every location that might be readable:
+ *   /storage/emulated/0/Download/bitperfect_crash.txt   (via MediaStore)
  *   /storage/emulated/0/Android/data/com.bitperfect.android/files/crash.txt
- * Startup log path:
- *   /storage/emulated/0/Android/data/com.bitperfect.android/files/startup.txt
+ * and are additionally shown on screen by CrashActivity.
  */
 class BitPerfectApp : Application() {
 
@@ -27,60 +38,61 @@ class BitPerfectApp : Application() {
 
         private const val CRASH_FILE_NAME = "crash.txt"
         private const val STARTUP_FILE_NAME = "startup.txt"
+        private const val DOWNLOAD_CRASH_NAME = "bitperfect_crash.txt"
+        private const val DOWNLOAD_STARTUP_NAME = "bitperfect_startup.txt"
 
-        /**
-         * Indicates whether the native library was successfully loaded.
-         * When false, native audio features are unavailable but the app
-         * can still display UI and non-native functionality.
-         */
+        /** True when libbitperfect_engine.so loaded successfully. */
+        @Volatile
         var isNativeLoaded: Boolean = false
             private set
 
-        /**
-         * Detail about the native library load result. Empty when the load
-         * succeeded, otherwise contains the failure reason.
-         */
+        /** Empty on success, otherwise the failure reason. */
+        @Volatile
         var nativeLoadError: String = ""
             private set
 
-        init {
-            try {
-                System.loadLibrary("bitperfect_engine")
-                isNativeLoaded = true
-                Log.i(TAG, "Native library loaded successfully")
-            } catch (e: UnsatisfiedLinkError) {
-                isNativeLoaded = false
-                nativeLoadError = "UnsatisfiedLinkError: ${e.message}"
-                Log.e(TAG, "Failed to load native library: ${e.message}")
-            } catch (e: SecurityException) {
-                isNativeLoaded = false
-                nativeLoadError = "SecurityException: ${e.message}"
-                Log.e(TAG, "Security exception loading native library: ${e.message}")
-            }
-        }
+        /** Last captured crash report, used by CrashActivity. */
+        @Volatile
+        var lastCrashReport: String = ""
+            internal set
     }
 
     override fun onCreate() {
-        // Install the crash handler as the very first action so that any
-        // failure during the rest of startup is captured to disk.
+        // 1. Diagnostics first, so everything after this point is observable.
         installCrashHandler()
 
         super.onCreate()
 
-        writeStartupLog()
-        Log.i(TAG, "BitPerfect application starting (native loaded: $isNativeLoaded)")
-    }
+        // 2. Native library second, guarded so a failure is never fatal.
+        loadNativeLibrary()
 
-    override fun onTerminate() {
-        super.onTerminate()
-        Log.i(TAG, "BitPerfect application terminating")
+        writeStartupLog()
+        Log.i(TAG, "BitPerfect application started (native loaded: $isNativeLoaded)")
     }
 
     /**
-     * Installs a default uncaught exception handler that persists the full
-     * stack trace (including the cause chain) to the app's external files
-     * directory, then delegates to the previously installed handler so the
-     * process still terminates normally.
+     * Loads the native engine. Catches Throwable rather than only
+     * UnsatisfiedLinkError: a mis-linked or mis-aligned .so can surface as
+     * other Error subclasses, and none of them should prevent the UI from
+     * starting.
+     */
+    private fun loadNativeLibrary() {
+        try {
+            System.loadLibrary("bitperfect_engine")
+            isNativeLoaded = true
+            nativeLoadError = ""
+            Log.i(TAG, "Native library loaded successfully")
+        } catch (t: Throwable) {
+            isNativeLoaded = false
+            nativeLoadError = "${t.javaClass.simpleName}: ${t.message}"
+            Log.e(TAG, "Failed to load native library: $nativeLoadError")
+        }
+    }
+
+    /**
+     * Installs a handler that persists the stack trace, then shows it on
+     * screen, then delegates to the previous handler so the process still
+     * terminates normally.
      */
     private fun installCrashHandler() {
         val defaultHandler = Thread.getDefaultUncaughtExceptionHandler()
@@ -88,19 +100,19 @@ class BitPerfectApp : Application() {
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             try {
                 val report = buildCrashReport(thread, throwable)
-                writeReportFile(CRASH_FILE_NAME, report)
-            } catch (e: Throwable) {
-                // The crash handler must never crash. Swallow everything.
+                lastCrashReport = report
+
+                writeToExternalFilesDir(CRASH_FILE_NAME, report)
+                writeToDownloads(DOWNLOAD_CRASH_NAME, report)
+                showCrashActivity(report)
+            } catch (t: Throwable) {
+                // A crash handler must never crash.
             }
 
             defaultHandler?.uncaughtException(thread, throwable)
         }
     }
 
-    /**
-     * Builds the crash report text: environment details followed by the
-     * exception stack trace and the full cause chain.
-     */
     private fun buildCrashReport(thread: Thread, throwable: Throwable): String {
         val writer = StringWriter()
         val out = PrintWriter(writer)
@@ -108,8 +120,9 @@ class BitPerfectApp : Application() {
         out.println("=== BitPerfect Crash Report ===")
         out.println("Time: ${Date()}")
         out.println("Thread: ${thread.name}")
-        out.println("Android: ${android.os.Build.VERSION.SDK_INT} (${android.os.Build.VERSION.RELEASE})")
-        out.println("Device: ${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}")
+        out.println("Android: API ${Build.VERSION.SDK_INT} (${Build.VERSION.RELEASE})")
+        out.println("Device: ${Build.MANUFACTURER} ${Build.MODEL}")
+        out.println("ABIs: ${Build.SUPPORTED_ABIS.joinToString()}")
         out.println("Native loaded: $isNativeLoaded")
         if (nativeLoadError.isNotEmpty()) {
             out.println("Native load error: $nativeLoadError")
@@ -133,9 +146,7 @@ class BitPerfectApp : Application() {
             cause.printStackTrace(out)
 
             val next = cause.cause
-            if (next === cause) {
-                break
-            }
+            if (next === cause) break
             cause = next
             depth++
         }
@@ -144,42 +155,77 @@ class BitPerfectApp : Application() {
         return writer.toString()
     }
 
-    /**
-     * Writes a startup log on every launch so we can confirm the app reached
-     * Application.onCreate() and see the native library status.
-     */
     private fun writeStartupLog() {
-        try {
-            val builder = StringBuilder()
-            builder.appendLine("=== BitPerfect Startup Log ===")
-            builder.appendLine("Time: ${Date()}")
-            builder.appendLine("Native loaded: $isNativeLoaded")
+        val report = buildString {
+            appendLine("=== BitPerfect Startup Log ===")
+            appendLine("Time: ${Date()}")
+            appendLine("Native loaded: $isNativeLoaded")
             if (nativeLoadError.isNotEmpty()) {
-                builder.appendLine("Native load error: $nativeLoadError")
+                appendLine("Native load error: $nativeLoadError")
             }
-            builder.appendLine("Android: ${android.os.Build.VERSION.SDK_INT} (${android.os.Build.VERSION.RELEASE})")
-            builder.appendLine("Device: ${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}")
-            builder.appendLine("ABIs: ${android.os.Build.SUPPORTED_ABIS.joinToString()}")
+            appendLine("Android: API ${Build.VERSION.SDK_INT} (${Build.VERSION.RELEASE})")
+            appendLine("Device: ${Build.MANUFACTURER} ${Build.MODEL}")
+            appendLine("ABIs: ${Build.SUPPORTED_ABIS.joinToString()}")
+        }
 
-            writeReportFile(STARTUP_FILE_NAME, builder.toString())
-        } catch (e: Throwable) {
-            // Diagnostics must never break startup.
+        writeToExternalFilesDir(STARTUP_FILE_NAME, report)
+        writeToDownloads(DOWNLOAD_STARTUP_NAME, report)
+    }
+
+    /** Launches CrashActivity so the trace is visible without file access. */
+    private fun showCrashActivity(report: String) {
+        try {
+            val intent = Intent(this, CrashActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                putExtra(CrashActivity.EXTRA_REPORT, report)
+            }
+            startActivity(intent)
+        } catch (t: Throwable) {
+            // Best effort only.
+        }
+    }
+
+    /** App-private external dir. Readable by file managers, sometimes not by Termux. */
+    private fun writeToExternalFilesDir(fileName: String, contents: String) {
+        try {
+            val dir = getExternalFilesDir(null) ?: filesDir ?: return
+            if (!dir.exists()) dir.mkdirs()
+            File(dir, fileName).writeText(contents)
+        } catch (t: Throwable) {
+            // Best effort only.
         }
     }
 
     /**
-     * Writes text to a file in the app's external files directory.
-     * Falls back to the internal files directory when external is unavailable.
+     * Writes to the shared Downloads collection via MediaStore. This needs no
+     * runtime permission on API 29+ and lands in a directory Termux can read.
      */
-    private fun writeReportFile(fileName: String, contents: String) {
+    private fun writeToDownloads(fileName: String, contents: String) {
         try {
-            val dir = getExternalFilesDir(null) ?: filesDir ?: return
-            if (!dir.exists()) {
-                dir.mkdirs()
+            val resolver = contentResolver
+
+            // Replace any previous report with the same name.
+            resolver.delete(
+                MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                "${MediaStore.Downloads.DISPLAY_NAME} = ?",
+                arrayOf(fileName)
+            )
+
+            val values = ContentValues().apply {
+                put(MediaStore.Downloads.DISPLAY_NAME, fileName)
+                put(MediaStore.Downloads.MIME_TYPE, "text/plain")
+                put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
             }
-            File(dir, fileName).writeText(contents)
-        } catch (e: Throwable) {
-            // Ignore: diagnostics are best-effort only.
+
+            val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)
+                ?: return
+
+            resolver.openOutputStream(uri)?.use { stream ->
+                stream.write(contents.toByteArray())
+                stream.flush()
+            }
+        } catch (t: Throwable) {
+            // Best effort only.
         }
     }
 }
