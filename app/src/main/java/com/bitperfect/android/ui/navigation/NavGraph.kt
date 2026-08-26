@@ -23,6 +23,8 @@ import androidx.navigation.navArgument
 import com.bitperfect.android.R
 import com.bitperfect.android.ui.diagnostics.DacDiagnosticsScreen
 import com.bitperfect.android.ui.diagnostics.DiagnosticsViewModel
+import com.bitperfect.android.ui.equalizer.EqualizerScreen
+import com.bitperfect.android.ui.equalizer.EqualizerViewModel
 import com.bitperfect.android.ui.library.LibraryScreen
 import com.bitperfect.android.ui.library.LibraryViewModel
 import com.bitperfect.android.ui.player.PlayerScreen
@@ -45,6 +47,7 @@ fun BitPerfectNavGraph(
     libraryViewModel: LibraryViewModel,
     settingsViewModel: SettingsViewModel,
     diagnosticsViewModel: DiagnosticsViewModel,
+    equalizerViewModel: EqualizerViewModel,
     onOpenFile: () -> Unit,
     navController: NavHostController = rememberNavController()
 ) {
@@ -78,6 +81,7 @@ fun BitPerfectNavGraph(
                 PlayerScreen(
                     viewModel = playerViewModel,
                     onOpenFile = onOpenFile,
+                    onEqualizerClick = { navController.navigate(Screen.Equalizer.route) },
                     onQueueClick = { navController.navigate(Screen.Queue.route) },
                     onDiagnosticsClick = { navController.navigate(Screen.Diagnostics.route) }
                 )
@@ -119,6 +123,14 @@ fun BitPerfectNavGraph(
             composable(Screen.Diagnostics.route) {
                 DacDiagnosticsScreen(
                     viewModel = diagnosticsViewModel,
+                    onBackClick = { navController.popBackStack() }
+                )
+            }
+
+            // Equalizer (Android output path only)
+            composable(Screen.Equalizer.route) {
+                EqualizerScreen(
+                    viewModel = equalizerViewModel,
                     onBackClick = { navController.popBackStack() }
                 )
             }
@@ -165,6 +177,7 @@ fun BitPerfectNavGraph(
                 PlayerScreen(
                     viewModel = playerViewModel,
                     onOpenFile = onOpenFile,
+                    onEqualizerClick = { navController.navigate(Screen.Equalizer.route) },
                     onQueueClick = { navController.popBackStack() }
                 )
             }

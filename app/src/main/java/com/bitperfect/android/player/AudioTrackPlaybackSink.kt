@@ -21,7 +21,14 @@ import kotlin.math.max
  */
 class AudioTrackPlaybackSink(
     private val engine: NativeAudioEngine,
-    private val listener: Listener
+    private val listener: Listener,
+    /**
+     * Equalizer and bass boost for this output path only.
+     *
+     * Platform effects bind to an AudioTrack session, so they cannot reach a
+     * bit-perfect USB stream that bypasses AudioTrack.
+     */
+    val audioEffects: AudioEffectsController = AudioEffectsController()
 ) {
     interface Listener {
         fun onPrepared(trackPath: String, format: AudioFormatInfo, durationMs: Long)
@@ -178,6 +185,7 @@ class AudioTrackPlaybackSink(
 
         var decoder: NativeAudioEngine.DecoderSession? = null
         var track: AudioTrack? = null
+        var effectsSessionId: Int? = null
         var completed = false
         var failure: String? = null
 
@@ -238,6 +246,11 @@ class AudioTrackPlaybackSink(
             synchronized(lifecycleLock) {
                 audioTrack = openedTrack
             }
+
+            // Each track owns a fresh session, so effects are rebuilt here and
+            // the retained user curve is re-applied.
+            effectsSessionId = openedTrack.audioSessionId
+            audioEffects.attach(openedTrack.audioSessionId)
 
             val formatInfo = AudioFormatInfo(
                 sampleRate = decoderFormat.sampleRate,
@@ -340,6 +353,10 @@ class AudioTrackPlaybackSink(
             synchronized(lifecycleLock) {
                 if (audioTrack === track) audioTrack = null
             }
+            // Release before the track itself, and only if this worker still
+            // owns the effects: a late-exiting worker must not tear down the
+            // effects a newly started track has already attached.
+            effectsSessionId?.let { audioEffects.detach(it) }
             try {
                 track?.pause()
                 track?.flush()

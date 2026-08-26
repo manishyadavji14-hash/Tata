@@ -31,7 +31,16 @@ import androidx.compose.material.icons.filled.Sort
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.Surface
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -55,6 +64,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.bitperfect.android.ui.components.AlbumArtImage
 import com.bitperfect.android.ui.theme.BitPerfectShapeTokens
 
 /**
@@ -86,6 +96,32 @@ fun LibraryScreen(
 
     val pullRefreshState = rememberPullToRefreshState()
 
+    // Pull-to-refresh triggers a real rescan and is released when it finishes.
+    if (pullRefreshState.isRefreshing) {
+        LaunchedEffect(Unit) { viewModel.rescan() }
+    }
+    // Release the gesture when the scan finishes, and also when it was declined
+    // outright (missing permission, or a scan already running).
+    LaunchedEffect(uiState.isScanning, uiState.scanRequestRejected) {
+        if (!uiState.isScanning && pullRefreshState.isRefreshing) {
+            pullRefreshState.endRefresh()
+        }
+        if (uiState.scanRequestRejected) {
+            viewModel.acknowledgeScanRejection()
+        }
+    }
+
+    if (uiState.isFolderPickerVisible) {
+        FolderPickerDialog(
+            folders = uiState.availableFolders,
+            onToggle = viewModel::toggleFolderSelection,
+            onSelectAll = { viewModel.selectAllFolders(true) },
+            onSelectNone = { viewModel.selectAllFolders(false) },
+            onConfirm = { viewModel.confirmFolderSelection() },
+            onDismiss = { viewModel.hideFolderPicker() }
+        )
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -93,6 +129,9 @@ fun LibraryScreen(
                 actions = {
                     IconButton(onClick = { isSearchActive = !isSearchActive }) {
                         Icon(Icons.Default.Search, contentDescription = "Search")
+                    }
+                    IconButton(onClick = { viewModel.showFolderPicker() }) {
+                        Icon(Icons.Default.Folder, contentDescription = "Choose folders")
                     }
                     IconButton(onClick = { viewModel.cycleSortOrder() }) {
                         Icon(Icons.Default.Sort, contentDescription = "Sort")
@@ -159,30 +198,14 @@ fun LibraryScreen(
                         }
                     }
                     uiState.isEmpty -> {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Icon(
-                                    imageVector = Icons.Default.MusicNote,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(64.dp),
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-                                )
-                                Spacer(modifier = Modifier.height(16.dp))
-                                Text(
-                                    text = "No music found",
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                                Text(
-                                    text = "Pull down to scan for music",
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
-                                )
-                            }
-                        }
+                        LibraryEmptyState(
+                            hasAudioPermission = uiState.hasAudioPermission,
+                            isScanning = uiState.isScanning,
+                            scanStatus = uiState.scanStatus,
+                            statusMessage = uiState.statusMessage,
+                            onScan = { viewModel.rescan() },
+                            onChooseFolders = { viewModel.showFolderPicker() }
+                        )
                     }
                     else -> {
                         when (LibraryViewModel.LibraryTab.entries[selectedTab]) {
@@ -212,6 +235,14 @@ fun LibraryScreen(
                             )
                         }
                     }
+                }
+
+                if (uiState.isScanning && !uiState.isEmpty) {
+                    ScanProgressBanner(
+                        scanStatus = uiState.scanStatus,
+                        progress = uiState.scanProgress,
+                        modifier = Modifier.align(Alignment.BottomCenter)
+                    )
                 }
 
                 PullToRefreshContainer(
@@ -251,20 +282,12 @@ private fun AlbumCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column {
-            // Album artwork placeholder
-            Box(
+            AlbumArtImage(
+                artworkUri = album.artworkUri,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .aspectRatio(1f),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Album,
-                    contentDescription = null,
-                    modifier = Modifier.size(48.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
-                )
-            }
+                    .aspectRatio(1f)
+            )
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
                     text = album.title,
@@ -273,14 +296,17 @@ private fun AlbumCard(
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = album.artist,
+                    text = album.artist.ifEmpty { "Unknown Artist" },
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "${album.trackCount} tracks",
+                    text = buildString {
+                        if (album.year > 0) append("${album.year} · ")
+                        append("${album.trackCount} tracks")
+                    },
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                 )
@@ -505,4 +531,216 @@ private fun ComposerList(
             }
         }
     }
+}
+
+
+/**
+ * Shown when the library has no tracks yet.
+ *
+ * The message and actions depend on why it is empty: a missing permission needs
+ * a grant, whereas a granted permission just needs a scan.
+ */
+@Composable
+private fun LibraryEmptyState(
+    hasAudioPermission: Boolean,
+    isScanning: Boolean,
+    scanStatus: String,
+    statusMessage: String?,
+    onScan: () -> Unit,
+    onChooseFolders: () -> Unit
+) {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(32.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.MusicNote,
+                contentDescription = null,
+                modifier = Modifier.size(64.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+
+            if (isScanning) {
+                Text(
+                    text = scanStatus.ifEmpty { "Scanning…" },
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                CircularProgressIndicator()
+                return@Column
+            }
+
+            Text(
+                text = if (hasAudioPermission) "No music found" else "Music access needed",
+                style = MaterialTheme.typography.titleMedium,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = if (hasAudioPermission) {
+                    "Scan this device for audio files, or pick specific folders."
+                } else {
+                    "Allow access to audio files so your music can be listed here. " +
+                        "You can grant it in Settings › Apps › BitPerfect › Permissions."
+                },
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center
+            )
+
+            if (statusMessage != null) {
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = statusMessage,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                    textAlign = TextAlign.Center
+                )
+            }
+
+            if (hasAudioPermission) {
+                Spacer(modifier = Modifier.height(24.dp))
+                Button(onClick = onScan) {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("Scan for music")
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                TextButton(onClick = onChooseFolders) {
+                    Icon(
+                        imageVector = Icons.Default.Folder,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("Choose folders")
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Progress shown while rescanning a library that already has content.
+ */
+@Composable
+private fun ScanProgressBanner(
+    scanStatus: String,
+    progress: Float,
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        modifier = modifier.fillMaxWidth(),
+        color = MaterialTheme.colorScheme.surfaceVariant,
+        tonalElevation = 3.dp
+    ) {
+        Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp)) {
+            Text(
+                text = scanStatus.ifEmpty { "Scanning…" },
+                style = MaterialTheme.typography.labelMedium
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            if (progress > 0f) {
+                LinearProgressIndicator(
+                    progress = { progress.coerceIn(0f, 1f) },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            } else {
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+            }
+        }
+    }
+}
+
+/**
+ * Lets the user restrict scanning to specific folders on the device.
+ */
+@Composable
+private fun FolderPickerDialog(
+    folders: List<LibraryViewModel.SelectableFolder>,
+    onToggle: (String) -> Unit,
+    onSelectAll: () -> Unit,
+    onSelectNone: () -> Unit,
+    onConfirm: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Folders to scan") },
+        text = {
+            if (folders.isEmpty()) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(vertical = 8.dp)
+                ) {
+                    CircularProgressIndicator(modifier = Modifier.size(20.dp))
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Text(
+                        text = "Looking for folders containing audio…",
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            } else {
+                Column {
+                    Row {
+                        TextButton(onClick = onSelectAll) { Text("All") }
+                        TextButton(onClick = onSelectNone) { Text("None") }
+                    }
+                    LazyColumn(modifier = Modifier.heightIn(max = 360.dp)) {
+                        items(folders) { folder ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { onToggle(folder.path) }
+                                    .padding(vertical = 6.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Checkbox(
+                                    checked = folder.isSelected,
+                                    onCheckedChange = { onToggle(folder.path) }
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = folder.name,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                    Text(
+                                        text = "${folder.trackCount} tracks · ${folder.path}",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(
+                onClick = onConfirm,
+                enabled = folders.any { it.isSelected }
+            ) {
+                Text("Scan selected")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text("Cancel") }
+        }
+    )
 }

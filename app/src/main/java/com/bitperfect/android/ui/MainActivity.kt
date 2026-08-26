@@ -33,8 +33,10 @@ import com.bitperfect.android.BitPerfectApp
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
+import com.bitperfect.android.library.StoragePermissions
 import com.bitperfect.android.service.PlaybackService
 import com.bitperfect.android.ui.diagnostics.DiagnosticsViewModel
+import com.bitperfect.android.ui.equalizer.EqualizerViewModel
 import com.bitperfect.android.ui.library.LibraryViewModel
 import com.bitperfect.android.ui.navigation.BitPerfectNavGraph
 import com.bitperfect.android.ui.player.PlayerViewModel
@@ -80,6 +82,14 @@ class MainActivity : ComponentActivity() {
         if (uri != null) importAndPlay(uri)
     }
 
+    private val requestPermissions = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) {
+        // Read the authoritative state back from the system rather than trusting
+        // the result map, which omits permissions that were already granted.
+        publishPermissionState()
+    }
+
     private var playbackService: PlaybackService? = null
     private var isBound = false
 
@@ -89,6 +99,7 @@ class MainActivity : ComponentActivity() {
     private var libraryViewModel: LibraryViewModel? = null
     private var settingsViewModel: SettingsViewModel? = null
     private var diagnosticsViewModel: DiagnosticsViewModel? = null
+    private var equalizerViewModel: EqualizerViewModel? = null
 
     // Core components
     private var engine: NativeAudioEngine? = null
@@ -132,6 +143,31 @@ class MainActivity : ComponentActivity() {
         setContent {
             BitPerfectApp()
         }
+
+        ensureMediaPermissions()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // The user may have changed permissions in system settings while away.
+        publishPermissionState()
+    }
+
+    /**
+     * Request the audio (and notification) permissions if they are missing.
+     */
+    private fun ensureMediaPermissions() {
+        val missing = StoragePermissions.missingPermissions(this)
+        if (missing.isEmpty()) {
+            publishPermissionState()
+        } else {
+            requestPermissions.launch(missing)
+        }
+    }
+
+    private fun publishPermissionState() {
+        val granted = StoragePermissions.hasAudioAccess(this)
+        libraryViewModel?.setAudioPermissionGranted(granted)
     }
 
     override fun onDestroy() {
@@ -144,6 +180,9 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun initializeComponents() {
+        // Room-backed and safe to share; holds only the application context.
+        val musicLibrary = MusicLibrary(applicationContext)
+
         val playbackFactory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -166,7 +205,8 @@ class MainActivity : ComponentActivity() {
                 return PlayerViewModel(
                     createdController,
                     createdEngine,
-                    createdDsdManager
+                    createdDsdManager,
+                    musicLibrary
                 ) as T
             }
         }
@@ -186,12 +226,26 @@ class MainActivity : ComponentActivity() {
         val localSettingsRepository = SettingsRepository(this)
         settingsRepository = localSettingsRepository
 
-        // Create music library
-        val musicLibrary = MusicLibrary()
+
 
         // Initialize activity-scoped library/settings/diagnostics ViewModels.
         libraryViewModel = LibraryViewModel(musicLibrary)
         settingsViewModel = SettingsViewModel(localSettingsRepository)
+
+        // Retained through ViewModelProvider so onCleared() actually runs and
+        // its PlaybackController listener is removed. Constructing it by hand
+        // leaked a listener (and an activity Context) on every recreation.
+        val equalizerFactory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return EqualizerViewModel(
+                    localPlayerViewModel.playbackController,
+                    SettingsRepository(applicationContext)
+                ) as T
+            }
+        }
+        equalizerViewModel =
+            ViewModelProvider(this, equalizerFactory)[EqualizerViewModel::class.java]
         diagnosticsViewModel = DiagnosticsViewModel(localEngine, localDsdManager, localUsbAudioManager)
     }
 
@@ -339,13 +393,15 @@ class MainActivity : ComponentActivity() {
                 val lvm = libraryViewModel
                 val svm = settingsViewModel
                 val dvm = diagnosticsViewModel
+                val evm = equalizerViewModel
 
-                if (pvm != null && lvm != null && svm != null && dvm != null) {
+                if (pvm != null && lvm != null && svm != null && dvm != null && evm != null) {
                     BitPerfectNavGraph(
                         playerViewModel = pvm,
                         libraryViewModel = lvm,
                         settingsViewModel = svm,
                         diagnosticsViewModel = dvm,
+                        equalizerViewModel = evm,
                         onOpenFile = ::launchAudioPicker
                     )
                 } else {

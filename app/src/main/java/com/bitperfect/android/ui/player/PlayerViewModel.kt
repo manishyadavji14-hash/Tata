@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
+import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.player.AudioFormatInfo
 import com.bitperfect.android.player.PlaybackController
 import com.bitperfect.android.player.PlaybackState
@@ -28,7 +29,8 @@ import kotlinx.coroutines.launch
 class PlayerViewModel(
     internal val playbackController: PlaybackController,
     internal val engine: NativeAudioEngine,
-    internal val dsdManager: DsdManager
+    internal val dsdManager: DsdManager,
+    private val musicLibrary: MusicLibrary
 ) : ViewModel() {
 
     /**
@@ -75,6 +77,44 @@ class PlayerViewModel(
     val uiState: StateFlow<PlayerUiState> = _uiState.asStateFlow()
     private val playbackStateListener: (PlaybackState) -> Unit = { state ->
         updateUiState(state)
+    }
+
+    /**
+     * Path whose details have been requested, so a lookup is not repeated and a
+     * late result for a superseded track can be discarded.
+     */
+    @Volatile
+    private var detailsPath: String? = null
+
+    /** Path whose lookup has actually completed and been applied to the UI. */
+    @Volatile
+    private var detailsResolvedPath: String? = null
+
+    /**
+     * Load title, artist, album and artwork for a track being played.
+     */
+    private fun resolveTrackDetails(trackPath: String) {
+        if (detailsPath == trackPath) return
+        detailsPath = trackPath
+
+        viewModelScope.launch {
+            val details = try {
+                musicLibrary.getTrackDetails(trackPath)
+            } catch (error: Exception) {
+                MusicLibrary.TrackDetails(title = extractTrackTitle(trackPath))
+            }
+
+            // A different track started while this lookup was in flight.
+            if (detailsPath != trackPath) return@launch
+
+            detailsResolvedPath = trackPath
+            _uiState.value = _uiState.value.copy(
+                trackTitle = details.title.ifBlank { extractTrackTitle(trackPath) },
+                artist = details.artist,
+                album = details.album,
+                artworkUri = details.artworkUri
+            )
+        }
     }
 
     init {
@@ -148,11 +188,33 @@ class PlayerViewModel(
         val newState = when (state) {
             is PlaybackState.Playing -> {
                 val formatInfo = buildFormatDisplay(state.format)
+                resolveTrackDetails(state.trackPath)
                 currentState.copy(
                     isPlaying = true,
                     isPaused = false,
                     isLoading = false,
-                    trackTitle = extractTrackTitle(state.trackPath),
+                    // Keep resolved tags if they belong to this track; otherwise
+                    // show the file name until the lookup lands.
+                    trackTitle = if (detailsResolvedPath == state.trackPath) {
+                        currentState.trackTitle
+                    } else {
+                        extractTrackTitle(state.trackPath)
+                    },
+                    artist = if (detailsResolvedPath == state.trackPath) {
+                        currentState.artist
+                    } else {
+                        ""
+                    },
+                    album = if (detailsResolvedPath == state.trackPath) {
+                        currentState.album
+                    } else {
+                        ""
+                    },
+                    artworkUri = if (detailsResolvedPath == state.trackPath) {
+                        currentState.artworkUri
+                    } else {
+                        null
+                    },
                     positionMs = state.positionMs,
                     durationMs = state.durationMs,
                     positionText = formatTime(state.positionMs),
@@ -180,15 +242,27 @@ class PlayerViewModel(
                 )
             }
             is PlaybackState.Loading -> {
+                val isSameTrack = detailsResolvedPath == state.trackPath
+                resolveTrackDetails(state.trackPath)
                 currentState.copy(
                     isPlaying = false,
                     isPaused = false,
                     isLoading = true,
-                    trackTitle = extractTrackTitle(state.trackPath),
+                    trackTitle = if (isSameTrack) {
+                        currentState.trackTitle
+                    } else {
+                        extractTrackTitle(state.trackPath)
+                    },
+                    // Do not carry the previous track's tags into a new load.
+                    artist = if (isSameTrack) currentState.artist else "",
+                    album = if (isSameTrack) currentState.album else "",
+                    artworkUri = if (isSameTrack) currentState.artworkUri else null,
                     errorMessage = null
                 )
             }
             is PlaybackState.Stopped, is PlaybackState.Idle -> {
+                detailsPath = null
+                detailsResolvedPath = null
                 PlayerUiState() // Reset to defaults
             }
             is PlaybackState.Error -> {

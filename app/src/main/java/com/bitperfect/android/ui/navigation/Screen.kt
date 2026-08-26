@@ -31,6 +31,7 @@ sealed class Screen(val route: String) {
 
     // Standalone screens
     data object Diagnostics : Screen("diagnostics")
+    data object Equalizer : Screen("equalizer")
     data object Queue : Screen("queue")
     data object Licenses : Screen("licenses")
 

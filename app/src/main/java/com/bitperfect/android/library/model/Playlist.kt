@@ -1,14 +1,17 @@
 package com.bitperfect.android.library.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 /**
  * Playlist entity - user-created playlist.
  *
  * Track IDs are stored as a JSON array for flexibility in ordering.
  * The createdAt and modifiedAt timestamps enable sorting by date.
  */
-// @Entity(tableName = "playlists")
+@Entity(tableName = "playlists")
 data class Playlist(
-    // @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val name: String,
     val trackIds: String = "[]",       // JSON array of track IDs

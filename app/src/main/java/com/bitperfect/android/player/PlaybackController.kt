@@ -26,6 +26,14 @@ class PlaybackController(
         }
 
     val queue: PlayQueue = PlayQueue()
+
+    /**
+     * Equalizer and bass boost for the Android output path.
+     *
+     * Intentionally reachable only through this sink: the effects bind to an
+     * AudioTrack session and so cannot alter bit-perfect USB output.
+     */
+    val audioEffects: AudioEffectsController get() = playbackSink.audioEffects
     private var sleepTimer: SleepTimer? = null
     private val stateListeners = CopyOnWriteArrayList<(PlaybackState) -> Unit>()
 

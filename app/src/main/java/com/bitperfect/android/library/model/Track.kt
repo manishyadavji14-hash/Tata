@@ -1,20 +1,30 @@
 package com.bitperfect.android.library.model
 
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
+
 /**
  * Track entity - represents a single audio file in the library.
  *
  * Room entity with proper indices for common queries.
  * Stores both file metadata and audio format information.
+ *
+ * The computed properties below (isHighRes, isDsd, displayBitrate, folder)
+ * have no backing field, so Room does not persist them.
  */
-// @Entity(tableName = "tracks", indices = [
-//     Index(value = ["albumId"]),
-//     Index(value = ["artist"]),
-//     Index(value = ["genre"]),
-//     Index(value = ["composer"]),
-//     Index(value = ["path"], unique = true)
-// ])
+@Entity(
+    tableName = "tracks",
+    indices = [
+        Index(value = ["albumId"]),
+        Index(value = ["artist"]),
+        Index(value = ["genre"]),
+        Index(value = ["composer"]),
+        Index(value = ["path"], unique = true)
+    ]
+)
 data class Track(
-    // @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val path: String,
     val title: String,

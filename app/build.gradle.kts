@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -61,6 +62,11 @@ android {
     }
 }
 
+ksp {
+    // Export the Room schema so migrations can be reviewed in version control.
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 dependencies {
     // Material 3
     implementation("com.google.android.material:material:1.11.0")
@@ -80,9 +86,13 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
 
-    // Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
+    // Room (KSP-processed; see the `ksp` block above for the schema location)
+    implementation("androidx.room:room-runtime:2.7.2")
+    implementation("androidx.room:room-ktx:2.7.2")
+    ksp("androidx.room:room-compiler:2.7.2")
+
+    // Coil - album artwork loading for Compose
+    implementation("io.coil-kt:coil-compose:2.7.0")
 
     // Media3
     implementation("androidx.media3:media3-common:1.2.1")

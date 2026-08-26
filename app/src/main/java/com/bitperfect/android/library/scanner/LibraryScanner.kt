@@ -1,22 +1,26 @@
 package com.bitperfect.android.library.scanner
 
+import android.content.Context
 import com.bitperfect.android.library.MetadataExtractor
 import com.bitperfect.android.library.model.Track
 
 /**
- * LibraryScanner - scans storage directories for audio files.
+ * LibraryScanner - discovers audio files on the device and turns them into
+ * library tracks.
  *
- * Features:
- * - Recursive directory scanning
- * - Supports all audio formats (WAV, FLAC, DSF, AIFF, etc.)
- * - Extracts metadata for each discovered file
- * - Updates the library database with new/modified/removed tracks
- * - Progress callback for UI updates
- * - Incremental scanning (only processes files modified since last scan)
- * - Respects .nomedia directories
+ * Discovery goes through MediaStore rather than a filesystem walk: scoped
+ * storage makes direct traversal unreliable from Android 11 onward, and the
+ * media index already carries the tags needed, so a scan does not have to
+ * open every file. MediaStore still yields an absolute path, which the native
+ * decoders require.
+ *
+ * Files MediaStore has not indexed can still be added individually through
+ * scanSingleFile(), which reads tags with MediaMetadataRetriever.
  */
 class LibraryScanner(
-    private val metadataExtractor: MetadataExtractor = MetadataExtractor()
+    private val context: Context,
+    private val metadataExtractor: MetadataExtractor = MetadataExtractor(),
+    private val audioSource: MediaStoreAudioSource = MediaStoreAudioSource(context)
 ) {
 
     /**
@@ -49,6 +53,9 @@ class LibraryScanner(
 
     /**
      * Scan result.
+     *
+     * @param tracks Tracks discovered by this scan, ready to be persisted.
+     * @param removedPaths Previously known paths that no longer exist.
      */
     data class ScanResult(
         val success: Boolean,
@@ -57,11 +64,17 @@ class LibraryScanner(
         val tracksRemoved: Int = 0,
         val totalTracks: Int = 0,
         val durationMs: Long = 0,
-        val error: String? = null
+        val error: String? = null,
+        val tracks: List<Track> = emptyList(),
+        val removedPaths: List<String> = emptyList()
     )
 
+    @Volatile
     private var currentState: ScanState = ScanState.IDLE
+
+    @Volatile
     private var isCancelled: Boolean = false
+
     private var progressCallback: ((ScanProgress) -> Unit)? = null
 
     /**
@@ -72,26 +85,38 @@ class LibraryScanner(
     }
 
     /**
-     * Scan the given directories for audio files.
+     * Scan for audio files.
      *
-     * @param directories List of directory paths to scan
-     * @param existingPaths Set of paths already in the database (for incremental scan)
-     * @return Scan result with statistics
+     * @param directories Absolute directory paths to restrict the scan to.
+     *   Empty scans every indexed audio file on the device.
+     * @param existingTracks Tracks already in the library, keyed by path, used
+     *   to detect modifications and removals.
+     * @return Scan result including the tracks to persist.
      */
-    fun scan(directories: List<String>, existingPaths: Set<String> = emptySet()): ScanResult {
+    fun scan(
+        directories: List<String> = emptyList(),
+        existingTracks: Map<String, Track> = emptyMap()
+    ): ScanResult {
         val startTime = System.currentTimeMillis()
         currentState = ScanState.SCANNING
         isCancelled = false
 
-        val discoveredFiles = mutableListOf<String>()
-        val newTracks = mutableListOf<Track>()
-        var tracksUpdated = 0
-        var tracksRemoved = 0
+        progressCallback?.invoke(ScanProgress(state = ScanState.SCANNING))
 
-        // Phase 1: Discover audio files
-        for (dir in directories) {
-            if (isCancelled) break
-            discoverAudioFiles(dir, discoveredFiles)
+        val discovered = try {
+            audioSource.query(directories)
+        } catch (error: SecurityException) {
+            currentState = ScanState.ERROR
+            return ScanResult(
+                success = false,
+                error = "Permission to read audio files was denied"
+            )
+        } catch (error: Exception) {
+            currentState = ScanState.ERROR
+            return ScanResult(
+                success = false,
+                error = "Could not read the media library: ${error.message}"
+            )
         }
 
         if (isCancelled) {
@@ -99,63 +124,124 @@ class LibraryScanner(
             return ScanResult(success = false, error = "Scan cancelled")
         }
 
-        // Phase 2: Process discovered files
         currentState = ScanState.PROCESSING
-        val discoveredPaths = discoveredFiles.toSet()
 
-        for ((index, filePath) in discoveredFiles.withIndex()) {
+        val tracks = mutableListOf<Track>()
+        var added = 0
+        var updated = 0
+
+        for ((index, entry) in discovered.withIndex()) {
             if (isCancelled) break
 
-            progressCallback?.invoke(ScanProgress(
-                state = ScanState.PROCESSING,
-                filesFound = discoveredFiles.size,
-                filesProcessed = index + 1,
-                currentFile = filePath,
-                tracksAdded = newTracks.size,
-                tracksUpdated = tracksUpdated,
-                tracksRemoved = tracksRemoved
-            ))
+            val existing = existingTracks[entry.path]
+            val isUnchanged = existing != null &&
+                existing.lastModified == entry.lastModified &&
+                existing.fileSize == entry.fileSize
 
-            if (filePath !in existingPaths) {
-                // New file - extract metadata and add
-                val metadata = metadataExtractor.extract(filePath)
-                if (metadata != null) {
-                    val track = metadataExtractor.buildTrack(filePath, metadata)
-                    newTracks.add(track)
-                }
+            if (isUnchanged) {
+                // Preserve the stored row, including its album id.
+                tracks.add(existing)
+            } else {
+                tracks.add(buildTrack(entry, existingId = existing?.id ?: 0L))
+                if (existing == null) added++ else updated++
             }
-            // In full implementation: check lastModified for updates
+
+            progressCallback?.invoke(
+                ScanProgress(
+                    state = ScanState.PROCESSING,
+                    filesFound = discovered.size,
+                    filesProcessed = index + 1,
+                    currentFile = entry.path,
+                    tracksAdded = added,
+                    tracksUpdated = updated
+                )
+            )
         }
 
-        // Phase 3: Find removed files
-        for (existingPath in existingPaths) {
-            if (existingPath !in discoveredPaths) {
-                tracksRemoved++
-            }
+        if (isCancelled) {
+            currentState = ScanState.CANCELLED
+            return ScanResult(success = false, error = "Scan cancelled")
         }
+
+        val discoveredPaths = discovered.mapTo(mutableSetOf()) { it.path }
+
+        // Removals are only meaningful for the scope that was actually scanned.
+        // A folder-restricted scan never looks outside its prefixes, so treating
+        // everything else as deleted would reduce the library to the selection.
+        val removedPaths = existingTracks.keys
+            .filter { path -> isWithinScope(path, directories) }
+            .filterNot { it in discoveredPaths }
 
         currentState = ScanState.COMPLETED
         val duration = System.currentTimeMillis() - startTime
 
-        val result = ScanResult(
-            success = !isCancelled,
-            tracksAdded = newTracks.size,
-            tracksUpdated = tracksUpdated,
-            tracksRemoved = tracksRemoved,
-            totalTracks = discoveredFiles.size,
-            durationMs = duration
+        progressCallback?.invoke(
+            ScanProgress(
+                state = ScanState.COMPLETED,
+                filesFound = discovered.size,
+                filesProcessed = discovered.size,
+                tracksAdded = added,
+                tracksUpdated = updated,
+                tracksRemoved = removedPaths.size
+            )
         )
 
-        progressCallback?.invoke(ScanProgress(
-            state = ScanState.COMPLETED,
-            filesFound = discoveredFiles.size,
-            filesProcessed = discoveredFiles.size,
-            tracksAdded = newTracks.size,
-            tracksUpdated = tracksUpdated,
-            tracksRemoved = tracksRemoved
-        ))
+        return ScanResult(
+            success = true,
+            tracksAdded = added,
+            tracksUpdated = updated,
+            tracksRemoved = removedPaths.size,
+            totalTracks = tracks.size,
+            durationMs = duration,
+            tracks = tracks,
+            removedPaths = removedPaths
+        )
+    }
 
-        return result
+    /**
+     * Build a track for a single file that MediaStore may not have indexed.
+     *
+     * @return The track, or null if the file is unsupported or unreadable.
+     */
+    fun scanSingleFile(path: String): Track? {
+        val metadata = metadataExtractor.extract(path) ?: return null
+        return metadataExtractor.buildTrack(path, metadata)
+    }
+
+    /**
+     * Distinct folders containing audio, for folder selection in the UI.
+     */
+    fun discoverFolders(): List<FolderSummary> {
+        return audioSource.query()
+            .groupingBy { entry -> entry.path.substringBeforeLast('/', "") }
+            .eachCount()
+            .filterKeys { it.isNotEmpty() }
+            .map { (path, count) -> FolderSummary(path, count) }
+            .sortedBy { it.path }
+    }
+
+    /**
+     * A folder containing audio files.
+     */
+    data class FolderSummary(
+        val path: String,
+        val trackCount: Int
+    ) {
+        val name: String
+            get() = path.substringAfterLast('/').ifEmpty { path }
+    }
+
+    /**
+     * Whether a stored path falls inside the scanned scope.
+     *
+     * An empty directory list means the whole device was scanned, so every
+     * stored path is in scope.
+     */
+    private fun isWithinScope(path: String, directories: List<String>): Boolean {
+        if (directories.isEmpty()) return true
+        return directories.any { directory ->
+            path.startsWith(directory.trimEnd('/') + "/")
+        }
     }
 
     /**
@@ -171,27 +257,35 @@ class LibraryScanner(
     fun getState(): ScanState = currentState
 
     /**
-     * Discover audio files recursively in a directory.
-     * Skips directories with .nomedia files.
+     * Convert a MediaStore entry into a library track.
+     *
+     * Album id is resolved later when albums are aggregated, so it stays 0 here.
      */
-    private fun discoverAudioFiles(directory: String, result: MutableList<String>) {
-        // In production, this would use java.io.File or DocumentFile
-        // to recursively walk the directory tree.
-        //
-        // Pseudocode:
-        // val dir = File(directory)
-        // if (!dir.isDirectory) return
-        // if (File(dir, ".nomedia").exists()) return
-        //
-        // dir.listFiles()?.forEach { file ->
-        //     if (file.isDirectory) {
-        //         discoverAudioFiles(file.absolutePath, result)
-        //     } else {
-        //         val ext = file.extension.lowercase()
-        //         if (MetadataExtractor.isSupportedExtension(ext)) {
-        //             result.add(file.absolutePath)
-        //         }
-        //     }
-        // }
+    private fun buildTrack(
+        entry: MediaStoreAudioSource.AudioFileEntry,
+        existingId: Long
+    ): Track {
+        val fallbackTitle = entry.path.substringAfterLast('/').substringBeforeLast('.')
+        return Track(
+            id = existingId,
+            path = entry.path,
+            title = entry.title.ifBlank { fallbackTitle },
+            artist = entry.artist,
+            albumId = 0L,
+            albumTitle = entry.album,
+            genre = entry.genre,
+            composer = entry.composer,
+            trackNumber = entry.trackNumber,
+            discNumber = entry.discNumber,
+            duration = entry.durationMs,
+            format = entry.format,
+            sampleRate = entry.sampleRate,
+            bitDepth = entry.bitDepth,
+            channels = 0,
+            artworkPath = entry.artworkUri,
+            year = entry.year,
+            fileSize = entry.fileSize,
+            lastModified = entry.lastModified
+        )
     }
 }

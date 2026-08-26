@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.RepeatOne
 import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
+import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -55,6 +56,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bitperfect.android.R
 import com.bitperfect.android.player.RepeatMode
+import com.bitperfect.android.ui.components.AlbumArtImage
 import com.bitperfect.android.ui.theme.BitPerfectGreen
 import com.bitperfect.android.ui.theme.BitPerfectShapeTokens
 import com.bitperfect.android.ui.theme.DsdBlue
@@ -78,6 +80,7 @@ import com.bitperfect.android.ui.theme.SeekBarActive
 fun PlayerScreen(
     viewModel: PlayerViewModel,
     onOpenFile: () -> Unit = {},
+    onEqualizerClick: () -> Unit = {},
     onQueueClick: () -> Unit = {},
     onDiagnosticsClick: () -> Unit = {}
 ) {
@@ -175,6 +178,7 @@ fun PlayerScreen(
             // Bottom row: device info and queue button
             BottomRow(
                 deviceName = uiState.deviceName,
+                onEqualizerClick = onEqualizerClick,
                 onQueueClick = onQueueClick,
                 onDiagnosticsClick = onDiagnosticsClick
             )
@@ -233,30 +237,11 @@ private fun AlbumArtwork(
         shape = BitPerfectShapeTokens.AlbumArtCorner,
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    Brush.linearGradient(
-                        colors = listOf(
-                            MaterialTheme.colorScheme.surfaceVariant,
-                            MaterialTheme.colorScheme.surface
-                        )
-                    )
-                ),
-            contentAlignment = Alignment.Center
-        ) {
-            // Placeholder when no artwork available
-            if (artworkUri == null) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_library),
-                    contentDescription = "Album Art",
-                    modifier = Modifier.size(96.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-                )
-            }
-            // In a full implementation, AsyncImage from Coil would load artworkUri
-        }
+        AlbumArtImage(
+            artworkUri = artworkUri,
+            modifier = Modifier.fillMaxSize(),
+            placeholderIconSize = 96.dp
+        )
     }
 }
 
@@ -459,6 +444,7 @@ private fun TransportControls(
 @Composable
 private fun BottomRow(
     deviceName: String,
+    onEqualizerClick: () -> Unit,
     onQueueClick: () -> Unit,
     onDiagnosticsClick: () -> Unit
 ) {
@@ -492,13 +478,21 @@ private fun BottomRow(
             }
         }
 
-        // Queue button
-        IconButton(onClick = onQueueClick) {
-            Icon(
-                imageVector = Icons.Default.QueueMusic,
-                contentDescription = "Queue",
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconButton(onClick = onEqualizerClick) {
+                Icon(
+                    imageVector = Icons.Default.Tune,
+                    contentDescription = "Equalizer",
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            IconButton(onClick = onQueueClick) {
+                Icon(
+                    imageVector = Icons.Default.QueueMusic,
+                    contentDescription = "Queue",
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }
