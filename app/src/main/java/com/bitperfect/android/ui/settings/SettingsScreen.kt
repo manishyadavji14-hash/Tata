@@ -245,6 +245,13 @@ fun SettingsScreen(
             }
             item {
                 SettingsCard {
+                    Text(
+                        text = "(Coming soon - audio engine support pending)",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontWeight = FontWeight.Medium
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
                     ToggleSetting(
                         title = "Enable Equalizer",
                         description = "Apply frequency adjustments to audio output",

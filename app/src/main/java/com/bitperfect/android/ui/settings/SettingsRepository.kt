@@ -84,7 +84,6 @@ class SettingsRepository(private val context: Context) {
         const val EQ_BANDS = "0,0,0,0,0,0,0,0,0,0"  // 10-band gains in dB
 
         val SCAN_DIRECTORIES = setOf(
-            "/storage/emulated/0",
             "/storage/emulated/0/Music",
             "/storage/emulated/0/Download"
         )

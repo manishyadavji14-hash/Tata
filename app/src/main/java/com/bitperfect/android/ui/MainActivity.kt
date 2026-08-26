@@ -90,8 +90,11 @@ class MainActivity : ComponentActivity() {
             isBound = true
 
             // Populate ServiceLocator with the service's single engine and controller
-            ServiceLocator.engine = binder.getEngine()
-            ServiceLocator.playbackController = binder.getPlaybackController()
+            ServiceLocator.setServiceComponents(
+                playbackController = binder.getPlaybackController(),
+                engine = binder.getEngine(),
+                musicLibrary = ServiceLocator.musicLibrary!!
+            )
 
             Log.i(TAG, "Bound to PlaybackService - ServiceLocator populated")
 

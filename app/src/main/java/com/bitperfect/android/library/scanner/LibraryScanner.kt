@@ -20,6 +20,31 @@ class LibraryScanner(
     private val metadataExtractor: MetadataExtractor = MetadataExtractor()
 ) {
 
+    companion object {
+        /**
+         * Directories known to not contain music files.
+         * Skipping these significantly speeds up scans when the user
+         * adds a broad path like /storage/emulated/0.
+         */
+        private val SKIP_DIRECTORIES = setOf(
+            "Android",
+            "data",
+            "obb",
+            "DCIM",
+            "Pictures",
+            "Movies",
+            "WhatsApp",
+            "Telegram",
+            "Documents",
+            "Notifications",
+            "Ringtones",
+            "Alarms",
+            "Podcasts",
+            "cache",
+            "thumbnails"
+        )
+    }
+
     /**
      * Scan state.
      */
@@ -221,7 +246,7 @@ class LibraryScanner(
                 if (file.name.startsWith(".")) continue
                 // Skip known non-music system directories to speed up scan
                 val dirName = file.name
-                if (dirName == "Android" || dirName == "data" || dirName == "obb") continue
+                if (dirName in SKIP_DIRECTORIES) continue
                 discoverAudioFiles(file.absolutePath, result)
             } else if (file.isFile) {
                 val ext = file.extension.lowercase()

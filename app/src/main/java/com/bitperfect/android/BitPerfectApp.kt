@@ -100,7 +100,7 @@ class BitPerfectApp : Application() {
      */
     private fun initializeAppComponents() {
         val musicLibrary = MusicLibrary()
-        ServiceLocator.musicLibrary = musicLibrary
+        ServiceLocator.setMusicLibrary(musicLibrary)
         Log.i(TAG, "ServiceLocator.musicLibrary initialized")
     }
 

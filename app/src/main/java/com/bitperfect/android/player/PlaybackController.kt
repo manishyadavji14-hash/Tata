@@ -1,5 +1,7 @@
 package com.bitperfect.android.player
 
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import com.bitperfect.android.engine.NativeAudioEngine
 
@@ -23,6 +25,9 @@ class PlaybackController(
     companion object {
         private const val TAG = "PlaybackController"
     }
+
+    // Handler for dispatching decode thread callbacks to the main thread
+    private val mainHandler = Handler(Looper.getMainLooper())
 
     private var _state: PlaybackState = PlaybackState.Idle
     val state: PlaybackState get() = _state
@@ -204,15 +209,22 @@ class PlaybackController(
     /**
      * Play a track from a list context (e.g., library track click).
      * Replaces the current queue with the given track list, sets the start position,
-     * stops any current playback, and begins playing the selected track.
+     * stops any current playback without emitting a Stopped state, and begins
+     * playing the selected track.
      *
      * @param trackPaths The full list of track paths to populate the queue with
      * @param startIndex The index of the track to begin playback from
      */
     fun playTrackFromList(trackPaths: List<String>, startIndex: Int) {
         queue.setQueue(trackPaths, startIndex)
-        stop()
-        play()
+        // Stop current decode thread and engine without emitting Stopped state
+        // to avoid a spurious UI flash (mini player disappearing for one frame)
+        stopDecodeThread()
+        engine.stopPlayback()
+        positionMs = 0L
+        // Start the selected track directly
+        val track = queue.currentTrack ?: return
+        startTrack(track)
     }
 
     /**
@@ -367,38 +379,46 @@ class PlaybackController(
             channels = channels,
             bitDepth = bitDepth,
             onPositionUpdate = { newPositionMs ->
-                positionMs = newPositionMs
-                // Update the Playing state so UI reflects current position
-                val currentState = _state
-                if (currentState is PlaybackState.Playing) {
-                    setState(PlaybackState.Playing(
-                        trackPath = currentState.trackPath,
-                        positionMs = newPositionMs,
-                        durationMs = durationMs,
-                        format = currentState.format
-                    ))
+                mainHandler.post {
+                    positionMs = newPositionMs
+                    // Update the Playing state so UI reflects current position
+                    val currentState = _state
+                    if (currentState is PlaybackState.Playing) {
+                        setState(PlaybackState.Playing(
+                            trackPath = currentState.trackPath,
+                            positionMs = newPositionMs,
+                            durationMs = durationMs,
+                            format = currentState.format
+                        ))
+                    }
                 }
             },
             onDurationDetected = { detectedDurationMs ->
-                durationMs = detectedDurationMs
-                // Re-emit Playing state with the correct duration
-                val currentState = _state
-                if (currentState is PlaybackState.Playing) {
-                    setState(PlaybackState.Playing(
-                        trackPath = currentState.trackPath,
-                        positionMs = currentState.positionMs,
-                        durationMs = detectedDurationMs,
-                        format = currentState.format
-                    ))
+                mainHandler.post {
+                    durationMs = detectedDurationMs
+                    // Re-emit Playing state with the correct duration
+                    val currentState = _state
+                    if (currentState is PlaybackState.Playing) {
+                        setState(PlaybackState.Playing(
+                            trackPath = currentState.trackPath,
+                            positionMs = currentState.positionMs,
+                            durationMs = detectedDurationMs,
+                            format = currentState.format
+                        ))
+                    }
                 }
             },
             onTrackComplete = {
                 Log.d(TAG, "Track complete: $trackPath")
-                onTrackTransition()
+                mainHandler.post {
+                    onTrackTransition()
+                }
             },
             onError = { errorMessage ->
                 Log.e(TAG, "Decode error: $errorMessage")
-                setState(PlaybackState.Error(errorMessage, trackPath))
+                mainHandler.post {
+                    setState(PlaybackState.Error(errorMessage, trackPath))
+                }
             }
         ).also { it.start() }
 

@@ -47,11 +47,14 @@ class QueueViewModel(
     private val _uiState = MutableStateFlow(QueueUiState())
     val uiState: StateFlow<QueueUiState> = _uiState.asStateFlow()
 
+    // Store the listener reference so we can properly unregister it
+    private val stateListener: (PlaybackState) -> Unit = { _ ->
+        updateQueueState()
+    }
+
     init {
         // Listen for playback state changes to update queue display
-        playbackController.addStateListener { state ->
-            updateQueueState()
-        }
+        playbackController.addStateListener(stateListener)
 
         // Initial state
         updateQueueState()
@@ -125,6 +128,6 @@ class QueueViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        playbackController.removeStateListener { }
+        playbackController.removeStateListener(stateListener)
     }
 }

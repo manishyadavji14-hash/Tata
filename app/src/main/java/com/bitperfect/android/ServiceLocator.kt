@@ -3,6 +3,7 @@ package com.bitperfect.android
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.player.PlaybackController
+import java.util.concurrent.atomic.AtomicReference
 
 /**
  * ServiceLocator - Application-scoped singleton for shared component access.
@@ -15,30 +16,46 @@ import com.bitperfect.android.player.PlaybackController
  * - playbackController and engine are set when MainActivity binds to PlaybackService
  * - All nullable references are cleared when the service unbinds
  *
+ * Thread-safety: Uses a single AtomicReference to an immutable holder to guarantee
+ * that consumers never observe a partial state (e.g., engine set but controller null).
+ *
  * This is intentionally simple (no DI framework) to keep the app lightweight.
  */
 object ServiceLocator {
 
     /**
-     * The single PlaybackController instance, owned by PlaybackService.
-     * Set when the Activity binds to the service.
+     * Immutable snapshot of all service-provided components.
+     * Either all fields are populated (ready) or none are (not ready).
      */
-    @Volatile
-    var playbackController: PlaybackController? = null
+    data class ServiceComponents(
+        val playbackController: PlaybackController? = null,
+        val engine: NativeAudioEngine? = null,
+        val musicLibrary: MusicLibrary? = null
+    ) {
+        /** Returns true when all components are available. */
+        val isReady: Boolean
+            get() = playbackController != null && engine != null && musicLibrary != null
+    }
+
+    private val componentsRef = AtomicReference(ServiceComponents())
+
+    /**
+     * The single PlaybackController instance, owned by PlaybackService.
+     */
+    val playbackController: PlaybackController?
+        get() = componentsRef.get().playbackController
 
     /**
      * The single NativeAudioEngine instance, owned by PlaybackService.
-     * Set when the Activity binds to the service.
      */
-    @Volatile
-    var engine: NativeAudioEngine? = null
+    val engine: NativeAudioEngine?
+        get() = componentsRef.get().engine
 
     /**
      * The application-scoped MusicLibrary instance.
-     * Set during Application.onCreate() and always available.
      */
-    @Volatile
-    var musicLibrary: MusicLibrary? = null
+    val musicLibrary: MusicLibrary?
+        get() = componentsRef.get().musicLibrary
 
     /**
      * Returns true when all service-provided components are available.
@@ -46,14 +63,42 @@ object ServiceLocator {
      * the engine or controller.
      */
     fun isReady(): Boolean {
-        return playbackController != null && engine != null && musicLibrary != null
+        return componentsRef.get().isReady
+    }
+
+    /**
+     * Set all service-provided components atomically.
+     * Called when the Activity binds to PlaybackService.
+     */
+    fun setServiceComponents(
+        playbackController: PlaybackController,
+        engine: NativeAudioEngine,
+        musicLibrary: MusicLibrary
+    ) {
+        componentsRef.set(ServiceComponents(
+            playbackController = playbackController,
+            engine = engine,
+            musicLibrary = musicLibrary
+        ))
+    }
+
+    /**
+     * Set only the music library (available before service bind).
+     * Called during Application.onCreate().
+     */
+    fun setMusicLibrary(musicLibrary: MusicLibrary) {
+        val current = componentsRef.get()
+        componentsRef.set(current.copy(musicLibrary = musicLibrary))
     }
 
     /**
      * Clear service-provided references (called on service disconnect).
      */
     fun clearServiceReferences() {
-        playbackController = null
-        engine = null
+        val current = componentsRef.get()
+        componentsRef.set(current.copy(
+            playbackController = null,
+            engine = null
+        ))
     }
 }

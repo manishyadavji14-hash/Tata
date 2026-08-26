@@ -1,5 +1,7 @@
 package com.bitperfect.android.library
 
+import android.media.MediaExtractor
+import android.media.MediaFormat
 import android.media.MediaMetadataRetriever
 import android.os.Build
 import android.util.Log
@@ -94,7 +96,6 @@ class MetadataExtractor {
             val yearStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_YEAR)
             val trackNumberStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_CD_TRACK_NUMBER)
             val discNumberStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DISC_NUMBER)
-            val channelsStr = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_NUM_TRACKS)
 
             // Parse duration
             val duration = durationStr?.toLongOrNull() ?: 0L
@@ -109,7 +110,7 @@ class MetadataExtractor {
             val year = parseYear(yearStr)
 
             // Parse channels - try METADATA_KEY_NUM_TRACKS first, not reliable for channels
-            // Use bitrate-based estimation or API 31+ keys
+            // Use MediaExtractor to get the accurate channel count from MediaFormat
             var sampleRate = 0
             var bitDepth = 0
             var channels = 0
@@ -126,10 +127,11 @@ class MetadataExtractor {
                 bitDepth = bitsPerSampleStr?.toIntOrNull() ?: 0
             }
 
-            // Estimate channels from MIME type or set defaults based on format
-            val mimeType = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_MIMETYPE)
+            // Use MediaExtractor to get accurate channel count from the audio track's MediaFormat
+            channels = extractChannelCount(path)
+
+            // Fallback: most music is stereo if MediaExtractor could not determine it
             if (channels == 0) {
-                // Most music is stereo
                 channels = 2
             }
 
@@ -237,6 +239,38 @@ class MetadataExtractor {
     private fun extractTitleFromPath(path: String): String {
         val fileName = path.substringAfterLast('/')
         return fileName.substringBeforeLast('.')
+    }
+
+    /**
+     * Extract the audio channel count using MediaExtractor and MediaFormat.
+     * This is the reliable way to get channel count across all API levels,
+     * as MediaMetadataRetriever does not expose a channel count key.
+     *
+     * @param path Full file path
+     * @return Channel count, or 0 if it could not be determined
+     */
+    private fun extractChannelCount(path: String): Int {
+        val extractor = MediaExtractor()
+        return try {
+            extractor.setDataSource(path)
+            for (i in 0 until extractor.trackCount) {
+                val format = extractor.getTrackFormat(i)
+                val mime = format.getString(MediaFormat.KEY_MIME) ?: continue
+                if (mime.startsWith("audio/")) {
+                    return if (format.containsKey(MediaFormat.KEY_CHANNEL_COUNT)) {
+                        format.getInteger(MediaFormat.KEY_CHANNEL_COUNT)
+                    } else {
+                        0
+                    }
+                }
+            }
+            0
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to extract channel count from: $path", e)
+            0
+        } finally {
+            extractor.release()
+        }
     }
 
     private fun extensionToFormat(extension: String): String {
