@@ -136,6 +136,18 @@ class PlayerViewModel(
         _uiState.value = _uiState.value.copy(repeatMode = nextMode)
     }
 
+    /**
+     * Play a track from the library.
+     * Replaces the current queue with the provided track list and starts playback
+     * from the selected index.
+     *
+     * @param tracks List of track paths representing the current visible list
+     * @param selectedIndex Index of the track the user tapped
+     */
+    fun playFromLibrary(tracks: List<String>, selectedIndex: Int) {
+        playbackController.playTrackFromList(tracks, selectedIndex)
+    }
+
     // --- State Updates ---
 
     private fun updateUiState(state: PlaybackState) {

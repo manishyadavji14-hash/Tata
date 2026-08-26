@@ -202,6 +202,65 @@ class PlaybackController(
     fun getSleepTimerRemaining(): Long? = sleepTimer?.remainingMs
 
     /**
+     * Play a track from a list context (e.g., library track click).
+     * Replaces the current queue with the given track list, sets the start position,
+     * stops any current playback, and begins playing the selected track.
+     *
+     * @param trackPaths The full list of track paths to populate the queue with
+     * @param startIndex The index of the track to begin playback from
+     */
+    fun playTrackFromList(trackPaths: List<String>, startIndex: Int) {
+        queue.setQueue(trackPaths, startIndex)
+        stop()
+        play()
+    }
+
+    /**
+     * Jump to a specific track in the current queue by index.
+     * Stops current playback and starts the track at the given index.
+     *
+     * @param index The queue index to jump to
+     */
+    fun jumpToQueueIndex(index: Int) {
+        val track = queue.jumpTo(index) ?: return
+        stopDecodeThread()
+        startTrack(track)
+    }
+
+    /**
+     * Remove a track from the queue at the given index.
+     * If the removed track is the currently playing track, advance to next.
+     *
+     * @param index The queue index to remove
+     */
+    fun removeFromQueue(index: Int) {
+        val wasCurrentIndex = queue.position
+        val removed = queue.removeAt(index)
+        if (!removed) return
+
+        if (index == wasCurrentIndex) {
+            // The currently playing track was removed, play next or stop
+            val nextTrack = queue.currentTrack
+            if (nextTrack != null) {
+                stopDecodeThread()
+                startTrack(nextTrack)
+            } else {
+                stop()
+            }
+        }
+    }
+
+    /**
+     * Move a track in the queue from one position to another.
+     *
+     * @param fromIndex Source index
+     * @param toIndex Destination index
+     */
+    fun moveInQueue(fromIndex: Int, toIndex: Int) {
+        queue.move(fromIndex, toIndex)
+    }
+
+    /**
      * Called when a track transition occurs (from native gapless engine or decode thread).
      * Stops the current decode thread and starts the next track.
      */

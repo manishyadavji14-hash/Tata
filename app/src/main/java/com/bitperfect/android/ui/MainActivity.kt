@@ -32,6 +32,7 @@ import com.bitperfect.android.ui.diagnostics.DiagnosticsViewModel
 import com.bitperfect.android.ui.library.LibraryViewModel
 import com.bitperfect.android.ui.navigation.BitPerfectNavGraph
 import com.bitperfect.android.ui.player.PlayerViewModel
+import com.bitperfect.android.ui.queue.QueueViewModel
 import com.bitperfect.android.ui.settings.SettingsRepository
 import com.bitperfect.android.ui.settings.SettingsViewModel
 import com.bitperfect.android.ui.theme.BitPerfectTheme
@@ -77,6 +78,7 @@ class MainActivity : ComponentActivity() {
     private var libraryViewModel: LibraryViewModel? = null
     private var settingsViewModel: SettingsViewModel? = null
     private var diagnosticsViewModel: DiagnosticsViewModel? = null
+    private var queueViewModel: QueueViewModel? = null
 
     // Settings repository (Activity-scoped, needs Context)
     private var settingsRepository: SettingsRepository? = null
@@ -160,6 +162,7 @@ class MainActivity : ComponentActivity() {
         playerViewModel = PlayerViewModel(controller, engine, dsdManager)
         libraryViewModel = LibraryViewModel(musicLibrary, localSettingsRepository)
         settingsViewModel = SettingsViewModel(localSettingsRepository)
+        queueViewModel = QueueViewModel(controller)
         diagnosticsViewModel = if (usbManager != null) {
             DiagnosticsViewModel(engine, dsdManager, usbManager)
         } else {
@@ -200,13 +203,15 @@ class MainActivity : ComponentActivity() {
                     val lvm = libraryViewModel
                     val svm = settingsViewModel
                     val dvm = diagnosticsViewModel
+                    val qvm = queueViewModel
 
-                    if (pvm != null && lvm != null && svm != null && dvm != null) {
+                    if (pvm != null && lvm != null && svm != null && dvm != null && qvm != null) {
                         BitPerfectNavGraph(
                             playerViewModel = pvm,
                             libraryViewModel = lvm,
                             settingsViewModel = svm,
-                            diagnosticsViewModel = dvm
+                            diagnosticsViewModel = dvm,
+                            queueViewModel = qvm
                         )
                     } else {
                         InitializationErrorScreen()

@@ -27,6 +27,8 @@ import com.bitperfect.android.ui.library.LibraryScreen
 import com.bitperfect.android.ui.library.LibraryViewModel
 import com.bitperfect.android.ui.player.PlayerScreen
 import com.bitperfect.android.ui.player.PlayerViewModel
+import com.bitperfect.android.ui.queue.QueueScreen
+import com.bitperfect.android.ui.queue.QueueViewModel
 import com.bitperfect.android.ui.settings.SettingsScreen
 import com.bitperfect.android.ui.settings.SettingsViewModel
 
@@ -45,6 +47,7 @@ fun BitPerfectNavGraph(
     libraryViewModel: LibraryViewModel,
     settingsViewModel: SettingsViewModel,
     diagnosticsViewModel: DiagnosticsViewModel,
+    queueViewModel: QueueViewModel,
     navController: NavHostController = rememberNavController()
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -92,7 +95,15 @@ fun BitPerfectNavGraph(
                         navController.navigate(Screen.ArtistAlbums.createRoute(artistId))
                     },
                     onTrackClick = { trackPath ->
-                        // Play the track and navigate to player
+                        // Get the current visible track list from the library
+                        val currentTracks = libraryViewModel.uiState.value.tracks
+                        val trackPaths = currentTracks.map { it.path }
+                        val selectedIndex = trackPaths.indexOf(trackPath).coerceAtLeast(0)
+
+                        // Set the queue and start playback
+                        playerViewModel.playFromLibrary(trackPaths, selectedIndex)
+
+                        // Navigate to the player screen
                         navController.navigate(Screen.Player.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
@@ -127,11 +138,19 @@ fun BitPerfectNavGraph(
                 arguments = listOf(navArgument("albumId") { type = NavType.LongType })
             ) { backStackEntry ->
                 val albumId = backStackEntry.arguments?.getLong("albumId") ?: 0L
-                // Album detail screen would go here
-                // For now, shows the library filtered by album
+                // Album detail screen - shows library filtered by album
                 LibraryScreen(
                     viewModel = libraryViewModel,
                     onTrackClick = { trackPath ->
+                        // Get the current visible track list from the library
+                        val currentTracks = libraryViewModel.uiState.value.tracks
+                        val trackPaths = currentTracks.map { it.path }
+                        val selectedIndex = trackPaths.indexOf(trackPath).coerceAtLeast(0)
+
+                        // Set the queue and start playback
+                        playerViewModel.playFromLibrary(trackPaths, selectedIndex)
+
+                        // Navigate to the player screen
                         navController.navigate(Screen.Player.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
@@ -158,10 +177,13 @@ fun BitPerfectNavGraph(
 
             // Queue screen
             composable(Screen.Queue.route) {
-                // Queue screen placeholder - would show PlayQueue contents
-                PlayerScreen(
-                    viewModel = playerViewModel,
-                    onQueueClick = { navController.popBackStack() }
+                QueueScreen(
+                    viewModel = queueViewModel,
+                    onBackClick = { navController.popBackStack() },
+                    onTrackClick = { index ->
+                        queueViewModel.jumpToTrack(index)
+                        navController.popBackStack()
+                    }
                 )
             }
 
