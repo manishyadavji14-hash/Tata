@@ -1,5 +1,8 @@
 #include "native_bridge.h"
+#include <array>
+#include <cstdio>
 #include <cstring>
+#include <limits>
 #include <vector>
 
 #ifndef STANDALONE_TEST
@@ -252,6 +255,91 @@ Java_com_bitperfect_android_engine_NativeAudioEngine_nativeDetectFormat(JNIEnv* 
     return result;
 }
 
+extern "C" JNIEXPORT jlong JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeOpenDecoder(
+        JNIEnv* env, jobject /*thiz*/, jstring path) {
+    if (path == nullptr) return 0;
+
+    const char* pathStr = env->GetStringUTFChars(path, nullptr);
+    if (pathStr == nullptr) return 0;
+
+    uint64_t sessionId = bitperfect::jni::NativeBridge::instance().openDecoder(pathStr);
+    env->ReleaseStringUTFChars(path, pathStr);
+    return static_cast<jlong>(sessionId);
+}
+
+extern "C" JNIEXPORT jlongArray JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetDecoderFormat(
+        JNIEnv* env, jobject /*thiz*/, jlong sessionId) {
+    if (sessionId <= 0) return nullptr;
+
+    bitperfect::jni::NativeBridge::DecoderInfo info;
+    if (!bitperfect::jni::NativeBridge::instance().getDecoderInfo(
+            static_cast<uint64_t>(sessionId), info)) {
+        return nullptr;
+    }
+
+    jlongArray result = env->NewLongArray(4);
+    if (result == nullptr) return nullptr;
+
+    const jlong values[4] = {
+        static_cast<jlong>(info.sampleRate),
+        static_cast<jlong>(info.bitsPerSample),
+        static_cast<jlong>(info.channels),
+        static_cast<jlong>(info.totalFrames)
+    };
+    env->SetLongArrayRegion(result, 0, 4, values);
+    return result;
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeReadDecoder(
+        JNIEnv* env, jobject /*thiz*/, jlong sessionId,
+        jobject outputBuffer, jint maxFrames) {
+    if (sessionId <= 0 || outputBuffer == nullptr || maxFrames <= 0) return -1;
+
+    void* output = env->GetDirectBufferAddress(outputBuffer);
+    jlong capacity = env->GetDirectBufferCapacity(outputBuffer);
+    if (output == nullptr || capacity <= 0) return -1;
+
+    bitperfect::jni::NativeBridge::DecoderInfo info;
+    auto& bridge = bitperfect::jni::NativeBridge::instance();
+    if (!bridge.getDecoderInfo(static_cast<uint64_t>(sessionId), info)) return -1;
+
+    const size_t bytesPerFrame =
+        (static_cast<size_t>(info.bitsPerSample) / 8U) * info.channels;
+    if (bytesPerFrame == 0 ||
+        static_cast<size_t>(maxFrames) >
+            std::numeric_limits<size_t>::max() / bytesPerFrame) {
+        return -1;
+    }
+
+    const size_t required = static_cast<size_t>(maxFrames) * bytesPerFrame;
+    if (required > static_cast<size_t>(capacity)) return -1;
+
+    const int64_t framesRead = bridge.readDecoder(
+        static_cast<uint64_t>(sessionId), static_cast<uint8_t*>(output),
+        static_cast<size_t>(maxFrames));
+    if (framesRead < 0 || framesRead > std::numeric_limits<jint>::max()) return -1;
+    return static_cast<jint>(framesRead);
+}
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeSeekDecoder(
+        JNIEnv* /*env*/, jobject /*thiz*/, jlong sessionId, jlong frameIndex) {
+    if (sessionId <= 0 || frameIndex < 0) return -1;
+    return static_cast<jlong>(bitperfect::jni::NativeBridge::instance().seekDecoder(
+        static_cast<uint64_t>(sessionId), static_cast<uint64_t>(frameIndex)));
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeCloseDecoder(
+        JNIEnv* /*env*/, jobject /*thiz*/, jlong sessionId) {
+    if (sessionId <= 0) return;
+    bitperfect::jni::NativeBridge::instance().closeDecoder(
+        static_cast<uint64_t>(sessionId));
+}
+
 extern "C" JNIEXPORT jboolean JNICALL
 Java_com_bitperfect_android_engine_NativeAudioEngine_registerTrackTransitionCallback(
         JNIEnv* env, jobject /*thiz*/, jobject controller) {
@@ -328,6 +416,7 @@ bool NativeBridge::initialize() {
 
 void NativeBridge::shutdown() {
     stopPlayback();
+    closeAllDecoders();
 
     audioDevice_.reset();
     usbControl_.reset();
@@ -591,6 +680,132 @@ NativeBridge::FormatInfo NativeBridge::detectFormat(const std::string& path) con
 
     dec->close();
     return info;
+}
+
+uint64_t NativeBridge::openDecoder(const std::string& path) {
+    if (path.empty()) return 0;
+
+    std::unique_ptr<decoder::AudioDecoder> audioDecoder;
+    std::array<uint8_t, 12> magic{};
+    if (FILE* file = std::fopen(path.c_str(), "rb")) {
+        const size_t bytesRead = std::fread(magic.data(), 1, magic.size(), file);
+        std::fclose(file);
+        audioDecoder = decoder::DecoderFactory::createFromMagic(magic.data(), bytesRead);
+    }
+    if (!audioDecoder) {
+        audioDecoder = decoder::DecoderFactory::createFromPath(path);
+    }
+    if (!audioDecoder || !audioDecoder->open(path)) return 0;
+
+    const decoder::AudioFormat format = audioDecoder->getFormat();
+    if (format.sampleRate == 0 || format.channels == 0 ||
+        format.bitsPerSample == 0 || format.bytesPerFrame() == 0) {
+        audioDecoder->close();
+        return 0;
+    }
+
+    auto session = std::make_shared<DecoderSession>();
+    session->format = format;
+    session->decoder = std::move(audioDecoder);
+
+    uint64_t sessionId = nextDecoderSessionId_.fetch_add(1, std::memory_order_relaxed);
+    if (sessionId == 0) {
+        sessionId = nextDecoderSessionId_.fetch_add(1, std::memory_order_relaxed);
+    }
+
+    {
+        std::lock_guard<std::mutex> lock(decoderSessionsMutex_);
+        decoderSessions_[sessionId] = std::move(session);
+    }
+    return sessionId;
+}
+
+std::shared_ptr<NativeBridge::DecoderSession> NativeBridge::findDecoderSession(
+        uint64_t sessionId) const {
+    if (sessionId == 0) return nullptr;
+    std::lock_guard<std::mutex> lock(decoderSessionsMutex_);
+    const auto it = decoderSessions_.find(sessionId);
+    return it == decoderSessions_.end() ? nullptr : it->second;
+}
+
+bool NativeBridge::getDecoderInfo(uint64_t sessionId, DecoderInfo& info) const {
+    const auto session = findDecoderSession(sessionId);
+    if (!session) return false;
+
+    std::lock_guard<std::mutex> lock(session->mutex);
+    if (!session->decoder || !session->decoder->isOpen()) return false;
+    info.sampleRate = session->format.sampleRate;
+    info.bitsPerSample = session->format.bitsPerSample;
+    info.channels = session->format.channels;
+    info.totalFrames = session->format.totalFrames;
+    return true;
+}
+
+int64_t NativeBridge::readDecoder(
+        uint64_t sessionId, uint8_t* buffer, size_t maxFrames) {
+    if (!buffer || maxFrames == 0 ||
+        maxFrames > static_cast<size_t>(std::numeric_limits<int64_t>::max())) {
+        return -1;
+    }
+
+    const auto session = findDecoderSession(sessionId);
+    if (!session) return -1;
+
+    std::lock_guard<std::mutex> lock(session->mutex);
+    if (!session->decoder || !session->decoder->isOpen()) return -1;
+    return static_cast<int64_t>(session->decoder->read(buffer, maxFrames));
+}
+
+int64_t NativeBridge::seekDecoder(uint64_t sessionId, uint64_t frameIndex) {
+    const auto session = findDecoderSession(sessionId);
+    if (!session) return -1;
+
+    std::lock_guard<std::mutex> lock(session->mutex);
+    if (!session->decoder || !session->decoder->isOpen()) return -1;
+
+    decoder::SeekPosition position;
+    position.frameIndex = frameIndex;
+    if (!session->decoder->seek(position)) return -1;
+
+    const uint64_t resultingFrame = session->decoder->getPosition();
+    if (resultingFrame > static_cast<uint64_t>(std::numeric_limits<int64_t>::max())) {
+        return -1;
+    }
+    return static_cast<int64_t>(resultingFrame);
+}
+
+void NativeBridge::closeDecoder(uint64_t sessionId) {
+    std::shared_ptr<DecoderSession> session;
+    {
+        std::lock_guard<std::mutex> lock(decoderSessionsMutex_);
+        const auto it = decoderSessions_.find(sessionId);
+        if (it == decoderSessions_.end()) return;
+        session = std::move(it->second);
+        decoderSessions_.erase(it);
+    }
+
+    std::lock_guard<std::mutex> lock(session->mutex);
+    if (session->decoder) {
+        session->decoder->close();
+        session->decoder.reset();
+    }
+}
+
+void NativeBridge::closeAllDecoders() {
+    std::unordered_map<uint64_t, std::shared_ptr<DecoderSession>> sessions;
+    {
+        std::lock_guard<std::mutex> lock(decoderSessionsMutex_);
+        sessions.swap(decoderSessions_);
+    }
+
+    for (auto& entry : sessions) {
+        const auto& session = entry.second;
+        std::lock_guard<std::mutex> lock(session->mutex);
+        if (session->decoder) {
+            session->decoder->close();
+            session->decoder.reset();
+        }
+    }
 }
 
 } // namespace jni

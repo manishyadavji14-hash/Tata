@@ -26,9 +26,9 @@ import kotlinx.coroutines.launch
  * - Periodically updates position for seek bar
  */
 class PlayerViewModel(
-    private val playbackController: PlaybackController,
-    private val engine: NativeAudioEngine,
-    private val dsdManager: DsdManager
+    internal val playbackController: PlaybackController,
+    internal val engine: NativeAudioEngine,
+    internal val dsdManager: DsdManager
 ) : ViewModel() {
 
     /**
@@ -45,9 +45,9 @@ class PlayerViewModel(
         val durationMs: Long = 0L,
         val positionText: String = "0:00",
         val durationText: String = "0:00",
-        val formatBadge: String = "BITPERFECT",
-        val formatDetail: String = "",
-        val outputMode: OutputMode = OutputMode.BITPERFECT,
+        val formatBadge: String = "ANDROID PCM",
+        val formatDetail: String = "Select a WAV or FLAC file",
+        val outputMode: OutputMode = OutputMode.PCM,
         val sampleRate: Int = 0,
         val bitDepth: Int = 0,
         val channels: Int = 0,
@@ -57,7 +57,8 @@ class PlayerViewModel(
         val hasPrevious: Boolean = false,
         val artworkUri: String? = null,
         val bufferLevel: Float = 0f,
-        val deviceName: String = ""
+        val deviceName: String = "",
+        val errorMessage: String? = null
     )
 
     /**
@@ -72,12 +73,12 @@ class PlayerViewModel(
 
     private val _uiState = MutableStateFlow(PlayerUiState())
     val uiState: StateFlow<PlayerUiState> = _uiState.asStateFlow()
+    private val playbackStateListener: (PlaybackState) -> Unit = { state ->
+        updateUiState(state)
+    }
 
     init {
-        // Listen for playback state changes
-        playbackController.addStateListener { state ->
-            updateUiState(state)
-        }
+        playbackController.addStateListener(playbackStateListener)
 
         // Start position update loop
         viewModelScope.launch {
@@ -89,6 +90,10 @@ class PlayerViewModel(
     }
 
     // --- User Actions ---
+
+    fun playFile(path: String) {
+        playbackController.playFile(path)
+    }
 
     fun play() {
         playbackController.play()
@@ -160,8 +165,9 @@ class PlayerViewModel(
                     channels = state.format.channels,
                     hasNext = playbackController.queue.hasNext(),
                     hasPrevious = playbackController.queue.hasPrevious(),
-                    bufferLevel = engine.getBufferLevel(),
-                    deviceName = engine.getDeviceName()
+                    bufferLevel = 0f,
+                    deviceName = "Android AudioTrack",
+                    errorMessage = null
                 )
             }
             is PlaybackState.Paused -> {
@@ -178,7 +184,8 @@ class PlayerViewModel(
                     isPlaying = false,
                     isPaused = false,
                     isLoading = true,
-                    trackTitle = extractTrackTitle(state.trackPath)
+                    trackTitle = extractTrackTitle(state.trackPath),
+                    errorMessage = null
                 )
             }
             is PlaybackState.Stopped, is PlaybackState.Idle -> {
@@ -188,7 +195,8 @@ class PlayerViewModel(
                 currentState.copy(
                     isPlaying = false,
                     isPaused = false,
-                    isLoading = false
+                    isLoading = false,
+                    errorMessage = state.message
                 )
             }
         }
@@ -202,7 +210,7 @@ class PlayerViewModel(
             _uiState.value = _uiState.value.copy(
                 positionMs = currentPos,
                 positionText = formatTime(currentPos),
-                bufferLevel = engine.getBufferLevel()
+                bufferLevel = 0f
             )
         }
     }
@@ -252,7 +260,7 @@ class PlayerViewModel(
                 val codec = format.codec
                 val khz = formatFrequency(format.sampleRate)
                 FormatDisplay(
-                    badge = "BITPERFECT",
+                    badge = "ANDROID PCM",
                     detail = "$codec . ${format.bitDepth}-bit . $khz . ${format.channels}ch",
                     mode = OutputMode.PCM
                 )
@@ -292,7 +300,8 @@ class PlayerViewModel(
     }
 
     override fun onCleared() {
+        playbackController.removeStateListener(playbackStateListener)
+        playbackController.release()
         super.onCleared()
-        playbackController.removeStateListener { }
     }
 }

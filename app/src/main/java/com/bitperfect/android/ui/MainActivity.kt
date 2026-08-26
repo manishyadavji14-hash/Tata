@@ -4,12 +4,16 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
+import android.provider.OpenableColumns
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +26,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.bitperfect.android.BitPerfectApp
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
@@ -36,6 +43,12 @@ import com.bitperfect.android.ui.settings.SettingsViewModel
 import com.bitperfect.android.ui.theme.BitPerfectTheme
 import com.bitperfect.android.ui.theme.ThemeMode
 import com.bitperfect.android.usb.UsbAudioManager
+import java.io.File
+import java.io.IOException
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * MainActivity - Single activity hosting the Compose navigation.
@@ -56,6 +69,14 @@ class MainActivity : ComponentActivity() {
 
     companion object {
         private const val TAG = "MainActivity"
+        private const val PICKED_AUDIO_DIRECTORY = "picked-audio"
+        private val SUPPORTED_FILE_EXTENSIONS = setOf("wav", "wave", "flac")
+    }
+
+    private val openAudioDocument = registerForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if (uri != null) importAndPlay(uri)
     }
 
     private var playbackService: PlaybackService? = null
@@ -73,6 +94,8 @@ class MainActivity : ComponentActivity() {
     private var dsdManager: DsdManager? = null
     private var usbAudioManager: UsbAudioManager? = null
     private var settingsRepository: SettingsRepository? = null
+    private var playbackController: com.bitperfect.android.player.PlaybackController? = null
+    private var importGeneration = 0L
 
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
@@ -111,6 +134,7 @@ class MainActivity : ComponentActivity() {
     }
 
     override fun onDestroy() {
+        playbackController = null
         if (isBound) {
             unbindService(serviceConnection)
             isBound = false
@@ -119,32 +143,41 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun initializeComponents() {
-        // Initialize engine and managers
-        val localEngine = NativeAudioEngine()
+        val playbackFactory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                if (!modelClass.isAssignableFrom(PlayerViewModel::class.java)) {
+                    throw IllegalArgumentException("Unknown ViewModel: ${modelClass.name}")
+                }
+
+                val createdEngine = NativeAudioEngine()
+                try {
+                    createdEngine.initialize()
+                } catch (e: UnsatisfiedLinkError) {
+                    Log.e(TAG, "Native engine initialization failed (link error): ${e.message}", e)
+                } catch (e: Exception) {
+                    Log.e(TAG, "Native engine initialization failed: ${e.message}", e)
+                }
+
+                val createdDsdManager = DsdManager()
+                val createdController =
+                    com.bitperfect.android.player.PlaybackController(createdEngine)
+                return PlayerViewModel(
+                    createdController,
+                    createdEngine,
+                    createdDsdManager
+                ) as T
+            }
+        }
+
+        val localPlayerViewModel =
+            ViewModelProvider(this, playbackFactory)[PlayerViewModel::class.java]
+        val localEngine = localPlayerViewModel.engine
+        val localDsdManager = localPlayerViewModel.dsdManager
+        playerViewModel = localPlayerViewModel
         engine = localEngine
-
-        // Wrap engine.initialize() specifically - JNI may fail if native library
-        // did not load or if the device lacks required capabilities
-        try {
-            localEngine.initialize()
-        } catch (e: UnsatisfiedLinkError) {
-            Log.e(TAG, "Native engine initialization failed (link error): ${e.message}", e)
-        } catch (e: Exception) {
-            Log.e(TAG, "Native engine initialization failed: ${e.message}", e)
-        }
-
-        // DsdManager methods are safe (no external/JNI calls), but wrap creation
-        // in try-catch for any future issues
-        val localDsdManager = try {
-            DsdManager()
-        } catch (e: UnsatisfiedLinkError) {
-            Log.e(TAG, "DsdManager creation failed (link error): ${e.message}", e)
-            DsdManager() // DsdManager no longer has external funs, so this is safe
-        } catch (e: Exception) {
-            Log.e(TAG, "DsdManager creation failed: ${e.message}", e)
-            DsdManager()
-        }
         dsdManager = localDsdManager
+        playbackController = localPlayerViewModel.playbackController
 
         val localUsbAudioManager = UsbAudioManager(this)
         usbAudioManager = localUsbAudioManager
@@ -155,13 +188,104 @@ class MainActivity : ComponentActivity() {
         // Create music library
         val musicLibrary = MusicLibrary()
 
-        // Initialize ViewModels
-        val playbackController = com.bitperfect.android.player.PlaybackController(localEngine)
-
-        playerViewModel = PlayerViewModel(playbackController, localEngine, localDsdManager)
+        // Initialize activity-scoped library/settings/diagnostics ViewModels.
         libraryViewModel = LibraryViewModel(musicLibrary)
         settingsViewModel = SettingsViewModel(localSettingsRepository)
         diagnosticsViewModel = DiagnosticsViewModel(localEngine, localDsdManager, localUsbAudioManager)
+    }
+
+    private fun launchAudioPicker() {
+        if (!BitPerfectApp.isNativeLoaded) {
+            Toast.makeText(
+                this,
+                "Native audio decoder is unavailable on this device",
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+        openAudioDocument.launch(
+            arrayOf("audio/*", "application/flac", "application/x-flac", "application/octet-stream")
+        )
+    }
+
+    private fun importAndPlay(uri: Uri) {
+        val viewModel = playerViewModel ?: return
+        val requestGeneration = ++importGeneration
+        lifecycleScope.launch {
+            var importedFile: File? = null
+            try {
+                val copiedFile = withContext(Dispatchers.IO) {
+                    copyAudioDocumentToCache(uri)
+                }
+                importedFile = copiedFile
+                if (requestGeneration != importGeneration) {
+                    withContext(Dispatchers.IO) { copiedFile.delete() }
+                    return@launch
+                }
+
+                viewModel.playFile(copiedFile.absolutePath)
+                withContext(Dispatchers.IO) {
+                    cleanupPickedAudioCache(copiedFile)
+                }
+            } catch (cancelled: CancellationException) {
+                importedFile?.delete()
+                throw cancelled
+            } catch (error: Exception) {
+                if (requestGeneration == importGeneration) {
+                    Log.e(TAG, "Could not import selected audio file", error)
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Could not open that audio file",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    importedFile?.delete()
+                }
+            }
+        }
+    }
+
+    private fun copyAudioDocumentToCache(uri: Uri): File {
+        val displayName = contentResolver.query(
+            uri,
+            arrayOf(OpenableColumns.DISPLAY_NAME),
+            null,
+            null,
+            null
+        )?.use { cursor ->
+            if (cursor.moveToFirst()) cursor.getString(0) else null
+        }.orEmpty()
+
+        val extension = displayName.substringAfterLast('.', "")
+            .lowercase()
+            .takeIf { it in SUPPORTED_FILE_EXTENSIONS }
+            ?: "audio"
+        val cacheDirectory = File(cacheDir, PICKED_AUDIO_DIRECTORY)
+        if (!cacheDirectory.exists() && !cacheDirectory.mkdirs()) {
+            throw IOException("Could not create audio cache directory")
+        }
+
+        val target = File.createTempFile("picked-", ".$extension", cacheDirectory)
+        try {
+            val input = contentResolver.openInputStream(uri)
+                ?: throw IOException("Content provider returned no input stream")
+            input.buffered().use { source ->
+                target.outputStream().buffered().use { destination ->
+                    source.copyTo(destination)
+                }
+            }
+            if (target.length() == 0L) throw IOException("Selected file is empty")
+            return target
+        } catch (error: Exception) {
+            target.delete()
+            throw error
+        }
+    }
+
+    private fun cleanupPickedAudioCache(currentFile: File) {
+        currentFile.parentFile?.listFiles()?.forEach { cachedFile ->
+            if (cachedFile != currentFile) cachedFile.delete()
+        }
     }
 
     /**
@@ -199,7 +323,8 @@ class MainActivity : ComponentActivity() {
                         playerViewModel = pvm,
                         libraryViewModel = lvm,
                         settingsViewModel = svm,
-                        diagnosticsViewModel = dvm
+                        diagnosticsViewModel = dvm,
+                        onOpenFile = ::launchAudioPicker
                     )
                 } else {
                     // Show a safe fallback screen when ViewModels failed to initialize

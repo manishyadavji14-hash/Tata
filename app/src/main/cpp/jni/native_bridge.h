@@ -15,6 +15,8 @@
 #include <vector>
 #include <atomic>
 #include <functional>
+#include <mutex>
+#include <unordered_map>
 
 namespace bitperfect {
 namespace jni {
@@ -173,6 +175,37 @@ public:
     FormatInfo detectFormat(const std::string& path) const;
 
     /**
+     * Information for an incrementally decoded PCM file.
+     */
+    struct DecoderInfo {
+        uint32_t sampleRate = 0;
+        uint8_t bitsPerSample = 0;
+        uint8_t channels = 0;
+        uint64_t totalFrames = 0;
+    };
+
+    /**
+     * Open a WAV or FLAC decoder session. The returned opaque ID remains valid
+     * until closeDecoder() or shutdown().
+     */
+    uint64_t openDecoder(const std::string& path);
+
+    /** Get immutable format information for an open decoder session. */
+    bool getDecoderInfo(uint64_t sessionId, DecoderInfo& info) const;
+
+    /**
+     * Decode up to maxFrames into a caller-owned PCM buffer.
+     * @return decoded frame count, 0 at EOF, or -1 for an invalid session.
+     */
+    int64_t readDecoder(uint64_t sessionId, uint8_t* buffer, size_t maxFrames);
+
+    /** Seek and return the resulting frame position, or -1 on failure. */
+    int64_t seekDecoder(uint64_t sessionId, uint64_t frameIndex);
+
+    /** Close a decoder session. Repeated close calls are harmless. */
+    void closeDecoder(uint64_t sessionId);
+
+    /**
      * Track transition callback type for gapless playback.
      */
     using TrackTransitionJniCallback = std::function<void(void*)>;
@@ -211,6 +244,19 @@ private:
     std::unique_ptr<pcm::PcmEngine> pcmEngine_;
     std::unique_ptr<audio::SampleRateManager> sampleRateManager_;
     std::unique_ptr<buffer::AudioBufferManager> bufferManager_;
+
+    struct DecoderSession {
+        std::mutex mutex;
+        std::unique_ptr<decoder::AudioDecoder> decoder;
+        decoder::AudioFormat format;
+    };
+
+    std::shared_ptr<DecoderSession> findDecoderSession(uint64_t sessionId) const;
+    void closeAllDecoders();
+
+    mutable std::mutex decoderSessionsMutex_;
+    std::unordered_map<uint64_t, std::shared_ptr<DecoderSession>> decoderSessions_;
+    std::atomic<uint64_t> nextDecoderSessionId_{1};
 
     // Configuration
     PlaybackConfig currentConfig_;

@@ -26,7 +26,7 @@ Set up the Android SDK at the default Termux path:
 
 ```bash
 export ANDROID_HOME=$HOME/android-sdk
-export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/android-ndk-r29
+export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/29.0.14206865
 export JAVA_HOME=/data/data/com.termux/files/usr/lib/jvm/java-21-openjdk/
 export PATH=$JAVA_HOME/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
 ```
@@ -40,22 +40,22 @@ Using `sdkmanager`:
 ```bash
 sdkmanager "platforms;android-36"
 sdkmanager "build-tools;36.0.0"
-sdkmanager "ndk;android-ndk-r29"
+sdkmanager "ndk;29.0.14206865"
 sdkmanager "cmake;3.22.1"
 ```
 
 Or if using manually downloaded NDK r29, ensure it is placed at:
 ```
-/data/data/com.termux/files/home/android-sdk/ndk/android-ndk-r29
+/data/data/com.termux/files/home/android-sdk/ndk/29.0.14206865
 ```
 
 ## Version Summary
 
 | Component       | Version          |
 |-----------------|------------------|
-| Gradle          | 9.7.0            |
-| AGP             | 8.9.0            |
-| Kotlin          | 2.1.0            |
+| Gradle          | 8.11.1           |
+| AGP             | 8.10.1           |
+| Kotlin          | 2.2.10           |
 | NDK             | r29 (29.0.14206865) |
 | Build Tools     | 36.0.0           |
 | compileSdk      | 36               |
@@ -83,7 +83,7 @@ Or create it manually:
 
 ```properties
 sdk.dir=/data/data/com.termux/files/home/android-sdk
-ndk.dir=/data/data/com.termux/files/home/android-sdk/ndk/android-ndk-r29
+ndk.dir=/data/data/com.termux/files/home/android-sdk/ndk/29.0.14206865
 ```
 
 ### 3. Verify Java Version
@@ -97,7 +97,7 @@ java -version
 
 ```bash
 gradle --version
-# Expected: Gradle 9.7.0
+# Expected: Gradle 8.11.1
 ```
 
 ## Building
@@ -105,7 +105,7 @@ gradle --version
 ### Debug APK (Recommended for Development)
 
 ```bash
-gradle assembleDebug
+./gradlew assembleDebug
 ```
 
 The output APK will be at:
@@ -116,7 +116,7 @@ app/build/outputs/apk/debug/app-debug.apk
 ### Release APK
 
 ```bash
-gradle assembleRelease
+./gradlew assembleRelease
 ```
 
 Note: Release builds require signing configuration. For development, use debug builds.
@@ -126,7 +126,7 @@ Note: Release builds require signing configuration. For development, use debug b
 If you encounter issues, try a clean build:
 
 ```bash
-gradle clean assembleDebug
+./gradlew clean assembleDebug
 ```
 
 ## Native Tests (No Android SDK Required)
@@ -167,7 +167,7 @@ org.gradle.parallel=false
 Build caching is enabled by default. The cache is stored in `~/.gradle/caches/`. If storage is limited, you can periodically clean it:
 
 ```bash
-gradle --stop
+./gradlew --stop
 rm -rf ~/.gradle/caches/build-cache-*
 ```
 
@@ -176,7 +176,7 @@ rm -rf ~/.gradle/caches/build-cache-*
 If the Gradle daemon consumes too much memory in the background:
 
 ```bash
-gradle --stop
+./gradlew --stop
 ```
 
 To disable the daemon entirely (slower builds but less background memory usage):
@@ -216,9 +216,9 @@ ndk.dir=/your/actual/ndk/path
 Reduce Gradle JVM heap size in `gradle.properties` and stop other memory-intensive processes:
 
 ```bash
-gradle --stop
+./gradlew --stop
 # Edit gradle.properties to reduce -Xmx
-gradle assembleDebug
+./gradlew assembleDebug
 ```
 
 ### CMake Version Mismatch
@@ -233,12 +233,12 @@ The first build downloads dependencies and compiles everything from scratch. Thi
 
 ### Kotlin Compilation Errors
 
-Ensure you are using Kotlin 2.1.0 (bundled with AGP 8.9.0). If you see version conflicts:
+Ensure you are using Kotlin 2.2.10 with AGP 8.10.1. If you see version conflicts:
 
 ```bash
-gradle --stop
+./gradlew --stop
 rm -rf .gradle
-gradle assembleDebug
+./gradlew assembleDebug
 ```
 
 ## Architecture Notes

@@ -45,6 +45,7 @@ fun BitPerfectNavGraph(
     libraryViewModel: LibraryViewModel,
     settingsViewModel: SettingsViewModel,
     diagnosticsViewModel: DiagnosticsViewModel,
+    onOpenFile: () -> Unit,
     navController: NavHostController = rememberNavController()
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -76,6 +77,7 @@ fun BitPerfectNavGraph(
             composable(Screen.Player.route) {
                 PlayerScreen(
                     viewModel = playerViewModel,
+                    onOpenFile = onOpenFile,
                     onQueueClick = { navController.navigate(Screen.Queue.route) },
                     onDiagnosticsClick = { navController.navigate(Screen.Diagnostics.route) }
                 )
@@ -92,7 +94,7 @@ fun BitPerfectNavGraph(
                         navController.navigate(Screen.ArtistAlbums.createRoute(artistId))
                     },
                     onTrackClick = { trackPath ->
-                        // Play the track and navigate to player
+                        playerViewModel.playFile(trackPath)
                         navController.navigate(Screen.Player.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
@@ -132,6 +134,7 @@ fun BitPerfectNavGraph(
                 LibraryScreen(
                     viewModel = libraryViewModel,
                     onTrackClick = { trackPath ->
+                        playerViewModel.playFile(trackPath)
                         navController.navigate(Screen.Player.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
@@ -161,6 +164,7 @@ fun BitPerfectNavGraph(
                 // Queue screen placeholder - would show PlayQueue contents
                 PlayerScreen(
                     viewModel = playerViewModel,
+                    onOpenFile = onOpenFile,
                     onQueueClick = { navController.popBackStack() }
                 )
             }

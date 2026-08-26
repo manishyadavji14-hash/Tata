@@ -1,5 +1,8 @@
 package com.bitperfect.android.engine
 
+import java.nio.ByteBuffer
+import java.util.concurrent.atomic.AtomicBoolean
+
 /**
  * NativeAudioEngine - Kotlin JNI bridge to the native C++ audio engine.
  *
@@ -175,6 +178,91 @@ class NativeAudioEngine {
      * @return IntArray of [sampleRate, bitsPerSample, channels] or null
      */
     private external fun nativeDetectFormat(path: String): IntArray?
+
+    /**
+     * Open a persistent WAV or FLAC decoder session for incremental PCM reads.
+     * The caller must close the returned session.
+     */
+    fun openDecoder(path: String): DecoderSession? {
+        val handle = nativeOpenDecoder(path)
+        if (handle == 0L) return null
+
+        val values = nativeGetDecoderFormat(handle)
+        if (values == null || values.size < 4) {
+            nativeCloseDecoder(handle)
+            return null
+        }
+
+        val sampleRate = values[0].toInt()
+        val bitsPerSample = values[1].toInt()
+        val channels = values[2].toInt()
+        val totalFrames = values[3]
+        if (sampleRate <= 0 || bitsPerSample <= 0 || channels <= 0 || totalFrames < 0) {
+            nativeCloseDecoder(handle)
+            return null
+        }
+
+        return DecoderSession(
+            engine = this,
+            handle = handle,
+            format = DecoderFormat(sampleRate, bitsPerSample, channels, totalFrames)
+        )
+    }
+
+    data class DecoderFormat(
+        val sampleRate: Int,
+        val bitsPerSample: Int,
+        val channels: Int,
+        val totalFrames: Long
+    ) {
+        val bytesPerFrame: Int
+            get() = (bitsPerSample / 8) * channels
+
+        val durationMs: Long
+            get() = if (sampleRate > 0) {
+                (totalFrames / sampleRate) * 1000L +
+                    (totalFrames % sampleRate) * 1000L / sampleRate
+            } else {
+                0L
+            }
+    }
+
+    class DecoderSession internal constructor(
+        private val engine: NativeAudioEngine,
+        private val handle: Long,
+        val format: DecoderFormat
+    ) : AutoCloseable {
+        private val closed = AtomicBoolean(false)
+
+        fun read(output: ByteBuffer, maxFrames: Int): Int {
+            require(output.isDirect) { "Decoder output buffer must be direct" }
+            check(!closed.get()) { "Decoder session is closed" }
+            return engine.nativeReadDecoder(handle, output, maxFrames)
+        }
+
+        /** Returns the actual resulting frame, or -1 when seeking fails. */
+        fun seek(frameIndex: Long): Long {
+            require(frameIndex >= 0) { "Frame index must be non-negative" }
+            check(!closed.get()) { "Decoder session is closed" }
+            return engine.nativeSeekDecoder(handle, frameIndex)
+        }
+
+        override fun close() {
+            if (closed.compareAndSet(false, true)) {
+                engine.nativeCloseDecoder(handle)
+            }
+        }
+    }
+
+    private external fun nativeOpenDecoder(path: String): Long
+    private external fun nativeGetDecoderFormat(sessionId: Long): LongArray?
+    private external fun nativeReadDecoder(
+        sessionId: Long,
+        output: ByteBuffer,
+        maxFrames: Int
+    ): Int
+    private external fun nativeSeekDecoder(sessionId: Long, frameIndex: Long): Long
+    private external fun nativeCloseDecoder(sessionId: Long)
 
     /**
      * Native callback registration for track transitions (gapless playback).
