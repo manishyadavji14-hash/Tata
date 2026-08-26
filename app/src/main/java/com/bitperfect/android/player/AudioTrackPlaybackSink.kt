@@ -21,20 +21,23 @@ import kotlin.math.max
  */
 class AudioTrackPlaybackSink(
     private val engine: NativeAudioEngine,
-    private val listener: Listener,
+    private val listener: PlaybackSink.Listener,
     /**
      * Equalizer and bass boost for this output path only.
      *
      * Platform effects bind to an AudioTrack session, so they cannot reach a
      * bit-perfect USB stream that bypasses AudioTrack.
      */
-    val audioEffects: AudioEffectsController = AudioEffectsController()
-) {
-    interface Listener {
-        fun onPrepared(trackPath: String, format: AudioFormatInfo, durationMs: Long)
-        fun onCompleted(trackPath: String)
-        fun onError(trackPath: String, message: String)
-    }
+    override val audioEffects: AudioEffectsController = AudioEffectsController()
+) : PlaybackSink {
+
+    override val outputName: String = "Android output"
+
+    /**
+     * False: Android may resample or mix this stream on its way out. Use the USB
+     * sink for an unmodified signal path.
+     */
+    override val isBitPerfect: Boolean = false
 
     private val lifecycleLock = Object()
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -54,18 +57,18 @@ class AudioTrackPlaybackSink(
     private var audioTrack: AudioTrack? = null
 
     @Volatile
-    var positionMs: Long = 0L
+    override var positionMs: Long = 0L
         private set
 
     @Volatile
-    var durationMs: Long = 0L
+    override var durationMs: Long = 0L
         private set
 
     @Volatile
-    var currentFormat: AudioFormatInfo? = null
+    override var currentFormat: AudioFormatInfo? = null
         private set
 
-    fun play(trackPath: String) {
+    override fun play(trackPath: String) {
         stop()
 
         val playGeneration = generation.incrementAndGet()
@@ -84,7 +87,7 @@ class AudioTrackPlaybackSink(
         thread.start()
     }
 
-    fun pause(): Boolean = synchronized(lifecycleLock) {
+    override fun pause(): Boolean = synchronized(lifecycleLock) {
         if (!running || paused) return@synchronized false
         val track = audioTrack ?: return@synchronized false
         try {
@@ -96,7 +99,7 @@ class AudioTrackPlaybackSink(
         }
     }
 
-    fun resume(): Boolean = synchronized(lifecycleLock) {
+    override fun resume(): Boolean = synchronized(lifecycleLock) {
         if (!running || !paused) return@synchronized false
         val track = audioTrack ?: return@synchronized false
         try {
@@ -109,7 +112,7 @@ class AudioTrackPlaybackSink(
         }
     }
 
-    fun seekTo(positionMs: Long): Boolean = synchronized(lifecycleLock) {
+    override fun seekTo(positionMs: Long): Boolean = synchronized(lifecycleLock) {
         val format = currentFormat ?: return@synchronized false
         if (!running) return@synchronized false
         val track = audioTrack ?: return@synchronized false
@@ -138,11 +141,11 @@ class AudioTrackPlaybackSink(
         true
     }
 
-    fun overridePosition(positionMs: Long) {
+    override fun overridePosition(positionMs: Long) {
         this.positionMs = positionMs.coerceAtLeast(0L)
     }
 
-    fun stop() {
+    override fun stop() {
         generation.incrementAndGet()
         running = false
         paused = false
@@ -176,7 +179,7 @@ class AudioTrackPlaybackSink(
         currentFormat = null
     }
 
-    fun release() {
+    override fun release() {
         stop()
     }
 

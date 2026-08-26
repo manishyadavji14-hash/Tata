@@ -100,7 +100,22 @@ class DiagnosticsViewModel(
         val bufferFillLevel: Float = 0f,
         val bufferSizeMs: Int = 0,
         val latencyMs: Int = 0,
-        val totalBytesTransferred: Long = 0L,
+
+        /**
+         * Bytes read out of the ring buffer. This is throughput through the
+         * engine, NOT bytes on the USB wire, and is reported as such: it used to
+         * be labelled "Total Transferred" while nothing was reaching hardware.
+         */
+        val bufferBytesRead: Long = 0L,
+
+        /** Bytes the USB transport actually accepted. 0 with no DAC attached. */
+        val usbBytesTransferred: Long = 0L,
+
+        /** Whether audio is genuinely being transmitted to a USB device. */
+        val isUsbOutputActive: Boolean = false,
+
+        /** Which transport is in use, so a simulated one is never mistaken. */
+        val transportName: String = "none",
 
         // Error counters
         val underrunCount: Int = 0,
@@ -135,7 +150,7 @@ class DiagnosticsViewModel(
             val currentRate = engine.getCurrentSampleRate()
             val bufferLevel = engine.getBufferLevel()
             val underruns = engine.getUnderrunCount()
-            val bytesTransferred = engine.getTotalBytesTransferred()
+            val bufferBytes = engine.getTotalBytesTransferred()
             val dsdMode = dsdManager.getCurrentMode()
 
             val currentModeString = when (engine.getState()) {
@@ -182,10 +197,13 @@ class DiagnosticsViewModel(
                 bufferFillLevel = bufferLevel,
                 bufferSizeMs = 50, // Default buffer size
                 latencyMs = calculateLatency(currentRate, 50),
-                totalBytesTransferred = bytesTransferred,
+                bufferBytesRead = bufferBytes,
+                usbBytesTransferred = engine.getUsbBytesTransferred(),
+                isUsbOutputActive = engine.isUsbOutputActive(),
+                transportName = engine.getTransportName(),
+                transferErrors = engine.getUsbTransferErrors().toInt(),
                 underrunCount = underruns,
                 overrunCount = 0,
-                transferErrors = 0,
                 usbResets = 0
             )
         }
@@ -206,7 +224,11 @@ class DiagnosticsViewModel(
 
         _uiState.value = currentState.copy(
             bufferFillLevel = engine.getBufferLevel(),
-            totalBytesTransferred = engine.getTotalBytesTransferred(),
+            bufferBytesRead = engine.getTotalBytesTransferred(),
+            usbBytesTransferred = engine.getUsbBytesTransferred(),
+            isUsbOutputActive = engine.isUsbOutputActive(),
+            transportName = engine.getTransportName(),
+            transferErrors = engine.getUsbTransferErrors().toInt(),
             underrunCount = engine.getUnderrunCount(),
             currentSampleRate = engine.getCurrentSampleRate()
         )

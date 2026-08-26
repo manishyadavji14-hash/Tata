@@ -220,3 +220,70 @@ Current test coverage targets:
 - Mode selection: All source/DAC capability combinations
 - Decoders: WAV and FLAC format parsing and extraction
 - Buffer manager: All states (Empty, Prebuffering, Streaming, Underrun, Full)
+
+
+## Validating USB DAC Output on Hardware
+
+The isochronous transport submits real URBs through `usbdevfs`, which cannot be
+exercised without a device attached. The automated suite covers the queueing,
+underrun padding, resubmit loop and kernel status mapping against an injected
+fake backend (`tests/test_usb_iso_backend.cpp`), so what remains for hardware is
+specifically: does the kernel accept our URBs, and does the DAC lock to them.
+
+### What to check first
+
+The diagnostics screen answers the important question directly. Under
+**Transport**:
+
+| Field | Meaning |
+|---|---|
+| `Streaming To DAC` | `Yes` only when the transport is hardware-backed *and* running |
+| `Transport` | `usbdevfs isochronous` on hardware, `loopback (no hardware)` otherwise |
+| `Sent To DAC` | Bytes the kernel accepted. Must climb during playback |
+
+`Read From Buffer` under **Buffer Status** is deliberately separate: it counts
+bytes leaving the engine's ring buffer and moves even with no DAC attached. Only
+`Sent To DAC` indicates data on the wire.
+
+### Procedure
+
+1. Connect the DAC by OTG *before* starting playback, and grant the USB
+   permission prompt.
+2. Open Diagnostics and confirm `Transport` reads `usbdevfs isochronous`. If it
+   reads `loopback`, the interface was never claimed — check logcat for
+   `Another driver is holding the audio interface`, which means the kernel's
+   `snd-usb-audio` driver kept it.
+3. Play a 44.1 kHz/16-bit WAV. Confirm `Streaming To DAC` is `Yes` and
+   `Sent To DAC` increases.
+4. Check the DAC's own display reports 44.1 kHz. This is the real bit-perfect
+   check: the rate shown must match the file, with no resampling to 48 kHz.
+5. Repeat for 96 kHz and 192 kHz FLAC, and for 24-bit material.
+6. Confirm the Equalizer screen reports that EQ is unavailable while the DAC is
+   the output. That is intended: platform effects would break bit-perfect output.
+
+### Known limitations to expect
+
+- **Non-integer packet sizes.** `calculateNominalPacketSize` truncates, so at
+  44.1 kHz the nominal packet is 22 bytes where the true average is 22.05. On an
+  asynchronous DAC the feedback endpoint would normally correct this; that
+  endpoint is not yet read, so very long playback may drift. 48 kHz and its
+  multiples divide evenly and are unaffected.
+- **No feedback endpoint.** Asynchronous DACs expose an explicit feedback IN
+  endpoint to report their actual rate. It is parsed but not yet consumed.
+- **DSD is not routed here yet.** DoP and native DSD transport exist in the
+  engine but the sink selection only covers PCM.
+- **Output is chosen per track, not mid-track.** Attaching a DAC during playback
+  takes effect on the next track, because the sinks own their worker threads and
+  buffered audio.
+
+### If no audio is produced
+
+Check in this order, since each step depends on the previous one:
+
+1. `Transport` is `usbdevfs isochronous` — if not, the interface claim failed.
+2. `Sent To DAC` is climbing — if not, `USBDEVFS_SUBMITURB` is being rejected;
+   logcat will carry the errno.
+3. Underruns under **Error Counters** — a high count means the decoder is not
+   keeping the ring buffer fed.
+4. The DAC shows the expected sample rate — if it shows a different one, rate
+   negotiation via UAC `SET_CUR` did not take.

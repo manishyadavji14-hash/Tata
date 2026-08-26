@@ -35,6 +35,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -156,6 +157,14 @@ fun DacDiagnosticsScreen(
                 }
                 item {
                     BufferStatusCard(uiState)
+                }
+
+                // Whether audio is genuinely reaching the DAC.
+                item {
+                    SectionHeader("Transport")
+                }
+                item {
+                    TransportCard(uiState)
                 }
 
                 // Error Counters
@@ -313,7 +322,45 @@ private fun BufferStatusCard(state: DiagnosticsViewModel.DiagnosticsUiState) {
             Spacer(modifier = Modifier.height(8.dp))
             DiagRow("Buffer Size", "${state.bufferSizeMs} ms")
             DiagRow("Latency", "${state.latencyMs} ms")
-            DiagRow("Total Transferred", formatBytes(state.totalBytesTransferred))
+            // Named for what it is. This counter is throughput through the
+            // engine's ring buffer and moves whether or not a DAC is attached,
+            // so it is no longer labelled as data that reached hardware.
+            DiagRow("Read From Buffer", formatBytes(state.bufferBytesRead))
+        }
+    }
+}
+
+/**
+ * What is carrying the audio, and whether anything is actually leaving the
+ * device.
+ *
+ * This card exists because the screen previously showed a healthy byte counter
+ * and no errors while the USB transport was transmitting nothing at all.
+ */
+@Composable
+private fun TransportCard(state: DiagnosticsViewModel.DiagnosticsUiState) {
+    DiagCard {
+        Text(
+            text = "USB Output",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        DiagRow(
+            "Streaming To DAC",
+            if (state.isUsbOutputActive) "Yes" else "No",
+            valueColor = if (state.isUsbOutputActive) BitPerfectGreen else ErrorRed
+        )
+        DiagRow("Transport", state.transportName)
+        DiagRow("Sent To DAC", formatBytes(state.usbBytesTransferred))
+        if (!state.isUsbOutputActive) {
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "No audio is being transmitted over USB. Playback, if any, " +
+                    "is going to the Android mixer rather than the DAC.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }
@@ -362,7 +409,11 @@ private fun DiagCard(content: @Composable () -> Unit) {
 }
 
 @Composable
-private fun DiagRow(label: String, value: String) {
+private fun DiagRow(
+    label: String,
+    value: String,
+    valueColor: Color = Color.Unspecified
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -379,7 +430,11 @@ private fun DiagRow(label: String, value: String) {
             style = MaterialTheme.typography.bodySmall,
             fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.Medium,
-            color = MaterialTheme.colorScheme.onSurface
+            color = if (valueColor == Color.Unspecified) {
+                MaterialTheme.colorScheme.onSurface
+            } else {
+                valueColor
+            }
         )
     }
 }

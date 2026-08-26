@@ -59,7 +59,12 @@ class EqualizerViewModel(
     private val _uiState = MutableStateFlow(EqualizerUiState())
     val uiState: StateFlow<EqualizerUiState> = _uiState.asStateFlow()
 
-    private val effects: AudioEffectsController get() = playbackController.audioEffects
+    /**
+     * Null while a USB DAC is the output: platform effects attach to an
+     * AudioTrack session, and a bit-perfect stream has none. Every mutator below
+     * no-ops in that case, and the UI shows why via `statusMessage`.
+     */
+    private val effects: AudioEffectsController? get() = playbackController.audioEffects
 
     private val playbackListener: (PlaybackState) -> Unit = { refreshFromController() }
 
@@ -79,13 +84,13 @@ class EqualizerViewModel(
         viewModelScope.launch {
             // Restore the saved curve so it applies as soon as effects attach.
             val stored = settingsRepository.equalizerSettings.first()
-            effects.restoreSettings(stored)
+            effects?.restoreSettings(stored)
             refreshFromController()
         }
     }
 
     fun setEnabled(enabled: Boolean) {
-        effects.setEnabled(enabled)
+        effects?.setEnabled(enabled)
         applyAndPersistNow()
     }
 
@@ -97,17 +102,17 @@ class EqualizerViewModel(
      * copy only needs the value the drag settles on.
      */
     fun setBandLevel(bandIndex: Int, levelMillibel: Int) {
-        effects.setBandLevel(bandIndex, levelMillibel)
+        effects?.setBandLevel(bandIndex, levelMillibel)
         applyAndSchedulePersist()
     }
 
     fun setBassBoost(strength: Int) {
-        effects.setBassBoostStrength(strength)
+        effects?.setBassBoostStrength(strength)
         applyAndSchedulePersist()
     }
 
     fun setTreble(strength: Int) {
-        effects.setTrebleStrength(strength)
+        effects?.setTrebleStrength(strength)
         applyAndSchedulePersist()
     }
 
@@ -124,12 +129,12 @@ class EqualizerViewModel(
     }
 
     fun applyPreset(presetIndex: Int) {
-        effects.applyPreset(presetIndex)
+        effects?.applyPreset(presetIndex)
         applyAndPersistNow()
     }
 
     fun resetToFlat() {
-        effects.resetToFlat()
+        effects?.resetToFlat()
         applyAndPersistNow()
     }
 
@@ -165,15 +170,28 @@ class EqualizerViewModel(
     private fun persistNow() {
         persistJob?.cancel()
         hasPendingDebounce = false
-        val snapshot = effects.settings
+        val snapshot = effects?.settings ?: return
         BitPerfectApp.applicationScope.launch {
             settingsRepository.setEqualizerSettings(snapshot)
         }
     }
 
     private fun refreshFromController() {
-        val capabilities = effects.capabilities
-        val settings = effects.settings
+        val activeEffects = effects
+        if (activeEffects == null) {
+            // Bit-perfect output. Report it plainly rather than showing a dead
+            // set of sliders that appear to work.
+            _uiState.value = EqualizerUiState(
+                isAttached = false,
+                statusMessage = "Equalizer is unavailable while playing to " +
+                    "${playbackController.outputName}, because it would alter the " +
+                    "bit-perfect signal."
+            )
+            return
+        }
+
+        val capabilities = activeEffects.capabilities
+        val settings = activeEffects.settings
 
         _uiState.value = EqualizerUiState(
             isAttached = capabilities.isAvailable,

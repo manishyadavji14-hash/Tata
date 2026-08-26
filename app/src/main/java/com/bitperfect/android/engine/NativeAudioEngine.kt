@@ -254,6 +254,94 @@ class NativeAudioEngine {
         }
     }
 
+    // --- USB hardware attachment ---
+    //
+    // Android does not permit native code to open a USB device, so the Java layer
+    // opens it, claims the streaming interface, selects the alternate setting and
+    // hands the file descriptor down. Without this the native transport has
+    // nothing to submit against and playback is silently discarded.
+
+    /**
+     * Attach an opened USB audio device to the native transport.
+     *
+     * The caller must already have claimed [interfaceNumber] and selected
+     * [altSetting] on the connection that produced [fileDescriptor]. Native code
+     * duplicates the descriptor, so the caller keeps ownership of its own copy.
+     *
+     * Call after [parseDevice] and before [configure].
+     */
+    fun attachUsbDevice(fileDescriptor: Int, interfaceNumber: Int, altSetting: Int): Boolean =
+        nativeAttachUsbDevice(fileDescriptor, interfaceNumber, altSetting)
+
+    /** Detach the USB device. Stops playback first. */
+    fun detachUsbDevice() = nativeDetachUsbDevice()
+
+    /**
+     * Whether audio is actually being transmitted to a USB device.
+     *
+     * Deliberately distinct from [getState] returning [STATE_PLAYING]: the engine
+     * accepts data with no device attached, and that data goes nowhere. Anything
+     * reporting USB output to the user must consult this.
+     */
+    fun isUsbOutputActive(): Boolean = nativeIsUsbOutputActive()
+
+    /**
+     * Whether a USB DAC is attached and could carry playback.
+     *
+     * Distinct from [isUsbOutputActive], which is only true once audio is
+     * flowing. Use this to decide where to send the next track.
+     */
+    fun isUsbDeviceAttached(): Boolean = nativeIsUsbDeviceAttached()
+
+    /** Name of the transport in use, for diagnostics. */
+    fun getTransportName(): String = nativeGetTransportName()
+
+    /** Bytes accepted by the USB transport. 0 when no hardware is attached. */
+    fun getUsbBytesTransferred(): Long = nativeGetUsbBytesTransferred()
+
+    /** Isochronous transfer errors reported by the kernel. */
+    fun getUsbTransferErrors(): Long = nativeGetUsbTransferErrors()
+
+    /**
+     * Give native code a route back to `UsbDeviceConnection.controlTransfer`, so
+     * UAC1/UAC2 sample-rate negotiation can run. Pass null to clear it.
+     */
+    fun setControlTransferBridge(bridge: UsbControlTransferBridge?): Boolean =
+        nativeSetControlTransferBridge(bridge)
+
+    /**
+     * Implemented by the USB layer. The signature is matched by JNI reflection,
+     * so the parameter list must stay in step with
+     * `nativeSetControlTransferBridge` in native_bridge.cpp.
+     */
+    interface UsbControlTransferBridge {
+        fun controlTransfer(
+            requestType: Int,
+            request: Int,
+            value: Int,
+            index: Int,
+            buffer: ByteArray,
+            length: Int,
+            timeoutMs: Int
+        ): Int
+    }
+
+    private external fun nativeAttachUsbDevice(
+        fileDescriptor: Int,
+        interfaceNumber: Int,
+        altSetting: Int
+    ): Boolean
+
+    private external fun nativeDetachUsbDevice()
+    private external fun nativeIsUsbOutputActive(): Boolean
+    private external fun nativeIsUsbDeviceAttached(): Boolean
+    private external fun nativeGetTransportName(): String
+    private external fun nativeGetUsbBytesTransferred(): Long
+    private external fun nativeGetUsbTransferErrors(): Long
+    private external fun nativeSetControlTransferBridge(
+        bridge: UsbControlTransferBridge?
+    ): Boolean
+
     private external fun nativeOpenDecoder(path: String): Long
     private external fun nativeGetDecoderFormat(sessionId: Long): LongArray?
     private external fun nativeReadDecoder(

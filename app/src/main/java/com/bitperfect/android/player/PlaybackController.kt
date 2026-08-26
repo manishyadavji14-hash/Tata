@@ -30,10 +30,17 @@ class PlaybackController(
     /**
      * Equalizer and bass boost for the Android output path.
      *
-     * Intentionally reachable only through this sink: the effects bind to an
-     * AudioTrack session and so cannot alter bit-perfect USB output.
+     * Null while a USB DAC is the output: platform effects bind to an AudioTrack
+     * session, and applying them would stop the stream being bit-perfect.
      */
-    val audioEffects: AudioEffectsController get() = playbackSink.audioEffects
+    val audioEffects: AudioEffectsController? get() = playbackSink.audioEffects
+
+    /** Name of the output currently in use, for the UI. */
+    val outputName: String get() = playbackSink.outputName
+
+    /** Whether the current output delivers unmodified samples. */
+    val isBitPerfectOutput: Boolean get() = playbackSink.isBitPerfect
+
     private var sleepTimer: SleepTimer? = null
     private val stateListeners = CopyOnWriteArrayList<(PlaybackState) -> Unit>()
 
@@ -43,9 +50,11 @@ class PlaybackController(
     @Volatile
     private var currentFormat: AudioFormatInfo? = null
 
-    private val playbackSink = AudioTrackPlaybackSink(
-        engine = engine,
-        listener = object : AudioTrackPlaybackSink.Listener {
+    /**
+     * Shared by both outputs, so a track transition or an error is handled the
+     * same way regardless of where the audio is going.
+     */
+    private val sinkListener = object : PlaybackSink.Listener {
             override fun onPrepared(
                 trackPath: String,
                 format: AudioFormatInfo,
@@ -82,7 +91,30 @@ class PlaybackController(
                 setState(PlaybackState.Error(message, trackPath))
             }
         }
-    )
+
+    private val audioTrackSink = AudioTrackPlaybackSink(engine, sinkListener)
+    private val usbSink = UsbPlaybackSink(engine, sinkListener)
+
+    /**
+     * The output for the current track.
+     *
+     * Chosen per track rather than once, because a DAC can be plugged in or
+     * pulled out between tracks. It is deliberately not switched mid-track: the
+     * sinks own their own worker threads and buffered audio, so swapping under a
+     * running stream would drop or duplicate whatever is in flight.
+     */
+    @Volatile
+    private var playbackSink: PlaybackSink = audioTrackSink
+
+    /**
+     * Pick the output for the next track.
+     *
+     * USB wins when a DAC is attached, because bit-perfect output is the reason
+     * the app exists. Otherwise Android's mixer is the fallback so the app is
+     * still usable with no DAC.
+     */
+    private fun selectSinkForNextTrack(): PlaybackSink =
+        if (engine.isUsbDeviceAttached()) usbSink else audioTrackSink
 
     fun addStateListener(listener: (PlaybackState) -> Unit) {
         stateListeners.add(listener)
@@ -312,7 +344,8 @@ class PlaybackController(
     }
 
     fun release() {
-        playbackSink.release()
+        audioTrackSink.release()
+        usbSink.release()
         cancelSleepTimer()
         durationMs = 0L
         currentFormat = null
@@ -339,6 +372,15 @@ class PlaybackController(
         setState(PlaybackState.Loading(trackPath))
         durationMs = 0L
         currentFormat = null
+
+        // Stop whatever was playing before deciding, so a switch of output does
+        // not leave the previous sink's worker running.
+        val nextSink = selectSinkForNextTrack()
+        if (nextSink !== playbackSink) {
+            playbackSink.stop()
+            playbackSink = nextSink
+        }
+
         playbackSink.play(trackPath)
     }
 

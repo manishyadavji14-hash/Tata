@@ -341,6 +341,153 @@ Java_com_bitperfect_android_engine_NativeAudioEngine_nativeCloseDecoder(
 }
 
 extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeAttachUsbDevice(
+        JNIEnv* /*env*/, jobject /*thiz*/, jint fd, jint interfaceNum, jint altSetting) {
+    if (fd < 0 || interfaceNum < 0 || interfaceNum > 0xFF ||
+        altSetting < 0 || altSetting > 0xFF) {
+        return JNI_FALSE;
+    }
+    return bitperfect::jni::NativeBridge::instance().attachUsbDevice(
+               static_cast<int>(fd),
+               static_cast<uint8_t>(interfaceNum),
+               static_cast<uint8_t>(altSetting))
+               ? JNI_TRUE
+               : JNI_FALSE;
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeDetachUsbDevice(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    bitperfect::jni::NativeBridge::instance().detachUsbDevice();
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeIsUsbOutputActive(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    return bitperfect::jni::NativeBridge::instance().isUsbOutputActive() ? JNI_TRUE : JNI_FALSE;
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeIsUsbDeviceAttached(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    return bitperfect::jni::NativeBridge::instance().isUsbDeviceAttached() ? JNI_TRUE : JNI_FALSE;
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetTransportName(
+        JNIEnv* env, jobject /*thiz*/) {
+    return env->NewStringUTF(
+        bitperfect::jni::NativeBridge::instance().getTransportName().c_str());
+}
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetUsbBytesTransferred(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jlong>(
+        bitperfect::jni::NativeBridge::instance().getUsbBytesTransferred());
+}
+
+extern "C" JNIEXPORT jlong JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetUsbTransferErrors(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jlong>(
+        bitperfect::jni::NativeBridge::instance().getUsbTransferErrors());
+}
+
+/**
+ * Give native code a way to perform USB control transfers.
+ *
+ * UsbControl implements UAC1/UAC2 SET_CUR and SET_INTERFACE, and
+ * SampleRateManager::negotiateRate drives it, but none of it could run because
+ * nothing ever installed a transfer function. Control transfers must go through
+ * Java's UsbDeviceConnection, so this bridges back up to Kotlin.
+ */
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeSetControlTransferBridge(
+        JNIEnv* env, jobject /*thiz*/, jobject bridge) {
+    auto& engine = bitperfect::jni::NativeBridge::instance();
+
+    if (bridge == nullptr) {
+        engine.setControlTransferFunction(nullptr);
+        return JNI_TRUE;
+    }
+
+    jobject globalRef = env->NewGlobalRef(bridge);
+    if (globalRef == nullptr) return JNI_FALSE;
+
+    jclass clazz = env->GetObjectClass(bridge);
+    // (requestType, request, value, index, data, length, timeoutMs) -> transferred
+    jmethodID method = env->GetMethodID(clazz, "controlTransfer", "(IIII[BII)I");
+    env->DeleteLocalRef(clazz);
+
+    if (method == nullptr) {
+        env->DeleteGlobalRef(globalRef);
+        return JNI_FALSE;
+    }
+
+    JavaVM* vm = nullptr;
+    if (env->GetJavaVM(&vm) != JNI_OK || vm == nullptr) {
+        env->DeleteGlobalRef(globalRef);
+        return JNI_FALSE;
+    }
+
+    engine.setControlTransferFunction(
+        [vm, globalRef, method](uint8_t requestType, uint8_t request, uint16_t value,
+                                uint16_t index, uint8_t* data, uint16_t length,
+                                uint32_t timeout) -> bitperfect::usb::ControlTransferResult {
+            bitperfect::usb::ControlTransferResult result;
+
+            JNIEnv* callbackEnv = nullptr;
+            bool attached = false;
+            jint status = vm->GetEnv(reinterpret_cast<void**>(&callbackEnv), JNI_VERSION_1_6);
+            if (status == JNI_EDETACHED) {
+                if (vm->AttachCurrentThread(&callbackEnv, nullptr) != JNI_OK) {
+                    return result;
+                }
+                attached = true;
+            }
+            if (callbackEnv == nullptr) return result;
+
+            jbyteArray buffer = callbackEnv->NewByteArray(length);
+            if (buffer == nullptr) {
+                if (attached) vm->DetachCurrentThread();
+                return result;
+            }
+            if (data != nullptr && length > 0) {
+                callbackEnv->SetByteArrayRegion(buffer, 0, length,
+                                                reinterpret_cast<const jbyte*>(data));
+            }
+
+            const jint transferred = callbackEnv->CallIntMethod(
+                globalRef, method, static_cast<jint>(requestType), static_cast<jint>(request),
+                static_cast<jint>(value), static_cast<jint>(index), buffer,
+                static_cast<jint>(length), static_cast<jint>(timeout));
+
+            if (callbackEnv->ExceptionCheck()) {
+                callbackEnv->ExceptionClear();
+                callbackEnv->DeleteLocalRef(buffer);
+                if (attached) vm->DetachCurrentThread();
+                return result;
+            }
+
+            // Copy back for GET_CUR-style reads.
+            if (transferred > 0 && data != nullptr) {
+                const jint copyBack = transferred < length ? transferred : length;
+                callbackEnv->GetByteArrayRegion(buffer, 0, copyBack,
+                                                reinterpret_cast<jbyte*>(data));
+            }
+            callbackEnv->DeleteLocalRef(buffer);
+            if (attached) vm->DetachCurrentThread();
+
+            result.success = transferred >= 0;
+            result.transferred = static_cast<int>(transferred);
+            return result;
+        });
+
+    return JNI_TRUE;
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
 Java_com_bitperfect_android_engine_NativeAudioEngine_registerTrackTransitionCallback(
         JNIEnv* env, jobject /*thiz*/, jobject controller) {
     if (controller == nullptr) return JNI_FALSE;
@@ -418,9 +565,16 @@ void NativeBridge::shutdown() {
     stopPlayback();
     closeAllDecoders();
 
+    // Release the transport before the device, and the device before anything
+    // else, so the reaper thread is joined while its descriptor is still valid.
+    isoTransfer_.reset();
+    if (usbBackend_) {
+        usbBackend_->detach();
+        usbBackend_.reset();
+    }
+
     audioDevice_.reset();
     usbControl_.reset();
-    isoTransfer_.reset();
     pcmEngine_.reset();
     sampleRateManager_.reset();
     bufferManager_.reset();
@@ -526,12 +680,43 @@ bool NativeBridge::configure(const PlaybackConfig& config) {
         auto outputIface = audioDevice_->getOutputStreamingInterface();
         if (outputIface) {
             isoTransfer_ = std::make_unique<usb::IsochronousTransfer>();
+
             usb::IsoTransferConfig isoConfig;
             isoConfig.maxPacketSize = usb::IsochronousTransfer::calculateNominalPacketSize(
                 config.sampleRate, formatInfo.bytesPerFrame());
             isoConfig.packetsPerTransfer = usb::ISO_PACKETS_PER_URB;
             isoConfig.queueDepth = usb::DEFAULT_URB_COUNT;
-            isoTransfer_->configure(isoConfig);
+
+            // Take the endpoint from the alternate setting that matches this
+            // rate and format. These were previously left at their defaults, so
+            // the transport was addressing endpoint 0 with interval 1 no matter
+            // what the device actually exposed.
+            const auto endpoint = findOutputEndpoint(*outputIface, config.sampleRate,
+                                                     config.format);
+            if (endpoint) {
+                isoConfig.endpointAddress = endpoint->bEndpointAddress;
+                isoConfig.interval = endpoint->bInterval != 0 ? endpoint->bInterval : 1;
+            }
+
+            if (usbBackend_ && usbBackend_->isAttached()) {
+                if (!endpoint) {
+                    diagnostics::Diagnostics::instance().recordError(
+                        diagnostics::LogCategory::TRANSFER,
+                        "No isochronous OUT endpoint for the requested format; "
+                        "USB output unavailable"
+                    );
+                } else {
+                    isoTransfer_->setBackend(usbBackend_);
+                }
+            }
+
+            if (!isoTransfer_->configure(isoConfig)) {
+                diagnostics::Diagnostics::instance().recordError(
+                    diagnostics::LogCategory::TRANSFER,
+                    "Isochronous transfer configuration failed"
+                );
+                isoTransfer_.reset();
+            }
         }
     }
 
@@ -648,10 +833,108 @@ diagnostics::DiagnosticStats NativeBridge::getDiagnosticStats() const {
     return diagnostics::Diagnostics::instance().getStats();
 }
 
+const usb::EndpointDescriptor* NativeBridge::findOutputEndpoint(uint8_t interfaceNum,
+                                                                uint32_t sampleRate,
+                                                                usb::PcmFormat format) const {
+    if (!audioDevice_) return nullptr;
+
+    const auto altIndex = audioDevice_->findBestAltSetting(interfaceNum, sampleRate, format);
+    if (!altIndex) return nullptr;
+
+    for (const auto& iface : audioDevice_->getDescriptors().streamingInterfaces) {
+        if (iface.interfaceNumber != interfaceNum) continue;
+        for (const auto& alt : iface.altSettings) {
+            if (!alt.is_valid) continue;
+            if (alt.interface_desc.bAlternateSetting != *altIndex) continue;
+            // Playback needs an isochronous OUT endpoint. Anything else (a
+            // feedback IN endpoint, for instance) cannot carry audio to the DAC.
+            if (alt.endpoint.isOutput() && alt.endpoint.isIsochronous()) {
+                return &alt.endpoint;
+            }
+        }
+    }
+    return nullptr;
+}
+
+bool NativeBridge::attachUsbDevice(int fd, uint8_t interfaceNum, uint8_t altSetting) {
+    if (fd < 0) return false;
+
+    // Swapping the transport underneath a running stream would submit against a
+    // descriptor the transfer layer no longer owns.
+    stopPlayback();
+
+    auto backend = std::make_shared<usb::UsbdevfsIsoBackend>();
+    if (!backend->attach(fd)) {
+        diagnostics::Diagnostics::instance().recordError(
+            diagnostics::LogCategory::TRANSFER,
+            "Could not duplicate the USB file descriptor"
+        );
+        return false;
+    }
+
+    usbBackend_ = std::move(backend);
+    claimedInterface_ = interfaceNum;
+    claimedAltSetting_ = altSetting;
+
+    diagnostics::Diagnostics::instance().logMessage(
+        diagnostics::LogLevel::INFO,
+        diagnostics::LogCategory::TRANSFER,
+        "USB device attached (interface " + std::to_string(interfaceNum) +
+            ", alt setting " + std::to_string(altSetting) + ")"
+    );
+    return true;
+}
+
+void NativeBridge::detachUsbDevice() {
+    stopPlayback();
+
+    if (isoTransfer_) {
+        // Drop back to the discarding backend rather than leaving a dangling fd.
+        isoTransfer_->setBackend(nullptr);
+    }
+    if (usbBackend_) {
+        usbBackend_->detach();
+        usbBackend_.reset();
+    }
+
+    diagnostics::Diagnostics::instance().logMessage(
+        diagnostics::LogLevel::INFO,
+        diagnostics::LogCategory::TRANSFER,
+        "USB device detached"
+    );
+}
+
+bool NativeBridge::isUsbOutputActive() const {
+    return isoTransfer_ && isoTransfer_->isActive() && isoTransfer_->isHardwareBacked();
+}
+
+bool NativeBridge::isUsbDeviceAttached() const {
+    return usbBackend_ && usbBackend_->isAttached();
+}
+
+std::string NativeBridge::getTransportName() const {
+    if (!isoTransfer_) return "none";
+    return isoTransfer_->backendName();
+}
+
+uint64_t NativeBridge::getUsbBytesTransferred() const {
+    if (!isoTransfer_ || !isoTransfer_->isHardwareBacked()) return 0;
+    return isoTransfer_->getStatistics().totalBytesTransferred.load();
+}
+
+uint64_t NativeBridge::getUsbTransferErrors() const {
+    if (!isoTransfer_ || !isoTransfer_->isHardwareBacked()) return 0;
+    return isoTransfer_->getStatistics().errorCount.load();
+}
+
 void NativeBridge::setControlTransferFunction(usb::ControlTransferFunc func) {
     controlTransferFunc_ = std::move(func);
     if (controlTransferFunc_) {
         usbControl_ = std::make_unique<usb::UsbControl>(controlTransferFunc_);
+    } else {
+        // Clearing the bridge has to drop UsbControl too, otherwise it keeps
+        // calling into a Java object that is no longer valid.
+        usbControl_.reset();
     }
 }
 

@@ -178,6 +178,19 @@ constexpr uint8_t EP_ATTR_SAMPLING_FREQ_CONTROL = 0x01;
 constexpr uint8_t EP_ATTR_PITCH_CONTROL = 0x02;
 constexpr uint8_t EP_ATTR_MAX_PACKETS_ONLY = 0x80;
 
+// Outcome of a single USB transfer.
+//
+// Lives here rather than in isochronous_transfer.h so that the transport and
+// the platform backend behind it can both name it without a circular include.
+enum class TransferStatus : uint8_t {
+    COMPLETED = 0,
+    CANCELLED = 1,
+    ERROR = 2,
+    STALL = 3,
+    OVERFLOW = 4,
+    SHORT_PACKET = 5
+};
+
 // Isochronous transfer constants
 constexpr size_t ISO_PACKETS_PER_URB = 8;
 constexpr size_t DEFAULT_URB_COUNT = 4;
