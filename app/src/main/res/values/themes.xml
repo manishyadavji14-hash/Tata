@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        BitPerfect base theme. The actual theme is implemented in Compose
+        using Material 3 dynamic theming. This XML theme is used as the
+        application theme declared in AndroidManifest.xml and serves as
+        a splash/startup theme before Compose takes over.
+    -->
+    <style name="Theme.BitPerfect" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Status bar and navigation bar colors -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Edge-to-edge -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+        <!-- Primary color from custom palette -->
+        <item name="colorPrimary">@color/gold_primary</item>
+        <item name="colorPrimaryDark">@color/gold_primary_dark</item>
+        <item name="colorAccent">@color/gold_primary</item>
+    </style>
+</resources>

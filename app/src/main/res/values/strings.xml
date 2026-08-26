@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">BitPerfect</string>
+    <string name="app_tagline">Audiophile USB Player</string>
+
+    <!-- Navigation -->
+    <string name="nav_player">Player</string>
+    <string name="nav_library">Library</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Player -->
+    <string name="player_no_track">No track</string>
+    <string name="player_unknown_artist">Unknown Artist</string>
+    <string name="player_unknown_album">Unknown Album</string>
+    <string name="player_play">Play</string>
+    <string name="player_pause">Pause</string>
+    <string name="player_next">Next</string>
+    <string name="player_previous">Previous</string>
+    <string name="player_shuffle">Shuffle</string>
+    <string name="player_repeat">Repeat</string>
+    <string name="player_queue">Queue</string>
+    <string name="player_bitperfect">BITPERFECT</string>
+
+    <!-- Format display -->
+    <string name="format_pcm">PCM</string>
+    <string name="format_dop">DoP</string>
+    <string name="format_native_dsd">Native DSD</string>
+    <string name="format_flac">FLAC</string>
+    <string name="format_dsd64">DSD64</string>
+    <string name="format_dsd128">DSD128</string>
+    <string name="format_dsd256">DSD256</string>
+
+    <!-- Library -->
+    <string name="library_title">Library</string>
+    <string name="library_folders">Folders</string>
+    <string name="library_artists">Artists</string>
+    <string name="library_albums">Albums</string>
+    <string name="library_genres">Genres</string>
+    <string name="library_composers">Composers</string>
+    <string name="library_tracks">Tracks</string>
+    <string name="library_search">Search library...</string>
+    <string name="library_empty">No music found</string>
+    <string name="library_empty_hint">Pull down to scan for music</string>
+    <string name="library_scanning">Scanning...</string>
+    <string name="library_tracks_count">%d tracks</string>
+    <string name="library_albums_count">%d albums</string>
+
+    <!-- Diagnostics -->
+    <string name="diag_title">DAC Diagnostics</string>
+    <string name="diag_no_device">No USB DAC Connected</string>
+    <string name="diag_no_device_hint">Connect a USB audio device to see diagnostics</string>
+    <string name="diag_device_info">Device Information</string>
+    <string name="diag_usb_ids">USB Identifiers</string>
+    <string name="diag_interfaces">Audio Interfaces</string>
+    <string name="diag_endpoints">Endpoints</string>
+    <string name="diag_formats">Supported Formats</string>
+    <string name="diag_current_state">Current State</string>
+    <string name="diag_clock">Clock Information</string>
+    <string name="diag_buffer">Buffer Status</string>
+    <string name="diag_errors">Error Counters</string>
+    <string name="diag_refresh">Refresh</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_audio_output">Audio Output</string>
+    <string name="settings_bitperfect_mode">BitPerfect Mode</string>
+    <string name="settings_bitperfect_desc">Send audio data unmodified to DAC</string>
+    <string name="settings_buffer_size">Buffer Size</string>
+    <string name="settings_latency">Estimated Latency</string>
+    <string name="settings_format">Format</string>
+    <string name="settings_auto_sample_rate">Auto Sample Rate Switching</string>
+    <string name="settings_auto_sample_rate_desc">Match DAC sample rate to source material</string>
+    <string name="settings_dsd_mode">DSD Output Mode</string>
+    <string name="settings_dsd_native">Native DSD</string>
+    <string name="settings_dsd_dop">DoP (DSD over PCM)</string>
+    <string name="settings_dsd_pcm">PCM Conversion</string>
+    <string name="settings_native_dsd_pref">Native DSD Preference</string>
+    <string name="settings_dop_pref">DoP Preference</string>
+    <string name="settings_pcm_fallback">PCM Fallback Policy</string>
+    <string name="settings_pcm_convert">Convert to PCM</string>
+    <string name="settings_pcm_skip">Skip Track</string>
+    <string name="settings_pcm_ask">Ask User</string>
+    <string name="settings_processing">Processing</string>
+    <string name="settings_replaygain">ReplayGain</string>
+    <string name="settings_replaygain_off">Off</string>
+    <string name="settings_replaygain_track">Track Gain</string>
+    <string name="settings_replaygain_album">Album Gain</string>
+    <string name="settings_preamp">Pre-amp</string>
+    <string name="settings_clipping">Clipping Prevention</string>
+    <string name="settings_clipping_desc">Reduce gain to prevent digital clipping</string>
+    <string name="settings_crossfade">Crossfade</string>
+    <string name="settings_crossfade_off">Off</string>
+    <string name="settings_interface">Interface</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System Default</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_debug">Debug Logging</string>
+    <string name="settings_debug_desc">Enable verbose logging for troubleshooting</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_build">Build</string>
+    <string name="settings_licenses">Open Source Licenses</string>
+    <string name="settings_diagnostics">DAC Diagnostics</string>
+
+    <!-- Warnings -->
+    <string name="warning_bitperfect_title">BitPerfect Warning</string>
+    <string name="warning_bitperfect_disable">Disabling BitPerfect mode allows the system to modify audio data before it reaches your DAC.</string>
+    <string name="warning_replaygain">Enabling ReplayGain modifies audio levels. Playback is no longer bit-perfect.</string>
+    <string name="warning_crossfade">Crossfade blends audio between tracks, modifying the audio stream.</string>
+    <string name="warning_dsd_pcm">Converting DSD to PCM alters the original audio data.</string>
+    <string name="warning_understand">I Understand</string>
+    <string name="warning_cancel">Cancel</string>
+
+    <!-- USB -->
+    <string name="usb_permission_required">USB permission required</string>
+    <string name="usb_permission_denied">Permission denied</string>
+    <string name="usb_device_connected">USB DAC connected</string>
+    <string name="usb_device_disconnected">USB DAC disconnected</string>
+    <string name="usb_reconnecting">Reconnecting...</string>
+    <string name="usb_error">USB error</string>
+    <string name="usb_no_device">No device</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">BitPerfect Playback</string>
+    <string name="notification_channel_desc">Audio playback controls</string>
+
+    <!-- Errors -->
+    <string name="error_playback_failed">Playback failed</string>
+    <string name="error_usb_transfer">USB transfer error</string>
+    <string name="error_decoder">Failed to decode file</string>
+    <string name="error_unsupported_format">Unsupported audio format</string>
+</resources>

@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    USB device filter for BitPerfect.
+
+    This filter matches USB Audio Class devices (class 0x01).
+    It allows the app to receive intent when any USB audio device is connected,
+    rather than filtering by specific VID/PID.
+
+    USB Audio Class 1 (Full Speed, up to 96kHz/24bit):
+      - Class: 0x01 (Audio)
+      - Subclass: 0x01 (Audio Control)
+
+    USB Audio Class 2 (High Speed, up to 768kHz/32bit, DSD):
+      - Class: 0x01 (Audio)
+      - Subclass: 0x01 (Audio Control)
+
+    We filter on class only to match ALL USB audio devices.
+-->
 <resources>
-    <!-- USB Audio Class 1 devices -->
-    <usb-device class="1" subclass="1" />
-    <!-- USB Audio Class 2 devices -->
-    <usb-device class="1" subclass="2" />
+    <!-- Match all USB Audio Class devices -->
+    <usb-device class="1" />
+
+    <!-- Common audiophile DAC vendors (optional specific matching) -->
+    <!-- Topping -->
+    <usb-device vendor-id="11521" />
+    <!-- FiiO -->
+    <usb-device vendor-id="10566" />
+    <!-- iFi Audio -->
+    <usb-device vendor-id="9187" />
+    <!-- Schiit Audio -->
+    <usb-device vendor-id="9424" />
+    <!-- SMSL -->
+    <usb-device vendor-id="1452" />
+    <!-- Chord Electronics -->
+    <usb-device vendor-id="5601" />
+    <!-- RME -->
+    <usb-device vendor-id="2613" />
+    <!-- Focusrite -->
+    <usb-device vendor-id="7598" />
 </resources>

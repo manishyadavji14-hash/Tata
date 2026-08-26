@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary - Gold accent (audiophile premium) -->
+    <color name="gold_primary">#FFD4A853</color>
+    <color name="gold_primary_dark">#FFB8923A</color>
+    <color name="gold_primary_light">#FFEBC97A</color>
+
+    <!-- Secondary - Deep blue -->
+    <color name="blue_primary">#FF4A90D9</color>
+    <color name="blue_primary_dark">#FF2B6CB0</color>
+    <color name="blue_primary_light">#FF7FB5E8</color>
+
+    <!-- Tertiary - Copper -->
+    <color name="copper_tertiary">#FFC77B4A</color>
+    <color name="copper_tertiary_dark">#FFA05E30</color>
+    <color name="copper_tertiary_light">#FFE0A07A</color>
+
+    <!-- Dark surfaces -->
+    <color name="dark_surface">#FF121212</color>
+    <color name="dark_surface_variant">#FF1E1E1E</color>
+    <color name="dark_background">#FF0A0A0A</color>
+    <color name="dark_on_surface">#FFE8E8E8</color>
+    <color name="dark_on_background">#FFF0F0F0</color>
+
+    <!-- Light surfaces -->
+    <color name="light_surface">#FFFFFBFF</color>
+    <color name="light_surface_variant">#FFF5F0EB</color>
+    <color name="light_background">#FFF8F5F0</color>
+    <color name="light_on_surface">#FF1C1B1F</color>
+    <color name="light_on_background">#FF1C1B1F</color>
+
+    <!-- Error -->
+    <color name="error_red">#FFE53935</color>
+
+    <!-- Status indicators -->
+    <color name="bitperfect_green">#FF4CAF50</color>
+    <color name="dsd_blue">#FF2196F3</color>
+    <color name="dop_purple">#FF9C27B0</color>
+    <color name="pcm_orange">#FFFF9800</color>
+
+    <!-- Seek bar -->
+    <color name="seek_active">#FFD4A853</color>
+    <color name="seek_inactive">#40D4A853</color>
+</resources>
