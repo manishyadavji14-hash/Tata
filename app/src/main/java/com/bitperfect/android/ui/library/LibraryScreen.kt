@@ -26,6 +26,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.QueueMusic
 import androidx.compose.material.icons.filled.Album
@@ -99,7 +100,8 @@ fun LibraryScreen(
     onFolderClick: (String) -> Unit = {},
     onFavouritesClick: () -> Unit = {},
     onPlaylistsClick: () -> Unit = {},
-    onTrackClick: (String) -> Unit = {}
+    /** Receives the full visible track list and the index that was tapped. */
+    onTrackClick: (tracks: List<String>, index: Int) -> Unit = { _, _ -> }
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var selectedTab by remember { mutableIntStateOf(0) }
@@ -186,6 +188,12 @@ fun LibraryScreen(
                     leadingIcon = { Icon(Icons.Default.Search, "Search") }
                 ) {}
                 Spacer(modifier = Modifier.height(8.dp))
+            }
+
+            // Library totals. Hidden while empty, where the empty state already
+            // explains what to do, and while loading, where every count is 0.
+            if (!uiState.isEmpty && !uiState.isLoading) {
+                LibraryStatsHeader(uiState = uiState)
             }
 
             // Tab row
@@ -401,20 +409,69 @@ private fun ArtistList(
     }
 }
 
+/**
+ * Library-wide totals, shown above the tabs.
+ *
+ * The hi-res and DSD counts are omitted when zero rather than shown as "0",
+ * so the row stays meaningful for a library that has neither.
+ */
+@Composable
+private fun LibraryStatsHeader(uiState: LibraryViewModel.LibraryUiState) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            LibraryStatItem(count = uiState.totalTracks, label = "Tracks")
+            LibraryStatItem(count = uiState.totalAlbums, label = "Albums")
+            LibraryStatItem(count = uiState.totalArtists, label = "Artists")
+            if (uiState.highResCount > 0) {
+                LibraryStatItem(count = uiState.highResCount, label = "Hi-Res")
+            }
+            if (uiState.dsdCount > 0) {
+                LibraryStatItem(count = uiState.dsdCount, label = "DSD")
+            }
+        }
+    }
+}
+
+@Composable
+private fun LibraryStatItem(count: Int, label: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            text = count.toString(),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
 @Composable
 private fun TrackList(
     tracks: List<LibraryViewModel.TrackItem>,
-    onTrackClick: (String) -> Unit
+    onTrackClick: (tracks: List<String>, index: Int) -> Unit
 ) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        items(tracks) { track ->
+        itemsIndexed(tracks) { index, track ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onTrackClick(track.path) }
+                    // Reports the whole visible list, not just this path, so
+                    // playback continues through the list the user tapped in.
+                    .clickable { onTrackClick(tracks.map { it.path }, index) }
                     .padding(vertical = 10.dp, horizontal = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {

@@ -1,5 +1,6 @@
 package com.bitperfect.android.ui.navigation
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -13,6 +14,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,6 +34,7 @@ import androidx.navigation.navArgument
 import com.bitperfect.android.R
 import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.player.PlaybackController
+import com.bitperfect.android.ui.components.MiniPlayerBar
 import com.bitperfect.android.ui.detail.TrackCollection
 import com.bitperfect.android.ui.detail.TrackCollectionScreen
 import com.bitperfect.android.ui.detail.TrackCollectionViewModel
@@ -92,13 +95,38 @@ fun BitPerfectNavGraph(
         Screen.Settings.route
     )
 
+    // The mini player is redundant on the screens that already show transport
+    // controls, so it is hidden on Player and Queue.
+    val playerUiState by playerViewModel.uiState.collectAsState()
+    val showMiniPlayer = currentDestination?.route != Screen.Player.route &&
+        currentDestination?.route != Screen.Queue.route &&
+        (playerUiState.isPlaying || playerUiState.isPaused)
+
     Scaffold(
         bottomBar = {
-            if (showBottomBar) {
-                BitPerfectBottomNav(
-                    navController = navController,
-                    currentRoute = currentDestination?.route
-                )
+            Column {
+                if (showMiniPlayer) {
+                    MiniPlayerBar(
+                        uiState = playerUiState,
+                        onBarClick = {
+                            navController.navigate(Screen.Player.route) {
+                                popUpTo(navController.graph.findStartDestination().id) {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        },
+                        onPlayPauseClick = { playerViewModel.togglePlayPause() }
+                    )
+                }
+
+                if (showBottomBar) {
+                    BitPerfectBottomNav(
+                        navController = navController,
+                        currentRoute = currentDestination?.route
+                    )
+                }
             }
         }
     ) { paddingValues ->
@@ -181,8 +209,8 @@ fun BitPerfectNavGraph(
                     onPlaylistsClick = {
                         navController.navigate(Screen.Playlists.route)
                     },
-                    onTrackClick = { trackPath ->
-                        playerViewModel.playFile(trackPath)
+                    onTrackClick = { visibleTracks, index ->
+                        playerViewModel.playFromLibrary(visibleTracks, index)
                         navController.navigate(Screen.Player.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true

@@ -20,8 +20,7 @@ import androidx.core.content.ContextCompat
  */
 class UsbAudioManager(
     private val context: Context,
-    private val nativeEngine: com.bitperfect.android.engine.NativeAudioEngine =
-        com.bitperfect.android.engine.NativeAudioEngine()
+    private val nativeEngine: com.bitperfect.android.engine.NativeAudioEngine
 ) {
 
     companion object {

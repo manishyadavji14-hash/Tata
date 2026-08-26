@@ -86,7 +86,6 @@ class SettingsViewModel(
             val crossfade = repository.crossfadeMs.first()
             val theme = repository.themeMode.first()
             val debug = repository.debugLogging.first()
-
             _uiState.value = SettingsUiState(
                 bitPerfectMode = bitPerfect,
                 bufferSizeMs = bufferSize,
@@ -242,6 +241,13 @@ class SettingsViewModel(
             _uiState.value = _uiState.value.copy(debugLogging = enabled)
         }
     }
+
+    // Equalizer settings are owned by EqualizerViewModel, which drives a real
+    // AudioEffectsController on the AudioTrack session. Settings only links to
+    // that screen, so there is one place where the curve can be changed.
+    //
+    // Scan directories are owned by LibraryViewModel, behind the folder picker
+    // on the Library screen. It writes the same SCAN_DIRECTORIES preference.
 
     // --- Warnings ---
 

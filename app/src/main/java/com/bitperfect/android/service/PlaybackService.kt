@@ -304,11 +304,15 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
             onPlaybackStateChanged(state)
         }
 
+        // Register track transition callback so the native gapless engine
+        // can notify the controller when a track finishes playing
+        engine.registerTrackTransitionCallback(playbackController)
+
         // Initialize audio manager
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
         // Initialize USB components
-        usbAudioManager = UsbAudioManager(this)
+        usbAudioManager = UsbAudioManager(this, engine)
         usbPermissionHandler = UsbPermissionHandler(this, usbAudioManager)
         usbErrorRecovery = UsbErrorRecovery(usbAudioManager, playbackController, engine)
 

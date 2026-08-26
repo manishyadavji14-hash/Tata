@@ -2,13 +2,16 @@ package com.bitperfect.android.ui.library
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bitperfect.android.BitPerfectApp
 import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.library.model.Track
+import com.bitperfect.android.ui.settings.SettingsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,8 +27,21 @@ import kotlinx.coroutines.withContext
  * - Exposes library items as StateFlow for Compose observation
  */
 class LibraryViewModel(
-    private val musicLibrary: MusicLibrary
+    private val musicLibrary: MusicLibrary,
+    /**
+     * Persists the folder-picker choice. Optional so the ViewModel stays
+     * constructible in a test without a DataStore; a null repository just means
+     * the selection lives for the session only.
+     */
+    private val settingsRepository: SettingsRepository? = null
 ) : ViewModel() {
+
+    private companion object {
+        /** Anything above Red Book counts as high resolution. */
+        const val CD_SAMPLE_RATE_HZ = 48_000
+        const val CD_BIT_DEPTH = 16
+        val DSD_CODECS = setOf("DSF", "DFF")
+    }
 
     /**
      * Library browser tabs.
@@ -76,7 +92,17 @@ class LibraryViewModel(
         val genres: List<GenreItem> = emptyList(),
         val composers: List<ComposerItem> = emptyList(),
         val tracks: List<TrackItem> = emptyList(),
+        /**
+         * Library-wide totals for the stats header.
+         *
+         * These count the whole library, not the visible list, so searching or
+         * switching tabs does not change them.
+         */
         val totalTracks: Int = 0,
+        val totalAlbums: Int = 0,
+        val totalArtists: Int = 0,
+        val highResCount: Int = 0,
+        val dsdCount: Int = 0,
         val scanProgress: Float = 0f,
         val scanStatus: String = "",
         /**
@@ -165,12 +191,27 @@ class LibraryViewModel(
     private var allTracks: List<TrackItem> = emptyList()
 
     /** Empty means "scan everything". */
+    @Volatile
     private var selectedFolderPaths: Set<String> = emptySet()
 
     private var scanJob: Job? = null
 
     init {
+        restoreFolderSelection()
         loadLibrary()
+    }
+
+    /**
+     * Load the persisted folder selection before the first scan can run.
+     *
+     * Without this the picker choice was session-only: the user narrowed the
+     * scan to two folders, and the next launch scanned everything again.
+     */
+    private fun restoreFolderSelection() {
+        val repository = settingsRepository ?: return
+        viewModelScope.launch {
+            selectedFolderPaths = repository.scanDirectories.first()
+        }
     }
 
     /**
@@ -289,14 +330,30 @@ class LibraryViewModel(
         }
 
         // All folders selected is equivalent to scanning everything.
-        selectedFolderPaths = if (chosen.size == _uiState.value.availableFolders.size) {
+        val chosenPaths = if (chosen.size == _uiState.value.availableFolders.size) {
             emptySet()
         } else {
             chosen.mapTo(mutableSetOf()) { it.path }
         }
+        selectedFolderPaths = chosenPaths
+        persistFolderSelection(chosenPaths)
 
         hideFolderPicker()
         rescan()
+    }
+
+    /**
+     * Write the folder selection out.
+     *
+     * Runs on the application scope, not viewModelScope: navigating away from
+     * the Library screen clears this ViewModel, which would cancel the write
+     * and silently lose the choice the user just confirmed.
+     */
+    private fun persistFolderSelection(paths: Set<String>) {
+        val repository = settingsRepository ?: return
+        BitPerfectApp.applicationScope.launch {
+            repository.setScanDirectories(paths)
+        }
     }
 
     /**
@@ -395,7 +452,15 @@ class LibraryViewModel(
                 state.copy(
                     isLoading = false,
                     isEmpty = allTracks.isEmpty(),
-                    totalTracks = allTracks.size
+                    totalTracks = allTracks.size,
+                    totalAlbums = allAlbums.size,
+                    totalArtists = allArtists.size,
+                    highResCount = allTracks.count {
+                        it.sampleRate > CD_SAMPLE_RATE_HZ || it.bitDepth > CD_BIT_DEPTH
+                    },
+                    // Same rule as Track.isDsd: the codec column holds the
+                    // container name, so DSD shows up as DSF or DFF.
+                    dsdCount = allTracks.count { it.codec in DSD_CODECS }
                 )
             }
             refreshVisibleItems()

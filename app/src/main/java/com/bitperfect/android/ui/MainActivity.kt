@@ -30,6 +30,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bitperfect.android.BitPerfectApp
+import com.bitperfect.android.ServiceLocator
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
@@ -181,8 +182,11 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun initializeComponents() {
-        // Room-backed and safe to share; holds only the application context.
-        val musicLibrary = MusicLibrary(applicationContext)
+        // Created once in Application.onCreate and shared through the
+        // ServiceLocator, so an Activity recreation does not open a second Room
+        // instance. The fallback covers a process where onCreate did not run.
+        val musicLibrary = ServiceLocator.musicLibrary
+            ?: MusicLibrary(applicationContext).also { ServiceLocator.setMusicLibrary(it) }
         this.musicLibrary = musicLibrary
 
         val playbackFactory = object : ViewModelProvider.Factory {
@@ -222,7 +226,15 @@ class MainActivity : ComponentActivity() {
         dsdManager = localDsdManager
         playbackController = localPlayerViewModel.playbackController
 
-        val localUsbAudioManager = UsbAudioManager(this)
+        // Publish the retained engine and controller so any other component
+        // reaches these instances rather than constructing its own.
+        ServiceLocator.setServiceComponents(
+            playbackController = localPlayerViewModel.playbackController,
+            engine = localEngine,
+            musicLibrary = musicLibrary
+        )
+
+        val localUsbAudioManager = UsbAudioManager(this, localEngine)
         usbAudioManager = localUsbAudioManager
 
         val localSettingsRepository = SettingsRepository(this)
@@ -231,7 +243,9 @@ class MainActivity : ComponentActivity() {
 
 
         // Initialize activity-scoped library/settings/diagnostics ViewModels.
-        libraryViewModel = LibraryViewModel(musicLibrary)
+        // The library gets the settings repository so the folder-picker choice
+        // survives a restart.
+        libraryViewModel = LibraryViewModel(musicLibrary, localSettingsRepository)
         settingsViewModel = SettingsViewModel(localSettingsRepository)
 
         // Retained through ViewModelProvider so onCleared() actually runs and

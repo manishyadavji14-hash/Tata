@@ -2,6 +2,7 @@ package com.bitperfect.android.ui.player
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bitperfect.android.ServiceLocator
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
@@ -263,6 +264,26 @@ class PlayerViewModel(
         _uiState.update { current -> current.copy(repeatMode = nextMode) }
     }
 
+    // The sleep timer API lives above: setSleepTimer(minutes) and
+    // extendSleepTimer(minutes), with the remaining time exposed through
+    // uiState.sleepTimerRemainingMs so the UI re-renders as it counts down.
+    // A millisecond-based setSleepTimer overload used to sit here too, which
+    // made `setSleepTimer(0)` resolve by argument type rather than by meaning.
+
+    /**
+     * Play a track from the library.
+     *
+     * Replaces the queue with the list the track was shown in, so playback
+     * continues through that list instead of stopping after the one tapped
+     * track.
+     *
+     * @param tracks Track paths of the list the user was looking at
+     * @param selectedIndex Index within [tracks] of the track the user tapped
+     */
+    fun playFromLibrary(tracks: List<String>, selectedIndex: Int) {
+        playbackController.playQueue(tracks, selectedIndex)
+    }
+
     // --- State Updates ---
 
     private fun updateUiState(state: PlaybackState) {
@@ -470,6 +491,11 @@ class PlayerViewModel(
     override fun onCleared() {
         playbackController.removeStateListener(playbackStateListener)
         playbackController.release()
+        // This ViewModel owns the engine and controller published in the
+        // ServiceLocator, so the reference is dropped here rather than in the
+        // Activity: the Activity is destroyed on every rotation while this
+        // ViewModel, and the engine it holds, survive.
+        ServiceLocator.clearServiceReferences()
         super.onCleared()
     }
 }

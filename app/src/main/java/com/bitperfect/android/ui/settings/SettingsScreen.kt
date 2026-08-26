@@ -239,6 +239,15 @@ fun SettingsScreen(
                 }
             }
 
+            // Two sections deliberately do NOT appear here:
+            //
+            // - Equalizer, which has its own screen reached from the Player. A
+            //   second toggle used to sit in this list, wired to nothing.
+            // - Scan directories, which are chosen from the Library screen's
+            //   folder picker. That picker lists the folders actually found on
+            //   the device with their track counts, so it replaces asking the
+            //   user to type an absolute path correctly.
+
             // About section
             item {
                 SectionHeader("About")

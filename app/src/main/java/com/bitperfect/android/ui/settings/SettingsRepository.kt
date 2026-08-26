@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.bitperfect.android.player.AudioEffectsController
 import kotlinx.coroutines.flow.Flow
@@ -62,6 +63,9 @@ class SettingsRepository(private val context: Context) {
         // Interface
         val THEME_MODE = stringPreferencesKey("theme_mode")
         val DEBUG_LOGGING = booleanPreferencesKey("debug_logging")
+
+        // Library
+        val SCAN_DIRECTORIES = stringSetPreferencesKey("scan_directories")
     }
 
     // --- Default Values ---
@@ -84,6 +88,11 @@ class SettingsRepository(private val context: Context) {
         const val EQ_TREBLE = 0          // 0-1000
         const val THEME_MODE = "system"  // "system", "light", "dark"
         const val DEBUG_LOGGING = false
+
+        val SCAN_DIRECTORIES = setOf(
+            "/storage/emulated/0/Music",
+            "/storage/emulated/0/Download"
+        )
     }
 
     // --- Equalizer Settings ---
@@ -265,6 +274,37 @@ class SettingsRepository(private val context: Context) {
     suspend fun setDebugLogging(enabled: Boolean) {
         context.dataStore.edit { prefs ->
             prefs[Keys.DEBUG_LOGGING] = enabled
+        }
+    }
+
+    // Equalizer state lives above, in `equalizerSettings`, typed as the
+    // AudioEffectsController's own settings class. The preset/band-string pair
+    // that used to live here described an equalizer that was never wired to an
+    // output, so it is gone: the Equalizer screen is the single UI for it.
+
+    // --- Library Settings ---
+
+    val scanDirectories: Flow<Set<String>> = context.dataStore.data.map { prefs ->
+        prefs[Keys.SCAN_DIRECTORIES] ?: Defaults.SCAN_DIRECTORIES
+    }
+
+    suspend fun setScanDirectories(directories: Set<String>) {
+        context.dataStore.edit { prefs ->
+            prefs[Keys.SCAN_DIRECTORIES] = directories
+        }
+    }
+
+    suspend fun addScanDirectory(path: String) {
+        context.dataStore.edit { prefs ->
+            val current = prefs[Keys.SCAN_DIRECTORIES] ?: Defaults.SCAN_DIRECTORIES
+            prefs[Keys.SCAN_DIRECTORIES] = current + path
+        }
+    }
+
+    suspend fun removeScanDirectory(path: String) {
+        context.dataStore.edit { prefs ->
+            val current = prefs[Keys.SCAN_DIRECTORIES] ?: Defaults.SCAN_DIRECTORIES
+            prefs[Keys.SCAN_DIRECTORIES] = current - path
         }
     }
 }
