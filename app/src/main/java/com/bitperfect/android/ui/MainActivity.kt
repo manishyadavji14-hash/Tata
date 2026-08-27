@@ -37,6 +37,8 @@ import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.library.StoragePermissions
+import com.bitperfect.android.player.PlaybackState
+import com.bitperfect.android.player.PlaybackStateStore
 import com.bitperfect.android.service.PlaybackService
 import com.bitperfect.android.ui.diagnostics.DiagnosticsViewModel
 import com.bitperfect.android.ui.equalizer.EqualizerViewModel
@@ -103,6 +105,9 @@ class MainActivity : ComponentActivity() {
 
     private var playbackService: PlaybackService? = null
     private var isBound = false
+
+    /** Guards against restarting the foreground service on every track change. */
+    private var hasStartedPlaybackService = false
 
     // ViewModels (in production, use Hilt/Koin DI)
     // Nullable to prevent UninitializedPropertyAccessException if initializeComponents() fails
@@ -222,7 +227,8 @@ class MainActivity : ComponentActivity() {
                     createdController,
                     createdEngine,
                     createdDsdManager,
-                    musicLibrary
+                    musicLibrary,
+                    PlaybackStateStore(applicationContext)
                 ) as T
             }
         }
@@ -243,6 +249,22 @@ class MainActivity : ComponentActivity() {
             engine = localEngine,
             musicLibrary = musicLibrary
         )
+
+        // Promote to a foreground service the moment audio starts.
+        //
+        // Nothing did this before, which is why there was no notification and no
+        // lock-screen controls, and — more importantly — why nothing requested
+        // audio focus, so an incoming call never paused the music. The service
+        // owns focus, the notification and the media session; it just had to be
+        // started. Deferred until playback rather than done in onCreate, because
+        // starting a foreground service with no audio to show gets the app killed
+        // on Android 14+.
+        localPlayerViewModel.playbackController.addStateListener { state ->
+            when (state) {
+                is PlaybackState.Playing -> ensurePlaybackServiceRunning()
+                else -> Unit
+            }
+        }
 
         val localUsbAudioManager = UsbAudioManager(this, localEngine)
         usbAudioManager = localUsbAudioManager
@@ -403,6 +425,26 @@ class MainActivity : ComponentActivity() {
     fun startPlaybackService() {
         val intent = Intent(this, PlaybackService::class.java)
         startForegroundService(intent)
+    }
+
+    /**
+     * Start and bind the playback service once, on first playback.
+     *
+     * Idempotent: called from every Playing state change, which happens on every
+     * track, so it must not restart the service each time.
+     */
+    private fun ensurePlaybackServiceRunning() {
+        if (hasStartedPlaybackService) return
+        hasStartedPlaybackService = true
+        try {
+            startPlaybackService()
+            bindPlaybackService()
+        } catch (error: Exception) {
+            // A failure here costs the notification, not playback, so it must not
+            // take the app down with it.
+            hasStartedPlaybackService = false
+            Log.e(TAG, "Could not start the playback service: ${error.message}", error)
+        }
     }
 
     /**

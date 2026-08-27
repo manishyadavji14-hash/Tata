@@ -9,6 +9,7 @@ import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.player.AudioFormatInfo
 import com.bitperfect.android.player.PlaybackController
 import com.bitperfect.android.player.PlaybackState
+import com.bitperfect.android.player.PlaybackStateStore
 import com.bitperfect.android.player.RepeatMode
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,7 +33,12 @@ class PlayerViewModel(
     internal val playbackController: PlaybackController,
     internal val engine: NativeAudioEngine,
     internal val dsdManager: DsdManager,
-    private val musicLibrary: MusicLibrary
+    private val musicLibrary: MusicLibrary,
+    /**
+     * Remembers the session across app restarts. Optional so the ViewModel stays
+     * constructible without a Context in tests.
+     */
+    private val sessionStore: PlaybackStateStore? = null
 ) : ViewModel() {
 
     /**
@@ -130,10 +136,22 @@ class PlayerViewModel(
     init {
         playbackController.addStateListener(playbackStateListener)
 
+        // Put the last session back before anything else touches state.
+        restoreSession()
+
         // Start position update loop
         viewModelScope.launch {
+            var ticksSinceSave = 0
             while (isActive) {
                 updatePositionIfPlaying()
+
+                // Persist the position every few seconds rather than every tick:
+                // often enough that a kill loses only a moment, rarely enough not
+                // to write to disk four times a second.
+                if (++ticksSinceSave >= POSITION_SAVE_INTERVAL_TICKS) {
+                    ticksSinceSave = 0
+                    if (_uiState.value.isPlaying) savePosition()
+                }
                 delay(250L) // Update 4 times per second
             }
         }
@@ -256,6 +274,56 @@ class PlayerViewModel(
         else -> null
     }
 
+    // --- Session persistence ---
+
+    /**
+     * Reload the last session without starting playback.
+     *
+     * The queue and track are restored and the player shows them paused at the
+     * saved position, so reopening the app looks like where you left it and one
+     * tap resumes. It deliberately does not auto-play: launching the app should
+     * not start making noise on its own.
+     */
+    private fun restoreSession() {
+        val store = sessionStore ?: return
+        val snapshot = store.load() ?: return
+
+        playbackController.restoreSession(
+            queue = snapshot.queue,
+            index = snapshot.queueIndex,
+            positionMs = snapshot.positionMs
+        )
+
+        // Populate the UI from the restored track so it is visible before any
+        // playback starts.
+        resolveTrackDetails(snapshot.trackPath)
+        _uiState.update { current ->
+            current.copy(
+                isPlaying = false,
+                isPaused = true,
+                positionMs = snapshot.positionMs,
+                positionText = formatTime(snapshot.positionMs)
+            )
+        }
+    }
+
+    /** Persist the whole session. Called on track change and when clearing up. */
+    private fun saveSession() {
+        val store = sessionStore ?: return
+        val path = currentTrackPath() ?: return
+        store.save(
+            trackPath = path,
+            positionMs = _uiState.value.positionMs,
+            queue = playbackController.queue.tracks,
+            queueIndex = playbackController.queue.position
+        )
+    }
+
+    /** Cheap position-only write for the periodic tick. */
+    private fun savePosition() {
+        sessionStore?.savePosition(_uiState.value.positionMs)
+    }
+
     fun previous() {
         playbackController.previous()
     }
@@ -318,7 +386,13 @@ class PlayerViewModel(
         }
 
         when (state) {
-            is PlaybackState.Playing -> resolveTrackDetails(state.trackPath)
+            is PlaybackState.Playing -> {
+                resolveTrackDetails(state.trackPath)
+                // Persist the whole session on each track change, so being killed
+                // in the background loses at most the last few seconds of
+                // position rather than the queue.
+                saveSession()
+            }
             is PlaybackState.Loading -> resolveTrackDetails(state.trackPath)
             is PlaybackState.Stopped, is PlaybackState.Idle -> {
                 detailsPath = null
@@ -508,6 +582,9 @@ class PlayerViewModel(
     }
 
     override fun onCleared() {
+        // Save before tearing anything down, while the queue and position are
+        // still readable.
+        saveSession()
         playbackController.removeStateListener(playbackStateListener)
         playbackController.release()
         // This ViewModel owns the engine and controller published in the
@@ -516,5 +593,10 @@ class PlayerViewModel(
         // ViewModel, and the engine it holds, survive.
         ServiceLocator.clearServiceReferences()
         super.onCleared()
+    }
+
+    private companion object {
+        /** 250 ms ticks, so 20 ticks is a position write every 5 seconds. */
+        const val POSITION_SAVE_INTERVAL_TICKS = 20
     }
 }

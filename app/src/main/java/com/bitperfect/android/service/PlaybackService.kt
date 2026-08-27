@@ -19,7 +19,9 @@ import android.support.v4.media.MediaBrowserCompat
 import android.util.Log
 import androidx.media.MediaBrowserServiceCompat
 import androidx.media3.session.MediaSession
+import com.bitperfect.android.ServiceLocator
 import com.bitperfect.android.engine.NativeAudioEngine
+import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.player.PlaybackController
 import com.bitperfect.android.player.PlaybackState
 import com.bitperfect.android.usb.UsbAudioManager
@@ -69,6 +71,16 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
 
     // Audio focus
     private lateinit var audioManager: AudioManager
+
+    /**
+     * False when the engine and controller came from ServiceLocator, in which
+     * case the Activity's retained ViewModel owns them and this service must not
+     * release them.
+     */
+    private var ownsEngineAndController = false
+
+    /** Retained so onDestroy can detach it from a shared controller. */
+    private var playbackStateListener: (PlaybackState) -> Unit = {}
     private var audioFocusRequest: AudioFocusRequest? = null
     private var hadAudioFocusBeforeTransientLoss = false
 
@@ -187,8 +199,19 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         unregisterReceivers()
         releaseWakeLock()
         mediaSessionManager.release()
-        playbackController.release()
-        engine.shutdown()
+
+        // Always detach the listener, or this service leaks through a controller
+        // that outlives it.
+        playbackController.removeStateListener(playbackStateListener)
+
+        // Only tear down what this service created. Releasing the shared
+        // controller would stop the audio the UI is still driving, and shutting
+        // down the shared engine would close decoders out from under it.
+        if (ownsEngineAndController) {
+            playbackController.release()
+            engine.shutdown()
+        }
+
         usbAudioManager.closeDevice()
         usbAudioManager.unregisterReceiver()
         super.onDestroy()
@@ -294,15 +317,40 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     // --- Initialization ---
 
     private fun initializeComponents() {
-        // Initialize native engine
-        engine = NativeAudioEngine()
-        engine.initialize()
+        // Adopt the engine and controller the UI is actually playing through.
+        //
+        // This service used to construct its own pair, which meant the
+        // notification and the media session controlled a second, silent
+        // controller while audio came from the Activity's. Taking the shared
+        // instances is what makes the notification, lock-screen controls and
+        // audio focus act on the audio you can hear.
+        val sharedEngine = ServiceLocator.engine
+        val sharedController = ServiceLocator.playbackController
 
-        // Initialize playback controller
-        playbackController = PlaybackController(engine)
-        playbackController.addStateListener { state ->
-            onPlaybackStateChanged(state)
+        if (sharedEngine != null && sharedController != null) {
+            engine = sharedEngine
+            playbackController = sharedController
+            ownsEngineAndController = false
+            Log.i(TAG, "Using shared engine and controller from ServiceLocator")
+        } else {
+            // The service can be recreated by the system with no Activity alive,
+            // in which case there is nothing to share and it owns its own.
+            engine = NativeAudioEngine()
+            engine.initialize()
+            playbackController = PlaybackController(engine)
+            ownsEngineAndController = true
+            ServiceLocator.setServiceComponents(
+                playbackController = playbackController,
+                engine = engine,
+                musicLibrary = ServiceLocator.musicLibrary ?: MusicLibrary(applicationContext)
+            )
+            Log.i(TAG, "No shared components; service created its own")
         }
+
+        // Held so it can be removed in onDestroy. Adding an anonymous lambda to
+        // a controller the service does not own would leak this service.
+        playbackStateListener = { state -> onPlaybackStateChanged(state) }
+        playbackController.addStateListener(playbackStateListener)
 
         // Register track transition callback so the native gapless engine
         // can notify the controller when a track finishes playing
