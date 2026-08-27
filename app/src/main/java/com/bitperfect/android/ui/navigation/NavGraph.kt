@@ -74,6 +74,7 @@ fun BitPerfectNavGraph(
     equalizerViewModel: EqualizerViewModel,
     musicLibrary: MusicLibrary,
     onOpenFile: () -> Unit,
+    onPickZip: () -> Unit = {},
     navController: NavHostController = rememberNavController()
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -209,6 +210,7 @@ fun BitPerfectNavGraph(
                     onPlaylistsClick = {
                         navController.navigate(Screen.Playlists.route)
                     },
+                    onPickZip = onPickZip,
                     onTrackClick = { visibleTracks, index ->
                         playerViewModel.playFromLibrary(visibleTracks, index)
                         navController.navigate(Screen.Player.route) {

@@ -36,6 +36,10 @@ import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Piano
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.FolderZip
+import androidx.compose.material.icons.filled.GraphicEq
+import androidx.compose.material.icons.filled.LibraryMusic
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.material3.AlertDialog
@@ -54,8 +58,15 @@ import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.clickable
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
@@ -64,6 +75,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -100,6 +112,8 @@ fun LibraryScreen(
     onFolderClick: (String) -> Unit = {},
     onFavouritesClick: () -> Unit = {},
     onPlaylistsClick: () -> Unit = {},
+    /** Opens the system document picker for a .zip; result routes to importZip. */
+    onPickZip: () -> Unit = {},
     /** Receives the full visible track list and the index that was tapped. */
     onTrackClick: (tracks: List<String>, index: Int) -> Unit = { _, _ -> }
 ) {
@@ -111,20 +125,38 @@ fun LibraryScreen(
     val tabs = listOf("Folders", "Artists", "Albums", "Genres", "Composers", "Tracks")
 
     val pullRefreshState = rememberPullToRefreshState()
+    var isScanSheetVisible by remember { mutableStateOf(false) }
 
-    // Pull-to-refresh triggers a real rescan and is released when it finishes.
-    if (pullRefreshState.isRefreshing) {
-        LaunchedEffect(Unit) { viewModel.rescan() }
+    // The gesture triggers a scan exactly once, keyed on the refreshing edge so
+    // it cannot re-fire while the finger is held.
+    LaunchedEffect(pullRefreshState.isRefreshing) {
+        if (pullRefreshState.isRefreshing) {
+            viewModel.rescan()
+        }
     }
-    // Release the gesture when the scan finishes, and also when it was declined
-    // outright (missing permission, or a scan already running).
-    LaunchedEffect(uiState.isScanning, uiState.scanRequestRejected) {
+    // The indicator is driven purely by the scan's busy flag: when scanning
+    // stops, the indicator stops. This is the single source of truth, replacing
+    // the earlier two-way handshake whose races left the spinner running.
+    LaunchedEffect(uiState.isScanning) {
         if (!uiState.isScanning && pullRefreshState.isRefreshing) {
             pullRefreshState.endRefresh()
         }
+    }
+    LaunchedEffect(uiState.scanRequestRejected) {
         if (uiState.scanRequestRejected) {
+            if (pullRefreshState.isRefreshing) pullRefreshState.endRefresh()
             viewModel.acknowledgeScanRejection()
         }
+    }
+
+    if (isScanSheetVisible) {
+        ScanOptionsSheet(
+            onScanAll = { viewModel.scanAll() },
+            onScanFolders = { viewModel.showFolderPicker() },
+            onScanZip = { onPickZip() },
+            onScanByFormat = { formats -> viewModel.scanByFormats(formats) },
+            onDismiss = { isScanSheetVisible = false }
+        )
     }
 
     if (uiState.isFolderPickerVisible) {
@@ -155,11 +187,12 @@ fun LibraryScreen(
                             contentDescription = "Playlists"
                         )
                     }
-                    IconButton(onClick = { viewModel.showFolderPicker() }) {
-                        Icon(Icons.Default.Folder, contentDescription = "Choose folders")
-                    }
                     IconButton(onClick = { viewModel.cycleSortOrder() }) {
                         Icon(Icons.Default.Sort, contentDescription = "Sort")
+                    }
+                    // The single entry point for every scan mode.
+                    IconButton(onClick = { isScanSheetVisible = true }) {
+                        Icon(Icons.Default.Refresh, contentDescription = "Scan for music")
                     }
                 }
             )
@@ -844,4 +877,135 @@ private fun FolderPickerDialog(
             TextButton(onClick = onDismiss) { Text("Cancel") }
         }
     )
+}
+
+
+/**
+ * The four scan modes, in a bottom sheet.
+ *
+ * "Scan all" and "By folder" and "From ZIP" act immediately; "By format" opens
+ * a second step of format chips because it needs a selection first.
+ */
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@Composable
+private fun ScanOptionsSheet(
+    onScanAll: () -> Unit,
+    onScanFolders: () -> Unit,
+    onScanZip: () -> Unit,
+    onScanByFormat: (Set<String>) -> Unit,
+    onDismiss: () -> Unit
+) {
+    var showFormatPicker by remember { mutableStateOf(false) }
+
+    ModalBottomSheet(onDismissRequest = onDismiss) {
+        Column(modifier = Modifier.padding(bottom = 24.dp)) {
+            Text(
+                text = if (showFormatPicker) "Scan by format" else "Scan for music",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(horizontal = 24.dp, vertical = 12.dp)
+            )
+
+            if (!showFormatPicker) {
+                ScanOption(
+                    icon = Icons.Default.LibraryMusic,
+                    title = "Scan all",
+                    subtitle = "Every audio file on the device"
+                ) { onScanAll(); onDismiss() }
+
+                ScanOption(
+                    icon = Icons.Default.Folder,
+                    title = "Choose folders",
+                    subtitle = "Pick which folders to include"
+                ) { onScanFolders(); onDismiss() }
+
+                ScanOption(
+                    icon = Icons.Default.FolderZip,
+                    title = "Import from ZIP",
+                    subtitle = "Extract audio from a .zip archive"
+                ) { onScanZip(); onDismiss() }
+
+                ScanOption(
+                    icon = Icons.Default.GraphicEq,
+                    title = "Scan by format",
+                    subtitle = "Only add chosen formats, e.g. FLAC or Opus"
+                ) { showFormatPicker = true }
+            } else {
+                FormatPicker(
+                    onConfirm = { formats ->
+                        onScanByFormat(formats)
+                        onDismiss()
+                    },
+                    onBack = { showFormatPicker = false }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ScanOption(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    title: String,
+    subtitle: String,
+    onClick: () -> Unit
+) {
+    ListItem(
+        headlineContent = { Text(title) },
+        supportingContent = { Text(subtitle) },
+        leadingContent = { Icon(icon, contentDescription = null) },
+        modifier = Modifier.clickable(onClick = onClick)
+    )
+}
+
+/**
+ * Format chooser for the "scan by format" mode.
+ *
+ * The list is the formats the player can actually decode, so it never offers one
+ * that would scan to nothing.
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun FormatPicker(
+    onConfirm: (Set<String>) -> Unit,
+    onBack: () -> Unit
+) {
+    // Grouped so related extensions toggle together and the user picks a format,
+    // not a file suffix.
+    val formatGroups = remember {
+        listOf(
+            "FLAC" to setOf("flac"),
+            "WAV" to setOf("wav", "wave"),
+            "MP3" to setOf("mp3"),
+            "AAC / M4A" to setOf("aac", "m4a", "mp4"),
+            "Opus" to setOf("opus"),
+            "OGG Vorbis" to setOf("ogg", "oga"),
+            "ALAC" to setOf("alac"),
+            "AIFF" to setOf("aiff", "aif")
+        )
+    }
+    val selected = remember { mutableStateListOf<String>() }
+
+    Column(modifier = Modifier.padding(horizontal = 24.dp)) {
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            formatGroups.forEach { (label, exts) ->
+                val isOn = selected.containsAll(exts)
+                FilterChip(
+                    selected = isOn,
+                    onClick = {
+                        if (isOn) selected.removeAll(exts) else selected.addAll(exts)
+                    },
+                    label = { Text(label) }
+                )
+            }
+        }
+        Spacer(Modifier.height(16.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            TextButton(onClick = onBack) { Text("Back") }
+            Spacer(Modifier.weight(1f))
+            Button(
+                onClick = { onConfirm(selected.toSet()) },
+                enabled = selected.isNotEmpty()
+            ) { Text("Scan") }
+        }
+    }
 }

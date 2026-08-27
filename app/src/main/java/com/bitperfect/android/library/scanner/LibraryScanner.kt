@@ -100,7 +100,13 @@ class LibraryScanner(
      */
     fun scan(
         directories: List<String> = emptyList(),
-        existingTracks: Map<String, Track> = emptyMap()
+        existingTracks: Map<String, Track> = emptyMap(),
+        /**
+         * When set, only files with these (lowercase, no-dot) extensions are
+         * taken. A format-restricted scan is additive: it never removes tracks
+         * of other formats, so "scan only FLAC" cannot wipe your MP3s.
+         */
+        formatFilter: Set<String>? = null
     ): ScanResult {
         val startTime = System.currentTimeMillis()
         currentState = ScanState.SCANNING
@@ -109,7 +115,15 @@ class LibraryScanner(
         progressCallback?.invoke(ScanProgress(state = ScanState.SCANNING))
 
         val discovered = try {
-            audioSource.query(directories)
+            audioSource.query(directories).let { entries ->
+                if (formatFilter.isNullOrEmpty()) {
+                    entries
+                } else {
+                    entries.filter {
+                        it.path.substringAfterLast('.', "").lowercase() in formatFilter
+                    }
+                }
+            }
         } catch (error: SecurityException) {
             currentState = ScanState.ERROR
             return ScanResult(
@@ -173,9 +187,15 @@ class LibraryScanner(
         // Removals are only meaningful for the scope that was actually scanned.
         // A folder-restricted scan never looks outside its prefixes, so treating
         // everything else as deleted would reduce the library to the selection.
-        val removedPaths = existingTracks.keys
-            .filter { path -> isWithinScope(path, directories) }
-            .filterNot { it in discoveredPaths }
+        // A format-restricted scan is additive for the same reason: it did not
+        // look at other formats, so it must not delete them.
+        val removedPaths = if (!formatFilter.isNullOrEmpty()) {
+            emptyList()
+        } else {
+            existingTracks.keys
+                .filter { path -> isWithinScope(path, directories) }
+                .filterNot { it in discoveredPaths }
+        }
 
         currentState = ScanState.COMPLETED
         val duration = System.currentTimeMillis() - startTime

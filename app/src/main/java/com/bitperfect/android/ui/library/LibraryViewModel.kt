@@ -1,5 +1,6 @@
 package com.bitperfect.android.ui.library
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bitperfect.android.BitPerfectApp
@@ -357,9 +358,43 @@ class LibraryViewModel(
     }
 
     /**
-     * Rescan the library, honouring the current folder selection.
+     * Rescan honouring the saved folder selection. This is the pull-to-refresh
+     * and generic entry point; the scan menu calls the typed variants below.
      */
     fun rescan() {
+        launchScan(directories = selectedFolderPaths.toList())
+    }
+
+    /**
+     * Scan the whole device, clearing any folder restriction.
+     */
+    fun scanAll() {
+        selectedFolderPaths = emptySet()
+        persistFolderSelection(emptySet())
+        launchScan(directories = emptyList())
+    }
+
+    /**
+     * Scan the whole device but only take the given formats. Additive: it will
+     * not remove tracks of other formats already in the library.
+     *
+     * @param formats lowercase extensions without the dot, e.g. {"flac","wav"}
+     */
+    fun scanByFormats(formats: Set<String>) {
+        if (formats.isEmpty()) return
+        launchScan(directories = emptyList(), formats = formats)
+    }
+
+    /**
+     * Single scan entry point. All modes funnel through here so the busy state
+     * is managed in exactly one place, which is what stops the refresh spinner
+     * from being left running: isScanning is set true before the work and false
+     * in a finally, so no early return or exception can strand it.
+     */
+    private fun launchScan(
+        directories: List<String>,
+        formats: Set<String>? = null
+    ) {
         if (scanJob?.isActive == true) {
             _uiState.update { it.copy(scanRequestRejected = true) }
             return
@@ -387,9 +422,22 @@ class LibraryViewModel(
                 )
             }
 
-            val result = musicLibrary.triggerScan(
-                directories = selectedFolderPaths.toList(),
-                progressCallback = { progress ->
+            try {
+                runScan(directories, formats)
+            } finally {
+                // Whatever happened — success, empty result, cancellation, or a
+                // thrown exception — the busy flag is cleared here, so the UI
+                // spinner always stops.
+                _uiState.update { it.copy(isScanning = false, scanProgress = 0f, scanStatus = "") }
+            }
+        }
+    }
+
+    private suspend fun runScan(directories: List<String>, formats: Set<String>?) {
+        val result = musicLibrary.triggerScan(
+            directories = directories,
+            formats = formats,
+            progressCallback = { progress ->
                     // Invoked from the scanner's IO thread, so this must be
                     // an atomic update rather than a read-modify-write.
                     _uiState.update { state ->
@@ -403,21 +451,51 @@ class LibraryViewModel(
                         )
                     }
                 }
+        )
+
+        loadLibrary()
+
+        _uiState.update { state ->
+            state.copy(
+                statusMessage = when {
+                    !result.success -> result.error ?: "Scan failed"
+                    result.totalTracks == 0 -> "No supported audio files found"
+                    else -> "Found ${result.totalTracks} tracks"
+                }
             )
+        }
+    }
 
-            loadLibrary()
-
-            _uiState.update { state ->
-                state.copy(
-                    isScanning = false,
-                    scanProgress = 0f,
-                    scanStatus = "",
-                    statusMessage = when {
-                        !result.success -> result.error ?: "Scan failed"
-                        result.totalTracks == 0 -> "No supported audio files found"
-                        else -> "Found ${result.totalTracks} tracks"
-                    }
-                )
+    /**
+     * Import audio from a .zip chosen in the document picker, then refresh.
+     *
+     * Runs on the busy flag like a scan, so the same spinner and the same
+     * single-place cleanup apply.
+     */
+    fun importZip(uri: Uri) {
+        if (scanJob?.isActive == true) {
+            _uiState.update { it.copy(scanRequestRejected = true) }
+            return
+        }
+        scanJob = viewModelScope.launch {
+            _uiState.update {
+                it.copy(isScanning = true, scanStatus = "Extracting archive…", statusMessage = null)
+            }
+            try {
+                val result = musicLibrary.importZip(uri)
+                loadLibrary()
+                _uiState.update {
+                    it.copy(
+                        statusMessage = when {
+                            !result.isSuccess -> result.error ?: "Could not import the archive"
+                            result.imported == 0 -> "No playable audio in the archive"
+                            else -> "Imported ${result.imported} tracks" +
+                                if (result.skipped > 0) " (${result.skipped} skipped)" else ""
+                        }
+                    )
+                }
+            } finally {
+                _uiState.update { it.copy(isScanning = false, scanStatus = "") }
             }
         }
     }

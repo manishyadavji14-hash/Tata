@@ -85,6 +85,14 @@ class MainActivity : ComponentActivity() {
         if (uri != null) importAndPlay(uri)
     }
 
+    private val openZipArchive = registerForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        // Extraction and library insertion happen in the ViewModel, off the main
+        // thread; this only hands over the chosen archive.
+        if (uri != null) libraryViewModel?.importZip(uri)
+    }
+
     private val requestPermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) {
@@ -267,6 +275,12 @@ class MainActivity : ComponentActivity() {
         diagnosticsViewModel = DiagnosticsViewModel(localEngine, localDsdManager, localUsbAudioManager)
     }
 
+    private fun launchZipPicker() {
+        // Some pickers report zips as octet-stream, so accept that too rather
+        // than hiding archives the user can see.
+        openZipArchive.launch(arrayOf("application/zip", "application/octet-stream"))
+    }
+
     private fun launchAudioPicker() {
         if (!BitPerfectApp.isNativeLoaded) {
             Toast.makeText(
@@ -434,7 +448,8 @@ class MainActivity : ComponentActivity() {
                         diagnosticsViewModel = dvm,
                         equalizerViewModel = evm,
                         musicLibrary = library,
-                        onOpenFile = ::launchAudioPicker
+                        onOpenFile = ::launchAudioPicker,
+                        onPickZip = ::launchZipPicker
                     )
                 } else {
                     // Show a safe fallback screen when ViewModels failed to initialize
