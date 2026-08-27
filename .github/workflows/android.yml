@@ -62,7 +62,10 @@ jobs:
         run: ./gradlew :app:lintDebug --no-daemon
 
       - name: Assemble debug APK
-        run: ./gradlew :app:assembleDebug --no-daemon
+        # `clean` first: incremental packaging has been observed to leave stale
+        # padding in the APK, inflating it several-fold. A clean assemble keeps
+        # the shipped size honest.
+        run: ./gradlew clean :app:assembleDebug --no-daemon
 
       - name: Verify the APK is signed and carries the arm64 engine
         # A debug APK that is unsigned, or missing the native library, installs

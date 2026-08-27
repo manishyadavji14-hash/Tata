@@ -31,8 +31,21 @@ android {
     }
 
     buildTypes {
+        // Debug is what is distributed for on-device testing, and it must fit
+        // under platform and hosting size limits. Code shrinking (R8) removes
+        // the large amount of unused library code — chiefly the thousands of
+        // vector assets in material-icons-extended — that otherwise pushed the
+        // APK past 100 MB. Obfuscation is disabled in proguard-rules.pro, so
+        // shrinking is the only transform applied and the JNI boundary is safe.
+        debug {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -93,6 +106,9 @@ dependencies {
 
     // Coil - album artwork loading for Compose
     implementation("io.coil-kt:coil-compose:2.7.0")
+
+    // Palette - extract a vibrant accent colour from album art
+    implementation("androidx.palette:palette-ktx:1.0.0")
 
     // Media3
     implementation("androidx.media3:media3-common:1.2.1")

@@ -9,10 +9,36 @@
     native <methods>;
 }
 
+# === Shrink, but do not obfuscate ===
+# The APK is large because of unused library code (material-icons-extended is
+# tens of MB); the fix is dead-code elimination, not renaming. Keeping every
+# name means the JNI boundary and all reflective lookups stay valid with no risk
+# of R8 renaming a symbol the native layer resolves by string.
+-dontobfuscate
+
 # === NativeAudioEngine ===
 # The primary JNI bridge class - must be fully preserved
 -keep class com.bitperfect.android.engine.NativeAudioEngine {
     *;
+}
+
+# The engine's nested types are used across the JNI boundary and from the
+# playback sinks, so keep them whole.
+-keep class com.bitperfect.android.engine.NativeAudioEngine$* {
+    *;
+}
+
+# === Methods invoked only from native via GetMethodID ===
+# R8 cannot see native callers, so without these it would remove the methods as
+# unused. Both are looked up by exact name in native_bridge.cpp.
+-keep class com.bitperfect.android.player.PlaybackController {
+    public void onTrackTransition();
+}
+-keep interface com.bitperfect.android.engine.NativeAudioEngine$UsbControlTransferBridge {
+    *;
+}
+-keepclassmembers class * implements com.bitperfect.android.engine.NativeAudioEngine$UsbControlTransferBridge {
+    public int controlTransfer(int, int, int, int, byte[], int, int);
 }
 
 # Keep DsdManager which interacts with native layer
@@ -82,8 +108,10 @@
 }
 
 # === Compose ===
-# Compose compiler generates code that uses reflection in some cases
--keep class androidx.compose.** { *; }
+# Do NOT blanket-keep androidx.compose.**: that pins every unused vector in
+# material-icons-extended (tens of MB) and defeats shrinking entirely. The
+# Compose libraries ship their own consumer R8 rules for the reflection they
+# actually need, so only warnings are suppressed here.
 -dontwarn androidx.compose.**
 
 # === Suppress Warnings ===
