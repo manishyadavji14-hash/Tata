@@ -118,7 +118,9 @@ fun BitPerfectNavGraph(
                                 restoreState = true
                             }
                         },
-                        onPlayPauseClick = { playerViewModel.togglePlayPause() }
+                        onPlayPauseClick = { playerViewModel.togglePlayPause() },
+                        onSwipeNext = { playerViewModel.nextOrWrap() },
+                        onSwipePrevious = { playerViewModel.previous() }
                     )
                 }
 

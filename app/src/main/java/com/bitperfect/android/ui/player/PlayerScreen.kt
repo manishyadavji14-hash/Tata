@@ -75,6 +75,7 @@ import androidx.compose.ui.unit.dp
 import com.bitperfect.android.R
 import com.bitperfect.android.player.RepeatMode
 import com.bitperfect.android.ui.components.AlbumArtImage
+import com.bitperfect.android.ui.components.rememberDynamicAlbumColor
 import com.bitperfect.android.ui.theme.BitPerfectGreen
 import com.bitperfect.android.ui.theme.BitPerfectMotion
 import com.bitperfect.android.ui.theme.BitPerfectShapeTokens
@@ -132,6 +133,26 @@ fun PlayerScreen(
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { paddingValues ->
+        // Accent from the current cover, animated across track changes, painted
+        // as a top-down wash that fades into the normal background so the
+        // controls below stay legible.
+        val accent by rememberDynamicAlbumColor(
+            artworkUri = uiState.artworkUri,
+            fallback = MaterialTheme.colorScheme.primary
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            accent.copy(alpha = 0.28f),
+                            MaterialTheme.colorScheme.background
+                        )
+                    )
+                )
+        ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -239,6 +260,7 @@ fun PlayerScreen(
                 onDiagnosticsClick = onDiagnosticsClick
             )
         }
+        } // accent-gradient Box
     }
 }
 

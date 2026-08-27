@@ -237,6 +237,14 @@ class PlayerViewModel(
         playbackController.next()
     }
 
+    /**
+     * Swipe-forward from the mini player: advance, wrapping to the first track
+     * when already at the end of the queue.
+     */
+    fun nextOrWrap() {
+        playbackController.skipToNextOrWrap()
+    }
+
     fun previous() {
         playbackController.previous()
     }

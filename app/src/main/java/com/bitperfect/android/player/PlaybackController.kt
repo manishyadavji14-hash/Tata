@@ -280,6 +280,18 @@ class PlaybackController(
         if (nextTrack == null) stop() else startTrack(nextTrack)
     }
 
+    /**
+     * Advance to the next track, or wrap to the first when at the end.
+     *
+     * This backs the mini player's swipe-forward gesture, where reaching the end
+     * should loop to the start rather than stop. It differs from [next], which
+     * stops at the end, and it does not touch the repeat mode.
+     */
+    fun skipToNextOrWrap() {
+        val nextTrack = queue.next() ?: queue.jumpTo(0)
+        if (nextTrack != null) startTrack(nextTrack)
+    }
+
     fun previous() {
         if (playbackSink.positionMs > PREVIOUS_RESTART_THRESHOLD_MS) {
             seek(0L)
