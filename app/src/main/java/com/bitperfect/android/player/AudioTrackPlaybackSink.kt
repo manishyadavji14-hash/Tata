@@ -117,7 +117,11 @@ class AudioTrackPlaybackSink(
         if (!running) return@synchronized false
         val track = audioTrack ?: return@synchronized false
 
-        val clampedMs = positionMs.coerceIn(0L, durationMs)
+        val clampedMs = if (durationMs > 0L) {
+            positionMs.coerceIn(0L, durationMs)
+        } else {
+            positionMs.coerceAtLeast(0L)
+        }
         val frame = millisecondsToFrames(clampedMs, format.sampleRate)
         val wasPaused = paused
 
@@ -186,7 +190,7 @@ class AudioTrackPlaybackSink(
     private fun runPlayback(trackPath: String, playGeneration: Long) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_AUDIO)
 
-        var decoder: NativeAudioEngine.DecoderSession? = null
+        var decoder: PcmSource? = null
         var track: AudioTrack? = null
         var effectsSessionId: Int? = null
         var completed = false
@@ -194,11 +198,20 @@ class AudioTrackPlaybackSink(
         var failure: String? = null
 
         try {
-            val openedDecoder = engine.openDecoder(trackPath)
-                ?: throw PlaybackException("Unsupported or unreadable file (WAV and FLAC are supported)")
+            // Chooses the platform decoder for FLAC/Opus/MP3/AAC/OGG and the
+            // native reader for WAV. Previously this went straight to the native
+            // decoder, so anything other than WAV or FLAC could not be opened at
+            // all, and FLAC went through a decoder that had never been tested
+            // against a real encoded file.
+            val openedDecoder = PcmSourceFactory.openForAndroidOutput(engine, trackPath)
+                ?: throw PlaybackException(
+                    "No decoder for this file (${
+                        trackPath.substringAfterLast('.', "unknown").lowercase()
+                    })"
+                )
             decoder = openedDecoder
 
-            val decoderFormat = openedDecoder.format
+            val decoderFormat = openedDecoder
             validateFormat(decoderFormat)
             val encoding = audioEncoding(decoderFormat.bitsPerSample)
             val channelMask = channelMask(decoderFormat.channels)
@@ -260,7 +273,9 @@ class AudioTrackPlaybackSink(
                 sampleRate = decoderFormat.sampleRate,
                 bitDepth = decoderFormat.bitsPerSample,
                 channels = decoderFormat.channels,
-                codec = codecName(trackPath)
+                // From the decoder that actually opened it, so the player shows
+                // "Opus" or "MP3" rather than a guess made from the file name.
+                codec = decoderFormat.codecName
             )
             currentFormat = formatInfo
             durationMs = decoderFormat.durationMs
@@ -496,7 +511,10 @@ class AudioTrackPlaybackSink(
     }
 
     private fun updatePosition(frame: Long, sampleRate: Int) {
-        positionMs = framesToMilliseconds(frame, sampleRate).coerceIn(0L, durationMs)
+        val elapsed = framesToMilliseconds(frame, sampleRate)
+        // Only clamp to the duration when there is one. Containers that report no
+        // duration would otherwise pin the position at zero for the whole track.
+        positionMs = if (durationMs > 0L) elapsed.coerceIn(0L, durationMs) else elapsed.coerceAtLeast(0L)
     }
 
     private fun postPrepared(
@@ -530,19 +548,19 @@ class AudioTrackPlaybackSink(
     private fun isCurrentGeneration(playGeneration: Long): Boolean =
         generation.get() == playGeneration
 
-    private fun validateFormat(format: NativeAudioEngine.DecoderFormat) {
+    private fun validateFormat(format: PcmSource) {
         if (format.sampleRate <= 0 || format.channels !in 1..2) {
-            throw PlaybackException("Only mono and stereo PCM files are supported")
+            throw PlaybackException("Only mono and stereo audio is supported")
         }
         if (format.bitsPerSample !in SUPPORTED_BIT_DEPTHS) {
             throw PlaybackException("Only 16-, 24-, and 32-bit integer PCM is supported")
         }
-        if (format.totalFrames <= 0L) {
-            throw PlaybackException("The file does not report a valid duration")
-        }
         if (format.bitsPerSample > 16 && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            throw PlaybackException("24/32-bit AudioTrack output requires Android 12 or newer")
+            throw PlaybackException("24/32-bit output requires Android 12 or newer")
         }
+        // A zero duration is not fatal any more. Some containers, and streams cut
+        // short, do not report one; playback still works and the progress bar
+        // simply has no end until the track finishes.
     }
 
     private fun audioEncoding(bitsPerSample: Int): Int = when (bitsPerSample) {
@@ -556,14 +574,6 @@ class AudioTrackPlaybackSink(
         1 -> AudioFormat.CHANNEL_OUT_MONO
         2 -> AudioFormat.CHANNEL_OUT_STEREO
         else -> throw PlaybackException("Unsupported channel count: $channels")
-    }
-
-    private fun codecName(path: String): String = when (
-        path.substringAfterLast('.', "").lowercase()
-    ) {
-        "flac" -> "FLAC"
-        "wav", "wave" -> "WAV"
-        else -> "PCM"
     }
 
     private fun alignToFrame(bytes: Int, bytesPerFrame: Int): Int {

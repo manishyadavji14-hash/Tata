@@ -150,16 +150,23 @@ class UsbPlaybackSink(
     private fun runPlayback(trackPath: String, playGeneration: Long) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_URGENT_AUDIO)
 
-        var decoder: NativeAudioEngine.DecoderSession? = null
+        var decoder: PcmSource? = null
         var completed = false
         var failure: String? = null
 
         try {
-            val openedDecoder = engine.openDecoder(trackPath)
-                ?: throw PlaybackException("Unsupported or unreadable file (WAV and FLAC)")
+            // Native decoders only. A platform-decoded stream has been through
+            // a conversion we cannot vouch for, so sending it to the DAC while
+            // calling the path bit-perfect would be a lie. Formats without an
+            // exact decoder are refused here and reported to the user.
+            val openedDecoder = PcmSourceFactory.openForUsbOutput(engine, trackPath)
+                ?: throw PlaybackException(
+                    "Bit-perfect USB output supports WAV and FLAC. " +
+                        "Disconnect the DAC to play this file through Android."
+                )
             decoder = openedDecoder
 
-            val decoderFormat = openedDecoder.format
+            val decoderFormat = openedDecoder
             val bytesPerFrame = decoderFormat.bytesPerFrame
             if (bytesPerFrame <= 0) throw PlaybackException("Invalid PCM frame size")
 
@@ -193,7 +200,7 @@ class UsbPlaybackSink(
                 sampleRate = decoderFormat.sampleRate,
                 bitDepth = decoderFormat.bitsPerSample,
                 channels = decoderFormat.channels,
-                codec = codecName(trackPath)
+                codec = decoderFormat.codecName
             )
             currentFormat = formatInfo
             durationMs = decoderFormat.durationMs
@@ -410,14 +417,6 @@ class UsbPlaybackSink(
         24 -> NativeAudioEngine.FORMAT_S24_3LE
         32 -> NativeAudioEngine.FORMAT_S32_LE
         else -> throw PlaybackException("Unsupported PCM bit depth: $bitsPerSample")
-    }
-
-    private fun codecName(path: String): String = when (
-        path.substringAfterLast('.', "").lowercase()
-    ) {
-        "flac" -> "FLAC"
-        "wav", "wave" -> "WAV"
-        else -> "PCM"
     }
 
     private fun framesToMilliseconds(frames: Long, sampleRate: Int): Long =
