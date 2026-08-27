@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 15 MiB |
-| SHA-256 | `09539fd2c00d88617c2f85d3c1e50d1f69acc238b6477cd7fffd5ab25328cfa0` |
+| Size | 16 MiB |
+| SHA-256 | `adeac19400828c490f908264a6d805c3d7c4b61320ca55f47a68f3be757f01c6` |
 
 Verify the download matches before installing:
 

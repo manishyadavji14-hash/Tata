@@ -245,6 +245,17 @@ class PlayerViewModel(
         playbackController.skipToNextOrWrap()
     }
 
+    /**
+     * Path of the track currently loaded, or null when nothing is playing.
+     * Used to jump the library to the playing song.
+     */
+    fun currentTrackPath(): String? = when (val state = playbackController.state) {
+        is PlaybackState.Playing -> state.trackPath
+        is PlaybackState.Paused -> state.trackPath
+        is PlaybackState.Loading -> state.trackPath
+        else -> null
+    }
+
     fun previous() {
         playbackController.previous()
     }

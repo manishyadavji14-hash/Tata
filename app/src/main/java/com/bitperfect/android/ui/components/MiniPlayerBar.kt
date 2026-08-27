@@ -8,8 +8,8 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -57,6 +57,7 @@ import kotlin.math.abs
 fun MiniPlayerBar(
     uiState: PlayerViewModel.PlayerUiState,
     onBarClick: () -> Unit,
+    onExpand: () -> Unit,
     onPlayPauseClick: () -> Unit,
     onSwipeNext: () -> Unit,
     onSwipePrevious: () -> Unit,
@@ -75,9 +76,6 @@ fun MiniPlayerBar(
         artworkUri = uiState.artworkUri,
         fallbackAccent = MaterialTheme.colorScheme.primary
     )
-
-    // Accumulates drag so a gesture is only committed once it passes a threshold.
-    var dragTotal by remember(uiState.trackTitle) { mutableFloatStateOfZero() }
 
     Surface(
         modifier = modifier.fillMaxWidth(),
@@ -103,18 +101,35 @@ fun MiniPlayerBar(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(60.dp)
-                    .clickable(onClick = onBarClick)
+                    // Tap and drag are separate pointerInput blocks rather than
+                    // clickable + a drag detector on one node. Mixing clickable
+                    // with a drag detector let the drag swallow the tap, which is
+                    // why tapping the bar did nothing.
                     .pointerInput(Unit) {
-                        detectHorizontalDragGestures(
+                        detectTapGestures(onTap = { onBarClick() })
+                    }
+                    .pointerInput(Unit) {
+                        var dx = 0f
+                        var dy = 0f
+                        detectDragGestures(
+                            onDragStart = { dx = 0f; dy = 0f },
                             onDragEnd = {
-                                if (abs(dragTotal) > SWIPE_THRESHOLD_PX) {
-                                    if (dragTotal < 0) onSwipeNext() else onSwipePrevious()
+                                // Decide by the dominant axis so a diagonal drag
+                                // resolves to one intent, never both.
+                                if (abs(dy) > abs(dx) && dy < -DRAG_UP_THRESHOLD_PX) {
+                                    onExpand()
+                                } else if (abs(dx) > abs(dy) &&
+                                    abs(dx) > SWIPE_THRESHOLD_PX
+                                ) {
+                                    if (dx < 0) onSwipeNext() else onSwipePrevious()
                                 }
-                                dragTotal = 0f
+                                dx = 0f; dy = 0f
                             },
-                            onDragCancel = { dragTotal = 0f }
-                        ) { _, dragAmount ->
-                            dragTotal += dragAmount
+                            onDragCancel = { dx = 0f; dy = 0f }
+                        ) { change, drag ->
+                            dx += drag.x
+                            dy += drag.y
+                            change.consume()
                         }
                     }
                     .padding(horizontal = 12.dp),
@@ -180,7 +195,4 @@ fun MiniPlayerBar(
 }
 
 private const val SWIPE_THRESHOLD_PX = 80f
-
-// Small helper so the drag accumulator reads clearly at the call site.
-private fun mutableFloatStateOfZero() =
-    androidx.compose.runtime.mutableFloatStateOf(0f)
+private const val DRAG_UP_THRESHOLD_PX = 40f

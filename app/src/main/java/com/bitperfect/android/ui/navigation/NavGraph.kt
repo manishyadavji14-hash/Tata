@@ -12,6 +12,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -103,21 +105,24 @@ fun BitPerfectNavGraph(
         currentDestination?.route != Screen.Queue.route &&
         (playerUiState.isPlaying || playerUiState.isPaused)
 
+    // Opening the player from the mini bar or its pull-up gesture. Player is the
+    // start destination, so this restores it rather than stacking a copy.
+    val openPlayer: () -> Unit = {
+        navController.navigate(Screen.Player.route) {
+            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+
     Scaffold(
         bottomBar = {
             Column {
                 if (showMiniPlayer) {
                     MiniPlayerBar(
                         uiState = playerUiState,
-                        onBarClick = {
-                            navController.navigate(Screen.Player.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
+                        onBarClick = openPlayer,
+                        onExpand = openPlayer,
                         onPlayPauseClick = { playerViewModel.togglePlayPause() },
                         onSwipeNext = { playerViewModel.nextOrWrap() },
                         onSwipePrevious = { playerViewModel.previous() }
@@ -176,11 +181,47 @@ fun BitPerfectNavGraph(
                 ) + fadeOut(tween(BitPerfectMotion.DURATION_QUICK))
             }
         ) {
-            // Player screen
-            composable(Screen.Player.route) {
+            // Player screen. Overrides the graph's horizontal slide with a
+            // vertical one: it rises from the bottom, echoing the mini player
+            // pull-up, and drops back down on dismiss.
+            composable(
+                Screen.Player.route,
+                enterTransition = {
+                    slideInVertically(
+                        animationSpec = tween(
+                            BitPerfectMotion.DURATION_SCREEN,
+                            easing = BitPerfectMotion.EmphasisedDecelerate
+                        ),
+                        initialOffsetY = { fullHeight -> fullHeight }
+                    ) + fadeIn(tween(BitPerfectMotion.DURATION_STANDARD))
+                },
+                popExitTransition = {
+                    slideOutVertically(
+                        animationSpec = tween(
+                            BitPerfectMotion.DURATION_SCREEN,
+                            easing = BitPerfectMotion.EmphasisedAccelerate
+                        ),
+                        targetOffsetY = { fullHeight -> fullHeight }
+                    ) + fadeOut(tween(BitPerfectMotion.DURATION_STANDARD))
+                }
+            ) {
                 PlayerScreen(
                     viewModel = playerViewModel,
                     onOpenFile = onOpenFile,
+                    onCollapse = { navController.popBackStack() },
+                    onAlbumArtClick = {
+                        // Jump the library to the playing song, in the Tracks tab.
+                        playerViewModel.currentTrackPath()?.let { path ->
+                            libraryViewModel.openTrackInList(path)
+                        }
+                        navController.navigate(Screen.Library.route) {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
                     onEqualizerClick = { navController.navigate(Screen.Equalizer.route) },
                     onQueueClick = { navController.navigate(Screen.Queue.route) },
                     onDiagnosticsClick = { navController.navigate(Screen.Diagnostics.route) }

@@ -48,12 +48,14 @@ class LibraryViewModel(
      * Library browser tabs.
      */
     enum class LibraryTab {
-        FOLDERS,
-        ARTISTS,
+        // Tracks first: it is the most direct way to reach a song and the one
+        // people reach for most, so it opens the library.
+        TRACKS,
         ALBUMS,
+        ARTISTS,
+        FOLDERS,
         GENRES,
-        COMPOSERS,
-        TRACKS
+        COMPOSERS
     }
 
     /**
@@ -84,7 +86,7 @@ class LibraryViewModel(
         val isScanning: Boolean = false,
         val isEmpty: Boolean = false,
         val hasAudioPermission: Boolean = true,
-        val currentTab: LibraryTab = LibraryTab.ALBUMS,
+        val currentTab: LibraryTab = LibraryTab.TRACKS,
         val sortOrder: SortOrder = SortOrder.NAME_ASC,
         val searchQuery: String = "",
         val folders: List<FolderItem> = emptyList(),
@@ -113,7 +115,13 @@ class LibraryViewModel(
         val scanRequestRejected: Boolean = false,
         val statusMessage: String? = null,
         val availableFolders: List<SelectableFolder> = emptyList(),
-        val isFolderPickerVisible: Boolean = false
+        val isFolderPickerVisible: Boolean = false,
+        /**
+         * When set, the Tracks list should scroll to this path and then clear it
+         * via consumeScrollTarget(). Set by openTrackInList when the user taps
+         * the player's album art.
+         */
+        val scrollToPath: String? = null
     )
 
     // Data items for UI
@@ -502,6 +510,19 @@ class LibraryViewModel(
 
     fun cancelScan() {
         musicLibrary.cancelScan()
+    }
+
+    /**
+     * Switch to the Tracks tab and request a scroll to [path]. Backs the
+     * player's album-art tap, which jumps the library to the playing song.
+     */
+    fun openTrackInList(path: String) {
+        _uiState.update { it.copy(currentTab = LibraryTab.TRACKS, scrollToPath = path) }
+    }
+
+    /** Clear the scroll request once the list has acted on it. */
+    fun consumeScrollTarget() {
+        _uiState.update { it.copy(scrollToPath = null) }
     }
 
     // --- Loading ---

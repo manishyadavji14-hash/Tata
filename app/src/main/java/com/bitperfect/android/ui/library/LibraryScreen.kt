@@ -22,6 +22,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -118,11 +120,23 @@ fun LibraryScreen(
     onTrackClick: (tracks: List<String>, index: Int) -> Unit = { _, _ -> }
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    var selectedTab by remember { mutableIntStateOf(0) }
+    var selectedTab by remember { mutableIntStateOf(uiState.currentTab.ordinal) }
+
+    // Follow programmatic tab changes (e.g. the player's album-art tap asking
+    // for the Tracks tab). User taps set both, so this never fights them.
+    LaunchedEffect(uiState.currentTab) {
+        if (selectedTab != uiState.currentTab.ordinal) {
+            selectedTab = uiState.currentTab.ordinal
+        }
+    }
+
+    // Shared so a scroll-to-track request can drive it.
+    val trackListState = rememberLazyListState()
     var searchQuery by remember { mutableStateOf("") }
     var isSearchActive by remember { mutableStateOf(false) }
 
-    val tabs = listOf("Folders", "Artists", "Albums", "Genres", "Composers", "Tracks")
+    // Order must match LibraryTab.entries, since the tab index maps to it.
+    val tabs = listOf("Tracks", "Albums", "Artists", "Folders", "Genres", "Composers")
 
     val pullRefreshState = rememberPullToRefreshState()
     var isScanSheetVisible by remember { mutableStateOf(false) }
@@ -146,6 +160,21 @@ fun LibraryScreen(
         if (uiState.scanRequestRejected) {
             if (pullRefreshState.isRefreshing) pullRefreshState.endRefresh()
             viewModel.acknowledgeScanRejection()
+        }
+    }
+
+    // Jump to the playing track when the player's album art was tapped. Waits
+    // for the tracks list to be populated, scrolls to it, then clears the
+    // request so it fires once.
+    LaunchedEffect(uiState.scrollToPath, uiState.tracks) {
+        val target = uiState.scrollToPath ?: return@LaunchedEffect
+        val index = uiState.tracks.indexOfFirst { it.path == target }
+        if (index >= 0) {
+            trackListState.scrollToItem(index)
+            viewModel.consumeScrollTarget()
+        } else if (uiState.tracks.isNotEmpty()) {
+            // The list is loaded but the track is not in it; do not keep waiting.
+            viewModel.consumeScrollTarget()
         }
     }
 
@@ -315,6 +344,7 @@ fun LibraryScreen(
                                 )
                                 LibraryViewModel.LibraryTab.TRACKS -> TrackList(
                                     tracks = uiState.tracks,
+                                    listState = trackListState,
                                     onTrackClick = onTrackClick
                                 )
                             }
@@ -492,9 +522,11 @@ private fun LibraryStatItem(count: Int, label: String) {
 @Composable
 private fun TrackList(
     tracks: List<LibraryViewModel.TrackItem>,
-    onTrackClick: (tracks: List<String>, index: Int) -> Unit
+    onTrackClick: (tracks: List<String>, index: Int) -> Unit,
+    listState: LazyListState = rememberLazyListState()
 ) {
     LazyColumn(
+        state = listState,
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {

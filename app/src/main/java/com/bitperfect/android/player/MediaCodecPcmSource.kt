@@ -258,7 +258,10 @@ class MediaCodecPcmSource private constructor(
         return try {
             extractor.seekTo(targetUs, MediaExtractor.SEEK_TO_CLOSEST_SYNC)
             codec.flush()
-            codec.start()
+            // No start() here. In synchronous mode the codec resumes simply by
+            // dequeuing input buffers again; calling start() after flush() throws
+            // IllegalStateException on most devices, which is what made every
+            // seek fail with "Could not seek in this file".
             pending = ByteBuffer.allocate(0)
             inputExhausted = false
             outputExhausted = false

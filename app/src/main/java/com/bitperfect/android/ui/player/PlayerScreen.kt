@@ -10,6 +10,7 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -74,6 +75,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bitperfect.android.R
 import com.bitperfect.android.player.RepeatMode
+import androidx.compose.foundation.gestures.detectVerticalDragGestures
+import androidx.compose.ui.input.pointer.pointerInput
 import com.bitperfect.android.ui.components.AlbumArtImage
 import com.bitperfect.android.ui.components.rememberDynamicAlbumColor
 import com.bitperfect.android.ui.theme.BitPerfectGreen
@@ -101,6 +104,8 @@ import com.bitperfect.android.ui.theme.SeekBarActive
 fun PlayerScreen(
     viewModel: PlayerViewModel,
     onOpenFile: () -> Unit = {},
+    onCollapse: () -> Unit = {},
+    onAlbumArtClick: () -> Unit = {},
     onEqualizerClick: () -> Unit = {},
     onQueueClick: () -> Unit = {},
     onDiagnosticsClick: () -> Unit = {}
@@ -152,6 +157,26 @@ fun PlayerScreen(
                         )
                     )
                 )
+                // Pull down from the top portion of the screen to dismiss,
+                // mirroring the mini player's pull-up to open. Anchored to the
+                // top half so it does not fight the seek slider or transport
+                // controls lower down.
+                .pointerInput(Unit) {
+                    val topZone = size.height * 0.5f
+                    var startY = 0f
+                    var dy = 0f
+                    detectVerticalDragGestures(
+                        onDragStart = { offset -> startY = offset.y; dy = 0f },
+                        onDragEnd = {
+                            if (startY <= topZone && dy > COLLAPSE_THRESHOLD_PX) onCollapse()
+                            dy = 0f
+                        },
+                        onDragCancel = { dy = 0f }
+                    ) { change, drag ->
+                        dy += drag
+                        change.consume()
+                    }
+                }
         ) {
         Column(
             modifier = Modifier
@@ -203,6 +228,7 @@ fun PlayerScreen(
             AlbumArtwork(
                 artworkUri = uiState.artworkUri,
                 isPlaying = uiState.isPlaying,
+                onClick = onAlbumArtClick,
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
                     .aspectRatio(1f)
@@ -308,10 +334,11 @@ private fun FormatBadge(
 private fun AlbumArtwork(
     artworkUri: String?,
     isPlaying: Boolean,
+    onClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier,
+        modifier = modifier.clickable(onClick = onClick),
         shape = BitPerfectShapeTokens.AlbumArtCorner,
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
@@ -719,3 +746,7 @@ private fun formatRemaining(milliseconds: Long): String {
  * The three states the primary transport button animates between.
  */
 private enum class TransportIconState { LOADING, PLAY, PAUSE }
+
+
+/** How far the top of the player must be dragged down to dismiss it. */
+private const val COLLAPSE_THRESHOLD_PX = 120f
