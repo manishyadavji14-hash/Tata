@@ -23,6 +23,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -400,8 +402,18 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun BitPerfectApp() {
+        // Follow the saved preference. This was pinned to SYSTEM, so the Theme
+        // setting in Settings wrote a value that nothing read and the app could
+        // not be forced to light or dark.
+        val settingsState = settingsViewModel?.uiState?.collectAsState()
+        val themeMode = when (settingsState?.value?.themeMode) {
+            "light" -> ThemeMode.LIGHT
+            "dark" -> ThemeMode.DARK
+            else -> ThemeMode.SYSTEM
+        }
+
         BitPerfectTheme(
-            themeMode = ThemeMode.SYSTEM,
+            themeMode = themeMode,
             dynamicColor = true
         ) {
             Surface(modifier = Modifier.fillMaxSize()) {

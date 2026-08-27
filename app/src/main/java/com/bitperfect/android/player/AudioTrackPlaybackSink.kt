@@ -190,6 +190,7 @@ class AudioTrackPlaybackSink(
         var track: AudioTrack? = null
         var effectsSessionId: Int? = null
         var completed = false
+        var drained = false
         var failure: String? = null
 
         try {
@@ -296,7 +297,7 @@ class AudioTrackPlaybackSink(
                 val framesRead = openedDecoder.read(pcmBuffer, CHUNK_FRAMES)
                 if (framesRead < 0) throw PlaybackException("Native decoder read failed")
                 if (framesRead == 0) {
-                    waitForSubmittedAudio(
+                    drainAndAwaitCompletion(
                         openedTrack,
                         playGeneration,
                         playbackHeadAnchor,
@@ -304,6 +305,7 @@ class AudioTrackPlaybackSink(
                         positionBaseFrame,
                         decoderFormat.sampleRate
                     )
+                    drained = true
                     completed = isCurrent(playGeneration)
                     break
                 }
@@ -361,9 +363,15 @@ class AudioTrackPlaybackSink(
             // effects a newly started track has already attached.
             effectsSessionId?.let { audioEffects.detach(it) }
             try {
-                track?.pause()
-                track?.flush()
-                track?.stop()
+                // Only discard buffered audio when the track did NOT run to the
+                // end. After a clean finish the tail has already been drained by
+                // drainAndAwaitCompletion, and flushing here would throw away
+                // the last fraction of a second of every track.
+                if (!drained) {
+                    track?.pause()
+                    track?.flush()
+                    track?.stop()
+                }
             } catch (_: IllegalStateException) {
                 // Already stopped or never entered the playing state.
             }
@@ -395,7 +403,23 @@ class AudioTrackPlaybackSink(
         }
     }
 
-    private fun waitForSubmittedAudio(
+    /**
+     * Play out whatever is still buffered at the end of a track, then return.
+     *
+     * `stop()` is what does the work. In MODE_STREAM, AudioTrack will not render
+     * a trailing partial buffer while it is still PLAYING — it sits waiting for
+     * the buffer to be filled, so `playbackHeadPosition` stops short of what was
+     * written and never catches up. `stop()` is the documented way to make it
+     * play out what it already holds. Polling the head without calling it was
+     * the cause of "Audio output stalled while draining the final buffer" at the
+     * end of every track.
+     *
+     * This never throws. Not being able to observe the drain is not a playback
+     * failure: the audio has already been handed over, and the track is over
+     * either way. Reporting an error here turned a normal track ending into a
+     * failure the user could see.
+     */
+    private fun drainAndAwaitCompletion(
         track: AudioTrack,
         playGeneration: Long,
         playbackHeadAnchor: Long,
@@ -403,34 +427,47 @@ class AudioTrackPlaybackSink(
         positionBaseFrame: Long,
         sampleRate: Int
     ) {
-        var lastRenderedFrames = -1L
-        var lastProgressAtMs = SystemClock.elapsedRealtime()
+        // A paused track has to be resumed or stop() has nothing to drain into.
+        waitWhilePaused(playGeneration)
+        if (!isCurrent(playGeneration)) return
 
-        while (isCurrent(playGeneration)) {
-            if (paused) {
-                waitWhilePaused(playGeneration)
-                lastProgressAtMs = SystemClock.elapsedRealtime()
-                continue
-            }
+        try {
+            track.stop()
+        } catch (_: IllegalStateException) {
+            return
+        }
 
+        // Bound the wait by how much audio can still be outstanding, plus a
+        // margin, rather than by a fixed timeout. At most one AudioTrack buffer
+        // is left, so this is tens of milliseconds in practice.
+        val outstandingFrames = (submittedFrames -
+            renderedFrames(track, playbackHeadAnchor, submittedFrames)).coerceAtLeast(0L)
+        val deadline = SystemClock.elapsedRealtime() +
+            framesToMilliseconds(outstandingFrames, sampleRate) + DRAIN_MARGIN_MS
+
+        while (isCurrent(playGeneration) && SystemClock.elapsedRealtime() < deadline) {
             val rendered = renderedFrames(track, playbackHeadAnchor, submittedFrames)
             updatePosition(positionBaseFrame + rendered, sampleRate)
-            if (rendered >= submittedFrames) return
 
-            if (rendered != lastRenderedFrames) {
-                lastRenderedFrames = rendered
-                lastProgressAtMs = SystemClock.elapsedRealtime()
-            } else if (SystemClock.elapsedRealtime() - lastProgressAtMs >= DRAIN_STALL_TIMEOUT_MS) {
-                throw PlaybackException("Audio output stalled while draining the final buffer")
+            // PLAYSTATE_STOPPED is only reached once the buffered audio has been
+            // played out, so it is the real signal that the tail is done.
+            if (track.playState == AudioTrack.PLAYSTATE_STOPPED &&
+                rendered >= submittedFrames
+            ) {
+                break
             }
 
             try {
                 Thread.sleep(DRAIN_POLL_MS)
             } catch (_: InterruptedException) {
                 Thread.currentThread().interrupt()
-                return
+                break
             }
         }
+
+        // Report the track as finished regardless of what the head reported, so
+        // the progress bar lands on the end instead of a fraction short.
+        updatePosition(positionBaseFrame + submittedFrames, sampleRate)
     }
 
     private fun updateRenderedPosition(
@@ -451,9 +488,11 @@ class AudioTrackPlaybackSink(
     ): Long {
         val currentHead = unsignedPlaybackHead(track)
         val delta = (currentHead - playbackHeadAnchor) and UNSIGNED_INT_MASK
-        // Some devices reset playbackHeadPosition after flush. Until the new
-        // counter stabilizes, never report more frames than were submitted.
-        return if (delta <= submittedFrames) delta else 0L
+        // Some devices reset playbackHeadPosition after flush, which makes the
+        // delta meaningless. Clamp rather than collapsing to 0: returning 0 made
+        // the reported position jump backwards to the start of the track, and
+        // made the drain check unsatisfiable so it could never see the end.
+        return delta.coerceIn(0L, submittedFrames)
     }
 
     private fun updatePosition(frame: Long, sampleRate: Int) {
@@ -550,8 +589,13 @@ class AudioTrackPlaybackSink(
         const val NO_SEEK = -1L
         const val UNSIGNED_INT_MASK = 0xFFFF_FFFFL
         const val PAUSE_WAIT_MS = 100L
-        const val DRAIN_POLL_MS = 10L
-        const val DRAIN_STALL_TIMEOUT_MS = 5_000L
+        const val DRAIN_POLL_MS = 5L
+
+        /**
+         * Slack on top of the outstanding audio when waiting for the tail.
+         * Covers scheduling jitter and the mixer's own latency.
+         */
+        const val DRAIN_MARGIN_MS = 400L
         const val STOP_JOIN_TIMEOUT_MS = 2_000L
         val SUPPORTED_BIT_DEPTHS = setOf(16, 24, 32)
     }

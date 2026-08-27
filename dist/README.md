@@ -14,12 +14,12 @@ ask you to allow installing from the browser the first time.
 
 | | |
 |---|---|
-| Source commit | `80e42a9` |
+| Source commit | `fix/drain-stall` (see git log) |
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
 | Size | 67 MiB |
-| SHA-256 | `c87ca3157d0aebc7b5b4da755779a6aa744c72db8a19f90d8e98b44c91317e82` |
+| SHA-256 | `f4f58b7c60866b96b9f23db214cb68a77a9b2deca376c03e1ead3b70e04213b2` |
 
 Verify the download matches before installing:
 
