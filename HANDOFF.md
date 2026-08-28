@@ -13,12 +13,13 @@ each change and are deliberately detailed.**
 
 | | |
 |---|---|
-| Active branch | `feat/audiotrack-playback-build-fix` |
-| Merged to `main` | up to PR #1 (`e8e0325`) |
-| Unmerged work | 10 commits on the branch after that merge |
+| Work on | **`main`** — PR #2 merged as `ce564f1`, nothing outstanding on a branch |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (~15.6 MB, debug-signed, arm64 only) |
 | Test status | 282 native C++ tests, 86 JVM unit tests, `lintDebug` 0 errors |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
+
+Branch from `main` for new work. The old `feat/audiotrack-playback-build-fix`
+branch is fully merged and can be deleted; nothing references it.
 
 The app is a USB-audiophile music player: Jetpack Compose UI, Room library, a
 Kotlin playback layer, and a C++ engine (JNI) that owns decoding and the USB
@@ -92,7 +93,7 @@ sha256sum dist/BitPerfect-debug-arm64.apk   # update dist/README.md
 ```
 
 Direct install link (raw, works in a mobile browser, no login):
-`https://github.com/manishyadavji14-hash/Tata/raw/feat/audiotrack-playback-build-fix/dist/BitPerfect-debug-arm64.apk`
+`https://github.com/manishyadavji14-hash/Tata/raw/main/dist/BitPerfect-debug-arm64.apk`
 
 > A 67 MB+ APK means the build was not clean. GitHub hard-rejects any file over
 > 100 MB, and such a push cannot be fixed by amending — the oversized blob has to
@@ -273,7 +274,7 @@ Not every assistant or IDE can link a repository. In rough order of preference:
 Download the source as a single file, in a phone browser, no login needed:
 
 ```
-https://github.com/manishyadavji14-hash/Tata/archive/refs/heads/feat/audiotrack-playback-build-fix.zip
+https://github.com/manishyadavji14-hash/Tata/archive/refs/heads/main.zip
 ```
 
 Then upload that zip to the platform. `.gitattributes` marks `dist/` as
@@ -289,7 +290,7 @@ here, so if the platform can run git, prefer cloning over the zip. If it cannot,
 
 ```bash
 git clone https://github.com/manishyadavji14-hash/Tata.git
-cd Tata && git checkout feat/audiotrack-playback-build-fix
+# main already has everything; no branch checkout needed
 ```
 
 Keeps full history. Upload or point the tool at the directory.
@@ -314,7 +315,7 @@ For anything touching playback or the native engine, get the real source in.
 The APK download never requires a platform integration — it is a plain URL:
 
 ```
-https://github.com/manishyadavji14-hash/Tata/raw/feat/audiotrack-playback-build-fix/dist/BitPerfect-debug-arm64.apk
+https://github.com/manishyadavji14-hash/Tata/raw/main/dist/BitPerfect-debug-arm64.apk
 ```
 
 If GitHub itself is unreachable, any assistant with a working Android toolchain
