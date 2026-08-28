@@ -264,7 +264,127 @@ Known gaps to expect:
 
 ---
 
-## 6. Conventions
+## 6. Moving this project to a platform that cannot connect to GitHub
+
+Not every assistant or IDE can link a repository. In rough order of preference:
+
+### Option A — upload a source zip (works almost everywhere)
+
+Download the source as a single file, in a phone browser, no login needed:
+
+```
+https://github.com/manishyadavji14-hash/Tata/archive/refs/heads/feat/audiotrack-playback-build-fix.zip
+```
+
+Then upload that zip to the platform. `.gitattributes` marks `dist/` as
+`export-ignore`, so the archive contains **only source — roughly 1.5 MB, not the
+16 MB the committed APK would add.** That keeps it under the upload limits most
+platforms impose.
+
+The zip has no git history. Commit messages are a large part of the design record
+here, so if the platform can run git, prefer cloning over the zip. If it cannot,
+`HANDOFF.md` is written to stand in for that history.
+
+### Option B — clone from a machine that has network, then upload
+
+```bash
+git clone https://github.com/manishyadavji14-hash/Tata.git
+cd Tata && git checkout feat/audiotrack-playback-build-fix
+```
+
+Keeps full history. Upload or point the tool at the directory.
+
+### Option C — text-only platform, no upload at all
+
+Paste these two files into the conversation, in this order:
+
+1. `AGENTS.md` (~3 KB) — the rules and how the maintainer works
+2. `HANDOFF.md` (this file, ~13 KB) — state, build, architecture, backlog, traps
+
+Together they are about 4,000 words and fit comfortably in a modern context
+window. Then paste only the specific source files the task touches — use the
+source map below to pick them.
+
+Be realistic about this mode: without the code the assistant can advise on
+design and write new files, but it cannot safely refactor what it has not read.
+For anything touching playback or the native engine, get the real source in.
+
+### Getting the built app, independent of all of the above
+
+The APK download never requires a platform integration — it is a plain URL:
+
+```
+https://github.com/manishyadavji14-hash/Tata/raw/feat/audiotrack-playback-build-fix/dist/BitPerfect-debug-arm64.apk
+```
+
+If GitHub itself is unreachable, any assistant with a working Android toolchain
+can rebuild it from the source zip with the commands in section 2.
+
+---
+
+## 7. Source map
+
+187 tracked files. These are the ones that matter, so a limited-context or
+text-only session can request the right subset.
+
+### Playback (Kotlin) — `app/src/main/java/com/bitperfect/android/player/`
+| File | Role |
+|---|---|
+| `PlaybackController.kt` | State machine, queue operations, **per-track sink selection** |
+| `PlaybackSink.kt` | Interface both outputs implement |
+| `AudioTrackPlaybackSink.kt` | Android mixer output. Holds the end-of-track drain logic |
+| `UsbPlaybackSink.kt` | Bit-perfect output via the native engine ring buffer |
+| `PcmSource.kt` / `PcmSourceFactory.kt` | Decoder abstraction and per-path routing |
+| `MediaCodecPcmSource.kt` | Platform decoders: FLAC, Opus, MP3, AAC, M4A, Vorbis |
+| `NativePcmSource.kt` | Native decoders, exact samples, used by USB |
+| `PlayQueue.kt` | Lock-guarded queue; shuffle and repeat |
+| `PlaybackStateStore.kt` | Session persistence across app restarts |
+| `AudioEffectsController.kt` | Equalizer/bass boost. AudioTrack sessions only |
+| `SleepTimer.kt` | Main-looper timer with a generation counter |
+
+### Service — `app/src/main/java/com/bitperfect/android/service/`
+`PlaybackService.kt` (notification, audio focus, adopts shared components),
+`MediaSessionManager.kt` (media3 session + the `Player` adapter),
+`PlaybackNotificationManager.kt`.
+
+### UI — `app/src/main/java/com/bitperfect/android/ui/`
+`MainActivity.kt` (wiring and ownership), `navigation/NavGraph.kt` (routes,
+transitions, mini player host), `player/PlayerScreen.kt` +
+`player/PlayerViewModel.kt`, `library/LibraryScreen.kt` +
+`library/LibraryViewModel.kt` (tabs, scan menu),
+`components/MiniPlayerBar.kt`, `components/DynamicAlbumColor.kt` (album-art
+palette extraction — reuse this for the visualization spectrum),
+`diagnostics/`, `equalizer/`, `queue/`, `playlist/`, `detail/`, `settings/`.
+
+### Library — `app/src/main/java/com/bitperfect/android/library/`
+`MusicLibrary.kt` (facade, all suspend; ZIP import), `LibraryDatabase.kt` (Room,
+schema v2, migrations), `MetadataExtractor.kt`,
+`scanner/LibraryScanner.kt`, `scanner/MediaStoreAudioSource.kt`, `dao/`, `model/`.
+
+### Native engine — `app/src/main/cpp/`
+| Path | Role |
+|---|---|
+| `jni/native_bridge.cpp` | Every JNI export and the engine state machine |
+| `usb/usb_iso_backend.h` | Platform boundary; `LoopbackIsoBackend` for tests |
+| `usb/usbdevfs_iso_backend.{h,cpp}` | Real isochronous transport via usbdevfs ioctls |
+| `usb/isochronous_transfer.{h,cpp}` | Queueing, resubmit loop, statistics |
+| `usb/usb_audio_device.cpp` | UAC1/UAC2 descriptor parsing |
+| `usb/usb_control.cpp` | UAC rate negotiation (`SET_CUR`, `SET_INTERFACE`) |
+| `decoder/flac_decoder.cpp` | **Not trusted for playback** — see section 4 |
+| `decoder/wav_decoder.cpp` | Reliable |
+| `buffer/ring_buffer.cpp` | Lock-free SPSC, the real-time boundary |
+| `pcm/`, `dsd/`, `dop/`, `native_dsd/` | Format conversion and DSD transport |
+| `tests/` | 282 tests; `test_usb_iso_backend.cpp` covers the transport |
+
+### Config
+`app/build.gradle.kts` (SDK/NDK versions, dependencies, R8 for debug),
+`app/proguard-rules.pro` (**keep rules — read before changing**),
+`app/src/main/cpp/CMakeLists.txt`, `app/src/main/AndroidManifest.xml`,
+`.github/workflows/android.yml`, `app/schemas/` (Room schema JSON).
+
+---
+
+## 8. Conventions
 
 - Commit messages explain **why**, lead with the problem, and state what was
   verified. They are the primary design record — match that standard.

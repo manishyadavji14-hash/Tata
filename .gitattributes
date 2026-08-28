@@ -1,0 +1,27 @@
+# Keep source archives small.
+#
+# GitHub's /archive/ zip and tarball endpoints honour export-ignore, so the
+# committed 16 MB debug APK is excluded from them. That matters because the
+# maintainer works from a phone and moves the project between AI platforms by
+# uploading a source zip; several impose an upload size limit, and without this
+# the archive is ~11x larger than the code it contains.
+#
+# The APK is still committed and still downloadable directly from the repo — see
+# dist/README.md. It is simply not bundled into source archives.
+dist/ export-ignore
+
+# Development scaffolding that is not source.
+.github/ export-ignore
+.gitattributes export-ignore
+
+# Normalise line endings so archives are consistent across platforms.
+* text=auto eol=lf
+
+# Binary files must not be line-ending converted.
+*.apk binary
+*.jar binary
+*.so binary
+*.png binary
+*.webp binary
+*.wav binary
+*.flac binary

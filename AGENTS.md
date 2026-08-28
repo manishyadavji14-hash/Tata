@@ -6,11 +6,20 @@ repository. It is intentionally short; the detail is in `HANDOFF.md`.
 ## Start here
 
 1. **Read [`HANDOFF.md`](HANDOFF.md).** It has the current state, build commands,
-   architecture and rationale, the prioritised backlog, and a list of traps that
-   have already cost real time.
+   architecture and rationale, the prioritised backlog, a source map, and a list
+   of traps that have already cost real time.
 2. **Read recent `git log`.** Commit messages in this repo are detailed on
-   purpose and are the primary design record.
+   purpose and are the primary design record. If you only have a source zip there
+   is no history — `HANDOFF.md` is written to stand in for it.
 3. **Check `dist/README.md`** for the current prebuilt APK and its checksum.
+
+## If you cannot access GitHub
+
+`HANDOFF.md` section 6 covers this. Short version: the maintainer can download a
+source-only zip (~1.5 MB — `dist/` is `export-ignore`d) and upload it, or on a
+text-only platform paste `AGENTS.md` + `HANDOFF.md` and then the specific files a
+task needs, chosen from the source map in section 7. Do not refactor code you
+have not been given.
 
 ## What this project is
 
