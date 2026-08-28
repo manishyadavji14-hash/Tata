@@ -294,7 +294,17 @@ class MediaSessionManager(
             }
         }
 
-        override fun canAdvertiseSession(): Boolean = false
+        /**
+         * Must be true. media3's MediaSession.Builder asserts this in its
+         * constructor via checkArgument(player.canAdvertiseSession()), so
+         * returning false threw IllegalArgumentException and took the whole
+         * service — and with it the app — down the moment playback started.
+         *
+         * True is also the honest answer: this Player exists precisely to back a
+         * MediaSession, and it implements the transport commands it advertises in
+         * getAvailableCommands().
+         */
+        override fun canAdvertiseSession(): Boolean = true
 
         override fun getAvailableCommands(): Player.Commands {
             return Player.Commands.Builder()

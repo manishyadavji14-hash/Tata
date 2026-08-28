@@ -133,7 +133,19 @@ class MediaStoreAudioSource(private val context: Context) {
     }
 
     private fun buildSelection(folderPrefixes: List<String>): Pair<String, Array<String>> {
-        val clauses = mutableListOf("${MediaStore.Audio.Media.IS_MUSIC} != 0")
+        // Deliberately NOT filtered on IS_MUSIC. MediaStore only sets that flag
+        // from heuristics, and it comes back 0 for plenty of real music: files
+        // sideloaded over MTP, sitting outside Music/, or with sparse tags. The
+        // library was silently missing those.
+        //
+        // Ringtones, notifications, alarms and podcasts are excluded instead,
+        // which is the narrower and more predictable filter. `IS NOT 1` rather
+        // than `= 0` because these columns can be null.
+        val clauses = mutableListOf(
+            "${MediaStore.Audio.Media.IS_RINGTONE} IS NOT 1",
+            "${MediaStore.Audio.Media.IS_NOTIFICATION} IS NOT 1",
+            "${MediaStore.Audio.Media.IS_ALARM} IS NOT 1"
+        )
         val args = mutableListOf<String>()
 
         if (folderPrefixes.isNotEmpty()) {

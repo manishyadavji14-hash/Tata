@@ -19,7 +19,9 @@ import android.support.v4.media.MediaBrowserCompat
 import android.util.Log
 import androidx.media.MediaBrowserServiceCompat
 import androidx.media3.session.MediaSession
+import com.bitperfect.android.ServiceLocator
 import com.bitperfect.android.engine.NativeAudioEngine
+import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.player.PlaybackController
 import com.bitperfect.android.player.PlaybackState
 import com.bitperfect.android.usb.UsbAudioManager
@@ -61,14 +63,34 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     // Core components
     private lateinit var engine: NativeAudioEngine
     private lateinit var playbackController: PlaybackController
-    private lateinit var mediaSessionManager: MediaSessionManager
-    private lateinit var notificationManager: PlaybackNotificationManager
+    // Nullable rather than lateinit: if the media session or notification cannot
+    // be built, playback must still work. Previously a failure here threw out of
+    // onCreate and killed the whole app.
+    private var mediaSessionManager: MediaSessionManager? = null
+    private var notificationManager: PlaybackNotificationManager? = null
     private lateinit var usbAudioManager: UsbAudioManager
     private lateinit var usbPermissionHandler: UsbPermissionHandler
     private lateinit var usbErrorRecovery: UsbErrorRecovery
 
     // Audio focus
     private lateinit var audioManager: AudioManager
+
+    /**
+     * False when the engine and controller came from ServiceLocator, in which
+     * case the Activity's retained ViewModel owns them and this service must not
+     * release them.
+     */
+    private var ownsEngineAndController = false
+
+    /**
+     * True once initializeComponents has completed. The lateinit fields above are
+     * only safe to touch when this is set, so every entry point the system can
+     * call has to check it rather than assume construction succeeded.
+     */
+    private var componentsReady = false
+
+    /** Retained so onDestroy can detach it from a shared controller. */
+    private var playbackStateListener: (PlaybackState) -> Unit = {}
     private var audioFocusRequest: AudioFocusRequest? = null
     private var hadAudioFocusBeforeTransientLoss = false
 
@@ -89,7 +111,7 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action == AudioManager.ACTION_AUDIO_BECOMING_NOISY) {
                 Log.i(TAG, "Audio becoming noisy - pausing playback")
-                playbackController.pause()
+                if (componentsReady) playbackController.pause()
             }
         }
     }
@@ -103,7 +125,23 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         // posted very quickly after service start, so the channel must exist immediately.
         createNotificationChannel()
 
-        initializeComponents()
+        // This service is optional infrastructure: it supplies the notification,
+        // lock-screen controls and audio focus, but audio plays without it. An
+        // exception thrown out of onCreate becomes "Unable to create service" and
+        // kills the whole app — and because onStartCommand returns START_STICKY,
+        // the system relaunches it straight into the same crash, so the app dies
+        // in a loop. Failing soft here is the difference between losing the
+        // notification and losing the app.
+        try {
+            initializeComponents()
+            componentsReady = true
+        } catch (error: Exception) {
+            Log.e(TAG, "Service initialization failed; running degraded", error)
+        } catch (error: LinkageError) {
+            // A missing or mismatched native/library symbol surfaces as an Error
+            // rather than an Exception, and is just as fatal to onCreate.
+            Log.e(TAG, "Service initialization failed to link; running degraded", error)
+        }
         registerReceivers()
         // WakeLock is NOT acquired here; it is acquired only during active playback.
     }
@@ -121,19 +159,29 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
             Log.e(TAG, "Failed to start foreground: ${e.message}", e)
         }
 
-        when (intent?.action) {
-            ACTION_PLAY -> playbackController.play()
-            ACTION_PAUSE -> playbackController.pause()
-            ACTION_STOP -> {
-                playbackController.stop()
-                stopForeground(STOP_FOREGROUND_REMOVE)
-                stopSelf()
+        // Notification actions arrive here. Without initialized components there
+        // is no controller to act on, and reaching for the lateinit fields would
+        // crash the process a second time.
+        if (componentsReady) {
+            when (intent?.action) {
+                ACTION_PLAY -> playbackController.play()
+                ACTION_PAUSE -> playbackController.pause()
+                ACTION_STOP -> {
+                    playbackController.stop()
+                    stopForeground(STOP_FOREGROUND_REMOVE)
+                    stopSelf()
+                }
+                ACTION_NEXT -> playbackController.next()
+                ACTION_PREVIOUS -> playbackController.previous()
             }
-            ACTION_NEXT -> playbackController.next()
-            ACTION_PREVIOUS -> playbackController.previous()
+        } else {
+            Log.w(TAG, "Ignoring ${intent?.action}: service is running degraded")
         }
 
-        return START_STICKY
+        // NOT sticky: a service that failed to initialize would otherwise be
+        // relaunched by the system straight back into the same failure. Playback
+        // is driven by the app, which restarts this service when it next plays.
+        return START_NOT_STICKY
     }
 
     /**
@@ -186,9 +234,27 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         releaseAudioFocus()
         unregisterReceivers()
         releaseWakeLock()
-        mediaSessionManager.release()
-        playbackController.release()
-        engine.shutdown()
+        mediaSessionManager?.release()
+
+        if (!componentsReady) {
+            // Nothing below was successfully constructed.
+            super.onDestroy()
+            return
+        }
+
+
+        // Always detach the listener, or this service leaks through a controller
+        // that outlives it.
+        playbackController.removeStateListener(playbackStateListener)
+
+        // Only tear down what this service created. Releasing the shared
+        // controller would stop the audio the UI is still driving, and shutting
+        // down the shared engine would close decoders out from under it.
+        if (ownsEngineAndController) {
+            playbackController.release()
+            engine.shutdown()
+        }
+
         usbAudioManager.closeDevice()
         usbAudioManager.unregisterReceiver()
         super.onDestroy()
@@ -197,6 +263,7 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     // --- Audio Focus ---
 
     override fun onAudioFocusChange(focusChange: Int) {
+        if (!componentsReady) return
         when (focusChange) {
             AudioManager.AUDIOFOCUS_GAIN -> {
                 Log.d(TAG, "Audio focus gained")
@@ -273,36 +340,76 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     }
 
     fun startForegroundPlayback() {
-        if (requestAudioFocus()) {
-            val notification = notificationManager.buildNotification(
-                playbackController.state,
-                mediaSessionManager.getSessionToken()
-            )
-            startForeground(NOTIFICATION_ID, notification)
+        // Focus first: without it another app owns the output and starting to
+        // play would talk over it.
+        if (!requestAudioFocus()) {
+            Log.w(TAG, "Audio focus denied; not promoting to foreground")
+            return
         }
+        // Fall back to the basic notification if the rich one is unavailable, so
+        // the service still has something to be foreground with.
+        val notification = buildPlaybackNotification() ?: buildBasicNotification()
+        startForeground(NOTIFICATION_ID, notification)
     }
 
     fun updateNotification() {
-        val notification = notificationManager.buildNotification(
-            playbackController.state,
-            mediaSessionManager.getSessionToken()
-        )
+        val notification = buildPlaybackNotification() ?: return
         val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         nm.notify(NOTIFICATION_ID, notification)
+    }
+
+    /**
+     * The transport-controls notification, or null when either the notification
+     * builder or the media session could not be created.
+     */
+    private fun buildPlaybackNotification(): Notification? {
+        val manager = notificationManager ?: return null
+        val token = mediaSessionManager?.getSessionToken() ?: return null
+        return try {
+            manager.buildNotification(playbackController.state, token)
+        } catch (error: Exception) {
+            Log.e(TAG, "Could not build the playback notification: ${error.message}", error)
+            null
+        }
     }
 
     // --- Initialization ---
 
     private fun initializeComponents() {
-        // Initialize native engine
-        engine = NativeAudioEngine()
-        engine.initialize()
+        // Adopt the engine and controller the UI is actually playing through.
+        //
+        // This service used to construct its own pair, which meant the
+        // notification and the media session controlled a second, silent
+        // controller while audio came from the Activity's. Taking the shared
+        // instances is what makes the notification, lock-screen controls and
+        // audio focus act on the audio you can hear.
+        val sharedEngine = ServiceLocator.engine
+        val sharedController = ServiceLocator.playbackController
 
-        // Initialize playback controller
-        playbackController = PlaybackController(engine)
-        playbackController.addStateListener { state ->
-            onPlaybackStateChanged(state)
+        if (sharedEngine != null && sharedController != null) {
+            engine = sharedEngine
+            playbackController = sharedController
+            ownsEngineAndController = false
+            Log.i(TAG, "Using shared engine and controller from ServiceLocator")
+        } else {
+            // The service can be recreated by the system with no Activity alive,
+            // in which case there is nothing to share and it owns its own.
+            engine = NativeAudioEngine()
+            engine.initialize()
+            playbackController = PlaybackController(engine)
+            ownsEngineAndController = true
+            ServiceLocator.setServiceComponents(
+                playbackController = playbackController,
+                engine = engine,
+                musicLibrary = ServiceLocator.musicLibrary ?: MusicLibrary(applicationContext)
+            )
+            Log.i(TAG, "No shared components; service created its own")
         }
+
+        // Held so it can be removed in onDestroy. Adding an anonymous lambda to
+        // a controller the service does not own would leak this service.
+        playbackStateListener = { state -> onPlaybackStateChanged(state) }
+        playbackController.addStateListener(playbackStateListener)
 
         // Register track transition callback so the native gapless engine
         // can notify the controller when a track finishes playing
@@ -317,11 +424,23 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         usbErrorRecovery = UsbErrorRecovery(usbAudioManager, playbackController, engine)
 
         // Initialize media session
-        mediaSessionManager = MediaSessionManager(this, playbackController)
-        sessionToken = mediaSessionManager.getSessionToken()
+        // Best-effort: a media session is what gives lock-screen and headset
+        // controls, but losing it must not cost the user playback.
+        try {
+            val manager = MediaSessionManager(this, playbackController)
+            mediaSessionManager = manager
+            sessionToken = manager.getSessionToken()
+        } catch (error: Exception) {
+            Log.e(TAG, "Media session unavailable: ${error.message}", error)
+        }
 
         // Initialize notification manager
-        notificationManager = PlaybackNotificationManager(this, CHANNEL_ID)
+        notificationManager = try {
+            PlaybackNotificationManager(this, CHANNEL_ID)
+        } catch (error: Exception) {
+            Log.e(TAG, "Notification manager unavailable: ${error.message}", error)
+            null
+        }
 
         // Register USB receiver
         usbAudioManager.registerReceiver()
@@ -329,7 +448,7 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
 
     private fun onPlaybackStateChanged(state: PlaybackState) {
         // Update media session
-        mediaSessionManager.updatePlaybackState(state)
+        mediaSessionManager?.updatePlaybackState(state)
 
         // Update notification
         updateNotification()
@@ -404,5 +523,5 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     fun getPlaybackController(): PlaybackController = playbackController
     fun getEngine(): NativeAudioEngine = engine
     fun getUsbManager(): UsbAudioManager = usbAudioManager
-    fun getMediaSession(): MediaSession = mediaSessionManager.getSession()
+    fun getMediaSession(): MediaSession? = mediaSessionManager?.getSession()
 }

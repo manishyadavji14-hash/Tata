@@ -51,6 +51,13 @@ class PlaybackController(
     private var currentFormat: AudioFormatInfo? = null
 
     /**
+     * Position a restored session must seek to once its track is prepared.
+     * Consumed on first use, so a later manual play starts from the beginning.
+     */
+    @Volatile
+    private var pendingSeekOnPrepareMs: Long = 0L
+
+    /**
      * Shared by both outputs, so a track transition or an error is handled the
      * same way regardless of where the audio is going.
      */
@@ -65,10 +72,22 @@ class PlaybackController(
 
                 this@PlaybackController.durationMs = durationMs
                 currentFormat = format
+
+                // Apply a restored position now that the file is open and the
+                // duration is known, so resuming lands where the user left off.
+                val restoreTo = pendingSeekOnPrepareMs
+                pendingSeekOnPrepareMs = 0L
+                val startAt = if (restoreTo > 0L && restoreTo < durationMs) {
+                    playbackSink.seekTo(restoreTo)
+                    restoreTo
+                } else {
+                    0L
+                }
+
                 setState(
                     PlaybackState.Playing(
                         trackPath = trackPath,
-                        positionMs = 0L,
+                        positionMs = startAt,
                         durationMs = durationMs,
                         format = format
                     )
@@ -188,6 +207,29 @@ class PlaybackController(
     }
 
     /**
+     * Restore a saved session without starting playback.
+     *
+     * Puts the queue and current track back, shown paused at the saved position,
+     * so reopening the app looks like where it was left and one tap resumes.
+     * Deliberately does not auto-play: opening an app should not start making
+     * noise by itself.
+     */
+    fun restoreSession(queue: List<String>, index: Int, positionMs: Long) {
+        val playable = queue.filter { it.isNotBlank() }
+        if (playable.isEmpty()) return
+
+        this.queue.setQueue(playable, index.coerceIn(0, playable.lastIndex))
+        val track = this.queue.currentTrack ?: return
+
+        durationMs = 0L
+        // Left null on purpose: it is how play() tells a restored session from a
+        // genuinely paused one, since nothing has been decoded yet.
+        currentFormat = null
+        pendingSeekOnPrepareMs = positionMs
+        setState(PlaybackState.Paused(trackPath = track, positionMs = positionMs))
+    }
+
+    /**
      * Jump to a queue entry and play it.
      */
     fun playQueueIndex(index: Int) {
@@ -228,8 +270,18 @@ class PlaybackController(
     }
 
     fun play() {
-        when (_state) {
-            is PlaybackState.Paused -> resume()
+        when (val snapshot = _state) {
+            is PlaybackState.Paused -> {
+                // A restored session shows as Paused but nothing has been opened
+                // yet, so there is no sink state to resume. Start the track
+                // instead; the saved position is applied once it is prepared.
+                if (currentFormat == null) {
+                    val track = queue.currentTrack ?: snapshot.trackPath
+                    startTrack(track)
+                } else {
+                    resume()
+                }
+            }
             is PlaybackState.Idle,
             is PlaybackState.Stopped,
             is PlaybackState.Error -> {
@@ -278,6 +330,18 @@ class PlaybackController(
     fun next() {
         val nextTrack = queue.next()
         if (nextTrack == null) stop() else startTrack(nextTrack)
+    }
+
+    /**
+     * Advance to the next track, or wrap to the first when at the end.
+     *
+     * This backs the mini player's swipe-forward gesture, where reaching the end
+     * should loop to the start rather than stop. It differs from [next], which
+     * stops at the end, and it does not touch the repeat mode.
+     */
+    fun skipToNextOrWrap() {
+        val nextTrack = queue.next() ?: queue.jumpTo(0)
+        if (nextTrack != null) startTrack(nextTrack)
     }
 
     fun previous() {

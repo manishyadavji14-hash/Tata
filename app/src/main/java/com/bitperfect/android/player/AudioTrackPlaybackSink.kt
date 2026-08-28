@@ -117,7 +117,11 @@ class AudioTrackPlaybackSink(
         if (!running) return@synchronized false
         val track = audioTrack ?: return@synchronized false
 
-        val clampedMs = positionMs.coerceIn(0L, durationMs)
+        val clampedMs = if (durationMs > 0L) {
+            positionMs.coerceIn(0L, durationMs)
+        } else {
+            positionMs.coerceAtLeast(0L)
+        }
         val frame = millisecondsToFrames(clampedMs, format.sampleRate)
         val wasPaused = paused
 
@@ -186,18 +190,28 @@ class AudioTrackPlaybackSink(
     private fun runPlayback(trackPath: String, playGeneration: Long) {
         Process.setThreadPriority(Process.THREAD_PRIORITY_AUDIO)
 
-        var decoder: NativeAudioEngine.DecoderSession? = null
+        var decoder: PcmSource? = null
         var track: AudioTrack? = null
         var effectsSessionId: Int? = null
         var completed = false
+        var drained = false
         var failure: String? = null
 
         try {
-            val openedDecoder = engine.openDecoder(trackPath)
-                ?: throw PlaybackException("Unsupported or unreadable file (WAV and FLAC are supported)")
+            // Chooses the platform decoder for FLAC/Opus/MP3/AAC/OGG and the
+            // native reader for WAV. Previously this went straight to the native
+            // decoder, so anything other than WAV or FLAC could not be opened at
+            // all, and FLAC went through a decoder that had never been tested
+            // against a real encoded file.
+            val openedDecoder = PcmSourceFactory.openForAndroidOutput(engine, trackPath)
+                ?: throw PlaybackException(
+                    "No decoder for this file (${
+                        trackPath.substringAfterLast('.', "unknown").lowercase()
+                    })"
+                )
             decoder = openedDecoder
 
-            val decoderFormat = openedDecoder.format
+            val decoderFormat = openedDecoder
             validateFormat(decoderFormat)
             val encoding = audioEncoding(decoderFormat.bitsPerSample)
             val channelMask = channelMask(decoderFormat.channels)
@@ -259,7 +273,9 @@ class AudioTrackPlaybackSink(
                 sampleRate = decoderFormat.sampleRate,
                 bitDepth = decoderFormat.bitsPerSample,
                 channels = decoderFormat.channels,
-                codec = codecName(trackPath)
+                // From the decoder that actually opened it, so the player shows
+                // "Opus" or "MP3" rather than a guess made from the file name.
+                codec = decoderFormat.codecName
             )
             currentFormat = formatInfo
             durationMs = decoderFormat.durationMs
@@ -296,7 +312,7 @@ class AudioTrackPlaybackSink(
                 val framesRead = openedDecoder.read(pcmBuffer, CHUNK_FRAMES)
                 if (framesRead < 0) throw PlaybackException("Native decoder read failed")
                 if (framesRead == 0) {
-                    waitForSubmittedAudio(
+                    drainAndAwaitCompletion(
                         openedTrack,
                         playGeneration,
                         playbackHeadAnchor,
@@ -304,6 +320,7 @@ class AudioTrackPlaybackSink(
                         positionBaseFrame,
                         decoderFormat.sampleRate
                     )
+                    drained = true
                     completed = isCurrent(playGeneration)
                     break
                 }
@@ -361,9 +378,15 @@ class AudioTrackPlaybackSink(
             // effects a newly started track has already attached.
             effectsSessionId?.let { audioEffects.detach(it) }
             try {
-                track?.pause()
-                track?.flush()
-                track?.stop()
+                // Only discard buffered audio when the track did NOT run to the
+                // end. After a clean finish the tail has already been drained by
+                // drainAndAwaitCompletion, and flushing here would throw away
+                // the last fraction of a second of every track.
+                if (!drained) {
+                    track?.pause()
+                    track?.flush()
+                    track?.stop()
+                }
             } catch (_: IllegalStateException) {
                 // Already stopped or never entered the playing state.
             }
@@ -395,7 +418,23 @@ class AudioTrackPlaybackSink(
         }
     }
 
-    private fun waitForSubmittedAudio(
+    /**
+     * Play out whatever is still buffered at the end of a track, then return.
+     *
+     * `stop()` is what does the work. In MODE_STREAM, AudioTrack will not render
+     * a trailing partial buffer while it is still PLAYING — it sits waiting for
+     * the buffer to be filled, so `playbackHeadPosition` stops short of what was
+     * written and never catches up. `stop()` is the documented way to make it
+     * play out what it already holds. Polling the head without calling it was
+     * the cause of "Audio output stalled while draining the final buffer" at the
+     * end of every track.
+     *
+     * This never throws. Not being able to observe the drain is not a playback
+     * failure: the audio has already been handed over, and the track is over
+     * either way. Reporting an error here turned a normal track ending into a
+     * failure the user could see.
+     */
+    private fun drainAndAwaitCompletion(
         track: AudioTrack,
         playGeneration: Long,
         playbackHeadAnchor: Long,
@@ -403,34 +442,47 @@ class AudioTrackPlaybackSink(
         positionBaseFrame: Long,
         sampleRate: Int
     ) {
-        var lastRenderedFrames = -1L
-        var lastProgressAtMs = SystemClock.elapsedRealtime()
+        // A paused track has to be resumed or stop() has nothing to drain into.
+        waitWhilePaused(playGeneration)
+        if (!isCurrent(playGeneration)) return
 
-        while (isCurrent(playGeneration)) {
-            if (paused) {
-                waitWhilePaused(playGeneration)
-                lastProgressAtMs = SystemClock.elapsedRealtime()
-                continue
-            }
+        try {
+            track.stop()
+        } catch (_: IllegalStateException) {
+            return
+        }
 
+        // Bound the wait by how much audio can still be outstanding, plus a
+        // margin, rather than by a fixed timeout. At most one AudioTrack buffer
+        // is left, so this is tens of milliseconds in practice.
+        val outstandingFrames = (submittedFrames -
+            renderedFrames(track, playbackHeadAnchor, submittedFrames)).coerceAtLeast(0L)
+        val deadline = SystemClock.elapsedRealtime() +
+            framesToMilliseconds(outstandingFrames, sampleRate) + DRAIN_MARGIN_MS
+
+        while (isCurrent(playGeneration) && SystemClock.elapsedRealtime() < deadline) {
             val rendered = renderedFrames(track, playbackHeadAnchor, submittedFrames)
             updatePosition(positionBaseFrame + rendered, sampleRate)
-            if (rendered >= submittedFrames) return
 
-            if (rendered != lastRenderedFrames) {
-                lastRenderedFrames = rendered
-                lastProgressAtMs = SystemClock.elapsedRealtime()
-            } else if (SystemClock.elapsedRealtime() - lastProgressAtMs >= DRAIN_STALL_TIMEOUT_MS) {
-                throw PlaybackException("Audio output stalled while draining the final buffer")
+            // PLAYSTATE_STOPPED is only reached once the buffered audio has been
+            // played out, so it is the real signal that the tail is done.
+            if (track.playState == AudioTrack.PLAYSTATE_STOPPED &&
+                rendered >= submittedFrames
+            ) {
+                break
             }
 
             try {
                 Thread.sleep(DRAIN_POLL_MS)
             } catch (_: InterruptedException) {
                 Thread.currentThread().interrupt()
-                return
+                break
             }
         }
+
+        // Report the track as finished regardless of what the head reported, so
+        // the progress bar lands on the end instead of a fraction short.
+        updatePosition(positionBaseFrame + submittedFrames, sampleRate)
     }
 
     private fun updateRenderedPosition(
@@ -451,13 +503,18 @@ class AudioTrackPlaybackSink(
     ): Long {
         val currentHead = unsignedPlaybackHead(track)
         val delta = (currentHead - playbackHeadAnchor) and UNSIGNED_INT_MASK
-        // Some devices reset playbackHeadPosition after flush. Until the new
-        // counter stabilizes, never report more frames than were submitted.
-        return if (delta <= submittedFrames) delta else 0L
+        // Some devices reset playbackHeadPosition after flush, which makes the
+        // delta meaningless. Clamp rather than collapsing to 0: returning 0 made
+        // the reported position jump backwards to the start of the track, and
+        // made the drain check unsatisfiable so it could never see the end.
+        return delta.coerceIn(0L, submittedFrames)
     }
 
     private fun updatePosition(frame: Long, sampleRate: Int) {
-        positionMs = framesToMilliseconds(frame, sampleRate).coerceIn(0L, durationMs)
+        val elapsed = framesToMilliseconds(frame, sampleRate)
+        // Only clamp to the duration when there is one. Containers that report no
+        // duration would otherwise pin the position at zero for the whole track.
+        positionMs = if (durationMs > 0L) elapsed.coerceIn(0L, durationMs) else elapsed.coerceAtLeast(0L)
     }
 
     private fun postPrepared(
@@ -491,19 +548,19 @@ class AudioTrackPlaybackSink(
     private fun isCurrentGeneration(playGeneration: Long): Boolean =
         generation.get() == playGeneration
 
-    private fun validateFormat(format: NativeAudioEngine.DecoderFormat) {
+    private fun validateFormat(format: PcmSource) {
         if (format.sampleRate <= 0 || format.channels !in 1..2) {
-            throw PlaybackException("Only mono and stereo PCM files are supported")
+            throw PlaybackException("Only mono and stereo audio is supported")
         }
         if (format.bitsPerSample !in SUPPORTED_BIT_DEPTHS) {
             throw PlaybackException("Only 16-, 24-, and 32-bit integer PCM is supported")
         }
-        if (format.totalFrames <= 0L) {
-            throw PlaybackException("The file does not report a valid duration")
-        }
         if (format.bitsPerSample > 16 && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            throw PlaybackException("24/32-bit AudioTrack output requires Android 12 or newer")
+            throw PlaybackException("24/32-bit output requires Android 12 or newer")
         }
+        // A zero duration is not fatal any more. Some containers, and streams cut
+        // short, do not report one; playback still works and the progress bar
+        // simply has no end until the track finishes.
     }
 
     private fun audioEncoding(bitsPerSample: Int): Int = when (bitsPerSample) {
@@ -517,14 +574,6 @@ class AudioTrackPlaybackSink(
         1 -> AudioFormat.CHANNEL_OUT_MONO
         2 -> AudioFormat.CHANNEL_OUT_STEREO
         else -> throw PlaybackException("Unsupported channel count: $channels")
-    }
-
-    private fun codecName(path: String): String = when (
-        path.substringAfterLast('.', "").lowercase()
-    ) {
-        "flac" -> "FLAC"
-        "wav", "wave" -> "WAV"
-        else -> "PCM"
     }
 
     private fun alignToFrame(bytes: Int, bytesPerFrame: Int): Int {
@@ -550,8 +599,13 @@ class AudioTrackPlaybackSink(
         const val NO_SEEK = -1L
         const val UNSIGNED_INT_MASK = 0xFFFF_FFFFL
         const val PAUSE_WAIT_MS = 100L
-        const val DRAIN_POLL_MS = 10L
-        const val DRAIN_STALL_TIMEOUT_MS = 5_000L
+        const val DRAIN_POLL_MS = 5L
+
+        /**
+         * Slack on top of the outstanding audio when waiting for the tail.
+         * Covers scheduling jitter and the mixer's own latency.
+         */
+        const val DRAIN_MARGIN_MS = 400L
         const val STOP_JOIN_TIMEOUT_MS = 2_000L
         val SUPPORTED_BIT_DEPTHS = setOf(16, 24, 32)
     }

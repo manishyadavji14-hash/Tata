@@ -1,6 +1,8 @@
 package com.bitperfect.android.library
 
 import android.content.Context
+import android.net.Uri
+import android.provider.OpenableColumns
 import com.bitperfect.android.library.model.Album
 import com.bitperfect.android.library.model.Artist
 import com.bitperfect.android.library.model.Composer
@@ -13,6 +15,8 @@ import com.bitperfect.android.library.model.Track
 import com.bitperfect.android.library.scanner.LibraryScanner
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.util.zip.ZipInputStream
 
 /**
  * MusicLibrary - facade over the persisted music library.
@@ -58,6 +62,7 @@ class MusicLibrary(
      */
     suspend fun triggerScan(
         directories: List<String> = emptyList(),
+        formats: Set<String>? = null,
         progressCallback: ((LibraryScanner.ScanProgress) -> Unit)? = null
     ): LibraryScanner.ScanResult = withContext(Dispatchers.IO) {
         if (progressCallback != null) {
@@ -65,7 +70,7 @@ class MusicLibrary(
         }
 
         val existing = trackDao.getAll().associateBy { it.path }
-        val result = scanner.scan(directories, existing)
+        val result = scanner.scan(directories, existing, formats)
 
         if (result.success) {
             persistScanResult(result.tracks, result.removedPaths)
@@ -78,6 +83,117 @@ class MusicLibrary(
      */
     fun cancelScan() {
         scanner.cancel()
+    }
+
+    /**
+     * Extract the audio files from a .zip and add them to the library.
+     *
+     * The archive is a content:// URI from the document picker, so the bytes are
+     * copied out through the resolver rather than assumed to be a real path.
+     * Extracted files land in filesDir/imported/<archive>/, which is app-private
+     * and survives restarts, so the library can keep pointing at them.
+     *
+     * @return a summary of what was imported, including files that were skipped.
+     */
+    suspend fun importZip(uri: Uri): ZipImportResult = withContext(Dispatchers.IO) {
+        val resolver = applicationContext.contentResolver
+        val archiveName = queryDisplayName(uri)?.substringBeforeLast('.')
+            ?: "archive_${System.currentTimeMillis()}"
+
+        val targetDir = File(File(applicationContext.filesDir, "imported"), sanitize(archiveName))
+        if (!targetDir.exists() && !targetDir.mkdirs()) {
+            return@withContext ZipImportResult(error = "Could not create the import folder")
+        }
+
+        var imported = 0
+        var skipped = 0
+        val importedTracks = mutableListOf<Track>()
+
+        try {
+            resolver.openInputStream(uri).use { rawStream ->
+                if (rawStream == null) {
+                    return@withContext ZipImportResult(error = "Could not open the archive")
+                }
+                ZipInputStream(rawStream.buffered()).use { zip ->
+                    var entry = zip.nextEntry
+                    while (entry != null) {
+                        val name = entry.name.substringAfterLast('/')
+                        val extension = name.substringAfterLast('.', "").lowercase()
+
+                        // Directories, junk, and non-audio entries are skipped
+                        // rather than extracted; only playable formats are kept.
+                        val playable = !entry.isDirectory &&
+                            name.isNotBlank() &&
+                            MetadataExtractor.isSupportedExtension(extension)
+
+                        if (playable) {
+                            // Guard against zip-slip: an entry named ../../x must
+                            // not escape the target directory.
+                            val outFile = File(targetDir, sanitize(name))
+                            if (outFile.canonicalPath.startsWith(targetDir.canonicalPath)) {
+                                outFile.outputStream().buffered().use { out -> zip.copyTo(out) }
+                                if (outFile.length() > 0) imported++ else skipped++
+                            } else {
+                                skipped++
+                            }
+                        } else if (!entry.isDirectory) {
+                            skipped++
+                        }
+
+                        zip.closeEntry()
+                        entry = zip.nextEntry
+                    }
+                }
+            }
+        } catch (error: Exception) {
+            return@withContext ZipImportResult(error = "Could not read the archive: ${error.message}")
+        }
+
+        // Add each extracted file. addSingleFile rebuilds aggregates per call, so
+        // do the inserts here in one transaction and rebuild once at the end.
+        val extracted = targetDir.walkTopDown().filter { file ->
+            file.isFile && MetadataExtractor.isSupportedExtension(file.extension.lowercase())
+        }.toList()
+
+        if (extracted.isNotEmpty()) {
+            database.runInTransaction {
+                for (file in extracted) {
+                    if (trackDao.getByPath(file.absolutePath) != null) continue
+                    val track = scanner.scanSingleFile(file.absolutePath) ?: continue
+                    val id = trackDao.insert(track)
+                    trackDao.getById(id)?.let { importedTracks.add(it) }
+                }
+                rebuildAggregates()
+            }
+        }
+
+        ZipImportResult(
+            imported = importedTracks.size,
+            skipped = skipped,
+            tracks = importedTracks
+        )
+    }
+
+    private fun queryDisplayName(uri: Uri): String? =
+        applicationContext.contentResolver.query(
+            uri, arrayOf(OpenableColumns.DISPLAY_NAME), null, null, null
+        )?.use { cursor ->
+            if (cursor.moveToFirst()) cursor.getString(0) else null
+        }
+
+    private fun sanitize(name: String): String =
+        name.replace(Regex("""[/\\:*?"<>|\x00-\x1F]"""), "_").trim().take(120).ifBlank { "file" }
+
+    /**
+     * Outcome of a ZIP import.
+     */
+    data class ZipImportResult(
+        val imported: Int = 0,
+        val skipped: Int = 0,
+        val tracks: List<Track> = emptyList(),
+        val error: String? = null
+    ) {
+        val isSuccess: Boolean get() = error == null
     }
 
     /**

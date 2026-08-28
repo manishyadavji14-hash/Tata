@@ -23,6 +23,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -35,6 +37,8 @@ import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.library.StoragePermissions
+import com.bitperfect.android.player.PlaybackState
+import com.bitperfect.android.player.PlaybackStateStore
 import com.bitperfect.android.service.PlaybackService
 import com.bitperfect.android.ui.diagnostics.DiagnosticsViewModel
 import com.bitperfect.android.ui.equalizer.EqualizerViewModel
@@ -83,6 +87,14 @@ class MainActivity : ComponentActivity() {
         if (uri != null) importAndPlay(uri)
     }
 
+    private val openZipArchive = registerForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        // Extraction and library insertion happen in the ViewModel, off the main
+        // thread; this only hands over the chosen archive.
+        if (uri != null) libraryViewModel?.importZip(uri)
+    }
+
     private val requestPermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) {
@@ -93,6 +105,9 @@ class MainActivity : ComponentActivity() {
 
     private var playbackService: PlaybackService? = null
     private var isBound = false
+
+    /** Guards against restarting the foreground service on every track change. */
+    private var hasStartedPlaybackService = false
 
     // ViewModels (in production, use Hilt/Koin DI)
     // Nullable to prevent UninitializedPropertyAccessException if initializeComponents() fails
@@ -212,7 +227,8 @@ class MainActivity : ComponentActivity() {
                     createdController,
                     createdEngine,
                     createdDsdManager,
-                    musicLibrary
+                    musicLibrary,
+                    PlaybackStateStore(applicationContext)
                 ) as T
             }
         }
@@ -233,6 +249,22 @@ class MainActivity : ComponentActivity() {
             engine = localEngine,
             musicLibrary = musicLibrary
         )
+
+        // Promote to a foreground service the moment audio starts.
+        //
+        // Nothing did this before, which is why there was no notification and no
+        // lock-screen controls, and — more importantly — why nothing requested
+        // audio focus, so an incoming call never paused the music. The service
+        // owns focus, the notification and the media session; it just had to be
+        // started. Deferred until playback rather than done in onCreate, because
+        // starting a foreground service with no audio to show gets the app killed
+        // on Android 14+.
+        localPlayerViewModel.playbackController.addStateListener { state ->
+            when (state) {
+                is PlaybackState.Playing -> ensurePlaybackServiceRunning()
+                else -> Unit
+            }
+        }
 
         val localUsbAudioManager = UsbAudioManager(this, localEngine)
         usbAudioManager = localUsbAudioManager
@@ -263,6 +295,12 @@ class MainActivity : ComponentActivity() {
         equalizerViewModel =
             ViewModelProvider(this, equalizerFactory)[EqualizerViewModel::class.java]
         diagnosticsViewModel = DiagnosticsViewModel(localEngine, localDsdManager, localUsbAudioManager)
+    }
+
+    private fun launchZipPicker() {
+        // Some pickers report zips as octet-stream, so accept that too rather
+        // than hiding archives the user can see.
+        openZipArchive.launch(arrayOf("application/zip", "application/octet-stream"))
     }
 
     private fun launchAudioPicker() {
@@ -390,6 +428,26 @@ class MainActivity : ComponentActivity() {
     }
 
     /**
+     * Start and bind the playback service once, on first playback.
+     *
+     * Idempotent: called from every Playing state change, which happens on every
+     * track, so it must not restart the service each time.
+     */
+    private fun ensurePlaybackServiceRunning() {
+        if (hasStartedPlaybackService) return
+        hasStartedPlaybackService = true
+        try {
+            startPlaybackService()
+            bindPlaybackService()
+        } catch (error: Exception) {
+            // A failure here costs the notification, not playback, so it must not
+            // take the app down with it.
+            hasStartedPlaybackService = false
+            Log.e(TAG, "Could not start the playback service: ${error.message}", error)
+        }
+    }
+
+    /**
      * Bind to the PlaybackService for direct communication.
      * Should only be called after startPlaybackService().
      */
@@ -400,8 +458,18 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun BitPerfectApp() {
+        // Follow the saved preference. This was pinned to SYSTEM, so the Theme
+        // setting in Settings wrote a value that nothing read and the app could
+        // not be forced to light or dark.
+        val settingsState = settingsViewModel?.uiState?.collectAsState()
+        val themeMode = when (settingsState?.value?.themeMode) {
+            "light" -> ThemeMode.LIGHT
+            "dark" -> ThemeMode.DARK
+            else -> ThemeMode.SYSTEM
+        }
+
         BitPerfectTheme(
-            themeMode = ThemeMode.SYSTEM,
+            themeMode = themeMode,
             dynamicColor = true
         ) {
             Surface(modifier = Modifier.fillMaxSize()) {
@@ -422,7 +490,8 @@ class MainActivity : ComponentActivity() {
                         diagnosticsViewModel = dvm,
                         equalizerViewModel = evm,
                         musicLibrary = library,
-                        onOpenFile = ::launchAudioPicker
+                        onOpenFile = ::launchAudioPicker,
+                        onPickZip = ::launchZipPicker
                     )
                 } else {
                     // Show a safe fallback screen when ViewModels failed to initialize
