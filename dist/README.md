@@ -5,7 +5,7 @@ without a local toolchain or a GitHub login.
 
 ## Download
 
-**[BitPerfect-debug-arm64.apk](https://github.com/manishyadavji14-hash/Tata/raw/feat/audiotrack-playback-build-fix/dist/BitPerfect-debug-arm64.apk)**
+**[BitPerfect-debug-arm64.apk](https://github.com/manishyadavji14-hash/Tata/raw/main/dist/BitPerfect-debug-arm64.apk)**
 
 Open that link in the phone's browser and it downloads directly. Android will
 ask you to allow installing from the browser the first time.
