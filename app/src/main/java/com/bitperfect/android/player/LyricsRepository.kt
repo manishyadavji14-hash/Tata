@@ -1,25 +1,38 @@
 package com.bitperfect.android.player
 
 import android.util.Log
+import com.bitperfect.android.library.EmbeddedLyricsReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 
 /**
- * Finds lyrics for a track.
+ * Finds lyrics for a track, from two sources in order of authority.
  *
- * Sidecar files only, for now: `song.flac` is matched by `song.lrc`, `song.txt`
- * or the same name in a `Lyrics/` subfolder. That is how synced lyrics are
- * normally distributed, and it means the user can add them without the app
- * needing to write tags.
+ * 1. **Sidecar files.** `song.flac` is matched by `song.lrc`, `song.txt` or the
+ *    same name in a `Lyrics/` subfolder. This is how synced lyrics are normally
+ *    distributed, and it lets the user add or correct lyrics without the app
+ *    needing to write tags.
+ * 2. **Embedded tags**, via [EmbeddedLyricsReader]: ID3 `USLT`/`SYLT`, Vorbis
+ *    `LYRICS`/`UNSYNCEDLYRICS`, and the MP4 `©lyr` atom.
  *
- * **Embedded lyrics are not supported yet.** `MediaMetadataRetriever` exposes no
- * lyrics field, so reading them means parsing ID3 `USLT`/`SYLT` frames and Vorbis
- * `LYRICS` comments by hand. `Track.lyrics` exists in the schema and has always
- * been null for exactly this reason; when that parsing lands, it becomes another
- * source here.
+ * Sidecars are checked first precisely because they are the user's own file: a
+ * hand-corrected `.lrc` must override whatever the tagger baked into the track.
+ * An empty parse from a sidecar falls through to the tags, so a stray zero-value
+ * `.txt` does not mask real embedded lyrics.
+ *
+ * `Track.lyrics` in the database is still not populated, and that is deliberate:
+ * lyrics are read from the file here, on demand, so editing a file's tags takes
+ * effect on the next play. A copy in the library row would go stale, and only
+ * files that went through the single-file scan path would ever have one.
  */
-class LyricsRepository {
+class LyricsRepository(
+    /**
+     * Injected so the two-source ordering can be unit tested without files. The
+     * default reads the real file.
+     */
+    private val readEmbedded: (String) -> String? = { path -> EmbeddedLyricsReader.read(path) }
+) {
 
     /**
      * Load lyrics for an audio file, or [Lyrics.EMPTY] when there are none.
@@ -34,9 +47,13 @@ class LyricsRepository {
         cache[audioPath]?.let { return@withContext it }
 
         val parsed = try {
-            findSidecar(audioPath)
+            val sidecar = findSidecar(audioPath)
                 ?.let { LyricsParser.parse(it.readText()) }
-                ?: Lyrics.EMPTY
+                ?.takeIf { !it.isEmpty }
+
+            // Both sources end up as text in LyricsParser, so timed and plain
+            // lyrics behave identically whichever they came from.
+            sidecar ?: LyricsParser.parse(readEmbedded(audioPath))
         } catch (error: Exception) {
             // Unreadable or absurdly large file: no lyrics is the right outcome,
             // never a crash on a track change.

@@ -14,12 +14,12 @@ ask you to allow installing from the browser the first time.
 
 | | |
 |---|---|
-| Source commit | `fix/drain-stall` (see git log) |
+| Contains | everything on `main` up to and including embedded lyrics (`feat/embedded-lyrics`) |
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 16 MiB |
-| SHA-256 | `8867cf42dbec00914a2ac379bfa169379f994943a9afb6671b703b250e0baa2e` |
+| Size | 15.7 MiB (16,503,892 bytes) |
+| SHA-256 | `443b021ba259b4b9d120680e11cc5681471918f1883e1ed8f6f1f2ef3e8d5b56` |
 
 Verify the download matches before installing:
 
@@ -31,7 +31,21 @@ If you get `INSTALL_FAILED_UPDATE_INCOMPATIBLE`, uninstall any existing
 BitPerfect first. Debug signing keys differ between machines, so an APK built
 elsewhere cannot upgrade this one in place.
 
-## First thing to check
+## New in this build
+
+Lyrics stored **inside** the music file are now read, not just `.lrc` sidecars:
+ID3 `USLT`/`SYLT` (MP3), Vorbis `LYRICS`/`UNSYNCEDLYRICS` (FLAC, Ogg, Opus) and
+the MP4 `©lyr` atom (M4A, ALAC).
+
+To check it, play a track you know has lyrics baked into its tags. The lyrics icon
+appears at the lower right of the album art **only when lyrics were found**, so if
+it is absent that file's tags had none — try one tagged in a desktop player first.
+A `.lrc` file next to the track still wins over the tags, so your own corrections
+are not overridden.
+
+## Also worth checking
+
+
 
 This is the first build in which audio can actually reach a USB DAC, so start
 here rather than with playback:

@@ -13,13 +13,29 @@ each change and are deliberately detailed.**
 
 | | |
 |---|---|
-| Work on | **`main`** — PR #2 merged as `ce564f1`, nothing outstanding on a branch |
-| Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (~15.6 MB, debug-signed, arm64 only) |
-| Test status | 282 native C++ tests, 113 JVM unit tests, `lintDebug` 0 errors |
+| Work on | **`main`** — PR #4 merged as `eec1ed5`; embedded lyrics on `feat/embedded-lyrics` |
+| Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (15.7 MiB, debug-signed, arm64 only) |
+| Test status | 282 native C++ tests, **168** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
 Branch from `main` for new work. The old `feat/audiotrack-playback-build-fix`
 branch is fully merged and can be deleted; nothing references it.
+
+### Setting up a toolchain from scratch
+
+No Android SDK is present in a fresh sandbox. What worked, exactly:
+
+```bash
+# SDK command-line tools, then the pinned versions from app/build.gradle.kts
+export ANDROID_HOME=/root/android-sdk
+sdkmanager --sdk_root=$ANDROID_HOME "platform-tools" "platforms;android-36" \
+  "build-tools;36.0.0" "cmake;3.22.1" "ndk;29.0.14206865"
+echo "sdk.dir=$ANDROID_HOME" > local.properties   # gitignored, must exist
+```
+
+Build with **JDK 21**, not a newer one — AGP 8.10.1 accepts 17+, but the project
+compiles at Java 21 and that is what the committed APK was built with. The NDK
+download is ~2.5 GB and dominates setup time.
 
 The app is a USB-audiophile music player: Jetpack Compose UI, Room library, a
 Kotlin playback layer, and a C++ engine (JNI) that owns decoding and the USB
@@ -67,7 +83,7 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 113 passing)
+# JVM unit tests (expect 168 passing)
 ./gradlew :app:testDebugUnitTest
 
 # Lint (expect 0 errors; warnings are pre-existing)
@@ -198,7 +214,43 @@ Format badge folded into one line under the title (tinted by output mode), the
 file-open button removed, and the Diagnostics shortcut removed from the player.
 Reads artwork -> title -> seek -> transport.
 
-### ~~P2 — Lyrics~~ — DONE for sidecar files, needs device check
+### ~~P2 — Embedded lyrics~~ — DONE, needs device check
+
+`EmbeddedLyricsReader` (`library/EmbeddedLyricsReader.kt`) reads lyrics out of the
+file's own tags, and `LyricsRepository` now resolves two sources in order:
+sidecar file first, embedded tags second. Coverage:
+
+| Container | Source |
+|---|---|
+| MP3, AIFF, DSF | ID3v2.2/2.3/2.4 `USLT` and `SYLT` |
+| FLAC | `VORBIS_COMMENT` block |
+| Ogg Vorbis, Opus | comment header packet |
+| M4A, ALAC, AAC | `moov.udta.meta.ilst.©lyr` |
+
+Notes for whoever tests it:
+- **Everything is converted to LRC text**, including `SYLT`, whose timings are
+  binary. `LyricsParser` therefore stays the only code that decides timed vs
+  plain, so embedded and sidecar lyrics cannot drift apart in behaviour.
+- **Sidecars win**, and an empty sidecar parse falls through to the tags, so a
+  stray blank `.txt` cannot mask real embedded lyrics.
+- `SYLT` timed in MPEG frames rather than milliseconds is **refused**: the frame
+  rate is not in the tag, and wrong timings are worse than none.
+- Syllable-level `SYLT` fragments are joined into whole lines, per the spec's
+  newline convention — otherwise it renders one word per line.
+- `Track.lyrics` in the database is **still not populated, deliberately.** Lyrics
+  are read from the file on demand so retagging takes effect on the next play; a
+  DB copy would go stale, and only files that went through the single-file scan
+  path would ever get one. The KDoc on `Metadata.lyrics` says so now, instead of
+  implying the feature is missing.
+- 55 new JVM tests. Layouts were additionally checked against real files written
+  by `flac`, `oggenc` and mutagen — that is what caught a trailing `U+0000`
+  leaking into UTF-16 `USLT` text, which the synthetic fixtures had missed.
+  `TESTING.md` has the regeneration recipe; redo it after touching the reader.
+
+Unverified on device: whether the maintainer's own files actually carry embedded
+lyrics, and how a very long lyric sheet scrolls.
+
+### ~~P2 — Lyrics (sidecar)~~ — DONE for sidecar files, needs device check
 `LyricsParser` handles LRC and plain text; `LyricsRepository` loads a sidecar
 `song.lrc` / `song.txt`, also looking in a `Lyrics/` subfolder. A lyrics icon
 appears at the lower right of the artwork **only when lyrics exist**, and the
@@ -206,11 +258,8 @@ panel replaces the title block so the transport controls never move. Timed lyric
 auto-centre the current line and offer a +/- 0.5 s nudge; untimed lyrics are
 hand-scrolled and say why.
 
-**Embedded lyrics are still not supported.** `MediaMetadataRetriever` exposes no
-lyrics field, so it needs ID3 `USLT`/`SYLT` and Vorbis `LYRICS` parsing.
-`MetadataExtractor.Metadata.lyrics` has always been null for this reason — it is a
-declared-but-unpopulated field, not a working feature. When that parsing lands it
-becomes a second source in `LyricsRepository`.
+Embedded lyrics are now supported too — see the section above. `LyricsRepository`
+checks the sidecar first and the file's tags second.
 
 ### P2 — Album-art overflow menu: remaining items
 Implemented: Info/Tags, Add to playlist, Go to album/artist/genre/folder. Hidden
@@ -377,6 +426,8 @@ text-only session can request the right subset.
 | `PlaybackStateStore.kt` | Session persistence across app restarts |
 | `AudioEffectsController.kt` | Equalizer/bass boost. AudioTrack sessions only |
 | `SleepTimer.kt` | Main-looper timer with a generation counter |
+| `Lyrics.kt` | `Lyrics` model and `LyricsParser` — the only judge of timed vs plain |
+| `LyricsRepository.kt` | Resolves lyrics: sidecar file first, embedded tags second |
 
 ### Service — `app/src/main/java/com/bitperfect/android/service/`
 `PlaybackService.kt` (notification, audio focus, adopts shared components),
@@ -394,7 +445,8 @@ palette extraction — reuse this for the visualization spectrum),
 
 ### Library — `app/src/main/java/com/bitperfect/android/library/`
 `MusicLibrary.kt` (facade, all suspend; ZIP import), `LibraryDatabase.kt` (Room,
-schema v2, migrations), `MetadataExtractor.kt`,
+schema v3, migrations), `MetadataExtractor.kt`,
+`EmbeddedLyricsReader.kt` (ID3/Vorbis/MP4 tag parsing — pure, no Android APIs),
 `scanner/LibraryScanner.kt`, `scanner/MediaStoreAudioSource.kt`, `dao/`, `model/`.
 
 ### Native engine — `app/src/main/cpp/`
