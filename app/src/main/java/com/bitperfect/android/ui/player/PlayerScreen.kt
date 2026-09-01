@@ -25,6 +25,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import com.bitperfect.android.player.Lyrics
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.Favorite
@@ -46,6 +50,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Subtitles
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Album
 import androidx.compose.material.icons.filled.Person
@@ -235,30 +240,72 @@ fun PlayerScreen(
                         .scale(artworkScale)
                 )
 
-                // Overflow sits over the lower-right corner of the artwork.
-                AlbumArtActions(
-                    uiState = uiState,
-                    onAddToPlaylist = onAddToPlaylist,
-                    onGoToAlbum = onGoToAlbum,
-                    onGoToArtist = onGoToArtist,
-                    onGoToFolder = onGoToFolder,
-                    onGoToGenre = onGoToGenre,
+                // Lyrics toggle and overflow, over the lower-right of the art.
+                Row(
                     modifier = Modifier
                         .align(Alignment.BottomEnd)
-                        .padding(8.dp)
-                )
+                        .padding(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // Only offered when there is something to show, so it never
+                    // opens an empty panel.
+                    if (!uiState.lyrics.isEmpty) {
+                        Surface(
+                            shape = CircleShape,
+                            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.75f)
+                        ) {
+                            IconButton(onClick = { viewModel.toggleLyrics() }) {
+                                Icon(
+                                    imageVector = Icons.Default.Subtitles,
+                                    contentDescription = if (uiState.isLyricsVisible) {
+                                        "Hide lyrics"
+                                    } else {
+                                        "Show lyrics"
+                                    },
+                                    tint = if (uiState.isLyricsVisible) {
+                                        MaterialTheme.colorScheme.primary
+                                    } else {
+                                        MaterialTheme.colorScheme.onSurface
+                                    }
+                                )
+                            }
+                        }
+                        Spacer(modifier = Modifier.width(6.dp))
+                    }
+
+                    AlbumArtActions(
+                        uiState = uiState,
+                        onAddToPlaylist = onAddToPlaylist,
+                        onGoToAlbum = onGoToAlbum,
+                        onGoToArtist = onGoToArtist,
+                        onGoToFolder = onGoToFolder,
+                        onGoToGenre = onGoToGenre
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Track info, with the format folded in as a single quiet line.
-            TrackInfo(
-                title = uiState.trackTitle,
-                artist = uiState.artist,
-                album = uiState.album,
-                formatLine = uiState.formatDetail,
-                outputMode = uiState.outputMode
-            )
+            // Lyrics take the place of the title block when switched on, which is
+            // what keeps the layout from growing and pushing the transport
+            // controls off smaller screens.
+            if (uiState.isLyricsVisible) {
+                LyricsPanel(
+                    lyrics = uiState.lyrics,
+                    currentIndex = uiState.currentLyricIndex,
+                    offsetMs = uiState.lyricsOffsetMs,
+                    onNudge = viewModel::nudgeLyrics,
+                    onResetOffset = viewModel::resetLyricsOffset
+                )
+            } else {
+                TrackInfo(
+                    title = uiState.trackTitle,
+                    artist = uiState.artist,
+                    album = uiState.album,
+                    formatLine = uiState.formatDetail,
+                    outputMode = uiState.outputMode
+                )
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -934,3 +981,103 @@ private fun formatFileSize(bytes: Long): String = when {
     bytes >= 1024L -> "%.1f KB".format(bytes / 1024.0)
     else -> "$bytes B"
 }
+
+
+/**
+ * Lyrics in the space the title block normally occupies.
+ *
+ * Fixed to three rows on purpose. It replaces the title rather than adding to the
+ * column, so the artwork, seek bar and transport controls do not move when it is
+ * switched on, and it cannot push them off a short screen.
+ *
+ * Timed lyrics scroll themselves and centre the current line. Untimed lyrics are
+ * scrolled by hand, which is the only thing that can be done without timings.
+ */
+@Composable
+private fun LyricsPanel(
+    lyrics: Lyrics,
+    currentIndex: Int,
+    offsetMs: Long,
+    onNudge: (Long) -> Unit,
+    onResetOffset: () -> Unit
+) {
+    val listState = rememberLazyListState()
+
+    // Follow the song. Scrolling to index - 1 puts the current line in the middle
+    // of three visible rows rather than at the top edge.
+    LaunchedEffect(currentIndex, lyrics) {
+        if (lyrics.isSynced && currentIndex >= 0) {
+            listState.animateScrollToItem((currentIndex - 1).coerceAtLeast(0))
+        }
+    }
+
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        LazyColumn(
+            state = listState,
+            // Three rows of body text. Enough to read a line in context without
+            // taking space from the controls.
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(LYRICS_PANEL_HEIGHT),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            // Untimed lyrics are free to be flung; timed ones are driven by
+            // playback, and letting the user fight the auto-scroll feels broken.
+            userScrollEnabled = !lyrics.isSynced
+        ) {
+            itemsIndexed(lyrics.lines) { index, line ->
+                val isCurrent = lyrics.isSynced && index == currentIndex
+                Text(
+                    text = line.text,
+                    style = if (isCurrent) {
+                        MaterialTheme.typography.titleMedium
+                    } else {
+                        MaterialTheme.typography.bodyMedium
+                    },
+                    fontWeight = if (isCurrent) FontWeight.Bold else FontWeight.Normal,
+                    color = if (isCurrent) {
+                        MaterialTheme.colorScheme.onSurface
+                    } else {
+                        // Dimmed so the eye lands on the current line immediately.
+                        MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f)
+                    },
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                )
+            }
+        }
+
+        if (lyrics.isSynced) {
+            // Timing nudge, for files whose stamps run early or late.
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                TextButton(onClick = { onNudge(-500L) }) { Text("-0.5s") }
+                TextButton(onClick = onResetOffset) {
+                    Text(
+                        text = if (offsetMs == 0L) {
+                            "in sync"
+                        } else {
+                            "%+.1fs".format(offsetMs / 1000.0)
+                        },
+                        style = MaterialTheme.typography.labelSmall
+                    )
+                }
+                TextButton(onClick = { onNudge(500L) }) { Text("+0.5s") }
+            }
+        } else {
+            Text(
+                // Says plainly why it is not following the song, rather than
+                // looking like broken sync.
+                text = "No timings in this file — scroll to follow",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+            )
+        }
+    }
+}
+
+/** Three rows of body text plus padding. */
+private val LYRICS_PANEL_HEIGHT = 96.dp

@@ -8,6 +8,8 @@ import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.player.AudioFormatInfo
 import com.bitperfect.android.player.PlaybackController
+import com.bitperfect.android.player.Lyrics
+import com.bitperfect.android.player.LyricsRepository
 import com.bitperfect.android.player.PlaybackState
 import com.bitperfect.android.player.PlaybackStateStore
 import com.bitperfect.android.player.RepeatMode
@@ -38,7 +40,9 @@ class PlayerViewModel(
      * Remembers the session across app restarts. Optional so the ViewModel stays
      * constructible without a Context in tests.
      */
-    private val sessionStore: PlaybackStateStore? = null
+    private val sessionStore: PlaybackStateStore? = null,
+    /** Sidecar .lrc / .txt lookup. Owned here so results are cached per session. */
+    private val lyricsRepository: LyricsRepository = LyricsRepository()
 ) : ViewModel() {
 
     /**
@@ -85,7 +89,20 @@ class PlayerViewModel(
         val folder: String = "",
         val year: Int = 0,
         val trackNumber: Int = 0,
-        val fileSize: Long = 0L
+        val fileSize: Long = 0L,
+
+        // --- Lyrics ---
+        /** Lyrics for the current track, empty when none were found. */
+        val lyrics: Lyrics = Lyrics.EMPTY,
+        /** Whether the lyrics panel has replaced the title block. */
+        val isLyricsVisible: Boolean = false,
+        /** Index of the line matching the current position, -1 when none. */
+        val currentLyricIndex: Int = -1,
+        /**
+         * User nudge in milliseconds for timings that run early or late. Applied
+         * on top of any offset declared in the file.
+         */
+        val lyricsOffsetMs: Long = 0L
     )
 
     /**
@@ -132,11 +149,20 @@ class PlayerViewModel(
             // A different track started while this lookup was in flight.
             if (detailsPath != trackPath) return@launch
 
+            // Lyrics are looked up per track and cached by the repository, so a
+            // track with none does not touch the filesystem again.
+            val loadedLyrics = lyricsRepository.load(trackPath)
+
             detailsResolvedPath = trackPath
             _uiState.update { current ->
                 current.copy(
                     isFavourite = details.isFavourite,
                     isInLibrary = details.isInLibrary,
+                    lyrics = loadedLyrics,
+                    currentLyricIndex = -1,
+                    // A per-track nudge would be surprising to carry over, and
+                    // the panel stays open across tracks, so reset it.
+                    lyricsOffsetMs = 0L,
                     trackTitle = details.title.ifBlank { extractTrackTitle(trackPath) },
                     artist = details.artist,
                     album = details.album,
@@ -343,6 +369,47 @@ class PlayerViewModel(
         )
     }
 
+    // --- Lyrics ---
+
+    /**
+     * Show or hide the lyrics panel, which takes the place of the title block.
+     *
+     * Does nothing when there are no lyrics: the icon is hidden in that case, so
+     * reaching here means state changed underneath the user.
+     */
+    fun toggleLyrics() {
+        _uiState.update { current ->
+            if (current.lyrics.isEmpty) current else current.copy(
+                isLyricsVisible = !current.isLyricsVisible
+            )
+        }
+    }
+
+    /**
+     * Nudge synced lyrics earlier or later, for files whose timings are off.
+     *
+     * @param deltaMs positive shows lines sooner
+     */
+    fun nudgeLyrics(deltaMs: Long) {
+        _uiState.update { current ->
+            val offset = (current.lyricsOffsetMs + deltaMs)
+                .coerceIn(-MAX_LYRICS_OFFSET_MS, MAX_LYRICS_OFFSET_MS)
+            current.copy(
+                lyricsOffsetMs = offset,
+                currentLyricIndex = current.lyrics.indexAt(current.positionMs, offset)
+            )
+        }
+    }
+
+    fun resetLyricsOffset() {
+        _uiState.update { current ->
+            current.copy(
+                lyricsOffsetMs = 0L,
+                currentLyricIndex = current.lyrics.indexAt(current.positionMs, 0L)
+            )
+        }
+    }
+
     /** Cheap position-only write for the periodic tick. */
     private fun savePosition() {
         sessionStore?.savePosition(_uiState.value.positionMs)
@@ -513,7 +580,14 @@ class PlayerViewModel(
                     positionMs = currentPos,
                     positionText = formatTime(currentPos),
                     bufferLevel = 0f,
-                    sleepTimerRemainingMs = sleepRemaining
+                    sleepTimerRemainingMs = sleepRemaining,
+                    // Recomputed on the same tick as the position, so the
+                    // highlighted line and the seek bar never disagree. This is a
+                    // binary search over the lines, not a scan.
+                    currentLyricIndex = current.lyrics.indexAt(
+                        currentPos,
+                        current.lyricsOffsetMs
+                    )
                 )
             }
         } else if (_uiState.value.sleepTimerRemainingMs != sleepRemaining) {
@@ -622,5 +696,8 @@ class PlayerViewModel(
     private companion object {
         /** 250 ms ticks, so 20 ticks is a position write every 5 seconds. */
         const val POSITION_SAVE_INTERVAL_TICKS = 20
+
+        /** Ten seconds either way is far more than any real file needs. */
+        const val MAX_LYRICS_OFFSET_MS = 10_000L
     }
 }
