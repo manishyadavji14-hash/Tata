@@ -54,6 +54,8 @@ import com.bitperfect.android.ui.playlist.AddToPlaylistDialog
 import com.bitperfect.android.ui.playlist.PlaylistsScreen
 import com.bitperfect.android.ui.playlist.PlaylistsViewModel
 import com.bitperfect.android.ui.settings.LicensesScreen
+import com.bitperfect.android.ui.settings.UnconfirmedMusicScreen
+import com.bitperfect.android.ui.settings.UnconfirmedMusicViewModel
 import com.bitperfect.android.ui.settings.SettingsScreen
 import com.bitperfect.android.ui.settings.SettingsViewModel
 import com.bitperfect.android.ui.theme.BitPerfectMotion
@@ -272,7 +274,10 @@ fun BitPerfectNavGraph(
                 SettingsScreen(
                     viewModel = settingsViewModel,
                     onDiagnosticsClick = { navController.navigate(Screen.Diagnostics.route) },
-                    onLicensesClick = { navController.navigate(Screen.Licenses.route) }
+                    onLicensesClick = { navController.navigate(Screen.Licenses.route) },
+                    onUnconfirmedMusicClick = {
+                        navController.navigate(Screen.UnconfirmedMusic.route)
+                    }
                 )
             }
 
@@ -475,6 +480,19 @@ fun BitPerfectNavGraph(
             // Licenses screen
             composable(Screen.Licenses.route) {
                 LicensesScreen(onBackClick = { navController.popBackStack() })
+            }
+
+            // Files the scanner judged probably-not-music, with a move-to-library
+            // action. Scoped to this destination: the list is reloaded on entry,
+            // so there is no state worth sharing with the rest of the graph.
+            composable(Screen.UnconfirmedMusic.route) {
+                val unconfirmedViewModel: UnconfirmedMusicViewModel = viewModel(
+                    factory = UnconfirmedMusicViewModel.Factory(musicLibrary)
+                )
+                UnconfirmedMusicScreen(
+                    viewModel = unconfirmedViewModel,
+                    onBack = { navController.popBackStack() }
+                )
             }
         }
     }

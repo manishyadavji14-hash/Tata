@@ -19,7 +19,7 @@ ask you to allow installing from the browser the first time.
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
 | Size | 16 MiB |
-| SHA-256 | `a51c4867e816fc8119d25284d9ce20cdf0125f557308eafcb537516c2e9fd696` |
+| SHA-256 | `e1c49b5a995469cf253250eb046e045a91370134c341d33177bd6a7326bdfb22` |
 
 Verify the download matches before installing:
 

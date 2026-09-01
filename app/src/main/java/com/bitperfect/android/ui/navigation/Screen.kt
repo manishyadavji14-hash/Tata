@@ -44,6 +44,8 @@ sealed class Screen(val route: String) {
     data object Equalizer : Screen("equalizer")
     data object Queue : Screen("queue")
     data object Licenses : Screen("licenses")
+
+    data object UnconfirmedMusic : Screen("unconfirmed-music")
     data object Favourites : Screen("favourites")
     data object Playlists : Screen("playlists")
     data object PlaylistDetail : Screen("playlists/{playlistId}") {
