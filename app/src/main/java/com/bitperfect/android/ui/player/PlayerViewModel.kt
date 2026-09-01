@@ -72,7 +72,20 @@ class PlayerViewModel(
         val isFavourite: Boolean = false,
         val isInLibrary: Boolean = false,
         val sleepTimerRemainingMs: Long? = null,
-        val statusMessage: String? = null
+        val statusMessage: String? = null,
+
+        /** Absolute path of the current file, for the Info sheet and actions. */
+        val trackPath: String = "",
+
+        // Navigation targets for the album-art overflow menu. Zero or blank when
+        // the file is not in the library, and the menu hides those entries.
+        val albumId: Long = 0L,
+        val artistId: Long = 0L,
+        val genre: String = "",
+        val folder: String = "",
+        val year: Int = 0,
+        val trackNumber: Int = 0,
+        val fileSize: Long = 0L
     )
 
     /**
@@ -232,6 +245,17 @@ class PlayerViewModel(
 
     fun dismissStatusMessage() {
         _uiState.update { current -> current.copy(statusMessage = null) }
+    }
+
+    /**
+     * Show a message produced elsewhere in this screen's snackbar.
+     *
+     * The add-to-playlist dialog is hosted by the nav graph, not the player, so
+     * without this its outcome — including "add this file to your library first"
+     * — would be reported nowhere.
+     */
+    fun showExternalMessage(message: String) {
+        _uiState.update { current -> current.copy(statusMessage = message) }
     }
 
     fun play() {

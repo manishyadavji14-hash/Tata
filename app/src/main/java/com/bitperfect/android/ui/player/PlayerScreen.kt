@@ -45,6 +45,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Album
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Category
+import androidx.compose.material.icons.automirrored.filled.PlaylistAdd
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
@@ -108,7 +116,11 @@ fun PlayerScreen(
     onAlbumArtClick: () -> Unit = {},
     onEqualizerClick: () -> Unit = {},
     onQueueClick: () -> Unit = {},
-    onDiagnosticsClick: () -> Unit = {}
+    onAddToPlaylist: (String) -> Unit = {},
+    onGoToAlbum: (Long) -> Unit = {},
+    onGoToArtist: (Long) -> Unit = {},
+    onGoToFolder: (String) -> Unit = {},
+    onGoToGenre: (String) -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -185,27 +197,11 @@ fun PlayerScreen(
                 .padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
-            // Format badge at top
-            FormatBadge(
-                badge = uiState.formatBadge,
-                detail = uiState.formatDetail,
-                outputMode = uiState.outputMode
-            )
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            OutlinedButton(onClick = onOpenFile) {
-                Icon(
-                    imageVector = Icons.Default.FolderOpen,
-                    contentDescription = null,
-                    modifier = Modifier.size(20.dp)
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text("Open WAV or FLAC")
-            }
-
+            // The format badge and the file-open button used to sit here. The
+            // badge is now a single line under the title, and opening a file is
+            // reachable from the library, so the artwork leads the screen.
             uiState.errorMessage?.let { message ->
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
@@ -225,23 +221,43 @@ fun PlayerScreen(
                 label = "artworkScale"
             )
 
-            AlbumArtwork(
-                artworkUri = uiState.artworkUri,
-                isPlaying = uiState.isPlaying,
-                onClick = onAlbumArtClick,
+            Box(
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
                     .aspectRatio(1f)
-                    .scale(artworkScale)
-            )
+            ) {
+                AlbumArtwork(
+                    artworkUri = uiState.artworkUri,
+                    isPlaying = uiState.isPlaying,
+                    onClick = onAlbumArtClick,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .scale(artworkScale)
+                )
+
+                // Overflow sits over the lower-right corner of the artwork.
+                AlbumArtActions(
+                    uiState = uiState,
+                    onAddToPlaylist = onAddToPlaylist,
+                    onGoToAlbum = onGoToAlbum,
+                    onGoToArtist = onGoToArtist,
+                    onGoToFolder = onGoToFolder,
+                    onGoToGenre = onGoToGenre,
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(8.dp)
+                )
+            }
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Track info
+            // Track info, with the format folded in as a single quiet line.
             TrackInfo(
                 title = uiState.trackTitle,
                 artist = uiState.artist,
-                album = uiState.album
+                album = uiState.album,
+                formatLine = uiState.formatDetail,
+                outputMode = uiState.outputMode
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -282,51 +298,10 @@ fun PlayerScreen(
                 onToggleFavourite = { viewModel.toggleFavourite() },
                 onSleepTimerClick = { isSleepTimerSheetVisible = true },
                 onEqualizerClick = onEqualizerClick,
-                onQueueClick = onQueueClick,
-                onDiagnosticsClick = onDiagnosticsClick
+                onQueueClick = onQueueClick
             )
         }
         } // accent-gradient Box
-    }
-}
-
-@Composable
-private fun FormatBadge(
-    badge: String,
-    detail: String,
-    outputMode: PlayerViewModel.OutputMode
-) {
-    val badgeColor = when (outputMode) {
-        PlayerViewModel.OutputMode.BITPERFECT -> BitPerfectGreen
-        PlayerViewModel.OutputMode.PCM -> MaterialTheme.colorScheme.primary
-        PlayerViewModel.OutputMode.DOP -> DopPurple
-        PlayerViewModel.OutputMode.NATIVE_DSD -> DsdBlue
-    }
-
-    Surface(
-        shape = BitPerfectShapeTokens.FormatBadgeCorner,
-        color = badgeColor.copy(alpha = 0.15f),
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = badge,
-                style = MaterialTheme.typography.labelLarge,
-                color = badgeColor,
-                fontWeight = FontWeight.Bold
-            )
-            if (detail.isNotEmpty()) {
-                Text(
-                    text = detail,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Center
-                )
-            }
-        }
     }
 }
 
@@ -355,7 +330,10 @@ private fun AlbumArtwork(
 private fun TrackInfo(
     title: String,
     artist: String,
-    album: String
+    album: String,
+    /** Sample rate, depth and codec, shown quietly instead of as a top badge. */
+    formatLine: String = "",
+    outputMode: PlayerViewModel.OutputMode = PlayerViewModel.OutputMode.PCM
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -384,6 +362,25 @@ private fun TrackInfo(
                 text = album,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                textAlign = TextAlign.Center
+            )
+        }
+        if (formatLine.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(
+                text = formatLine,
+                style = MaterialTheme.typography.labelSmall,
+                // Tinted by output mode, so bit-perfect USB still reads as
+                // distinct from the Android mixer without a whole badge.
+                color = when (outputMode) {
+                    PlayerViewModel.OutputMode.BITPERFECT -> BitPerfectGreen
+                    PlayerViewModel.OutputMode.DOP -> DopPurple
+                    PlayerViewModel.OutputMode.NATIVE_DSD -> DsdBlue
+                    PlayerViewModel.OutputMode.PCM ->
+                        MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                },
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center
@@ -578,17 +575,16 @@ private fun BottomRow(
     onToggleFavourite: () -> Unit,
     onSleepTimerClick: () -> Unit,
     onEqualizerClick: () -> Unit,
-    onQueueClick: () -> Unit,
-    onDiagnosticsClick: () -> Unit
+    onQueueClick: () -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Device info (clickable to diagnostics)
+        // Device info. No longer a shortcut to diagnostics: that screen is a
+        // developer tool and belongs in Settings, not on the player.
         Surface(
-            onClick = onDiagnosticsClick,
             shape = BitPerfectShapeTokens.FormatBadgeCorner,
             color = Color.Transparent
         ) {
@@ -750,3 +746,191 @@ private enum class TransportIconState { LOADING, PLAY, PAUSE }
 
 /** How far the top of the player must be dragged down to dismiss it. */
 private const val COLLAPSE_THRESHOLD_PX = 120f
+
+
+/**
+ * Overflow actions, overlaid on the lower-right corner of the album art.
+ *
+ * Only entries that can actually do something are shown. Navigation targets are
+ * hidden when the file is not in the library or the tag is missing, so the menu
+ * never offers a dead action — an item that opens an empty screen is worse than
+ * no item at all.
+ *
+ * Deliberately absent for now, rather than shown and inert:
+ *  - **Lyrics**, which needs the synced-lyrics view. It gets its own icon here
+ *    once that exists.
+ *  - **Delete**, because removing a user's file on Android 11+ requires a
+ *    MediaStore consent flow, and a half-built destructive action is the worst
+ *    thing to ship.
+ *  - **Album art** and **Bookmark**, whose intended behaviour is not yet defined.
+ */
+@Composable
+private fun AlbumArtActions(
+    uiState: PlayerViewModel.PlayerUiState,
+    onAddToPlaylist: (String) -> Unit,
+    onGoToAlbum: (Long) -> Unit,
+    onGoToArtist: (Long) -> Unit,
+    onGoToFolder: (String) -> Unit,
+    onGoToGenre: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var isMenuOpen by remember { mutableStateOf(false) }
+    var isInfoOpen by remember { mutableStateOf(false) }
+
+    val hasTrack = uiState.trackPath.isNotEmpty()
+    if (!hasTrack) return
+
+    Box(modifier = modifier) {
+        // Tinted surface so the button stays visible over both bright and dark
+        // artwork.
+        Surface(
+            shape = CircleShape,
+            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.75f)
+        ) {
+            IconButton(onClick = { isMenuOpen = true }) {
+                Icon(
+                    imageVector = Icons.Default.MoreVert,
+                    contentDescription = "Track options",
+                    tint = MaterialTheme.colorScheme.onSurface
+                )
+            }
+        }
+
+        DropdownMenu(
+            expanded = isMenuOpen,
+            onDismissRequest = { isMenuOpen = false }
+        ) {
+            DropdownMenuItem(
+                text = { Text("Info / Tags") },
+                leadingIcon = { Icon(Icons.Default.Info, contentDescription = null) },
+                onClick = {
+                    isMenuOpen = false
+                    isInfoOpen = true
+                }
+            )
+
+            if (uiState.isInLibrary) {
+                DropdownMenuItem(
+                    text = { Text("Add to playlist") },
+                    leadingIcon = {
+                        Icon(Icons.AutoMirrored.Filled.PlaylistAdd, contentDescription = null)
+                    },
+                    onClick = {
+                        isMenuOpen = false
+                        onAddToPlaylist(uiState.trackPath)
+                    }
+                )
+            }
+
+            if (uiState.albumId != 0L) {
+                DropdownMenuItem(
+                    text = { Text("Go to album") },
+                    leadingIcon = { Icon(Icons.Default.Album, contentDescription = null) },
+                    onClick = {
+                        isMenuOpen = false
+                        onGoToAlbum(uiState.albumId)
+                    }
+                )
+            }
+
+            if (uiState.artistId != 0L) {
+                DropdownMenuItem(
+                    text = { Text("Go to artist") },
+                    leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
+                    onClick = {
+                        isMenuOpen = false
+                        onGoToArtist(uiState.artistId)
+                    }
+                )
+            }
+
+            if (uiState.genre.isNotBlank()) {
+                DropdownMenuItem(
+                    text = { Text("Go to genre") },
+                    leadingIcon = { Icon(Icons.Default.Category, contentDescription = null) },
+                    onClick = {
+                        isMenuOpen = false
+                        onGoToGenre(uiState.genre)
+                    }
+                )
+            }
+
+            if (uiState.folder.isNotBlank()) {
+                DropdownMenuItem(
+                    text = { Text("Go to folder") },
+                    leadingIcon = { Icon(Icons.Default.FolderOpen, contentDescription = null) },
+                    onClick = {
+                        isMenuOpen = false
+                        onGoToFolder(uiState.folder)
+                    }
+                )
+            }
+        }
+    }
+
+    if (isInfoOpen) {
+        TrackInfoDialog(uiState = uiState, onDismiss = { isInfoOpen = false })
+    }
+}
+
+/**
+ * Everything known about the current file, including the facts the cleaned-up
+ * player no longer shows on screen.
+ */
+@Composable
+private fun TrackInfoDialog(
+    uiState: PlayerViewModel.PlayerUiState,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Info / Tags") },
+        text = {
+            Column {
+                InfoLine("Title", uiState.trackTitle)
+                InfoLine("Artist", uiState.artist)
+                InfoLine("Album", uiState.album)
+                InfoLine("Genre", uiState.genre)
+                if (uiState.year > 0) InfoLine("Year", uiState.year.toString())
+                if (uiState.trackNumber > 0) InfoLine("Track", uiState.trackNumber.toString())
+                InfoLine("Format", uiState.formatBadge)
+                if (uiState.sampleRate > 0) {
+                    InfoLine("Sample rate", "${uiState.sampleRate} Hz")
+                }
+                if (uiState.bitDepth > 0) InfoLine("Bit depth", "${uiState.bitDepth}-bit")
+                if (uiState.channels > 0) InfoLine("Channels", uiState.channels.toString())
+                if (uiState.durationMs > 0) InfoLine("Duration", uiState.durationText)
+                if (uiState.fileSize > 0) {
+                    InfoLine("File size", formatFileSize(uiState.fileSize))
+                }
+                InfoLine("Folder", uiState.folder)
+                // Full path last: it is the longest and the least often wanted,
+                // but it is the only way to identify a file unambiguously.
+                InfoLine("Path", uiState.trackPath)
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text("Close") }
+        }
+    )
+}
+
+@Composable
+private fun InfoLine(label: String, value: String) {
+    if (value.isBlank()) return
+    Column(modifier = Modifier.padding(vertical = 4.dp)) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Text(text = value, style = MaterialTheme.typography.bodySmall)
+    }
+}
+
+private fun formatFileSize(bytes: Long): String = when {
+    bytes >= 1_073_741_824L -> "%.2f GB".format(bytes / 1_073_741_824.0)
+    bytes >= 1_048_576L -> "%.1f MB".format(bytes / 1_048_576.0)
+    bytes >= 1024L -> "%.1f KB".format(bytes / 1024.0)
+    else -> "$bytes B"
+}

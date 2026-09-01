@@ -312,7 +312,19 @@ class MusicLibrary(
                 year = track.year,
                 artworkUri = track.artworkPath,
                 isFavourite = track.isFavourite,
-                isInLibrary = true
+                isInLibrary = true,
+                // Identifiers for the player's "go to album / artist / folder /
+                // genre" actions. Resolved here because the row is already loaded.
+                albumId = track.albumId,
+                artistId = track.artist
+                    .takeIf { it.isNotBlank() }
+                    ?.let { artistDao.findByName(it)?.id }
+                    ?: 0L,
+                genre = track.genre,
+                folder = track.folder,
+                durationMs = track.duration,
+                trackNumber = track.trackNumber,
+                fileSize = track.fileSize
             )
         }
 
@@ -388,7 +400,19 @@ class MusicLibrary(
          * False for files opened directly, which have no library row and so
          * cannot be favourited or added to a playlist.
          */
-        val isInLibrary: Boolean = false
+        val isInLibrary: Boolean = false,
+
+        // Navigation targets. Zero or blank when unknown, which is the case for
+        // any file that is not in the library.
+        val albumId: Long = 0L,
+        val artistId: Long = 0L,
+        val genre: String = "",
+        val folder: String = "",
+
+        // Extra facts for the Info / Tags sheet.
+        val durationMs: Long = 0L,
+        val trackNumber: Int = 0,
+        val fileSize: Long = 0L
     )
 
     // --- Search ---
