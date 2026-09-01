@@ -28,10 +28,11 @@ import com.bitperfect.android.library.model.Track
  * - v1: tracks, albums, artists, playlists
  * - v2: album artist grouping (Album.albumArtist, Track.albumArtist) and
  *   Track.isFavourite
+ * - v3: Track.isUnconfirmed, quarantining files that carry no tags
  */
 @Database(
     entities = [Track::class, Album::class, Artist::class, Playlist::class],
-    version = 2,
+    version = 3,
     exportSchema = true
 )
 abstract class LibraryDatabase : RoomDatabase() {
@@ -91,6 +92,40 @@ abstract class LibraryDatabase : RoomDatabase() {
             }
         }
 
+        /**
+         * v2 to v3: quarantine files that carry no identifying tags.
+         *
+         * Additive only — one column with a default, so no table is rebuilt and
+         * no user data is at risk. Playlists, favourites and album ids are
+         * untouched.
+         *
+         * Existing rows are then backfilled with the same rule the scanner
+         * applies, so an established library is cleaned up on upgrade instead of
+         * having to wait for a rescan. The condition is kept in SQL rather than
+         * loading every row into memory; it mirrors Track.looksUntagged, and the
+         * unit tests assert the two agree.
+         */
+        private val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE `tracks` ADD COLUMN `isUnconfirmed` INTEGER NOT NULL DEFAULT 0"
+                )
+
+                // TRIM guards against tags that are whitespace rather than empty,
+                // which isBlank() also treats as absent.
+                db.execSQL(
+                    """
+                    UPDATE `tracks` SET `isUnconfirmed` = 1
+                    WHERE TRIM(`artist`) = ''
+                      AND TRIM(`albumTitle`) = ''
+                      AND TRIM(`albumArtist`) = ''
+                      AND `year` <= 0
+                      AND (`artworkPath` IS NULL OR TRIM(`artworkPath`) = '')
+                    """.trimIndent()
+                )
+            }
+        }
+
         @Volatile
         private var instance: LibraryDatabase? = null
 
@@ -108,7 +143,7 @@ abstract class LibraryDatabase : RoomDatabase() {
                     LibraryDatabase::class.java,
                     DATABASE_NAME
                 )
-                    .addMigrations(MIGRATION_1_2)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                     .build()
                     .also { instance = it }
             }

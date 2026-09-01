@@ -69,7 +69,10 @@ class MusicLibrary(
             scanner.setProgressCallback(progressCallback)
         }
 
-        val existing = trackDao.getAll().associateBy { it.path }
+        // Includes quarantined rows on purpose. The filtered getAll() would make
+        // them look new on every scan, and re-inserting them violates the unique
+        // index on path.
+        val existing = trackDao.getAllIncludingUnconfirmed().associateBy { it.path }
         val result = scanner.scan(directories, existing, formats)
 
         if (result.success) {
@@ -309,7 +312,19 @@ class MusicLibrary(
                 year = track.year,
                 artworkUri = track.artworkPath,
                 isFavourite = track.isFavourite,
-                isInLibrary = true
+                isInLibrary = true,
+                // Identifiers for the player's "go to album / artist / folder /
+                // genre" actions. Resolved here because the row is already loaded.
+                albumId = track.albumId,
+                artistId = track.artist
+                    .takeIf { it.isNotBlank() }
+                    ?.let { artistDao.findByName(it)?.id }
+                    ?: 0L,
+                genre = track.genre,
+                folder = track.folder,
+                durationMs = track.duration,
+                trackNumber = track.trackNumber,
+                fileSize = track.fileSize
             )
         }
 
@@ -343,6 +358,34 @@ class MusicLibrary(
      */
     suspend fun clearArtworkCache() = withContext(Dispatchers.IO) { artworkCache.clear() }
 
+    // --- Unconfirmed music ---
+    //
+    // Files carrying no album, artist, year or artwork are probably recordings,
+    // voice notes or ringtones. They are kept out of the main library but never
+    // deleted, and the user can move them in.
+
+    /** Files quarantined as probably-not-music, ordered by path. */
+    suspend fun getUnconfirmedTracks(): List<Track> =
+        withContext(Dispatchers.IO) { trackDao.getUnconfirmed() }
+
+    suspend fun countUnconfirmedTracks(): Int =
+        withContext(Dispatchers.IO) { trackDao.countUnconfirmed() }
+
+    /**
+     * Move tracks into the main library.
+     *
+     * Permanent: a later rescan will not quarantine them again, even though they
+     * still have no tags. Aggregates are rebuilt so they appear under their
+     * folder and in the counts straight away.
+     */
+    suspend fun confirmTracks(trackIds: List<Long>) = withContext(Dispatchers.IO) {
+        if (trackIds.isEmpty()) return@withContext
+        database.runInTransaction {
+            trackDao.setUnconfirmed(trackIds, false)
+            rebuildAggregates()
+        }
+    }
+
     /**
      * Display details for the currently playing file.
      */
@@ -357,7 +400,19 @@ class MusicLibrary(
          * False for files opened directly, which have no library row and so
          * cannot be favourited or added to a playlist.
          */
-        val isInLibrary: Boolean = false
+        val isInLibrary: Boolean = false,
+
+        // Navigation targets. Zero or blank when unknown, which is the case for
+        // any file that is not in the library.
+        val albumId: Long = 0L,
+        val artistId: Long = 0L,
+        val genre: String = "",
+        val folder: String = "",
+
+        // Extra facts for the Info / Tags sheet.
+        val durationMs: Long = 0L,
+        val trackNumber: Int = 0,
+        val fileSize: Long = 0L
     )
 
     // --- Search ---
@@ -558,18 +613,31 @@ class MusicLibrary(
             removedPaths.forEach { path -> trackDao.deleteByPath(path) }
 
             tracks.forEach { track ->
-                // Resolve the id inside the transaction. Inserting a path that
+                // Resolve the row inside the transaction. Inserting a path that
                 // already exists would hit the unique index and REPLACE, which
                 // SQLite implements as delete-then-insert and would allocate a
                 // new id - the exact thing this reconcile exists to avoid.
-                val existingId = if (track.id != 0L) {
-                    track.id
+                val stored = if (track.id != 0L) {
+                    trackDao.getById(track.id)
                 } else {
-                    trackDao.getByPath(track.path)?.id ?: 0L
+                    trackDao.getByPath(track.path)
                 }
 
-                if (existingId != 0L) {
-                    trackDao.update(track.copy(id = existingId))
+                if (stored != null) {
+                    // update() writes the whole row, and a freshly scanned track
+                    // carries defaults for the columns the user owns. Carry those
+                    // across explicitly, or editing a file's tags would silently
+                    // clear its favourite and undo a move into the library.
+                    trackDao.update(
+                        track.copy(
+                            id = stored.id,
+                            isFavourite = stored.isFavourite,
+                            // Quarantine is sticky until the file gains tags, but
+                            // confirmation is permanent: once a track is in the
+                            // library it is never pushed back out.
+                            isUnconfirmed = stored.isUnconfirmed && track.isUnconfirmed
+                        )
+                    )
                 } else {
                     trackDao.insert(track)
                 }

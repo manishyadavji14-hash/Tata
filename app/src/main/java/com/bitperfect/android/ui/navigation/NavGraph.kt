@@ -54,6 +54,8 @@ import com.bitperfect.android.ui.playlist.AddToPlaylistDialog
 import com.bitperfect.android.ui.playlist.PlaylistsScreen
 import com.bitperfect.android.ui.playlist.PlaylistsViewModel
 import com.bitperfect.android.ui.settings.LicensesScreen
+import com.bitperfect.android.ui.settings.UnconfirmedMusicScreen
+import com.bitperfect.android.ui.settings.UnconfirmedMusicViewModel
 import com.bitperfect.android.ui.settings.SettingsScreen
 import com.bitperfect.android.ui.settings.SettingsViewModel
 import com.bitperfect.android.ui.theme.BitPerfectMotion
@@ -104,6 +106,9 @@ fun BitPerfectNavGraph(
     val showMiniPlayer = currentDestination?.route != Screen.Player.route &&
         currentDestination?.route != Screen.Queue.route &&
         (playerUiState.isPlaying || playerUiState.isPaused)
+
+    // Track the player's overflow menu is adding to a playlist, if any.
+    var playerPlaylistTrack by remember { mutableStateOf<String?>(null) }
 
     // Opening the player from the mini bar or its pull-up gesture. Player is the
     // start destination, so this restores it rather than stacking a copy.
@@ -224,8 +229,32 @@ fun BitPerfectNavGraph(
                     },
                     onEqualizerClick = { navController.navigate(Screen.Equalizer.route) },
                     onQueueClick = { navController.navigate(Screen.Queue.route) },
-                    onDiagnosticsClick = { navController.navigate(Screen.Diagnostics.route) }
+                    onAddToPlaylist = { path -> playerPlaylistTrack = path },
+                    onGoToAlbum = { albumId ->
+                        navController.navigate(Screen.AlbumTracks.createRoute(albumId))
+                    },
+                    onGoToArtist = { artistId ->
+                        navController.navigate(Screen.ArtistAlbums.createRoute(artistId))
+                    },
+                    onGoToFolder = { path ->
+                        navController.navigate(Screen.FolderTracks.createRoute(path))
+                    },
+                    onGoToGenre = { name ->
+                        navController.navigate(Screen.GenreTracks.createRoute(name))
+                    }
                 )
+
+                // Hosted here rather than inside PlayerScreen so the dialog can
+                // use the graph-scoped PlaylistsViewModel that every other
+                // screen shares.
+                playerPlaylistTrack?.let { path ->
+                    AddToPlaylistDialog(
+                        trackPath = path,
+                        viewModel = playlistsViewModel,
+                        onDismiss = { playerPlaylistTrack = null },
+                        onResult = playerViewModel::showExternalMessage
+                    )
+                }
             }
 
             // Library screen
@@ -272,7 +301,10 @@ fun BitPerfectNavGraph(
                 SettingsScreen(
                     viewModel = settingsViewModel,
                     onDiagnosticsClick = { navController.navigate(Screen.Diagnostics.route) },
-                    onLicensesClick = { navController.navigate(Screen.Licenses.route) }
+                    onLicensesClick = { navController.navigate(Screen.Licenses.route) },
+                    onUnconfirmedMusicClick = {
+                        navController.navigate(Screen.UnconfirmedMusic.route)
+                    }
                 )
             }
 
@@ -475,6 +507,19 @@ fun BitPerfectNavGraph(
             // Licenses screen
             composable(Screen.Licenses.route) {
                 LicensesScreen(onBackClick = { navController.popBackStack() })
+            }
+
+            // Files the scanner judged probably-not-music, with a move-to-library
+            // action. Scoped to this destination: the list is reloaded on entry,
+            // so there is no state worth sharing with the rest of the graph.
+            composable(Screen.UnconfirmedMusic.route) {
+                val unconfirmedViewModel: UnconfirmedMusicViewModel = viewModel(
+                    factory = UnconfirmedMusicViewModel.Factory(musicLibrary)
+                )
+                UnconfirmedMusicScreen(
+                    viewModel = unconfirmedViewModel,
+                    onBack = { navController.popBackStack() }
+                )
             }
         }
     }

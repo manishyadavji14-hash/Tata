@@ -334,7 +334,18 @@ class LibraryScanner(
             artworkPath = entry.artworkUri,
             year = entry.year,
             fileSize = entry.fileSize,
-            lastModified = entry.lastModified
+            lastModified = entry.lastModified,
+            // A file with no album, artist, year or artwork is probably a
+            // recording or ringtone rather than music, so it is quarantined out
+            // of the main library instead of cluttering it. Never deleted: the
+            // user can move entries in from Settings.
+            isUnconfirmed = Track.looksUntagged(
+                artist = entry.artist,
+                albumTitle = entry.album,
+                albumArtist = entry.albumArtist.ifBlank { entry.artist },
+                year = entry.year,
+                artworkPath = entry.artworkUri
+            )
         )
     }
 }

@@ -62,7 +62,8 @@ import com.bitperfect.android.ui.theme.ErrorRed
 fun SettingsScreen(
     viewModel: SettingsViewModel,
     onDiagnosticsClick: () -> Unit = {},
-    onLicensesClick: () -> Unit = {}
+    onLicensesClick: () -> Unit = {},
+    onUnconfirmedMusicClick: () -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val showWarning by viewModel.showWarningDialog.collectAsState()
@@ -236,6 +237,29 @@ fun SettingsScreen(
                         checked = uiState.debugLogging,
                         onCheckedChange = { viewModel.setDebugLogging(it) }
                     )
+                }
+            }
+
+            // Library section
+            item {
+                SectionHeader("Library")
+            }
+            item {
+                SettingsCard {
+                    Text(
+                        text = "Unconfirmed music",
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = "Files with no album, artist, year or artwork are kept out of " +
+                            "the library. Review them and move any real music in.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    TextButton(onClick = onUnconfirmedMusicClick) {
+                        Text("Review unconfirmed music")
+                    }
                 }
             }
 

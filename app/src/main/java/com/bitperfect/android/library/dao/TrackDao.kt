@@ -19,8 +19,36 @@ import com.bitperfect.android.library.model.Track
 @Dao
 interface TrackDao {
 
-    @Query("SELECT * FROM tracks ORDER BY title ASC")
+    /**
+     * Every track in the main library.
+     *
+     * Excludes quarantined rows, so the browse UI never shows them. The scanner
+     * must use [getAllIncludingUnconfirmed] instead — see the note there.
+     */
+    @Query("SELECT * FROM tracks WHERE isUnconfirmed = 0 ORDER BY title ASC")
     fun getAll(): List<Track>
+
+    /**
+     * Every row, quarantined ones included.
+     *
+     * The scanner builds its "already known" map from this. Using the filtered
+     * [getAll] would make quarantined files look new on every scan, and inserting
+     * them again violates the unique index on `path`.
+     */
+    @Query("SELECT * FROM tracks ORDER BY title ASC")
+    fun getAllIncludingUnconfirmed(): List<Track>
+
+    // --- Unconfirmed (probably not music) ---
+
+    @Query("SELECT * FROM tracks WHERE isUnconfirmed != 0 ORDER BY path ASC")
+    fun getUnconfirmed(): List<Track>
+
+    @Query("SELECT COUNT(*) FROM tracks WHERE isUnconfirmed != 0")
+    fun countUnconfirmed(): Int
+
+    /** Move rows into the main library, or back out of it. */
+    @Query("UPDATE tracks SET isUnconfirmed = :isUnconfirmed WHERE id IN (:ids)")
+    fun setUnconfirmed(ids: List<Long>, isUnconfirmed: Boolean)
 
     @Query("SELECT * FROM tracks WHERE id = :id")
     fun getById(id: Long): Track?
@@ -28,16 +56,16 @@ interface TrackDao {
     @Query("SELECT * FROM tracks WHERE path = :path LIMIT 1")
     fun getByPath(path: String): Track?
 
-    @Query("SELECT * FROM tracks WHERE albumId = :albumId ORDER BY discNumber ASC, trackNumber ASC")
+    @Query("SELECT * FROM tracks WHERE albumId = :albumId AND isUnconfirmed = 0 ORDER BY discNumber ASC, trackNumber ASC")
     fun getByAlbum(albumId: Long): List<Track>
 
-    @Query("SELECT * FROM tracks WHERE artist = :artist ORDER BY albumTitle ASC, trackNumber ASC")
+    @Query("SELECT * FROM tracks WHERE artist = :artist AND isUnconfirmed = 0 ORDER BY albumTitle ASC, trackNumber ASC")
     fun getByArtist(artist: String): List<Track>
 
-    @Query("SELECT * FROM tracks WHERE genre = :genre ORDER BY title ASC")
+    @Query("SELECT * FROM tracks WHERE genre = :genre AND isUnconfirmed = 0 ORDER BY title ASC")
     fun getByGenre(genre: String): List<Track>
 
-    @Query("SELECT * FROM tracks WHERE composer = :composer ORDER BY title ASC")
+    @Query("SELECT * FROM tracks WHERE composer = :composer AND isUnconfirmed = 0 ORDER BY title ASC")
     fun getByComposer(composer: String): List<Track>
 
     /**
@@ -45,16 +73,17 @@ interface TrackDao {
      *
      * @param pathPattern Escaped LIKE pattern from [SqlPatterns.directoryPrefix].
      */
-    @Query("SELECT * FROM tracks WHERE path LIKE :pathPattern ESCAPE '\\' ORDER BY path ASC")
+    @Query("SELECT * FROM tracks WHERE path LIKE :pathPattern ESCAPE '\\' AND isUnconfirmed = 0 ORDER BY path ASC")
     fun getByFolder(pathPattern: String): List<Track>
 
     /**
      * @param pattern Escaped LIKE pattern from [SqlPatterns.contains].
      */
     @Query(
-        "SELECT * FROM tracks WHERE title LIKE :pattern ESCAPE '\\' " +
+        "SELECT * FROM tracks WHERE isUnconfirmed = 0 AND (" +
+            "title LIKE :pattern ESCAPE '\\' " +
             "OR artist LIKE :pattern ESCAPE '\\' " +
-            "OR albumTitle LIKE :pattern ESCAPE '\\' " +
+            "OR albumTitle LIKE :pattern ESCAPE '\\') " +
             "ORDER BY title ASC"
     )
     fun search(pattern: String): List<Track>
@@ -68,7 +97,7 @@ interface TrackDao {
     @Query("SELECT COUNT(*) FROM tracks WHERE isFavourite != 0")
     fun favouriteCount(): Int
 
-    @Query("SELECT * FROM tracks WHERE albumArtist = :albumArtist ORDER BY albumTitle ASC, discNumber ASC, trackNumber ASC")
+    @Query("SELECT * FROM tracks WHERE albumArtist = :albumArtist AND isUnconfirmed = 0 ORDER BY albumTitle ASC, discNumber ASC, trackNumber ASC")
     fun getByAlbumArtist(albumArtist: String): List<Track>
 
     /**
@@ -99,7 +128,7 @@ interface TrackDao {
     @Query("DELETE FROM tracks")
     fun deleteAll()
 
-    @Query("SELECT COUNT(*) FROM tracks")
+    @Query("SELECT COUNT(*) FROM tracks WHERE isUnconfirmed = 0")
     fun count(): Int
 
     @Query("SELECT DISTINCT path FROM tracks WHERE path LIKE :folderPath || '%'")
@@ -112,14 +141,14 @@ interface TrackDao {
 
     @Query(
         "SELECT genre AS name, COUNT(*) AS trackCount FROM tracks " +
-            "WHERE genre IS NOT NULL AND genre != '' " +
+            "WHERE isUnconfirmed = 0 AND genre IS NOT NULL AND genre != '' " +
             "GROUP BY genre ORDER BY genre ASC"
     )
     fun getGenreSummaries(): List<NameCount>
 
     @Query(
         "SELECT composer AS name, COUNT(*) AS trackCount FROM tracks " +
-            "WHERE composer IS NOT NULL AND composer != '' " +
+            "WHERE isUnconfirmed = 0 AND composer IS NOT NULL AND composer != '' " +
             "GROUP BY composer ORDER BY composer ASC"
     )
     fun getComposerSummaries(): List<NameCount>
@@ -133,7 +162,7 @@ interface TrackDao {
     @Query(
         "SELECT rtrim(rtrim(path, replace(path, '/', '')), '/') AS name, " +
             "COUNT(*) AS trackCount " +
-            "FROM tracks GROUP BY name ORDER BY name ASC"
+            "FROM tracks WHERE isUnconfirmed = 0 GROUP BY name ORDER BY name ASC"
     )
     fun getFolderSummaries(): List<NameCount>
 

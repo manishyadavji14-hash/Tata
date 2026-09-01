@@ -15,7 +15,7 @@ each change and are deliberately detailed.**
 |---|---|
 | Work on | **`main`** — PR #2 merged as `ce564f1`, nothing outstanding on a branch |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (~15.6 MB, debug-signed, arm64 only) |
-| Test status | 282 native C++ tests, 86 JVM unit tests, `lintDebug` 0 errors |
+| Test status | 282 native C++ tests, 113 JVM unit tests, `lintDebug` 0 errors |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
 Branch from `main` for new work. The old `feat/audiotrack-playback-build-fix`
@@ -67,7 +67,7 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 86 passing)
+# JVM unit tests (expect 113 passing)
 ./gradlew :app:testDebugUnitTest
 
 # Lint (expect 0 errors; warnings are pre-existing)
@@ -169,25 +169,60 @@ to degrade, never to crash the app (see `componentsReady`).
 ### P0 — Verify the unconfirmed list in section 1
 No new work should start until the last build is known good on hardware.
 
-### P1 — "Unconfirmed music" quarantine (requested, not started)
-Detect files that are probably not music and keep them out of the main track
-list. The maintainer's heuristic: **no tags at all** — no album, no artist, no
-year, no cover art.
+### ~~P1 — "Unconfirmed music" quarantine~~ — DONE, needs device check
+Implemented. `Track.isUnconfirmed` (schema **v3**, `MIGRATION_2_3`), the rule in
+`Track.looksUntagged`, quarantined rows filtered out of every browse query, and a
+review screen at Settings → Library → "Review unconfirmed music" with
+multi-select and "Move to library".
 
-Required:
-- A `Track` flag (e.g. `isUnconfirmed`) plus a **Room migration** —
-  schema is at `app/schemas/`, currently v2, and
-  `fallbackToDestructiveMigration` is deliberately **off** because playlists and
-  favourites are user data that a rescan cannot rebuild. A bad migration now
-  crashes rather than wipes; write `MIGRATION_2_3` carefully.
-- Scanner sets the flag; main library queries exclude it.
-- A Settings section listing them with multi-select and "move to library".
+Notes for whoever tests it:
+- The rule requires **all** of album, artist, album artist, year and artwork to be
+  absent. Deliberately conservative — hiding real music is worse than showing a
+  stray recording.
+- `MIGRATION_2_3` backfills existing rows, so an established library is cleaned up
+  on upgrade without a rescan.
+- The scanner uses `getAllIncludingUnconfirmed()`; using the filtered `getAll()`
+  would make quarantined files look new every scan and violate the unique path
+  index.
+- Confirming a track is permanent. `persistScanResult` carries `isFavourite` and
+  `isUnconfirmed` over from the stored row, which also fixed a pre-existing bug
+  where **editing a file's tags silently cleared its favourite**.
+- 11 unit tests, including one that reimplements the migration's SQL predicate and
+  asserts it agrees with the Kotlin across a full input matrix — the two are in
+  different languages and would otherwise drift.
 
-### P1 — "Player screen should be clean" (requested, needs a decision)
-The maintainer asked for this but has not yet said what to remove. A proposal was
-put to them and not answered: drop the "Open WAV or FLAC" button and the
-diagnostics icon, fold the format badge into small text under the title, keep
-art → title → seek → transport. **Confirm before implementing.**
+Still unverified on device: the upgrade path from a real v2 database.
+
+### ~~P1 — Player screen cleanup~~ — DONE
+Format badge folded into one line under the title (tinted by output mode), the
+file-open button removed, and the Diagnostics shortcut removed from the player.
+Reads artwork -> title -> seek -> transport.
+
+### ~~P2 — Lyrics~~ — DONE for sidecar files, needs device check
+`LyricsParser` handles LRC and plain text; `LyricsRepository` loads a sidecar
+`song.lrc` / `song.txt`, also looking in a `Lyrics/` subfolder. A lyrics icon
+appears at the lower right of the artwork **only when lyrics exist**, and the
+panel replaces the title block so the transport controls never move. Timed lyrics
+auto-centre the current line and offer a +/- 0.5 s nudge; untimed lyrics are
+hand-scrolled and say why.
+
+**Embedded lyrics are still not supported.** `MediaMetadataRetriever` exposes no
+lyrics field, so it needs ID3 `USLT`/`SYLT` and Vorbis `LYRICS` parsing.
+`MetadataExtractor.Metadata.lyrics` has always been null for this reason — it is a
+declared-but-unpopulated field, not a working feature. When that parsing lands it
+becomes a second source in `LyricsRepository`.
+
+### P2 — Album-art overflow menu: remaining items
+Implemented: Info/Tags, Add to playlist, Go to album/artist/genre/folder. Hidden
+when the target does not exist, so no entry opens an empty screen.
+
+Still to do, and deliberately absent rather than inert:
+- **Delete** — needs the MediaStore consent flow (`createDeleteRequest`) on
+  Android 11+, plus a confirmation. A half-built destructive action is the worst
+  thing to ship here.
+- **Album art** and **Bookmark** — behaviour undefined. Ask the maintainer what
+  each should do (view vs replace artwork; a saved position within a track vs a
+  saved track).
 
 ### P2 — Visualization spectrum (requested, not started)
 A spectrum driven by `android.media.audiofx.Visualizer` on the AudioTrack
