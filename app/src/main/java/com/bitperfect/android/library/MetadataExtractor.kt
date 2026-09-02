@@ -232,7 +232,15 @@ class MetadataExtractor {
             year = metadata.year,
             lyrics = metadata.lyrics,
             fileSize = file.length().takeIf { it > 0 } ?: 0L,
-            lastModified = file.lastModified().takeIf { it > 0 } ?: System.currentTimeMillis()
+            lastModified = file.lastModified().takeIf { it > 0 } ?: System.currentTimeMillis(),
+            // Applied here as well as in the bulk scanner. Without it, adding a
+            // file one at a time — opening it from the file picker, or importing
+            // a zip — bypassed quarantine entirely and dropped untagged audio
+            // straight into the library.
+            isUnconfirmed = Track.looksUntagged(
+                artist = metadata.artist,
+                albumArtist = metadata.albumArtist.ifBlank { metadata.artist }
+            )
         )
     }
 

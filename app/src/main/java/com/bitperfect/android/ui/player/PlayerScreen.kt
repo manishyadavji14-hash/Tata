@@ -91,6 +91,8 @@ import com.bitperfect.android.player.RepeatMode
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.ui.input.pointer.pointerInput
 import com.bitperfect.android.ui.components.AlbumArtImage
+import com.bitperfect.android.ui.components.TrackInfo
+import com.bitperfect.android.ui.components.TrackInfoDialog
 import com.bitperfect.android.ui.components.rememberDynamicAlbumColor
 import com.bitperfect.android.ui.theme.BitPerfectGreen
 import com.bitperfect.android.ui.theme.BitPerfectMotion
@@ -916,71 +918,36 @@ private fun AlbumArtActions(
     }
 
     if (isInfoOpen) {
-        TrackInfoDialog(uiState = uiState, onDismiss = { isInfoOpen = false })
+        TrackInfoDialog(
+            info = uiState.toTrackInfo(),
+            onDismiss = { isInfoOpen = false }
+        )
     }
 }
 
 /**
- * Everything known about the current file, including the facts the cleaned-up
- * player no longer shows on screen.
+ * Live playback state as the neutral shape the shared dialog takes.
+ *
+ * The dialog is also opened from the library, where the facts come from a
+ * database row, so it cannot depend on the player's state class.
  */
-@Composable
-private fun TrackInfoDialog(
-    uiState: PlayerViewModel.PlayerUiState,
-    onDismiss: () -> Unit
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Info / Tags") },
-        text = {
-            Column {
-                InfoLine("Title", uiState.trackTitle)
-                InfoLine("Artist", uiState.artist)
-                InfoLine("Album", uiState.album)
-                InfoLine("Genre", uiState.genre)
-                if (uiState.year > 0) InfoLine("Year", uiState.year.toString())
-                if (uiState.trackNumber > 0) InfoLine("Track", uiState.trackNumber.toString())
-                InfoLine("Format", uiState.formatBadge)
-                if (uiState.sampleRate > 0) {
-                    InfoLine("Sample rate", "${uiState.sampleRate} Hz")
-                }
-                if (uiState.bitDepth > 0) InfoLine("Bit depth", "${uiState.bitDepth}-bit")
-                if (uiState.channels > 0) InfoLine("Channels", uiState.channels.toString())
-                if (uiState.durationMs > 0) InfoLine("Duration", uiState.durationText)
-                if (uiState.fileSize > 0) {
-                    InfoLine("File size", formatFileSize(uiState.fileSize))
-                }
-                InfoLine("Folder", uiState.folder)
-                // Full path last: it is the longest and the least often wanted,
-                // but it is the only way to identify a file unambiguously.
-                InfoLine("Path", uiState.trackPath)
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) { Text("Close") }
-        }
-    )
-}
-
-@Composable
-private fun InfoLine(label: String, value: String) {
-    if (value.isBlank()) return
-    Column(modifier = Modifier.padding(vertical = 4.dp)) {
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Text(text = value, style = MaterialTheme.typography.bodySmall)
-    }
-}
-
-private fun formatFileSize(bytes: Long): String = when {
-    bytes >= 1_073_741_824L -> "%.2f GB".format(bytes / 1_073_741_824.0)
-    bytes >= 1_048_576L -> "%.1f MB".format(bytes / 1_048_576.0)
-    bytes >= 1024L -> "%.1f KB".format(bytes / 1024.0)
-    else -> "$bytes B"
-}
+private fun PlayerViewModel.PlayerUiState.toTrackInfo() = TrackInfo(
+    title = trackTitle,
+    artist = artist,
+    album = album,
+    genre = genre,
+    year = year,
+    trackNumber = trackNumber,
+    formatBadge = formatBadge,
+    sampleRate = sampleRate,
+    bitDepth = bitDepth,
+    channels = channels,
+    durationMs = durationMs,
+    durationText = durationText,
+    fileSize = fileSize,
+    folder = folder,
+    path = trackPath
+)
 
 
 /**

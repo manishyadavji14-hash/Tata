@@ -7,6 +7,8 @@ import com.bitperfect.android.library.model.Album
 import com.bitperfect.android.library.model.Artist
 import com.bitperfect.android.library.model.Composer
 import com.bitperfect.android.library.model.Genre
+import com.bitperfect.android.player.LyricsOverrideStore
+import com.bitperfect.android.player.LyricsRepository
 import com.bitperfect.android.library.model.Playlist
 import com.bitperfect.android.engine.NativeAudioFormatProbe
 import com.bitperfect.android.library.dao.SqlPatterns
@@ -358,11 +360,94 @@ class MusicLibrary(
      */
     suspend fun clearArtworkCache() = withContext(Dispatchers.IO) { artworkCache.clear() }
 
+    // --- Lyrics ---
+
+    /**
+     * Lyrics the user typed in, and lyrics the user removed.
+     *
+     * App-private, because writing a `.lrc` next to the audio needs a consent
+     * flow on Android 11+ and is impossible on a read-only volume.
+     */
+    val lyricsOverrides: LyricsOverrideStore by lazy {
+        LyricsOverrideStore(java.io.File(applicationContext.filesDir, "lyrics"))
+    }
+
+    /**
+     * The one lyrics resolver in the app.
+     *
+     * Shared deliberately: the library screen writes lyrics and the player reads
+     * them, and the repository caches per path. Two instances would mean lyrics
+     * edited from the library did not appear in the player until the process
+     * restarted.
+     */
+    val lyricsRepository: LyricsRepository by lazy {
+        LyricsRepository(overrides = lyricsOverrides)
+    }
+
+    /**
+     * Save user-supplied lyrics for a file, or remove them when [lyrics] is
+     * blank. Invalidates the shared cache so the player picks the change up.
+     *
+     * @return true when the store accepted the change.
+     */
+    suspend fun setLyrics(audioPath: String, lyrics: String): Boolean =
+        withContext(Dispatchers.IO) {
+            if (audioPath.isBlank()) return@withContext false
+            val accepted = if (lyrics.isBlank()) {
+                // Blank means "remove", which has to be recorded rather than just
+                // forgotten, or the file's own embedded lyrics come straight back.
+                lyricsOverrides.suppress(audioPath)
+            } else {
+                lyricsOverrides.save(audioPath, lyrics)
+            }
+            lyricsRepository.invalidate()
+            accepted
+        }
+
+    /**
+     * Forget a user override, so the file's own sidecar or tags apply again.
+     */
+    suspend fun resetLyrics(audioPath: String) = withContext(Dispatchers.IO) {
+        lyricsOverrides.clear(audioPath)
+        lyricsRepository.invalidate()
+    }
+
+    /**
+     * The lyrics text currently in force for a file, for pre-filling the editor.
+     *
+     * Returns the user's override when there is one, otherwise whatever the file
+     * itself carries, so opening the editor shows what is on screen rather than
+     * an empty box.
+     */
+    suspend fun getEditableLyrics(audioPath: String): String =
+        withContext(Dispatchers.IO) {
+            lyricsOverrides.read(audioPath)
+                ?: if (lyricsOverrides.isSuppressed(audioPath)) {
+                    ""
+                } else {
+                    lyricsRepository.load(audioPath).lines
+                        .joinToString("\n") { line ->
+                            val stamp = line.timeMs?.let { formatLrcStamp(it) } ?: ""
+                            "$stamp${line.text}"
+                        }
+                }
+        }
+
+    /** Renders milliseconds as an LRC `[mm:ss.cc]` stamp for the editor. */
+    private fun formatLrcStamp(timeMs: Long): String {
+        val safe = timeMs.coerceAtLeast(0L)
+        return "[%02d:%02d.%02d]".format(
+            safe / 60_000L,
+            safe % 60_000L / 1_000L,
+            safe % 1_000L / 10L
+        )
+    }
+
     // --- Unconfirmed music ---
     //
-    // Files carrying no album, artist, year or artwork are probably recordings,
-    // voice notes or ringtones. They are kept out of the main library but never
-    // deleted, and the user can move them in.
+    // Files that do not say who made them are probably recordings, voice notes
+    // or ringtones. They are kept out of the main library but never deleted, and
+    // the user can move them in.
 
     /** Files quarantined as probably-not-music, ordered by path. */
     suspend fun getUnconfirmedTracks(): List<Track> =
@@ -425,6 +510,94 @@ class MusicLibrary(
             albums = albumDao.search(pattern),
             artists = artistDao.search(pattern)
         )
+    }
+
+    // --- Track maintenance ---
+
+    /**
+     * Remove a track from the library index. **The file is not deleted.**
+     *
+     * Deleting the user's file would need the MediaStore consent flow on
+     * Android 11+, and a half-built destructive action is the worst thing to
+     * ship here, so this is deliberately only the library row. The next scan of
+     * that folder will find the file again, which is the honest behaviour to
+     * expose and is why the menu entry says "Remove from library".
+     */
+    suspend fun removeTrackFromLibrary(trackId: Long) = withContext(Dispatchers.IO) {
+        database.runInTransaction {
+            trackDao.deleteById(trackId)
+            rebuildAggregates()
+        }
+    }
+
+    /**
+     * Overwrite a track's descriptive tags in the library.
+     *
+     * Library-only: the file on disk is not rewritten. That is a real limit, not
+     * an oversight — there is no tag writer in the app, and inventing one that
+     * silently corrupts a FLAC would be worse than saying so. The edit is marked
+     * with [Track.isUserEdited] so a rescan does not undo it.
+     *
+     * Supplying an artist also releases the track from quarantine, since the
+     * reason it was held back no longer applies.
+     *
+     * @return the updated row, or null when the id is not in the library.
+     */
+    suspend fun updateTrackDetails(
+        trackId: Long,
+        title: String,
+        artist: String,
+        albumTitle: String,
+        albumArtist: String,
+        genre: String,
+        year: Int,
+        trackNumber: Int
+    ): Track? = withContext(Dispatchers.IO) {
+        val stored = trackDao.getById(trackId) ?: return@withContext null
+
+        val edited = stored.copy(
+            // A blank title would leave the row unidentifiable in every list, so
+            // fall back to what was there before rather than accepting it.
+            title = title.trim().ifBlank { stored.title },
+            artist = artist.trim(),
+            albumTitle = albumTitle.trim(),
+            // Keep the album grouping key populated, exactly as the scanner does,
+            // or clearing the album artist would strand the track's album.
+            albumArtist = albumArtist.trim().ifBlank { artist.trim() },
+            genre = genre.trim(),
+            year = year.coerceAtLeast(0),
+            trackNumber = trackNumber.coerceAtLeast(0),
+            isUserEdited = true
+        )
+
+        val released = edited.copy(
+            isUnconfirmed = edited.isUnconfirmed && Track.looksUntagged(edited)
+        )
+
+        database.runInTransaction {
+            trackDao.update(released)
+            rebuildAggregates()
+        }
+        released
+    }
+
+    /**
+     * Add listening time to tracks, keyed on file path.
+     *
+     * Called from a background flush while playback continues, so each row is
+     * incremented in SQL rather than read and rewritten. Paths that are not in
+     * the library — a file opened directly from the picker — simply match
+     * nothing, which is why this reports no error.
+     */
+    suspend fun addListenedMs(listenedByPath: Map<String, Long>) {
+        if (listenedByPath.isEmpty()) return
+        withContext(Dispatchers.IO) {
+            database.runInTransaction {
+                listenedByPath.forEach { (path, deltaMs) ->
+                    if (deltaMs > 0L) trackDao.addPlayedMs(path, deltaMs)
+                }
+            }
+        }
     }
 
     // --- Favourites ---
@@ -609,6 +782,8 @@ class MusicLibrary(
      * half-scanned.
      */
     private fun persistScanResult(tracks: List<Track>, removedPaths: List<String>) {
+        val scannedAt = System.currentTimeMillis()
+
         database.runInTransaction {
             removedPaths.forEach { path -> trackDao.deleteByPath(path) }
 
@@ -624,22 +799,51 @@ class MusicLibrary(
                 }
 
                 if (stored != null) {
+                    // A row the user has corrected keeps its descriptive tags.
+                    // The scan re-reads the file, whose tags are still wrong, so
+                    // without this the correction would be undone by the next
+                    // scan — the edit would appear to work and then silently
+                    // revert. Technical fields are still refreshed, because those
+                    // do come from the file and may genuinely have changed.
+                    val merged = if (stored.isUserEdited) {
+                        track.copy(
+                            title = stored.title,
+                            artist = stored.artist,
+                            albumTitle = stored.albumTitle,
+                            albumArtist = stored.albumArtist,
+                            genre = stored.genre,
+                            composer = stored.composer,
+                            trackNumber = stored.trackNumber,
+                            discNumber = stored.discNumber,
+                            year = stored.year
+                        )
+                    } else {
+                        track
+                    }
+
                     // update() writes the whole row, and a freshly scanned track
                     // carries defaults for the columns the user owns. Carry those
                     // across explicitly, or editing a file's tags would silently
                     // clear its favourite and undo a move into the library.
                     trackDao.update(
-                        track.copy(
+                        merged.copy(
                             id = stored.id,
                             isFavourite = stored.isFavourite,
-                            // Quarantine is sticky until the file gains tags, but
-                            // confirmation is permanent: once a track is in the
-                            // library it is never pushed back out.
-                            isUnconfirmed = stored.isUnconfirmed && track.isUnconfirmed
+                            // Quarantine is sticky until the file gains an artist,
+                            // but confirmation is permanent: once a track is in
+                            // the library it is never pushed back out. Judged on
+                            // the merged row, so giving a quarantined file an
+                            // artist by hand releases it.
+                            isUnconfirmed = stored.isUnconfirmed && Track.looksUntagged(merged),
+                            // First-seen time and listening history belong to the
+                            // library, not the file, and must survive a rescan.
+                            addedAt = stored.addedAt.takeIf { it > 0L } ?: scannedAt,
+                            playedMs = stored.playedMs,
+                            isUserEdited = stored.isUserEdited
                         )
                     )
                 } else {
-                    trackDao.insert(track)
+                    trackDao.insert(track.copy(addedAt = scannedAt))
                 }
             }
 

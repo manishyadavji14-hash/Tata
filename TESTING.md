@@ -138,8 +138,55 @@ cd build-test && ctest --output-on-failure --verbose
 | `PlayQueueTest.kt` | Queue: add/remove, reorder, shuffle, repeat modes, boundary behavior |
 | `MetadataExtractorTest.kt` | Metadata: format detection, extension mapping, supported formats |
 | `LyricsParserTest.kt` | LRC parsing: timestamps, metadata tags, fraction scaling, current-line lookup |
-| `LyricsRepositoryTest.kt` | Source order: sidecar overrides embedded tags, blank sidecar falls through, caching |
+| `LyricsRepositoryTest.kt` | Source order: user override beats sidecar beats tags; removal stays removed |
+| `LyricsOverrideStoreTest.kt` | User lyrics and removal markers, path hashing, unwritable store |
 | `EmbeddedLyricsReaderTest.kt` | Tag parsing: ID3 `USLT`/`SYLT`, Vorbis comments, MP4 `©lyr`, malformed input |
+| `PlayStatsRecorderTest.kt` | Listening time: cumulative percentage, seeks excluded, per-track totals |
+| `LibrarySortTest.kt` | Sort orders: name, format, date added, most played; which apply per tab |
+| `UntaggedDetectionTest.kt` | Quarantine rule and its agreement with the migration SQL |
+
+### Verifying MIGRATION_3_4 without a device
+
+There is still no `androidTest` source set, so Room's `MigrationTestHelper` cannot
+run here. The migration's SQL can be executed directly instead, which catches the
+things that actually go wrong — invalid SQL, and a predicate that quarantines the
+wrong rows. The statements are read out of the source file so the check cannot
+drift from the app:
+
+```bash
+python3 - <<'PY'
+import re, sqlite3
+src = open("app/src/main/java/com/bitperfect/android/library/LibraryDatabase.kt").read()
+block = src.split("MIGRATION_3_4")[1].split("@Volatile")[0]
+stmts = re.findall(r'execSQL\(\s*(?:"""(.*?)"""|"(.*?)")', block, re.S)
+sql = [re.sub(r'\.trimIndent\(\)', '', (a or b)).strip() for a, b in stmts]
+
+db = sqlite3.connect(":memory:")
+db.execute("""CREATE TABLE tracks (
+  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, path TEXT NOT NULL, title TEXT NOT NULL,
+  artist TEXT NOT NULL, albumTitle TEXT NOT NULL, albumArtist TEXT NOT NULL,
+  year INTEGER NOT NULL, artworkPath TEXT, lastModified INTEGER NOT NULL,
+  isFavourite INTEGER NOT NULL DEFAULT 0, isUnconfirmed INTEGER NOT NULL DEFAULT 0)""")
+# ... insert v3-shaped rows, run each statement, assert isUnconfirmed and addedAt
+for s in sql:
+    db.execute(s)
+PY
+```
+
+What it confirmed when the migration was written:
+
+| Row | After upgrade |
+|---|---|
+| artist "Nils Frahm" | stays in the library |
+| album artist only | stays in the library — a compilation still counts as music |
+| no tags at all | quarantined |
+| **album + year + artwork but no artist** | **quarantined** — the behaviour change |
+| artist "Unknown Artist" or `<unknown>` | quarantined |
+| artist "Unknown Mortal Orchestra" | stays — the match is whole-value, not substring |
+| every row | `addedAt` equals `lastModified`, never left at 0 |
+
+`UntaggedDetectionTest.migrationSqlMatchesKotlin` guards the same predicate from
+the Kotlin side across a full matrix, so the two languages cannot drift.
 
 ### Re-verifying the embedded lyrics reader against real files
 

@@ -7,19 +7,22 @@ import kotlinx.coroutines.withContext
 import java.io.File
 
 /**
- * Finds lyrics for a track, from two sources in order of authority.
+ * Finds lyrics for a track, from three sources in order of authority.
  *
- * 1. **Sidecar files.** `song.flac` is matched by `song.lrc`, `song.txt` or the
+ * 1. **What the user typed**, via [LyricsOverrideStore] — including an explicit
+ *    "remove lyrics", which wins over everything and shows none.
+ * 2. **Sidecar files.** `song.flac` is matched by `song.lrc`, `song.txt` or the
  *    same name in a `Lyrics/` subfolder. This is how synced lyrics are normally
  *    distributed, and it lets the user add or correct lyrics without the app
  *    needing to write tags.
- * 2. **Embedded tags**, via [EmbeddedLyricsReader]: ID3 `USLT`/`SYLT`, Vorbis
+ * 3. **Embedded tags**, via [EmbeddedLyricsReader]: ID3 `USLT`/`SYLT`, Vorbis
  *    `LYRICS`/`UNSYNCEDLYRICS`, and the MP4 `©lyr` atom.
  *
- * Sidecars are checked first precisely because they are the user's own file: a
- * hand-corrected `.lrc` must override whatever the tagger baked into the track.
- * An empty parse from a sidecar falls through to the tags, so a stray zero-value
- * `.txt` does not mask real embedded lyrics.
+ * The order is "most deliberate first". Something the user pasted in beats a
+ * sidecar someone shipped with the album, which in turn beats whatever a tagger
+ * baked into the file — a hand-corrected `.lrc` must not be overruled by wrong
+ * embedded timings. An empty parse at any level falls through to the next, so a
+ * stray zero-value `.txt` does not mask real embedded lyrics.
  *
  * `Track.lyrics` in the database is still not populated, and that is deliberate:
  * lyrics are read from the file here, on demand, so editing a file's tags takes
@@ -28,8 +31,17 @@ import java.io.File
  */
 class LyricsRepository(
     /**
-     * Injected so the two-source ordering can be unit tested without files. The
+     * User-supplied lyrics and removals. Null means the feature is unavailable —
+     * the app-private directory could not be resolved — and the repository falls
+     * back to sidecars and tags rather than failing.
+     */
+    private val overrides: LyricsOverrideStore? = null,
+    /**
+     * Injected so the source ordering can be unit tested without files. The
      * default reads the real file.
+     *
+     * Deliberately last, so `LyricsRepository { ... }` keeps binding the trailing
+     * lambda to this and not to a parameter added later.
      */
     private val readEmbedded: (String) -> String? = { path -> EmbeddedLyricsReader.read(path) }
 ) {
@@ -47,13 +59,24 @@ class LyricsRepository(
         cache[audioPath]?.let { return@withContext it }
 
         val parsed = try {
-            val sidecar = findSidecar(audioPath)
-                ?.let { LyricsParser.parse(it.readText()) }
-                ?.takeIf { !it.isEmpty }
+            // An explicit removal is an answer, not an absence: stop here rather
+            // than falling through and re-reading the lyrics out of the file the
+            // user just hid them from.
+            if (overrides?.isSuppressed(audioPath) == true) {
+                Lyrics.EMPTY
+            } else {
+                val userSupplied = overrides?.read(audioPath)
+                    ?.let { LyricsParser.parse(it) }
+                    ?.takeIf { !it.isEmpty }
 
-            // Both sources end up as text in LyricsParser, so timed and plain
-            // lyrics behave identically whichever they came from.
-            sidecar ?: LyricsParser.parse(readEmbedded(audioPath))
+                val sidecar = userSupplied ?: findSidecar(audioPath)
+                    ?.let { LyricsParser.parse(it.readText()) }
+                    ?.takeIf { !it.isEmpty }
+
+                // Every source ends up as text in LyricsParser, so timed and
+                // plain lyrics behave identically whichever they came from.
+                sidecar ?: LyricsParser.parse(readEmbedded(audioPath))
+            }
         } catch (error: Exception) {
             // Unreadable or absurdly large file: no lyrics is the right outcome,
             // never a crash on a track change.

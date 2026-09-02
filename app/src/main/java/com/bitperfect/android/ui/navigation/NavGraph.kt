@@ -259,6 +259,8 @@ fun BitPerfectNavGraph(
 
             // Library screen
             composable(Screen.Library.route) {
+                var pendingLibraryPlaylistTrack by remember { mutableStateOf<String?>(null) }
+
                 LibraryScreen(
                     viewModel = libraryViewModel,
                     onAlbumClick = { albumId ->
@@ -292,8 +294,21 @@ fun BitPerfectNavGraph(
                             launchSingleTop = true
                             restoreState = true
                         }
-                    }
+                    },
+                    onAddToPlaylist = { path -> pendingLibraryPlaylistTrack = path }
                 )
+
+                // Hosted here, not in the screen, because the playlist picker
+                // needs the graph-scoped PlaylistsViewModel that every other
+                // route shares.
+                pendingLibraryPlaylistTrack?.let { path ->
+                    AddToPlaylistDialog(
+                        trackPath = path,
+                        viewModel = playlistsViewModel,
+                        onDismiss = { pendingLibraryPlaylistTrack = null },
+                        onResult = libraryViewModel::showStatusMessage
+                    )
+                }
             }
 
             // Settings screen

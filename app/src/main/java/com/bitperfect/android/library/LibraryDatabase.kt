@@ -29,10 +29,13 @@ import com.bitperfect.android.library.model.Track
  * - v2: album artist grouping (Album.albumArtist, Track.albumArtist) and
  *   Track.isFavourite
  * - v3: Track.isUnconfirmed, quarantining files that carry no tags
+ * - v4: Track.addedAt, Track.playedMs and Track.isUserEdited, backing the
+ *   date-added and most-played sort orders and library-only tag edits. Also
+ *   re-applies quarantine under the stricter artist-based rule.
  */
 @Database(
     entities = [Track::class, Album::class, Artist::class, Playlist::class],
-    version = 3,
+    version = 4,
     exportSchema = true
 )
 abstract class LibraryDatabase : RoomDatabase() {
@@ -126,6 +129,60 @@ abstract class LibraryDatabase : RoomDatabase() {
             }
         }
 
+        /**
+         * v3 to v4: sort keys, play statistics, and a stricter quarantine rule.
+         *
+         * Additive only — three columns with defaults, so no table is rebuilt
+         * and playlists, favourites and album ids are untouched.
+         *
+         * Two backfills follow:
+         *
+         * 1. `addedAt` is seeded from `lastModified`. It is not the same thing —
+         *    see Track.addedAt — but for rows that already exist it is the only
+         *    evidence available, and leaving them all at 0 would collapse the
+         *    date-added order into an arbitrary tie.
+         *
+         * 2. Quarantine is re-evaluated with the new artist-based rule from
+         *    Track.looksUntagged. This deliberately moves files that are in the
+         *    library today but carry no artist into "Review unconfirmed music",
+         *    which is the point of the change: the old rule kept anything with a
+         *    stray year or a piece of folder artwork, so recordings and voice
+         *    notes accumulated in the library. Nothing is deleted, and anything
+         *    the user wants back is two taps away.
+         *
+         * The predicate is kept in SQL rather than loading every row into
+         * memory. It mirrors Track.looksUntagged, and the unit tests assert the
+         * two agree across a matrix of inputs — including the literal
+         * placeholder artist names, which is why LOWER and TRIM are both here.
+         */
+        private val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE `tracks` ADD COLUMN `addedAt` INTEGER NOT NULL DEFAULT 0"
+                )
+                db.execSQL(
+                    "ALTER TABLE `tracks` ADD COLUMN `playedMs` INTEGER NOT NULL DEFAULT 0"
+                )
+                db.execSQL(
+                    "ALTER TABLE `tracks` ADD COLUMN `isUserEdited` INTEGER NOT NULL DEFAULT 0"
+                )
+
+                db.execSQL("UPDATE `tracks` SET `addedAt` = `lastModified` WHERE `addedAt` = 0")
+
+                db.execSQL(
+                    """
+                    UPDATE `tracks` SET `isUnconfirmed` = 1
+                    WHERE TRIM(LOWER(`artist`)) IN
+                            ('', '<unknown>', 'unknown', 'unknown artist',
+                             'various', 'various artists')
+                      AND TRIM(LOWER(`albumArtist`)) IN
+                            ('', '<unknown>', 'unknown', 'unknown artist',
+                             'various', 'various artists')
+                    """.trimIndent()
+                )
+            }
+        }
+
         @Volatile
         private var instance: LibraryDatabase? = null
 
@@ -143,7 +200,7 @@ abstract class LibraryDatabase : RoomDatabase() {
                     LibraryDatabase::class.java,
                     DATABASE_NAME
                 )
-                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                     .build()
                     .also { instance = it }
             }

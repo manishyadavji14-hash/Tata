@@ -14,12 +14,12 @@ ask you to allow installing from the browser the first time.
 
 | | |
 |---|---|
-| Contains | everything on `main` up to and including embedded lyrics (`feat/embedded-lyrics`) |
+| Contains | everything on `main` up to and including library sort, play statistics and the per-song menu (`feat/library-sort-and-track-actions`) |
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 15.7 MiB (16,503,892 bytes) |
-| SHA-256 | `443b021ba259b4b9d120680e11cc5681471918f1883e1ed8f6f1f2ef3e8d5b56` |
+| Size | 15.9 MiB (16,667,732 bytes) |
+| SHA-256 | `62995864bffd183e68c5c99b072498c9fea26ae6440aa935af78413204f55157` |
 
 Verify the download matches before installing:
 
@@ -33,15 +33,42 @@ elsewhere cannot upgrade this one in place.
 
 ## New in this build
 
-Lyrics stored **inside** the music file are now read, not just `.lrc` sidecars:
-ID3 `USLT`/`SYLT` (MP3), Vorbis `LYRICS`/`UNSYNCEDLYRICS` (FLAC, Ogg, Opus) and
-the MP4 `©lyr` atom (M4A, ALAC).
+**Sort the library.** The sort button on the Library screen now opens a labelled
+menu showing which order is active: name A-Z/Z-A, date added newest/oldest,
+format, and most played. Only the orders that mean something on the current tab
+are offered.
 
-To check it, play a track you know has lyrics baked into its tags. The lyrics icon
-appears at the lower right of the album art **only when lyrics were found**, so if
-it is absent that file's tags had none — try one tagged in a desktop player first.
-A `.lrc` file next to the track still wins over the tags, so your own corrections
-are not overridden.
+**Most played** ranks on the share of each track actually listened to, added up
+over every play, so it can exceed 100%: a four-minute track played once and then
+replayed for a minute reads 125%. Seeking does not count. The figure is visible
+per track under Info / Tags, so it can be checked rather than taken on trust. It
+starts from zero — the app has not been counting until now — so this order is
+only meaningful after some listening.
+
+**Untagged audio is kept out of the library properly now.** The rule is the
+artist: a file that does not say who made it goes to Settings →
+"Review unconfirmed music" instead of the main library, and that includes files
+tagged with placeholder names like "Unknown Artist". Previously anything with a
+stray year or a scrap of folder artwork got in, which is why WhatsApp clips and
+voice notes kept appearing.
+
+> **On first launch after this update**, files already in your library that name
+> no artist will move into "Review unconfirmed music". Nothing is deleted. If real
+> music is caught, select it there and tap "Move to library" — that is permanent.
+
+**Every song row has a three-dot menu** at its right end: Play, Add to playlist
+(existing or new), favourite, Info / Tags, Edit tags, Lyrics, Remove from library.
+
+- **Remove from library does not delete the file.** It drops the library entry; a
+  later scan of that folder finds the file again.
+- **Edit tags is library-only.** It changes how BitPerfect files the track; the
+  file's own tags are untouched, because the app has no tag writer. The edit does
+  survive a rescan.
+- **Lyrics** accepts LRC (`[00:12.50]First line`) or plain text, and can remove
+  lyrics — including lyrics embedded in the file, which stay hidden rather than
+  reappearing.
+
+**About** now names the creator, Maneesh Yadav.
 
 ## Also worth checking
 

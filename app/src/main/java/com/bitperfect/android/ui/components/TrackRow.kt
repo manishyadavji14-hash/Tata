@@ -12,10 +12,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DeleteOutline
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.GraphicEq
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Subtitles
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -47,6 +51,12 @@ data class TrackRowActions(
     val onAddToQueue: (() -> Unit)? = null,
     val onAddToPlaylist: (() -> Unit)? = null,
     val onToggleFavourite: (() -> Unit)? = null,
+    /** Opens the full tag and quality readout. */
+    val onShowInfo: (() -> Unit)? = null,
+    /** Opens the library-only tag editor. */
+    val onEditDetails: (() -> Unit)? = null,
+    /** Opens the LRC editor, which also removes lyrics. */
+    val onEditLyrics: (() -> Unit)? = null,
     val onRemove: (() -> Unit)? = null,
     val removeLabel: String = "Remove"
 )
@@ -237,9 +247,51 @@ fun TrackRow(
                         }
                     )
                 }
+                actions.onShowInfo?.let { action ->
+                    DropdownMenuItem(
+                        text = { Text("Info / Tags") },
+                        leadingIcon = {
+                            Icon(imageVector = Icons.Default.Info, contentDescription = null)
+                        },
+                        onClick = {
+                            isMenuExpanded = false
+                            action()
+                        }
+                    )
+                }
+                actions.onEditDetails?.let { action ->
+                    DropdownMenuItem(
+                        text = { Text("Edit tags") },
+                        leadingIcon = {
+                            Icon(imageVector = Icons.Default.Edit, contentDescription = null)
+                        },
+                        onClick = {
+                            isMenuExpanded = false
+                            action()
+                        }
+                    )
+                }
+                actions.onEditLyrics?.let { action ->
+                    DropdownMenuItem(
+                        text = { Text("Lyrics") },
+                        leadingIcon = {
+                            Icon(imageVector = Icons.Default.Subtitles, contentDescription = null)
+                        },
+                        onClick = {
+                            isMenuExpanded = false
+                            action()
+                        }
+                    )
+                }
                 actions.onRemove?.let { action ->
                     DropdownMenuItem(
                         text = { Text(actions.removeLabel) },
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.DeleteOutline,
+                                contentDescription = null
+                            )
+                        },
                         onClick = {
                             isMenuExpanded = false
                             action()

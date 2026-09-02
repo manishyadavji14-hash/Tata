@@ -63,7 +63,40 @@ data class Track(
      * so without this the migration's `DEFAULT 0` would go unchecked.
      */
     @ColumnInfo(defaultValue = "0")
-    val isUnconfirmed: Boolean = false
+    val isUnconfirmed: Boolean = false,
+    /**
+     * When this file was first added to the library, in epoch milliseconds.
+     *
+     * Deliberately not [lastModified]: that is the file's own timestamp, so a
+     * freshly copied album full of decade-old files would sort as old, and
+     * editing a file would move it to the top of "recently added". Rows that
+     * predate this column are backfilled from [lastModified] by MIGRATION_3_4,
+     * which is the best approximation available after the fact.
+     */
+    @ColumnInfo(defaultValue = "0")
+    val addedAt: Long = 0,
+    /**
+     * Total milliseconds of this track actually listened to, across every play.
+     *
+     * Accumulates rather than resetting, so it can exceed [duration]: playing a
+     * four-minute track once and then replaying one minute of it gives 300000,
+     * which is 125% of the track. That is what "most played" sorts on, so a
+     * track heard twice ranks above one heard once and abandoned halfway.
+     *
+     * Seeks are excluded — see PlayStatsRecorder.
+     */
+    @ColumnInfo(defaultValue = "0")
+    val playedMs: Long = 0,
+    /**
+     * Set once the user has edited this row's tags in the app.
+     *
+     * A rescan reads the file's tags, which have not changed, and would
+     * therefore overwrite the correction on the next scan. This flag makes
+     * persistScanResult keep the user's descriptive fields while still
+     * refreshing the technical ones.
+     */
+    @ColumnInfo(defaultValue = "0")
+    val isUserEdited: Boolean = false
 ) {
     val isHighRes: Boolean
         get() = sampleRate > 48000 || bitDepth > 16
@@ -89,43 +122,73 @@ data class Track(
             return if (lastSep > 0) path.substring(0, lastSep) else ""
         }
 
+    /**
+     * Share of the track listened to, as a percentage, summed over every play.
+     *
+     * Can exceed 100: see [playedMs]. Zero when the duration is unknown, since
+     * a percentage of an unknown length would be meaningless rather than large.
+     */
+    val playedPercent: Int
+        get() = if (duration > 0) ((playedMs * 100) / duration).toInt() else 0
+
     companion object {
+        /**
+         * Values a tagger writes to mean "there is no artist here".
+         *
+         * MediaStore's own sentinel is `<unknown>`, which
+         * MediaStoreAudioSource already maps to empty, but plenty of files carry
+         * the words as a literal tag instead — that is what a ripper writes when
+         * it could not identify the disc, and what a recorder app writes for a
+         * voice note. Treating them as text would put every one of those in the
+         * library under an artist called "Unknown Artist".
+         */
+        private val MISSING_ARTIST_VALUES = setOf(
+            "",
+            "<unknown>",
+            "unknown",
+            "unknown artist",
+            "various",
+            "various artists"
+        )
+
+        /** Whether an artist tag carries no actual attribution. */
+        fun isMissingArtist(value: String): Boolean =
+            value.trim().lowercase() in MISSING_ARTIST_VALUES
+
         /**
          * Whether a file looks like it is not music, judged only on tags.
          *
-         * Real music almost always carries at least one of an album, an artist, a
-         * year or embedded artwork. Recordings, voice notes, ringtones and
-         * WhatsApp audio carry none.
+         * **The rule is the artist.** A file with no artist attribution is not
+         * something the user chose to keep as music: it is a voice note, a
+         * ringtone, a WhatsApp clip, a podcast download or a recording. Music
+         * that someone deliberately put on their phone essentially always says
+         * who made it.
          *
-         * Every field must be empty for this to be true. The conjunction is
-         * deliberate and conservative: an album track missing only its year, or a
-         * single with no album, stays in the library. The cost of a false positive
-         * — real music hidden from the user — is far worse than a stray recording
-         * appearing in the list.
+         * Both the track artist and the album artist have to be missing, so a
+         * compilation track that only names its album artist still counts as
+         * music. `albumTitle`, `year` and artwork are deliberately *not*
+         * considered: an untagged recording sitting in a folder that MediaStore
+         * happened to attach a folder image to would otherwise walk straight
+         * into the library, which is the exact complaint this rule answers.
          *
-         * `title` is deliberately not considered: the scanner falls back to the
-         * file name, so it is never empty and carries no signal.
+         * `title` is not considered either — the scanner falls back to the file
+         * name, so it is never empty and carries no signal.
+         *
+         * Nothing is deleted. Quarantined files are listed under Settings ->
+         * "Review unconfirmed music", where moving one into the library is
+         * permanent.
+         *
+         * This is stricter than the original rule, which required *every* tag to
+         * be absent. That version let anything with a stray year or a piece of
+         * folder artwork through, so recordings kept appearing in the library.
          */
-        fun looksUntagged(
-            artist: String,
-            albumTitle: String,
-            albumArtist: String,
-            year: Int,
-            artworkPath: String?
-        ): Boolean =
-            artist.isBlank() &&
-                albumTitle.isBlank() &&
-                albumArtist.isBlank() &&
-                year <= 0 &&
-                artworkPath.isNullOrBlank()
+        fun looksUntagged(artist: String, albumArtist: String): Boolean =
+            isMissingArtist(artist) && isMissingArtist(albumArtist)
 
         /** Convenience overload for an already-built track. */
         fun looksUntagged(track: Track): Boolean = looksUntagged(
             artist = track.artist,
-            albumTitle = track.albumTitle,
-            albumArtist = track.albumArtist,
-            year = track.year,
-            artworkPath = track.artworkPath
+            albumArtist = track.albumArtist
         )
     }
 }

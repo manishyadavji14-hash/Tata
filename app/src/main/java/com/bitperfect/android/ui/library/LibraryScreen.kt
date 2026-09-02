@@ -50,9 +50,13 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -88,6 +92,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bitperfect.android.ui.components.AlbumArtImage
+import com.bitperfect.android.ui.components.EditTrackDetailsDialog
+import com.bitperfect.android.ui.components.LyricsEditorDialog
+import com.bitperfect.android.ui.components.TrackInfo
+import com.bitperfect.android.ui.components.TrackInfoDialog
+import com.bitperfect.android.ui.components.TrackRow
+import com.bitperfect.android.ui.components.TrackRowActions
 import com.bitperfect.android.ui.theme.BitPerfectMotion
 import com.bitperfect.android.ui.theme.BitPerfectShapeTokens
 
@@ -117,7 +127,12 @@ fun LibraryScreen(
     /** Opens the system document picker for a .zip; result routes to importZip. */
     onPickZip: () -> Unit = {},
     /** Receives the full visible track list and the index that was tapped. */
-    onTrackClick: (tracks: List<String>, index: Int) -> Unit = { _, _ -> }
+    onTrackClick: (tracks: List<String>, index: Int) -> Unit = { _, _ -> },
+    /**
+     * Opens the playlist picker for one track. Hosted by the navigation graph,
+     * which owns the shared PlaylistsViewModel.
+     */
+    onAddToPlaylist: (String) -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var selectedTab by remember { mutableIntStateOf(uiState.currentTab.ordinal) }
@@ -140,6 +155,26 @@ fun LibraryScreen(
 
     val pullRefreshState = rememberPullToRefreshState()
     var isScanSheetVisible by remember { mutableStateOf(false) }
+    var isSortMenuVisible by remember { mutableStateOf(false) }
+
+    // One selected track per dialog, rather than a shared "current track" that
+    // could be left pointing at a row the user has since removed.
+    var infoTrack by remember { mutableStateOf<LibraryViewModel.TrackItem?>(null) }
+    var editTrack by remember { mutableStateOf<LibraryViewModel.TrackItem?>(null) }
+    var lyricsTrack by remember { mutableStateOf<LibraryViewModel.TrackItem?>(null) }
+    var removeTrack by remember { mutableStateOf<LibraryViewModel.TrackItem?>(null) }
+
+    TrackActionDialogs(
+        viewModel = viewModel,
+        infoTrack = infoTrack,
+        editTrack = editTrack,
+        lyricsTrack = lyricsTrack,
+        removeTrack = removeTrack,
+        onDismissInfo = { infoTrack = null },
+        onDismissEdit = { editTrack = null },
+        onDismissLyrics = { lyricsTrack = null },
+        onDismissRemove = { removeTrack = null }
+    )
 
     // The gesture triggers a scan exactly once, keyed on the refreshing edge so
     // it cannot re-fire while the finger is held.
@@ -216,8 +251,40 @@ fun LibraryScreen(
                             contentDescription = "Playlists"
                         )
                     }
-                    IconButton(onClick = { viewModel.cycleSortOrder() }) {
-                        Icon(Icons.Default.Sort, contentDescription = "Sort")
+                    // A labelled menu rather than a button that silently advanced
+                    // through five orders with no way to see which was active.
+                    Box {
+                        IconButton(onClick = { isSortMenuVisible = true }) {
+                            Icon(Icons.Default.Sort, contentDescription = "Sort")
+                        }
+                        DropdownMenu(
+                            expanded = isSortMenuVisible,
+                            onDismissRequest = { isSortMenuVisible = false }
+                        ) {
+                            Text(
+                                text = "Sort by",
+                                style = MaterialTheme.typography.labelMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                            )
+                            // Only the orders that mean something on this tab.
+                            LibraryViewModel.SortOrder.optionsFor(uiState.currentTab)
+                                .forEach { option ->
+                                    DropdownMenuItem(
+                                        text = { Text(option.label) },
+                                        leadingIcon = {
+                                            RadioButton(
+                                                selected = uiState.sortOrder == option,
+                                                onClick = null
+                                            )
+                                        },
+                                        onClick = {
+                                            isSortMenuVisible = false
+                                            viewModel.setSortOrder(option)
+                                        }
+                                    )
+                                }
+                        }
                     }
                     // The single entry point for every scan mode.
                     IconButton(onClick = { isScanSheetVisible = true }) {
@@ -345,7 +412,13 @@ fun LibraryScreen(
                                 LibraryViewModel.LibraryTab.TRACKS -> TrackList(
                                     tracks = uiState.tracks,
                                     listState = trackListState,
-                                    onTrackClick = onTrackClick
+                                    onTrackClick = onTrackClick,
+                                    onToggleFavourite = viewModel::toggleFavourite,
+                                    onAddToPlaylist = onAddToPlaylist,
+                                    onShowInfo = { infoTrack = it },
+                                    onEditDetails = { editTrack = it },
+                                    onEditLyrics = { lyricsTrack = it },
+                                    onRemove = { removeTrack = it }
                                 )
                             }
                         }
@@ -519,59 +592,176 @@ private fun LibraryStatItem(count: Int, label: String) {
     }
 }
 
+/**
+ * The Tracks tab.
+ *
+ * Uses the shared [TrackRow] rather than a private layout, so the library gets
+ * the same artwork, favourite marker and overflow menu as every album, playlist
+ * and folder list — and so there is one row to fix rather than two.
+ */
 @Composable
 private fun TrackList(
     tracks: List<LibraryViewModel.TrackItem>,
     onTrackClick: (tracks: List<String>, index: Int) -> Unit,
+    onToggleFavourite: (Long) -> Unit,
+    onAddToPlaylist: (String) -> Unit,
+    onShowInfo: (LibraryViewModel.TrackItem) -> Unit,
+    onEditDetails: (LibraryViewModel.TrackItem) -> Unit,
+    onEditLyrics: (LibraryViewModel.TrackItem) -> Unit,
+    onRemove: (LibraryViewModel.TrackItem) -> Unit,
     listState: LazyListState = rememberLazyListState()
 ) {
     LazyColumn(
         state = listState,
-        contentPadding = PaddingValues(16.dp),
+        contentPadding = PaddingValues(vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        itemsIndexed(tracks) { index, track ->
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
+        // Keyed so removing a row animates the rest rather than recomposing the
+        // whole list, and so Compose does not reuse state across rows.
+        itemsIndexed(tracks, key = { _, track -> track.id }) { index, track ->
+            TrackRow(
+                title = track.title,
+                artist = track.artist,
+                formatInfo = track.formatInfo,
+                durationMs = track.durationMs,
+                artworkUri = track.artworkUri,
+                isFavourite = track.isFavourite,
+                actions = TrackRowActions(
                     // Reports the whole visible list, not just this path, so
                     // playback continues through the list the user tapped in.
-                    .clickable { onTrackClick(tracks.map { it.path }, index) }
-                    .padding(vertical = 10.dp, horizontal = 8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = Icons.Default.AudioFile,
-                    contentDescription = null,
-                    modifier = Modifier.size(36.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    onPlay = { onTrackClick(tracks.map { it.path }, index) },
+                    onAddToPlaylist = { onAddToPlaylist(track.path) },
+                    onToggleFavourite = { onToggleFavourite(track.id) },
+                    onShowInfo = { onShowInfo(track) },
+                    onEditDetails = { onEditDetails(track) },
+                    onEditLyrics = { onEditLyrics(track) },
+                    onRemove = { onRemove(track) },
+                    removeLabel = "Remove from library"
                 )
-                Spacer(modifier = Modifier.width(12.dp))
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = track.title,
-                        style = MaterialTheme.typography.bodyLarge,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = "${track.artist} - ${track.album}",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
-                // Format info
-                Text(
-                    text = track.formatInfo,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
-                )
-            }
+            )
         }
     }
 }
+
+/**
+ * The dialogs the track overflow menu opens.
+ *
+ * Hoisted out of the screen body so the Scaffold stays readable, and kept in one
+ * composable so only the selected-track state has to be threaded through.
+ */
+@Composable
+private fun TrackActionDialogs(
+    viewModel: LibraryViewModel,
+    infoTrack: LibraryViewModel.TrackItem?,
+    editTrack: LibraryViewModel.TrackItem?,
+    lyricsTrack: LibraryViewModel.TrackItem?,
+    removeTrack: LibraryViewModel.TrackItem?,
+    onDismissInfo: () -> Unit,
+    onDismissEdit: () -> Unit,
+    onDismissLyrics: () -> Unit,
+    onDismissRemove: () -> Unit
+) {
+    infoTrack?.let { track ->
+        TrackInfoDialog(info = track.toTrackInfo(), onDismiss = onDismissInfo)
+    }
+
+    editTrack?.let { track ->
+        EditTrackDetailsDialog(
+            info = track.toTrackInfo(),
+            onSave = { edited ->
+                viewModel.updateTrackDetails(
+                    trackId = track.id,
+                    title = edited.title,
+                    artist = edited.artist,
+                    album = edited.album,
+                    albumArtist = edited.albumArtist,
+                    genre = edited.genre,
+                    year = edited.year,
+                    trackNumber = edited.trackNumber
+                )
+                onDismissEdit()
+            },
+            onDismiss = onDismissEdit
+        )
+    }
+
+    lyricsTrack?.let { track ->
+        // Loaded rather than passed in: the text may come from a sidecar file or
+        // the file's own tags, which means disk I/O that must not run on the main
+        // thread or on every recomposition.
+        var loaded by remember(track.path) { mutableStateOf<String?>(null) }
+        LaunchedEffect(track.path) {
+            loaded = viewModel.loadEditableLyrics(track.path)
+        }
+
+        loaded?.let { existing ->
+            LyricsEditorDialog(
+                trackTitle = track.title,
+                initialLyrics = existing,
+                hasExistingLyrics = existing.isNotBlank(),
+                onSave = {
+                    viewModel.saveLyrics(track.path, it)
+                    onDismissLyrics()
+                },
+                onRemove = {
+                    viewModel.saveLyrics(track.path, "")
+                    onDismissLyrics()
+                },
+                onDismiss = onDismissLyrics
+            )
+        }
+    }
+
+    removeTrack?.let { track ->
+        // Confirmed, because it is destructive to the library even though the file
+        // survives, and the wording says exactly that.
+        AlertDialog(
+            onDismissRequest = onDismissRemove,
+            title = { Text("Remove from library?") },
+            text = {
+                Text(
+                    "\"${track.title}\" will be removed from BitPerfect's library. " +
+                        "The file stays on your device, and a future scan of that " +
+                        "folder will find it again."
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        viewModel.removeTrackFromLibrary(track.id)
+                        onDismissRemove()
+                    }
+                ) { Text("Remove") }
+            },
+            dismissButton = {
+                TextButton(onClick = onDismissRemove) { Text("Cancel") }
+            }
+        )
+    }
+}
+
+/** Library row facts as the neutral shape the shared dialogs take. */
+private fun LibraryViewModel.TrackItem.toTrackInfo() = TrackInfo(
+    title = title,
+    artist = artist,
+    album = album,
+    albumArtist = albumArtist,
+    genre = genre,
+    composer = composer,
+    year = year,
+    trackNumber = trackNumber,
+    formatBadge = formatInfo,
+    sampleRate = sampleRate,
+    bitDepth = bitDepth,
+    channels = channels,
+    durationMs = durationMs,
+    fileSize = fileSize,
+    folder = folder,
+    path = path,
+    playedPercent = playedPercent,
+    playedMs = playedMs,
+    isUserEdited = isUserEdited
+)
 
 @Composable
 private fun FolderList(
