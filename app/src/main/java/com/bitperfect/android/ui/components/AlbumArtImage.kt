@@ -22,13 +22,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.bitperfect.android.ui.theme.BitPerfectMotion
+import java.io.File
 
 /**
  * Album artwork with a graceful placeholder.
  *
- * Artwork comes from MediaStore as a content URI, which Coil loads directly.
- * Many albums have no artwork and some URIs resolve to nothing, so a failed
- * load falls back to the placeholder rather than leaving an empty box.
+ * Artwork arrives as either a content URI from MediaStore or an absolute path to a
+ * cover extracted into the app's cache. Many albums have no artwork at all and some
+ * URIs resolve to nothing, so a failed load falls back to the placeholder rather
+ * than leaving an empty box.
  */
 @Composable
 fun AlbumArtImage(
@@ -70,7 +72,10 @@ fun AlbumArtImage(
                 }
             } else {
                 AsyncImage(
-                    model = resolvedUri,
+                    // A bare path is handed over as a File rather than as a String.
+                    // Coil turns a String into a Uri, and a path with no scheme is
+                    // an ambiguous thing to ask it to load; a File is unambiguous.
+                    model = if (resolvedUri.startsWith('/')) File(resolvedUri) else resolvedUri,
                     contentDescription = contentDescription,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize(),

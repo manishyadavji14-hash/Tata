@@ -15,7 +15,7 @@ each change and are deliberately detailed.**
 |---|---|
 | Work on | **`main`** — PR #4 merged as `eec1ed5`; embedded lyrics on `feat/embedded-lyrics` |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (15.7 MiB, debug-signed, arm64 only) |
-| Test status | 282 native C++ tests, **290** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
+| Test status | 282 native C++ tests, **320** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
@@ -84,7 +84,7 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 290 passing)
+# JVM unit tests (expect 320 passing)
 ./gradlew :app:testDebugUnitTest
 
 # Lint (expect 0 errors; warnings are pre-existing)
@@ -405,7 +405,18 @@ Known gaps to expect:
    mode; it throws on most devices. That was the seek bug.
 6. **`AudioTrack` in `MODE_STREAM` will not render the final partial buffer**
    while PLAYING. `stop()` is what drains it. That was the end-of-track error.
-7. **A track change resolves the same track twice, concurrently.**
+7. **`MediaMetadataRetriever.embeddedPicture` does not cover the formats this app
+   accepts.** It reads ID3 `APIC` and MP4 `covr`, usually reads a FLAC `PICTURE`
+   block, **misses the base64 `METADATA_BLOCK_PICTURE` comment that Ogg Vorbis and
+   Opus use**, and cannot parse DSF at all. Relying on it alone is why artwork
+   appeared for some tracks and not others with no pattern visible from the UI.
+   `EmbeddedArtworkReader` parses the containers directly and is tried first; the
+   platform call remains as a second opinion. Verified byte-exact against real
+   files from `flac`, `oggenc` and mutagen — recipe in TESTING.md.
+   Related: `MetadataExtractor.Metadata.hasArtwork` reflects only what the platform
+   can see, so **do not gate artwork extraction on it** — that gate was hiding
+   covers the reader can find.
+8. **A track change resolves the same track twice, concurrently.**
    `PlayerViewModel.resolveTrackDetails` runs for the screen while
    `PlaybackService.publishMetadataFor` runs for the notification, and both call
    `MusicLibrary.getTrackDetails`. Anything with a check-then-write in that path
@@ -416,10 +427,10 @@ Known gaps to expect:
    serialised with a unique temporary, and `ArtworkResolver` locks per path so the
    extraction happens once. `ArtworkCacheTest` reproduces the race with eight
    threads; it fails reliably against the old code.
-8. **The player is the NavHost start destination, so `popBackStack()` is a no-op
+9. **The player is the NavHost start destination, so `popBackStack()` is a no-op
    there.** The pull-down-to-minimise gesture called it and silently did nothing.
    Anything that means "leave the player" has to fall back to navigating somewhere.
-9. **The MediaStore album-art URI is dead on modern Android.**
+10. **The MediaStore album-art URI is dead on modern Android.**
    `MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI` + album id gives
    `content://media/external/audio/albumart/<id>`, a leftover from before scoped
    storage. Deprecated in Android 10, and on current versions it usually resolves
@@ -428,13 +439,13 @@ Known gaps to expect:
    `ArtworkResolver` now prefers a cached extraction, then the file's own embedded
    cover, and only uses the URI once it is known to open. Settings → Library →
    "Rebuild album art" repairs libraries scanned before this.
-10. **State that is declared and never assigned is worse than absent.**
+11. **State that is declared and never assigned is worse than absent.**
    `PlayerUiState.trackPath` was declared and never once written, and
    `AlbumArtActions` early-returns on an empty path — so the album-art overflow
    menu shipped in `93bca4d` never appeared. Nothing failed; it simply did not
    exist. Same class of bug as the dead `updateMetadata`. When a feature is
    invisible rather than broken, check whether the state it reads is ever set.
-11. **The system reads the media session's *timeline*, not the Player's getters.**
+12. **The system reads the media session's *timeline*, not the Player's getters.**
    The notification panel, lock screen and vendor widgets are fed from
    `MediaMetadataCompat`/`PlaybackStateCompat`, which media3 builds from the
    current timeline window. A player returning `Timeline.EMPTY` has no window, so
@@ -445,17 +456,17 @@ Known gaps to expect:
      is the only route a track length can take.
    - `COMMAND_GET_TIMELINE` must be advertised, or media3 refuses to read the
      timeline it needs.
-12. **Nothing published metadata until it was explicitly wired.**
+13. **Nothing published metadata until it was explicitly wired.**
    `MediaSessionManager.updateMetadata` and
    `PlaybackNotificationManager.updateTrackInfo` existed for months with **zero
    call sites**, so the session carried `MediaMetadata.EMPTY` for the whole life
    of the process. `PlaybackService.publishMetadataFor` is now the one caller;
    if the panel goes blank again, check there first.
-13. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
+14. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
    Returning false throws `IllegalArgumentException` out of `Service.onCreate`,
    which kills the app — and with `START_STICKY` it loops. The service is now
    `START_NOT_STICKY` and fails soft.
-14. **Do not start a foreground service before there is audio to show.** On
+15. **Do not start a foreground service before there is audio to show.** On
    Android 14+ that gets the app killed. The service is promoted on the first
    `Playing` state.
 

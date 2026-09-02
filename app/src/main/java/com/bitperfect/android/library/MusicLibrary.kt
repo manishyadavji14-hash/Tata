@@ -338,11 +338,10 @@ class MusicLibrary(
         val metadata = metadataExtractor.extract(path)
             ?: return@withContext TrackDetails(title = fallbackTitle)
 
-        val artwork = if (metadata.hasArtwork) {
-            metadataExtractor.extractArtwork(path, artworkCache)
-        } else {
-            null
-        }
+        // Not gated on metadata.hasArtwork: that only reports what the platform
+        // extractor can see, which misses Ogg, Opus and DSF covers entirely, so the
+        // gate was hiding artwork that extractArtwork can find.
+        val artwork = metadataExtractor.extractArtwork(path, artworkCache)
 
         TrackDetails(
             title = metadata.title.ifBlank { fallbackTitle },
@@ -397,19 +396,67 @@ class MusicLibrary(
      *
      * @return how many rows were given a usable cover.
      */
-    suspend fun rebuildArtwork(): Int = withContext(Dispatchers.IO) {
+    suspend fun rebuildArtwork(): ArtworkRebuildResult = withContext(Dispatchers.IO) {
         var repaired = 0
+        var withoutArtwork = 0
+
         trackDao.getAllIncludingUnconfirmed().forEach { track ->
             if (artworkResolver.isUsable(track.artworkPath)) return@forEach
 
             val resolved = artworkResolver.resolve(track.path, track.artworkPath)
             if (resolved != track.artworkPath) {
                 runCatching { trackDao.update(track.copy(artworkPath = resolved)) }
-                if (resolved != null) repaired++
+            }
+            if (resolved != null) repaired++ else withoutArtwork++
+        }
+
+        if (repaired > 0) database.runInTransaction { rebuildAggregates() }
+        ArtworkRebuildResult(repaired = repaired, withoutArtwork = withoutArtwork)
+    }
+
+    /**
+     * Outcome of [rebuildArtwork].
+     *
+     * [withoutArtwork] is reported separately so the user can tell "the app could
+     * not read it" from "these files genuinely have no cover" — the difference
+     * between a bug and nothing to show.
+     */
+    data class ArtworkRebuildResult(val repaired: Int, val withoutArtwork: Int)
+
+    /**
+     * Repair artwork for tracks that cannot show any, reporting each fix as it
+     * lands so a list can fill in progressively.
+     *
+     * The library screen runs this in the background, so a library scanned before
+     * covers were extracted recovers on its own rather than needing the user to
+     * find the button in Settings. Reads only tag headers per file, and yields
+     * between tracks so it cannot monopolise the IO dispatcher.
+     *
+     * @param onRepaired called for each track that gained a usable cover.
+     */
+    suspend fun repairMissingArtwork(
+        onRepaired: suspend (trackId: Long, artworkPath: String) -> Unit
+    ) = withContext(Dispatchers.IO) {
+        val candidates = trackDao.getAll().filterNot { artworkResolver.isUsable(it.artworkPath) }
+        if (candidates.isEmpty()) return@withContext
+
+        var repairedAny = false
+        for (track in candidates) {
+            // Cooperative: a cancelled scope (screen closed) stops the pass.
+            kotlinx.coroutines.yield()
+
+            val resolved = artworkResolver.resolve(track.path, track.artworkPath)
+            if (resolved != track.artworkPath) {
+                runCatching { trackDao.update(track.copy(artworkPath = resolved)) }
+            }
+            if (resolved != null) {
+                repairedAny = true
+                onRepaired(track.id, resolved)
             }
         }
-        if (repaired > 0) database.runInTransaction { rebuildAggregates() }
-        repaired
+
+        // Albums take their cover from a track, so refresh them once at the end.
+        if (repairedAny) database.runInTransaction { rebuildAggregates() }
     }
 
     /**

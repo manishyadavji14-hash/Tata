@@ -90,10 +90,18 @@ class SettingsViewModel(
         viewModelScope.launch {
             _uiState.update { it.copy(isRebuildingArtwork = true, libraryMessage = null) }
             val message = try {
-                when (val repaired = library.rebuildArtwork()) {
-                    0 -> "No missing album art found"
-                    1 -> "Restored album art for 1 track"
-                    else -> "Restored album art for $repaired tracks"
+                val result = library.rebuildArtwork()
+                buildString {
+                    when (result.repaired) {
+                        0 -> append("No album art was recovered")
+                        1 -> append("Restored album art for 1 track")
+                        else -> append("Restored album art for ${result.repaired} tracks")
+                    }
+                    // Say how many simply have no cover, so a remaining placeholder
+                    // reads as "nothing to show" rather than "still broken".
+                    if (result.withoutArtwork > 0) {
+                        append(". ${result.withoutArtwork} have no cover stored in the file")
+                    }
                 }
             } catch (error: Exception) {
                 "Could not rebuild album art: ${error.message}"

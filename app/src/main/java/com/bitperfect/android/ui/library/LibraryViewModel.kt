@@ -279,6 +279,10 @@ class LibraryViewModel(
     private val _uiState = MutableStateFlow(LibraryUiState())
     val uiState: StateFlow<LibraryUiState> = _uiState.asStateFlow()
 
+    /** Set once the background artwork repair has been started this session. */
+    @Volatile
+    private var hasStartedArtworkRepair = false
+
     // Unfiltered, unsorted source data. Filter and sort always derive from
     // these, so neither operation can destroy data the other needs.
     private var allFolders: List<FolderItem> = emptyList()
@@ -754,6 +758,33 @@ class LibraryViewModel(
         }
     }
 
+    /**
+     * Fill in album art that cannot be displayed, in the background.
+     *
+     * A library scanned before covers were extracted at scan time holds MediaStore
+     * album-art URIs that no longer resolve, so its rows show placeholders. Rather
+     * than making the user find "Rebuild album art" in Settings, each row repairs
+     * itself here and appears as soon as its cover is read.
+     *
+     * Once per session: the pass reads a tag header for every track that still has
+     * no cover, and most of those genuinely have none, so repeating it on every
+     * library reload would be work with no result.
+     */
+    private fun startArtworkRepair() {
+        if (hasStartedArtworkRepair) return
+        hasStartedArtworkRepair = true
+
+        viewModelScope.launch {
+            try {
+                musicLibrary.repairMissingArtwork { trackId, artworkPath ->
+                    patchTrack(trackId) { it.copy(artworkUri = artworkPath) }
+                }
+            } catch (error: Exception) {
+                // Cosmetic work; a failure must not disturb the library.
+            }
+        }
+    }
+
     /** Replace one visible row without reloading and re-sorting the library. */
     private fun patchTrack(trackId: Long, transform: (TrackItem) -> TrackItem) {
         allTracks = allTracks.map { if (it.id == trackId) transform(it) else it }
@@ -783,6 +814,8 @@ class LibraryViewModel(
             allGenres = snapshot.genres
             allComposers = snapshot.composers
             allFolders = snapshot.folders
+
+            startArtworkRepair()
 
             _uiState.update { state ->
                 state.copy(

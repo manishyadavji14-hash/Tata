@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 16.0 MiB (16,749,710 bytes) |
-| SHA-256 | `0ebd9285a46056a72131bde08b73722af91d2a4c385ba57cbfafebfd735cac84` |
+| Size | 16.0 MiB (16,782,478 bytes) |
+| SHA-256 | `c21dce00360c150908db2e7e4191a23b04e7df35f98caa3bfecb243d085c2fe2` |
 
 Verify the download matches before installing:
 
@@ -33,7 +33,21 @@ elsewhere cannot upgrade this one in place.
 
 ## New in this build
 
-**Album art: the intermittent case is fixed.** Covers appeared sometimes, or in the
+**Album art: the remaining pattern was the file format.** The app read covers only
+through Android's `MediaMetadataRetriever`, whose picture support does not cover the
+formats the library accepts. It misses the base64 `METADATA_BLOCK_PICTURE` comment
+that **Ogg Vorbis and Opus** use, and it cannot parse **DSF/DSD** at all — so those
+files showed a placeholder however well they were tagged, while MP3, M4A and FLAC
+worked. Covers are now parsed out of the container directly: ID3 `APIC`, FLAC
+`PICTURE` blocks, the base64 comment form, DSF's trailing ID3 tag, and the MP4
+`covr` atom.
+
+The library also repairs itself in the background now, so covers fill in on their
+own without needing Settings → "Rebuild album art". That button still exists and
+now reports how many files genuinely have no cover stored, so a remaining
+placeholder reads as "nothing to show" rather than "still broken".
+
+**Album art: the intermittent case (previous build).** Covers appeared sometimes, or in the
 app but not on the lock screen. A track change asks for the same cover twice at
 once — the player wants it for the screen, the playback service for the
 notification — and both writes to the artwork cache shared one temporary filename.
