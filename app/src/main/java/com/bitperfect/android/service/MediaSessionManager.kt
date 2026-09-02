@@ -1,11 +1,12 @@
 package com.bitperfect.android.service
 
 import android.content.Context
-import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
 import android.support.v4.media.session.MediaSessionCompat
 import android.util.Log
+import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import androidx.media3.common.PlaybackException
@@ -47,12 +48,12 @@ class MediaSessionManager(
 
     private val playerAdapter: PlaybackControllerPlayer = PlaybackControllerPlayer(playbackController)
 
-    // Current metadata state
+    // Last published metadata, for logging and debugging only. The values the
+    // system actually reads live in the player adapter's timeline window.
     private var currentTitle: String = ""
     private var currentArtist: String = ""
     private var currentAlbum: String = ""
     private var currentDurationMs: Long = 0L
-    private var currentArtwork: Bitmap? = null
 
     private val mediaSessionCallback = object : MediaSession.Callback {
         override fun onConnect(
@@ -105,41 +106,67 @@ class MediaSessionManager(
     fun getSession(): MediaSession = mediaSession
 
     /**
-     * Update metadata displayed on lock screen and notification.
+     * Publish what is playing to the lock screen, the notification shade and any
+     * vendor media widget.
+     *
+     * Everything the system shows comes from here. Before this was wired up the
+     * session carried [MediaMetadata.EMPTY] for the whole life of the process,
+     * which is why the panel read "Unknown song" with no cover and no times.
+     *
+     * @param trackPath identifies the item; also used as the timeline window's id
+     *   so the system can tell one track from the next.
+     * @param artworkUri a URI the system can read itself, or null.
+     * @param artworkData cover bytes, for artwork the system cannot reach — see
+     *   [ArtworkSource]. Passed by value, so it must already be downscaled.
      */
     fun updateMetadata(
+        trackPath: String,
         title: String,
         artist: String,
         album: String,
         durationMs: Long,
-        artwork: Bitmap? = null
+        artworkUri: Uri? = null,
+        artworkData: ByteArray? = null
     ) {
         currentTitle = title
         currentArtist = artist
         currentAlbum = album
         currentDurationMs = durationMs
-        currentArtwork = artwork
 
-        val metadataBuilder = MediaMetadata.Builder()
+        val metadata = MediaMetadata.Builder()
             .setTitle(title)
             .setArtist(artist)
             .setAlbumTitle(album)
+            // Some system UIs read the display fields rather than the tag fields,
+            // so both are populated with the same values.
             .setDisplayTitle(title)
             .setSubtitle(artist)
             .setDescription(album)
+            .setIsBrowsable(false)
+            .setIsPlayable(true)
+            // Note: media3 1.2.1's MediaMetadata has no duration field at all —
+            // duration reaches the system purely through the timeline window, which
+            // is why an empty timeline showed `--:--` however complete the metadata
+            // was. SingleItemTimeline carries it.
+            .apply {
+                artworkUri?.let { setArtworkUri(it) }
+                artworkData?.let {
+                    setArtworkData(it, MediaMetadata.PICTURE_TYPE_FRONT_COVER)
+                }
+            }
+            .build()
 
-        artwork?.let { bmp ->
-            metadataBuilder.setArtworkData(
-                bitmapToByteArray(bmp),
-                MediaMetadata.PICTURE_TYPE_FRONT_COVER
-            )
-        }
+        val mediaItem = MediaItem.Builder()
+            // A stable id per track: media3 uses it to decide whether the item
+            // changed, and vendor widgets use it to reset their animation.
+            .setMediaId(trackPath)
+            .setUri(trackPath)
+            .setMediaMetadata(metadata)
+            .build()
 
-        // Update the player adapter with new metadata and duration so that
-        // the MediaSession reflects the current track information
-        playerAdapter.updateMediaMetadata(metadataBuilder.build(), durationMs)
+        playerAdapter.updateMediaItem(mediaItem, durationMs)
 
-        Log.d(TAG, "Metadata updated: $title - $artist ($album)")
+        Log.d(TAG, "Metadata published: $title - $artist ($album), ${durationMs}ms")
     }
 
     /**
@@ -157,11 +184,7 @@ class MediaSessionManager(
         Log.i(TAG, "MediaSession released")
     }
 
-    private fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
-        val stream = java.io.ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-        return stream.toByteArray()
-    }
+
 
     /**
      * Custom Player implementation that bridges Media3 session commands
@@ -176,49 +199,104 @@ class MediaSessionManager(
     ) : Player {
 
         private val listeners = mutableListOf<Player.Listener>()
-        private var currentMediaMetadata: MediaMetadata = MediaMetadata.EMPTY
-        private var currentDurationMs: Long = 0L
-        private var currentPositionMs: Long = 0L
+
+        /**
+         * The item being played, as a one-window timeline.
+         *
+         * media3 derives the duration and the metadata it publishes to the system
+         * from the **timeline window**, not from [getDuration]. While this was
+         * `Timeline.EMPTY` there was no window to read, so the panel showed
+         * `--:--` at both ends and a scrubber that could not move.
+         */
+        private var timeline: Timeline = Timeline.EMPTY
+        private var currentMediaItem: MediaItem? = null
+
+        /**
+         * Duration from the library's own metadata.
+         *
+         * Needed because the engine only learns a file's duration when it opens
+         * it: a restored session sits in Paused with nothing prepared, and would
+         * otherwise report no duration at all until the user pressed play.
+         */
+        private var metadataDurationMs: Long = 0L
+
         private var currentState: Int = Player.STATE_IDLE
         private var isPlaying: Boolean = false
+
+        /**
+         * Intent to play, which is not the same as playing.
+         *
+         * It stays true while a track is being opened, so the panel keeps showing a
+         * pause button through a track change instead of blinking to "play" for as
+         * long as the next file takes to open.
+         */
+        private var playWhenReady: Boolean = false
         private var currentPlaybackSpeed: Float = 1.0f
         private var shuffleEnabled: Boolean = false
         private var currentRepeatMode: Int = Player.REPEAT_MODE_OFF
 
-        fun updateMediaMetadata(metadata: MediaMetadata, durationMs: Long) {
-            currentMediaMetadata = metadata
-            currentDurationMs = durationMs
-            listeners.forEach { it.onMediaMetadataChanged(metadata) }
+        /**
+         * Duration to report: whatever the engine knows, falling back to the
+         * library's value before the file has been opened.
+         */
+        private val effectiveDurationMs: Long
+            get() = controller.currentDurationMs.takeIf { it > 0L } ?: metadataDurationMs
+
+        fun updateMediaItem(mediaItem: MediaItem, durationMs: Long) {
+            val previousItem = currentMediaItem
+            currentMediaItem = mediaItem
+            metadataDurationMs = durationMs
+            timeline = SingleItemTimeline(mediaItem, effectiveDurationMs)
+
+            // All three, deliberately. media3 republishes to the system from
+            // different callbacks depending on what it thinks changed, and a
+            // missing one leaves the old title or the old duration on screen.
+            listeners.forEach { listener ->
+                listener.onTimelineChanged(
+                    timeline,
+                    Player.TIMELINE_CHANGE_REASON_PLAYLIST_CHANGED
+                )
+                if (previousItem?.mediaId != mediaItem.mediaId) {
+                    listener.onMediaItemTransition(
+                        mediaItem,
+                        Player.MEDIA_ITEM_TRANSITION_REASON_AUTO
+                    )
+                }
+                listener.onMediaMetadataChanged(mediaItem.mediaMetadata)
+            }
         }
 
         fun updateFromPlaybackState(state: PlaybackState) {
             val previousState = currentState
             val wasPlaying = isPlaying
+            val previousPlayWhenReady = playWhenReady
 
             when (state) {
                 is PlaybackState.Playing -> {
                     currentState = Player.STATE_READY
                     isPlaying = true
-                    currentPositionMs = state.positionMs
-                    currentDurationMs = state.durationMs
+                    playWhenReady = true
                 }
                 is PlaybackState.Paused -> {
                     currentState = Player.STATE_READY
                     isPlaying = false
-                    currentPositionMs = state.positionMs
+                    playWhenReady = false
                 }
                 is PlaybackState.Loading -> {
                     currentState = Player.STATE_BUFFERING
                     isPlaying = false
+                    // Opening a file is on the way to playing it.
+                    playWhenReady = true
                 }
                 is PlaybackState.Stopped -> {
                     currentState = Player.STATE_ENDED
                     isPlaying = false
-                    currentPositionMs = 0L
+                    playWhenReady = false
                 }
                 is PlaybackState.Error -> {
                     currentState = Player.STATE_IDLE
                     isPlaying = false
+                    playWhenReady = false
                     val error = PlaybackException(
                         state.message,
                         null,
@@ -229,15 +307,51 @@ class MediaSessionManager(
                 is PlaybackState.Idle -> {
                     currentState = Player.STATE_IDLE
                     isPlaying = false
-                    currentPositionMs = 0L
+                    playWhenReady = false
                 }
             }
+
+            // The engine may only now have learned the real duration, which
+            // arrives with the first Playing state. Refresh the window so the
+            // scrubber gets a length instead of staying blank.
+            refreshTimelineDuration()
 
             if (previousState != currentState) {
                 listeners.forEach { it.onPlaybackStateChanged(currentState) }
             }
+            if (previousPlayWhenReady != playWhenReady) {
+                listeners.forEach {
+                    it.onPlayWhenReadyChanged(
+                        playWhenReady,
+                        Player.PLAY_WHEN_READY_CHANGE_REASON_USER_REQUEST
+                    )
+                }
+            }
             if (wasPlaying != isPlaying) {
+                // Drives the system's own position extrapolation: it takes the
+                // position, the speed and a timestamp, then animates the bar
+                // itself, which is why no per-second tick is needed here.
                 listeners.forEach { it.onIsPlayingChanged(isPlaying) }
+            }
+        }
+
+        /** Rebuild the window when the known duration changes. */
+        private fun refreshTimelineDuration() {
+            val item = currentMediaItem ?: return
+            val duration = effectiveDurationMs
+            if (duration <= 0L) return
+
+            val window = Timeline.Window()
+            val published = if (timeline.windowCount > 0) {
+                timeline.getWindow(0, window).durationUs
+            } else {
+                -1L
+            }
+            if (published == duration * 1000L) return
+
+            timeline = SingleItemTimeline(item, duration)
+            listeners.forEach {
+                it.onTimelineChanged(timeline, Player.TIMELINE_CHANGE_REASON_SOURCE_UPDATE)
             }
         }
 
@@ -289,6 +403,11 @@ class MediaSessionManager(
                 Player.COMMAND_SET_SHUFFLE_MODE,
                 Player.COMMAND_SET_REPEAT_MODE,
                 Player.COMMAND_GET_CURRENT_MEDIA_ITEM,
+                // Without this media3 refuses to read the timeline, and the
+                // timeline is where it gets the duration and the metadata it
+                // publishes — so the panel had no title and no track length even
+                // once both were available.
+                Player.COMMAND_GET_TIMELINE,
                 Player.COMMAND_GET_METADATA -> true
                 else -> false
             }
@@ -316,6 +435,7 @@ class MediaSessionManager(
                 .add(Player.COMMAND_SET_SHUFFLE_MODE)
                 .add(Player.COMMAND_SET_REPEAT_MODE)
                 .add(Player.COMMAND_GET_CURRENT_MEDIA_ITEM)
+                .add(Player.COMMAND_GET_TIMELINE)
                 .add(Player.COMMAND_GET_METADATA)
                 .build()
         }
@@ -344,7 +464,7 @@ class MediaSessionManager(
             if (playWhenReady) play() else pause()
         }
 
-        override fun getPlayWhenReady(): Boolean = isPlaying
+        override fun getPlayWhenReady(): Boolean = playWhenReady
 
         override fun setRepeatMode(repeatMode: Int) {
             Log.d(TAG, "Player adapter: setRepeatMode($repeatMode)")
@@ -381,8 +501,39 @@ class MediaSessionManager(
 
         override fun seekTo(positionMs: Long) {
             Log.d(TAG, "Player adapter: seekTo($positionMs)")
-            currentPositionMs = positionMs
+            val item = currentMediaItem
+            val from = Player.PositionInfo(
+                /* windowUid= */ SingleItemTimeline.WINDOW_UID,
+                /* mediaItemIndex= */ 0,
+                /* mediaItem= */ item,
+                /* periodUid= */ SingleItemTimeline.WINDOW_UID,
+                /* periodIndex= */ 0,
+                /* positionMs= */ controller.currentPositionMs,
+                /* contentPositionMs= */ controller.currentPositionMs,
+                /* adGroupIndex= */ C.INDEX_UNSET,
+                /* adIndexInAdGroup= */ C.INDEX_UNSET
+            )
+
             controller.seek(positionMs)
+
+            val to = Player.PositionInfo(
+                SingleItemTimeline.WINDOW_UID,
+                0,
+                item,
+                SingleItemTimeline.WINDOW_UID,
+                0,
+                positionMs,
+                positionMs,
+                C.INDEX_UNSET,
+                C.INDEX_UNSET
+            )
+
+            // Republishes the position to the system, so dragging the scrubber in
+            // the shade jumps the bar instead of snapping back until the next
+            // state change.
+            listeners.forEach {
+                it.onPositionDiscontinuity(from, to, Player.DISCONTINUITY_REASON_SEEK)
+            }
         }
 
         override fun seekTo(mediaItemIndex: Int, positionMs: Long) {
@@ -391,12 +542,12 @@ class MediaSessionManager(
 
         override fun getSeekBackIncrement(): Long = 10000L
         override fun seekBack() {
-            seekTo(maxOf(0L, currentPositionMs - getSeekBackIncrement()))
+            seekTo(maxOf(0L, controller.currentPositionMs - getSeekBackIncrement()))
         }
 
         override fun getSeekForwardIncrement(): Long = 10000L
         override fun seekForward() {
-            seekTo(currentPositionMs + getSeekForwardIncrement())
+            seekTo(controller.currentPositionMs + getSeekForwardIncrement())
         }
 
         @Deprecated("Use hasPreviousMediaItem() instead")
@@ -472,7 +623,8 @@ class MediaSessionManager(
 
         override fun setTrackSelectionParameters(parameters: androidx.media3.common.TrackSelectionParameters) {}
 
-        override fun getMediaMetadata(): MediaMetadata = currentMediaMetadata
+        override fun getMediaMetadata(): MediaMetadata =
+            currentMediaItem?.mediaMetadata ?: MediaMetadata.EMPTY
 
         override fun getPlaylistMetadata(): MediaMetadata = MediaMetadata.EMPTY
 
@@ -480,7 +632,7 @@ class MediaSessionManager(
 
         override fun getCurrentManifest(): Any? = null
 
-        override fun getCurrentTimeline(): Timeline = Timeline.EMPTY
+        override fun getCurrentTimeline(): Timeline = timeline
 
         override fun getCurrentPeriodIndex(): Int = 0
 
@@ -496,31 +648,33 @@ class MediaSessionManager(
         override fun getPreviousWindowIndex(): Int = 0
         override fun getPreviousMediaItemIndex(): Int = 0
 
-        override fun getCurrentMediaItem(): MediaItem? {
-            return if (currentMediaMetadata != MediaMetadata.EMPTY) {
-                MediaItem.Builder()
-                    .setMediaMetadata(currentMediaMetadata)
-                    .build()
-            } else {
-                null
-            }
-        }
+        override fun getCurrentMediaItem(): MediaItem? = currentMediaItem
 
-        override fun getMediaItemCount(): Int =
-            if (currentMediaMetadata != MediaMetadata.EMPTY) 1 else 0
+        override fun getMediaItemCount(): Int = if (currentMediaItem != null) 1 else 0
 
         override fun getMediaItemAt(index: Int): MediaItem =
-            getCurrentMediaItem() ?: MediaItem.EMPTY
+            currentMediaItem ?: MediaItem.EMPTY
 
-        override fun getDuration(): Long = currentDurationMs
+        override fun getDuration(): Long =
+            effectiveDurationMs.takeIf { it > 0L } ?: C.TIME_UNSET
 
-        override fun getCurrentPosition(): Long = currentPositionMs
+        /**
+         * Read straight from the output rather than from a cached snapshot.
+         *
+         * The old field was only refreshed on discrete state transitions, so
+         * whenever media3 asked for the position — which is exactly when it
+         * publishes to the system — it got a value from the last play or pause.
+         * The system extrapolates from the position it is given, so a stale one
+         * produced a bar frozen wherever playback last changed state.
+         */
+        override fun getCurrentPosition(): Long = controller.currentPositionMs
 
-        override fun getBufferedPosition(): Long = currentPositionMs
+        override fun getBufferedPosition(): Long = controller.currentPositionMs
 
         override fun getBufferedPercentage(): Int {
-            return if (currentDurationMs > 0) {
-                ((currentPositionMs * 100) / currentDurationMs).toInt()
+            val duration = effectiveDurationMs
+            return if (duration > 0) {
+                ((controller.currentPositionMs * 100) / duration).toInt()
             } else {
                 0
             }
@@ -546,9 +700,10 @@ class MediaSessionManager(
         override fun getCurrentAdGroupIndex(): Int = -1
         override fun getCurrentAdIndexInAdGroup(): Int = -1
 
-        override fun getContentDuration(): Long = currentDurationMs
-        override fun getContentPosition(): Long = currentPositionMs
-        override fun getContentBufferedPosition(): Long = currentPositionMs
+        override fun getContentDuration(): Long =
+            effectiveDurationMs.takeIf { it > 0L } ?: C.TIME_UNSET
+        override fun getContentPosition(): Long = controller.currentPositionMs
+        override fun getContentBufferedPosition(): Long = controller.currentPositionMs
 
         override fun getAudioAttributes(): androidx.media3.common.AudioAttributes =
             androidx.media3.common.AudioAttributes.Builder()

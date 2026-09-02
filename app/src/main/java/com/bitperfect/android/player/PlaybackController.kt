@@ -95,6 +95,19 @@ class PlaybackController(
     @Volatile
     private var durationMs: Long = 0L
 
+    /**
+     * Duration of the open file, or 0 before it has been prepared.
+     *
+     * Exposed because the media session has to report a duration for the system's
+     * media panel to draw a scrubber at all — with no duration it shows `--:--`
+     * and a dead bar. [PlaybackState.Paused] carries no duration, so a restored
+     * session has no other way to find it.
+     */
+    val currentDurationMs: Long get() = durationMs
+
+    /** Live position from the output, or 0 when nothing is open. */
+    val currentPositionMs: Long get() = playbackSink.positionMs
+
     @Volatile
     private var currentFormat: AudioFormatInfo? = null
 

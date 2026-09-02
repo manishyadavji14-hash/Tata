@@ -15,7 +15,7 @@ each change and are deliberately detailed.**
 |---|---|
 | Work on | **`main`** — PR #4 merged as `eec1ed5`; embedded lyrics on `feat/embedded-lyrics` |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (15.7 MiB, debug-signed, arm64 only) |
-| Test status | 282 native C++ tests, **218** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
+| Test status | 282 native C++ tests, **238** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
@@ -84,7 +84,7 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 218 passing)
+# JVM unit tests (expect 238 passing)
 ./gradlew :app:testDebugUnitTest
 
 # Lint (expect 0 errors; warnings are pre-existing)
@@ -405,11 +405,28 @@ Known gaps to expect:
    mode; it throws on most devices. That was the seek bug.
 6. **`AudioTrack` in `MODE_STREAM` will not render the final partial buffer**
    while PLAYING. `stop()` is what drains it. That was the end-of-track error.
-7. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
+7. **The system reads the media session's *timeline*, not the Player's getters.**
+   The notification panel, lock screen and vendor widgets are fed from
+   `MediaMetadataCompat`/`PlaybackStateCompat`, which media3 builds from the
+   current timeline window. A player returning `Timeline.EMPTY` has no window, so
+   there is nothing to publish — that produced "Unknown song", no artwork and
+   `--:--` at both ends of a dead scrubber even with transport buttons working.
+   `SingleItemTimeline` supplies the window. Two specifics worth keeping:
+   - media3 1.2.1's `MediaMetadata` has **no duration field at all**; the window
+     is the only route a track length can take.
+   - `COMMAND_GET_TIMELINE` must be advertised, or media3 refuses to read the
+     timeline it needs.
+8. **Nothing published metadata until it was explicitly wired.**
+   `MediaSessionManager.updateMetadata` and
+   `PlaybackNotificationManager.updateTrackInfo` existed for months with **zero
+   call sites**, so the session carried `MediaMetadata.EMPTY` for the whole life
+   of the process. `PlaybackService.publishMetadataFor` is now the one caller;
+   if the panel goes blank again, check there first.
+9. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
    Returning false throws `IllegalArgumentException` out of `Service.onCreate`,
    which kills the app — and with `START_STICKY` it loops. The service is now
    `START_NOT_STICKY` and fails soft.
-8. **Do not start a foreground service before there is audio to show.** On
+10. **Do not start a foreground service before there is audio to show.** On
    Android 14+ that gets the app killed. The service is promoted on the first
    `Playing` state.
 
@@ -496,9 +513,14 @@ text-only session can request the right subset.
 | `LyricsRepository.kt` | Resolves lyrics: sidecar file first, embedded tags second |
 
 ### Service — `app/src/main/java/com/bitperfect/android/service/`
-`PlaybackService.kt` (notification, audio focus, adopts shared components),
-`MediaSessionManager.kt` (media3 session + the `Player` adapter),
-`PlaybackNotificationManager.kt`.
+| File | Role |
+|---|---|
+| `PlaybackService.kt` | Notification, audio focus, adopts shared components, and **publishes track metadata** to the session (`publishMetadataFor`) |
+| `MediaSessionManager.kt` | media3 session + the `Player` adapter; position and duration are read live from the controller |
+| `SingleItemTimeline.kt` | The one-window timeline the system reads title, artwork and **duration** from |
+| `ArtworkSource.kt` | Whether stored artwork is a system-readable URI or an app-private file |
+| `ArtworkLoader.kt` | Decodes and size-bounds covers for the session and the notification |
+| `PlaybackNotificationManager.kt` | The MediaStyle notification |
 
 ### UI — `app/src/main/java/com/bitperfect/android/ui/`
 `MainActivity.kt` (wiring and ownership), `navigation/NavGraph.kt` (routes,

@@ -58,7 +58,7 @@ Class isochronous transport.
 
 ```bash
 ./gradlew clean :app:assembleDebug          # clean matters, see HANDOFF.md §5
-./gradlew :app:testDebugUnitTest            # expect 218 passing
+./gradlew :app:testDebugUnitTest            # expect 238 passing
 ./gradlew :app:lintDebug                    # expect 0 errors
 cmake -S app/src/main/cpp -B build-test -DSTANDALONE_TEST=ON \
   && cmake --build build-test -j"$(nproc)" \

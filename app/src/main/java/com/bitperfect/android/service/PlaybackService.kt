@@ -27,6 +27,13 @@ import com.bitperfect.android.player.PlaybackState
 import com.bitperfect.android.usb.UsbAudioManager
 import com.bitperfect.android.usb.UsbErrorRecovery
 import com.bitperfect.android.usb.UsbPermissionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * PlaybackService - Foreground service for audio playback.
@@ -91,6 +98,21 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
 
     /** Retained so onDestroy can detach it from a shared controller. */
     private var playbackStateListener: (PlaybackState) -> Unit = {}
+
+    /**
+     * Scope for resolving track metadata.
+     *
+     * The service needs one of its own: reading tags and decoding a cover is disk
+     * work that must not run on the callback thread that delivers playback state,
+     * and it has to keep running while the app has no Activity.
+     */
+    private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+
+    private val artworkLoader by lazy { ArtworkLoader(this) }
+
+    /** Track whose metadata is currently published, to avoid redundant lookups. */
+    private var publishedMetadataPath: String? = null
+    private var metadataJob: Job? = null
     private var audioFocusRequest: AudioFocusRequest? = null
     private var hadAudioFocusBeforeTransientLoss = false
 
@@ -149,11 +171,18 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.d(TAG, "onStartCommand: action=${intent?.action}")
 
-        // Immediately call startForeground with a basic notification so Android
-        // does not kill the service. On Android 16+, the system enforces strict
-        // timing for foreground service notifications.
+        // Immediately call startForeground so Android does not kill the service.
+        // On Android 16+, the system enforces strict timing for foreground service
+        // notifications.
+        //
+        // Prefer the real media notification. Every transport tap in the shade
+        // arrives here as a start command, and unconditionally posting the basic
+        // notification replaced the media one — same id — so the panel lost its
+        // artwork and title until the next state change happened to rebuild it.
+        // The basic notification stays as the fallback for a degraded service,
+        // which is the case it was added for.
         try {
-            val notification = buildBasicNotification()
+            val notification = buildPlaybackNotification() ?: buildBasicNotification()
             startForeground(NOTIFICATION_ID, notification)
         } catch (e: Exception) {
             Log.e(TAG, "Failed to start foreground: ${e.message}", e)
@@ -234,6 +263,9 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         releaseAudioFocus()
         unregisterReceivers()
         releaseWakeLock()
+        // Stop any in-flight metadata lookup before the session it would write to
+        // is released.
+        serviceScope.cancel()
         mediaSessionManager?.release()
 
         if (!componentsReady) {
@@ -444,9 +476,30 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
 
         // Register USB receiver
         usbAudioManager.registerReceiver()
+
+        // Publish whatever is already playing.
+        //
+        // The service is started when playback begins, so by the time the state
+        // listener above is attached the controller may already be in Playing and
+        // no further transition is coming. Without this the notification would sit
+        // with no title, artist or artwork until the user happened to pause or
+        // change track.
+        //
+        // Deliberately not the whole onPlaybackStateChanged: that promotes the
+        // service to the foreground, and startForeground() from onCreate is
+        // rejected when the service was only bound — which the catch around
+        // initializeComponents would read as a failed init and disable the
+        // notification entirely.
+        val current = playbackController.state
+        publishMetadataFor(current)
+        mediaSessionManager?.updatePlaybackState(current)
     }
 
     private fun onPlaybackStateChanged(state: PlaybackState) {
+        // Publish what is playing before the state, so the system has a title and
+        // a duration to draw as soon as the transport controls appear.
+        publishMetadataFor(state)
+
         // Update media session
         mediaSessionManager?.updatePlaybackState(state)
 
@@ -475,6 +528,103 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
             }
             else -> { /* Loading - keep current wake lock state */ }
         }
+    }
+
+    /**
+     * Resolve and publish the current track's title, artist, album, duration and
+     * cover to the media session and the notification.
+     *
+     * This is what the lock screen, the notification shade and vendor media
+     * widgets read. Nothing used to call it, which is why they all showed
+     * "Unknown song" with no artwork and no track length for the entire life of
+     * the process.
+     *
+     * Keyed on the path so a pause or a seek does not repeat the disk work; the
+     * lookup reads tags and decodes a cover, which is far too expensive to do on
+     * every state change.
+     */
+    private fun publishMetadataFor(state: PlaybackState) {
+        val trackPath = when (state) {
+            is PlaybackState.Loading -> state.trackPath
+            is PlaybackState.Playing -> state.trackPath
+            is PlaybackState.Paused -> state.trackPath
+            // Nothing is playing, so leave the last metadata in place rather than
+            // blanking the panel while it is still on screen.
+            else -> return
+        }
+
+        if (trackPath.isBlank() || trackPath == publishedMetadataPath) return
+
+        publishedMetadataPath = trackPath
+        metadataJob?.cancel()
+        metadataJob = serviceScope.launch {
+            val info = withContext(Dispatchers.IO) { loadTrackInfo(trackPath) }
+
+            // The track may have moved on while the tags were being read; a late
+            // result must not overwrite the newer one.
+            if (publishedMetadataPath != trackPath) return@launch
+
+            mediaSessionManager?.updateMetadata(
+                trackPath = trackPath,
+                title = info.title,
+                artist = info.artist,
+                album = info.album,
+                durationMs = info.durationMs,
+                artworkUri = info.artwork.uri,
+                artworkData = info.artwork.data
+            )
+            notificationManager?.updateTrackInfo(
+                title = info.title,
+                artist = info.artist,
+                album = info.album,
+                artwork = info.artwork.bitmap
+            )
+            updateNotification()
+        }
+    }
+
+    private data class TrackInfo(
+        val title: String,
+        val artist: String,
+        val album: String,
+        val durationMs: Long,
+        val artwork: ArtworkLoader.Loaded
+    )
+
+    /**
+     * Read a track's details, falling back to the file name.
+     *
+     * A file played straight from the picker has no library row, and the library
+     * may not be reachable at all if the process was rebuilt for the service
+     * alone. Showing the file name beats showing nothing.
+     */
+    private suspend fun loadTrackInfo(trackPath: String): TrackInfo {
+        val fallbackTitle = trackPath.substringAfterLast('/').substringBeforeLast('.')
+
+        val details = try {
+            ServiceLocator.musicLibrary?.getTrackDetails(trackPath)
+        } catch (error: Exception) {
+            Log.w(TAG, "Could not read details for $trackPath: ${error.message}")
+            null
+        }
+
+        if (details == null) {
+            return TrackInfo(
+                title = fallbackTitle,
+                artist = "",
+                album = "",
+                durationMs = 0L,
+                artwork = ArtworkLoader.Loaded()
+            )
+        }
+
+        return TrackInfo(
+            title = details.title.ifBlank { fallbackTitle },
+            artist = details.artist,
+            album = details.album,
+            durationMs = details.durationMs,
+            artwork = artworkLoader.load(details.artworkUri)
+        )
     }
 
     // --- Receivers ---

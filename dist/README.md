@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 15.9 MiB (16,667,732 bytes) |
-| SHA-256 | `62995864bffd183e68c5c99b072498c9fea26ae6440aa935af78413204f55157` |
+| Size | 15.9 MiB (16,684,116 bytes) |
+| SHA-256 | `9de2f4fe1e676ad82e803292342acb37488f43820764af9cd70ee4cc8348c7df` |
 
 Verify the download matches before installing:
 
@@ -32,6 +32,19 @@ BitPerfect first. Debug signing keys differ between machines, so an APK built
 elsewhere cannot upgrade this one in place.
 
 ## New in this build
+
+**The notification and lock screen now show the track.** Title, artist, album art
+and both times were missing — the panel read "Unknown song" with `--:--` at each
+end and a progress bar that never moved. The media session was never being told
+what was playing, and it had no timeline for the system to read a track length
+from. Both are fixed, so the shade, the lock screen and vivo's Origin Island have
+something to display and the progress bar tracks playback.
+
+Check it by playing anything and pulling down the shade: you should see the real
+title and artist, the cover, the elapsed and total time, and a scrubber you can
+drag. Origin Island is a vivo feature that reads the same media session, so it
+should animate now too — that part could not be tested here, so please say if it
+still does not.
 
 **Sort the library.** The sort button on the Library screen now opens a labelled
 menu showing which order is active: name A-Z/Z-A, date added newest/oldest,
