@@ -370,10 +370,10 @@ class MusicLibrary(
     /**
      * Artwork for a stored row, repairing the row when what it holds is unusable.
      *
-     * Libraries scanned before this existed are full of dead
-     * `content://…/albumart/<id>` URIs. Rather than force a rescan, each track
-     * fixes itself the first time it is opened, and the corrected path is written
-     * back so lists pick it up too.
+     * Rows can hold a cover that cannot be shown: a cache path the system has
+     * since cleared, or an album URI MediaStore has no cover for. Rather than force
+     * a rescan, each track fixes itself the first time it is opened, and the
+     * corrected path is written back so lists pick it up too.
      */
     private fun repairedArtwork(track: Track): String? {
         if (artworkResolver.isUsable(track.artworkPath)) return track.artworkPath
@@ -985,7 +985,13 @@ class MusicLibrary(
                             // library, not the file, and must survive a rescan.
                             addedAt = stored.addedAt.takeIf { it > 0L } ?: scannedAt,
                             playedMs = stored.playedMs,
-                            isUserEdited = stored.isUserEdited
+                            isUserEdited = stored.isUserEdited,
+                            // A scan must not cost the row a cover it already has.
+                            // See ArtworkResolver.preferredArtwork.
+                            artworkPath = ArtworkResolver.preferredArtwork(
+                                stored = stored.artworkPath,
+                                scanned = merged.artworkPath
+                            )
                         )
                     )
                 } else {

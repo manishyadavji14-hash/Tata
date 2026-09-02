@@ -339,6 +339,18 @@ Still to do, and deliberately absent rather than inert:
   each should do (view vs replace artwork; a saved position within a track vs a
   saved track).
 
+### P3 — Folder covers (`cover.jpg`) — blocked on a permission, do not just add it
+The obvious next artwork source is a sidecar image beside the audio file
+(`cover.jpg`, `folder.jpg`, `front.jpg`), which is how many FLAC rips store art.
+**It cannot work as things stand.** The manifest requests `READ_MEDIA_AUDIO` and a
+`maxSdkVersion`-capped `READ_EXTERNAL_STORAGE`; on Android 13+ that grants *audio
+files only*, so opening a JPEG next to a track by path fails with `EACCES`. Reading
+it would need `READ_MEDIA_IMAGES` — asking a music player for photo access, which
+is worth a decision from the maintainer rather than a quiet addition.
+Whatever happens, do not ship a silent best-effort attempt: on the maintainer's own
+device it would be a no-op that merely *looks* like a fix, which is the one thing
+this codebase does not do.
+
 ### P2 — Visualization spectrum (requested, not started)
 A spectrum driven by `android.media.audiofx.Visualizer` on the AudioTrack
 session, rendered on a Compose canvas, coloured from the album-art palette
@@ -372,6 +384,14 @@ Known gaps to expect:
 ### P3 — Test gaps
 - No `androidTest` source set, so `MIGRATION_1_2` has no `MigrationTestHelper`
   test. Highest-value test to add.
+- Also because of that: **that `ArtworkResolver`'s default constructor and
+  `ArtworkLoader` really do route through `MediaStoreArtwork` is not covered by a
+  test.** The decision they delegate is (`accessFor`), but the wiring itself is
+  verified only by inspecting the dex — `MediaStoreArtwork.openThumbnail` is
+  present and issues the same `openTypedAssetFile` call as
+  `coil/fetch/ContentUriFetcher.fetch`, and the only remaining `openInputStream`
+  calls in our own code are the non-album branch plus two unrelated
+  document-copy paths. Re-run that check after touching either consumer.
 - The native FLAC decoder is **not trusted**: its own header lists LPC subframes
   as unsupported, and all 19 of its unit tests cover STREAMINFO parsing or
   synthetic frames — none decode a real encoded file. The Android path routes
@@ -440,15 +460,31 @@ Known gaps to expect:
 10. **The player is the NavHost start destination, so `popBackStack()` is a no-op
    there.** The pull-down-to-minimise gesture called it and silently did nothing.
    Anything that means "leave the player" has to fall back to navigating somewhere.
-11. **The MediaStore album-art URI is dead on modern Android.**
+11. **A MediaStore album cover is a *typed asset*, not a stream — and this entry
+   used to say the opposite, which caused a bug of its own.**
    `MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI` + album id gives
-   `content://media/external/audio/albumart/<id>`, a leftover from before scoped
-   storage. Deprecated in Android 10, and on current versions it usually resolves
-   to nothing. Every consumer failed silently on it — Coil showed its placeholder,
-   the media session got no bytes — so the app appeared to have no artwork at all.
-   `ArtworkResolver` now prefers a cached extraction, then the file's own embedded
-   cover, and only uses the URI once it is known to open. Settings → Library →
-   "Rebuild album art" repairs libraries scanned before this.
+   `content://media/external/audio/albums/<id>` — note `albums`, not the legacy
+   `albumart`. That URI is current and it works, but it names a *row*, so
+   `openInputStream` on it throws `FileNotFoundException: No media for album
+   content`. The cover has to be requested with
+   `openTypedAssetFile(uri, "image/*", Bundle{EXTRA_SIZE=Point}, null)`, which is
+   what the documented `ContentResolver.loadThumbnail` does internally and what
+   `MediaStore.Audio.Albums.ALBUM_ART` was deprecated in favour of.
+   Coil does exactly that for these URIs (`ContentUriFetcher.isMusicThumbnailUri`,
+   verified against the 2.7.0 bytecode), so every cover rendered *inside* the app.
+   This app's own two consumers used `openInputStream` and so both failed on the
+   same URI, which looked like three unrelated bugs:
+   covers missing from the lock screen and notification only; every play
+   re-parsing the audio file because the recorded URI could never be judged usable;
+   and "Rebuild album art" reporting those tracks as having no cover, the opposite
+   of the truth.
+   `MediaStoreArtwork` is now the only way this app opens an artwork reference, and
+   `MediaStoreArtwork.isAlbumArtUri` is a deliberate copy of Coil's predicate — if
+   the two ever disagree, a cover appears on one surface and not the other.
+   **The decision is exposed as `accessFor()` returning an enum specifically so a
+   test can pin it.** While it was buried inside the `ContentResolver` call no test
+   could have caught the wrong choice, and a mutation confirmed that.
+   Do not "simplify" either consumer back to `openInputStream`.
 12. **State that is declared and never assigned is worse than absent.**
    `PlayerUiState.trackPath` was declared and never once written, and
    `AlbumArtActions` early-returns on an empty path — so the album-art overflow

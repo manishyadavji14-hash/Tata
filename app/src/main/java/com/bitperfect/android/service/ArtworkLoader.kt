@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Log
 import androidx.core.net.toUri
+import com.bitperfect.android.library.MediaStoreArtwork
 import java.io.ByteArrayOutputStream
 
 /**
@@ -43,7 +44,7 @@ class ArtworkLoader(private val context: Context) {
 
         is ArtworkSource.SystemReadableUri -> {
             val uri = runCatching { source.uri.toUri() }.getOrNull()
-            val bitmap = uri?.let { decodeFromUri(it) }
+            val bitmap = decodeFromUri(source.uri)
             // Both the URI and the bytes, deliberately. media3's
             // BitmapLoader.loadBitmapFromMetadata prefers artworkData and only
             // falls back to artworkUri, and which URI schemes its loader supports
@@ -59,25 +60,37 @@ class ArtworkLoader(private val context: Context) {
         }
     }
 
-    private fun decodeFromUri(uri: Uri): Bitmap? = try {
+    /**
+     * Decode a cover the system holds.
+     *
+     * Opened through [MediaStoreArtwork] rather than with `openInputStream`. A
+     * MediaStore album URI does not serve its cover as a stream, so the direct
+     * call failed for every indexed track — which is why covers showed inside the
+     * app, where Coil makes the typed-asset call, but never on the lock screen.
+     */
+    private fun decodeFromUri(artworkUri: String): Bitmap? = try {
         // Two passes: measure, then decode downscaled. Decoding a large cover at
         // full size first would allocate tens of megabytes to immediately shrink.
         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
-        context.contentResolver.openInputStream(uri)?.use {
+        openStream(artworkUri)?.use {
             BitmapFactory.decodeStream(it, null, bounds)
         }
 
         val options = BitmapFactory.Options().apply {
             inSampleSize = sampleSizeFor(bounds.outWidth, bounds.outHeight)
         }
-        context.contentResolver.openInputStream(uri)?.use {
+        // Reopened rather than reset: a thumbnail stream is not seekable, so the
+        // measuring pass has already consumed it.
+        openStream(artworkUri)?.use {
             BitmapFactory.decodeStream(it, null, options)
         }
     } catch (error: Exception) {
-        // A stale MediaStore album-art URI is common — the row outlives the file.
-        Log.d(TAG, "Could not decode artwork from $uri: ${error.message}")
+        Log.d(TAG, "Could not decode artwork from $artworkUri: ${error.message}")
         null
     }
+
+    private fun openStream(artworkUri: String) =
+        MediaStoreArtwork.openArtworkStream(context.contentResolver, artworkUri)
 
     private fun decodeFromFile(path: String): Bitmap? = try {
         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }

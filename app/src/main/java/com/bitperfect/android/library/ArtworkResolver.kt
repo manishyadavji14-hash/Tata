@@ -2,7 +2,6 @@ package com.bitperfect.android.library
 
 import android.content.ContentResolver
 import android.util.Log
-import androidx.core.net.toUri
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
 
@@ -10,14 +9,13 @@ import java.util.concurrent.ConcurrentHashMap
  * Finds a cover for a track that can actually be displayed.
  *
  * The scanner records whatever MediaStore offers, which is
- * `content://media/external/audio/albumart/<albumId>`. That URI is a leftover
- * from the pre-scoped-storage `albumart` table: it was deprecated in Android 10
- * and on current versions it usually resolves to nothing at all. Everything
- * downstream failed silently on it — Coil fell back to a placeholder icon and the
- * media session got no bytes — so the app looked like it simply had no artwork,
- * even for files with a cover embedded in them.
+ * `content://media/external/audio/albums/<albumId>`. That URI is real and current,
+ * but it names a row rather than a file, and its cover is only served as a typed
+ * asset — see [MediaStoreArtwork]. Probing it with `openInputStream`, as this class
+ * originally did, fails on every device, so a perfectly good cover was judged
+ * unusable and the file was re-parsed on every play looking for a replacement.
  *
- * The order here is therefore "most reliable first":
+ * The order here is "most reliable first":
  *
  * 1. a cover already extracted into the app's cache, if the file is still there;
  * 2. the cover embedded in the audio file, extracted and cached — this is exact,
@@ -46,14 +44,11 @@ class ArtworkResolver(
         metadataExtractor: MetadataExtractor,
         artworkCache: ArtworkCache
     ) : this(
+        // Probed through the shared opener, so "this URI is worth keeping" is
+        // decided by the same call that will later be asked to read it. Probing it
+        // any other way is how a usable cover came to be treated as missing.
         canOpenUri = { uri ->
-            try {
-                contentResolver.openInputStream(uri.toUri())?.use { true } ?: false
-            } catch (error: Exception) {
-                // The usual case on modern Android: the albumart row outlives the
-                // file it pointed at, or the table is gone entirely.
-                false
-            }
+            MediaStoreArtwork.openArtworkStream(contentResolver, uri)?.use { true } ?: false
         },
         extractEmbedded = { path ->
             try {
@@ -153,5 +148,48 @@ class ArtworkResolver(
          */
         fun shouldWriteArtwork(stored: String?, resolved: String?): Boolean =
             resolved != null && resolved != stored
+
+        /**
+         * Which cover a rescan should keep.
+         *
+         * A scan writes the whole row, so without this the value it happens to
+         * carry wins outright — and [shouldWriteArtwork] does not protect this
+         * path, because it guards the repair passes rather than the scanner.
+         *
+         * Two orderings matter:
+         *
+         * - a cover the scan just extracted wins, because it was read from the
+         *   file as it is now. The cache key includes the file's size and mtime, so
+         *   a re-tagged file genuinely has a new cover;
+         * - otherwise an extracted cover already on disk is never downgraded to a
+         *   MediaStore URI or to nothing. Extraction can fail for a moment — an
+         *   unreadable file, a cache directory that could not be created — and
+         *   "the scan found nothing this time" must not erase a working cover.
+         *   This is the same rule as [shouldWriteArtwork], applied to the scanner.
+         *
+         * @param isExtractedCoverPresent whether a cached cover is still on disk.
+         *   Injected because `cacheDir` can be cleared by the system at any time,
+         *   so a stored path is not evidence the file exists.
+         */
+        fun preferredArtwork(
+            stored: String?,
+            scanned: String?,
+            isExtractedCoverPresent: (String) -> Boolean = ::isCoverFilePresent
+        ): String? {
+            val storedValue = stored?.trim().orEmpty()
+            val scannedValue = scanned?.trim().orEmpty()
+
+            if (scannedValue.startsWith("/")) return scannedValue
+
+            if (storedValue.startsWith("/") && isExtractedCoverPresent(storedValue)) {
+                return storedValue
+            }
+
+            return scannedValue.takeIf { it.isNotEmpty() }
+                ?: storedValue.takeIf { it.isNotEmpty() }
+        }
+
+        private fun isCoverFilePresent(path: String): Boolean =
+            File(path).let { it.isFile && it.length() > 0 }
     }
 }

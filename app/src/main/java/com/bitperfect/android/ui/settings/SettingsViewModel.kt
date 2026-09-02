@@ -76,12 +76,11 @@ class SettingsViewModel(
     /**
      * Re-read covers for tracks whose recorded artwork cannot be displayed.
      *
-     * For libraries scanned before covers were extracted during a scan. Those rows
-     * hold a `content://…/albumart/<id>` URI, which is deprecated and normally
-     * resolves to nothing on current Android, so they show a placeholder
-     * everywhere. This reads each affected file once and caches the cover found
-     * inside it — cheaper and less disruptive than a full rescan, and offered as an
-     * explicit action because it does touch every affected file.
+     * For libraries scanned before covers were extracted during a scan, and for
+     * rows whose cached cover the system has cleared out of `cacheDir`. Those show
+     * a placeholder everywhere. This reads each affected file once and caches the
+     * cover found inside it — cheaper and less disruptive than a full rescan, and
+     * offered as an explicit action because it does touch every affected file.
      */
     fun rebuildArtwork() {
         val library = musicLibrary ?: return

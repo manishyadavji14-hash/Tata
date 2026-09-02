@@ -14,12 +14,12 @@ ask you to allow installing from the browser the first time.
 
 | | |
 |---|---|
-| Contains | everything on `main` up to and including library sort, play statistics and the per-song menu (`feat/library-sort-and-track-actions`) |
+| Contains | everything on `feat/library-sort-and-track-actions`: library sort, play statistics, the per-song menu, and the album-art fixes through to the MediaStore thumbnail fix |
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 16.0 MiB (16,782,478 bytes) |
-| SHA-256 | `b15b9cbc455899a5089d06fa6514fc01f44f44b187f9d4fe4af20ee84b0cb082` |
+| Size | 16.0 MiB (16,798,862 bytes) |
+| SHA-256 | `ae646ec0256aa42bcb9b576b2a299ff112f07ffb6018224e2229f9c37f51617c` |
 
 Verify the download matches before installing:
 
@@ -33,7 +33,38 @@ elsewhere cannot upgrade this one in place.
 
 ## New in this build
 
-**Album art: a repair pass was erasing covers.** The background repair wrote back
+**Album art: the app was asking Android for covers the wrong way.** This is a
+different fault from the previous three, and it explains the part that kept coming
+back — covers showing in the app but not on the lock screen.
+
+Android hands out an album cover as a *thumbnail*, which has to be requested
+specifically. Asking for it as an ordinary file, which is what this app did, fails
+every time. Coil, the library that draws covers inside the app, happens to ask the
+correct way — so covers appeared there and nowhere else. Three symptoms that looked
+unrelated were all this one cause:
+
+- the **lock screen and notification** got no cover for any track Android had
+  indexed;
+- **every play re-read the whole audio file** hunting for a cover, because the
+  reference already stored could never be confirmed as working;
+- **"Rebuild album art" counted those tracks as having no cover**, which was the
+  opposite of the truth — so the report was misleading exactly where it mattered.
+
+There is now one piece of code that opens covers, shared by both, and it asks the
+same way Coil does.
+
+**A scan can no longer cost a track a cover it already had.** A scan writes the
+whole library row, so if reading a cover failed for a moment mid-scan, the working
+one was replaced by whatever the scan happened to carry. The "never replace
+something with nothing" rule from the last build now covers scanning too.
+
+**Small ones:** the cover cache was evicting by *write* order rather than by use, so
+a constantly played album's cover could be dropped in favour of one never looked at;
+and a cover that fails to load now says so in the log instead of falling back to a
+placeholder identical to "there is no cover", which is what made these faults so
+hard to tell apart.
+
+**Album art: a repair pass was erasing covers (previous build).** The background repair wrote back
 whatever it resolved — *including nothing*. When it could not read a cover it
 overwrote the recorded MediaStore reference with null, which cannot be undone
 without a rescan, so a single pass could strip artwork from a whole library. It now
@@ -79,10 +110,15 @@ starts on the album art, which is where it naturally does.
 **The playing song is marked in the library, and the list opens at it** instead of
 at the top.
 
-**Album art (previous fix, still relevant).** The library was storing the old
-`content://…/albumart/<id>` MediaStore URI, which Android deprecated in version 10
-and no longer resolves — so every cover silently fell back to a placeholder, in the
-app and in the notification alike. Covers are now read out of the files themselves.
+**Album art (earlier fix).** Covers are also read out of the files themselves, not
+just taken from Android's media index, so a file with a cover inside it shows one
+even when Android never extracted it.
+
+> An earlier version of this note said the app was storing a deprecated MediaStore
+> URI that no longer resolved. That turned out to be wrong: the reference it stores
+> is current and valid, and the real fault was *how* the app asked for it — see the
+> top of this list. Correcting it here because that mistaken explanation is what
+> kept the underlying bug hidden through three builds.
 
 > If art is still missing for music added before this update, open **Settings →
 > Library → "Rebuild album art"**. That re-reads the cover from each file and is

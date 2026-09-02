@@ -201,6 +201,42 @@ class ArtworkCacheTest {
     }
 
     @Test
+    @DisplayName("a cache hit is recorded, so eviction is by use and not by write order")
+    fun findRecordsTheHit(@TempDir directory: File) {
+        // trim() evicts oldest-lastModified first, and nothing but this ever updates
+        // it. Without it the cache evicts by write order: the cover of an album
+        // played constantly is dropped in favour of one that was never looked at.
+        val cache = ArtworkCache(File(directory, "cache"))
+        val source = sourceFile(directory)
+
+        val path = cache.put(source, cover())
+        val entry = File(path!!)
+        entry.setLastModified(1_000L)
+
+        assertEquals(path, cache.find(source))
+
+        assertTrue(
+            entry.lastModified() > 1_000L,
+            "a cache hit left the entry looking untouched, so eviction cannot see it"
+        )
+    }
+
+    @Test
+    @DisplayName("a cache hit does not invalidate the entry it just touched")
+    fun findIsStillIdempotent(@TempDir directory: File) {
+        // The key derives from the *source* file's size and mtime, never from the
+        // entry's, so touching the entry must not make the next lookup miss.
+        val cache = ArtworkCache(File(directory, "cache"))
+        val source = sourceFile(directory)
+        val path = cache.put(source, cover())
+
+        assertEquals(path, cache.find(source))
+        assertEquals(path, cache.find(source))
+        assertEquals(path, cache.find(source))
+        assertTrue(File(path!!).readBytes().contentEquals(cover()))
+    }
+
+    @Test
     @DisplayName("the cache is trimmed to its byte limit")
     fun trimsToMaxBytes(@TempDir directory: File) {
         val cacheDir = File(directory, "cache")

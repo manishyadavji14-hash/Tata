@@ -38,7 +38,17 @@ class ArtworkCache(
      */
     fun find(sourceFile: File): String? {
         val target = entryFor(sourceFile)
-        return if (target.isFile && target.length() > 0) target.absolutePath else null
+        if (!target.isFile || target.length() <= 0) return null
+
+        // Record the hit. [trim] evicts by modification time, and nothing else ever
+        // updates it, so without this the cache evicts by write order and will drop
+        // the cover of a constantly played album in favour of one never looked at.
+        //
+        // Safe to touch: the cache key is derived from the *source* file's size and
+        // mtime, never from the entry's, so this cannot invalidate the entry.
+        target.setLastModified(System.currentTimeMillis())
+
+        return target.absolutePath
     }
 
     /**
@@ -104,6 +114,11 @@ class ArtworkCache(
 
     /**
      * Evict least-recently-used entries until the cache is inside its limits.
+     *
+     * Eviction leaves library rows pointing at files that no longer exist. That is
+     * tolerated rather than tracked: `ArtworkResolver.isUsable` checks the file
+     * before trusting the path, so the next play re-extracts the cover and rewrites
+     * the row. The visible cost is a placeholder in the list until then.
      */
     private fun trim() {
         val entries = directory.listFiles()

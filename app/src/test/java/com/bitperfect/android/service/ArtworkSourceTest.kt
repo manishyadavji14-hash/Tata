@@ -19,7 +19,7 @@ class ArtworkSourceTest {
     @Test
     @DisplayName("a MediaStore album-art URI is handed to the system as a URI")
     fun mediaStoreUri() {
-        val uri = "content://media/external/audio/albumart/42"
+        val uri = "content://media/external/audio/albums/42"
 
         assertEquals(ArtworkSource.SystemReadableUri(uri), ArtworkSource.of(uri))
     }
@@ -28,7 +28,7 @@ class ArtworkSourceTest {
     @DisplayName("other system-resolvable schemes are passed through too")
     fun otherResolvableSchemes() {
         for (uri in listOf(
-            "content://media/external/audio/albumart/1",
+            "content://media/external/audio/albums/1",
             "android.resource://com.bitperfect.android/drawable/art",
             "https://example.com/cover.jpg",
             "http://example.com/cover.jpg"
@@ -45,8 +45,8 @@ class ArtworkSourceTest {
     @DisplayName("schemes are matched case-insensitively")
     fun schemeCaseInsensitive() {
         assertEquals(
-            ArtworkSource.SystemReadableUri("CONTENT://media/external/audio/albumart/7"),
-            ArtworkSource.of("CONTENT://media/external/audio/albumart/7")
+            ArtworkSource.SystemReadableUri("CONTENT://media/external/audio/albums/7"),
+            ArtworkSource.of("CONTENT://media/external/audio/albums/7")
         )
     }
 
@@ -82,7 +82,7 @@ class ArtworkSourceTest {
     @Test
     @DisplayName("surrounding whitespace is tolerated")
     fun trimsWhitespace() {
-        val uri = "content://media/external/audio/albumart/9"
+        val uri = "content://media/external/audio/albums/9"
 
         assertEquals(ArtworkSource.SystemReadableUri(uri), ArtworkSource.of("  $uri  "))
     }

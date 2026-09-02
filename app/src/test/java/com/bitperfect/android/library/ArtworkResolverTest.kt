@@ -12,22 +12,23 @@ import org.junit.jupiter.api.io.TempDir
 /**
  * Choosing a cover that can actually be displayed.
  *
- * Reported as "album art is still not showing". The scanner recorded
- * `content://media/external/audio/albumart/<albumId>`, which is a leftover from
- * the pre-scoped-storage MediaStore: deprecated in Android 10, and on current
- * versions it usually resolves to nothing. Everything downstream failed silently
- * on it — Coil showed its placeholder, the media session got no bytes — so the app
- * looked like it had no artwork at all, even for files with a cover inside them.
+ * Reported as "album art is still not showing". The scanner records
+ * `content://media/external/audio/albums/<albumId>`, and MediaStore may hold no
+ * cover for that album at all — it keeps a row per album whether or not it ever
+ * extracted one. Everything downstream failed silently in that case: Coil showed
+ * its placeholder and the media session got no bytes, so the app looked like it had
+ * no artwork, even for files with a cover inside them.
  *
  * The rule these tests pin down is "prefer what can be read": a cached extraction,
  * then the file's own embedded cover, and the MediaStore URI only once it is known
- * to open.
+ * to open. What "known to open" means is [MediaStoreArtwork]'s business, and getting
+ * it wrong here is what made a working URI look dead — see MediaStoreArtworkTest.
  */
 @DisplayName("ArtworkResolver Tests")
 class ArtworkResolverTest {
 
     private val audioPath = "/storage/emulated/0/Music/song.flac"
-    private val albumArtUri = "content://media/external/audio/albumart/42"
+    private val albumArtUri = "content://media/external/audio/albums/42"
 
     /** A resolver with no working MediaStore and no embedded art, by default. */
     private fun resolver(
@@ -196,6 +197,76 @@ class ArtworkResolverTest {
     @DisplayName("nothing stored and nothing found writes nothing")
     fun nothingToDo() {
         assertFalse(ArtworkResolver.shouldWriteArtwork(null, null))
+    }
+
+    // --- What a rescan keeps, which is the other way a cover can be lost ---
+
+    private val presentCover: (String) -> Boolean = { true }
+    private val clearedCover: (String) -> Boolean = { false }
+
+    @Test
+    @DisplayName("a rescan does not downgrade an extracted cover to a MediaStore URI")
+    fun rescanKeepsExtractedCover() {
+        // The scan writes the whole row, so whatever it carries wins unless this
+        // says otherwise — and shouldWriteArtwork does not guard the scanner. If
+        // extraction fails for a moment mid-scan, the scanned row carries only the
+        // album URI, and without this the working cover would be replaced by it.
+        val cover = "/cache/artwork/art_1.img"
+
+        assertEquals(
+            cover,
+            ArtworkResolver.preferredArtwork(cover, albumArtUri, presentCover)
+        )
+    }
+
+    @Test
+    @DisplayName("a rescan never erases a cover by finding nothing")
+    fun rescanNeverErases() {
+        val cover = "/cache/artwork/art_1.img"
+
+        assertEquals(cover, ArtworkResolver.preferredArtwork(cover, null, presentCover))
+        // Same rule for a recorded URI: losing it costs a rescan to get back,
+        // because the album id it was built from is not stored on the row.
+        assertEquals(albumArtUri, ArtworkResolver.preferredArtwork(albumArtUri, null, presentCover))
+        assertEquals(albumArtUri, ArtworkResolver.preferredArtwork(albumArtUri, "", presentCover))
+    }
+
+    @Test
+    @DisplayName("a freshly extracted cover replaces the stored one")
+    fun rescanTakesFreshExtraction() {
+        // The cache key includes the file's size and mtime, so a re-tagged file
+        // really does have a new cover and the old path is stale.
+        val old = "/cache/artwork/art_old.img"
+        val fresh = "/cache/artwork/art_new.img"
+
+        assertEquals(fresh, ArtworkResolver.preferredArtwork(old, fresh, presentCover))
+    }
+
+    @Test
+    @DisplayName("a stored cover the system has cleared is not preferred")
+    fun rescanDropsClearedCover() {
+        // cacheDir can be emptied at any time. Holding on to a path whose file is
+        // gone would keep the row broken until something re-resolved it, when the
+        // scan is offering a URI that may well work.
+        val cleared = "/cache/artwork/art_gone.img"
+
+        assertEquals(
+            albumArtUri,
+            ArtworkResolver.preferredArtwork(cleared, albumArtUri, clearedCover)
+        )
+    }
+
+    @Test
+    @DisplayName("a scanned URI is taken when nothing was stored")
+    fun rescanTakesUriWhenNothingStored() {
+        assertEquals(albumArtUri, ArtworkResolver.preferredArtwork(null, albumArtUri, presentCover))
+    }
+
+    @Test
+    @DisplayName("nothing stored and nothing scanned stays nothing")
+    fun rescanWithNothingEitherSide() {
+        assertNull(ArtworkResolver.preferredArtwork(null, null, presentCover))
+        assertNull(ArtworkResolver.preferredArtwork("", "  ", presentCover))
     }
 
     @Test
