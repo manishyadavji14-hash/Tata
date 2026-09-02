@@ -137,6 +137,74 @@ cd build-test && ctest --output-on-failure --verbose
 | `PlaybackControllerTest.kt` | State machine: Idle->Playing->Paused->Stopped transitions, seek, error handling |
 | `PlayQueueTest.kt` | Queue: add/remove, reorder, shuffle, repeat modes, boundary behavior |
 | `MetadataExtractorTest.kt` | Metadata: format detection, extension mapping, supported formats |
+| `LyricsParserTest.kt` | LRC parsing: timestamps, metadata tags, fraction scaling, current-line lookup |
+| `LyricsRepositoryTest.kt` | Source order: sidecar overrides embedded tags, blank sidecar falls through, caching |
+| `EmbeddedLyricsReaderTest.kt` | Tag parsing: ID3 `USLT`/`SYLT`, Vorbis comments, MP4 `©lyr`, malformed input |
+
+### Re-verifying the embedded lyrics reader against real files
+
+`EmbeddedLyricsReaderTest` builds its tags byte by byte, which proves the reader
+is self-consistent but not that the byte layouts are right. The layouts were
+checked against files produced by independent tools. Those files are binaries and
+are not committed, so here is how to regenerate them — worth redoing after any
+change to `EmbeddedLyricsReader`:
+
+```bash
+# Fedora/Amazon Linux; on Debian use apt-get
+dnf install -y flac vorbis-tools && pip install mutagen
+mkdir -p build-fixtures && cd build-fixtures
+
+python3 - <<'PY'
+import math, struct, wave
+with wave.open('tone.wav','w') as w:
+    w.setnchannels(2); w.setsampwidth(2); w.setframerate(44100)
+    w.writeframes(b''.join(
+        struct.pack('<hh', *(int(12000*math.sin(2*math.pi*440*t/44100)),)*2)
+        for t in range(44100)))
+PY
+
+flac -f --totally-silent -o real.flac tone.wav
+oggenc -Q -o real.ogg tone.wav
+
+python3 - <<'PY'
+from mutagen.flac import FLAC
+from mutagen.oggvorbis import OggVorbis
+from mutagen.id3 import ID3, USLT, SYLT, TIT2, APIC
+TIMED = "[00:01.00]First line\n[00:04.50]Second line\n[01:02.25]Third line"
+f = FLAC('real.flac'); f['LYRICS'] = TIMED; f.save()
+o = OggVorbis('real.ogg'); o['LYRICS'] = TIMED; o.save()
+
+# USLT behind a 40 KB picture frame, to prove the frame walk gets past it
+open('real_uslt.mp3','wb').write(b'\xff\xfb\x90\x00' + b'\x00'*512)
+t = ID3(); t.add(TIT2(encoding=3, text="Title"))
+t.add(APIC(encoding=0, mime='image/jpeg', type=3, desc='', data=b'\xff\xd8'+b'A'*40000))
+t.add(USLT(encoding=1, lang='eng', desc='desc', text=TIMED))
+t.save('real_uslt.mp3', v2_version=4)
+
+open('real_sylt.mp3','wb').write(b'\xff\xfb\x90\x00' + b'\x00'*512)
+s = ID3()
+s.add(SYLT(encoding=0, lang='eng', format=2, type=1, desc='',
+           text=[("\nHold",1000), (" me",1200), (" close",1400), ("\nNext line",5000)]))
+s.save('real_sylt.mp3', v2_version=3)
+PY
+```
+
+Then point a temporary test at `build-fixtures/` and assert:
+
+| File | Expected `EmbeddedLyricsReader.read` result |
+|---|---|
+| `real.flac`, `real.ogg` | the `TIMED` string above, unchanged |
+| `real_uslt.mp3` | the `TIMED` string, with no trailing `U+0000` |
+| `real_sylt.mp3` | `[00:01.00]Hold me close` then `[00:05.00]Next line` |
+
+**Delete that test again afterwards** — it cannot pass without the fixtures, and
+a permanently red test is worse than no test. This exercise is what caught the
+trailing-terminator bug that the synthetic fixtures had missed; the committed
+suite now guards it in `usltTrailingTerminator`.
+
+There is no MP4 encoder in that package set, so the `©lyr` path was validated the
+other way round: a file was assembled in Python and `mutagen.mp4.MP4` was asked to
+read the atom back, confirming the layout the reader expects is the standard one.
 
 ## Hardware-Dependent Tests
 

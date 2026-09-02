@@ -87,6 +87,13 @@ class MetadataExtractor {
         val bitDepth: Int = 0,
         val channels: Int = 0,
         val format: String = "",
+        /**
+         * Always null, and intentionally so. `MediaMetadataRetriever` has no
+         * lyrics key, and lyrics are not cached in the library row because a copy
+         * would go stale when the user retags the file. [EmbeddedLyricsReader]
+         * reads them from the file on demand instead; the player goes through
+         * `LyricsRepository`, never through this field.
+         */
         val lyrics: String? = null,
         val hasArtwork: Boolean = false
     )
