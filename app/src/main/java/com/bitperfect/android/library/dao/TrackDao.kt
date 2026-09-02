@@ -125,6 +125,20 @@ interface TrackDao {
     @Query("DELETE FROM tracks WHERE path = :path")
     fun deleteByPath(path: String)
 
+    @Query("DELETE FROM tracks WHERE id = :id")
+    fun deleteById(id: Long)
+
+    /**
+     * Add listened time to a track, keyed on path.
+     *
+     * An increment in SQL rather than read-modify-write in Kotlin: playback
+     * writes this from a background flush while the library screen may be
+     * reading the same row, and `playedMs = playedMs + :deltaMs` cannot lose an
+     * update the way a fetch-then-store can.
+     */
+    @Query("UPDATE tracks SET playedMs = playedMs + :deltaMs WHERE path = :path")
+    fun addPlayedMs(path: String, deltaMs: Long)
+
     @Query("DELETE FROM tracks")
     fun deleteAll()
 

@@ -55,7 +55,8 @@ class SettingsViewModel(
 
         // App info
         val appVersion: String = "1.0.0",
-        val buildInfo: String = "Release"
+        val buildInfo: String = "Release",
+        val creator: String = "Maneesh Yadav"
     )
 
     private val _uiState = MutableStateFlow(SettingsUiState())

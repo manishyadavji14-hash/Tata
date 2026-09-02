@@ -44,8 +44,69 @@ class PlaybackController(
     private var sleepTimer: SleepTimer? = null
     private val stateListeners = CopyOnWriteArrayList<(PlaybackState) -> Unit>()
 
+    /**
+     * Listening time per track, feeding the library's "most played" order.
+     *
+     * Owned here rather than in a ViewModel so it also counts playback driven
+     * from the notification with no Activity on screen.
+     */
+    private val playStats = PlayStatsRecorder()
+
+    /**
+     * Persists accumulated listening time. Set by whoever has a library and a
+     * scope that outlives an Activity; playback works normally when it is null,
+     * it simply records nothing.
+     */
+    @Volatile
+    var playStatsWriter: ((Map<String, Long>) -> Unit)? = null
+
+    /**
+     * Sample the current position into the play statistics.
+     *
+     * Called at every playback boundary below, and periodically by the UI so a
+     * process kill mid-track loses only a few seconds. Safe to call at any time:
+     * it credits only forward movement within one continuous stretch.
+     */
+    fun recordListeningSample() {
+        val snapshot = _state
+        val path = when (snapshot) {
+            is PlaybackState.Playing -> snapshot.trackPath
+            is PlaybackState.Paused -> snapshot.trackPath
+            else -> null
+        } ?: return
+        playStats.sample(path, playbackSink.positionMs)
+    }
+
+    /**
+     * Sample, then hand anything accumulated to [playStatsWriter].
+     *
+     * Called on the boundaries that end a stretch of listening, so the figure is
+     * durable without writing to the database on every position tick.
+     */
+    private fun flushListening() {
+        recordListeningSample()
+        val pending = playStats.takePending()
+        if (pending.isNotEmpty()) playStatsWriter?.invoke(pending)
+    }
+
+    /** Flush play statistics on demand, for the UI's periodic save. */
+    fun flushPlayStats() = flushListening()
+
     @Volatile
     private var durationMs: Long = 0L
+
+    /**
+     * Duration of the open file, or 0 before it has been prepared.
+     *
+     * Exposed because the media session has to report a duration for the system's
+     * media panel to draw a scrubber at all — with no duration it shows `--:--`
+     * and a dead bar. [PlaybackState.Paused] carries no duration, so a restored
+     * session has no other way to find it.
+     */
+    val currentDurationMs: Long get() = durationMs
+
+    /** Live position from the output, or 0 when nothing is open. */
+    val currentPositionMs: Long get() = playbackSink.positionMs
 
     @Volatile
     private var currentFormat: AudioFormatInfo? = null
@@ -84,6 +145,10 @@ class PlaybackController(
                     0L
                 }
 
+                // The file is open and may have been seeked to a restored
+                // position, so this is where a stretch of listening begins.
+                playStats.startSegment(trackPath, startAt)
+
                 setState(
                     PlaybackState.Playing(
                         trackPath = trackPath,
@@ -101,6 +166,12 @@ class PlaybackController(
                     else -> null
                 }
                 if (currentPath != trackPath) return
+
+                // Credit the run-out to the end of the file before moving on.
+                // The last periodic sample lands slightly short of the end, and
+                // without this a track played in full never quite reads 100%.
+                if (durationMs > 0L) playStats.sample(trackPath, durationMs)
+                flushListening()
 
                 val nextTrack = queue.next()
                 if (nextTrack == null) stop() else startTrack(nextTrack)
@@ -295,6 +366,9 @@ class PlaybackController(
 
     fun pause() {
         val currentState = state
+        // Pausing ends a stretch of listening; bank it while the position is
+        // still the one the user stopped at.
+        if (currentState is PlaybackState.Playing) flushListening()
         if (currentState is PlaybackState.Playing && playbackSink.pause()) {
             setState(
                 PlaybackState.Paused(
@@ -306,6 +380,7 @@ class PlaybackController(
     }
 
     fun stop() {
+        flushListening()
         playbackSink.stop()
         durationMs = 0L
         currentFormat = null
@@ -314,7 +389,19 @@ class PlaybackController(
 
     fun seek(positionMs: Long) {
         val clampedPosition = positionMs.coerceIn(0L, durationMs)
+
+        // Bank what was listened to before the jump, then rebase. Without the
+        // rebase, dragging the seek bar forward would be credited as listening.
+        val seekingPath = when (val current = _state) {
+            is PlaybackState.Playing -> current.trackPath
+            is PlaybackState.Paused -> current.trackPath
+            else -> null
+        }
+        if (seekingPath != null) playStats.sample(seekingPath, playbackSink.positionMs)
+
         if (!playbackSink.seekTo(clampedPosition)) return
+
+        if (seekingPath != null) playStats.startSegment(seekingPath, clampedPosition)
 
         when (val currentState = _state) {
             is PlaybackState.Playing -> {
@@ -404,10 +491,21 @@ class PlaybackController(
      * Real playback position comes from AudioTrack's playback head.
      */
     fun updatePosition(newPositionMs: Long) {
-        playbackSink.overridePosition(newPositionMs.coerceIn(0L, durationMs))
+        val clamped = newPositionMs.coerceIn(0L, durationMs)
+        playbackSink.overridePosition(clamped)
+
+        // An externally imposed position is a discontinuity like a seek, so
+        // rebase rather than let the jump count as listening.
+        val path = when (val current = _state) {
+            is PlaybackState.Playing -> current.trackPath
+            is PlaybackState.Paused -> current.trackPath
+            else -> null
+        }
+        if (path != null) playStats.startSegment(path, clamped)
     }
 
     fun release() {
+        flushListening()
         audioTrackSink.release()
         usbSink.release()
         cancelSleepTimer()
@@ -433,6 +531,10 @@ class PlaybackController(
     }
 
     private fun startTrack(trackPath: String) {
+        // Bank the outgoing track's listening time before the state changes, or
+        // skipping through a queue would lose it.
+        flushListening()
+
         setState(PlaybackState.Loading(trackPath))
         durationMs = 0L
         currentFormat = null

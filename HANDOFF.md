@@ -15,7 +15,8 @@ each change and are deliberately detailed.**
 |---|---|
 | Work on | **`main`** — PR #4 merged as `eec1ed5`; embedded lyrics on `feat/embedded-lyrics` |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (15.7 MiB, debug-signed, arm64 only) |
-| Test status | 282 native C++ tests, **168** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
+| Test status | 282 native C++ tests, **238** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
+| Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
 Branch from `main` for new work. The old `feat/audiotrack-playback-build-fix`
@@ -83,7 +84,7 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 168 passing)
+# JVM unit tests (expect 238 passing)
 ./gradlew :app:testDebugUnitTest
 
 # Lint (expect 0 errors; warnings are pre-existing)
@@ -192,9 +193,22 @@ review screen at Settings → Library → "Review unconfirmed music" with
 multi-select and "Move to library".
 
 Notes for whoever tests it:
-- The rule requires **all** of album, artist, album artist, year and artwork to be
-  absent. Deliberately conservative — hiding real music is worse than showing a
-  stray recording.
+- **The rule is now the artist, and only the artist** (tightened in v4). A file is
+  quarantined when both `artist` and `albumArtist` are missing, where "missing"
+  also covers the placeholder values taggers write — `<unknown>`, `unknown`,
+  `unknown artist`, `various`, `various artists` — matched whole-value, so
+  "Unknown Mortal Orchestra" is not caught.
+- The original rule required *every* tag to be absent, which let anything with a
+  stray year or a scrap of folder artwork through. That is why recordings and voice
+  notes kept reaching the library, and `albumTitle`, `year` and artwork are no
+  longer treated as evidence.
+- `MIGRATION_3_4` re-applies the rule to existing rows, so files already in the
+  library that name no artist move into review on upgrade. That is intended.
+  Anything previously confirmed by hand that has no artist needs confirming again —
+  the v3 schema cannot distinguish "confirmed" from "never quarantined".
+- `MetadataExtractor.buildTrack` now sets the flag too. It previously did not, so
+  adding a file singly — from the file picker or a zip import — bypassed quarantine
+  completely.
 - `MIGRATION_2_3` backfills existing rows, so an established library is cleaned up
   on upgrade without a rescan.
 - The scanner uses `getAllIncludingUnconfirmed()`; using the filtered `getAll()`
@@ -260,6 +274,58 @@ hand-scrolled and say why.
 
 Embedded lyrics are now supported too — see the section above. `LyricsRepository`
 checks the sidecar first and the file's tags second.
+
+### ~~P1 — Library sort, play statistics, per-song menu~~ — DONE, needs device check
+
+**Sort.** The Library's sort button was a blind cycle through five orders with no
+label; it is now a menu that shows the current choice. Orders: name A-Z/Z-A, date
+added newest/oldest, format, most played. `SortOrder.appliesTo(tab)` decides which
+appear, so "format" is not offered on the Artists tab, and `selectTab` falls back
+to name order when the active one does not apply. Every order breaks ties by
+title, so a list cannot reshuffle between visits.
+
+**Play statistics.** `Track.playedMs` accumulates listening time and
+`Track.playedPercent` turns it into a share of the duration, which is what "most
+played" ranks on. It is cumulative and can exceed 100%: a four-minute track played
+once and then replayed for a minute is 125%. That ranks a track someone returns to
+above one heard once, which a play count would not.
+
+`PlayStatsRecorder` does the accounting. The important property is that **seeks are
+not counted**: `PlaybackController` calls `startSegment` at every discontinuity
+(seek, track start, external position override) and `sample` at every boundary
+(pause, stop, end of track, track change), so within a segment the position only
+moves because audio played. Because of that, sampling frequency does not affect
+accuracy — the periodic call from `PlayerViewModel`'s 250 ms loop only bounds how
+much is lost if the process is killed mid-track. A 30 s cap per sample is a
+backstop for a jump that arrived without a matching `startSegment`.
+
+Writes go through `PlaybackController.playStatsWriter`, set by `PlayerViewModel` to
+launch on `BitPerfectApp.applicationScope` — **not** `viewModelScope`, because
+playback outlives the player screen and a cancelled write would lose the count.
+
+**Per-song menu.** The Library's Tracks tab now uses the shared
+`ui/components/TrackRow`, which already had the overflow menu, instead of its own
+inline row. Entries: Play, Add to playlist, favourite, Info / Tags, Edit tags,
+Lyrics, Remove from library. `TrackInfoDialog` moved to `ui/components` and is
+parameterised on a neutral `TrackInfo` so the player and the library share one
+copy; it also shows the played percentage and the listened time behind it.
+
+Notes for whoever tests it:
+- **"Remove from library" does not delete the file**, and both the menu label and
+  the confirmation say so. Deleting needs the MediaStore consent flow — still not
+  built, deliberately.
+- **"Edit tags" is library-only.** There is no tag writer in the app. The dialog
+  states that the file's own tags are unchanged, and `Track.isUserEdited` makes
+  `persistScanResult` keep the user's descriptive fields so a rescan does not
+  silently revert the edit. Technical fields are still refreshed from the file.
+  Giving a quarantined track an artist releases it from quarantine.
+- **Lyrics** are written to app-private storage, not next to the audio, because
+  writing there needs consent on Android 11+ and fails on a read-only volume.
+  "Remove" records a suppression marker — without it, lyrics embedded in the file
+  would simply reappear on the next play. Resolution order is override, then
+  sidecar, then tags.
+- `MusicLibrary.lyricsRepository` is now shared with `PlayerViewModel`; two
+  instances would each cache separately and edits would not show up in the player.
 
 ### P2 — Album-art overflow menu: remaining items
 Implemented: Info/Tags, Add to playlist, Go to album/artist/genre/folder. Hidden
@@ -339,11 +405,28 @@ Known gaps to expect:
    mode; it throws on most devices. That was the seek bug.
 6. **`AudioTrack` in `MODE_STREAM` will not render the final partial buffer**
    while PLAYING. `stop()` is what drains it. That was the end-of-track error.
-7. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
+7. **The system reads the media session's *timeline*, not the Player's getters.**
+   The notification panel, lock screen and vendor widgets are fed from
+   `MediaMetadataCompat`/`PlaybackStateCompat`, which media3 builds from the
+   current timeline window. A player returning `Timeline.EMPTY` has no window, so
+   there is nothing to publish — that produced "Unknown song", no artwork and
+   `--:--` at both ends of a dead scrubber even with transport buttons working.
+   `SingleItemTimeline` supplies the window. Two specifics worth keeping:
+   - media3 1.2.1's `MediaMetadata` has **no duration field at all**; the window
+     is the only route a track length can take.
+   - `COMMAND_GET_TIMELINE` must be advertised, or media3 refuses to read the
+     timeline it needs.
+8. **Nothing published metadata until it was explicitly wired.**
+   `MediaSessionManager.updateMetadata` and
+   `PlaybackNotificationManager.updateTrackInfo` existed for months with **zero
+   call sites**, so the session carried `MediaMetadata.EMPTY` for the whole life
+   of the process. `PlaybackService.publishMetadataFor` is now the one caller;
+   if the panel goes blank again, check there first.
+9. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
    Returning false throws `IllegalArgumentException` out of `Service.onCreate`,
    which kills the app — and with `START_STICKY` it loops. The service is now
    `START_NOT_STICKY` and fails soft.
-8. **Do not start a foreground service before there is audio to show.** On
+10. **Do not start a foreground service before there is audio to show.** On
    Android 14+ that gets the app killed. The service is promoted on the first
    `Playing` state.
 
@@ -430,9 +513,14 @@ text-only session can request the right subset.
 | `LyricsRepository.kt` | Resolves lyrics: sidecar file first, embedded tags second |
 
 ### Service — `app/src/main/java/com/bitperfect/android/service/`
-`PlaybackService.kt` (notification, audio focus, adopts shared components),
-`MediaSessionManager.kt` (media3 session + the `Player` adapter),
-`PlaybackNotificationManager.kt`.
+| File | Role |
+|---|---|
+| `PlaybackService.kt` | Notification, audio focus, adopts shared components, and **publishes track metadata** to the session (`publishMetadataFor`) |
+| `MediaSessionManager.kt` | media3 session + the `Player` adapter; position and duration are read live from the controller |
+| `SingleItemTimeline.kt` | The one-window timeline the system reads title, artwork and **duration** from |
+| `ArtworkSource.kt` | Whether stored artwork is a system-readable URI or an app-private file |
+| `ArtworkLoader.kt` | Decodes and size-bounds covers for the session and the notification |
+| `PlaybackNotificationManager.kt` | The MediaStyle notification |
 
 ### UI — `app/src/main/java/com/bitperfect/android/ui/`
 `MainActivity.kt` (wiring and ownership), `navigation/NavGraph.kt` (routes,

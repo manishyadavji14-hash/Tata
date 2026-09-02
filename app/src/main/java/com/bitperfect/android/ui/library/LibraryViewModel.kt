@@ -37,11 +37,58 @@ class LibraryViewModel(
     private val settingsRepository: SettingsRepository? = null
 ) : ViewModel() {
 
-    private companion object {
+    internal companion object {
         /** Anything above Red Book counts as high resolution. */
-        const val CD_SAMPLE_RATE_HZ = 48_000
-        const val CD_BIT_DEPTH = 16
-        val DSD_CODECS = setOf("DSF", "DFF")
+        private const val CD_SAMPLE_RATE_HZ = 48_000
+        private const val CD_BIT_DEPTH = 16
+        private val DSD_CODECS = setOf("DSF", "DFF")
+
+        /**
+         * Order the track list.
+         *
+         * Pulled out of the ViewModel body and given no dependencies so it can be
+         * unit tested directly — the "most played" rule in particular is a claim
+         * about ranking that is worth proving rather than eyeballing.
+         *
+         * Every order breaks ties by title, so the list has one definite order
+         * rather than depending on whatever the database returned. Without that,
+         * two tracks played the same amount could swap places between visits.
+         */
+        internal fun sortTracks(items: List<TrackItem>, order: SortOrder): List<TrackItem> {
+            val byTitle = compareBy<TrackItem> { it.title.lowercase() }
+
+            return when (order) {
+                SortOrder.NAME_ASC -> items.sortedWith(byTitle)
+                SortOrder.NAME_DESC -> items.sortedWith(
+                    compareByDescending<TrackItem> { it.title.lowercase() }
+                )
+                SortOrder.DATE_ADDED_NEWEST -> items.sortedWith(
+                    compareByDescending<TrackItem> { it.dateAdded }.then(byTitle)
+                )
+                SortOrder.DATE_ADDED_OLDEST -> items.sortedWith(
+                    compareBy<TrackItem> { it.dateAdded }.then(byTitle)
+                )
+                // Group by container, then read naturally within each group. The
+                // codec is compared case-insensitively so "flac" and "FLAC" from
+                // different scan paths do not split into two groups.
+                SortOrder.FORMAT -> items.sortedWith(
+                    compareBy<TrackItem> { it.codec.lowercase() }.then(byTitle)
+                )
+                // The share of the track actually listened to, summed over every
+                // play, so it can exceed 100% — a track heard twice outranks one
+                // heard once. See Track.playedMs.
+                SortOrder.MOST_PLAYED -> items.sortedWith(
+                    compareByDescending<TrackItem> { it.playedPercent }
+                        .thenByDescending { it.playedMs }
+                        .then(byTitle)
+                )
+                // Neither applies to a flat track list; album/disc order is the
+                // meaningful reading order there.
+                SortOrder.TRACK_COUNT, SortOrder.YEAR -> items.sortedWith(
+                    compareBy({ it.album.lowercase() }, { it.trackNumber })
+                )
+            }
+        }
     }
 
     /**
@@ -60,11 +107,19 @@ class LibraryViewModel(
 
     /**
      * Sort options for library items.
+     *
+     * Not every order means something on every tab — "format" is meaningless for
+     * a list of artists — so each one declares where it applies and the sort menu
+     * only offers those. Picking an order that does not apply is not an error; it
+     * falls back to name order rather than showing an unsorted list.
      */
     enum class SortOrder {
         NAME_ASC,
         NAME_DESC,
-        DATE_ADDED,
+        DATE_ADDED_NEWEST,
+        DATE_ADDED_OLDEST,
+        FORMAT,
+        MOST_PLAYED,
         TRACK_COUNT,
         YEAR;
 
@@ -72,10 +127,32 @@ class LibraryViewModel(
             get() = when (this) {
                 NAME_ASC -> "Name A-Z"
                 NAME_DESC -> "Name Z-A"
-                DATE_ADDED -> "Recently added"
+                DATE_ADDED_NEWEST -> "Date added — newest"
+                DATE_ADDED_OLDEST -> "Date added — oldest"
+                FORMAT -> "Format"
+                MOST_PLAYED -> "Most played"
                 TRACK_COUNT -> "Track count"
                 YEAR -> "Year"
             }
+
+        /** Whether this order changes anything on [tab]. */
+        fun appliesTo(tab: LibraryTab): Boolean = when (this) {
+            NAME_ASC, NAME_DESC -> true
+            // Tracks carry their own added date; albums derive one from their
+            // newest track. The name-only tabs have nothing to date.
+            DATE_ADDED_NEWEST, DATE_ADDED_OLDEST ->
+                tab == LibraryTab.TRACKS || tab == LibraryTab.ALBUMS
+            // Both are per-file facts, so only the track list can use them.
+            FORMAT, MOST_PLAYED -> tab == LibraryTab.TRACKS
+            TRACK_COUNT -> tab != LibraryTab.TRACKS
+            YEAR -> tab == LibraryTab.ALBUMS
+        }
+
+        companion object {
+            /** Orders worth offering for [tab], in menu order. */
+            fun optionsFor(tab: LibraryTab): List<SortOrder> =
+                entries.filter { it.appliesTo(tab) }
+        }
     }
 
     /**
@@ -174,7 +251,19 @@ class LibraryViewModel(
         val formatInfo: String,
         val artworkUri: String? = null,
         val trackNumber: Int = 0,
-        val dateAdded: Long = 0L
+        val dateAdded: Long = 0L,
+        // The rest back the row's overflow menu and the Info dialog, which would
+        // otherwise have to re-read the row from the database on every tap.
+        val albumArtist: String = "",
+        val genre: String = "",
+        val composer: String = "",
+        val year: Int = 0,
+        val fileSize: Long = 0L,
+        val folder: String = "",
+        val isFavourite: Boolean = false,
+        val isUserEdited: Boolean = false,
+        val playedMs: Long = 0L,
+        val playedPercent: Int = 0
     )
 
     /**
@@ -236,7 +325,17 @@ class LibraryViewModel(
     }
 
     fun selectTab(tab: LibraryTab) {
-        _uiState.update { it.copy(currentTab = tab) }
+        _uiState.update { state ->
+            // An order that means nothing on the new tab would silently show an
+            // unsorted list, so fall back to name order when it does not apply.
+            val order = if (state.sortOrder.appliesTo(tab)) {
+                state.sortOrder
+            } else {
+                SortOrder.NAME_ASC
+            }
+            state.copy(currentTab = tab, sortOrder = order)
+        }
+        refreshVisibleItems()
     }
 
     fun search(query: String) {
@@ -244,15 +343,17 @@ class LibraryViewModel(
         refreshVisibleItems()
     }
 
+    /**
+     * Step to the next order that applies to the current tab.
+     *
+     * Kept for completeness, but the screen now shows a labelled menu instead:
+     * cycling blindly gave no way to tell which of several orders was active.
+     */
     fun cycleSortOrder() {
-        val next = when (_uiState.value.sortOrder) {
-            SortOrder.NAME_ASC -> SortOrder.NAME_DESC
-            SortOrder.NAME_DESC -> SortOrder.DATE_ADDED
-            SortOrder.DATE_ADDED -> SortOrder.TRACK_COUNT
-            SortOrder.TRACK_COUNT -> SortOrder.YEAR
-            SortOrder.YEAR -> SortOrder.NAME_ASC
-        }
-        setSortOrder(next)
+        val options = SortOrder.optionsFor(_uiState.value.currentTab)
+        if (options.isEmpty()) return
+        val index = options.indexOf(_uiState.value.sortOrder)
+        setSortOrder(options[(index + 1) % options.size])
     }
 
     fun setSortOrder(order: SortOrder) {
@@ -262,6 +363,15 @@ class LibraryViewModel(
 
     fun dismissStatusMessage() {
         _uiState.update { it.copy(statusMessage = null) }
+    }
+
+    /**
+     * Show a message produced elsewhere, such as the playlist picker hosted by
+     * the navigation graph. Without this the outcome of "add to playlist" —
+     * including a failure — would never be seen on this screen.
+     */
+    fun showStatusMessage(message: String) {
+        _uiState.update { it.copy(statusMessage = message) }
     }
 
     /**
@@ -525,6 +635,133 @@ class LibraryViewModel(
         _uiState.update { it.copy(scrollToPath = null) }
     }
 
+    // --- Per-track actions, from the row's overflow menu ---
+
+    /**
+     * Flip a track's favourite flag.
+     *
+     * The visible list is patched in place rather than reloaded. A full
+     * loadLibrary() re-reads and re-sorts everything, which on a large library
+     * makes the heart icon respond visibly late and can scroll the list.
+     */
+    fun toggleFavourite(trackId: Long) {
+        viewModelScope.launch {
+            val current = allTracks.firstOrNull { it.id == trackId } ?: return@launch
+            val updated = !current.isFavourite
+            musicLibrary.setFavourite(trackId, updated)
+            patchTrack(trackId) { it.copy(isFavourite = updated) }
+        }
+    }
+
+    /**
+     * Drop a track from the library index. The file is left alone — see
+     * [MusicLibrary.removeTrackFromLibrary].
+     */
+    fun removeTrackFromLibrary(trackId: Long) {
+        viewModelScope.launch {
+            val title = allTracks.firstOrNull { it.id == trackId }?.title
+            musicLibrary.removeTrackFromLibrary(trackId)
+
+            allTracks = allTracks.filterNot { it.id == trackId }
+            _uiState.update { state ->
+                state.copy(
+                    totalTracks = allTracks.size,
+                    isEmpty = allTracks.isEmpty(),
+                    statusMessage = if (title != null) {
+                        "Removed \"$title\" from the library. The file is still on the device."
+                    } else {
+                        "Removed from the library. The file is still on the device."
+                    }
+                )
+            }
+            refreshVisibleItems()
+        }
+    }
+
+    /**
+     * Save corrected tags for a track. Library-only; the file is not rewritten.
+     */
+    fun updateTrackDetails(
+        trackId: Long,
+        title: String,
+        artist: String,
+        album: String,
+        albumArtist: String,
+        genre: String,
+        year: Int,
+        trackNumber: Int
+    ) {
+        viewModelScope.launch {
+            val saved = musicLibrary.updateTrackDetails(
+                trackId = trackId,
+                title = title,
+                artist = artist,
+                albumTitle = album,
+                albumArtist = albumArtist,
+                genre = genre,
+                year = year,
+                trackNumber = trackNumber
+            )
+
+            if (saved == null) {
+                _uiState.update { it.copy(statusMessage = "That track is no longer in the library") }
+                return@launch
+            }
+
+            if (saved.isUnconfirmed) {
+                // It has just left the main library, so reload rather than patch a
+                // row that should no longer be listed.
+                loadLibrary()
+                _uiState.update {
+                    it.copy(
+                        statusMessage = "Saved. With no artist it moved to " +
+                            "\"Review unconfirmed music\"."
+                    )
+                }
+                return@launch
+            }
+
+            // Album and artist groupings may have changed, so the aggregate lists
+            // need rebuilding, not just this row.
+            loadLibrary()
+            _uiState.update { it.copy(statusMessage = "Tags saved for \"${saved.title}\"") }
+        }
+    }
+
+    /**
+     * The lyrics text to show in the editor: the user's own if they have any,
+     * otherwise whatever the file itself carries.
+     */
+    suspend fun loadEditableLyrics(path: String): String =
+        musicLibrary.getEditableLyrics(path)
+
+    /**
+     * Save or remove lyrics for a track. A blank [lyrics] removes them, which is
+     * recorded so the file's embedded lyrics do not simply come back.
+     */
+    fun saveLyrics(path: String, lyrics: String) {
+        viewModelScope.launch {
+            val accepted = musicLibrary.setLyrics(path, lyrics)
+            _uiState.update { state ->
+                state.copy(
+                    statusMessage = when {
+                        !accepted -> "Could not save the lyrics"
+                        lyrics.isBlank() -> "Lyrics removed"
+                        else -> "Lyrics saved"
+                    }
+                )
+            }
+        }
+    }
+
+    /** Replace one visible row without reloading and re-sorting the library. */
+    private fun patchTrack(trackId: Long, transform: (TrackItem) -> TrackItem) {
+        allTracks = allTracks.map { if (it.id == trackId) transform(it) else it }
+        _uiState.update { state ->
+            state.copy(tracks = state.tracks.map { if (it.id == trackId) transform(it) else it })
+        }
+    }
+
     // --- Loading ---
 
     private fun loadLibrary() {
@@ -581,10 +818,14 @@ class LibraryViewModel(
     private suspend fun buildSnapshot(): LibrarySnapshot {
         val tracks = musicLibrary.getAllTracks()
 
-        // One grouping pass instead of scanning all tracks per album.
+        // One grouping pass instead of scanning all tracks per album. An album is
+        // as recent as its newest track, so a later addition to an album moves the
+        // whole album up "recently added".
         val newestByAlbum = tracks
             .groupingBy { it.albumId }
-            .fold(0L) { newest, track -> maxOf(newest, track.lastModified) }
+            .fold(0L) { newest, track ->
+                maxOf(newest, track.addedAt.takeIf { it > 0L } ?: track.lastModified)
+            }
 
         return LibrarySnapshot(
             albums = musicLibrary.getAlbums().map { album ->
@@ -644,7 +885,20 @@ class LibraryViewModel(
         formatInfo = formatTrackInfo(track.sampleRate, track.bitDepth, track.format),
         artworkUri = track.artworkPath,
         trackNumber = track.trackNumber,
-        dateAdded = track.lastModified
+        // Fall back to the file timestamp only for rows written before addedAt
+        // existed and somehow missed the migration's backfill, so date-added
+        // order never collapses into an all-zero tie.
+        dateAdded = track.addedAt.takeIf { it > 0L } ?: track.lastModified,
+        albumArtist = track.albumArtist,
+        genre = track.genre,
+        composer = track.composer,
+        year = track.year,
+        fileSize = track.fileSize,
+        folder = track.folder,
+        isFavourite = track.isFavourite,
+        isUserEdited = track.isUserEdited,
+        playedMs = track.playedMs,
+        playedPercent = track.playedPercent
     )
 
     /**
@@ -685,9 +939,14 @@ class LibraryViewModel(
             .let { items ->
                 when (order) {
                     SortOrder.NAME_DESC -> items.sortedByDescending { it.title.lowercase() }
-                    SortOrder.DATE_ADDED -> items.sortedByDescending { it.dateAdded }
+                    SortOrder.DATE_ADDED_NEWEST -> items.sortedByDescending { it.dateAdded }
+                    SortOrder.DATE_ADDED_OLDEST -> items.sortedBy { it.dateAdded }
                     SortOrder.TRACK_COUNT -> items.sortedByDescending { it.trackCount }
                     SortOrder.YEAR -> items.sortedByDescending { it.year }
+                    // Per-file orders mean nothing for an album; fall back to
+                    // name rather than leaving the list in database order.
+                    SortOrder.FORMAT,
+                    SortOrder.MOST_PLAYED,
                     SortOrder.NAME_ASC -> items.sortedBy { it.title.lowercase() }
                 }
             }
@@ -719,20 +978,7 @@ class LibraryViewModel(
                     it.artist.lowercase().contains(query) ||
                     it.album.lowercase().contains(query)
             }
-            .let { items ->
-                when (order) {
-                    SortOrder.NAME_DESC -> items.sortedByDescending { it.title.lowercase() }
-                    SortOrder.DATE_ADDED -> items.sortedByDescending { it.dateAdded }
-                    // Within an album, disc/track order is the meaningful order.
-                    SortOrder.TRACK_COUNT -> items.sortedWith(
-                        compareBy({ it.album.lowercase() }, { it.trackNumber })
-                    )
-                    SortOrder.YEAR -> items.sortedWith(
-                        compareBy({ it.album.lowercase() }, { it.trackNumber })
-                    )
-                    SortOrder.NAME_ASC -> items.sortedBy { it.title.lowercase() }
-                }
-            }
+            .let { items -> sortTracks(items, order) }
 
         _uiState.update { state ->
             state.copy(

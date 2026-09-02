@@ -251,8 +251,8 @@ fun SettingsScreen(
                         style = MaterialTheme.typography.bodyLarge
                     )
                     Text(
-                        text = "Files with no album, artist, year or artwork are kept out of " +
-                            "the library. Review them and move any real music in.",
+                        text = "Files that do not say who made them are kept out of the " +
+                            "library. Review them and move any real music in.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -278,6 +278,8 @@ fun SettingsScreen(
             }
             item {
                 SettingsCard {
+                    InfoRow(label = "Creator", value = uiState.creator)
+                    Spacer(modifier = Modifier.height(8.dp))
                     InfoRow(label = "Version", value = uiState.appVersion)
                     Spacer(modifier = Modifier.height(8.dp))
                     InfoRow(label = "Build", value = uiState.buildInfo)

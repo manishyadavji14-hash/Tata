@@ -2,6 +2,7 @@ package com.bitperfect.android.ui.player
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bitperfect.android.BitPerfectApp
 import com.bitperfect.android.ServiceLocator
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
@@ -41,8 +42,16 @@ class PlayerViewModel(
      * constructible without a Context in tests.
      */
     private val sessionStore: PlaybackStateStore? = null,
-    /** Sidecar .lrc / .txt lookup. Owned here so results are cached per session. */
-    private val lyricsRepository: LyricsRepository = LyricsRepository()
+    /**
+     * Resolves lyrics from the user's own text, a sidecar file, or the file's
+     * tags.
+     *
+     * Taken from the library rather than constructed here so it is the same
+     * instance the library screen writes through: two instances would each keep
+     * their own cache, and lyrics edited from a track's menu would not show up in
+     * the player until the app restarted.
+     */
+    private val lyricsRepository: LyricsRepository = musicLibrary.lyricsRepository
 ) : ViewModel() {
 
     /**
@@ -175,6 +184,16 @@ class PlayerViewModel(
     init {
         playbackController.addStateListener(playbackStateListener)
 
+        // Listening time is written on the application scope, not this one.
+        // Playback outlives the player screen — the notification keeps it going
+        // after the Activity is gone — and a write cancelled with the ViewModel
+        // would lose whatever had been counted.
+        playbackController.playStatsWriter = { listenedByPath ->
+            BitPerfectApp.applicationScope.launch {
+                musicLibrary.addListenedMs(listenedByPath)
+            }
+        }
+
         // Put the last session back before anything else touches state.
         restoreSession()
 
@@ -189,7 +208,13 @@ class PlayerViewModel(
                 // to write to disk four times a second.
                 if (++ticksSinceSave >= POSITION_SAVE_INTERVAL_TICKS) {
                     ticksSinceSave = 0
-                    if (_uiState.value.isPlaying) savePosition()
+                    if (_uiState.value.isPlaying) {
+                        savePosition()
+                        // Play statistics are exact from the playback boundaries
+                        // alone; this only bounds how much is lost if the process
+                        // is killed in the middle of a track.
+                        playbackController.flushPlayStats()
+                    }
                 }
                 delay(250L) // Update 4 times per second
             }

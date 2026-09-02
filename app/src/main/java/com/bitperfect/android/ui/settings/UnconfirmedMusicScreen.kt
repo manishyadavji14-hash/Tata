@@ -96,9 +96,10 @@ fun UnconfirmedMusicScreen(
 
                 else -> {
                     Text(
-                        text = "These files carry no album, artist, year or artwork, so they " +
-                            "are probably recordings rather than music. They are hidden from " +
-                            "the library but not deleted.",
+                        text = "These files name no artist, so they are probably voice " +
+                            "notes, ringtones or recordings rather than music. They are " +
+                            "hidden from the library but not deleted — select any real " +
+                            "music and move it in.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)

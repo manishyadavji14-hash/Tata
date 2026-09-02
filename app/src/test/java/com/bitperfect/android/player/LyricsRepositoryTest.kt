@@ -136,6 +136,83 @@ class LyricsRepositoryTest {
         assertEquals(2, reads)
     }
 
+    // --- User overrides, which outrank both other sources ---
+
+    @Test
+    @DisplayName("what the user typed beats both the sidecar and the tags")
+    fun overrideWinsOverEverything() {
+        val audio = audioFileWithSidecar("sidecar words")
+        val overrides = LyricsOverrideStore(File(sidecarDirectory, "overrides"))
+        overrides.save(audio, "user words")
+
+        val repository = LyricsRepository(overrides = overrides, readEmbedded = { "embedded words" })
+
+        assertEquals(
+            listOf("user words"),
+            runBlocking { repository.load(audio) }.lines.map { it.text }
+        )
+    }
+
+    @Test
+    @DisplayName("removing lyrics keeps the file's embedded lyrics hidden")
+    fun suppressionBeatsEmbedded() {
+        // The trap this exists for: the words are still inside the file, so
+        // without recording the removal they would come back on the next play.
+        val audio = File(sidecarDirectory, "song.mp3")
+            .apply { writeBytes(ByteArray(4)) }
+            .absolutePath
+        val overrides = LyricsOverrideStore(File(sidecarDirectory, "overrides"))
+        overrides.suppress(audio)
+
+        val repository = LyricsRepository(overrides = overrides, readEmbedded = { "embedded words" })
+
+        assertTrue(runBlocking { repository.load(audio) }.isEmpty)
+    }
+
+    @Test
+    @DisplayName("removing lyrics also hides a sidecar file")
+    fun suppressionBeatsSidecar() {
+        val audio = audioFileWithSidecar("[00:01.00]sidecar words")
+        val overrides = LyricsOverrideStore(File(sidecarDirectory, "overrides"))
+        overrides.suppress(audio)
+
+        val repository = LyricsRepository(overrides = overrides, readEmbedded = { null })
+
+        assertTrue(runBlocking { repository.load(audio) }.isEmpty)
+    }
+
+    @Test
+    @DisplayName("an override falls through to the file once it is cleared")
+    fun clearedOverrideFallsBack() {
+        val audio = audioFileWithSidecar("sidecar words")
+        val overrides = LyricsOverrideStore(File(sidecarDirectory, "overrides"))
+        overrides.save(audio, "user words")
+        overrides.clear(audio)
+
+        val repository = LyricsRepository(overrides = overrides, readEmbedded = { "embedded words" })
+
+        assertEquals(
+            listOf("sidecar words"),
+            runBlocking { repository.load(audio) }.lines.map { it.text }
+        )
+    }
+
+    @Test
+    @DisplayName("user-supplied LRC keeps its timings")
+    fun overrideKeepsTimings() {
+        val audio = File(sidecarDirectory, "timed.flac")
+            .apply { writeBytes(ByteArray(4)) }
+            .absolutePath
+        val overrides = LyricsOverrideStore(File(sidecarDirectory, "overrides"))
+        overrides.save(audio, "[00:02.00]One\n[00:09.25]Two")
+
+        val repository = LyricsRepository(overrides = overrides, readEmbedded = { null })
+        val lyrics = runBlocking { repository.load(audio) }
+
+        assertTrue(lyrics.isSynced)
+        assertEquals(listOf(2_000L, 9_250L), lyrics.lines.map { it.timeMs })
+    }
+
     @Test
     @DisplayName("finds a sidecar in a Lyrics subfolder")
     fun sidecarInSubfolder(@TempDir directory: File) {
