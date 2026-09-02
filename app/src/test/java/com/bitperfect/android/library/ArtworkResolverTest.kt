@@ -163,6 +163,41 @@ class ArtworkResolverTest {
         assertFalse(resolver().isUsable("artwork/relative.img"))
     }
 
+    // --- What gets written back, which is where a repair can do damage ---
+
+    @Test
+    @DisplayName("finding nothing never overwrites what is stored")
+    fun neverWritesNullOverAStoredUri() {
+        // The regression this guards: the repair passes wrote whatever they
+        // resolved, including null, which erased the recorded MediaStore URI. That
+        // cannot be undone without a rescan, because the album id it was built from
+        // is not stored on the row — so one background pass over a library could
+        // wipe every artwork reference it failed to probe.
+        assertFalse(ArtworkResolver.shouldWriteArtwork(albumArtUri, null))
+        assertFalse(ArtworkResolver.shouldWriteArtwork("/cache/artwork/art_1.img", null))
+    }
+
+    @Test
+    @DisplayName("an improvement is written")
+    fun writesAnImprovement() {
+        val cover = "/cache/artwork/art_1.img"
+
+        assertTrue(ArtworkResolver.shouldWriteArtwork(albumArtUri, cover))
+        assertTrue(ArtworkResolver.shouldWriteArtwork(null, cover))
+    }
+
+    @Test
+    @DisplayName("an unchanged value is not rewritten")
+    fun skipsRedundantWrites() {
+        assertFalse(ArtworkResolver.shouldWriteArtwork(albumArtUri, albumArtUri))
+    }
+
+    @Test
+    @DisplayName("nothing stored and nothing found writes nothing")
+    fun nothingToDo() {
+        assertFalse(ArtworkResolver.shouldWriteArtwork(null, null))
+    }
+
     @Test
     @DisplayName("resolution reads the audio file it was asked about")
     fun extractsFromTheRightFile() {

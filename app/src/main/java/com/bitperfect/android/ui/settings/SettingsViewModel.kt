@@ -92,15 +92,17 @@ class SettingsViewModel(
             val message = try {
                 val result = library.rebuildArtwork()
                 buildString {
-                    when (result.repaired) {
-                        0 -> append("No album art was recovered")
-                        1 -> append("Restored album art for 1 track")
-                        else -> append("Restored album art for ${result.repaired} tracks")
-                    }
-                    // Say how many simply have no cover, so a remaining placeholder
-                    // reads as "nothing to show" rather than "still broken".
+                    append("${result.alreadyUsable + result.repaired} of ")
+                    append("${result.totalTracks} tracks have album art")
+                    if (result.repaired > 0) append(" (${result.repaired} just recovered)")
+
+                    // Broken down by container, because that is the axis artwork
+                    // support varies along. It turns "art is missing" into something
+                    // specific, and it is the one thing that can be reported from a
+                    // phone without logs.
                     if (result.withoutArtwork > 0) {
-                        append(". ${result.withoutArtwork} have no cover stored in the file")
+                        append(". No cover found in ${result.withoutArtwork}: ")
+                        append(result.missingSummary)
                     }
                 }
             } catch (error: Exception) {

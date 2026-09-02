@@ -19,7 +19,7 @@ ask you to allow installing from the browser the first time.
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
 | Size | 16.0 MiB (16,782,478 bytes) |
-| SHA-256 | `c21dce00360c150908db2e7e4191a23b04e7df35f98caa3bfecb243d085c2fe2` |
+| SHA-256 | `b15b9cbc455899a5089d06fa6514fc01f44f44b187f9d4fe4af20ee84b0cb082` |
 
 Verify the download matches before installing:
 
@@ -33,7 +33,23 @@ elsewhere cannot upgrade this one in place.
 
 ## New in this build
 
-**Album art: the remaining pattern was the file format.** The app read covers only
+**Album art: a repair pass was erasing covers.** The background repair wrote back
+whatever it resolved — *including nothing*. When it could not read a cover it
+overwrote the recorded MediaStore reference with null, which cannot be undone
+without a rescan, so a single pass could strip artwork from a whole library. It now
+never replaces something with nothing.
+
+> If your library currently shows no art at all, **run a scan once** (the refresh
+> icon on the Library screen). That restores the references the old pass erased.
+> Then Settings -> Library -> "Rebuild album art" reports how many tracks have a
+> cover, broken down by format, so a remaining placeholder is explainable rather
+> than mysterious.
+
+**The grey disc over the tab row is gone** — Material3's pull-to-refresh container
+paints its circular surface even when idle, so it is now only composed while the
+gesture is actually active.
+
+**Album art: format coverage (previous build).** The app read covers only
 through Android's `MediaMetadataRetriever`, whose picture support does not cover the
 formats the library accepts. It misses the base64 `METADATA_BLOCK_PICTURE` comment
 that **Ogg Vorbis and Opus** use, and it cannot parse **DSF/DSD** at all — so those

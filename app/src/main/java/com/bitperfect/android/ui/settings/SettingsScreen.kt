@@ -269,8 +269,9 @@ fun SettingsScreen(
                     }
                     Text(
                         text = uiState.libraryMessage
-                            ?: "Reads the cover out of each file. Use this if album art " +
-                            "is missing for music added before this update.",
+                            ?: "Reads the cover out of each file and reports how many " +
+                            "tracks have one, per format. Use this if album art is " +
+                            "missing.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

@@ -379,12 +379,15 @@ class MusicLibrary(
         if (artworkResolver.isUsable(track.artworkPath)) return track.artworkPath
 
         val resolved = artworkResolver.resolve(track.path, track.artworkPath)
-        if (resolved != track.artworkPath) {
-            // Best effort: a failed write costs a repeat of the lookup next time,
-            // nothing more.
+
+        // Only ever write an improvement — see ArtworkResolver.shouldWriteArtwork.
+        if (ArtworkResolver.shouldWriteArtwork(track.artworkPath, resolved)) {
             runCatching { trackDao.update(track.copy(artworkPath = resolved)) }
         }
-        return resolved
+
+        // Fall back to whatever was already recorded rather than reporting nothing:
+        // it may still load even though it could not be probed here.
+        return resolved ?: track.artworkPath
     }
 
     /**
@@ -397,21 +400,43 @@ class MusicLibrary(
      * @return how many rows were given a usable cover.
      */
     suspend fun rebuildArtwork(): ArtworkRebuildResult = withContext(Dispatchers.IO) {
+        val all = trackDao.getAllIncludingUnconfirmed()
+        var alreadyUsable = 0
         var repaired = 0
-        var withoutArtwork = 0
+        val missingByFormat = mutableMapOf<String, Int>()
 
-        trackDao.getAllIncludingUnconfirmed().forEach { track ->
-            if (artworkResolver.isUsable(track.artworkPath)) return@forEach
+        all.forEach { track ->
+            if (artworkResolver.isUsable(track.artworkPath)) {
+                alreadyUsable++
+                return@forEach
+            }
 
             val resolved = artworkResolver.resolve(track.path, track.artworkPath)
-            if (resolved != track.artworkPath) {
+
+            if (ArtworkResolver.shouldWriteArtwork(track.artworkPath, resolved)) {
                 runCatching { trackDao.update(track.copy(artworkPath = resolved)) }
             }
-            if (resolved != null) repaired++ else withoutArtwork++
+
+            if (resolved != null) {
+                repaired++
+            } else {
+                // Counted per container, because that is the axis artwork support
+                // actually varies along, and it turns "art is missing" into
+                // something specific enough to act on.
+                val format = track.format.ifBlank {
+                    track.path.substringAfterLast('.', "").uppercase().ifBlank { "?" }
+                }
+                missingByFormat[format] = (missingByFormat[format] ?: 0) + 1
+            }
         }
 
         if (repaired > 0) database.runInTransaction { rebuildAggregates() }
-        ArtworkRebuildResult(repaired = repaired, withoutArtwork = withoutArtwork)
+        ArtworkRebuildResult(
+            totalTracks = all.size,
+            alreadyUsable = alreadyUsable,
+            repaired = repaired,
+            missingByFormat = missingByFormat
+        )
     }
 
     /**
@@ -421,7 +446,23 @@ class MusicLibrary(
      * not read it" from "these files genuinely have no cover" — the difference
      * between a bug and nothing to show.
      */
-    data class ArtworkRebuildResult(val repaired: Int, val withoutArtwork: Int)
+    data class ArtworkRebuildResult(
+        val totalTracks: Int,
+        /** Already had a cover that loads; not touched. */
+        val alreadyUsable: Int,
+        /** Gained a cover from this pass. */
+        val repaired: Int,
+        /** How many are still coverless, per container format. */
+        val missingByFormat: Map<String, Int>
+    ) {
+        val withoutArtwork: Int get() = missingByFormat.values.sum()
+
+        /** e.g. "FLAC 48, MP3 3" — most affected first. */
+        val missingSummary: String
+            get() = missingByFormat.entries
+                .sortedByDescending { it.value }
+                .joinToString(", ") { "${it.key} ${it.value}" }
+    }
 
     /**
      * Repair artwork for tracks that cannot show any, reporting each fix as it
@@ -446,7 +487,8 @@ class MusicLibrary(
             kotlinx.coroutines.yield()
 
             val resolved = artworkResolver.resolve(track.path, track.artworkPath)
-            if (resolved != track.artworkPath) {
+
+            if (ArtworkResolver.shouldWriteArtwork(track.artworkPath, resolved)) {
                 runCatching { trackDao.update(track.copy(artworkPath = resolved)) }
             }
             if (resolved != null) {

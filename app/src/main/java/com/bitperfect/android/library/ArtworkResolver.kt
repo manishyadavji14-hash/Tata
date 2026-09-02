@@ -132,5 +132,26 @@ class ArtworkResolver(
 
     internal companion object {
         const val TAG = "ArtworkResolver"
+
+        /**
+         * Whether a resolved cover is worth writing over what is already stored.
+         *
+         * The rule that matters: **a repair never replaces something with nothing.**
+         * Writing null erases the recorded MediaStore URI, and that cannot be undone
+         * without a rescan — the album id it was built from is not stored on the
+         * row. "Could not resolve it now" is not the same as "it is wrong": a
+         * content URI can fail to open for a moment and work later, so overwriting
+         * it with null makes the track permanently coverless.
+         *
+         * This shipped the other way round once and wiped artwork across a whole
+         * library in a single background pass, so it lives in one place with tests.
+         *
+         * Deliberately a predicate rather than "the value to write, or null to
+         * skip": with that signature null meant both "skip" and "write null", so no
+         * test could tell the two apart — and the first attempt at this guard was
+         * therefore unable to catch the very bug it was written for.
+         */
+        fun shouldWriteArtwork(stored: String?, resolved: String?): Boolean =
+            resolved != null && resolved != stored
     }
 }

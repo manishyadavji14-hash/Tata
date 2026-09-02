@@ -454,10 +454,16 @@ fun LibraryScreen(
                     )
                 }
 
-                PullToRefreshContainer(
-                    state = pullRefreshState,
-                    modifier = Modifier.align(Alignment.TopCenter)
-                )
+                // Only while the gesture is active. PullToRefreshContainer paints
+                // its circular surface unconditionally — the indicator inside
+                // scales with progress, but the container does not — so composing
+                // it at rest left a grey disc sitting over the tab row.
+                if (pullRefreshState.progress > 0f || pullRefreshState.isRefreshing) {
+                    PullToRefreshContainer(
+                        state = pullRefreshState,
+                        modifier = Modifier.align(Alignment.TopCenter)
+                    )
+                }
             }
         }
     }
