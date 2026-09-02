@@ -122,6 +122,17 @@ fun MiniPlayerBar(
                                     abs(dx) > SWIPE_THRESHOLD_PX
                                 ) {
                                     if (dx < 0) onSwipeNext() else onSwipePrevious()
+                                } else {
+                                    // Moved, but not far enough to mean anything.
+                                    //
+                                    // This is why tapping the bar sometimes did
+                                    // nothing: the tap detector gives up as soon as
+                                    // the finger passes touch slop (a few pixels),
+                                    // while the thresholds above need 80 px sideways
+                                    // or 40 px up. A slightly smudged tap fell in
+                                    // between and was silently discarded, and so was
+                                    // any short diagonal drag.
+                                    onBarClick()
                                 }
                                 dx = 0f; dy = 0f
                             },

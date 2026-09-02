@@ -230,14 +230,28 @@ class PlayQueue {
 
     /**
      * Set the queue to a new list of tracks.
+     *
+     * **Shuffle survives.** This used to reset it, which silently defeated the
+     * feature: every way of starting playback replaces the queue, so turning
+     * shuffle on and then tapping a song in the library left the queue in list
+     * order while the button still showed shuffle as active. Tracks then played
+     * in order at every track end, which is what "shuffle doesn't apply" looks
+     * like.
+     *
+     * The track at [startIndex] stays the one that plays; the rest is reshuffled
+     * behind it, so an explicit choice is still honoured.
      */
     fun setQueue(trackPaths: List<String>, startIndex: Int = 0) = lock.withLock {
+        val wasShuffled = isShuffled
+
         originalOrder.clear()
         originalOrder.addAll(trackPaths)
         playOrder.clear()
         playOrder.addAll(trackPaths)
         currentIndex = if (trackPaths.isNotEmpty()) startIndex.coerceIn(0, trackPaths.size - 1) else -1
         isShuffled = false
+
+        if (wasShuffled) setShuffleLocked(true)
     }
 
     /**
@@ -305,7 +319,12 @@ class PlayQueue {
      * Current track remains at the current position after shuffle.
      */
     fun setShuffle(enabled: Boolean) = lock.withLock {
-        if (enabled == isShuffled) return@withLock
+        setShuffleLocked(enabled)
+    }
+
+    /** Shuffle body shared with [setQueue]. Caller holds the lock. */
+    private fun setShuffleLocked(enabled: Boolean) {
+        if (enabled == isShuffled) return
 
         if (enabled) {
             val currentTrackPath = if (currentIndex in playOrder.indices) playOrder[currentIndex] else null

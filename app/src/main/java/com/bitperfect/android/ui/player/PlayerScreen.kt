@@ -88,7 +88,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bitperfect.android.R
 import com.bitperfect.android.player.RepeatMode
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
+import kotlin.math.abs
 import androidx.compose.ui.input.pointer.pointerInput
 import com.bitperfect.android.ui.components.AlbumArtImage
 import com.bitperfect.android.ui.components.TrackInfo
@@ -132,6 +134,21 @@ fun PlayerScreen(
     val uiState by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
     var isSleepTimerSheetVisible by remember { mutableStateOf(false) }
+    var isAudioInfoVisible by remember { mutableStateOf(false) }
+
+    // With nothing loaded, park the player on the first library track so it is not
+    // an empty screen with a dead transport. Keyed on the path so it runs again if
+    // the library was still being scanned the first time round.
+    LaunchedEffect(uiState.trackPath) {
+        if (uiState.trackPath.isEmpty()) viewModel.ensureInitialTrackLoaded()
+    }
+
+    if (isAudioInfoVisible) {
+        AudioInfoDialog(
+            info = viewModel.audioPipelineInfo(),
+            onDismiss = { isAudioInfoVisible = false }
+        )
+    }
 
     LaunchedEffect(uiState.statusMessage) {
         val message = uiState.statusMessage ?: return@LaunchedEffect
@@ -232,6 +249,28 @@ fun PlayerScreen(
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
                     .aspectRatio(1f)
+                    // Swipe across the artwork to change track, matching the mini
+                    // player's gesture.
+                    //
+                    // detectHorizontalDragGestures, not detectDragGestures: it only
+                    // claims the pointer once movement is horizontally dominant, so
+                    // the pull-down-to-dismiss handler on the screen behind still
+                    // gets vertical drags that start on the artwork. Using the
+                    // general detector here would swallow them.
+                    .pointerInput(Unit) {
+                        var dx = 0f
+                        detectHorizontalDragGestures(
+                            onDragStart = { dx = 0f },
+                            onDragEnd = {
+                                if (abs(dx) > TRACK_SWIPE_THRESHOLD_PX) {
+                                    // Left goes forward, as everywhere else.
+                                    if (dx < 0) viewModel.nextOrWrap() else viewModel.previous()
+                                }
+                                dx = 0f
+                            },
+                            onDragCancel = { dx = 0f }
+                        ) { _, amount -> dx += amount }
+                    }
             ) {
                 AlbumArtwork(
                     artworkUri = uiState.artworkUri,
@@ -347,7 +386,8 @@ fun PlayerScreen(
                 onToggleFavourite = { viewModel.toggleFavourite() },
                 onSleepTimerClick = { isSleepTimerSheetVisible = true },
                 onEqualizerClick = onEqualizerClick,
-                onQueueClick = onQueueClick
+                onQueueClick = onQueueClick,
+                onAudioInfoClick = { isAudioInfoVisible = true }
             )
         }
         } // accent-gradient Box
@@ -624,18 +664,22 @@ private fun BottomRow(
     onToggleFavourite: () -> Unit,
     onSleepTimerClick: () -> Unit,
     onEqualizerClick: () -> Unit,
-    onQueueClick: () -> Unit
+    onQueueClick: () -> Unit,
+    onAudioInfoClick: () -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Device info. No longer a shortcut to diagnostics: that screen is a
-        // developer tool and belongs in Settings, not on the player.
+        // The output badge, now a button onto the audio info panel: what is
+        // playing, how it is being decoded, what is processing it and where it is
+        // going. Still not a shortcut to Diagnostics — that screen is a developer
+        // tool and belongs in Settings.
         Surface(
             shape = BitPerfectShapeTokens.FormatBadgeCorner,
-            color = Color.Transparent
+            color = Color.Transparent,
+            onClick = onAudioInfoClick
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -643,7 +687,7 @@ private fun BottomRow(
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_usb),
-                    contentDescription = "USB DAC",
+                    contentDescription = "Audio info",
                     modifier = Modifier.size(16.dp),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -652,6 +696,14 @@ private fun BottomRow(
                     text = deviceName.ifEmpty { "No device" },
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Icon(
+                    imageVector = Icons.Default.Info,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(start = 4.dp)
+                        .size(14.dp),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                 )
             }
         }
@@ -795,6 +847,14 @@ private enum class TransportIconState { LOADING, PLAY, PAUSE }
 
 /** How far the top of the player must be dragged down to dismiss it. */
 private const val COLLAPSE_THRESHOLD_PX = 120f
+
+/**
+ * Sideways travel that counts as "change track" on the artwork.
+ *
+ * Matches the mini player's threshold so the same flick does the same thing in
+ * both places.
+ */
+private const val TRACK_SWIPE_THRESHOLD_PX = 80f
 
 
 /**
@@ -1048,3 +1108,5 @@ private fun LyricsPanel(
 
 /** Three rows of body text plus padding. */
 private val LYRICS_PANEL_HEIGHT = 96.dp
+
+

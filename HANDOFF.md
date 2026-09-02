@@ -15,7 +15,7 @@ each change and are deliberately detailed.**
 |---|---|
 | Work on | **`main`** — PR #4 merged as `eec1ed5`; embedded lyrics on `feat/embedded-lyrics` |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (15.7 MiB, debug-signed, arm64 only) |
-| Test status | 282 native C++ tests, **238** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
+| Test status | 282 native C++ tests, **276** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
@@ -84,7 +84,7 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 238 passing)
+# JVM unit tests (expect 276 passing)
 ./gradlew :app:testDebugUnitTest
 
 # Lint (expect 0 errors; warnings are pre-existing)
@@ -405,7 +405,22 @@ Known gaps to expect:
    mode; it throws on most devices. That was the seek bug.
 6. **`AudioTrack` in `MODE_STREAM` will not render the final partial buffer**
    while PLAYING. `stop()` is what drains it. That was the end-of-track error.
-7. **The system reads the media session's *timeline*, not the Player's getters.**
+7. **The MediaStore album-art URI is dead on modern Android.**
+   `MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI` + album id gives
+   `content://media/external/audio/albumart/<id>`, a leftover from before scoped
+   storage. Deprecated in Android 10, and on current versions it usually resolves
+   to nothing. Every consumer failed silently on it — Coil showed its placeholder,
+   the media session got no bytes — so the app appeared to have no artwork at all.
+   `ArtworkResolver` now prefers a cached extraction, then the file's own embedded
+   cover, and only uses the URI once it is known to open. Settings → Library →
+   "Rebuild album art" repairs libraries scanned before this.
+8. **State that is declared and never assigned is worse than absent.**
+   `PlayerUiState.trackPath` was declared and never once written, and
+   `AlbumArtActions` early-returns on an empty path — so the album-art overflow
+   menu shipped in `93bca4d` never appeared. Nothing failed; it simply did not
+   exist. Same class of bug as the dead `updateMetadata`. When a feature is
+   invisible rather than broken, check whether the state it reads is ever set.
+9. **The system reads the media session's *timeline*, not the Player's getters.**
    The notification panel, lock screen and vendor widgets are fed from
    `MediaMetadataCompat`/`PlaybackStateCompat`, which media3 builds from the
    current timeline window. A player returning `Timeline.EMPTY` has no window, so
@@ -416,17 +431,17 @@ Known gaps to expect:
      is the only route a track length can take.
    - `COMMAND_GET_TIMELINE` must be advertised, or media3 refuses to read the
      timeline it needs.
-8. **Nothing published metadata until it was explicitly wired.**
+10. **Nothing published metadata until it was explicitly wired.**
    `MediaSessionManager.updateMetadata` and
    `PlaybackNotificationManager.updateTrackInfo` existed for months with **zero
    call sites**, so the session carried `MediaMetadata.EMPTY` for the whole life
    of the process. `PlaybackService.publishMetadataFor` is now the one caller;
    if the panel goes blank again, check there first.
-9. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
+11. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
    Returning false throws `IllegalArgumentException` out of `Service.onCreate`,
    which kills the app — and with `START_STICKY` it loops. The service is now
    `START_NOT_STICKY` and fails soft.
-10. **Do not start a foreground service before there is audio to show.** On
+12. **Do not start a foreground service before there is audio to show.** On
    Android 14+ that gets the app killed. The service is promoted on the first
    `Playing` state.
 

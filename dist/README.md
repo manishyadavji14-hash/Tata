@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 15.9 MiB (16,684,116 bytes) |
-| SHA-256 | `9de2f4fe1e676ad82e803292342acb37488f43820764af9cd70ee4cc8348c7df` |
+| Size | 16.0 MiB (16,766,094 bytes) |
+| SHA-256 | `7d0d4dc2bfcddb4ab3c91bf0f4e88ed360eaa37c6c1f1af102dbd58ec9f97750` |
 
 Verify the download matches before installing:
 
@@ -32,6 +32,41 @@ BitPerfect first. Debug signing keys differ between machines, so an APK built
 elsewhere cannot upgrade this one in place.
 
 ## New in this build
+
+**Album art works now.** The library was storing the old
+`content://…/albumart/<id>` MediaStore URI, which Android deprecated in version 10
+and no longer resolves — so every cover silently fell back to a placeholder, in the
+app and in the notification alike. Covers are now read out of the files themselves.
+
+> If art is still missing for music added before this update, open **Settings →
+> Library → "Rebuild album art"**. That re-reads the cover from each file and is
+> much quicker than a full rescan. New scans do it automatically.
+
+**Shuffle and repeat stick.** Turning shuffle on and then tapping a song reset the
+queue to list order while the button still showed shuffle as active, so tracks kept
+playing in order. Reaching the end of a queue also silently switched both back off.
+
+**Bass and treble do something audible.** Treble put nearly all its gain at 14 kHz,
+where there is almost no music; it is now a shelf from 2 kHz up. Bass works even on
+devices with no bass-boost effect. Your saved curve is also applied at startup now,
+instead of only after opening the Equalizer screen.
+
+**Swipe the album art left or right** to change track, like the mini player.
+
+**Tapping the mini player always opens the player.** A slightly smudged tap fell
+between the tap and swipe thresholds and was discarded.
+
+**The player shows a song on first launch** instead of an empty screen with a dead
+transport.
+
+**Audio info panel.** Tap the output badge at the bottom-left of the player for the
+signal chain: source format, decoder, effects, output device, whether it is
+bit-perfect, and buffer/underrun counters. Anything not actually measured says
+"Not reported" rather than showing a made-up zero.
+
+Also fixed: the album-art three-dot menu never appeared at all — the state it was
+gated on was never set — and the player showed a hardcoded "Android AudioTrack"
+instead of the real output.
 
 **The notification and lock screen now show the track.** Title, artist, album art
 and both times were missing — the panel read "Unknown song" with `--:--` at each

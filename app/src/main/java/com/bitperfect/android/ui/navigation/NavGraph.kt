@@ -319,7 +319,8 @@ fun BitPerfectNavGraph(
                     onLicensesClick = { navController.navigate(Screen.Licenses.route) },
                     onUnconfirmedMusicClick = {
                         navController.navigate(Screen.UnconfirmedMusic.route)
-                    }
+                    },
+                    onRebuildArtwork = { settingsViewModel.rebuildArtwork() }
                 )
             }
 

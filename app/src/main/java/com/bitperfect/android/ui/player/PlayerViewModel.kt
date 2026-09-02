@@ -7,6 +7,7 @@ import com.bitperfect.android.ServiceLocator
 import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
+import com.bitperfect.android.player.AudioEffectsController
 import com.bitperfect.android.player.AudioFormatInfo
 import com.bitperfect.android.player.PlaybackController
 import com.bitperfect.android.player.Lyrics
@@ -75,6 +76,8 @@ class PlayerViewModel(
         val bitDepth: Int = 0,
         val channels: Int = 0,
         val isShuffleEnabled: Boolean = false,
+        /** True when the current output delivers unmodified samples. */
+        val isBitPerfectOutput: Boolean = false,
         val repeatMode: RepeatMode = RepeatMode.OFF,
         val hasNext: Boolean = false,
         val hasPrevious: Boolean = false,
@@ -126,6 +129,10 @@ class PlayerViewModel(
 
     private val _uiState = MutableStateFlow(PlayerUiState())
     val uiState: StateFlow<PlayerUiState> = _uiState.asStateFlow()
+
+    /** Guards against several concurrent first-track lookups. */
+    @Volatile
+    private var isPreparingInitialTrack = false
     private val playbackStateListener: (PlaybackState) -> Unit = { state ->
         updateUiState(state)
     }
@@ -175,7 +182,21 @@ class PlayerViewModel(
                     trackTitle = details.title.ifBlank { extractTrackTitle(trackPath) },
                     artist = details.artist,
                     album = details.album,
-                    artworkUri = details.artworkUri
+                    artworkUri = details.artworkUri,
+                    // The path was declared on the state and never once assigned,
+                    // which quietly disabled everything gated on it: the album-art
+                    // overflow menu early-returns on an empty path, so Info/Tags,
+                    // "add to playlist" and the go-to-album actions never appeared.
+                    trackPath = trackPath,
+                    // Same story for the rest of these — the Info dialog had
+                    // nowhere to read them from.
+                    albumId = details.albumId,
+                    artistId = details.artistId,
+                    genre = details.genre,
+                    folder = details.folder,
+                    year = details.year,
+                    trackNumber = details.trackNumber,
+                    fileSize = details.fileSize
                 )
             }
         }
@@ -382,6 +403,156 @@ class PlayerViewModel(
         }
     }
 
+    /**
+     * Put the first library track on the player when there is nothing to show.
+     *
+     * On a first run there is no saved session, so the player sat on "No track"
+     * with a dead transport and no mini player even though the library had just
+     * been scanned. This loads the library as the queue, parked on its first
+     * track, so the screen is populated and pressing play works — without
+     * starting playback on its own, which launching an app should never do.
+     *
+     * Safe to call repeatedly: it does nothing once a track is loaded, which is
+     * how it ends up running after the first scan rather than before it.
+     */
+    fun ensureInitialTrackLoaded() {
+        if (_uiState.value.trackPath.isNotEmpty()) return
+        if (isPreparingInitialTrack) return
+
+        isPreparingInitialTrack = true
+        viewModelScope.launch {
+            try {
+                val paths = musicLibrary.getAllTracks().map { it.path }
+                if (paths.isEmpty()) return@launch
+
+                // Something may have started playing while the library loaded;
+                // never overwrite a real session with a parked one.
+                if (_uiState.value.trackPath.isNotEmpty()) return@launch
+
+                playbackController.restoreSession(queue = paths, index = 0, positionMs = 0L)
+                resolveTrackDetails(paths.first())
+            } finally {
+                isPreparingInitialTrack = false
+            }
+        }
+    }
+
+    /**
+     * What the audio pipeline is doing right now, for the player's info panel.
+     *
+     * Read on demand rather than pushed into [PlayerUiState]: these are counters
+     * and engine queries, and polling them four times a second to keep a state
+     * object fresh would cost more than the panel is worth.
+     *
+     * Every value is either measured or explicitly marked unknown. Nothing here is
+     * a plausible-looking placeholder — the point of the panel is to answer "what
+     * is actually happening", and a made-up number would defeat it.
+     */
+    fun audioPipelineInfo(): AudioPipelineInfo {
+        val state = _uiState.value
+        val effects = playbackController.audioEffects
+
+        val underruns = runCatching { engine.getUnderrunCount() }.getOrNull()
+        val bufferLevel = runCatching { engine.getBufferLevel() }.getOrNull()
+        val transport = runCatching { engine.getTransportName() }.getOrNull()
+            ?.takeIf { it.isNotBlank() }
+        val usbActive = runCatching { engine.isUsbOutputActive() }.getOrDefault(false)
+        val engineRate = runCatching { engine.getCurrentSampleRate() }.getOrNull()
+
+        val effectsSummary = when {
+            effects == null ->
+                "Bypassed — not applied on a bit-perfect output"
+            !effects.capabilities.isAvailable ->
+                "Unavailable on this device"
+            !effects.settings.isEnabled ->
+                "Off"
+            else -> buildList {
+                add("Equalizer on")
+                if (effects.settings.bassBoostStrength > 0) {
+                    add("bass ${percentOf(effects.settings.bassBoostStrength)}")
+                }
+                if (effects.settings.trebleStrength > 0) {
+                    add("treble ${percentOf(effects.settings.trebleStrength)}")
+                }
+            }.joinToString(", ")
+        }
+
+        return AudioPipelineInfo(
+            trackTitle = state.trackTitle,
+            container = state.formatBadge,
+            sourceFormat = describeFormat(state.sampleRate, state.bitDepth, state.channels),
+            decoder = describeDecoder(state.trackPath, state.outputMode),
+            outputName = playbackController.outputName,
+            outputMode = state.formatDetail,
+            isBitPerfect = playbackController.isBitPerfectOutput,
+            engineSampleRate = engineRate?.takeIf { it > 0 },
+            effectsSummary = effectsSummary,
+            transportName = transport,
+            isUsbOutputActive = usbActive,
+            bufferLevelPercent = bufferLevel?.takeIf { it in 0f..1f }?.let { (it * 100).toInt() },
+            underrunCount = underruns
+        )
+    }
+
+    private fun percentOf(strength: Int): String =
+        "${strength * 100 / AudioEffectsController.MAX_STRENGTH}%"
+
+    private fun describeFormat(sampleRate: Int, bitDepth: Int, channels: Int): String {
+        if (sampleRate <= 0) return "Unknown"
+        val rate = if (sampleRate % 1000 == 0) {
+            "${sampleRate / 1000} kHz"
+        } else {
+            "%.1f kHz".format(sampleRate / 1000.0)
+        }
+        return listOfNotNull(
+            rate,
+            bitDepth.takeIf { it > 0 }?.let { "$it-bit" },
+            when (channels) {
+                1 -> "mono"
+                2 -> "stereo"
+                in 3..64 -> "$channels ch"
+                else -> null
+            }
+        ).joinToString(" · ")
+    }
+
+    /**
+     * Which decoder the current track went through.
+     *
+     * The routing rule lives in PcmSourceFactory: the USB path only ever uses the
+     * native decoders, because a platform-decoded stream cannot be called
+     * bit-perfect. On the Android path everything except WAV goes to MediaCodec.
+     */
+    private fun describeDecoder(trackPath: String, outputMode: OutputMode): String {
+        val extension = trackPath.substringAfterLast('.', "").lowercase()
+        if (extension.isEmpty()) return "Unknown"
+
+        val isNative = playbackController.isBitPerfectOutput ||
+            extension == "wav" || extension == "wave"
+        return if (isNative) {
+            "BitPerfect native decoder"
+        } else {
+            "Android MediaCodec"
+        }
+    }
+
+    /** A snapshot of the playback chain, for the player's audio info panel. */
+    data class AudioPipelineInfo(
+        val trackTitle: String,
+        val container: String,
+        val sourceFormat: String,
+        val decoder: String,
+        val outputName: String,
+        val outputMode: String,
+        val isBitPerfect: Boolean,
+        val engineSampleRate: Int?,
+        val effectsSummary: String,
+        val transportName: String?,
+        val isUsbOutputActive: Boolean,
+        val bufferLevelPercent: Int?,
+        val underrunCount: Int?
+    )
+
     /** Persist the whole session. Called on track change and when clearing up. */
     private fun saveSession() {
         val store = sessionStore ?: return
@@ -547,8 +718,17 @@ class PlayerViewModel(
                         channels = state.format.channels,
                         hasNext = playbackController.queue.hasNext(),
                         hasPrevious = playbackController.queue.hasPrevious(),
+                        // Read back from the queue rather than trusting the last
+                        // button press. Replacing the queue can change these, and
+                        // a shuffle icon that says "on" over a queue playing in
+                        // order is worse than no icon at all.
+                        isShuffleEnabled = playbackController.isShuffleEnabled(),
+                        repeatMode = playbackController.getRepeatMode(),
                         bufferLevel = 0f,
-                        deviceName = "Android AudioTrack",
+                        // The real output, not a guess: this is "USB DAC" or the
+                        // DAC's own name when one is attached.
+                        deviceName = playbackController.outputName,
+                        isBitPerfectOutput = playbackController.isBitPerfectOutput,
                         errorMessage = null
                     )
                 }
@@ -580,7 +760,16 @@ class PlayerViewModel(
                     )
                 }
                 is PlaybackState.Stopped, is PlaybackState.Idle -> {
-                    PlayerUiState() // Reset to defaults
+                    // Reset the track, but keep the settings the user chose.
+                    // Shuffle, repeat and the sleep timer belong to the session,
+                    // not to the track that just finished — wiping them meant
+                    // reaching the end of a queue silently turned shuffle and
+                    // repeat back off.
+                    PlayerUiState(
+                        isShuffleEnabled = playbackController.isShuffleEnabled(),
+                        repeatMode = playbackController.getRepeatMode(),
+                        sleepTimerRemainingMs = currentState.sleepTimerRemainingMs
+                    )
                 }
                 is PlaybackState.Error -> {
                     currentState.copy(

@@ -2,10 +2,12 @@ package com.bitperfect.android.ui.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bitperfect.android.library.MusicLibrary
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 /**
@@ -19,7 +21,12 @@ import kotlinx.coroutines.launch
  * - Persists changes immediately via DataStore
  */
 class SettingsViewModel(
-    private val repository: SettingsRepository
+    private val repository: SettingsRepository,
+    /**
+     * Needed for the album-art rebuild. Optional so the ViewModel stays
+     * constructible in a test without a database.
+     */
+    private val musicLibrary: MusicLibrary? = null
 ) : ViewModel() {
 
     /**
@@ -56,11 +63,48 @@ class SettingsViewModel(
         // App info
         val appVersion: String = "1.0.0",
         val buildInfo: String = "Release",
-        val creator: String = "Maneesh Yadav"
+        val creator: String = "Maneesh Yadav",
+
+        // Library maintenance
+        val isRebuildingArtwork: Boolean = false,
+        val libraryMessage: String? = null
     )
 
     private val _uiState = MutableStateFlow(SettingsUiState())
     val uiState: StateFlow<SettingsUiState> = _uiState.asStateFlow()
+
+    /**
+     * Re-read covers for tracks whose recorded artwork cannot be displayed.
+     *
+     * For libraries scanned before covers were extracted during a scan. Those rows
+     * hold a `content://…/albumart/<id>` URI, which is deprecated and normally
+     * resolves to nothing on current Android, so they show a placeholder
+     * everywhere. This reads each affected file once and caches the cover found
+     * inside it — cheaper and less disruptive than a full rescan, and offered as an
+     * explicit action because it does touch every affected file.
+     */
+    fun rebuildArtwork() {
+        val library = musicLibrary ?: return
+        if (_uiState.value.isRebuildingArtwork) return
+
+        viewModelScope.launch {
+            _uiState.update { it.copy(isRebuildingArtwork = true, libraryMessage = null) }
+            val message = try {
+                when (val repaired = library.rebuildArtwork()) {
+                    0 -> "No missing album art found"
+                    1 -> "Restored album art for 1 track"
+                    else -> "Restored album art for $repaired tracks"
+                }
+            } catch (error: Exception) {
+                "Could not rebuild album art: ${error.message}"
+            }
+            _uiState.update { it.copy(isRebuildingArtwork = false, libraryMessage = message) }
+        }
+    }
+
+    fun dismissLibraryMessage() {
+        _uiState.update { it.copy(libraryMessage = null) }
+    }
 
     private val _showWarningDialog = MutableStateFlow(false)
     val showWarningDialog: StateFlow<Boolean> = _showWarningDialog.asStateFlow()
