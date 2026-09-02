@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 16.0 MiB (16,766,094 bytes) |
-| SHA-256 | `7d0d4dc2bfcddb4ab3c91bf0f4e88ed360eaa37c6c1f1af102dbd58ec9f97750` |
+| Size | 16.0 MiB (16,749,710 bytes) |
+| SHA-256 | `0ebd9285a46056a72131bde08b73722af91d2a4c385ba57cbfafebfd735cac84` |
 
 Verify the download matches before installing:
 
@@ -33,7 +33,23 @@ elsewhere cannot upgrade this one in place.
 
 ## New in this build
 
-**Album art works now.** The library was storing the old
+**Album art: the intermittent case is fixed.** Covers appeared sometimes, or in the
+app but not on the lock screen. A track change asks for the same cover twice at
+once — the player wants it for the screen, the playback service for the
+notification — and both writes to the artwork cache shared one temporary filename.
+They interleaved into a corrupt image, or one write renamed the temporary away and
+the other then reported no artwork at all. Each write now gets its own temporary,
+and the two lookups share one extraction instead of racing.
+
+**Pull down on the player minimises it.** The gesture called `popBackStack()`, but
+the player is the app's start destination so there was nothing to pop and it did
+nothing at all. It now falls back to the library. Pull-down also works when it
+starts on the album art, which is where it naturally does.
+
+**The playing song is marked in the library, and the list opens at it** instead of
+at the top.
+
+**Album art (previous fix, still relevant).** The library was storing the old
 `content://…/albumart/<id>` MediaStore URI, which Android deprecated in version 10
 and no longer resolves — so every cover silently fell back to a placeholder, in the
 app and in the notification alike. Covers are now read out of the files themselves.

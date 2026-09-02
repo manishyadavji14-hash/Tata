@@ -4,6 +4,7 @@ import android.content.ContentResolver
 import android.util.Log
 import androidx.core.net.toUri
 import java.io.File
+import java.util.concurrent.ConcurrentHashMap
 
 /**
  * Finds a cover for a track that can actually be displayed.
@@ -66,11 +67,28 @@ class ArtworkResolver(
     )
 
     /**
+     * Locks held while resolving a given file, one per path.
+     *
+     * A track change asks for the same cover twice at once — the player wants it
+     * for the screen, the playback service for the notification — and both would
+     * otherwise open the file and decode the picture. Serialising per path means
+     * the second caller waits and then finds the first one's cached result, so the
+     * work happens once. Per path rather than globally, so an unrelated track does
+     * not queue behind it.
+     */
+    private val locks = ConcurrentHashMap<String, Any>()
+
+    /**
      * Best displayable cover for [audioPath], or null when there is none.
      *
      * @param storedArtworkPath what the library already has recorded, if anything.
      */
-    fun resolve(audioPath: String, storedArtworkPath: String?): String? {
+    fun resolve(audioPath: String, storedArtworkPath: String?): String? =
+        synchronized(locks.getOrPut(audioPath) { Any() }) {
+            resolveLocked(audioPath, storedArtworkPath)
+        }
+
+    private fun resolveLocked(audioPath: String, storedArtworkPath: String?): String? {
         val stored = storedArtworkPath?.trim().orEmpty()
 
         // 1. Already extracted and still cached. Cheapest, and stable.

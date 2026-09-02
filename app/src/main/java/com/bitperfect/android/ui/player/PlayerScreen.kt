@@ -88,7 +88,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bitperfect.android.R
 import com.bitperfect.android.player.RepeatMode
-import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import kotlin.math.abs
 import androidx.compose.ui.input.pointer.pointerInput
@@ -249,27 +249,39 @@ fun PlayerScreen(
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
                     .aspectRatio(1f)
-                    // Swipe across the artwork to change track, matching the mini
-                    // player's gesture.
+                    // Both gestures for the artwork, decided by dominant axis:
+                    // sideways changes track, downwards minimises.
                     //
-                    // detectHorizontalDragGestures, not detectDragGestures: it only
-                    // claims the pointer once movement is horizontally dominant, so
-                    // the pull-down-to-dismiss handler on the screen behind still
-                    // gets vertical drags that start on the artwork. Using the
-                    // general detector here would swallow them.
+                    // Handled here rather than left to the screen behind because
+                    // the artwork covers most of the area a pull-down starts in,
+                    // and an inner drag detector receives the pointer first. This
+                    // mirrors the mini player, where the same arrangement works.
                     .pointerInput(Unit) {
                         var dx = 0f
-                        detectHorizontalDragGestures(
-                            onDragStart = { dx = 0f },
+                        var dy = 0f
+                        detectDragGestures(
+                            onDragStart = { dx = 0f; dy = 0f },
                             onDragEnd = {
-                                if (abs(dx) > TRACK_SWIPE_THRESHOLD_PX) {
-                                    // Left goes forward, as everywhere else.
-                                    if (dx < 0) viewModel.nextOrWrap() else viewModel.previous()
+                                if (abs(dx) > abs(dy)) {
+                                    if (abs(dx) > TRACK_SWIPE_THRESHOLD_PX) {
+                                        // Left goes forward, as everywhere else.
+                                        if (dx < 0) {
+                                            viewModel.nextOrWrap()
+                                        } else {
+                                            viewModel.previous()
+                                        }
+                                    }
+                                } else if (dy > COLLAPSE_THRESHOLD_PX) {
+                                    onCollapse()
                                 }
-                                dx = 0f
+                                dx = 0f; dy = 0f
                             },
-                            onDragCancel = { dx = 0f }
-                        ) { _, amount -> dx += amount }
+                            onDragCancel = { dx = 0f; dy = 0f }
+                        ) { change, drag ->
+                            dx += drag.x
+                            dy += drag.y
+                            change.consume()
+                        }
                     }
             ) {
                 AlbumArtwork(

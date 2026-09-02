@@ -132,7 +132,12 @@ fun LibraryScreen(
      * Opens the playlist picker for one track. Hosted by the navigation graph,
      * which owns the shared PlaylistsViewModel.
      */
-    onAddToPlaylist: (String) -> Unit = {}
+    onAddToPlaylist: (String) -> Unit = {},
+    /**
+     * File currently loaded in the player, so its row can be marked and brought
+     * into view. Empty when nothing is playing.
+     */
+    nowPlayingPath: String = ""
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var selectedTab by remember { mutableIntStateOf(uiState.currentTab.ordinal) }
@@ -201,6 +206,21 @@ fun LibraryScreen(
     // Jump to the playing track when the player's album art was tapped. Waits
     // for the tracks list to be populated, scrolls to it, then clears the
     // request so it fires once.
+    // Open the list at the song that is playing rather than at the top.
+    //
+    // Once per visit, not on every track change: following playback would yank the
+    // list out from under someone who has scrolled somewhere else. The flag lives
+    // in the composition, so it resets when the screen is next opened.
+    var hasScrolledToNowPlaying by remember { mutableStateOf(false) }
+    LaunchedEffect(nowPlayingPath, uiState.tracks) {
+        if (hasScrolledToNowPlaying || nowPlayingPath.isEmpty()) return@LaunchedEffect
+        val index = uiState.tracks.indexOfFirst { it.path == nowPlayingPath }
+        if (index >= 0) {
+            trackListState.scrollToItem(index)
+            hasScrolledToNowPlaying = true
+        }
+    }
+
     LaunchedEffect(uiState.scrollToPath, uiState.tracks) {
         val target = uiState.scrollToPath ?: return@LaunchedEffect
         val index = uiState.tracks.indexOfFirst { it.path == target }
@@ -412,6 +432,7 @@ fun LibraryScreen(
                                 LibraryViewModel.LibraryTab.TRACKS -> TrackList(
                                     tracks = uiState.tracks,
                                     listState = trackListState,
+                                    nowPlayingPath = nowPlayingPath,
                                     onTrackClick = onTrackClick,
                                     onToggleFavourite = viewModel::toggleFavourite,
                                     onAddToPlaylist = onAddToPlaylist,
@@ -609,6 +630,7 @@ private fun TrackList(
     onEditDetails: (LibraryViewModel.TrackItem) -> Unit,
     onEditLyrics: (LibraryViewModel.TrackItem) -> Unit,
     onRemove: (LibraryViewModel.TrackItem) -> Unit,
+    nowPlayingPath: String = "",
     listState: LazyListState = rememberLazyListState()
 ) {
     LazyColumn(
@@ -626,6 +648,9 @@ private fun TrackList(
                 durationMs = track.durationMs,
                 artworkUri = track.artworkUri,
                 isFavourite = track.isFavourite,
+                // Tints and bolds the row, so the song playing is findable in a
+                // long list at a glance.
+                isPlaying = track.path == nowPlayingPath,
                 actions = TrackRowActions(
                     // Reports the whole visible list, not just this path, so
                     // playback continues through the list the user tapped in.

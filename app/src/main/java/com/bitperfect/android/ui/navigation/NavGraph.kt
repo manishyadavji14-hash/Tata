@@ -213,7 +213,16 @@ fun BitPerfectNavGraph(
                 PlayerScreen(
                     viewModel = playerViewModel,
                     onOpenFile = onOpenFile,
-                    onCollapse = { navController.popBackStack() },
+                    // Player is the start destination, so there is usually nothing
+                    // on the back stack to pop — popBackStack() alone returned
+                    // false and the pull-down gesture silently did nothing. Fall
+                    // back to the library, which is where "minimise" should land
+                    // and where the mini player then appears.
+                    onCollapse = {
+                        if (!navController.popBackStack()) {
+                            navController.navigate(Screen.Library.route)
+                        }
+                    },
                     onAlbumArtClick = {
                         // Jump the library to the playing song, in the Tracks tab.
                         playerViewModel.currentTrackPath()?.let { path ->
@@ -295,7 +304,8 @@ fun BitPerfectNavGraph(
                             restoreState = true
                         }
                     },
-                    onAddToPlaylist = { path -> pendingLibraryPlaylistTrack = path }
+                    onAddToPlaylist = { path -> pendingLibraryPlaylistTrack = path },
+                    nowPlayingPath = playerUiState.trackPath
                 )
 
                 // Hosted here, not in the screen, because the playlist picker

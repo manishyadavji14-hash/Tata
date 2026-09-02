@@ -183,6 +183,45 @@ class ShuffleQueueTest {
     }
 
     @Test
+    @DisplayName("the track after the tapped one is not the tapped one again")
+    fun noImmediateRepeatAfterTappedTrack() {
+        // setQueue puts the chosen track at the front of the shuffled order, so an
+        // off-by-one there would replay it immediately.
+        queue.setQueue(library)
+        queue.setShuffle(true)
+        queue.setQueue(library, startIndex = 4)
+
+        val tapped = queue.currentTrack
+        assertEquals(library[4], tapped)
+        assertTrue(queue.next() != tapped, "the tapped track played twice in a row")
+    }
+
+    @Test
+    @DisplayName("turning shuffle off mid-queue keeps playing the same track")
+    fun unshuffleKeepsCurrentTrack() {
+        queue.setQueue(library)
+        queue.setShuffle(true)
+        queue.setQueue(library, startIndex = 0)
+        queue.next()
+        val playing = queue.currentTrack
+
+        queue.setShuffle(false)
+
+        assertEquals(playing, queue.currentTrack, "un-shuffling jumped to another track")
+    }
+
+    @Test
+    @DisplayName("a shuffled queue still reports having a next track")
+    fun hasNextWhenShuffled() {
+        queue.setQueue(library)
+        queue.setShuffle(true)
+        queue.setQueue(library, startIndex = 0)
+
+        assertTrue(queue.hasNext())
+        assertEquals(queue.peekNext(), queue.next(), "peekNext disagreed with next")
+    }
+
+    @Test
     @DisplayName("a shuffled queue holds every track exactly once")
     fun shuffleKeepsEveryTrackOnce() {
         queue.setQueue(library)
