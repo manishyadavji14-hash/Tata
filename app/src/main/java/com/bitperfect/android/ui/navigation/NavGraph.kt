@@ -149,10 +149,28 @@ fun BitPerfectNavGraph(
         bottomBar = {
             if (showBottomBar) {
                 BitPerfectBottomNav(
-                    navController = navController,
                     currentRoute = currentDestination?.route,
                     isPlayerExpanded = playerSheetState.isExpanded,
-                    onPlayerSelected = openPlayer
+                    onItemSelected = { item ->
+                        val target = item.screen
+                        if (target == null) {
+                            openPlayer()
+                        } else {
+                            // Collapses first. Without this the navigation happened
+                            // underneath the open player, which stayed on top — so
+                            // tapping Library or Settings from the player looked like
+                            // it did nothing at all.
+                            navigatingAwayFromPlayer {
+                                navController.navigate(target.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            }
+                        }
+                    }
                 )
             }
         }
@@ -160,6 +178,11 @@ fun BitPerfectNavGraph(
         Box(modifier = Modifier.padding(paddingValues)) {
         NavHost(
             navController = navController,
+            // Reserves the strip the collapsed bar sits in. The bar used to be in the
+            // Scaffold's bottomBar, which inset every screen for free; as an overlay
+            // it no longer does, and without this it covers the bottom of whatever is
+            // behind it — the last row of a list, or a control on the equalizer.
+            modifier = Modifier.padding(bottom = peekHeight),
             startDestination = Screen.Library.route,
             // Forward navigation slides in from the trailing edge and back
             // reverses it, so the hierarchy reads as depth rather than a cut.
@@ -574,16 +597,20 @@ fun BitPerfectNavGraph(
 
 @Composable
 private fun BitPerfectBottomNav(
-    navController: NavHostController,
     currentRoute: String?,
     /** Whether the player surface is open, which is what "Player" now means. */
     isPlayerExpanded: Boolean,
-    onPlayerSelected: () -> Unit
+    /**
+     * What to do about a tab. Navigation is the caller's business rather than this
+     * bar's, because selecting a tab also has to collapse the player — and a bar that
+     * navigated for itself is how that came to be forgotten.
+     */
+    onItemSelected: (BottomNavItem) -> Unit
 ) {
     NavigationBar {
         BottomNavItem.entries.forEach { item ->
-            // The player has no route, so its tab reflects and controls the surface
-            // rather than the back stack. The type says so — see BottomNavItem.
+            // The player has no route, so its tab reflects the surface rather than
+            // the back stack. The type says so — see BottomNavItem.
             val target = item.screen
             val isSelected = if (target == null) {
                 isPlayerExpanded
@@ -593,19 +620,7 @@ private fun BitPerfectBottomNav(
 
             NavigationBarItem(
                 selected = isSelected,
-                onClick = {
-                    if (target == null) {
-                        onPlayerSelected()
-                        return@NavigationBarItem
-                    }
-                    navController.navigate(target.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
-                        }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                },
+                onClick = { onItemSelected(item) },
                 icon = {
                     val iconRes = when (item) {
                         BottomNavItem.Player -> R.drawable.ic_play

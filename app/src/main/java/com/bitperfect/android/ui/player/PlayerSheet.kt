@@ -23,6 +23,9 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import androidx.compose.foundation.layout.offset
+import androidx.compose.ui.unit.IntOffset
+import kotlin.math.roundToInt
 
 /**
  * The player as one surface that slides between collapsed and expanded, rather than
@@ -54,8 +57,16 @@ class PlayerSheetState internal constructor(initiallyExpanded: Boolean) {
     /** Offset at which only the collapsed bar shows. Known after layout. */
     internal var collapsedOffsetPx by mutableFloatStateOf(0f)
 
-    private var hasPlaced = false
-    private val startExpanded = initiallyExpanded
+    /**
+     * Where the surface is *meant* to be, as opposed to where it currently is.
+     *
+     * Needed because the travel distance changes while the surface is moving — the
+     * bottom bar appears or disappears with the route, which resizes the container
+     * mid-animation. Re-placing the surface from its live position would cancel the
+     * animation and leave it stranded half-open; re-placing it from this finishes the
+     * job. Rotation is the same problem more obviously.
+     */
+    private var targetExpanded = initiallyExpanded
 
     /** 0 collapsed, 1 expanded. Safe before layout. */
     val progress: Float
@@ -72,10 +83,12 @@ class PlayerSheetState internal constructor(initiallyExpanded: Boolean) {
         get() = progress >= PlayerSheetMotion.POSITIONAL_THRESHOLD
 
     suspend fun expand() {
+        targetExpanded = true
         offset.animateTo(0f, SETTLE_SPEC)
     }
 
     suspend fun collapse() {
+        targetExpanded = false
         offset.animateTo(collapsedOffsetPx, SETTLE_SPEC)
     }
 
@@ -112,10 +125,13 @@ class PlayerSheetState internal constructor(initiallyExpanded: Boolean) {
      * it hanging part-open.
      */
     internal suspend fun onTravelChanged(newCollapsedOffsetPx: Float) {
-        val wasExpanded = if (hasPlaced) isExpanded else startExpanded
         collapsedOffsetPx = newCollapsedOffsetPx
-        hasPlaced = true
-        offset.snapTo(if (wasExpanded) 0f else newCollapsedOffsetPx)
+        // Placed at the intended end rather than wherever it had animated to. Reading
+        // the live position here meant that navigating away from the player — which
+        // hides the bottom bar and so resizes the container — could observe the
+        // collapse still in flight, judge it "expanded", and snap it back open over
+        // the screen the user had just asked for.
+        offset.snapTo(if (targetExpanded) 0f else newCollapsedOffsetPx)
     }
 
     private companion object {
@@ -183,11 +199,18 @@ fun PlayerSheet(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                // graphicsLayer, not offset: translation here is a draw-time
-                // property, so following the finger does not relayout the player on
-                // every frame.
-                .graphicsLayer {
-                    translationY = if (isHidden) containerHeightPx else state.offset.value
+                // offset, not graphicsLayer.
+                //
+                // A graphicsLayer translation is a draw-time property, which is
+                // cheaper — but whether it also moves the *touch* target is version
+                // and platform dependent, and if it does not then the collapsed bar
+                // is drawn at the bottom of the screen while its tap target stays at
+                // the top, so tapping it does nothing. offset is a layout property
+                // and unambiguously moves both. The lambda form still keeps this out
+                // of recomposition, so the cost is one node's layout per frame.
+                .offset {
+                    val y = if (isHidden) containerHeightPx else state.offset.value
+                    IntOffset(x = 0, y = y.roundToInt())
                 }
         ) {
             Box(

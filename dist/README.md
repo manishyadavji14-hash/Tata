@@ -19,7 +19,7 @@ ask you to allow installing from the browser the first time.
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
 | Size | 16.1 MiB (16,913,550 bytes) |
-| SHA-256 | `f59d556bc0d65c3cc1fdc730563c3ad08e2f2fd18f088ec29bdec7b87bbf92c0` |
+| SHA-256 | `b021a80a94bdc740ee14ca70669c0a33606eae2fb56784a7a400fe944f19d3e7` |
 
 Verify the download matches before installing:
 
@@ -47,7 +47,15 @@ are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
 
-**Fixes the crash when tapping a song.** The previous build crashed the moment you
+**Fixes navigation while the player is open.** Tapping Library or Settings from the
+player did nothing visible: the screen behind really did change, but the open player
+stayed on top of it. Selecting a tab now closes the player first. Tapping the
+collapsed bar also works reliably again — it was drawn at the bottom of the screen
+while its tap target could remain at the top, so the tap could miss entirely.
+Screens like the equalizer also no longer have their bottom edge hidden underneath
+the collapsed bar.
+
+**Fixes the crash when tapping a song (previous build).** The previous build crashed the moment you
 tapped a track in the library. Moving the player out of the navigation graph left one
 place still trying to *navigate* to it, and that destination no longer existed. Fixed,
 and the type now makes that mistake impossible to write rather than merely corrected.
