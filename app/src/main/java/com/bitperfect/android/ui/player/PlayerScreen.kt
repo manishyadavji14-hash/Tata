@@ -2,11 +2,16 @@ package com.bitperfect.android.ui.player
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -73,9 +78,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
@@ -93,6 +101,7 @@ import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import kotlin.math.abs
 import androidx.compose.ui.input.pointer.pointerInput
 import com.bitperfect.android.ui.components.AlbumArtImage
+import com.bitperfect.android.ui.components.TransportHaptics
 import com.bitperfect.android.ui.components.TrackInfo
 import com.bitperfect.android.ui.components.TrackInfoDialog
 import com.bitperfect.android.ui.components.rememberDynamicAlbumColor
@@ -102,6 +111,8 @@ import com.bitperfect.android.ui.theme.BitPerfectShapeTokens
 import com.bitperfect.android.ui.theme.DopPurple
 import com.bitperfect.android.ui.theme.DsdBlue
 import com.bitperfect.android.ui.theme.SeekBarActive
+import kotlinx.coroutines.launch
+import androidx.compose.runtime.mutableLongStateOf
 
 /**
  * PlayerScreen - Main player interface built with Jetpack Compose.
@@ -135,6 +146,10 @@ fun PlayerScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     var isSleepTimerSheetVisible by remember { mutableStateOf(false) }
     var isAudioInfoVisible by remember { mutableStateOf(false) }
+
+    // Host view for haptics. See TransportHaptics for why this is not Compose's
+    // LocalHapticFeedback.
+    val view = LocalView.current
 
     // With nothing loaded, park the player on the first library track so it is not
     // an empty screen with a dead transport. Keyed on the path so it runs again if
@@ -245,6 +260,24 @@ fun PlayerScreen(
                 label = "artworkScale"
             )
 
+            // Live drag offsets, so the artwork follows the finger rather than
+            // only reacting once the gesture is released. Animatable rather than
+            // plain state because releasing has to spring back, and springing from
+            // wherever the finger left off is what makes it feel physical.
+            val dragX = remember { Animatable(0f) }
+            val dragY = remember { Animatable(0f) }
+            val gestureScope = rememberCoroutineScope()
+
+            // Which way the next cover should travel. Set from the action rather
+            // than derived from queue positions, because shuffle, repeat-one and a
+            // wrap past the end all move forward while the index does not.
+            var slideDirection by remember { mutableStateOf(PlayerMotion.SlideDirection.FORWARD) }
+
+            fun releaseDrag() {
+                gestureScope.launch { dragX.animateTo(0f, BitPerfectMotion.responsive()) }
+                gestureScope.launch { dragY.animateTo(0f, BitPerfectMotion.responsive()) }
+            }
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
@@ -257,40 +290,92 @@ fun PlayerScreen(
                     // and an inner drag detector receives the pointer first. This
                     // mirrors the mini player, where the same arrangement works.
                     .pointerInput(Unit) {
+                        // Travel is accumulated synchronously here and only mirrored
+                        // into the Animatables for drawing. Deciding the gesture from
+                        // the Animatable's value would race: snapTo runs in a
+                        // coroutine, so the last movements of a fast flick may not
+                        // have been applied by the time the finger lifts, and the
+                        // gesture would be judged on a stale total.
                         var dx = 0f
                         var dy = 0f
                         detectDragGestures(
-                            onDragStart = { dx = 0f; dy = 0f },
-                            onDragEnd = {
-                                if (abs(dx) > abs(dy)) {
-                                    if (abs(dx) > TRACK_SWIPE_THRESHOLD_PX) {
-                                        // Left goes forward, as everywhere else.
-                                        if (dx < 0) {
-                                            viewModel.nextOrWrap()
-                                        } else {
-                                            viewModel.previous()
-                                        }
-                                    }
-                                } else if (dy > COLLAPSE_THRESHOLD_PX) {
-                                    onCollapse()
-                                }
-                                dx = 0f; dy = 0f
+                            onDragStart = {
+                                dx = 0f
+                                dy = 0f
+                                // Also cancels a spring-back still in flight, so
+                                // grabbing the artwork again picks it up mid-flight.
+                                gestureScope.launch { dragX.snapTo(0f) }
+                                gestureScope.launch { dragY.snapTo(0f) }
                             },
-                            onDragCancel = { dx = 0f; dy = 0f }
+                            onDragEnd = {
+                                when (
+                                    PlayerMotion.dragOutcome(
+                                        dx = dx,
+                                        dy = dy,
+                                        swipeThresholdPx = TRACK_SWIPE_THRESHOLD_PX,
+                                        collapseThresholdPx = COLLAPSE_THRESHOLD_PX
+                                    )
+                                ) {
+                                    PlayerMotion.DragOutcome.NEXT -> {
+                                        slideDirection = PlayerMotion.SlideDirection.FORWARD
+                                        TransportHaptics.tick(view)
+                                        viewModel.nextOrWrap()
+                                    }
+
+                                    PlayerMotion.DragOutcome.PREVIOUS -> {
+                                        slideDirection = PlayerMotion.SlideDirection.BACKWARD
+                                        TransportHaptics.tick(view)
+                                        viewModel.previous()
+                                    }
+
+                                    PlayerMotion.DragOutcome.COLLAPSE -> onCollapse()
+                                    PlayerMotion.DragOutcome.NONE -> Unit
+                                }
+                                dx = 0f
+                                dy = 0f
+                                releaseDrag()
+                            },
+                            onDragCancel = {
+                                dx = 0f
+                                dy = 0f
+                                releaseDrag()
+                            }
                         ) { change, drag ->
                             dx += drag.x
                             dy += drag.y
+                            // Absolute, not incremental, so the drawn position can
+                            // never drift away from the accumulated total.
+                            gestureScope.launch {
+                                dragX.snapTo(dx)
+                                dragY.snapTo(dy)
+                            }
                             change.consume()
                         }
                     }
             ) {
                 AlbumArtwork(
                     artworkUri = uiState.artworkUri,
-                    isPlaying = uiState.isPlaying,
+                    trackKey = uiState.trackPath,
+                    slideDirection = slideDirection,
                     onClick = onAlbumArtClick,
                     modifier = Modifier
                         .fillMaxSize()
-                        .scale(artworkScale)
+                        // One layer for both the playing lift and the drag, so the
+                        // two scales multiply instead of fighting over separate
+                        // layers.
+                        .graphicsLayer {
+                            val drag = PlayerMotion.dragTransform(
+                                dx = dragX.value,
+                                dy = dragY.value,
+                                width = size.width.toInt(),
+                                height = size.height.toInt()
+                            )
+                            translationX = drag.translationX
+                            scaleX = artworkScale * drag.scale
+                            scaleY = artworkScale * drag.scale
+                            alpha = drag.alpha
+                            rotationZ = drag.rotationZ
+                        }
                 )
 
                 // Lyrics toggle and overflow, over the lower-right of the art.
@@ -381,11 +466,30 @@ fun PlayerScreen(
                 repeatMode = uiState.repeatMode,
                 hasNext = uiState.hasNext,
                 hasPrevious = uiState.hasPrevious,
-                onPlayPause = { viewModel.togglePlayPause() },
-                onNext = { viewModel.next() },
-                onPrevious = { viewModel.previous() },
-                onShuffle = { viewModel.toggleShuffle() },
-                onRepeat = { viewModel.cycleRepeatMode() }
+                onPlayPause = {
+                    TransportHaptics.confirm(view)
+                    viewModel.togglePlayPause()
+                },
+                onNext = {
+                    // Set before dispatching, so the artwork transition that the
+                    // resulting track change starts already knows which way to go.
+                    slideDirection = PlayerMotion.SlideDirection.FORWARD
+                    TransportHaptics.tick(view)
+                    viewModel.next()
+                },
+                onPrevious = {
+                    slideDirection = PlayerMotion.SlideDirection.BACKWARD
+                    TransportHaptics.tick(view)
+                    viewModel.previous()
+                },
+                onShuffle = {
+                    TransportHaptics.confirm(view)
+                    viewModel.toggleShuffle()
+                },
+                onRepeat = {
+                    TransportHaptics.tick(view)
+                    viewModel.cycleRepeatMode()
+                }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -406,23 +510,61 @@ fun PlayerScreen(
     }
 }
 
+/**
+ * One cover, as a transition target.
+ *
+ * Carries the artwork alongside the track so each slide draws a stable image. Keying
+ * the transition on the track alone let a cover that resolved late — the background
+ * repair finishing after the track changed — redraw the *outgoing* image too, so the
+ * old cover slid out showing the new artwork.
+ */
+private data class ArtworkSlide(val trackKey: String, val artworkUri: String?)
+
 @Composable
 private fun AlbumArtwork(
     artworkUri: String?,
-    isPlaying: Boolean,
-    onClick: () -> Unit = {},
-    modifier: Modifier = Modifier
+    trackKey: String,
+    slideDirection: PlayerMotion.SlideDirection,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
 ) {
     Card(
         modifier = modifier.clickable(onClick = onClick),
         shape = BitPerfectShapeTokens.AlbumArtCorner,
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
-        AlbumArtImage(
-            artworkUri = artworkUri,
-            modifier = Modifier.fillMaxSize(),
-            placeholderIconSize = 96.dp
-        )
+        AnimatedContent(
+            targetState = ArtworkSlide(trackKey, artworkUri),
+            transitionSpec = {
+                if (initialState.trackKey == targetState.trackKey) {
+                    // Same track, different cover: the artwork was repaired or
+                    // arrived late. Nothing moved, so nothing should slide.
+                    fadeIn(BitPerfectMotion.standard()) togetherWith
+                        fadeOut(BitPerfectMotion.standard())
+                } else {
+                    // A new track travels in from the side it came from, so the
+                    // gesture and the result agree.
+                    val enter = slideInHorizontally(
+                        animationSpec = BitPerfectMotion.entering()
+                    ) { width -> PlayerMotion.enterOffset(slideDirection, width) } +
+                        fadeIn(BitPerfectMotion.entering())
+
+                    val exit = slideOutHorizontally(
+                        animationSpec = BitPerfectMotion.exiting()
+                    ) { width -> PlayerMotion.exitOffset(slideDirection, width) } +
+                        fadeOut(BitPerfectMotion.exiting())
+
+                    enter togetherWith exit
+                }
+            },
+            label = "albumArtwork"
+        ) { slide ->
+            AlbumArtImage(
+                artworkUri = slide.artworkUri,
+                modifier = Modifier.fillMaxSize(),
+                placeholderIconSize = 96.dp
+            )
+        }
     }
 }
 
@@ -498,14 +640,44 @@ private fun SeekBar(
     durationText: String,
     onSeek: (Long) -> Unit
 ) {
+    val view = LocalView.current
+    val scope = rememberCoroutineScope()
+
     var isSeeking by remember { mutableStateOf(false) }
     var seekPosition by remember { mutableFloatStateOf(0f) }
 
-    val progress = if (durationMs > 0) {
-        if (isSeeking) seekPosition else positionMs.toFloat() / durationMs.toFloat()
-    } else {
-        0f
+    // The position arrives four times a second, so a bar drawn straight from it
+    // steps four times a second. Playback is continuous and the bar should look
+    // continuous, so it glides to each new position instead of jumping to it — but
+    // only when the position advanced by playing. See PlayerMotion.
+    val glide = remember { Animatable(0f) }
+    var lastPositionMs by remember { mutableLongStateOf(positionMs) }
+
+    LaunchedEffect(positionMs, durationMs) {
+        val previousMs = lastPositionMs
+        // Recorded before suspending. The next position cancels this effect
+        // mid-glide, and leaving it until after the animation meant it was often
+        // never recorded at all — after which every comparison was against a stale
+        // value and the bar went back to jumping.
+        lastPositionMs = positionMs
+
+        val target = PlayerMotion.progressOf(positionMs, durationMs)
+        if (PlayerMotion.isNaturalProgress(previousMs, positionMs)) {
+            glide.animateTo(
+                targetValue = target,
+                // Linear: playback is linear, and an eased glide would visibly
+                // speed up and slow down between every pair of updates.
+                animationSpec = tween(
+                    durationMillis = PlayerMotion.PROGRESS_GLIDE_MS,
+                    easing = LinearEasing
+                )
+            )
+        } else {
+            glide.snapTo(target)
+        }
     }
+
+    val progress = if (isSeeking) seekPosition else glide.value
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Slider(
@@ -516,6 +688,11 @@ private fun SeekBar(
             },
             onValueChangeFinished = {
                 isSeeking = false
+                // Move the glide to where the user let go, so the bar holds its
+                // new place instead of flicking back for the moment before the
+                // player reports the seek.
+                scope.launch { glide.snapTo(seekPosition) }
+                TransportHaptics.gestureEnd(view)
                 onSeek((seekPosition * durationMs).toLong())
             },
             colors = SliderDefaults.colors(
@@ -1120,5 +1297,3 @@ private fun LyricsPanel(
 
 /** Three rows of body text plus padding. */
 private val LYRICS_PANEL_HEIGHT = 96.dp
-
-

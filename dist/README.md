@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
-| Size | 16.1 MiB (16,848,014 bytes) |
-| SHA-256 | `9d73567e7de703cbba93af07c9eda9d340b54bf1f3266cbd09dd1c838d97a6b9` |
+| Size | 16.1 MiB (16,880,782 bytes) |
+| SHA-256 | `eb4757a130196f1a615cb1479dae64246359a8c79b183e0317436a9602c1117c` |
 
 Verify the download matches before installing:
 
@@ -46,6 +46,32 @@ badge at the bottom left, and the Audio info panel will say whether notification
 are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
+
+**Motion and feel.**
+
+- **The progress bar glides.** It used to jump four times a second, because that is
+  how often the player reports its position. It now moves continuously between those
+  reports — and still snaps instantly when you seek or change track, because sliding
+  across to meet a seek would read as the app being slow.
+- **The album art follows your finger.** Drag sideways and it moves and tilts with
+  you, previewing the track change instead of only reacting when you let go; drag
+  down and it shrinks towards the mini player it is about to become. Let go without
+  committing and it springs back.
+- **Covers now slide in the direction you swiped** rather than cross-fading in place,
+  so the gesture and the result agree. Swipe left and the next cover comes in from
+  the right; swipe right and it comes from the left.
+- **Haptics on the transport** — a firmer tap for play/pause and favourite, a lighter
+  tick for skipping tracks, and a distinct one for releasing the seek bar. It uses
+  Android's own expressive haptics where the phone is new enough and falls back
+  gracefully where it is not.
+- **Track changes are lighter.** The accent colour taken from each cover was being
+  computed with a brand-new image loader every single time, which bypassed all
+  caching and re-decoded the artwork the app had *just* decoded for the screen.
+  It now shares the app's loader and remembers colours it has already worked out, so
+  swiping back and forth through a queue no longer redoes the work.
+
+Your existing layout, navigation and controls are unchanged, and none of this touches
+the audio path.
 
 **The missing notification was my build process, not the notification code.**
 

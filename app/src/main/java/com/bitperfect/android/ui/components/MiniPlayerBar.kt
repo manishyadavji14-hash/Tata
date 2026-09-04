@@ -42,6 +42,14 @@ import androidx.compose.ui.unit.dp
 import com.bitperfect.android.R
 import com.bitperfect.android.ui.player.PlayerViewModel
 import kotlin.math.abs
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.LocalView
+import com.bitperfect.android.ui.player.PlayerMotion
+import androidx.compose.runtime.mutableLongStateOf
 
 /**
  * MiniPlayerBar - the now-playing bar on every screen except the full Player.
@@ -65,11 +73,32 @@ fun MiniPlayerBar(
 ) {
     if (!uiState.isPlaying && !uiState.isPaused) return
 
-    val progress = if (uiState.durationMs > 0) {
-        (uiState.positionMs.toFloat() / uiState.durationMs.toFloat()).coerceIn(0f, 1f)
-    } else {
-        0f
+    val view = LocalView.current
+
+    // Glides between the four-a-second position updates, for the same reason the
+    // player's seek bar does — see PlayerMotion. The bar is only a few pixels tall,
+    // which makes stepping more obvious here rather than less.
+    val progressTarget = PlayerMotion.progressOf(uiState.positionMs, uiState.durationMs)
+    val glide = remember { Animatable(0f) }
+    var lastPositionMs by remember { mutableLongStateOf(uiState.positionMs) }
+
+    LaunchedEffect(uiState.positionMs, uiState.durationMs) {
+        val previousMs = lastPositionMs
+        lastPositionMs = uiState.positionMs
+        if (PlayerMotion.isNaturalProgress(previousMs, uiState.positionMs)) {
+            glide.animateTo(
+                targetValue = progressTarget,
+                animationSpec = tween(
+                    durationMillis = PlayerMotion.PROGRESS_GLIDE_MS,
+                    easing = LinearEasing
+                )
+            )
+        } else {
+            glide.snapTo(progressTarget)
+        }
     }
+
+    val progress = glide.value
 
     // The punchy accent from the current cover, animated across track changes.
     val colors = rememberAlbumColorScheme(
@@ -121,6 +150,7 @@ fun MiniPlayerBar(
                                 } else if (abs(dx) > abs(dy) &&
                                     abs(dx) > SWIPE_THRESHOLD_PX
                                 ) {
+                                    TransportHaptics.tick(view)
                                     if (dx < 0) onSwipeNext() else onSwipePrevious()
                                 } else {
                                     // Moved, but not far enough to mean anything.
@@ -190,7 +220,12 @@ fun MiniPlayerBar(
 
                 Spacer(modifier = Modifier.width(8.dp))
 
-                IconButton(onClick = onPlayPauseClick) {
+                IconButton(
+                    onClick = {
+                        TransportHaptics.confirm(view)
+                        onPlayPauseClick()
+                    }
+                ) {
                     Icon(
                         painter = painterResource(
                             id = if (uiState.isPlaying) R.drawable.ic_pause else R.drawable.ic_play
