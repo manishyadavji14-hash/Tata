@@ -230,13 +230,10 @@ fun BitPerfectNavGraph(
                     onPickZip = onPickZip,
                     onTrackClick = { visibleTracks, index ->
                         playerViewModel.playFromLibrary(visibleTracks, index)
-                        navController.navigate(Screen.Player.route) {
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
+                        // Expands the surface. This navigated to a "player" route
+                        // until that destination was removed, at which point tapping
+                        // a track crashed — see the note on BottomNavItem.
+                        openPlayer()
                     },
                     onAddToPlaylist = { path -> pendingLibraryPlaylistTrack = path },
                     nowPlayingPath = playerUiState.trackPath
@@ -584,24 +581,24 @@ private fun BitPerfectBottomNav(
     onPlayerSelected: () -> Unit
 ) {
     NavigationBar {
-        Screen.bottomNavItems.forEach { screen ->
-            // The player is no longer a destination, so its tab reflects and
-            // controls the surface rather than the back stack.
-            val isPlayerTab = screen == Screen.Player
-            val isSelected = if (isPlayerTab) {
+        BottomNavItem.entries.forEach { item ->
+            // The player has no route, so its tab reflects and controls the surface
+            // rather than the back stack. The type says so — see BottomNavItem.
+            val target = item.screen
+            val isSelected = if (target == null) {
                 isPlayerExpanded
             } else {
-                currentRoute == screen.route && !isPlayerExpanded
+                currentRoute == target.route && !isPlayerExpanded
             }
 
             NavigationBarItem(
                 selected = isSelected,
                 onClick = {
-                    if (isPlayerTab) {
+                    if (target == null) {
                         onPlayerSelected()
                         return@NavigationBarItem
                     }
-                    navController.navigate(screen.route) {
+                    navController.navigate(target.route) {
                         popUpTo(navController.graph.findStartDestination().id) {
                             saveState = true
                         }
@@ -610,18 +607,17 @@ private fun BitPerfectBottomNav(
                     }
                 },
                 icon = {
-                    val iconRes = when (screen) {
-                        Screen.Player -> R.drawable.ic_play
-                        Screen.Library -> R.drawable.ic_library
-                        Screen.Settings -> R.drawable.ic_settings
-                        else -> R.drawable.ic_play
+                    val iconRes = when (item) {
+                        BottomNavItem.Player -> R.drawable.ic_play
+                        BottomNavItem.Library -> R.drawable.ic_library
+                        BottomNavItem.Settings -> R.drawable.ic_settings
                     }
                     Icon(
                         painter = painterResource(id = iconRes),
-                        contentDescription = Screen.getLabel(screen)
+                        contentDescription = item.label
                     )
                 },
-                label = { Text(Screen.getLabel(screen)) }
+                label = { Text(item.label) }
             )
         }
     }

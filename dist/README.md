@@ -19,7 +19,7 @@ ask you to allow installing from the browser the first time.
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
 | Size | 16.1 MiB (16,913,550 bytes) |
-| SHA-256 | `47aaf52e81e880479991f6cb8788f38e322bc75e70b44b57bf80ff5763309e20` |
+| SHA-256 | `f59d556bc0d65c3cc1fdc730563c3ad08e2f2fd18f088ec29bdec7b87bbf92c0` |
 
 Verify the download matches before installing:
 
@@ -47,7 +47,12 @@ are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
 
-**The mini player and the full player are now one surface you can drag.**
+**Fixes the crash when tapping a song.** The previous build crashed the moment you
+tapped a track in the library. Moving the player out of the navigation graph left one
+place still trying to *navigate* to it, and that destination no longer existed. Fixed,
+and the type now makes that mistake impossible to write rather than merely corrected.
+
+**The mini player and the full player are one surface you can drag.**
 
 Put your finger on the mini player and pull up: the player follows your finger the
 whole way, at whatever speed you move. Pull down from the top of the full player and
