@@ -7,9 +7,10 @@ package com.bitperfect.android.service
  * two incompatible things, and the difference decides whether the lock screen can
  * display it:
  *
- * - a `content://media/external/audio/albumart/...` URI, from MediaStore. World
- *   readable, so it can be given to the media session and the notification as a
- *   URI and the system will load it.
+ * - a `content://media/external/audio/albums/<albumId>` URI, from MediaStore. The
+ *   system can reach it, so it can be handed over as a URI — though its bytes have
+ *   to be read through `MediaStoreArtwork`, because MediaStore serves an album
+ *   cover as a typed asset and not as a plain stream.
  * - an absolute path into the app's own cache, written by `ArtworkCache` when the
  *   cover had to be extracted from the file. **Not** readable by SystemUI: the app
  *   is the only process allowed in there. Handing over a `file://` URI to it

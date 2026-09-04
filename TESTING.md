@@ -188,6 +188,87 @@ What it confirmed when the migration was written:
 `UntaggedDetectionTest.migrationSqlMatchesKotlin` guards the same predicate from
 the Kotlin side across a full matrix, so the two languages cannot drift.
 
+### Re-verifying the embedded artwork reader against real files
+
+`EmbeddedArtworkReaderTest` builds its tags byte by byte, which proves the reader is
+self-consistent but not that the layouts are right. They were checked against files
+produced by independent tools. Those files are binaries and are not committed, so
+here is how to regenerate them:
+
+```bash
+dnf install -y flac vorbis-tools && pip install mutagen pillow
+mkdir -p build-fixtures && cd build-fixtures
+
+python3 - <<'PY'
+import io, math, struct, wave
+from PIL import Image
+img = Image.new("RGB", (300, 300))
+for x in range(300):
+    for y in range(300):
+        img.putpixel((x, y), (x % 256, y % 256, (x * y) % 256))
+buf = io.BytesIO(); img.save(buf, format="JPEG", quality=90)
+open("cover.jpg", "wb").write(buf.getvalue())
+with wave.open('tone.wav','w') as w:
+    w.setnchannels(2); w.setsampwidth(2); w.setframerate(44100)
+    w.writeframes(b''.join(struct.pack('<hh', *(int(12000*math.sin(2*math.pi*440*t/44100)),)*2)
+                           for t in range(44100)))
+PY
+
+flac -f --totally-silent -o real.flac tone.wav
+oggenc -Q -o real.ogg tone.wav
+
+python3 - <<'PY'
+import base64, io, shutil, struct
+from mutagen.flac import FLAC, Picture
+from mutagen.oggvorbis import OggVorbis
+from mutagen.id3 import ID3, APIC
+COVER = open("cover.jpg","rb").read()
+
+def picture():
+    p = Picture(); p.data = COVER; p.type = 3; p.mime = "image/jpeg"
+    p.width = p.height = 300; p.depth = 24
+    return p
+
+FLAC('real.flac').also = None
+f = FLAC('real.flac'); f.add_picture(picture()); f.save()          # PICTURE block
+
+shutil.copy('real.flac', 'real_comment.flac')                       # comment only
+g = FLAC('real_comment.flac'); g.clear_pictures()
+g["METADATA_BLOCK_PICTURE"] = [base64.b64encode(picture().write()).decode()]
+g.save()
+
+o = OggVorbis('real.ogg')                                           # the case MMR misses
+o["METADATA_BLOCK_PICTURE"] = [base64.b64encode(picture().write()).decode()]
+o.save()
+
+open('real.mp3','wb').write(b'\xff\xfb\x90\x00' + b'\x00'*512)      # ID3 APIC
+t = ID3(); t.add(APIC(encoding=0, mime='image/jpeg', type=3, desc='', data=COVER))
+t.save('real.mp3', v2_version=3)
+
+tag = ID3(); tag.add(APIC(encoding=0, mime='image/jpeg', type=3, desc='', data=COVER))
+b = io.BytesIO(); tag.save(b, v2_version=3); id3 = b.getvalue()     # DSF: tag at the end
+fmt = b'fmt ' + struct.pack('<Q', 52) + b'\x00'*36
+data = b'data' + struct.pack('<Q', 12 + 4096) + b'\x00'*4096
+at = 28 + len(fmt) + len(data)
+open('real.dsf','wb').write(
+    b'DSD ' + struct.pack('<Q', 28) + struct.pack('<Q', at + len(id3))
+    + struct.pack('<Q', at) + fmt + data + id3)
+PY
+```
+
+Then point a temporary test at `build-fixtures/` and assert
+`EmbeddedArtworkReader.read(path)` returns bytes equal to `cover.jpg` for each file.
+**Delete that test again afterwards** — it cannot pass without the fixtures.
+
+What it confirmed when the reader was written: byte-identical recovery of a
+36,325-byte JPEG from a FLAC `PICTURE` block, a FLAC carrying only the base64
+comment, an Ogg Vorbis `METADATA_BLOCK_PICTURE`, an ID3v2.3 `APIC`, a DSF whose tag
+sits at a header-named offset, and an MP4 `covr` atom.
+
+There is no MP4 encoder in that package set, so `covr` was validated the other way
+round: a file was assembled in Python and `mutagen.mp4.MP4` was asked to read the
+atom back, confirming the layout is the standard one.
+
 ### Re-verifying the embedded lyrics reader against real files
 
 `EmbeddedLyricsReaderTest` builds its tags byte by byte, which proves the reader

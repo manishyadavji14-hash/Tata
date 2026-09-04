@@ -49,6 +49,8 @@ class EqualizerViewModel(
         val bassBoostStrength: Int = 0,
         val trebleStrength: Int = 0,
         val supportsBassBoost: Boolean = false,
+        /** False when bass is applied through the equalizer instead of the effect. */
+        val usesBassBoostEffect: Boolean = false,
         val presets: List<String> = emptyList(),
         val statusMessage: String? = null
     ) {
@@ -216,6 +218,7 @@ class EqualizerViewModel(
             bassBoostStrength = settings.bassBoostStrength,
             trebleStrength = settings.trebleStrength,
             supportsBassBoost = capabilities.supportsBassBoost,
+            usesBassBoostEffect = capabilities.usesBassBoostEffect,
             presets = capabilities.presets,
             statusMessage = when {
                 capabilities.unavailableReason != null -> capabilities.unavailableReason

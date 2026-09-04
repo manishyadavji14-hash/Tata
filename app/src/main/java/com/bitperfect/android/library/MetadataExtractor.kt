@@ -154,6 +154,9 @@ class MetadataExtractor {
                 bitDepth = retriever.bitsPerSample(),
                 channels = 0,
                 format = format,
+                // Only what the platform can see. Not a reliable "has a cover"
+                // answer — it misses Ogg, Opus and DSF entirely — so callers should
+                // ask extractArtwork rather than gate on this.
                 hasArtwork = retriever.embeddedPicture != null
             )
         } catch (error: Exception) {
@@ -192,6 +195,17 @@ class MetadataExtractor {
 
         cache.find(sourceFile)?.let { return it }
 
+        // Parse the container first. MediaMetadataRetriever's picture support does
+        // not cover the formats this library accepts — it misses the base64
+        // METADATA_BLOCK_PICTURE comment that Ogg Vorbis and Opus use, and it
+        // cannot parse DSF at all — so relying on it alone left well-tagged files
+        // showing a placeholder with no pattern the user could see.
+        EmbeddedArtworkReader.read(audioPath)?.let { picture ->
+            return cache.put(sourceFile, picture)
+        }
+
+        // Then the platform, which handles a few oddities of its own and is a
+        // reasonable second opinion for MP3 and MP4.
         val retriever = MediaMetadataRetriever()
         return try {
             retriever.setDataSource(audioPath)

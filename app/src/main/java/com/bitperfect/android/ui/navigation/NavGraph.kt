@@ -1,6 +1,5 @@
 package com.bitperfect.android.ui.navigation
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -12,8 +11,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -59,6 +56,14 @@ import com.bitperfect.android.ui.settings.UnconfirmedMusicViewModel
 import com.bitperfect.android.ui.settings.SettingsScreen
 import com.bitperfect.android.ui.settings.SettingsViewModel
 import com.bitperfect.android.ui.theme.BitPerfectMotion
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Box
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.unit.dp
+import com.bitperfect.android.ui.components.MINI_PLAYER_HEIGHT
+import com.bitperfect.android.ui.player.PlayerSheet
+import com.bitperfect.android.ui.player.rememberPlayerSheetState
+import kotlinx.coroutines.launch
 
 /**
  * NavGraph - Main navigation setup for BitPerfect.
@@ -94,59 +99,91 @@ fun BitPerfectNavGraph(
     )
 
     // Determine if bottom nav should be shown
+    // Player is deliberately absent: it is no longer a destination, so it is never
+    // the current route. The bar stays visible while the player is open because the
+    // route underneath it is still one of these, which is what it did before.
     val showBottomBar = currentDestination?.route in listOf(
-        Screen.Player.route,
         Screen.Library.route,
         Screen.Settings.route
     )
 
-    // The mini player is redundant on the screens that already show transport
-    // controls, so it is hidden on Player and Queue.
     val playerUiState by playerViewModel.uiState.collectAsState()
-    val showMiniPlayer = currentDestination?.route != Screen.Player.route &&
-        currentDestination?.route != Screen.Queue.route &&
-        (playerUiState.isPlaying || playerUiState.isPaused)
+
+    // The player is one draggable surface over the navigation host rather than a
+    // destination inside it. A NavHost composes one destination at a time, so while
+    // the player was a sibling of the library the two were never on screen together
+    // and no continuous gesture between them was possible. See PlayerSheet.
+    val playerSheetState = rememberPlayerSheetState(initiallyExpanded = true)
+    val sheetScope = rememberCoroutineScope()
+
+    // The collapsed bar shows only when there is something to collapse to, and never
+    // over the queue, which is a full-screen list of the same thing. Zero peek keeps
+    // the player composed — so it holds its state and its effects keep running —
+    // while leaving it off screen.
+    val hasTrack = playerUiState.isPlaying || playerUiState.isPaused
+    val peekHeight = if (hasTrack && currentDestination?.route != Screen.Queue.route) {
+        MINI_PLAYER_HEIGHT
+    } else {
+        0.dp
+    }
+
+    /** Collapse before navigating, or the destination opens underneath the player. */
+    fun navigatingAwayFromPlayer(navigate: () -> Unit) {
+        sheetScope.launch { playerSheetState.collapse() }
+        navigate()
+    }
+
+    // Back collapses the player rather than leaving the app, and only while it is
+    // open, so every other screen's back behaviour is untouched.
+    BackHandler(enabled = playerSheetState.isExpanded) {
+        sheetScope.launch { playerSheetState.collapse() }
+    }
 
     // Track the player's overflow menu is adding to a playlist, if any.
     var playerPlaylistTrack by remember { mutableStateOf<String?>(null) }
 
-    // Opening the player from the mini bar or its pull-up gesture. Player is the
-    // start destination, so this restores it rather than stacking a copy.
-    val openPlayer: () -> Unit = {
-        navController.navigate(Screen.Player.route) {
-            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-            launchSingleTop = true
-            restoreState = true
-        }
-    }
+    // Opening the player is now expanding the surface, not navigating.
+    val openPlayer: () -> Unit = { sheetScope.launch { playerSheetState.expand() } }
 
     Scaffold(
         bottomBar = {
-            Column {
-                if (showMiniPlayer) {
-                    MiniPlayerBar(
-                        uiState = playerUiState,
-                        onBarClick = openPlayer,
-                        onExpand = openPlayer,
-                        onPlayPauseClick = { playerViewModel.togglePlayPause() },
-                        onSwipeNext = { playerViewModel.nextOrWrap() },
-                        onSwipePrevious = { playerViewModel.previous() }
-                    )
-                }
-
-                if (showBottomBar) {
-                    BitPerfectBottomNav(
-                        navController = navController,
-                        currentRoute = currentDestination?.route
-                    )
-                }
+            if (showBottomBar) {
+                BitPerfectBottomNav(
+                    currentRoute = currentDestination?.route,
+                    isPlayerExpanded = playerSheetState.isExpanded,
+                    onItemSelected = { item ->
+                        val target = item.screen
+                        if (target == null) {
+                            openPlayer()
+                        } else {
+                            // Collapses first. Without this the navigation happened
+                            // underneath the open player, which stayed on top — so
+                            // tapping Library or Settings from the player looked like
+                            // it did nothing at all.
+                            navigatingAwayFromPlayer {
+                                navController.navigate(target.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            }
+                        }
+                    }
+                )
             }
         }
     ) { paddingValues ->
+        Box(modifier = Modifier.padding(paddingValues)) {
         NavHost(
             navController = navController,
-            startDestination = Screen.Player.route,
-            modifier = Modifier.padding(paddingValues),
+            // Reserves the strip the collapsed bar sits in. The bar used to be in the
+            // Scaffold's bottomBar, which inset every screen for free; as an overlay
+            // it no longer does, and without this it covers the bottom of whatever is
+            // behind it — the last row of a list, or a control on the equalizer.
+            modifier = Modifier.padding(bottom = peekHeight),
+            startDestination = Screen.Library.route,
             // Forward navigation slides in from the trailing edge and back
             // reverses it, so the hierarchy reads as depth rather than a cut.
             enterTransition = {
@@ -186,77 +223,6 @@ fun BitPerfectNavGraph(
                 ) + fadeOut(tween(BitPerfectMotion.DURATION_QUICK))
             }
         ) {
-            // Player screen. Overrides the graph's horizontal slide with a
-            // vertical one: it rises from the bottom, echoing the mini player
-            // pull-up, and drops back down on dismiss.
-            composable(
-                Screen.Player.route,
-                enterTransition = {
-                    slideInVertically(
-                        animationSpec = tween(
-                            BitPerfectMotion.DURATION_SCREEN,
-                            easing = BitPerfectMotion.EmphasisedDecelerate
-                        ),
-                        initialOffsetY = { fullHeight -> fullHeight }
-                    ) + fadeIn(tween(BitPerfectMotion.DURATION_STANDARD))
-                },
-                popExitTransition = {
-                    slideOutVertically(
-                        animationSpec = tween(
-                            BitPerfectMotion.DURATION_SCREEN,
-                            easing = BitPerfectMotion.EmphasisedAccelerate
-                        ),
-                        targetOffsetY = { fullHeight -> fullHeight }
-                    ) + fadeOut(tween(BitPerfectMotion.DURATION_STANDARD))
-                }
-            ) {
-                PlayerScreen(
-                    viewModel = playerViewModel,
-                    onOpenFile = onOpenFile,
-                    onCollapse = { navController.popBackStack() },
-                    onAlbumArtClick = {
-                        // Jump the library to the playing song, in the Tracks tab.
-                        playerViewModel.currentTrackPath()?.let { path ->
-                            libraryViewModel.openTrackInList(path)
-                        }
-                        navController.navigate(Screen.Library.route) {
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                    },
-                    onEqualizerClick = { navController.navigate(Screen.Equalizer.route) },
-                    onQueueClick = { navController.navigate(Screen.Queue.route) },
-                    onAddToPlaylist = { path -> playerPlaylistTrack = path },
-                    onGoToAlbum = { albumId ->
-                        navController.navigate(Screen.AlbumTracks.createRoute(albumId))
-                    },
-                    onGoToArtist = { artistId ->
-                        navController.navigate(Screen.ArtistAlbums.createRoute(artistId))
-                    },
-                    onGoToFolder = { path ->
-                        navController.navigate(Screen.FolderTracks.createRoute(path))
-                    },
-                    onGoToGenre = { name ->
-                        navController.navigate(Screen.GenreTracks.createRoute(name))
-                    }
-                )
-
-                // Hosted here rather than inside PlayerScreen so the dialog can
-                // use the graph-scoped PlaylistsViewModel that every other
-                // screen shares.
-                playerPlaylistTrack?.let { path ->
-                    AddToPlaylistDialog(
-                        trackPath = path,
-                        viewModel = playlistsViewModel,
-                        onDismiss = { playerPlaylistTrack = null },
-                        onResult = playerViewModel::showExternalMessage
-                    )
-                }
-            }
-
             // Library screen
             composable(Screen.Library.route) {
                 var pendingLibraryPlaylistTrack by remember { mutableStateOf<String?>(null) }
@@ -287,15 +253,13 @@ fun BitPerfectNavGraph(
                     onPickZip = onPickZip,
                     onTrackClick = { visibleTracks, index ->
                         playerViewModel.playFromLibrary(visibleTracks, index)
-                        navController.navigate(Screen.Player.route) {
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
+                        // Expands the surface. This navigated to a "player" route
+                        // until that destination was removed, at which point tapping
+                        // a track crashed — see the note on BottomNavItem.
+                        openPlayer()
                     },
-                    onAddToPlaylist = { path -> pendingLibraryPlaylistTrack = path }
+                    onAddToPlaylist = { path -> pendingLibraryPlaylistTrack = path },
+                    nowPlayingPath = playerUiState.trackPath
                 )
 
                 // Hosted here, not in the screen, because the playlist picker
@@ -319,7 +283,8 @@ fun BitPerfectNavGraph(
                     onLicensesClick = { navController.navigate(Screen.Licenses.route) },
                     onUnconfirmedMusicClick = {
                         navController.navigate(Screen.UnconfirmedMusic.route)
-                    }
+                    },
+                    onRebuildArtwork = { settingsViewModel.rebuildArtwork() }
                 )
             }
 
@@ -537,42 +502,137 @@ fun BitPerfectNavGraph(
                 )
             }
         }
+
+            // The player, over the navigation host rather than inside it. Both
+            // faces are the existing composables, unchanged; only where they live
+            // and how the surface moves are new.
+            PlayerSheet(
+                state = playerSheetState,
+                peekHeight = peekHeight,
+                miniPlayer = { drag ->
+                    MiniPlayerBar(
+                        uiState = playerUiState,
+                        onBarClick = openPlayer,
+                        onExpand = openPlayer,
+                        onPlayPauseClick = { playerViewModel.togglePlayPause() },
+                        onSwipeNext = { playerViewModel.nextOrWrap() },
+                        onSwipePrevious = { playerViewModel.previous() },
+                        sheetDrag = drag
+                    )
+                },
+                fullPlayer = { drag ->
+                    PlayerScreen(
+                        viewModel = playerViewModel,
+                        onOpenFile = { navigatingAwayFromPlayer(onOpenFile) },
+                        // Collapsing is now a position on this surface rather than a
+                        // navigation, so there is no back stack to pop and none of
+                        // the old fallback is needed.
+                        onCollapse = { sheetScope.launch { playerSheetState.collapse() } },
+                        onAlbumArtClick = {
+                            // Jump the library to the playing song, in the Tracks tab.
+                            playerViewModel.currentTrackPath()?.let { path ->
+                                libraryViewModel.openTrackInList(path)
+                            }
+                            navigatingAwayFromPlayer {
+                                navController.navigate(Screen.Library.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            }
+                        },
+                        // Every one of these collapses first: the destination would
+                        // otherwise open underneath the expanded player.
+                        onEqualizerClick = {
+                            navigatingAwayFromPlayer {
+                                navController.navigate(Screen.Equalizer.route)
+                            }
+                        },
+                        onQueueClick = {
+                            navigatingAwayFromPlayer {
+                                navController.navigate(Screen.Queue.route)
+                            }
+                        },
+                        onAddToPlaylist = { path -> playerPlaylistTrack = path },
+                        onGoToAlbum = { albumId ->
+                            navigatingAwayFromPlayer {
+                                navController.navigate(Screen.AlbumTracks.createRoute(albumId))
+                            }
+                        },
+                        onGoToArtist = { artistId ->
+                            navigatingAwayFromPlayer {
+                                navController.navigate(Screen.ArtistAlbums.createRoute(artistId))
+                            }
+                        },
+                        onGoToFolder = { path ->
+                            navigatingAwayFromPlayer {
+                                navController.navigate(Screen.FolderTracks.createRoute(path))
+                            }
+                        },
+                        onGoToGenre = { name ->
+                            navigatingAwayFromPlayer {
+                                navController.navigate(Screen.GenreTracks.createRoute(name))
+                            }
+                        },
+                        sheetDrag = drag
+                    )
+                }
+            )
+
+            // Hosted here rather than inside PlayerScreen so the dialog can use the
+            // graph-scoped PlaylistsViewModel that every other screen shares.
+            playerPlaylistTrack?.let { path ->
+                AddToPlaylistDialog(
+                    trackPath = path,
+                    viewModel = playlistsViewModel,
+                    onDismiss = { playerPlaylistTrack = null },
+                    onResult = playerViewModel::showExternalMessage
+                )
+            }
+        }
     }
 }
 
 @Composable
 private fun BitPerfectBottomNav(
-    navController: NavHostController,
-    currentRoute: String?
+    currentRoute: String?,
+    /** Whether the player surface is open, which is what "Player" now means. */
+    isPlayerExpanded: Boolean,
+    /**
+     * What to do about a tab. Navigation is the caller's business rather than this
+     * bar's, because selecting a tab also has to collapse the player — and a bar that
+     * navigated for itself is how that came to be forgotten.
+     */
+    onItemSelected: (BottomNavItem) -> Unit
 ) {
     NavigationBar {
-        Screen.bottomNavItems.forEach { screen ->
-            val isSelected = currentRoute == screen.route
+        BottomNavItem.entries.forEach { item ->
+            // The player has no route, so its tab reflects the surface rather than
+            // the back stack. The type says so — see BottomNavItem.
+            val target = item.screen
+            val isSelected = if (target == null) {
+                isPlayerExpanded
+            } else {
+                currentRoute == target.route && !isPlayerExpanded
+            }
 
             NavigationBarItem(
                 selected = isSelected,
-                onClick = {
-                    navController.navigate(screen.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
-                        }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                },
+                onClick = { onItemSelected(item) },
                 icon = {
-                    val iconRes = when (screen) {
-                        Screen.Player -> R.drawable.ic_play
-                        Screen.Library -> R.drawable.ic_library
-                        Screen.Settings -> R.drawable.ic_settings
-                        else -> R.drawable.ic_play
+                    val iconRes = when (item) {
+                        BottomNavItem.Player -> R.drawable.ic_play
+                        BottomNavItem.Library -> R.drawable.ic_library
+                        BottomNavItem.Settings -> R.drawable.ic_settings
                     }
                     Icon(
                         painter = painterResource(id = iconRes),
-                        contentDescription = Screen.getLabel(screen)
+                        contentDescription = item.label
                     )
                 },
-                label = { Text(Screen.getLabel(screen)) }
+                label = { Text(item.label) }
             )
         }
     }

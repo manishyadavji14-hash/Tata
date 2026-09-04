@@ -63,7 +63,8 @@ fun SettingsScreen(
     viewModel: SettingsViewModel,
     onDiagnosticsClick: () -> Unit = {},
     onLicensesClick: () -> Unit = {},
-    onUnconfirmedMusicClick: () -> Unit = {}
+    onUnconfirmedMusicClick: () -> Unit = {},
+    onRebuildArtwork: () -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val showWarning by viewModel.showWarningDialog.collectAsState()
@@ -253,6 +254,24 @@ fun SettingsScreen(
                     Text(
                         text = "Files that do not say who made them are kept out of the " +
                             "library. Review them and move any real music in.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    TextButton(onClick = onRebuildArtwork, enabled = !uiState.isRebuildingArtwork) {
+                        Text(
+                            if (uiState.isRebuildingArtwork) {
+                                "Rebuilding album art…"
+                            } else {
+                                "Rebuild album art"
+                            }
+                        )
+                    }
+                    Text(
+                        text = uiState.libraryMessage
+                            ?: "Reads the cover out of each file and reports how many " +
+                            "tracks have one, per format. Use this if album art is " +
+                            "missing.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

@@ -42,6 +42,16 @@ import androidx.compose.ui.unit.dp
 import com.bitperfect.android.R
 import com.bitperfect.android.ui.player.PlayerViewModel
 import kotlin.math.abs
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.LocalView
+import com.bitperfect.android.ui.player.PlayerMotion
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.ui.input.pointer.util.VelocityTracker
+import com.bitperfect.android.ui.player.PlayerSheetDrag
 
 /**
  * MiniPlayerBar - the now-playing bar on every screen except the full Player.
@@ -61,15 +71,43 @@ fun MiniPlayerBar(
     onPlayPauseClick: () -> Unit,
     onSwipeNext: () -> Unit,
     onSwipePrevious: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    /**
+     * The draggable player surface this bar is the collapsed face of, when there is
+     * one. Null keeps the original behaviour, where a decisive pull-up simply opens
+     * the player — which is still what happens if this bar is ever used outside the
+     * surface.
+     */
+    sheetDrag: PlayerSheetDrag? = null
 ) {
     if (!uiState.isPlaying && !uiState.isPaused) return
 
-    val progress = if (uiState.durationMs > 0) {
-        (uiState.positionMs.toFloat() / uiState.durationMs.toFloat()).coerceIn(0f, 1f)
-    } else {
-        0f
+    val view = LocalView.current
+
+    // Glides between the four-a-second position updates, for the same reason the
+    // player's seek bar does — see PlayerMotion. The bar is only a few pixels tall,
+    // which makes stepping more obvious here rather than less.
+    val progressTarget = PlayerMotion.progressOf(uiState.positionMs, uiState.durationMs)
+    val glide = remember { Animatable(0f) }
+    var lastPositionMs by remember { mutableLongStateOf(uiState.positionMs) }
+
+    LaunchedEffect(uiState.positionMs, uiState.durationMs) {
+        val previousMs = lastPositionMs
+        lastPositionMs = uiState.positionMs
+        if (PlayerMotion.isNaturalProgress(previousMs, uiState.positionMs)) {
+            glide.animateTo(
+                targetValue = progressTarget,
+                animationSpec = tween(
+                    durationMillis = PlayerMotion.PROGRESS_GLIDE_MS,
+                    easing = LinearEasing
+                )
+            )
+        } else {
+            glide.snapTo(progressTarget)
+        }
     }
+
+    val progress = glide.value
 
     // The punchy accent from the current cover, animated across track changes.
     val colors = rememberAlbumColorScheme(
@@ -108,27 +146,77 @@ fun MiniPlayerBar(
                     .pointerInput(Unit) {
                         detectTapGestures(onTap = { onBarClick() })
                     }
-                    .pointerInput(Unit) {
+                    .pointerInput(sheetDrag) {
                         var dx = 0f
                         var dy = 0f
+                        // Whether this drag has been handed to the player surface.
+                        // Once it has, the surface has moved and must be settled on
+                        // release; a drag that never reached that point is still
+                        // free to be read as a tap, which is what keeps a slightly
+                        // smudged tap on the bar working.
+                        var drivingSheet = false
+                        val velocity = VelocityTracker()
+
                         detectDragGestures(
-                            onDragStart = { dx = 0f; dy = 0f },
+                            onDragStart = {
+                                dx = 0f
+                                dy = 0f
+                                drivingSheet = false
+                                velocity.resetTracking()
+                            },
                             onDragEnd = {
                                 // Decide by the dominant axis so a diagonal drag
                                 // resolves to one intent, never both.
-                                if (abs(dy) > abs(dx) && dy < -DRAG_UP_THRESHOLD_PX) {
+                                if (drivingSheet) {
+                                    // Velocity and distance decide where it settles;
+                                    // see PlayerSheetMotion.targetFor.
+                                    sheetDrag?.onRelease(velocity.calculateVelocity().y)
+                                } else if (abs(dy) > abs(dx) && dy < -DRAG_UP_THRESHOLD_PX) {
+                                    // No surface to drive, so the old behaviour:
+                                    // a decisive pull-up just opens the player.
                                     onExpand()
                                 } else if (abs(dx) > abs(dy) &&
                                     abs(dx) > SWIPE_THRESHOLD_PX
                                 ) {
+                                    TransportHaptics.tick(view)
                                     if (dx < 0) onSwipeNext() else onSwipePrevious()
+                                } else {
+                                    // Moved, but not far enough to mean anything.
+                                    //
+                                    // This is why tapping the bar sometimes did
+                                    // nothing: the tap detector gives up as soon as
+                                    // the finger passes touch slop (a few pixels),
+                                    // while the thresholds above need 80 px sideways
+                                    // or 40 px up. A slightly smudged tap fell in
+                                    // between and was silently discarded, and so was
+                                    // any short diagonal drag.
+                                    onBarClick()
                                 }
                                 dx = 0f; dy = 0f
+                                drivingSheet = false
                             },
-                            onDragCancel = { dx = 0f; dy = 0f }
+                            onDragCancel = {
+                                // Still has to settle: the surface has moved.
+                                if (drivingSheet) sheetDrag?.onRelease(0f)
+                                dx = 0f; dy = 0f
+                                drivingSheet = false
+                            }
                         ) { change, drag ->
                             dx += drag.x
                             dy += drag.y
+                            velocity.addPosition(change.uptimeMillis, change.position)
+
+                            // Handed over only once this is clearly a vertical drag
+                            // and clearly a drag at all, so a sideways track change
+                            // never nudges the surface and a tap never moves it.
+                            if (sheetDrag != null &&
+                                abs(dy) > abs(dx) &&
+                                abs(dy) > SHEET_DRAG_SLOP_PX
+                            ) {
+                                drivingSheet = true
+                            }
+                            if (drivingSheet) sheetDrag?.onDrag(drag.y)
+
                             change.consume()
                         }
                     }
@@ -179,7 +267,12 @@ fun MiniPlayerBar(
 
                 Spacer(modifier = Modifier.width(8.dp))
 
-                IconButton(onClick = onPlayPauseClick) {
+                IconButton(
+                    onClick = {
+                        TransportHaptics.confirm(view)
+                        onPlayPauseClick()
+                    }
+                ) {
                     Icon(
                         painter = painterResource(
                             id = if (uiState.isPlaying) R.drawable.ic_pause else R.drawable.ic_play
@@ -194,5 +287,23 @@ fun MiniPlayerBar(
     }
 }
 
+/**
+ * Height of the collapsed bar: its content plus the progress line above it.
+ *
+ * Public because the player surface needs it to know how much of itself to leave
+ * showing when collapsed. Declared next to the layout it describes so the two cannot
+ * drift apart.
+ */
+val MINI_PLAYER_HEIGHT = 62.dp
+
 private const val SWIPE_THRESHOLD_PX = 80f
 private const val DRAG_UP_THRESHOLD_PX = 40f
+
+/**
+ * Vertical travel before the drag is handed to the player surface.
+ *
+ * Small — this is only there to keep a tap or a sideways swipe from nudging the
+ * surface. The decision about where it settles is made on release, not here, so
+ * there is no reason for this to be large.
+ */
+private const val SHEET_DRAG_SLOP_PX = 8f

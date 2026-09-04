@@ -15,7 +15,7 @@ each change and are deliberately detailed.**
 |---|---|
 | Work on | **`main`** — PR #4 merged as `eec1ed5`; embedded lyrics on `feat/embedded-lyrics` |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (15.7 MiB, debug-signed, arm64 only) |
-| Test status | 282 native C++ tests, **238** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
+| Test status | 282 native C++ tests, **324** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
@@ -62,9 +62,55 @@ blocked testing:
 
 **First job for whoever picks this up: install the APK and verify that list.**
 
+### Ask the device, do not guess: the lock-screen artwork report
+Album art on the lock screen has now been "fixed" four times, three of them from
+static reasoning that turned out to be aimed at the wrong stage. The reason is that
+this failure is invisible from inside the app — the player can be showing a cover
+while the media session has none, and the two come from different code — and the
+maintainer works from a phone with no way to read logcat.
+
+So there is now a plain-language readout: **player screen → the output badge at the
+bottom left → Audio info → "Lock screen / Album art"**. It says which of these
+happened for the track playing right now:
+
+| Reading | Meaning |
+|---|---|
+| `Published to the media session (N KB)` | the cover reached the session; if the lock screen is still blank the fault is below this app |
+| `Published to the notification only, without session bytes` | encoding failed; the shade may show a cover but the lock screen will not |
+| `Cover recorded but not published — retrying` | a cover exists and could not be loaded |
+| `No cover recorded for this track` | nothing to show; the library has no cover for it |
+
+**Ask for that line before theorising.** It distinguishes the stages that three
+rounds of guesswork could not.
+
 ---
 
 ## 2. Build
+
+### The debug signing key is committed, and must stay that way
+`app/debug.keystore` is in the repository and wired up in `app/build.gradle.kts`
+under `signingConfigs`. **Do not remove it and do not let the build fall back to
+Gradle's automatic `~/.android/debug.keystore`.**
+
+Debug builds are what the maintainer installs. With the automatic key, the
+signature differs on every machine and every container that has been reset, so
+Android refuses to update in place (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`) and the
+only route is to uninstall first — **which erases the library database and every
+runtime permission already granted**. That happened between two builds in this
+repo and presented as "the playback notification has stopped appearing", because a
+fresh install starts with `POST_NOTIFICATIONS` denied and the app had no way to say
+so. It cost a whole round of debugging aimed at the notification code, which was
+fine.
+
+Verify after touching signing config:
+```bash
+apksigner verify --print-certs app/build/outputs/apk/debug/app-debug.apk
+# expect: CN=BitPerfect Debug, O=BitPerfect, C=US
+# SHA-256: 131cba07d0e33c1782bc8f5ebd7abe7e9a5ad22150119fc0fd97f60649eccff5
+```
+That digest must not change between builds. It grants nothing — password `android`,
+key in the repo — which is exactly as (in)secure as the standard debug key it
+replaces. **A release build must not use it.**
 
 ### Requirements
 - JDK 21 (AGP 8.10.1 needs 17+; the project compiles at Java 21)
@@ -84,7 +130,7 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 238 passing)
+# JVM unit tests (expect 324 passing)
 ./gradlew :app:testDebugUnitTest
 
 # Lint (expect 0 errors; warnings are pre-existing)
@@ -339,6 +385,18 @@ Still to do, and deliberately absent rather than inert:
   each should do (view vs replace artwork; a saved position within a track vs a
   saved track).
 
+### P3 — Folder covers (`cover.jpg`) — blocked on a permission, do not just add it
+The obvious next artwork source is a sidecar image beside the audio file
+(`cover.jpg`, `folder.jpg`, `front.jpg`), which is how many FLAC rips store art.
+**It cannot work as things stand.** The manifest requests `READ_MEDIA_AUDIO` and a
+`maxSdkVersion`-capped `READ_EXTERNAL_STORAGE`; on Android 13+ that grants *audio
+files only*, so opening a JPEG next to a track by path fails with `EACCES`. Reading
+it would need `READ_MEDIA_IMAGES` — asking a music player for photo access, which
+is worth a decision from the maintainer rather than a quiet addition.
+Whatever happens, do not ship a silent best-effort attempt: on the maintainer's own
+device it would be a no-op that merely *looks* like a fix, which is the one thing
+this codebase does not do.
+
 ### P2 — Visualization spectrum (requested, not started)
 A spectrum driven by `android.media.audiofx.Visualizer` on the AudioTrack
 session, rendered on a Compose canvas, coloured from the album-art palette
@@ -372,6 +430,14 @@ Known gaps to expect:
 ### P3 — Test gaps
 - No `androidTest` source set, so `MIGRATION_1_2` has no `MigrationTestHelper`
   test. Highest-value test to add.
+- Also because of that: **that `ArtworkResolver`'s default constructor and
+  `ArtworkLoader` really do route through `MediaStoreArtwork` is not covered by a
+  test.** The decision they delegate is (`accessFor`), but the wiring itself is
+  verified only by inspecting the dex — `MediaStoreArtwork.openThumbnail` is
+  present and issues the same `openTypedAssetFile` call as
+  `coil/fetch/ContentUriFetcher.fetch`, and the only remaining `openInputStream`
+  calls in our own code are the non-album branch plus two unrelated
+  document-copy paths. Re-run that check after touching either consumer.
 - The native FLAC decoder is **not trusted**: its own header lists LPC subframes
   as unsupported, and all 19 of its unit tests cover STREAMINFO parsing or
   synthetic frames — none decode a real encoded file. The Android path routes
@@ -381,6 +447,13 @@ Known gaps to expect:
 ---
 
 ## 5. Traps that have already cost time
+
+0. **Before debugging any "feature X stopped working entirely" report, check
+   whether the signing key changed.** `apksigner verify --print-certs` on the
+   previous and current APK. A changed key forces an uninstall, and an uninstall
+   silently resets every runtime permission and wipes the library — so the symptom
+   can be anywhere. See section 2. This is trap zero because it invalidates the
+   premise of every other investigation.
 
 1. **APK size.** Debug builds are R8-shrunk with `-dontobfuscate` (see
    `app/proguard-rules.pro`). Shrinking is what removes the tens of MB of unused
@@ -405,7 +478,73 @@ Known gaps to expect:
    mode; it throws on most devices. That was the seek bug.
 6. **`AudioTrack` in `MODE_STREAM` will not render the final partial buffer**
    while PLAYING. `stop()` is what drains it. That was the end-of-track error.
-7. **The system reads the media session's *timeline*, not the Player's getters.**
+7. **A repair must never replace something with nothing.**
+   The artwork repair passes wrote back whatever they resolved, including null. When
+   a cover could not be read they overwrote the recorded MediaStore URI with null —
+   unrecoverable without a rescan, because the album id it was derived from is not
+   stored on the row. One background pass could therefore strip artwork from an
+   entire library, and did. `ArtworkResolver.shouldWriteArtwork` is now the single
+   place that decides, and it only ever approves an improvement.
+   The first version of that guard returned "the value to write, or null to skip",
+   which made null mean both things — so **no test could catch the bug it was
+   written for**, and a mutation proved it. It is a predicate for that reason.
+8. **`MediaMetadataRetriever.embeddedPicture` does not cover the formats this app
+   accepts.** It reads ID3 `APIC` and MP4 `covr`, usually reads a FLAC `PICTURE`
+   block, **misses the base64 `METADATA_BLOCK_PICTURE` comment that Ogg Vorbis and
+   Opus use**, and cannot parse DSF at all. Relying on it alone is why artwork
+   appeared for some tracks and not others with no pattern visible from the UI.
+   `EmbeddedArtworkReader` parses the containers directly and is tried first; the
+   platform call remains as a second opinion. Verified byte-exact against real
+   files from `flac`, `oggenc` and mutagen — recipe in TESTING.md.
+   Related: `MetadataExtractor.Metadata.hasArtwork` reflects only what the platform
+   can see, so **do not gate artwork extraction on it** — that gate was hiding
+   covers the reader can find.
+9. **A track change resolves the same track twice, concurrently.**
+   `PlayerViewModel.resolveTrackDetails` runs for the screen while
+   `PlaybackService.publishMetadataFor` runs for the notification, and both call
+   `MusicLibrary.getTrackDetails`. Anything with a check-then-write in that path
+   needs to be safe under it. `ArtworkCache.put` was not: its temporary file was
+   named after the target, so the two writes shared one path and produced a
+   corrupt image or a failed rename — which is why artwork appeared only
+   sometimes, and sometimes in the app but not on the lock screen. `put` is now
+   serialised with a unique temporary, and `ArtworkResolver` locks per path so the
+   extraction happens once. `ArtworkCacheTest` reproduces the race with eight
+   threads; it fails reliably against the old code.
+10. **The player is the NavHost start destination, so `popBackStack()` is a no-op
+   there.** The pull-down-to-minimise gesture called it and silently did nothing.
+   Anything that means "leave the player" has to fall back to navigating somewhere.
+11. **A MediaStore album cover is a *typed asset*, not a stream — and this entry
+   used to say the opposite, which caused a bug of its own.**
+   `MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI` + album id gives
+   `content://media/external/audio/albums/<id>` — note `albums`, not the legacy
+   `albumart`. That URI is current and it works, but it names a *row*, so
+   `openInputStream` on it throws `FileNotFoundException: No media for album
+   content`. The cover has to be requested with
+   `openTypedAssetFile(uri, "image/*", Bundle{EXTRA_SIZE=Point}, null)`, which is
+   what the documented `ContentResolver.loadThumbnail` does internally and what
+   `MediaStore.Audio.Albums.ALBUM_ART` was deprecated in favour of.
+   Coil does exactly that for these URIs (`ContentUriFetcher.isMusicThumbnailUri`,
+   verified against the 2.7.0 bytecode), so every cover rendered *inside* the app.
+   This app's own two consumers used `openInputStream` and so both failed on the
+   same URI, which looked like three unrelated bugs:
+   covers missing from the lock screen and notification only; every play
+   re-parsing the audio file because the recorded URI could never be judged usable;
+   and "Rebuild album art" reporting those tracks as having no cover, the opposite
+   of the truth.
+   `MediaStoreArtwork` is now the only way this app opens an artwork reference, and
+   `MediaStoreArtwork.isAlbumArtUri` is a deliberate copy of Coil's predicate — if
+   the two ever disagree, a cover appears on one surface and not the other.
+   **The decision is exposed as `accessFor()` returning an enum specifically so a
+   test can pin it.** While it was buried inside the `ContentResolver` call no test
+   could have caught the wrong choice, and a mutation confirmed that.
+   Do not "simplify" either consumer back to `openInputStream`.
+12. **State that is declared and never assigned is worse than absent.**
+   `PlayerUiState.trackPath` was declared and never once written, and
+   `AlbumArtActions` early-returns on an empty path — so the album-art overflow
+   menu shipped in `93bca4d` never appeared. Nothing failed; it simply did not
+   exist. Same class of bug as the dead `updateMetadata`. When a feature is
+   invisible rather than broken, check whether the state it reads is ever set.
+13. **The system reads the media session's *timeline*, not the Player's getters.**
    The notification panel, lock screen and vendor widgets are fed from
    `MediaMetadataCompat`/`PlaybackStateCompat`, which media3 builds from the
    current timeline window. A player returning `Timeline.EMPTY` has no window, so
@@ -416,19 +555,62 @@ Known gaps to expect:
      is the only route a track length can take.
    - `COMMAND_GET_TIMELINE` must be advertised, or media3 refuses to read the
      timeline it needs.
-8. **Nothing published metadata until it was explicitly wired.**
+14. **Nothing published metadata until it was explicitly wired.**
    `MediaSessionManager.updateMetadata` and
    `PlaybackNotificationManager.updateTrackInfo` existed for months with **zero
    call sites**, so the session carried `MediaMetadata.EMPTY` for the whole life
    of the process. `PlaybackService.publishMetadataFor` is now the one caller;
    if the panel goes blank again, check there first.
-9. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
+15. **media3 `MediaSession.Builder` asserts `player.canAdvertiseSession()`.**
    Returning false throws `IllegalArgumentException` out of `Service.onCreate`,
    which kills the app — and with `START_STICKY` it loops. The service is now
    `START_NOT_STICKY` and fails soft.
-10. **Do not start a foreground service before there is audio to show.** On
+16. **Do not start a foreground service before there is audio to show.** On
    Android 14+ that gets the app killed. The service is promoted on the first
    `Playing` state.
+17. **media3 publishes artwork to the platform session only through a
+   `BitmapLoader`, and the default one cannot read this app's URIs.**
+   Setting `MediaMetadata.artworkData` is not enough on its own. media3 asks a
+   `BitmapLoader` for a `Bitmap` and only then sets `METADATA_KEY_ALBUM_ART` on the
+   platform session, which is what SystemUI draws on the lock screen. Left unset,
+   `MediaSession.Builder` installs `CacheBitmapLoader(DataSourceBitmapLoader(ctx))`
+   — verified in the 1.2.1 bytecode — whose URI branch uses `openInputStream`, the
+   one call MediaStore refuses for an album-art URI (trap 11). So the `artworkUri`
+   beside the bytes was a fallback in appearance only: it could never succeed here,
+   and whenever the bytes were missing the lock screen simply stayed blank.
+   `SessionArtworkBitmapLoader` is now set explicitly and shares
+   `MediaStoreArtwork` with the rest of the app. **Do not remove it** on the
+   grounds that media3 "has a default".
+   Also worth knowing: `PlayerWrapper.getMediaMetadataWithCommandCheck()` returns
+   `MediaMetadata.EMPTY` unless `COMMAND_GET_METADATA` (command 18) is advertised,
+   so metadata silently vanishes if that is ever dropped from
+   `isCommandAvailable`/`getAvailableCommands`.
+19. **A denied `POST_NOTIFICATIONS` was completely silent, and optional components
+   must not be able to remove the notification.**
+   `StoragePermissions.hasNotificationAccess` existed and **was never called** —
+   the same declared-but-unused pattern as trap 12. With the permission denied
+   there is no notification, no lock-screen controls, and nothing anywhere in the
+   app explaining why; it reads exactly like broken code, and it is now reported in
+   Audio info with a one-tap "Allow".
+   Separately, `buildPlaybackNotification()` returned null when the media session
+   token was missing, which threw away the whole music notification rather than
+   just the scrubber. The token is now optional: `MediaStyle` draws a perfectly good
+   notification without one. **Never let an optional extra remove the core
+   notification.**
+18. **"At least this big" is not "at most this big", and a silent drop hides it.**
+   `ArtworkLoader` sampled covers with the Android documentation's recipe — halve
+   while *both* halved edges are still >= 512 — which is a floor, not a cap. A
+   1000x1000 cover decoded at its full size, four times the intended pixels, and a
+   wide cover could not be reduced at all because its short edge blocked the
+   halving. `compress` then made **one** attempt and returned null if the JPEG
+   exceeded the 512 KB session budget: no log, no retry, and a cover that had been
+   read and decoded perfectly well never reached the lock screen. Two lessons, both
+   already written elsewhere in this file: cap what you mean to cap, and **degrade
+   rather than drop** — a soft cover beats none, and the difference between "did not
+   fit" and "was thrown away" has to be visible.
+   Related: `PlaybackService.publishedMetadataPath` latched the track *before* doing
+   the work and never cleared it, so one failed cover meant no cover for that track
+   for as long as it played. "Not yet" and "there is none" are now different states.
 
 ---
 

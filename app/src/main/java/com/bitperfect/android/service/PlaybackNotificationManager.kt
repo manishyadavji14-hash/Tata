@@ -60,9 +60,15 @@ class PlaybackNotificationManager(
     /**
      * Build the media notification based on current playback state.
      */
+    /**
+     * @param sessionToken links the notification to the media session, giving the
+     *   system a scrubber and letting vendor surfaces follow playback. Nullable
+     *   because a notification without it still shows the track and its controls,
+     *   and that is far better than the alternative of showing nothing at all.
+     */
     fun buildNotification(
         state: PlaybackState,
-        sessionToken: MediaSessionCompat.Token
+        sessionToken: MediaSessionCompat.Token?
     ): Notification {
         val isPlaying = state is PlaybackState.Playing
 
