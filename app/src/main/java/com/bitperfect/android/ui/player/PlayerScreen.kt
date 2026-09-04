@@ -113,6 +113,7 @@ import com.bitperfect.android.ui.theme.DsdBlue
 import com.bitperfect.android.ui.theme.SeekBarActive
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.ui.input.pointer.util.VelocityTracker
 
 /**
  * PlayerScreen - Main player interface built with Jetpack Compose.
@@ -140,7 +141,13 @@ fun PlayerScreen(
     onGoToAlbum: (Long) -> Unit = {},
     onGoToArtist: (Long) -> Unit = {},
     onGoToFolder: (String) -> Unit = {},
-    onGoToGenre: (String) -> Unit = {}
+    onGoToGenre: (String) -> Unit = {},
+    /**
+     * The draggable player surface this screen is the expanded face of, when there
+     * is one. Null keeps the original behaviour, where a decisive pull-down calls
+     * [onCollapse] on release instead of following the finger.
+     */
+    sheetDrag: PlayerSheetDrag? = null
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -212,19 +219,49 @@ fun PlayerScreen(
                 // mirroring the mini player's pull-up to open. Anchored to the
                 // top half so it does not fight the seek slider or transport
                 // controls lower down.
-                .pointerInput(Unit) {
+                .pointerInput(sheetDrag) {
                     val topZone = size.height * 0.5f
                     var startY = 0f
                     var dy = 0f
+                    var drivingSheet = false
+                    val velocity = VelocityTracker()
+
                     detectVerticalDragGestures(
-                        onDragStart = { offset -> startY = offset.y; dy = 0f },
-                        onDragEnd = {
-                            if (startY <= topZone && dy > COLLAPSE_THRESHOLD_PX) onCollapse()
+                        onDragStart = { offset ->
+                            startY = offset.y
                             dy = 0f
+                            drivingSheet = false
+                            velocity.resetTracking()
                         },
-                        onDragCancel = { dy = 0f }
+                        onDragEnd = {
+                            when {
+                                // The surface has moved and has to be settled.
+                                drivingSheet ->
+                                    sheetDrag?.onRelease(velocity.calculateVelocity().y)
+                                // Without a surface to drive, the original
+                                // threshold-and-dismiss behaviour.
+                                startY <= topZone && dy > COLLAPSE_THRESHOLD_PX ->
+                                    onCollapse()
+                            }
+                            dy = 0f
+                            drivingSheet = false
+                        },
+                        onDragCancel = {
+                            if (drivingSheet) sheetDrag?.onRelease(0f)
+                            dy = 0f
+                            drivingSheet = false
+                        }
                     ) { change, drag ->
                         dy += drag
+                        velocity.addPosition(change.uptimeMillis, change.position)
+
+                        // Restricted to a drag that began in the top half, exactly as
+                        // before. The lower half holds the seek bar and the transport
+                        // row, and a surface that followed the finger from there would
+                        // fight them.
+                        if (sheetDrag != null && startY <= topZone) drivingSheet = true
+                        if (drivingSheet) sheetDrag?.onDrag(drag)
+
                         change.consume()
                     }
                 }
@@ -328,7 +365,12 @@ fun PlayerScreen(
                                         viewModel.previous()
                                     }
 
-                                    PlayerMotion.DragOutcome.COLLAPSE -> onCollapse()
+                                    // Routed through the surface when there is one,
+                                    // so a pull-down on the artwork animates the same
+                                    // way as one on the header rather than jumping.
+                                    PlayerMotion.DragOutcome.COLLAPSE ->
+                                        sheetDrag?.onCollapse() ?: onCollapse()
+
                                     PlayerMotion.DragOutcome.NONE -> Unit
                                 }
                                 dx = 0f

@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
-| Size | 16.1 MiB (16,880,782 bytes) |
-| SHA-256 | `eb4757a130196f1a615cb1479dae64246359a8c79b183e0317436a9602c1117c` |
+| Size | 16.1 MiB (16,913,550 bytes) |
+| SHA-256 | `47aaf52e81e880479991f6cb8788f38e322bc75e70b44b57bf80ff5763309e20` |
 
 Verify the download matches before installing:
 
@@ -47,7 +47,32 @@ are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
 
-**Motion and feel.**
+**The mini player and the full player are now one surface you can drag.**
+
+Put your finger on the mini player and pull up: the player follows your finger the
+whole way, at whatever speed you move. Pull down from the top of the full player and
+it goes back down, revealing the library underneath as it goes. Change your mind
+half-way and reverse — it just follows, with nothing to unwind or restart.
+
+Let go and it decides where to land: a flick sends it there even from a few pixels in,
+while a slow drag goes wherever it is closest to. Back also collapses it now, which
+matches pulling it down.
+
+This needed a real change underneath. The mini player and the full player used to be
+two separate screens, and Android only ever keeps one of them on screen at a time —
+so a continuous drag between them was impossible, and the old pull-up could only wait
+for you to let go and then play a fixed animation. The player now lives *above* the
+rest of the app as a single surface that slides. Nothing about how either one looks
+has changed.
+
+Every existing gesture still works exactly as before, because the drag is fed from
+inside the gesture handlers that were already there rather than wrapped around them:
+tapping the mini player still opens it, swiping it sideways still changes track, and
+on the full player the seek bar, transport buttons and artwork swipe are all untouched.
+The pull-down is still limited to the top half of the player, so it can never fight
+the seek bar.
+
+**Motion and feel (previous build).**
 
 - **The progress bar glides.** It used to jump four times a second, because that is
   how often the player reports its position. It now moves continuously between those
