@@ -60,6 +60,15 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         private const val CHANNEL_NAME = "BitPerfect Playback"
         private const val MEDIA_SESSION_TAG = "BitPerfectMediaSession"
 
+        /**
+         * How many times a track's cover is re-read before giving up.
+         *
+         * Retrying at all is the point — one transient failure used to mean no
+         * cover for the whole track. Bounding it is what stops a seek storm from
+         * re-reading tags on every state change.
+         */
+        private const val MAX_ARTWORK_ATTEMPTS = 3
+
         const val ACTION_PLAY = "com.bitperfect.android.action.PLAY"
         const val ACTION_PAUSE = "com.bitperfect.android.action.PAUSE"
         const val ACTION_STOP = "com.bitperfect.android.action.STOP"
@@ -113,6 +122,46 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     /** Track whose metadata is currently published, to avoid redundant lookups. */
     private var publishedMetadataPath: String? = null
     private var metadataJob: Job? = null
+
+    /**
+     * Whether the current track's cover reached the media session.
+     *
+     * Reported to the UI because the lock screen is the one surface whose failures
+     * are invisible from inside the app, and the maintainer has no way to read a
+     * log. "The app shows a cover but the lock screen does not" was diagnosed three
+     * times over from guesses; this makes it answerable from the device.
+     */
+    private var artworkPublishState: ArtworkPublishState = ArtworkPublishState.None
+        set(value) {
+            field = value
+            ServiceLocator.artworkPublishReport.set(value.describe())
+        }
+
+    /** Attempts made for [publishedMetadataPath], to bound retrying. */
+    private var artworkAttempts = 0
+
+    private sealed interface ArtworkPublishState {
+        /** Nothing recorded for this track, so nothing to publish. */
+        data object None : ArtworkPublishState
+
+        /** A cover is recorded but has not been published yet. */
+        data object Pending : ArtworkPublishState
+
+        /** Published, carrying [bytes] of cover data. */
+        data class Published(val bytes: Int) : ArtworkPublishState
+
+        fun describe(): String = when (this) {
+            is None -> "No cover recorded for this track"
+            is Pending -> "Cover recorded but not published — retrying"
+            is Published -> if (bytes > 0) {
+                "Published to the media session (${bytes / 1024} KB)"
+            } else {
+                // A bitmap for the notification but no bytes for the session: the
+                // notification will show a cover and the lock screen will not.
+                "Published to the notification only, without session bytes"
+            }
+        }
+    }
     private var audioFocusRequest: AudioFocusRequest? = null
     private var hadAudioFocusBeforeTransientLoss = false
 
@@ -553,9 +602,19 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
             else -> return
         }
 
-        if (trackPath.isBlank() || trackPath == publishedMetadataPath) return
+        if (trackPath.isBlank()) return
 
-        publishedMetadataPath = trackPath
+        if (trackPath == publishedMetadataPath) {
+            // Already done with this track, unless the cover is still outstanding.
+            if (artworkPublishState != ArtworkPublishState.Pending) return
+            if (artworkAttempts >= MAX_ARTWORK_ATTEMPTS) return
+        } else {
+            publishedMetadataPath = trackPath
+            artworkPublishState = ArtworkPublishState.Pending
+            artworkAttempts = 0
+        }
+
+        artworkAttempts++
         metadataJob?.cancel()
         metadataJob = serviceScope.launch {
             val info = withContext(Dispatchers.IO) { loadTrackInfo(trackPath) }
@@ -563,6 +622,24 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
             // The track may have moved on while the tags were being read; a late
             // result must not overwrite the newer one.
             if (publishedMetadataPath != trackPath) return@launch
+
+            // Settle the cover before publishing, so a retry is driven by what
+            // actually arrived rather than by how far the code got.
+            //
+            // The latch used to be the path alone, set *before* this work and never
+            // cleared. One failed cover — the library not yet reachable, a decode
+            // that returned nothing, bytes that would not fit — meant every later
+            // state change for that track returned early and no cover was ever
+            // published again for as long as it played. "Not yet" and "there is
+            // none" have to be different states, or the first is permanent.
+            artworkPublishState = when {
+                info.artwork.bitmap != null || info.artwork.data != null ->
+                    ArtworkPublishState.Published(info.artwork.data?.size ?: 0)
+                // Nothing was recorded for this track, so there is nothing to wait
+                // for and retrying would only re-read tags on every pause.
+                !info.hasArtworkReference -> ArtworkPublishState.None
+                else -> ArtworkPublishState.Pending
+            }
 
             mediaSessionManager?.updateMetadata(
                 trackPath = trackPath,
@@ -580,6 +657,8 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
                 artwork = info.artwork.bitmap
             )
             updateNotification()
+
+            Log.d(TAG, "Cover for $trackPath: $artworkPublishState (attempt $artworkAttempts)")
         }
     }
 
@@ -588,7 +667,15 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         val artist: String,
         val album: String,
         val durationMs: Long,
-        val artwork: ArtworkLoader.Loaded
+        val artwork: ArtworkLoader.Loaded,
+        /**
+         * Whether the library had a cover recorded at all.
+         *
+         * Separate from whether one was loaded: it is the difference between "this
+         * track has no cover" and "this track has a cover that did not load", and
+         * only the second is worth retrying.
+         */
+        val hasArtworkReference: Boolean
     )
 
     /**
@@ -614,7 +701,10 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
                 artist = "",
                 album = "",
                 durationMs = 0L,
-                artwork = ArtworkLoader.Loaded()
+                artwork = ArtworkLoader.Loaded(),
+                // The library was unreachable, not consulted — so this is "not yet"
+                // rather than "there is none", and it is worth asking again.
+                hasArtworkReference = true
             )
         }
 
@@ -623,7 +713,8 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
             artist = details.artist,
             album = details.album,
             durationMs = details.durationMs,
-            artwork = artworkLoader.load(details.artworkUri)
+            artwork = artworkLoader.load(details.artworkUri),
+            hasArtworkReference = !details.artworkUri.isNullOrBlank()
         )
     }
 

@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 16.0 MiB (16,798,862 bytes) |
-| SHA-256 | `ae646ec0256aa42bcb9b576b2a299ff112f07ffb6018224e2229f9c37f51617c` |
+| Size | 16.1 MiB (16,831,630 bytes) |
+| SHA-256 | `f6fcffdf755bc68552e48bd3d5c2141f2bd62f061e381ba3564b6110d7a52055` |
 
 Verify the download matches before installing:
 
@@ -33,7 +33,40 @@ elsewhere cannot upgrade this one in place.
 
 ## New in this build
 
-**Album art: the app was asking Android for covers the wrong way.** This is a
+**A-Z jump strip in the library.** Scroll the Tracks list while it is sorted by name
+and a letter strip fades in down the right edge. Drag it to jump — the letter you are
+on is shown in a bubble clear of your finger — and it fades out two seconds after you
+stop. Only the letters your library actually has appear, so every one goes somewhere,
+and it works in both directions: sort Z-A and the strip reads Z-A. Titles starting
+with a number or a symbol group under `#`, and non-English titles keep their own
+letter rather than being lumped together.
+
+**Album art on the lock screen: three more faults, and a way to see what happens.**
+
+The one that most likely explains it: covers were being decoded at up to twice the
+intended size, and the step that packs one for the lock screen gave up **silently**
+if the result came out too large — no message, no retry, no second attempt at lower
+quality. A cover that had been found and decoded perfectly well simply never
+arrived, which is exactly "it shows in the app but not on the lock screen". Covers
+are now sized correctly and, if one still will not fit, it is made smaller rather
+than dropped.
+
+The second: Android does not draw the cover from the data we hand the media session.
+It asks a decoder for it first — and the built-in decoder opens covers the one way
+MediaStore refuses, the same mistake fixed inside the app last build. So the
+data's companion reference could never work as a backup. The app now supplies its own
+decoder, shared with the rest of the app.
+
+The third: if loading a cover failed once, it was never tried again for that song.
+"Not yet" and "there is none" were the same state; they no longer are.
+
+> **Please check this one for me.** I have no device, and this has now been fixed
+> four times. Play a song, then open the player, tap the **output badge at the bottom
+> left**, and read the new **"Lock screen → Album art"** line at the bottom. It says
+> whether the cover actually reached the lock screen, and if not, which stage stopped
+> it. That single line tells me more than any guess.
+
+**Album art: the app was asking Android for covers the wrong way (previous build).** This is a
 different fault from the previous three, and it explains the part that kept coming
 back — covers showing in the app but not on the lock screen.
 

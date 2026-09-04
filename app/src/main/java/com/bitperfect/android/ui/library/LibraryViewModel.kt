@@ -135,6 +135,16 @@ class LibraryViewModel(
                 YEAR -> "Year"
             }
 
+        /**
+         * Whether rows are in alphabetical order, either way round.
+         *
+         * Decides whether the A-Z jump strip is offered: under any other order the
+         * letters are not grouped, so a letter target would land somewhere
+         * arbitrary and be worse than no target at all.
+         */
+        val isByName: Boolean
+            get() = this == NAME_ASC || this == NAME_DESC
+
         /** Whether this order changes anything on [tab]. */
         fun appliesTo(tab: LibraryTab): Boolean = when (this) {
             NAME_ASC, NAME_DESC -> true

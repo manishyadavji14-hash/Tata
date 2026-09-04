@@ -88,6 +88,9 @@ fun AudioInfoDialog(
                     label = "Underruns",
                     value = info.underrunCount?.toString() ?: "Not reported"
                 )
+
+                Section("Lock screen")
+                InfoRow(label = "Album art", value = info.artworkPublishReport)
             }
         },
         confirmButton = {

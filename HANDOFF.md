@@ -62,6 +62,27 @@ blocked testing:
 
 **First job for whoever picks this up: install the APK and verify that list.**
 
+### Ask the device, do not guess: the lock-screen artwork report
+Album art on the lock screen has now been "fixed" four times, three of them from
+static reasoning that turned out to be aimed at the wrong stage. The reason is that
+this failure is invisible from inside the app — the player can be showing a cover
+while the media session has none, and the two come from different code — and the
+maintainer works from a phone with no way to read logcat.
+
+So there is now a plain-language readout: **player screen → the output badge at the
+bottom left → Audio info → "Lock screen / Album art"**. It says which of these
+happened for the track playing right now:
+
+| Reading | Meaning |
+|---|---|
+| `Published to the media session (N KB)` | the cover reached the session; if the lock screen is still blank the fault is below this app |
+| `Published to the notification only, without session bytes` | encoding failed; the shade may show a cover but the lock screen will not |
+| `Cover recorded but not published — retrying` | a cover exists and could not be loaded |
+| `No cover recorded for this track` | nothing to show; the library has no cover for it |
+
+**Ask for that line before theorising.** It distinguishes the stages that three
+rounds of guesswork could not.
+
 ---
 
 ## 2. Build
@@ -515,6 +536,37 @@ Known gaps to expect:
 16. **Do not start a foreground service before there is audio to show.** On
    Android 14+ that gets the app killed. The service is promoted on the first
    `Playing` state.
+17. **media3 publishes artwork to the platform session only through a
+   `BitmapLoader`, and the default one cannot read this app's URIs.**
+   Setting `MediaMetadata.artworkData` is not enough on its own. media3 asks a
+   `BitmapLoader` for a `Bitmap` and only then sets `METADATA_KEY_ALBUM_ART` on the
+   platform session, which is what SystemUI draws on the lock screen. Left unset,
+   `MediaSession.Builder` installs `CacheBitmapLoader(DataSourceBitmapLoader(ctx))`
+   — verified in the 1.2.1 bytecode — whose URI branch uses `openInputStream`, the
+   one call MediaStore refuses for an album-art URI (trap 11). So the `artworkUri`
+   beside the bytes was a fallback in appearance only: it could never succeed here,
+   and whenever the bytes were missing the lock screen simply stayed blank.
+   `SessionArtworkBitmapLoader` is now set explicitly and shares
+   `MediaStoreArtwork` with the rest of the app. **Do not remove it** on the
+   grounds that media3 "has a default".
+   Also worth knowing: `PlayerWrapper.getMediaMetadataWithCommandCheck()` returns
+   `MediaMetadata.EMPTY` unless `COMMAND_GET_METADATA` (command 18) is advertised,
+   so metadata silently vanishes if that is ever dropped from
+   `isCommandAvailable`/`getAvailableCommands`.
+18. **"At least this big" is not "at most this big", and a silent drop hides it.**
+   `ArtworkLoader` sampled covers with the Android documentation's recipe — halve
+   while *both* halved edges are still >= 512 — which is a floor, not a cap. A
+   1000x1000 cover decoded at its full size, four times the intended pixels, and a
+   wide cover could not be reduced at all because its short edge blocked the
+   halving. `compress` then made **one** attempt and returned null if the JPEG
+   exceeded the 512 KB session budget: no log, no retry, and a cover that had been
+   read and decoded perfectly well never reached the lock screen. Two lessons, both
+   already written elsewhere in this file: cap what you mean to cap, and **degrade
+   rather than drop** — a soft cover beats none, and the difference between "did not
+   fit" and "was thrown away" has to be visible.
+   Related: `PlaybackService.publishedMetadataPath` latched the track *before* doing
+   the work and never cleared it, so one failed cover meant no cover for that track
+   for as long as it played. "Not yet" and "there is none" are now different states.
 
 ---
 

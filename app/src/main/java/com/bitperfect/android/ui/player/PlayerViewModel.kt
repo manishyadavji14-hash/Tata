@@ -490,7 +490,8 @@ class PlayerViewModel(
             transportName = transport,
             isUsbOutputActive = usbActive,
             bufferLevelPercent = bufferLevel?.takeIf { it in 0f..1f }?.let { (it * 100).toInt() },
-            underrunCount = underruns
+            underrunCount = underruns,
+            artworkPublishReport = ServiceLocator.artworkPublishReport.get()
         )
     }
 
@@ -550,7 +551,16 @@ class PlayerViewModel(
         val transportName: String?,
         val isUsbOutputActive: Boolean,
         val bufferLevelPercent: Int?,
-        val underrunCount: Int?
+        val underrunCount: Int?,
+        /**
+         * Whether this track's cover reached the media session, in plain language.
+         *
+         * Reported because a missing lock-screen cover is invisible from inside the
+         * app: the player can be showing one while the session has none, and the two
+         * come from different code. Without this the only way to tell them apart is
+         * a log the maintainer cannot read.
+         */
+        val artworkPublishReport: String
     )
 
     /** Persist the whole session. Called on track change and when clearing up. */

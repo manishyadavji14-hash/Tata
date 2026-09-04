@@ -92,6 +92,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.bitperfect.android.ui.components.AlbumArtImage
+import com.bitperfect.android.ui.components.AlphabetIndexBar
 import com.bitperfect.android.ui.components.EditTrackDetailsDialog
 import com.bitperfect.android.ui.components.LyricsEditorDialog
 import com.bitperfect.android.ui.components.TrackInfo
@@ -152,6 +153,16 @@ fun LibraryScreen(
 
     // Shared so a scroll-to-track request can drive it.
     val trackListState = rememberLazyListState()
+
+    // Only under a name order: see SortOrder.isByName. Recomputed when the list or
+    // the order changes, not on every recomposition — it walks every row.
+    val trackAlphabetIndex = remember(uiState.tracks, uiState.sortOrder) {
+        if (uiState.sortOrder.isByName) {
+            AlphabetIndex.build(uiState.tracks.map { it.title })
+        } else {
+            emptyList()
+        }
+    }
     var searchQuery by remember { mutableStateOf("") }
     var isSearchActive by remember { mutableStateOf(false) }
 
@@ -432,6 +443,7 @@ fun LibraryScreen(
                                 LibraryViewModel.LibraryTab.TRACKS -> TrackList(
                                     tracks = uiState.tracks,
                                     listState = trackListState,
+                                    alphabetIndex = trackAlphabetIndex,
                                     nowPlayingPath = nowPlayingPath,
                                     onTrackClick = onTrackClick,
                                     onToggleFavourite = viewModel::toggleFavourite,
@@ -637,7 +649,47 @@ private fun TrackList(
     onEditLyrics: (LibraryViewModel.TrackItem) -> Unit,
     onRemove: (LibraryViewModel.TrackItem) -> Unit,
     nowPlayingPath: String = "",
-    listState: LazyListState = rememberLazyListState()
+    listState: LazyListState = rememberLazyListState(),
+    /**
+     * A-Z jump targets, or empty to show no strip. Empty when the list is not in
+     * name order, where a letter strip would point at nothing in particular.
+     */
+    alphabetIndex: List<AlphabetIndex.Entry> = emptyList()
+) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        TrackListContent(
+            tracks = tracks,
+            onTrackClick = onTrackClick,
+            onToggleFavourite = onToggleFavourite,
+            onAddToPlaylist = onAddToPlaylist,
+            onShowInfo = onShowInfo,
+            onEditDetails = onEditDetails,
+            onEditLyrics = onEditLyrics,
+            onRemove = onRemove,
+            nowPlayingPath = nowPlayingPath,
+            listState = listState
+        )
+
+        AlphabetIndexBar(
+            entries = alphabetIndex,
+            listState = listState,
+            modifier = Modifier.align(Alignment.CenterEnd)
+        )
+    }
+}
+
+@Composable
+private fun TrackListContent(
+    tracks: List<LibraryViewModel.TrackItem>,
+    onTrackClick: (tracks: List<String>, index: Int) -> Unit,
+    onToggleFavourite: (Long) -> Unit,
+    onAddToPlaylist: (String) -> Unit,
+    onShowInfo: (LibraryViewModel.TrackItem) -> Unit,
+    onEditDetails: (LibraryViewModel.TrackItem) -> Unit,
+    onEditLyrics: (LibraryViewModel.TrackItem) -> Unit,
+    onRemove: (LibraryViewModel.TrackItem) -> Unit,
+    nowPlayingPath: String,
+    listState: LazyListState
 ) {
     LazyColumn(
         state = listState,
