@@ -87,6 +87,31 @@ rounds of guesswork could not.
 
 ## 2. Build
 
+### The debug signing key is committed, and must stay that way
+`app/debug.keystore` is in the repository and wired up in `app/build.gradle.kts`
+under `signingConfigs`. **Do not remove it and do not let the build fall back to
+Gradle's automatic `~/.android/debug.keystore`.**
+
+Debug builds are what the maintainer installs. With the automatic key, the
+signature differs on every machine and every container that has been reset, so
+Android refuses to update in place (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`) and the
+only route is to uninstall first — **which erases the library database and every
+runtime permission already granted**. That happened between two builds in this
+repo and presented as "the playback notification has stopped appearing", because a
+fresh install starts with `POST_NOTIFICATIONS` denied and the app had no way to say
+so. It cost a whole round of debugging aimed at the notification code, which was
+fine.
+
+Verify after touching signing config:
+```bash
+apksigner verify --print-certs app/build/outputs/apk/debug/app-debug.apk
+# expect: CN=BitPerfect Debug, O=BitPerfect, C=US
+# SHA-256: 131cba07d0e33c1782bc8f5ebd7abe7e9a5ad22150119fc0fd97f60649eccff5
+```
+That digest must not change between builds. It grants nothing — password `android`,
+key in the repo — which is exactly as (in)secure as the standard debug key it
+replaces. **A release build must not use it.**
+
 ### Requirements
 - JDK 21 (AGP 8.10.1 needs 17+; the project compiles at Java 21)
 - Android SDK Platform 36, Build-Tools 36.0.0
@@ -423,6 +448,13 @@ Known gaps to expect:
 
 ## 5. Traps that have already cost time
 
+0. **Before debugging any "feature X stopped working entirely" report, check
+   whether the signing key changed.** `apksigner verify --print-certs` on the
+   previous and current APK. A changed key forces an uninstall, and an uninstall
+   silently resets every runtime permission and wipes the library — so the symptom
+   can be anywhere. See section 2. This is trap zero because it invalidates the
+   premise of every other investigation.
+
 1. **APK size.** Debug builds are R8-shrunk with `-dontobfuscate` (see
    `app/proguard-rules.pro`). Shrinking is what removes the tens of MB of unused
    `material-icons-extended`; obfuscation stays off so the JNI boundary and
@@ -553,6 +585,18 @@ Known gaps to expect:
    `MediaMetadata.EMPTY` unless `COMMAND_GET_METADATA` (command 18) is advertised,
    so metadata silently vanishes if that is ever dropped from
    `isCommandAvailable`/`getAvailableCommands`.
+19. **A denied `POST_NOTIFICATIONS` was completely silent, and optional components
+   must not be able to remove the notification.**
+   `StoragePermissions.hasNotificationAccess` existed and **was never called** —
+   the same declared-but-unused pattern as trap 12. With the permission denied
+   there is no notification, no lock-screen controls, and nothing anywhere in the
+   app explaining why; it reads exactly like broken code, and it is now reported in
+   Audio info with a one-tap "Allow".
+   Separately, `buildPlaybackNotification()` returned null when the media session
+   token was missing, which threw away the whole music notification rather than
+   just the scrubber. The token is now optional: `MediaStyle` draws a perfectly good
+   notification without one. **Never let an optional extra remove the core
+   notification.**
 18. **"At least this big" is not "at most this big", and a silent drop hides it.**
    `ArtworkLoader` sampled covers with the Android documentation's recipe — halve
    while *both* halved edges are still >= 512 — which is a floor, not a cap. A

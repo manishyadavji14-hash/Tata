@@ -17,9 +17,9 @@ ask you to allow installing from the browser the first time.
 | Contains | everything on `feat/library-sort-and-track-actions`: library sort, play statistics, the per-song menu, and the album-art fixes through to the MediaStore thumbnail fix |
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
-| Signing | Android debug key, APK Signature Scheme v2 |
-| Size | 16.1 MiB (16,831,630 bytes) |
-| SHA-256 | `f6fcffdf755bc68552e48bd3d5c2141f2bd62f061e381ba3564b6110d7a52055` |
+| Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
+| Size | 16.1 MiB (16,848,014 bytes) |
+| SHA-256 | `9d73567e7de703cbba93af07c9eda9d340b54bf1f3266cbd09dd1c838d97a6b9` |
 
 Verify the download matches before installing:
 
@@ -27,11 +27,38 @@ Verify the download matches before installing:
 sha256sum BitPerfect-debug-arm64.apk
 ```
 
-If you get `INSTALL_FAILED_UPDATE_INCOMPATIBLE`, uninstall any existing
-BitPerfect first. Debug signing keys differ between machines, so an APK built
-elsewhere cannot upgrade this one in place.
+## Read this before installing (one last uninstall)
+
+**This build is signed with a new, permanent key, so you have to uninstall
+BitPerfect one final time.** After this one, every future build installs straight
+over the top and keeps your library and permissions.
+
+Until now the app was signed with whatever throwaway key the build machine happened
+to have. Every rebuild produced a different signature, and Android refuses to
+update in place across a signature change — so each build silently required an
+uninstall, and **an uninstall resets every permission you had granted**. That is
+what stopped the playback notification appearing: a fresh install begins with
+notifications denied, and the app had no way of telling you. Both halves of that are
+now fixed.
+
+**After installing, if you see no notification:** open the player, tap the output
+badge at the bottom left, and the Audio info panel will say whether notifications
+are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
+
+**The missing notification was my build process, not the notification code.**
+
+Every build was signed with a different throwaway key, so each one forced an
+uninstall — and an uninstall wipes every permission you had granted, including
+permission to post notifications. A fresh install starts with notifications denied,
+and the app said nothing about it, so it looked like the notification feature had
+broken. The key is now fixed and committed, so this is the **last** uninstall; and
+the app now tells you when notifications are blocked and offers a one-tap **Allow**.
+
+Also hardened: the music notification used to be thrown away completely if the media
+session was unavailable for any reason, when all that is really lost is the scrubber.
+It now always shows the track and its controls.
 
 **A-Z jump strip in the library.** Scroll the Tracks list while it is sorted by name
 and a letter strip fades in down the right edge. Drag it to jump — the letter you are

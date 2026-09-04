@@ -440,12 +440,19 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     }
 
     /**
-     * The transport-controls notification, or null when either the notification
-     * builder or the media session could not be created.
+     * The transport-controls notification, or null only when the notification
+     * builder itself could not be created.
      */
     private fun buildPlaybackNotification(): Notification? {
         val manager = notificationManager ?: return null
-        val token = mediaSessionManager?.getSessionToken() ?: return null
+        // The session token links the notification to the media session, and is
+        // what lets the system draw a scrubber. It is **not** required to draw a
+        // notification at all. Returning null when it was missing threw away the
+        // entire music notification — title, cover, transport controls — leaving
+        // only the bare fallback, which shows nothing media-like on a lock screen
+        // and gives the user nothing to explain it. A notification without a token
+        // is worth vastly more than no notification.
+        val token = mediaSessionManager?.getSessionToken()
         return try {
             manager.buildNotification(playbackController.state, token)
         } catch (error: Exception) {

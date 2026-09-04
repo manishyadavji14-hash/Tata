@@ -1,5 +1,9 @@
 package com.bitperfect.android.ui.player
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -12,8 +16,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.bitperfect.android.library.StoragePermissions
 
 /**
  * What the audio pipeline is doing, from file to output.
@@ -31,6 +38,9 @@ fun AudioInfoDialog(
     info: PlayerViewModel.AudioPipelineInfo,
     onDismiss: () -> Unit
 ) {
+    val context = LocalContext.current
+    val notificationsAllowed = remember { StoragePermissions.hasNotificationAccess(context) }
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("Audio info") },
@@ -90,13 +100,54 @@ fun AudioInfoDialog(
                 )
 
                 Section("Lock screen")
-                InfoRow(label = "Album art", value = info.artworkPublishReport)
+
+                // Checked here rather than passed in, because it can change while
+                // this dialog is open — the user may go and grant it and come back.
+                //
+                // Reported at all because without it a denied permission is
+                // completely silent: no notification, no lock-screen controls, and
+                // nothing anywhere in the app saying why. It reads exactly like the
+                // feature is broken. The permission is requested at first launch, so
+                // the way it ends up denied is a reinstall, where the prompt is easy
+                // to dismiss and never appears again.
+                if (notificationsAllowed) {
+                    InfoRow(label = "Album art", value = info.artworkPublishReport)
+                } else {
+                    InfoRow(
+                        label = "Notifications",
+                        value = "Blocked — Android is not allowing any notification, " +
+                            "so nothing can appear in the shade or on the lock screen. " +
+                            "Album art cannot be judged until this is allowed."
+                    )
+                }
             }
         },
         confirmButton = {
             TextButton(onClick = onDismiss) { Text("Close") }
+        },
+        // Offered only when it would do something, and it goes straight to the
+        // screen that fixes it rather than describing where to find it.
+        dismissButton = if (notificationsAllowed) {
+            null
+        } else {
+            { TextButton(onClick = { openNotificationSettings(context) }) { Text("Allow") } }
         }
     )
+}
+
+/** Open this app's notification settings, falling back to its app details page. */
+private fun openNotificationSettings(context: Context) {
+    val appNotifications = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+        .putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+
+    val appDetails = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        .setData(Uri.fromParts("package", context.packageName, null))
+
+    // Some vendor builds do not implement the notification screen; landing on the
+    // app's details page is still one tap from the same switch.
+    for (intent in listOf(appNotifications, appDetails)) {
+        if (runCatching { context.startActivity(intent); true }.getOrDefault(false)) return
+    }
 }
 
 @Composable
