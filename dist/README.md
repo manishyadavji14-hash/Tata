@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
-| Size | 16.1 MiB (16,929,934 bytes) |
-| SHA-256 | `b34692a75a745ce9712202236dcae97357a61a1bd21fcaa2c28c2fd0c6b1b39d` |
+| Size | 16.2 MiB (16,946,318 bytes) |
+| SHA-256 | `9fe4159f39c55b6d533f34ed2a4b3969941796734368744c2d673761216b5ef0` |
 
 Verify the download matches before installing:
 
@@ -47,7 +47,21 @@ are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
 
-**The album art is now one object that moves between the two players.** Drag the
+**A real spectrum analyser on the player.** A row of bars above the seek bar, showing
+the actual frequency content of what is playing — bass on the left, treble on the
+right. It reads the audio this app has already decoded, so it works for every format
+and on both outputs, including the bit-perfect USB path.
+
+It does **not** use Android's built-in visualiser, which would have needed microphone
+permission, would have returned deliberately low-quality audio, and — because it
+attaches to an Android audio session — would have shown nothing at all on the USB
+path, the one output this app exists for.
+
+Your samples are untouched: the analyser reads a copy, on the same thread that was
+already reading the file, never on the thread that feeds the DAC. When the player
+screen is not open it does no work at all.
+
+**The album art is one object that moves between the two players (previous build).** Drag the
 player open and the small cover in the bar physically grows and travels into the big
 cover on the player screen — same square, moving, with its rounded corner opening out
 as it goes. Drag back down and it returns. Previously the two covers cross-faded, so

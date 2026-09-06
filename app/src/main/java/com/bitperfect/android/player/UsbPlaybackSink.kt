@@ -251,6 +251,18 @@ class UsbPlaybackSink(
                 }
 
                 val bytesRead = framesRead * bytesPerFrame
+
+                // Read-only copy for the spectrum. On this thread, never on the USB
+                // reaper thread that refills the isochronous queue — see SpectrumTap.
+                // The samples handed to the DAC are untouched.
+                SpectrumTap.submit(
+                    buffer = pcmBuffer,
+                    byteCount = bytesRead,
+                    bitsPerSample = decoderFormat.bitsPerSample,
+                    channels = decoderFormat.channels,
+                    sampleRate = decoderFormat.sampleRate
+                )
+
                 pcmBuffer.position(0)
                 pcmBuffer.get(transferBuffer, 0, bytesRead)
 

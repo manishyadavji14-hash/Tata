@@ -326,6 +326,19 @@ class AudioTrackPlaybackSink(
                 }
 
                 val bytesRead = framesRead * bytesPerFrame
+
+                // Read-only copy for the spectrum, before the buffer's position is
+                // moved. Costs one atomic read when nothing is watching. See
+                // SpectrumTap — this is the only point that sees PCM from the
+                // platform decoders as well as the native ones.
+                SpectrumTap.submit(
+                    buffer = pcmBuffer,
+                    byteCount = bytesRead,
+                    bitsPerSample = decoderFormat.bitsPerSample,
+                    channels = decoderFormat.channels,
+                    sampleRate = decoderFormat.sampleRate
+                )
+
                 pcmBuffer.position(0)
                 pcmBuffer.limit(bytesRead)
 

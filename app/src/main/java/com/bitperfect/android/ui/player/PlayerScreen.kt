@@ -114,6 +114,8 @@ import com.bitperfect.android.ui.theme.SeekBarActive
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.ui.input.pointer.util.VelocityTracker
+import com.bitperfect.android.ui.components.SpectrumVisualizer
+import com.bitperfect.android.ui.components.SPECTRUM_HEIGHT
 
 /**
  * PlayerScreen - Main player interface built with Jetpack Compose.
@@ -494,7 +496,20 @@ fun PlayerScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(12.dp))
+
+            // The spectrum of what is actually playing, taken from the decoded PCM
+            // this app already has. Placed here because it displaces nothing: the
+            // existing layout is unchanged above and below it.
+            SpectrumVisualizer(
+                isPlaying = uiState.isPlaying,
+                color = accent,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(SPECTRUM_HEIGHT)
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
 
             // Seek bar
             SeekBar(
