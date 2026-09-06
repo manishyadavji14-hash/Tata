@@ -40,6 +40,16 @@ object PlayerSheetMotion {
     /** Progress at which the expanded player begins to appear. */
     const val FULL_FADE_START = 0.12f
 
+    /**
+     * Progress by which the expanded player is fully opaque.
+     *
+     * Well before the end, and that matters: fading it across the whole travel left it
+     * translucent for most of the gesture, so the library showed through the player
+     * for the entire drag and the whole thing looked washed out. It should become a
+     * solid surface early and then simply slide.
+     */
+    const val FULL_FADE_END = 0.45f
+
     /** Where a released drag should settle. */
     enum class Target { COLLAPSED, EXPANDED }
 
@@ -99,5 +109,24 @@ object PlayerSheetMotion {
      * movement does not flash the full layout behind the bar.
      */
     fun fullAlpha(progress: Float): Float =
-        ((progress - FULL_FADE_START) / (1f - FULL_FADE_START)).coerceIn(0f, 1f)
+        ((progress - FULL_FADE_START) / (FULL_FADE_END - FULL_FADE_START)).coerceIn(0f, 1f)
+
+    /**
+     * Whether the artwork should be drawn by the surface rather than by either face.
+     *
+     * Only while actually in motion. At either end each face draws its own cover, so
+     * if the measured positions the morph interpolates between were ever wrong, the
+     * damage is confined to the gesture and the player is still correct at rest —
+     * which is the only reason this is safe to do at all.
+     */
+    fun isMorphingArtwork(progress: Float): Boolean =
+        progress > MORPH_EPSILON && progress < 1f - MORPH_EPSILON
+
+    /**
+     * Slack at each end of the travel.
+     *
+     * Guards against a spring settling on 0.9999 and leaving the surface drawing an
+     * artwork forever while both faces hide theirs.
+     */
+    private const val MORPH_EPSILON = 0.002f
 }

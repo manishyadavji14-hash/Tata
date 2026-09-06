@@ -147,7 +147,13 @@ fun PlayerScreen(
      * is one. Null keeps the original behaviour, where a decisive pull-down calls
      * [onCollapse] on release instead of following the finger.
      */
-    sheetDrag: PlayerSheetDrag? = null
+    sheetDrag: PlayerSheetDrag? = null,
+    /**
+     * Applied to the cover. The player surface uses it to measure where this cover
+     * sits and to hide it while drawing the one that travels between the two faces.
+     * Empty by default, so this screen looks after its own cover when used alone.
+     */
+    artwork: PlayerSheetArtworkSlot = PlayerSheetArtworkSlot.None
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -402,6 +408,7 @@ fun PlayerScreen(
                     onClick = onAlbumArtClick,
                     modifier = Modifier
                         .fillMaxSize()
+                        .then(artwork.modifier)
                         // One layer for both the playing lift and the drag, so the
                         // two scales multiply instead of fighting over separate
                         // layers.

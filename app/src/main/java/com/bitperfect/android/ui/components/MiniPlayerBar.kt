@@ -52,6 +52,7 @@ import com.bitperfect.android.ui.player.PlayerMotion
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.ui.input.pointer.util.VelocityTracker
 import com.bitperfect.android.ui.player.PlayerSheetDrag
+import com.bitperfect.android.ui.player.PlayerSheetArtworkSlot
 
 /**
  * MiniPlayerBar - the now-playing bar on every screen except the full Player.
@@ -78,7 +79,13 @@ fun MiniPlayerBar(
      * the player — which is still what happens if this bar is ever used outside the
      * surface.
      */
-    sheetDrag: PlayerSheetDrag? = null
+    sheetDrag: PlayerSheetDrag? = null,
+    /**
+     * Applied to the cover. The player surface uses it to measure where this cover
+     * sits and to hide it while drawing the one that travels between the two faces.
+     * Empty by default, so the bar looks after its own cover when used alone.
+     */
+    artwork: PlayerSheetArtworkSlot = PlayerSheetArtworkSlot.None
 ) {
     if (!uiState.isPlaying && !uiState.isPaused) return
 
@@ -229,6 +236,7 @@ fun MiniPlayerBar(
                     modifier = Modifier
                         .size(44.dp)
                         .clip(RoundedCornerShape(6.dp))
+                        .then(artwork.modifier)
                 )
 
                 Spacer(modifier = Modifier.width(12.dp))

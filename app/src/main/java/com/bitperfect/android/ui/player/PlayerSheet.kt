@@ -26,6 +26,16 @@ import kotlinx.coroutines.launch
 import androidx.compose.foundation.layout.offset
 import androidx.compose.ui.unit.IntOffset
 import kotlin.math.roundToInt
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.util.lerp
+import com.bitperfect.android.ui.components.AlbumArtImage
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.Immutable
 
 /**
  * The player as one surface that slides between collapsed and expanded, rather than
@@ -164,12 +174,25 @@ fun rememberPlayerSheetState(initiallyExpanded: Boolean = true): PlayerSheetStat
 fun PlayerSheet(
     state: PlayerSheetState,
     peekHeight: Dp,
+    /** Cover of the current track, for the one the surface morphs between faces. */
+    artworkUri: String?,
     modifier: Modifier = Modifier,
-    miniPlayer: @Composable (PlayerSheetDrag) -> Unit,
-    fullPlayer: @Composable (PlayerSheetDrag) -> Unit
+    miniPlayer: @Composable (PlayerSheetDrag, PlayerSheetArtworkSlot) -> Unit,
+    fullPlayer: @Composable (PlayerSheetDrag, PlayerSheetArtworkSlot) -> Unit
 ) {
     val scope = rememberCoroutineScope()
     val density = LocalDensity.current
+
+    // Where each face draws its cover, in the surface's own coordinates. Measured
+    // rather than duplicated: both positions are decided by layout rules inside the
+    // faces, and restating them here is exactly how two copies drift apart.
+    //
+    // The surface's coordinates are the right frame of reference because the surface
+    // does not resize as it moves — it translates — so both rectangles are constant
+    // and need measuring only once. Window coordinates would move with the drag.
+    var sheetCoordinates by remember { mutableStateOf<LayoutCoordinates?>(null) }
+    var collapsedArtwork by remember { mutableStateOf<Rect?>(null) }
+    var expandedArtwork by remember { mutableStateOf<Rect?>(null) }
 
     BoxWithConstraints(modifier = modifier.fillMaxSize()) {
         val containerHeightPx = with(density) { maxHeight.toPx() }
@@ -196,6 +219,26 @@ fun PlayerSheet(
         // its effects keep running, but leave it off screen.
         val isHidden = peekHeight <= 0.dp && !state.isExpanded
 
+        val morphing = PlayerSheetMotion.isMorphingArtwork(state.progress) &&
+            collapsedArtwork != null &&
+            expandedArtwork != null
+
+        /**
+         * Modifier for a face's cover: reports where it is, and hides it while the
+         * surface is drawing the moving one in its place.
+         *
+         * Hidden by transparency rather than by omission, so the face's layout is
+         * unchanged and nothing shifts as the morph starts and ends.
+         */
+        fun artworkSlot(report: (Rect) -> Unit) = PlayerSheetArtworkSlot(
+            Modifier
+            .onGloballyPositioned { coordinates ->
+                val root = sheetCoordinates ?: return@onGloballyPositioned
+                report(root.localBoundingBoxOf(coordinates, clipBounds = false))
+            }
+                .graphicsLayer { alpha = if (morphing) 0f else 1f }
+        )
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -212,13 +255,16 @@ fun PlayerSheet(
                     val y = if (isHidden) containerHeightPx else state.offset.value
                     IntOffset(x = 0, y = y.roundToInt())
                 }
+                // The frame both cover positions are measured against. This node is
+                // what translates, so its children hold still relative to it.
+                .onGloballyPositioned { sheetCoordinates = it }
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .graphicsLayer { alpha = PlayerSheetMotion.fullAlpha(state.progress) }
             ) {
-                fullPlayer(drag)
+                fullPlayer(drag, artworkSlot { expandedArtwork = it })
             }
 
             // Above the expanded player and at the top of the surface, so it is what
@@ -231,12 +277,75 @@ fun PlayerSheet(
                         .height(peekHeight)
                         .graphicsLayer { alpha = PlayerSheetMotion.miniAlpha(state.progress) }
                 ) {
-                    miniPlayer(drag)
+                    miniPlayer(drag, artworkSlot { collapsedArtwork = it })
+                }
+            }
+
+            // The cover, drawn once and travelling between the two faces.
+            //
+            // This is what makes the two representations read as one object rather
+            // than as a cross-fade between two pictures of it: the same square moves
+            // and grows from the bar's thumbnail into the player's card. Drawn last so
+            // it is above both faces, and outside their opacity layers so the cover
+            // leads the transition at full strength while the rest of the player
+            // arrives behind it.
+            if (morphing) {
+                val from = collapsedArtwork!!
+                val to = expandedArtwork!!
+                val fraction = state.progress
+
+                val left = lerp(from.left, to.left, fraction)
+                val top = lerp(from.top, to.top, fraction)
+                val width = lerp(from.width, to.width, fraction)
+                val height = lerp(from.height, to.height, fraction)
+                // The corner travels too, or a thumbnail's tight radius would snap to
+                // the card's on arrival.
+                val corner = lerp(COLLAPSED_ARTWORK_CORNER.value, EXPANDED_ARTWORK_CORNER.value, fraction)
+
+                Box(
+                    modifier = Modifier
+                        .offset { IntOffset(left.roundToInt(), top.roundToInt()) }
+                        .size(
+                            width = with(density) { width.toDp() },
+                            height = with(density) { height.toDp() }
+                        )
+                        .clip(RoundedCornerShape(corner.dp))
+                ) {
+                    AlbumArtImage(
+                        artworkUri = artworkUri,
+                        modifier = Modifier.fillMaxSize(),
+                        placeholderIconSize = with(density) {
+                            (minOf(width, height) * 0.4f).toDp()
+                        }
+                    )
                 }
             }
         }
     }
 }
+
+/**
+ * The surface's handle on one face's cover.
+ *
+ * Carries a modifier that measures where that cover sits and hides it while the
+ * surface draws the travelling one in its place. A named type rather than a bare
+ * `Modifier` parameter, because it is not the face's own modifier — it belongs to one
+ * child of it — and an unexplained second Modifier parameter is exactly what Compose's
+ * own lint warns about.
+ */
+@Immutable
+class PlayerSheetArtworkSlot(val modifier: Modifier = Modifier) {
+    companion object {
+        /** For a face used on its own, which looks after its own cover. */
+        val None = PlayerSheetArtworkSlot()
+    }
+}
+
+/** Matches the thumbnail's corner in the collapsed bar. */
+private val COLLAPSED_ARTWORK_CORNER = 6.dp
+
+/** Matches the card's corner in the expanded player. */
+private val EXPANDED_ARTWORK_CORNER = 20.dp
 
 /**
  * Hooks that let a child's existing gesture detector drive the surface.

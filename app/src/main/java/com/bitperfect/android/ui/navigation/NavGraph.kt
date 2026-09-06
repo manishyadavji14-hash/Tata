@@ -509,7 +509,8 @@ fun BitPerfectNavGraph(
             PlayerSheet(
                 state = playerSheetState,
                 peekHeight = peekHeight,
-                miniPlayer = { drag ->
+                artworkUri = playerUiState.artworkUri,
+                miniPlayer = { drag, artworkSlot ->
                     MiniPlayerBar(
                         uiState = playerUiState,
                         onBarClick = openPlayer,
@@ -517,10 +518,11 @@ fun BitPerfectNavGraph(
                         onPlayPauseClick = { playerViewModel.togglePlayPause() },
                         onSwipeNext = { playerViewModel.nextOrWrap() },
                         onSwipePrevious = { playerViewModel.previous() },
-                        sheetDrag = drag
+                        sheetDrag = drag,
+                        artwork = artworkSlot
                     )
                 },
-                fullPlayer = { drag ->
+                fullPlayer = { drag, artworkSlot ->
                     PlayerScreen(
                         viewModel = playerViewModel,
                         onOpenFile = { navigatingAwayFromPlayer(onOpenFile) },
@@ -576,7 +578,8 @@ fun BitPerfectNavGraph(
                                 navController.navigate(Screen.GenreTracks.createRoute(name))
                             }
                         },
-                        sheetDrag = drag
+                        sheetDrag = drag,
+                        artwork = artworkSlot
                     )
                 }
             )

@@ -1,6 +1,7 @@
 package com.bitperfect.android.ui.player
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -160,6 +161,43 @@ class PlayerSheetMotionTest {
 
         assertEquals(0f, PlayerSheetMotion.miniAlpha(1f))
         assertEquals(1f, PlayerSheetMotion.fullAlpha(1f))
+    }
+
+    @Test
+    @DisplayName("the player is a solid surface well before the drag ends")
+    fun playerBecomesOpaqueEarly() {
+        // Fading it across the whole travel left it translucent for most of the
+        // gesture, with the library showing through the player the entire way.
+        assertEquals(1f, PlayerSheetMotion.fullAlpha(PlayerSheetMotion.FULL_FADE_END))
+        assertEquals(1f, PlayerSheetMotion.fullAlpha(0.6f))
+        assertTrue(
+            PlayerSheetMotion.FULL_FADE_END < 0.6f,
+            "the player is still see-through past halfway: ${PlayerSheetMotion.FULL_FADE_END}"
+        )
+    }
+
+    // --- The cover that travels between the two faces ---
+
+    @Test
+    @DisplayName("the surface draws the cover only while moving")
+    fun morphOnlyWhileMoving() {
+        // At either end each face draws its own, which is what keeps a wrong
+        // measurement confined to the gesture instead of losing the cover for good.
+        assertFalse(PlayerSheetMotion.isMorphingArtwork(0f))
+        assertFalse(PlayerSheetMotion.isMorphingArtwork(1f))
+
+        assertTrue(PlayerSheetMotion.isMorphingArtwork(0.5f))
+        assertTrue(PlayerSheetMotion.isMorphingArtwork(0.02f))
+        assertTrue(PlayerSheetMotion.isMorphingArtwork(0.98f))
+    }
+
+    @Test
+    @DisplayName("a spring settling just short of an end still hands the cover back")
+    fun morphToleratesSpringResidue() {
+        // A spring can finish on 0.9999. Without slack at each end the surface would
+        // keep drawing the cover for ever while both faces went on hiding theirs.
+        assertFalse(PlayerSheetMotion.isMorphingArtwork(0.9999f))
+        assertFalse(PlayerSheetMotion.isMorphingArtwork(0.0001f))
     }
 
     @Test

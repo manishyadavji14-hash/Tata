@@ -18,8 +18,8 @@ ask you to allow installing from the browser the first time.
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
-| Size | 16.1 MiB (16,913,550 bytes) |
-| SHA-256 | `b021a80a94bdc740ee14ca70669c0a33606eae2fb56784a7a400fe944f19d3e7` |
+| Size | 16.1 MiB (16,929,934 bytes) |
+| SHA-256 | `b34692a75a745ce9712202236dcae97357a61a1bd21fcaa2c28c2fd0c6b1b39d` |
 
 Verify the download matches before installing:
 
@@ -47,7 +47,18 @@ are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
 
-**Fixes navigation while the player is open.** Tapping Library or Settings from the
+**The album art is now one object that moves between the two players.** Drag the
+player open and the small cover in the bar physically grows and travels into the big
+cover on the player screen — same square, moving, with its rounded corner opening out
+as it goes. Drag back down and it returns. Previously the two covers cross-faded, so
+you saw one picture dissolve into another in a different place; now it reads as the
+same thing changing size.
+
+**The player is no longer see-through while you drag it.** It was fading in across the
+whole gesture, so for most of the drag you could see the library through it and the
+whole thing looked washed out. It becomes solid early and then simply slides.
+
+**Fixes navigation while the player is open (previous build).** Tapping Library or Settings from the
 player did nothing visible: the screen behind really did change, but the open player
 stayed on top of it. Selecting a tab now closes the player first. Tapping the
 collapsed bar also works reliably again — it was drawn at the bottom of the screen
