@@ -29,11 +29,84 @@ class AudioEffectsController {
         private const val EFFECT_PRIORITY = 0
 
         /**
-         * Fraction of the treble control applied to the top band, with the
-         * remainder applied to the band below it so the lift is not a spike.
+         * Lowest centre frequency the treble control lifts.
+         *
+         * Chosen by ear rather than by band index. The previous version boosted
+         * the top band fully and the one below it at half, which on the five-band
+         * equalizer most devices expose meant nearly all the gain landed at
+         * 14 kHz — where there is very little musical content — so the control
+         * appeared to do nothing. Treble that people can hear starts around
+         * 2 kHz, and selecting by frequency also behaves correctly on the
+         * ten-band equalizers some devices report.
          */
-        private const val TREBLE_TOP_BAND_SHARE = 1.0f
-        private const val TREBLE_NEXT_BAND_SHARE = 0.5f
+        private const val TREBLE_FROM_HZ = 2_000
+
+        /** Highest centre frequency the bass control lifts. */
+        private const val BASS_TO_HZ = 250
+
+        /**
+         * Gain applied at the very edge of each shelf, as a fraction of the
+         * control. Bands further into the shelf ramp up to the full amount, so it
+         * is a shelf rather than a step.
+         */
+        private const val SHELF_EDGE_SHARE = 0.45f
+
+        /**
+         * Gain per band for a shelf at one end of the spectrum.
+         *
+         * Bands outside the shelf get nothing. Inside it the gain ramps from
+         * [SHELF_EDGE_SHARE] of the control at the band nearest the middle of the
+         * spectrum up to the full amount at the extreme, so the result is a shelf
+         * rather than one spiking band.
+         *
+         * Pure and in the companion so the shaping can be unit tested — the rest
+         * of this class needs a real `AudioTrack` session to do anything.
+         */
+        internal fun shelfLevels(
+            bands: List<Band>,
+            maxLevelMillibel: Int,
+            strength: Int,
+            high: Boolean
+        ): List<Int> {
+            if (bands.isEmpty() || strength <= 0) return List(bands.size) { 0 }
+
+            val headroom = maxLevelMillibel.coerceAtLeast(0)
+            val peak = headroom * strength / MAX_STRENGTH.toFloat()
+
+            val inShelf = bands.filter {
+                if (high) {
+                    it.centerFrequencyHz >= TREBLE_FROM_HZ
+                } else {
+                    it.centerFrequencyHz in 1..BASS_TO_HZ
+                }
+            }
+
+            if (inShelf.isEmpty()) {
+                // No band sits in the shelf — a very coarse equalizer. Fall back to
+                // the outermost band so the control is not silently inert.
+                val fallback = if (high) bands.last() else bands.first()
+                return bands.map { if (it.index == fallback.index) peak.toInt() else 0 }
+            }
+
+            // Order from the middle of the spectrum outward, so the ramp always
+            // runs towards the extreme whichever shelf this is.
+            val ordered = if (high) inShelf else inShelf.reversed()
+
+            return bands.map { band ->
+                val position = ordered.indexOfFirst { it.index == band.index }
+                if (position < 0) {
+                    0
+                } else {
+                    val share = if (ordered.size == 1) {
+                        1f
+                    } else {
+                        SHELF_EDGE_SHARE +
+                            (1f - SHELF_EDGE_SHARE) * position / (ordered.size - 1)
+                    }
+                    (peak * share).toInt()
+                }
+            }
+        }
     }
 
     /**
@@ -62,6 +135,12 @@ class AudioEffectsController {
         val minLevelMillibel: Int = 0,
         val maxLevelMillibel: Int = 0,
         val supportsBassBoost: Boolean = false,
+        /**
+         * True when the platform `BassBoost` effect is doing the work, false when
+         * it is applied as a low shelf on the equalizer instead. Only affects how
+         * the control is described.
+         */
+        val usesBassBoostEffect: Boolean = false,
         val presets: List<String> = emptyList(),
         val unavailableReason: String? = null
     )
@@ -129,7 +208,17 @@ class AudioEffectsController {
             equalizer = createdEqualizer
 
             val createdBassBoost = try {
-                BassBoost(EFFECT_PRIORITY, audioSessionId).takeIf { it.strengthSupported }
+                BassBoost(EFFECT_PRIORITY, audioSessionId).let { boost ->
+                    if (boost.strengthSupported) {
+                        boost
+                    } else {
+                        // Release it rather than dropping the reference: an
+                        // unreleased effect holds a native handle for the life of
+                        // the process, and one leaked per track adds up.
+                        runCatching { boost.release() }
+                        null
+                    }
+                }
             } catch (error: Exception) {
                 Log.w(TAG, "Bass boost unavailable: ${error.message}")
                 null
@@ -141,7 +230,12 @@ class AudioEffectsController {
                 bands = bands,
                 minLevelMillibel = levelRange.getOrElse(0) { 0 }.toInt(),
                 maxLevelMillibel = levelRange.getOrElse(1) { 0 }.toInt(),
-                supportsBassBoost = createdBassBoost != null,
+                // True even without the platform effect: the control still works,
+                // applied as a low shelf on the equalizer. Reporting false greyed
+                // the slider out on devices that have no BassBoost, which read as
+                // "bass boost does nothing".
+                supportsBassBoost = true,
+                usesBassBoostEffect = createdBassBoost != null,
                 presets = presetNames
             )
             attachedSessionId = audioSessionId
@@ -293,13 +387,25 @@ class AudioEffectsController {
                 eq.enabled = current.isEnabled
                 if (current.isEnabled) {
                     val trebleLevels = trebleLevelsMillibel(current.trebleStrength)
+                    // The bass shelf is only used when the platform effect is not
+                    // available, so the two never stack into an unpredictable
+                    // amount of low end.
+                    val bassLevels = if (activeBassBoost == null) {
+                        bassLevelsMillibel(current.bassBoostStrength)
+                    } else {
+                        emptyList()
+                    }
+
                     capabilities.bands.forEach { band ->
                         val base = current.bandLevelsMillibel.getOrElse(band.index) { 0 }
-                        val total = (base + trebleLevels.getOrElse(band.index) { 0 })
-                            .coerceIn(
-                                capabilities.minLevelMillibel,
-                                capabilities.maxLevelMillibel
-                            )
+                        val total = (
+                            base +
+                                trebleLevels.getOrElse(band.index) { 0 } +
+                                bassLevels.getOrElse(band.index) { 0 }
+                            ).coerceIn(
+                            capabilities.minLevelMillibel,
+                            capabilities.maxLevelMillibel
+                        )
                         eq.setBandLevel(band.index.toShort(), total.toShort())
                     }
                 }
@@ -318,26 +424,40 @@ class AudioEffectsController {
     }
 
     /**
-     * Spread the treble control across the highest bands.
+     * Treble as a high shelf across every band from [TREBLE_FROM_HZ] upward.
      *
-     * Android exposes no treble effect, so this is expressed as extra gain on
-     * the top of the equalizer curve.
+     * Android exposes no treble effect, so it is expressed as gain on the top of
+     * the equalizer curve. Selecting bands by frequency instead of by index is
+     * what makes it audible: on the usual five-band equalizer the old
+     * index-based version put almost all of the gain at 14 kHz.
      */
-    private fun trebleLevelsMillibel(strength: Int): List<Int> {
-        val bandCount = capabilities.bands.size
-        if (bandCount == 0 || strength <= 0) return List(bandCount) { 0 }
+    internal fun trebleLevelsMillibel(strength: Int): List<Int> =
+        shelfLevelsMillibel(strength, high = true)
 
-        val headroom = capabilities.maxLevelMillibel.coerceAtLeast(0)
-        val peak = (headroom * strength / MAX_STRENGTH.toFloat()).toInt()
+    /**
+     * Bass as a low shelf up to [BASS_TO_HZ].
+     *
+     * Used only when the device has no usable `BassBoost` effect, so the control
+     * still does something instead of being greyed out with no explanation.
+     */
+    internal fun bassLevelsMillibel(strength: Int): List<Int> =
+        shelfLevelsMillibel(strength, high = false)
 
-        return List(bandCount) { index ->
-            when (index) {
-                bandCount - 1 -> (peak * TREBLE_TOP_BAND_SHARE).toInt()
-                bandCount - 2 -> (peak * TREBLE_NEXT_BAND_SHARE).toInt()
-                else -> 0
-            }
-        }
-    }
+    /**
+     * Gain per band for a shelf at one end of the spectrum.
+     *
+     * Bands outside the shelf get nothing. Inside it the gain ramps from
+     * [SHELF_EDGE_SHARE] of the control at the band nearest the middle of the
+     * spectrum up to the full amount at the extreme, so the result is a shelf
+     * rather than a single spiking band.
+     */
+    private fun shelfLevelsMillibel(strength: Int, high: Boolean): List<Int> =
+        shelfLevels(
+            bands = capabilities.bands,
+            maxLevelMillibel = capabilities.maxLevelMillibel,
+            strength = strength,
+            high = high
+        )
 
     private fun releaseLocked() {
         try {

@@ -30,6 +30,35 @@ android {
         }
     }
 
+    signingConfigs {
+        // A debug key committed to the repository, on purpose.
+        //
+        // Debug builds are what the maintainer installs, by tapping a link. Signed
+        // with Gradle's automatic `~/.android/debug.keystore`, the key differs on
+        // every machine — and every CI or container that has been reset since the
+        // last build. A different key means Android refuses to update in place with
+        // INSTALL_FAILED_UPDATE_INCOMPATIBLE, so the only way to install is to
+        // uninstall first, **which erases the library database and every runtime
+        // permission that had been granted**. That has already happened once and
+        // presented as "the playback notification has stopped appearing", because a
+        // fresh install starts with POST_NOTIFICATIONS denied.
+        //
+        // A fixed key makes every build an in-place upgrade forever.
+        //
+        // It grants nothing: the password is the well-known `android`, the key is in
+        // the repository, and anyone can build an APK that updates this one. That is
+        // acceptable for a debug build handed out by direct link, and it is exactly
+        // as (in)secure as the standard debug key it replaces. **Do not use this for
+        // a release or Play Store build** — those need a private key kept out of the
+        // repository.
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
     buildTypes {
         // Debug is what is distributed for on-device testing, and it must fit
         // under platform and hosting size limits. Code shrinking (R8) removes
@@ -38,6 +67,7 @@ android {
         // APK past 100 MB. Obfuscation is disabled in proguard-rules.pro, so
         // shrinking is the only transform applied and the JNI boundary is safe.
         debug {
+            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

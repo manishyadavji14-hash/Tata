@@ -48,7 +48,12 @@ class MusicLibrary(
     private val scanner = LibraryScanner(
         context = applicationContext,
         metadataExtractor = metadataExtractor,
-        formatProbe = formatProbe
+        formatProbe = formatProbe,
+        // Extract covers while scanning, so the library has artwork it can show
+        // rather than a MediaStore URI that no longer opens.
+        artworkResolver = { audioPath, mediaStoreUri ->
+            artworkResolver.resolve(audioPath, mediaStoreUri)
+        }
     )
 
     private val trackDao get() = database.trackDao()
@@ -312,7 +317,7 @@ class MusicLibrary(
                 artist = track.artist,
                 album = track.albumTitle,
                 year = track.year,
-                artworkUri = track.artworkPath,
+                artworkUri = repairedArtwork(track),
                 isFavourite = track.isFavourite,
                 isInLibrary = true,
                 // Identifiers for the player's "go to album / artist / folder /
@@ -333,11 +338,10 @@ class MusicLibrary(
         val metadata = metadataExtractor.extract(path)
             ?: return@withContext TrackDetails(title = fallbackTitle)
 
-        val artwork = if (metadata.hasArtwork) {
-            metadataExtractor.extractArtwork(path, artworkCache)
-        } else {
-            null
-        }
+        // Not gated on metadata.hasArtwork: that only reports what the platform
+        // extractor can see, which misses Ogg, Opus and DSF covers entirely, so the
+        // gate was hiding artwork that extractArtwork can find.
+        val artwork = metadataExtractor.extractArtwork(path, artworkCache)
 
         TrackDetails(
             title = metadata.title.ifBlank { fallbackTitle },
@@ -354,6 +358,148 @@ class MusicLibrary(
     private val artworkCache = ArtworkCache(
         java.io.File(applicationContext.cacheDir, "artwork")
     )
+
+    /**
+     * Finds covers that can actually be displayed, rather than trusting the
+     * deprecated MediaStore album-art URI the scanner records.
+     */
+    private val artworkResolver by lazy {
+        ArtworkResolver(applicationContext.contentResolver, metadataExtractor, artworkCache)
+    }
+
+    /**
+     * Artwork for a stored row, repairing the row when what it holds is unusable.
+     *
+     * Rows can hold a cover that cannot be shown: a cache path the system has
+     * since cleared, or an album URI MediaStore has no cover for. Rather than force
+     * a rescan, each track fixes itself the first time it is opened, and the
+     * corrected path is written back so lists pick it up too.
+     */
+    private fun repairedArtwork(track: Track): String? {
+        if (artworkResolver.isUsable(track.artworkPath)) return track.artworkPath
+
+        val resolved = artworkResolver.resolve(track.path, track.artworkPath)
+
+        // Only ever write an improvement — see ArtworkResolver.shouldWriteArtwork.
+        if (ArtworkResolver.shouldWriteArtwork(track.artworkPath, resolved)) {
+            runCatching { trackDao.update(track.copy(artworkPath = resolved)) }
+        }
+
+        // Fall back to whatever was already recorded rather than reporting nothing:
+        // it may still load even though it could not be probed here.
+        return resolved ?: track.artworkPath
+    }
+
+    /**
+     * Re-resolve artwork for every track whose recorded cover cannot be shown.
+     *
+     * For libraries scanned before covers were extracted at scan time. Reads each
+     * affected file once, so it is offered as an explicit action rather than run
+     * automatically.
+     *
+     * @return how many rows were given a usable cover.
+     */
+    suspend fun rebuildArtwork(): ArtworkRebuildResult = withContext(Dispatchers.IO) {
+        val all = trackDao.getAllIncludingUnconfirmed()
+        var alreadyUsable = 0
+        var repaired = 0
+        val missingByFormat = mutableMapOf<String, Int>()
+
+        all.forEach { track ->
+            if (artworkResolver.isUsable(track.artworkPath)) {
+                alreadyUsable++
+                return@forEach
+            }
+
+            val resolved = artworkResolver.resolve(track.path, track.artworkPath)
+
+            if (ArtworkResolver.shouldWriteArtwork(track.artworkPath, resolved)) {
+                runCatching { trackDao.update(track.copy(artworkPath = resolved)) }
+            }
+
+            if (resolved != null) {
+                repaired++
+            } else {
+                // Counted per container, because that is the axis artwork support
+                // actually varies along, and it turns "art is missing" into
+                // something specific enough to act on.
+                val format = track.format.ifBlank {
+                    track.path.substringAfterLast('.', "").uppercase().ifBlank { "?" }
+                }
+                missingByFormat[format] = (missingByFormat[format] ?: 0) + 1
+            }
+        }
+
+        if (repaired > 0) database.runInTransaction { rebuildAggregates() }
+        ArtworkRebuildResult(
+            totalTracks = all.size,
+            alreadyUsable = alreadyUsable,
+            repaired = repaired,
+            missingByFormat = missingByFormat
+        )
+    }
+
+    /**
+     * Outcome of [rebuildArtwork].
+     *
+     * [withoutArtwork] is reported separately so the user can tell "the app could
+     * not read it" from "these files genuinely have no cover" — the difference
+     * between a bug and nothing to show.
+     */
+    data class ArtworkRebuildResult(
+        val totalTracks: Int,
+        /** Already had a cover that loads; not touched. */
+        val alreadyUsable: Int,
+        /** Gained a cover from this pass. */
+        val repaired: Int,
+        /** How many are still coverless, per container format. */
+        val missingByFormat: Map<String, Int>
+    ) {
+        val withoutArtwork: Int get() = missingByFormat.values.sum()
+
+        /** e.g. "FLAC 48, MP3 3" — most affected first. */
+        val missingSummary: String
+            get() = missingByFormat.entries
+                .sortedByDescending { it.value }
+                .joinToString(", ") { "${it.key} ${it.value}" }
+    }
+
+    /**
+     * Repair artwork for tracks that cannot show any, reporting each fix as it
+     * lands so a list can fill in progressively.
+     *
+     * The library screen runs this in the background, so a library scanned before
+     * covers were extracted recovers on its own rather than needing the user to
+     * find the button in Settings. Reads only tag headers per file, and yields
+     * between tracks so it cannot monopolise the IO dispatcher.
+     *
+     * @param onRepaired called for each track that gained a usable cover.
+     */
+    suspend fun repairMissingArtwork(
+        onRepaired: suspend (trackId: Long, artworkPath: String) -> Unit
+    ) = withContext(Dispatchers.IO) {
+        val candidates = trackDao.getAll().filterNot { artworkResolver.isUsable(it.artworkPath) }
+        if (candidates.isEmpty()) return@withContext
+
+        var repairedAny = false
+        for (track in candidates) {
+            // Cooperative: a cancelled scope (screen closed) stops the pass.
+            kotlinx.coroutines.yield()
+
+            val resolved = artworkResolver.resolve(track.path, track.artworkPath)
+
+            if (ArtworkResolver.shouldWriteArtwork(track.artworkPath, resolved)) {
+                runCatching { trackDao.update(track.copy(artworkPath = resolved)) }
+            }
+            if (resolved != null) {
+                repairedAny = true
+                onRepaired(track.id, resolved)
+            }
+        }
+
+        // Albums take their cover from a track, so refresh them once at the end.
+        if (repairedAny) database.runInTransaction { rebuildAggregates() }
+    }
 
     /**
      * Drop cached artwork, for example from a settings action.
@@ -839,7 +985,13 @@ class MusicLibrary(
                             // library, not the file, and must survive a rescan.
                             addedAt = stored.addedAt.takeIf { it > 0L } ?: scannedAt,
                             playedMs = stored.playedMs,
-                            isUserEdited = stored.isUserEdited
+                            isUserEdited = stored.isUserEdited,
+                            // A scan must not cost the row a cover it already has.
+                            // See ArtworkResolver.preferredArtwork.
+                            artworkPath = ArtworkResolver.preferredArtwork(
+                                stored = stored.artworkPath,
+                                scanned = merged.artworkPath
+                            )
                         )
                     )
                 } else {

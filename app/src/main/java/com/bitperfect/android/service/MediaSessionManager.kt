@@ -84,10 +84,20 @@ class MediaSessionManager(
 
     private val mediaSession: MediaSession
 
+    /**
+     * Decodes the cover for the platform session. See [SessionArtworkBitmapLoader]
+     * for why the default one cannot be used: it opens URIs in a way MediaStore
+     * refuses for album art, so its URI fallback could never succeed here.
+     */
+    private val artworkBitmapLoader = SessionArtworkBitmapLoader(context)
+
     init {
         mediaSession = MediaSession.Builder(context, playerAdapter)
             .setId(MEDIA_SESSION_TAG)
             .setCallback(mediaSessionCallback)
+            // Not optional. media3 publishes artwork to the platform session only
+            // via a BitmapLoader, and the default cannot read this app's URIs.
+            .setBitmapLoader(artworkBitmapLoader)
             .build()
 
         Log.i(TAG, "MediaSession configured and active")
@@ -181,6 +191,7 @@ class MediaSessionManager(
      */
     fun release() {
         mediaSession.release()
+        artworkBitmapLoader.release()
         Log.i(TAG, "MediaSession released")
     }
 

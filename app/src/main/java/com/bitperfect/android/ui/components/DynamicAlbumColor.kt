@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.palette.graphics.Palette
-import coil.ImageLoader
+import coil.imageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import kotlin.math.max
@@ -90,8 +90,17 @@ private suspend fun extractAccent(
     artworkUri: String,
     fallback: Color
 ): Color {
+    AccentCache.get(artworkUri)?.let { return it }
+
     return try {
-        val loader = ImageLoader(context)
+        // The shared loader, not a new one.
+        //
+        // This built an `ImageLoader(context)` per call, which meant a fresh memory
+        // and disk cache each time — so every track change decoded the cover again
+        // from scratch even though the singleton loader had just decoded the very
+        // same image for the screen. That is a visible hitch on a track change, for
+        // work that was already done.
+        val loader = context.imageLoader
         val request = ImageRequest.Builder(context)
             .data(artworkUri)
             .allowHardware(false) // Palette needs to read pixels back.
@@ -114,7 +123,7 @@ private suspend fun extractAccent(
             ?: palette.dominantSwatch
             ?: return fallback
 
-        punchUp(Color(swatch.rgb))
+        punchUp(Color(swatch.rgb)).also { AccentCache.put(artworkUri, it) }
     } catch (error: Exception) {
         fallback
     }

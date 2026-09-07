@@ -25,7 +25,20 @@ class LibraryScanner(
      * Fills in sample rate and bit depth that MediaStore cannot report below
      * Android 12. Optional: without it those fields stay zero.
      */
-    private val formatProbe: AudioFormatProbe? = null
+    private val formatProbe: AudioFormatProbe? = null,
+    /**
+     * Finds a cover that can actually be displayed, given the file path and
+     * whatever MediaStore offered.
+     *
+     * Needed because the MediaStore album-art URI is deprecated and usually
+     * resolves to nothing on current Android, so recording it produced a library
+     * with no visible artwork anywhere. Optional: without it the MediaStore URI is
+     * stored as before.
+     *
+     * Results are cached by file identity, so a rescan does not re-read covers it
+     * has already extracted.
+     */
+    private val artworkResolver: ((audioPath: String, mediaStoreUri: String?) -> String?)? = null
 ) {
 
     /**
@@ -331,7 +344,10 @@ class LibraryScanner(
             sampleRate = entry.sampleRate.takeIf { it > 0 } ?: probed?.sampleRate ?: 0,
             bitDepth = entry.bitDepth.takeIf { it > 0 } ?: probed?.bitDepth ?: 0,
             channels = probed?.channels ?: 0,
-            artworkPath = entry.artworkUri,
+            // Prefer a cover that can be shown over the one MediaStore names but
+            // cannot open.
+            artworkPath = artworkResolver?.invoke(entry.path, entry.artworkUri)
+                ?: entry.artworkUri,
             year = entry.year,
             fileSize = entry.fileSize,
             lastModified = entry.lastModified,

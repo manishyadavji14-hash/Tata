@@ -54,6 +54,7 @@ import java.io.File
 import java.io.IOException
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -272,13 +273,25 @@ class MainActivity : ComponentActivity() {
         val localSettingsRepository = SettingsRepository(this)
         settingsRepository = localSettingsRepository
 
+        // Put the saved equalizer curve back before anything plays.
+        //
+        // Restoring used to happen only when the Equalizer screen was opened, so
+        // after a restart the effects attached with default settings and the
+        // user's curve, bass and treble did nothing until they visited that screen
+        // again. The controller keeps the settings and re-applies them to each new
+        // AudioTrack session, so this only has to happen once.
+        BitPerfectApp.applicationScope.launch {
+            val stored = localSettingsRepository.equalizerSettings.first()
+            localPlayerViewModel.playbackController.audioEffects?.restoreSettings(stored)
+        }
+
 
 
         // Initialize activity-scoped library/settings/diagnostics ViewModels.
         // The library gets the settings repository so the folder-picker choice
         // survives a restart.
         libraryViewModel = LibraryViewModel(musicLibrary, localSettingsRepository)
-        settingsViewModel = SettingsViewModel(localSettingsRepository)
+        settingsViewModel = SettingsViewModel(localSettingsRepository, musicLibrary)
 
         // Retained through ViewModelProvider so onCleared() actually runs and
         // its PlaybackController listener is removed. Constructing it by hand

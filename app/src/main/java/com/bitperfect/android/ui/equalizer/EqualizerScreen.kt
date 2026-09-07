@@ -175,10 +175,11 @@ fun EqualizerScreen(
 
             StrengthSlider(
                 label = "Bass boost",
-                description = if (uiState.supportsBassBoost) {
+                description = if (uiState.usesBassBoostEffect) {
                     null
                 } else {
-                    "Not supported on this device"
+                    "Applied as a low shelf on the equalizer, because this device " +
+                        "has no bass boost effect"
                 },
                 strength = uiState.bassBoostStrength,
                 enabled = uiState.isAttached && uiState.isEnabled && uiState.supportsBassBoost,
@@ -188,8 +189,8 @@ fun EqualizerScreen(
 
             StrengthSlider(
                 label = "Treble",
-                description = "Applied as gain on the highest equalizer bands, " +
-                    "since Android has no dedicated treble effect",
+                description = "Applied as a high shelf from 2 kHz up, since " +
+                    "Android has no dedicated treble effect",
                 strength = uiState.trebleStrength,
                 enabled = uiState.isAttached && uiState.isEnabled && uiState.bands.isNotEmpty(),
                 onStrengthChange = { viewModel.setTreble(it) },

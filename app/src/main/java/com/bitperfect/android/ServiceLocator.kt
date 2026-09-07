@@ -45,6 +45,20 @@ object ServiceLocator {
     private val componentsRef = AtomicReference(ServiceComponents())
 
     /**
+     * Plain-language state of the current track's cover on the media session.
+     *
+     * Lives here rather than on a component because the writer is PlaybackService
+     * and the reader is the player UI, and neither holds the other. A string
+     * because it is only ever displayed.
+     *
+     * It exists because the lock screen is the one surface whose failures cannot be
+     * seen from inside the app, and the maintainer works from a phone with no way
+     * to read a log — so without this, "no cover on the lock screen" can only be
+     * guessed at. It was guessed at three times.
+     */
+    val artworkPublishReport = AtomicReference("Nothing playing")
+
+    /**
      * The single PlaybackController instance, owned by PlaybackService.
      */
     val playbackController: PlaybackController?
