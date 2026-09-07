@@ -43,6 +43,9 @@ class UsbAudioManager(
     /** Interface claimed for streaming, released on close. */
     private var claimedInterface: UsbInterface? = null
 
+    /** Guards against a second registration, which would double every callback. */
+    private var receiversRegistered = false
+
     /**
      * Listener for USB audio events.
      */
@@ -86,9 +89,15 @@ class UsbAudioManager(
             0
         }
 
+        // The package has to be set. FLAG_MUTABLE is required — the system fills
+        // EXTRA_DEVICE and EXTRA_PERMISSION_GRANTED into this intent before sending
+        // it — but since Android 14 a mutable PendingIntent carrying an implicit
+        // intent throws IllegalArgumentException. Unqualified, this line took down
+        // the permission request the moment a DAC arrived without prior consent,
+        // from inside a BroadcastReceiver, where it becomes a crash.
         val permissionIntent = PendingIntent.getBroadcast(
             context, 0,
-            Intent(ACTION_USB_PERMISSION),
+            Intent(ACTION_USB_PERMISSION).setPackage(context.packageName),
             flags
         )
         usbManager.requestPermission(device, permissionIntent)
@@ -283,31 +292,55 @@ class UsbAudioManager(
     }
 
     /**
-     * Register USB broadcast receiver.
+     * Register the USB broadcast receivers. Safe to call more than once.
+     *
+     * Two registrations, because the two groups of actions have opposite senders and
+     * therefore need opposite export flags.
+     *
+     * ATTACHED and DETACHED are sent by the system, and a receiver registered
+     * NOT_EXPORTED does not accept broadcasts from another app — including the
+     * platform. Both are protected broadcasts that only the platform may send, so
+     * exporting them gives nothing away. The permission result, by contrast, comes
+     * from this app's own PendingIntent, so that receiver stays unexported and no
+     * other app can forge a granted permission.
+     *
+     * All three actions used to share one NOT_EXPORTED registration: the right flag
+     * for the permission action, the wrong one for the device events, which is why a
+     * DAC attached while the app was already running could go unnoticed.
      */
     fun registerReceiver() {
-        val filter = IntentFilter().apply {
-            addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
-            addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
-            addAction(ACTION_USB_PERMISSION)
-        }
+        if (receiversRegistered) return
+        receiversRegistered = true
 
         ContextCompat.registerReceiver(
             context,
-            usbReceiver,
-            filter,
+            deviceEventReceiver,
+            IntentFilter().apply {
+                addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
+                addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
+            },
+            ContextCompat.RECEIVER_EXPORTED
+        )
+
+        ContextCompat.registerReceiver(
+            context,
+            permissionReceiver,
+            IntentFilter(ACTION_USB_PERMISSION),
             ContextCompat.RECEIVER_NOT_EXPORTED
         )
     }
 
     /**
-     * Unregister USB broadcast receiver.
+     * Unregister the USB broadcast receivers.
      */
     fun unregisterReceiver() {
-        try {
-            context.unregisterReceiver(usbReceiver)
-        } catch (e: IllegalArgumentException) {
-            Log.w(TAG, "Receiver not registered")
+        receiversRegistered = false
+        for (receiver in listOf(deviceEventReceiver, permissionReceiver)) {
+            try {
+                context.unregisterReceiver(receiver)
+            } catch (e: IllegalArgumentException) {
+                Log.w(TAG, "Receiver not registered")
+            }
         }
     }
 
@@ -321,7 +354,8 @@ class UsbAudioManager(
         return false
     }
 
-    private val usbReceiver = object : BroadcastReceiver() {
+    /** Exported: these two arrive from the platform. See [registerReceiver]. */
+    private val deviceEventReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             when (intent.action) {
                 UsbManager.ACTION_USB_DEVICE_ATTACHED -> {
@@ -337,23 +371,28 @@ class UsbAudioManager(
                     val device = intent.getParcelableExtra<UsbDevice>(UsbManager.EXTRA_DEVICE)
                     device?.let {
                         Log.i(TAG, "USB audio device detached: ${it.deviceName}")
-                        listener?.onDeviceDetached(it)
+                        // Detached before the listener is told, so anything the
+                        // listener then reads about the engine is already true.
                         if (it == currentDevice) {
                             closeDevice()
                         }
+                        listener?.onDeviceDetached(it)
                     }
                 }
-                ACTION_USB_PERMISSION -> {
-                    val device = intent.getParcelableExtra<UsbDevice>(UsbManager.EXTRA_DEVICE)
-                    val granted = intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)
-                    device?.let {
-                        if (granted) {
-                            listener?.onPermissionGranted(it)
-                        } else {
-                            listener?.onPermissionDenied(it)
-                        }
-                    }
-                }
+            }
+        }
+    }
+
+    /** Unexported: this one is this app's own PendingIntent. See [registerReceiver]. */
+    private val permissionReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.action != ACTION_USB_PERMISSION) return
+            val device = intent.getParcelableExtra<UsbDevice>(UsbManager.EXTRA_DEVICE) ?: return
+            val granted = intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)
+            if (granted) {
+                listener?.onPermissionGranted(device)
+            } else {
+                listener?.onPermissionDenied(device)
             }
         }
     }

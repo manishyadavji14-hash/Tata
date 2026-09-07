@@ -14,12 +14,12 @@ ask you to allow installing from the browser the first time.
 
 | | |
 |---|---|
-| Contains | everything on `feat/library-sort-and-track-actions`: library sort, play statistics, the per-song menu, and the album-art fixes through to the MediaStore thumbnail fix |
+| Contains | everything on `fix/album-art-mediastore-thumbnail`: the USB DAC wiring below, the spectrum analyser and draggable player, library sort, play statistics, the per-song menu, and the album-art fixes through to the MediaStore thumbnail fix |
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
-| Size | 16.2 MiB (16,946,318 bytes) |
-| SHA-256 | `1bf39c3c2eefd904d0a3bc1107c20eb618172df314c09bd44dcbc7cd59db06bf` |
+| Size | 16.2 MiB (16,962,702 bytes) |
+| SHA-256 | `6892dfb8fc6b1e9976aca09e36b99bd8163dceaa107fafcb5a374abf8585da8c` |
 
 Verify the download matches before installing:
 
@@ -47,7 +47,59 @@ are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
 
-**The output badge shows the right icon.** It was always a USB symbol, so a phone
+**The USB DAC is finally connected to the app.** This is the fix for "I select
+BitPerfect in the USB dialog and it still says mixed by Android".
+
+The app was not failing to claim your DAC. It never tried. Every part of the USB
+chain was written — the code that claims the audio interface away from Android's
+driver, hands the file descriptor to the engine and negotiates the sample rate over
+control transfers — and not one line of it was ever called. Nothing registered a
+listener, nothing started monitoring, and the only place that registered for USB
+events was the playback service, which by design does not exist until music is
+already playing. So at the exact moment a DAC is plugged in and Android offers to
+launch this app, there was nothing in the app listening.
+
+The engine was therefore never told a DAC existed, and the rule that picks the output
+— "USB if a DAC is attached, otherwise Android's mixer" — had no attached DAC to find.
+"Android output / mixed by Android" was a completely honest report. Choosing BitPerfect
+in that dialog granted permission to a component that was not listening for it.
+
+Three further faults were in the way behind it:
+
+- **The permission request would have crashed the app** on Android 14 and newer, from
+  inside a broadcast receiver, because of how the pending intent was built. That is the
+  path taken by a DAC attached while the app is already open.
+- **Device-attached and device-detached events could not be received at all.** They are
+  sent by Android, and the receiver was registered as accepting nothing from outside the
+  app. The permission result, which really does come from this app, needs the opposite
+  setting — so the three were split apart.
+- **Stopping the playback service would have dropped the DAC.** It detached USB from the
+  shared engine on the way out, even though the DAC belonged to the activity, silently
+  returning playback to the Android mixer.
+
+**When you plug in a DAC, the app now says what happened.** Every failure in the attach
+sequence used to be a log line, which on a phone means it never existed. There is now a
+**USB DAC** section in the Audio info panel — player, output badge at the bottom left —
+with a plain-language status line and a "Claimed by engine" row. It distinguishes the
+cases that all used to look identical: no DAC, permission refused, another driver
+holding the audio interface, a device with no isochronous output endpoint, and a device
+the engine rejected. The same sentence appears as a message on the player when it
+happens.
+
+> **This is the one thing I need you to check**, because I have no DAC here and nothing
+> about USB can be tested without the hardware. Attach the DAC, choose BitPerfect, then
+> **play a track** and open the player → output badge → **Audio info**. Send me the
+> **USB DAC → Status** line and the **Claimed by engine** row. If the status names a
+> specific failure, that tells me exactly which step to fix next; if it says the DAC is
+> ready and claimed, **Bit-perfect** above it should read "Yes — samples unmodified".
+
+**One thing to expect:** the switch to the DAC lands on the **next track**, not
+mid-song. The two outputs each own their own worker thread and buffered audio, and
+swapping one for the other underneath a playing stream would drop or repeat whatever is
+already in flight. So if music is playing when you attach the DAC, skip to the next
+track — or attach it before pressing play, which is the normal case.
+
+**The output badge shows the right icon (previous build).** It was always a USB symbol, so a phone
 playing through its own speaker still claimed a DAC in the chain. It now shows a phone
 when audio is going to Android's output and the USB symbol only when a DAC really is
 receiving it.
@@ -365,12 +417,16 @@ voice notes kept appearing.
 
 
 
-This is the first build in which audio can actually reach a USB DAC, so start
+This is the first build in which the app even attempts to claim a USB DAC, so start
 here rather than with playback:
 
-1. Attach the DAC by OTG and grant the USB permission prompt.
-2. Open **Diagnostics** and find the **Transport** card.
-3. It must read `usbdevfs isochronous`. If it reads `loopback (no hardware)`,
+1. Attach the DAC by OTG and grant the USB permission prompt (or choose BitPerfect
+   in Android's "choose an app for this USB device" dialog).
+2. Open the player, tap the **output badge at the bottom left**, and read the
+   **USB DAC** section. `Status` says how far the attach got; `Claimed by engine`
+   must read Yes.
+3. Then play a track and open **Diagnostics** → the **Transport** card.
+4. It must read `usbdevfs isochronous`. If it reads `loopback (no hardware)`,
    the streaming interface was never claimed and audio is going to the Android
    mixer instead.
 
