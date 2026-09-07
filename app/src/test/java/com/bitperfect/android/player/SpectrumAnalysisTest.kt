@@ -286,7 +286,59 @@ class SpectrumAnalysisTest {
     }
 
     @Test
-    @DisplayName("a band reports its loudest bin, not its average")
+    @DisplayName("equal power per octave reads as equal height, so the display is balanced")
+    fun pinkNoiseIsFlat() {
+        // The property that makes a music spectrum meaningful. Pink noise carries equal
+        // power in every octave and is roughly what music looks like, so it is the
+        // reference the display should be flat against.
+        //
+        // This is what taking each band's loudest bin got wrong: that measures the
+        // spectrum at the band's lower edge, which for pink noise slopes down about
+        // 3 dB per octave — so the treble end of the display was permanently
+        // understated. Summing power makes it flat.
+        val magnitudes = FloatArray(fftSize / 2) { bin ->
+            // power ∝ 1/f, so magnitude ∝ 1/sqrt(f)
+            if (bin == 0) 0f else (400f / kotlin.math.sqrt(bin.toFloat()))
+        }
+        val edges = SpectrumAnalysis.bandEdges(44_100, fftSize, SpectrumAnalysis.BAND_COUNT)
+
+        val levels = (0 until SpectrumAnalysis.BAND_COUNT).map { band ->
+            SpectrumAnalysis.bandLevel(magnitudes, edges[band], edges[band + 1])
+        }
+
+        // Ignore the first few bands: below about 100 Hz a band is a single bin, so it
+        // cannot hold an octave's worth of anything and the ideal does not apply.
+        val comparable = levels.drop(6)
+        val spread = (comparable.max() - comparable.min())
+
+        assertTrue(
+            spread < 0.12f,
+            "pink noise came out sloped by ${"%.3f".format(spread)} of the display " +
+                "height; levels were ${comparable.map { "%.2f".format(it) }}"
+        )
+    }
+
+    @Test
+    @DisplayName("equal power per hertz rises, because white noise really is treble-heavy")
+    fun whiteNoiseRises() {
+        // The same mechanism seen from the other side: white noise has equal power per
+        // hertz, so a logarithmic band covers more of it as frequency climbs. A display
+        // that did not rise here would be flattening something real.
+        val magnitudes = FloatArray(fftSize / 2) { if (it == 0) 0f else 4f }
+        val edges = SpectrumAnalysis.bandEdges(44_100, fftSize, SpectrumAnalysis.BAND_COUNT)
+
+        val first = SpectrumAnalysis.bandLevel(magnitudes, edges[8], edges[9])
+        val last = SpectrumAnalysis.bandLevel(
+            magnitudes,
+            edges[SpectrumAnalysis.BAND_COUNT - 1],
+            edges[SpectrumAnalysis.BAND_COUNT]
+        )
+
+        assertTrue(last > first, "white noise read as $first then $last")
+    }
+
+    @Test
+    @DisplayName("a band reports the energy it contains, whatever its width")
     fun bandTakesThePeak() {
         // Averaging buries a narrow peak, and a musical note is a narrow peak.
         val magnitudes = FloatArray(64)

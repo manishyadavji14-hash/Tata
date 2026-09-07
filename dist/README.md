@@ -19,7 +19,7 @@ ask you to allow installing from the browser the first time.
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
 | Size | 16.2 MiB (16,946,318 bytes) |
-| SHA-256 | `9fe4159f39c55b6d533f34ed2a4b3969941796734368744c2d673761216b5ef0` |
+| SHA-256 | `1bf39c3c2eefd904d0a3bc1107c20eb618172df314c09bd44dcbc7cd59db06bf` |
 
 Verify the download matches before installing:
 
@@ -47,7 +47,19 @@ are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
 
-**A real spectrum analyser on the player.** A row of bars above the seek bar, showing
+**The output badge shows the right icon.** It was always a USB symbol, so a phone
+playing through its own speaker still claimed a DAC in the chain. It now shows a phone
+when audio is going to Android's output and the USB symbol only when a DAC really is
+receiving it.
+
+**The spectrum is balanced across the range.** Each bar used to report its loudest
+single frequency, which sounds reasonable but tilts the whole display: the bars are not
+equal in width — the lowest covers one frequency step and the highest covers about
+sixty-five — so measuring a single peak understated the treble by roughly 3 dB per
+octave. Each bar now reports the total energy in its range, which makes music sit level
+across the display instead of leaning into the bass.
+
+**A real spectrum analyser on the player (previous build).** A row of bars above the seek bar, showing
 the actual frequency content of what is playing — bass on the left, treble on the
 right. It reads the audio this app has already decoded, so it works for every format
 and on both outputs, including the bit-perfect USB path.

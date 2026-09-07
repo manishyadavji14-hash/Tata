@@ -116,6 +116,7 @@ import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.ui.input.pointer.util.VelocityTracker
 import com.bitperfect.android.ui.components.SpectrumVisualizer
 import com.bitperfect.android.ui.components.SPECTRUM_HEIGHT
+import androidx.compose.material.icons.filled.PhoneAndroid
 
 /**
  * PlayerScreen - Main player interface built with Jetpack Compose.
@@ -561,6 +562,7 @@ fun PlayerScreen(
             // Bottom row: device info and queue button
             BottomRow(
                 deviceName = uiState.deviceName,
+                isUsbOutput = uiState.isBitPerfectOutput,
                 isFavourite = uiState.isFavourite,
                 sleepTimerRemainingMs = uiState.sleepTimerRemainingMs,
                 onToggleFavourite = { viewModel.toggleFavourite() },
@@ -912,6 +914,15 @@ private fun TransportControls(
 @Composable
 private fun BottomRow(
     deviceName: String,
+    /**
+     * Whether audio is leaving over USB.
+     *
+     * Taken from whether the output is bit-perfect, which is true of the USB sink and
+     * false of the AudioTrack one — deliberately not from `outputMode`, which only
+     * distinguishes DoP and native DSD and reports plain `PCM` for bit-perfect USB
+     * too.
+     */
+    isUsbOutput: Boolean,
     isFavourite: Boolean,
     sleepTimerRemainingMs: Long?,
     onToggleFavourite: () -> Unit,
@@ -938,12 +949,25 @@ private fun BottomRow(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(8.dp)
             ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_usb),
-                    contentDescription = "Audio info",
-                    modifier = Modifier.size(16.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                // The icon has to match the output it labels. This was always the USB
+                // symbol, so a phone playing through its own speaker still claimed a
+                // DAC in the chain — the app's own rule is not to present state that
+                // is not there, and an icon is a claim like any other.
+                if (isUsbOutput) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_usb),
+                        contentDescription = "USB audio output. Audio info",
+                        modifier = Modifier.size(16.dp),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                } else {
+                    Icon(
+                        imageVector = Icons.Default.PhoneAndroid,
+                        contentDescription = "Android audio output. Audio info",
+                        modifier = Modifier.size(16.dp),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
                     text = deviceName.ifEmpty { "No device" },

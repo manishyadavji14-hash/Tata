@@ -243,17 +243,33 @@ object SpectrumAnalysis {
     /**
      * Level of one band, as `0..1` from [FLOOR_DB] to full scale.
      *
-     * The loudest bin in the band rather than the mean: averaging across a band that
-     * spans several bins buries a narrow peak, and a narrow peak is exactly what a
-     * musical note is.
+     * **Total power in the band**, not the loudest bin in it. That distinction decides
+     * whether the display is balanced or tilted, because these bands are nowhere near
+     * equal in width: with logarithmic spacing the lowest covers a single bin and the
+     * highest covers about sixty-five.
+     *
+     * Taking the loudest bin measures the spectrum at each band's lower edge, so a
+     * signal with equal power per octave — pink noise, which is roughly what music is
+     * — comes out sloping down about 3 dB per octave, and the treble end of the
+     * display is permanently understated. Summing power instead makes equal power per
+     * octave read as equal height, which is the reference a music spectrum should be
+     * flat against.
+     *
+     * It does not bury a narrow peak, which was the worry that led to taking the
+     * loudest bin: a single loud bin contributes its whole energy to the sum, so it
+     * reads the same whether its band is one bin wide or thirty. Only a *mean* would
+     * dilute it, by dividing by the width.
      */
     fun bandLevel(magnitudes: FloatArray, fromBin: Int, toBin: Int): Float {
         if (fromBin >= toBin || fromBin < 0 || toBin > magnitudes.size) return 0f
 
-        var peak = 0f
-        for (bin in fromBin until toBin) peak = max(peak, magnitudes[bin])
+        var power = 0f
+        for (bin in fromBin until toBin) {
+            power += magnitudes[bin] * magnitudes[bin]
+        }
 
-        return normaliseDb(peak)
+        // Back to a magnitude so the reference in normaliseDb still applies.
+        return normaliseDb(sqrt(power))
     }
 
     /**
