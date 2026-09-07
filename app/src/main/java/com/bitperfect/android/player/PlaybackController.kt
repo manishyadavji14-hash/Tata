@@ -197,14 +197,125 @@ class PlaybackController(
     private var playbackSink: PlaybackSink = audioTrackSink
 
     /**
-     * Pick the output for the next track.
+     * Why a DAC is attached but not carrying the current track, or null when it is.
      *
-     * USB wins when a DAC is attached, because bit-perfect output is the reason
-     * the app exists. Otherwise Android's mixer is the fallback so the app is
-     * still usable with no DAC.
+     * Only ever set for a reason the user can act on. Without it, a track playing
+     * through Android's output with a DAC plugged in is indistinguishable from the
+     * bug where the DAC was never claimed at all.
      */
-    private fun selectSinkForNextTrack(): PlaybackSink =
-        if (engine.isUsbDeviceAttached()) usbSink else audioTrackSink
+    @Volatile
+    var usbBypassReason: String? = null
+        private set
+
+    /**
+     * Pick the output for [trackPath].
+     *
+     * USB wins when a DAC is attached, because bit-perfect output is the reason the
+     * app exists. Two things send a track to Android's mixer instead: no DAC, and a
+     * format with no exact decoder.
+     *
+     * That second case used to be handled by starting the track on the USB sink and
+     * letting it fail, which left the player stopped with the reason gone from the
+     * screen a moment later — a file that plays perfectly well became unplayable
+     * merely because a DAC was plugged in. Sending it to Android's output does not
+     * compromise the bit-perfect path; it declines to use it, and says so through
+     * [usbBypassReason].
+     */
+    private fun selectSinkForNextTrack(trackPath: String): PlaybackSink {
+        if (!engine.isUsbDeviceAttached()) {
+            usbBypassReason = null
+            return audioTrackSink
+        }
+
+        if (!PcmSourceFactory.canOpenForUsbOutput(trackPath)) {
+            val extension = trackPath.substringAfterLast('.', "").uppercase()
+            usbBypassReason = if (extension.isBlank()) {
+                "This file has no exact decoder, so it is playing through Android's " +
+                    "output rather than the DAC."
+            } else {
+                "$extension has no exact decoder — only WAV and FLAC can be sent to " +
+                    "the DAC untouched — so this track is playing through Android's " +
+                    "output instead."
+            }
+            return audioTrackSink
+        }
+
+        usbBypassReason = null
+        return usbSink
+    }
+
+    /** What [moveCurrentTrackToPreferredOutput] did, so the caller can explain it. */
+    enum class OutputMove {
+        /** The current track was reopened on the other output at its position. */
+        SWITCHED,
+
+        /** Already on the right output; nothing to do. */
+        ALREADY_CORRECT,
+
+        /** Nothing is open, so the next track picks the right output by itself. */
+        NOTHING_OPEN,
+
+        /** The DAC cannot play this format; see [usbBypassReason]. */
+        FORMAT_NOT_SUPPORTED
+    }
+
+    /**
+     * Move the open track to whichever output should be carrying it now.
+     *
+     * Called when a DAC becomes ready or goes away. Without this the switch waited
+     * for the next track, so plugging in a DAC mid-song looked like nothing had
+     * happened — the app said "DAC ready" and went on playing through Android's
+     * mixer, which reads exactly like the failure it was supposed to have fixed.
+     *
+     * The position is carried over through the same `pendingSeekOnPrepareMs`
+     * mechanism a restored session uses. A gap of a fraction of a second is
+     * unavoidable: each sink owns its own worker thread and buffered audio, which is
+     * why this is a deliberate reopen rather than a swap under the running stream.
+     */
+    fun moveCurrentTrackToPreferredOutput(): OutputMove {
+        val snapshot = _state
+        val trackPath = when (snapshot) {
+            is PlaybackState.Playing -> snapshot.trackPath
+            is PlaybackState.Paused -> snapshot.trackPath
+            else -> null
+        } ?: return OutputMove.NOTHING_OPEN
+
+        val next = selectSinkForNextTrack(trackPath)
+        if (next === playbackSink) {
+            // Being on the Android output with a DAC attached is only "correct" when
+            // the format is the reason, and that is worth saying out loud.
+            return if (usbBypassReason != null) {
+                OutputMove.FORMAT_NOT_SUPPORTED
+            } else {
+                OutputMove.ALREADY_CORRECT
+            }
+        }
+
+        val resumeAt = playbackSink.positionMs
+        val wasPlaying = snapshot is PlaybackState.Playing
+
+        // Bank listening time against the outgoing stretch before it ends.
+        flushListening()
+        playbackSink.stop()
+        playbackSink = next
+
+        durationMs = 0L
+        pendingSeekOnPrepareMs = resumeAt
+
+        if (wasPlaying) {
+            currentFormat = null
+            setState(PlaybackState.Loading(trackPath))
+            next.play(trackPath)
+        } else {
+            // Left paused. Clearing the format is what makes play() reopen the track
+            // on the new output at this position instead of resuming a sink that no
+            // longer holds it — the same route a restored session takes.
+            currentFormat = null
+            setState(PlaybackState.Paused(trackPath = trackPath, positionMs = resumeAt))
+        }
+
+        return OutputMove.SWITCHED
+    }
 
     fun addStateListener(listener: (PlaybackState) -> Unit) {
         stateListeners.add(listener)
@@ -541,7 +652,7 @@ class PlaybackController(
 
         // Stop whatever was playing before deciding, so a switch of output does
         // not leave the previous sink's worker running.
-        val nextSink = selectSinkForNextTrack()
+        val nextSink = selectSinkForNextTrack(trackPath)
         if (nextSink !== playbackSink) {
             playbackSink.stop()
             playbackSink = nextSink

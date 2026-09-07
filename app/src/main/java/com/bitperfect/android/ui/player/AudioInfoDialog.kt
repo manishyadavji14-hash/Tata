@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -36,10 +37,17 @@ import com.bitperfect.android.library.StoragePermissions
 @Composable
 fun AudioInfoDialog(
     info: PlayerViewModel.AudioPipelineInfo,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    onRequestUsbAccess: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val notificationsAllowed = remember { StoragePermissions.hasNotificationAccess(context) }
+
+    // Offered whenever a DAC is not claimed, because that is the only state this can
+    // help with. Nothing prompts for USB access on its own any more — attaching a DAC
+    // already makes Android show its app-chooser, and asking as well put two dialogs
+    // on screen at the same moment. This is the way back if that dialog was dismissed.
+    val canOfferUsbAccess = !info.isUsbDeviceAttached
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -86,12 +94,27 @@ fun AudioInfoDialog(
                 InfoRow("Status", info.usbDacReport)
                 InfoRow(
                     label = "Claimed by engine",
-                    value = if (info.isUsbDeviceAttached) {
-                        "Yes — the next track plays through the DAC"
-                    } else {
-                        "No"
-                    }
+                    value = if (info.isUsbDeviceAttached) "Yes" else "No"
                 )
+
+                // Only ever present when a DAC is attached and this track's format has
+                // no exact decoder. Shown because the badge above then honestly reads
+                // "Android output" with a DAC plugged in, which otherwise looks exactly
+                // like the DAC not having been claimed at all.
+                info.usbBypassReason?.let { reason ->
+                    InfoRow("Not using the DAC", reason)
+                }
+
+                // Placed here rather than in the dialog's button row, which already
+                // carries the notification "Allow" and can only hold one action.
+                if (canOfferUsbAccess) {
+                    TextButton(
+                        onClick = onRequestUsbAccess,
+                        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 4.dp)
+                    ) {
+                        Text("Ask Android for DAC access")
+                    }
+                }
 
                 // Transport facts only once there is a transport, so the panel never
                 // implies one that is not in use.

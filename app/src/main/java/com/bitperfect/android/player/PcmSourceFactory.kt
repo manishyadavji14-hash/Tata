@@ -55,6 +55,16 @@ object PcmSourceFactory {
     }
 
     /**
+     * Whether [path] has an exact decoder, and so can go to a DAC at all.
+     *
+     * Asked *before* choosing an output, so a file with no exact decoder is sent to
+     * Android's output instead of being started on the USB path and failing there.
+     * Refusing to play a file the app can otherwise play is a worse outcome than
+     * playing it on the output that can handle it and saying so.
+     */
+    fun canOpenForUsbOutput(path: String): Boolean = NativePcmSource.canOpen(path)
+
+    /**
      * Open [path] for the USB path. Native decoders only, so the stream stays
      * bit-perfect; returns null when there is no exact decoder for the format.
      */

@@ -493,7 +493,8 @@ class PlayerViewModel(
             underrunCount = underruns,
             artworkPublishReport = ServiceLocator.artworkPublishReport.get(),
             usbDacReport = ServiceLocator.usbAttachReport.get(),
-            isUsbDeviceAttached = runCatching { engine.isUsbDeviceAttached() }.getOrDefault(false)
+            isUsbDeviceAttached = runCatching { engine.isUsbDeviceAttached() }.getOrDefault(false),
+            usbBypassReason = playbackController.usbBypassReason
         )
     }
 
@@ -579,8 +580,28 @@ class PlayerViewModel(
          * describes the sink the *current* track opened — a DAC attached mid-song is
          * attached but not yet in use.
          */
-        val isUsbDeviceAttached: Boolean
+        val isUsbDeviceAttached: Boolean,
+
+        /**
+         * Why an attached DAC is not carrying this track, or null when it is.
+         *
+         * Always a format reason: a DAC cannot be handed a stream a platform codec
+         * decoded, so a file with no exact decoder plays through Android's output.
+         */
+        val usbBypassReason: String?
     )
+
+    /**
+     * Ask Android for access to an attached DAC, at the user's request.
+     *
+     * Nothing prompts automatically — attaching a DAC already makes Android show its
+     * own app-chooser, and asking as well put two dialogs on screen at once. This is
+     * the way back if that dialog was dismissed.
+     *
+     * @return true when a prompt was raised.
+     */
+    fun requestUsbAccess(): Boolean =
+        ServiceLocator.usbControls?.requestAccess?.invoke() ?: false
 
     /** Persist the whole session. Called on track change and when clearing up. */
     private fun saveSession() {
@@ -805,6 +826,11 @@ class PlayerViewModel(
                         isPlaying = false,
                         isPaused = false,
                         isLoading = false,
+                        // Kept, because it was only ever set on the Playing branch: a
+                        // track that failed to start left the badge reading "No device"
+                        // while a DAC was attached and claimed, which is the one thing
+                        // it must not say.
+                        deviceName = playbackController.outputName,
                         errorMessage = state.message
                     )
                 }

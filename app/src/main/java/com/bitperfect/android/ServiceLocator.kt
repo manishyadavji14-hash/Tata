@@ -98,6 +98,30 @@ object ServiceLocator {
         usbAudioOwnerRef.getAndSet(UsbAudioOwner(engine, manager))?.manager
 
     /**
+     * The two things anything outside the USB package needs to ask of it.
+     *
+     * Published as plain functions rather than exposing the handler, so the activity's
+     * lifecycle and the audio info panel can reach it without either of them, or this
+     * object, depending on the USB classes. Survives an activity recreation for the
+     * same reason the manager does.
+     */
+    class UsbControls(
+        /** Open any attached DAC that already has permission. Never prompts. */
+        val reconcile: () -> Unit,
+        /** Prompt for access at the user's request; false when nothing needs it. */
+        val requestAccess: () -> Boolean
+    )
+
+    private val usbControlsRef = AtomicReference<UsbControls?>(null)
+
+    val usbControls: UsbControls?
+        get() = usbControlsRef.get()
+
+    fun setUsbControls(controls: UsbControls?) {
+        usbControlsRef.set(controls)
+    }
+
+    /**
      * The single PlaybackController instance, owned by PlaybackService.
      */
     val playbackController: PlaybackController?

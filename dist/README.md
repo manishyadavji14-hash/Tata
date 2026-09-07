@@ -19,7 +19,7 @@ ask you to allow installing from the browser the first time.
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
 | Size | 16.2 MiB (16,962,702 bytes) |
-| SHA-256 | `6892dfb8fc6b1e9976aca09e36b99bd8163dceaa107fafcb5a374abf8585da8c` |
+| SHA-256 | `829d6aafc7d5f2473c3120ba383d2d5a0963bc31aa48456bf7330b26a4bde81a` |
 
 Verify the download matches before installing:
 
@@ -47,8 +47,48 @@ are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
 
-**The USB DAC is finally connected to the app.** This is the fix for "I select
-BitPerfect in the USB dialog and it still says mixed by Android".
+Three faults found from your screenshots, all in the DAC path. The good news first:
+**the DAC itself works.** "TTGK Technology Co.,Ltd Audiocular Spark ready" means the
+app took the audio interface away from Android's driver and the engine accepted it.
+Everything below is about getting your music onto it.
+
+**"Just once" did nothing.** This is the big one. Android's "choose an app for the USB
+device" dialog *is* a permission grant — but it grants silently, because the app never
+asked, so no result is sent anywhere. The app was waiting for an answer to a question
+it hadn't been asked, and never looked to see that it already had permission. Picking
+BitPerfect and tapping "Just once" therefore left the DAC unopened and the app
+honestly reporting Android output. It now re-checks the moment that dialog is
+answered, so "Just once" and "Always" both work.
+
+**Only one dialog now.** You were getting two at once — Android's chooser, and the
+app's own permission request on top of it — where answering either dismissed the
+other. The app no longer asks on its own, because the chooser already does the job.
+If you ever dismiss the chooser by accident, there is now an **"Ask Android for DAC
+access"** button in the Audio info panel, which is a prompt you asked for rather than
+one that lands on top of another.
+
+**The DAC takes over the song that is already playing.** It used to wait for the next
+track, which is why it said "ready" and carried on through Android's output — reading
+exactly like the failure it was meant to have fixed. The current track now moves to
+the DAC at the position it had reached. There is a brief gap while it moves: each
+output owns its own worker thread and buffered audio, so this is a deliberate reopen,
+not a swap underneath the stream. Unplugging the DAC moves playback back the same way,
+instead of the music simply stopping.
+
+**A file the DAC cannot take no longer stops playback.** This is the "sometimes it
+doesn't play any song" case: your 40 Hz binaural test track is AAC, and AAC has no
+exact decoder — nothing can hand a DAC a stream that Android's codec decoded and still
+call it bit-perfect. The app used to start the track on the DAC anyway, fail, and reset
+to `0:00` with "No device" and the reason gone a moment later. It now sends that track
+to Android's output instead and says why, in the Audio info panel under **"Not using
+the DAC"**. WAV and FLAC — which is almost everything in your library — still go
+straight to the DAC untouched. The badge also no longer claims "No device" while a DAC
+is plugged in.
+
+---
+
+**The USB DAC is finally connected to the app (same build).** This is the fix for "I
+select BitPerfect in the USB dialog and it still says mixed by Android".
 
 The app was not failing to claim your DAC. It never tried. Every part of the USB
 chain was written — the code that claims the audio interface away from Android's
@@ -88,16 +128,10 @@ happens.
 
 > **This is the one thing I need you to check**, because I have no DAC here and nothing
 > about USB can be tested without the hardware. Attach the DAC, choose BitPerfect, then
-> **play a track** and open the player → output badge → **Audio info**. Send me the
+> **play a FLAC track** and open the player → output badge → **Audio info**. Send me the
 > **USB DAC → Status** line and the **Claimed by engine** row. If the status names a
 > specific failure, that tells me exactly which step to fix next; if it says the DAC is
 > ready and claimed, **Bit-perfect** above it should read "Yes — samples unmodified".
-
-**One thing to expect:** the switch to the DAC lands on the **next track**, not
-mid-song. The two outputs each own their own worker thread and buffered audio, and
-swapping one for the other underneath a playing stream would drop or repeat whatever is
-already in flight. So if music is playing when you attach the DAC, skip to the next
-track — or attach it before pressing play, which is the normal case.
 
 **The output badge shows the right icon (previous build).** It was always a USB symbol, so a phone
 playing through its own speaker still claimed a DAC in the chain. It now shows a phone

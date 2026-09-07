@@ -38,6 +38,7 @@ import com.bitperfect.android.engine.DsdManager
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.library.StoragePermissions
+import com.bitperfect.android.player.PlaybackController
 import com.bitperfect.android.player.PlaybackState
 import com.bitperfect.android.player.PlaybackStateStore
 import com.bitperfect.android.service.PlaybackService
@@ -174,6 +175,31 @@ class MainActivity : ComponentActivity() {
     }
 
     /**
+     * Delivered when Android's "choose an app for the USB device" dialog resolves to
+     * this app while it is already running. The activity is `singleTop`, so this
+     * arrives instead of onCreate and the wiring in initializeComponents does not run
+     * again — which is why the grant has to be picked up here.
+     *
+     * The device itself is not read out of the intent: by the time this arrives it is
+     * in `UsbManager.deviceList` with permission attached, which is exactly what
+     * [ServiceLocator.UsbControls.reconcile] looks for.
+     */
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        ServiceLocator.usbControls?.reconcile?.invoke()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Belt and braces for the same grant. Choosing BitPerfect with "Just once"
+        // grants permission without sending any broadcast — the app never asked, so
+        // there is nothing to answer — and this is the first moment afterwards that
+        // the app is certain to run code. Opening an already-open device is a no-op.
+        ServiceLocator.usbControls?.reconcile?.invoke()
+    }
+
+    /**
      * Request the audio (and notification) permissions if they are missing.
      */
     private fun ensureMediaPermissions() {
@@ -246,6 +272,14 @@ class MainActivity : ComponentActivity() {
      */
     private fun wireUsbAudio(manager: UsbAudioManager, player: PlayerViewModel) {
         val handler = UsbPermissionHandler(applicationContext, manager)
+        val controller = player.playbackController
+
+        ServiceLocator.setUsbControls(
+            ServiceLocator.UsbControls(
+                reconcile = handler::reconcile,
+                requestAccess = handler::requestAccessForAttachedDevice
+            )
+        )
 
         fun report(sentence: String, alsoShow: Boolean = true) {
             ServiceLocator.usbAttachReport.set(sentence)
@@ -263,9 +297,13 @@ class MainActivity : ComponentActivity() {
 
             override fun onDeviceDetached(device: UsbDevice) {
                 // closeDevice() runs inside the manager for the device it opened, so
-                // the engine is already detached by the time this is read.
-                report("Disconnected — back to Android output")
+                // the engine is already detached by the time this is read — which is
+                // what lets the move below pick Android's output.
                 handler.onDeviceDetached(device)
+                report("Disconnected — back to Android output")
+                // Otherwise the USB sink keeps feeding an engine with no device and
+                // the music simply stops.
+                controller.moveCurrentTrackToPreferredOutput()
             }
 
             // Forwarded so the handler carries on into openAndConfigureDevice.
@@ -301,17 +339,44 @@ class MainActivity : ComponentActivity() {
             override fun onDeviceDisconnected(device: UsbDevice) = Unit
             override fun onPermissionGranted(device: UsbDevice) = Unit
 
+            override fun onPermissionPending(device: UsbDevice) {
+                // Android's app-chooser is almost certainly on screen. Nothing is
+                // wrong yet, so this is recorded without interrupting.
+                report(
+                    "${describe(device)} attached — choose BitPerfect in Android's " +
+                        "USB dialog to allow access",
+                    alsoShow = false
+                )
+            }
+
             override fun onPermissionDenied(device: UsbDevice) {
                 report("Permission refused, so audio stays on Android output")
             }
 
             override fun onDeviceReady(device: UsbDevice) {
-                // The engine holds the claimed descriptor now, so the next call to
-                // selectSinkForNextTrack picks the USB sink. Said out loud because the
-                // change lands at the next track rather than mid-song: the sinks own
-                // their own worker threads and buffered audio, and swapping them under
-                // a running stream would drop or duplicate what is in flight.
-                report("${describe(device)} ready — bit-perfect from the next track")
+                // The engine holds the claimed descriptor, so move what is already
+                // open onto it rather than waiting for the next track. Waiting is what
+                // produced "it says the DAC is ready and still plays through Android"
+                // — indistinguishable from the DAC never having been claimed.
+                val name = describe(device)
+                when (controller.moveCurrentTrackToPreferredOutput()) {
+                    PlaybackController.OutputMove.SWITCHED ->
+                        report("$name — playing bit-perfect through it now")
+
+                    PlaybackController.OutputMove.ALREADY_CORRECT ->
+                        report("$name ready — bit-perfect output")
+
+                    PlaybackController.OutputMove.NOTHING_OPEN ->
+                        report("$name ready — bit-perfect output")
+
+                    PlaybackController.OutputMove.FORMAT_NOT_SUPPORTED ->
+                        report(
+                            "$name ready. " +
+                                controller.usbBypassReason.orEmpty().ifBlank {
+                                    "This track cannot be sent to it untouched."
+                                }
+                        )
+                }
             }
 
             override fun onDeviceError(device: UsbDevice, error: String) {

@@ -13,9 +13,9 @@ each change and are deliberately detailed.**
 
 | | |
 |---|---|
-| Work on | **`fix/album-art-mediastore-thumbnail`** — PR #7 open against `main` |
+| Work on | **`fix/usb-dac-never-claimed`** — PR #8 open against `main`; PR #7 merged as `c833bdc` |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (16.2 MiB, pinned debug key `CN=BitPerfect Debug`, arm64 only) |
-| Test status | 282 native C++ tests, **463** JVM unit tests, `lintDebug` 0 errors (194 warnings, all pre-existing) |
+| Test status | 282 native C++ tests, **466** JVM unit tests, `lintDebug` 0 errors (194 warnings, all pre-existing) |
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
@@ -130,7 +130,7 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 463 passing)
+# JVM unit tests (expect 466 passing)
 ./gradlew :app:testDebugUnitTest
 
 # Lint (expect 0 errors, 194 warnings; all pre-existing)
@@ -426,6 +426,24 @@ The attach chain is now actually connected — see the trap in section 5, it was
 until recently — and every failure in it writes a sentence into
 `ServiceLocator.usbAttachReport` that the Audio info panel shows. Ask for that
 line first; it names which step stopped.
+
+Confirmed on hardware (TTGK Audiocular Spark, vivo I2501): the interface is claimed
+away from `snd-usb-audio` and `nativeAttachUsbDevice` accepts the descriptor. Still
+unconfirmed is whether bytes reach the DAC — check Diagnostics -> `Sent To DAC`.
+
+Three things about the permission flow that are easy to get wrong again:
+- **The app-chooser is the grant.** With a `USB_DEVICE_ATTACHED` filter, picking the app
+  in Android's "choose an app for the USB device" dialog grants permission *silently* —
+  no `ACTION_USB_PERMISSION` broadcast, because the app never asked. `hasPermission()`
+  has to be re-read; `UsbPermissionHandler.reconcile()` does it from `onNewIntent` and
+  `onResume`. Nothing else notices a "Just once" grant.
+- **Do not call `requestPermission` on attach.** The chooser is already on screen at
+  that moment, and answering either dialog dismissed the other. The prompt is now only
+  raised from the Audio info panel, at the user's request.
+- **Output choice is per format, not just per device.** `selectSinkForNextTrack(path)`
+  sends a file with no exact decoder to Android's output with
+  `PlaybackController.usbBypassReason` set, rather than starting it on the USB sink and
+  failing. Starting-then-failing left the player reset to 0:00 with the reason gone.
 
 Known gaps to expect:
 - `calculateNominalPacketSize` truncates, so 44.1 kHz drifts slowly (22 vs 22.05
