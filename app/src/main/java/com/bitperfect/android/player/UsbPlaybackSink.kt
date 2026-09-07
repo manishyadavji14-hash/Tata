@@ -161,10 +161,7 @@ class UsbPlaybackSink(
             // calling the path bit-perfect would be a lie. Formats without an
             // exact decoder are refused here and reported to the user.
             val openedDecoder = PcmSourceFactory.openForUsbOutput(engine, trackPath)
-                ?: throw PlaybackException(
-                    "Bit-perfect USB output supports WAV and FLAC. " +
-                        "Disconnect the DAC to play this file through Android."
-                )
+                ?: throw PlaybackException(describeDecoderFailure(trackPath))
             decoder = openedDecoder
 
             val decoderFormat = openedDecoder
@@ -228,6 +225,7 @@ class UsbPlaybackSink(
             val transferBuffer = ByteArray(CHUNK_FRAMES * bytesPerFrame)
             var framesSubmitted = 0L
             var positionBaseFrame = 0L
+            var stalledWrites = 0
 
             while (isCurrent(playGeneration)) {
                 waitWhilePaused(playGeneration)
@@ -295,10 +293,28 @@ class UsbPlaybackSink(
                     val written = engine.writeAudioData(transferBuffer, offset, bytesRead - offset)
                     if (written > 0) {
                         offset += written
+                        stalledWrites = 0
                     } else {
                         // Ring buffer full: the DAC is consuming at its own
                         // clock, so this is the normal steady state.
                         Thread.sleep(BACKPRESSURE_SLEEP_MS)
+
+                        // Unless it is not consuming at all. A transport whose
+                        // transfers have all been refused stops draining the ring
+                        // buffer, and this loop would then wait on a device that had
+                        // stopped listening — forever, silently, looking exactly like
+                        // a track that plays but never advances. Checked only after a
+                        // long run of full-buffer waits, so normal backpressure costs
+                        // nothing.
+                        if (++stalledWrites >= STALLED_WRITE_LIMIT) {
+                            if (!engine.isUsbOutputActive()) {
+                                throw PlaybackException(
+                                    "The DAC stopped accepting audio part-way through. " +
+                                        describeStartFailure()
+                                )
+                            }
+                            stalledWrites = 0
+                        }
                     }
                 }
 
@@ -456,6 +472,25 @@ class UsbPlaybackSink(
         (milliseconds / 1000L) * sampleRate + (milliseconds % 1000L) * sampleRate / 1000L
 
     /**
+     * Why no exact decoder opened this file.
+     *
+     * The message here used to be "Bit-perfect USB output supports WAV and FLAC" for
+     * every failure — including, absurdly, a FLAC file. When the native decoder
+     * cannot open a file it does claim to handle, saying the format is unsupported
+     * sends the reader looking in exactly the wrong place.
+     */
+    private fun describeDecoderFailure(trackPath: String): String {
+        val extension = trackPath.substringAfterLast('.', "").uppercase()
+        return if (PcmSourceFactory.canOpenForUsbOutput(trackPath)) {
+            "The bit-perfect $extension decoder could not open this file."
+        } else if (extension.isBlank()) {
+            "This file has no exact decoder, so it cannot be sent to the DAC untouched."
+        } else {
+            "$extension has no exact decoder, so it cannot be sent to the DAC untouched."
+        }
+    }
+
+    /**
      * Why the stream did not start, in terms a person can act on.
      *
      * This used to read "No USB audio transport is active (transport: usbdevfs
@@ -499,6 +534,13 @@ class UsbPlaybackSink(
         const val EINVAL = 22
         const val ENOSPC = 28
         const val ENODEV = 19
+
+        /**
+         * Full-buffer waits tolerated before checking the transport is still alive.
+         * At 2 ms a wait that is 500 waits, so a full second of the DAC taking
+         * nothing — far longer than any legitimate backpressure at a 50 ms buffer.
+         */
+        const val STALLED_WRITE_LIMIT = 500
 
         const val CHUNK_FRAMES = 2048
         const val BUFFER_MS = 50

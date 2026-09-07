@@ -19,7 +19,7 @@ ask you to allow installing from the browser the first time.
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
 | Size | 16.2 MiB (16,995,470 bytes) |
-| SHA-256 | `6fca78587ec43dee2576d19160050573693d71d05f9f8fda2e48edd76e5de19a` |
+| SHA-256 | `629acb33486af4b6982d4b8092e39ac7d72e6812f4701434c29d23f5bf4c6f64` |
 
 Verify the download matches before installing:
 
@@ -46,6 +46,48 @@ badge at the bottom left, and the Audio info panel will say whether notification
 are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
+
+**Your lossless files no longer skip themselves, and they play.** The runaway
+skipping was the worst of it and it had a single stupid cause: when a track failed on
+the DAC, the USB error-recovery code classified it as a decoder error and its response
+to that is *skip to the next track*. Every WAV and FLAC failed identically, so one tap
+ran the whole queue down at speed until it hit an MP3 — which played, because that file
+never went near the DAC. Nothing was wrong with your FLACs.
+
+A track the DAC will not take now **falls back to Android's output and keeps playing**,
+staying exactly where it is in the queue. Nothing skips. The Audio info panel says why
+under "Not using the DAC". So worst case you get your music through Android's mixer with
+an honest explanation, instead of a library that fast-forwards through itself.
+
+**Fixed a message that sent me looking in the wrong place too.** When the bit-perfect
+decoder could not open a file, the app said *"Bit-perfect USB output supports WAV and
+FLAC"* — about a FLAC file. It now distinguishes "this format has no exact decoder"
+from "the FLAC decoder could not open this particular file", which are completely
+different problems.
+
+**The transport could die mid-track in total silence.** Each block of audio is handed
+to the kernel and re-queued when it comes back. If a re-queue was refused, that block
+dropped out of the rotation permanently — and the return value was discarded. Once all
+four had dropped out the stream was dead while every flag still said it was running:
+the buffer filled, never drained, and the writer waited on a device that had stopped
+listening. Forever, with nothing reported. Your screenshot showed exactly this
+fingerprint — **8 rejected** with the stream reporting no error. Both halves are fixed:
+the stream now admits when it has died, and the player reports it.
+
+**Packets were splitting audio frames.** At 44.1 kHz/16-bit/stereo the app sent 23-byte
+packets against a 4-byte frame, so every packet after the first began part-way through a
+sample and the channel order shifted through the stream. Packet sizes are now always a
+whole number of frames. To be clear about what this does *not* fix: 44,100 frames a
+second does not divide evenly into the USB schedule, so a fixed packet size still cannot
+carry the rate exactly — that needs the DAC's feedback channel, which the engine reads
+and does not yet act on. If it now plays but sounds slightly fast, that is why.
+
+**Stale numbers are labelled as stale.** Your panel showed a 44.1 kHz packet size above
+a 48 kHz file, because those values describe the last stream that got as far as being
+configured, not the track on screen. That row now says **"Last configured stream"**, and
+the rejection count resets per attempt.
+
+---
 
 **The status now follows the song you are playing.** You were right, and this was a
 real fault, not a cosmetic one. That "Status" line was showing the last thing that

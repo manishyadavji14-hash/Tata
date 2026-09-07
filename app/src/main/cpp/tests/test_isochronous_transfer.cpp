@@ -553,3 +553,118 @@ TEST_F(IsochronousTransferTest, EndpointAddressIsReportedForDiagnostics) {
     ASSERT_TRUE(transfer.configure(workingConfig()));
     EXPECT_EQ(transfer.getEndpointAddress(), 0x01);
 }
+
+
+// === A packet must carry whole frames ===
+//
+// 44.1 kHz / 16-bit / stereo used to give 23 bytes against a 4-byte frame, so every
+// packet after the first started part-way through a sample and the channel order
+// shifted. This is the rule that stops that; it says nothing about the rate being
+// exact, which a constant packet size cannot achieve at 44.1 kHz.
+
+TEST_F(IsochronousTransferTest, PacketSizeIsAlwaysAWholeNumberOfFrames) {
+    const uint32_t rates[] = {44100, 48000, 88200, 96000, 176400, 192000};
+    const uint32_t framesSizes[] = {4, 6, 8};  // 16, 24 and 32-bit stereo
+
+    for (uint32_t rate : rates) {
+        for (uint32_t bytesPerFrame : framesSizes) {
+            const uint32_t size =
+                IsochronousTransfer::calculateNominalPacketSize(rate, bytesPerFrame);
+            EXPECT_EQ(size % bytesPerFrame, 0u)
+                << "rate " << rate << " with " << bytesPerFrame
+                << "-byte frames gave " << size << " bytes, which splits a frame";
+        }
+    }
+}
+
+TEST_F(IsochronousTransferTest, PacketSizeRoundsUpToTheNextWholeFrame) {
+    // 44100 * 4 / 8000 = 22.05, rounded up to 23 bytes, which is not a whole
+    // 4-byte frame, so it goes up to 24 — six frames.
+    EXPECT_EQ(IsochronousTransfer::calculateNominalPacketSize(44100, 4), 24u);
+
+    // 44100 * 6 / 8000 = 33.075 -> 34 -> 36, six frames of 6 bytes.
+    EXPECT_EQ(IsochronousTransfer::calculateNominalPacketSize(44100, 6), 36u);
+}
+
+TEST_F(IsochronousTransferTest, PacketSizeIsUnchangedWhereItAlreadyDivided) {
+    // Rates that are multiples of 8000 divide exactly, and must not be inflated.
+    EXPECT_EQ(IsochronousTransfer::calculateNominalPacketSize(48000, 4), 24u);
+    EXPECT_EQ(IsochronousTransfer::calculateNominalPacketSize(96000, 6), 72u);
+    EXPECT_EQ(IsochronousTransfer::calculateNominalPacketSize(192000, 8), 192u);
+}
+
+// === A stream that dies must stop claiming to be running ===
+//
+// A failed resubmission takes that transfer out of the queue for good. The return
+// value used to be discarded, so once every transfer had dropped out the stream was
+// dead while isActive() still said it was running — the ring buffer filled, never
+// drained, and the writer waited on backpressure for a device that had stopped
+// listening. From the outside that is indistinguishable from a stall.
+
+namespace {
+
+/** Accepts the initial submissions, then refuses every one after that. */
+class FailsAfterStartBackend : public UsbIsoBackend {
+public:
+    bool configure(uint8_t, uint16_t, uint8_t, uint8_t) override { return true; }
+
+    bool submit(size_t, const uint8_t*, size_t) override {
+        if (accepted < acceptFirst) {
+            ++accepted;
+            return true;
+        }
+        return false;
+    }
+
+    void cancelAll() override {}
+    bool needsCompletionThread() const override { return false; }
+    bool waitForCompletion(IsoCompletion&, int) override { return false; }
+    const char* name() const override { return "fails-after-start (test)"; }
+    bool isHardware() const override { return true; }
+    int lastError() const override { return ENODEV; }
+
+    int acceptFirst = 4;
+    int accepted = 0;
+};
+
+} // namespace
+
+TEST_F(IsochronousTransferTest, StreamGoesInactiveOnceEveryResubmissionHasFailed) {
+    auto backend = std::make_shared<FailsAfterStartBackend>();
+    transfer.setBackend(backend);
+    ASSERT_TRUE(transfer.configure(workingConfig()));
+
+    // The queue comes up: four transfers accepted.
+    ASSERT_TRUE(transfer.start(silenceSupplier, ignoreCompletion));
+    ASSERT_TRUE(transfer.isActive());
+
+    // Now every completion resubmits and is refused. The first three leave the
+    // stream running, because transfers are still in flight.
+    for (size_t i = 0; i < 3; ++i) {
+        transfer.onTransferComplete(i, TransferStatus::COMPLETED, 0);
+        EXPECT_TRUE(transfer.isActive()) << "gave up with transfers still queued";
+    }
+
+    // The fourth empties the queue, and there is nothing left to recover with.
+    transfer.onTransferComplete(3, TransferStatus::COMPLETED, 0);
+    EXPECT_FALSE(transfer.isActive());
+}
+
+TEST_F(IsochronousTransferTest, ARecoveredResubmissionKeepsTheStreamRunning) {
+    auto backend = std::make_shared<FailsAfterStartBackend>();
+    // Four to start, then one refusal, then plenty more accepted.
+    backend->acceptFirst = 4;
+    transfer.setBackend(backend);
+    ASSERT_TRUE(transfer.configure(workingConfig()));
+    ASSERT_TRUE(transfer.start(silenceSupplier, ignoreCompletion));
+
+    transfer.onTransferComplete(0, TransferStatus::COMPLETED, 0);  // refused
+    backend->acceptFirst = 1000;                                   // device recovers
+    transfer.onTransferComplete(1, TransferStatus::COMPLETED, 0);  // accepted
+
+    // One isolated refusal must not be remembered against the stream.
+    EXPECT_TRUE(transfer.isActive());
+    transfer.onTransferComplete(2, TransferStatus::COMPLETED, 0);
+    transfer.onTransferComplete(3, TransferStatus::COMPLETED, 0);
+    EXPECT_TRUE(transfer.isActive());
+}

@@ -689,6 +689,9 @@ bool NativeBridge::configure(const PlaybackConfig& config) {
     }
 
     currentConfig_ = config;
+    // Cleared per attempt, or a rejection from an earlier track is still on display
+    // as the verdict on this one.
+    usbStartErrno_ = 0;
 
     // Configure PCM engine
     pcm::PcmFormatInfo formatInfo;

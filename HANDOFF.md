@@ -15,7 +15,7 @@ each change and are deliberately detailed.**
 |---|---|
 | Work on | **`fix/usb-dac-never-claimed`** — PR #8 open against `main`; PR #7 merged as `c833bdc` |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (16.2 MiB, pinned debug key `CN=BitPerfect Debug`, arm64 only) |
-| Test status | **287** native C++ tests, **466** JVM unit tests, `lintDebug` 0 errors (194 warnings, all pre-existing) |
+| Test status | **292** native C++ tests, **466** JVM unit tests, `lintDebug` 0 errors (194 warnings, all pre-existing) |
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
@@ -136,7 +136,7 @@ sdk.dir=/path/to/android-sdk
 # Lint (expect 0 errors, 194 warnings; all pre-existing)
 ./gradlew :app:lintDebug
 
-# Native C++ suite, no Android SDK needed (expect 287 passing)
+# Native C++ suite, no Android SDK needed (expect 292 passing)
 cmake -S app/src/main/cpp -B build-test -DSTANDALONE_TEST=ON
 cmake --build build-test -j"$(nproc)"
 cd build-test && ctest --output-on-failure
@@ -444,6 +444,14 @@ Three things about the permission flow that are easy to get wrong again:
   sends a file with no exact decoder to Android's output with
   `PlaybackController.usbBypassReason` set, rather than starting it on the USB sink and
   failing. Starting-then-failing left the player reset to 0:00 with the reason gone.
+- **A USB playback error must never become `PlaybackState.Error`.**
+  `UsbErrorRecovery.classifyError` maps a decoder error to `SKIP_TRACK`, whose
+  recovery is `playbackController.next()` — so one refused USB stream ran the entire
+  queue down at speed until it reached a file that did not use the DAC. It looked
+  like "my lossless files skip themselves". `sinkListener.onError` now falls back to
+  the Android sink for the same track and records it in `usbRefusedTracks`; only a
+  failure on the Android sink reaches `Error`. Anything added to that error path must
+  keep this property.
 
 Known gaps to expect:
 - `calculateNominalPacketSize` **rounds up**, it does not truncate — this entry

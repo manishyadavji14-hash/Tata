@@ -178,12 +178,42 @@ class PlaybackController(
             }
 
             override fun onError(trackPath: String, message: String) {
+                // A track the DAC could not take falls back to Android's output. It
+                // must not become an error, because an error here was being handled
+                // by skipping the track: UsbErrorRecovery classifies it as a decoder
+                // error and calls next(). Every WAV and FLAC in the library failed
+                // the same way, so one tap ran the whole queue down at speed until
+                // it reached an MP3 — which played, because that one never went near
+                // the DAC. The user sees "my lossless files skip themselves"; the
+                // cause is one refused USB stream and a recovery policy that turns
+                // any failure into a skip.
+                //
+                // Falling back keeps the track playing, keeps the queue where it is,
+                // and states the reason. It is not a compromise of the bit-perfect
+                // path: that path declined this file, and the UI says so.
+                if (playbackSink === usbSink) {
+                    usbRefusedTracks.add(trackPath)
+                    usbBypassReason =
+                        "$message Playing through Android's output instead."
+
+                    usbSink.stop()
+                    playbackSink = audioTrackSink
+                    durationMs = 0L
+                    currentFormat = null
+                    setState(PlaybackState.Loading(trackPath))
+                    audioTrackSink.play(trackPath)
+                    return
+                }
+
+                // Android's output failed too, so there is nowhere left to go.
                 setState(PlaybackState.Error(message, trackPath))
             }
         }
 
-    private val audioTrackSink = AudioTrackPlaybackSink(engine, sinkListener)
-    private val usbSink = UsbPlaybackSink(engine, sinkListener)
+    // Types are explicit because sinkListener above refers to both of these, and
+    // both are constructed from it — without them the inference is circular.
+    private val audioTrackSink: PlaybackSink = AudioTrackPlaybackSink(engine, sinkListener)
+    private val usbSink: PlaybackSink = UsbPlaybackSink(engine, sinkListener)
 
     /**
      * The output for the current track.
@@ -221,9 +251,32 @@ class PlaybackController(
      * compromise the bit-perfect path; it declines to use it, and says so through
      * [usbBypassReason].
      */
+    /**
+     * Tracks the DAC has already refused, so the same failure is not repeated.
+     *
+     * Without this, anything that re-picks the output — a replay, or a DAC being
+     * re-reported as ready — sends the track back to the DAC to fail again, and the
+     * fallback in [sinkListener] would cycle. Cleared by [forgetUsbRefusals] when a
+     * DAC is newly readied, because a different device, or a different alternate
+     * setting, may well accept what this one would not.
+     */
+    private val usbRefusedTracks: MutableSet<String> =
+        java.util.concurrent.ConcurrentHashMap.newKeySet()
+
+    /** Forget which tracks the DAC refused. Called when a DAC becomes ready. */
+    fun forgetUsbRefusals() {
+        usbRefusedTracks.clear()
+    }
+
     private fun selectSinkForNextTrack(trackPath: String): PlaybackSink {
         if (!engine.isUsbDeviceAttached()) {
             usbBypassReason = null
+            return audioTrackSink
+        }
+
+        if (trackPath in usbRefusedTracks) {
+            // The reason was recorded when it was refused; leave it in place rather
+            // than overwriting it with something vaguer.
             return audioTrackSink
         }
 

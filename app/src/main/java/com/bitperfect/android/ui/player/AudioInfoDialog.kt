@@ -110,8 +110,14 @@ fun AudioInfoDialog(
                     InfoRow("Not using the DAC", reason)
                 }
 
+                // Labelled as the *last configured* stream on purpose: these come
+                // from the engine's current configuration, which is whatever was set
+                // up for the last track that got as far as configuring. Shown as
+                // "Stream" it read like a description of the track on screen, which
+                // is how a 44.1 kHz packet size came to be displayed above a
+                // 48 kHz file.
                 info.usbDetail?.let { detail ->
-                    InfoRow("Stream", detail)
+                    InfoRow("Last configured stream", detail)
                 }
 
                 InfoRow("Last USB event", info.usbLastEvent)

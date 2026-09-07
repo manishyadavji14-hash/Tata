@@ -359,6 +359,10 @@ class MainActivity : ComponentActivity() {
                 // produced "it says the DAC is ready and still plays through Android"
                 // — indistinguishable from the DAC never having been claimed.
                 val name = describe(device)
+                // A newly readied DAC may be a different device, or the same one on a
+                // different alternate setting, so whatever it refused before is worth
+                // trying again.
+                controller.forgetUsbRefusals()
                 when (controller.moveCurrentTrackToPreferredOutput()) {
                     PlaybackController.OutputMove.SWITCHED ->
                         report("$name — playing bit-perfect through it now")
