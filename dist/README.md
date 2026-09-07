@@ -19,7 +19,7 @@ ask you to allow installing from the browser the first time.
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
 | Size | 16.2 MiB (16,995,470 bytes) |
-| SHA-256 | `629acb33486af4b6982d4b8092e39ac7d72e6812f4701434c29d23f5bf4c6f64` |
+| SHA-256 | `bbf75035ac9c913d50934b7320e184a8b3f7cdec9d6344b7d1bc008ac14e0f13` |
 
 Verify the download matches before installing:
 
@@ -46,6 +46,39 @@ badge at the bottom left, and the Audio info panel will say whether notification
 are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
+
+**"Only mono and stereo audio is supported" was the wrong message.** Your file is
+stereo, so that told you nothing true. One `if` covered two unrelated failures — a bad
+channel count *and* a missing sample rate — and printed the channel message for both.
+Every failure now names the value that was actually found, and which decoder found it,
+so the message is a fact you can check rather than a policy you can't act on.
+
+**The numbers beside the error belonged to a different moment.** The screen showed
+"FLAC · 16-bit · 192.0 kHz · 2ch" and "1:13 / 7:05" underneath a message saying nothing
+could be played. Those were left over from the last track that *did* play — the failure
+state was copying the previous state and only adding the red text. They read like
+evidence about the file that failed, and were not. They are cleared now.
+
+**Your library and your file disagree, and that is the real story here.** Look at the
+two screenshots together: the library says this file is **48 kHz / 24-bit / 4:39**, the
+player says **192 kHz / 7:05**. Both are reading the same path. The library takes rate,
+bit depth and duration from Android's media index, which is written **once** by the
+system scanner — so if a file is replaced while keeping its name, which is exactly what
+happens when you re-copy a rip, that entry goes on describing the file that used to be
+there. The player opens the real file every time. Neither was lying; nothing anywhere
+compared them.
+
+The Audio info panel now does. When the library's record does not match the file, the
+Source section says so outright — **"Library entry is out of date"** — with both
+durations and what to do about it.
+
+> **For this file: tap the refresh icon on the Library screen and let it rescan.** Then
+> check Info / Tags again. My expectation is that it will come back as 192 kHz, and that
+> the 132 MB file size will finally make sense — 132 MB is far too large for 48 kHz /
+> 24-bit at 4:39, and about right for 192 kHz at 7:05. If it does, the library was stale
+> and the player has been right all along.
+
+---
 
 **Your lossless files no longer skip themselves, and they play.** The runaway
 skipping was the worst of it and it had a single stupid cause: when a track failed on

@@ -67,6 +67,14 @@ fun AudioInfoDialog(
                 InfoRow("Container", info.container)
                 InfoRow("Format", info.sourceFormat)
 
+                // Only present when the library's record and the file disagree. Shown
+                // in Source because that is where the contradiction appears: the
+                // library screen quotes one rate and bit depth for a file and this
+                // panel quotes another, and both look authoritative.
+                info.staleLibraryNote?.let { note ->
+                    InfoRow("Library entry is out of date", note)
+                }
+
                 Section("Decoding")
                 InfoRow("Decoder", info.decoder)
 

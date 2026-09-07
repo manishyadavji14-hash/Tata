@@ -444,6 +444,15 @@ Three things about the permission flow that are easy to get wrong again:
   sends a file with no exact decoder to Android's output with
   `PlaybackController.usbBypassReason` set, rather than starting it on the USB sink and
   failing. Starting-then-failing left the player reset to 0:00 with the reason gone.
+- **The library's technical metadata can be stale, and two readers will then
+  disagree.** `MediaStoreAudioSource` takes `SAMPLERATE`, `BITS_PER_SAMPLE` and
+  duration from Android's media index, written once by the system scanner;
+  `MediaCodecPcmSource` reads the file itself on every open. Replace a file at the
+  same path and the library goes on describing the old one — a real report had the
+  library at 48 kHz/24-bit/4:39 and the decoder at 192 kHz/7:05 for the same path,
+  with the file size supporting the decoder. `PlayerViewModel.describeLibraryMismatch`
+  compares the durations and the Audio info panel says "Library entry is out of date".
+  Before believing a format complaint, check whether those two agree.
 - **A USB playback error must never become `PlaybackState.Error`.**
   `UsbErrorRecovery.classifyError` maps a decoder error to `SKIP_TRACK`, whose
   recovery is `playbackController.next()` — so one refused USB stream ran the entire
