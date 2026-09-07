@@ -26,6 +26,10 @@ const char* IsochronousTransfer::backendName() const {
     return backend_ ? backend_->name() : "none";
 }
 
+int IsochronousTransfer::backendLastError() const {
+    return backend_ ? backend_->lastError() : 0;
+}
+
 bool IsochronousTransfer::configure(const IsoTransferConfig& config) {
     if (active_.load()) return false;
     if (config.maxPacketSize == 0 || config.packetsPerTransfer == 0 || config.queueDepth == 0) {

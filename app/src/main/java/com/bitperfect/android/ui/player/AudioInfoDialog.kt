@@ -91,6 +91,11 @@ fun AudioInfoDialog(
                 // row existed there was nothing anywhere in the app that could tell
                 // "no DAC" apart from "DAC here and it could not be claimed".
                 Section("USB DAC")
+
+                // Recomputed from the engine every time this panel opens, so it
+                // follows the track being played. It used to show the last attach
+                // event, which meant a message about one unsupported file stayed on
+                // screen as the apparent verdict on every file after it.
                 InfoRow("Status", info.usbDacReport)
                 InfoRow(
                     label = "Claimed by engine",
@@ -104,6 +109,12 @@ fun AudioInfoDialog(
                 info.usbBypassReason?.let { reason ->
                     InfoRow("Not using the DAC", reason)
                 }
+
+                info.usbDetail?.let { detail ->
+                    InfoRow("Stream", detail)
+                }
+
+                InfoRow("Last USB event", info.usbLastEvent)
 
                 // Placed here rather than in the dialog's button row, which already
                 // carries the notification "Allow" and can only hold one action.

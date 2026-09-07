@@ -492,10 +492,74 @@ class PlayerViewModel(
             bufferLevelPercent = bufferLevel?.takeIf { it in 0f..1f }?.let { (it * 100).toInt() },
             underrunCount = underruns,
             artworkPublishReport = ServiceLocator.artworkPublishReport.get(),
-            usbDacReport = ServiceLocator.usbAttachReport.get(),
+            usbDacReport = describeUsbState(),
+            usbLastEvent = ServiceLocator.usbAttachReport.get(),
             isUsbDeviceAttached = runCatching { engine.isUsbDeviceAttached() }.getOrDefault(false),
-            usbBypassReason = playbackController.usbBypassReason
+            usbBypassReason = playbackController.usbBypassReason,
+            usbDetail = describeUsbDetail()
         )
+    }
+
+    /**
+     * What the DAC is doing *now*, recomputed every time the panel is opened.
+     *
+     * This row used to show `ServiceLocator.usbAttachReport`, which is a record of
+     * the last attach event — so after plugging in a DAC while an M4A track was
+     * loaded it kept saying "M4A has no exact decoder" for every track afterwards,
+     * including the FLAC ones it did not apply to. A status that does not follow
+     * what is playing is worse than none: it invites exactly the wrong conclusion.
+     * The event itself is still shown, on its own row, labelled as an event.
+     */
+    private fun describeUsbState(): String {
+        val attached = runCatching { engine.isUsbDeviceAttached() }.getOrDefault(false)
+        if (!attached) return "No DAC claimed"
+
+        val streaming = runCatching { engine.isUsbOutputActive() }.getOrDefault(false)
+        if (streaming) {
+            val sent = runCatching { engine.getUsbBytesTransferred() }.getOrDefault(0L)
+            return if (sent > 0L) {
+                "Streaming to the DAC — ${sent / 1024} KiB sent"
+            } else {
+                "Streaming to the DAC, but no bytes have been accepted yet"
+            }
+        }
+
+        playbackController.usbBypassReason?.let { return it }
+
+        val errno = runCatching { engine.getUsbStartErrno() }.getOrDefault(0)
+        if (errno != 0) {
+            return "Claimed, but the DAC refused the audio stream (errno $errno). " +
+                "The player shows the reason in full."
+        }
+
+        return "Claimed and idle — nothing has been sent to it yet"
+    }
+
+    /**
+     * The four numbers that tell one USB start failure from another.
+     *
+     * Shown because they are the difference between "the DAC does not work" and a
+     * diagnosis. Every one of them used to be reachable only from a log, on a device
+     * whose owner has no way to read one.
+     */
+    private fun describeUsbDetail(): String? {
+        if (!runCatching { engine.isUsbDeviceAttached() }.getOrDefault(false)) return null
+
+        val iface = runCatching { engine.getRequiredInterface() }.getOrDefault(-1)
+        val alt = runCatching { engine.getRequiredAltSetting() }.getOrDefault(-1)
+        val endpoint = runCatching { engine.getUsbEndpointAddress() }.getOrDefault(0)
+        val packet = runCatching { engine.getUsbPacketSize() }.getOrDefault(0)
+        val errors = runCatching { engine.getUsbTransferErrors() }.getOrDefault(0L)
+
+        if (iface < 0 && endpoint == 0) return null
+
+        return buildList {
+            if (iface >= 0) add("interface $iface")
+            if (alt >= 0) add("alt setting $alt")
+            if (endpoint != 0) add("endpoint 0x${endpoint.toString(16)}")
+            if (packet > 0) add("$packet B/packet")
+            add("$errors rejected")
+        }.joinToString(" · ")
     }
 
     private fun percentOf(strength: Int): String =
@@ -588,7 +652,22 @@ class PlayerViewModel(
          * Always a format reason: a DAC cannot be handed a stream a platform codec
          * decoded, so a file with no exact decoder plays through Android's output.
          */
-        val usbBypassReason: String?
+        val usbBypassReason: String?,
+
+        /**
+         * The last thing that happened to the DAC — attached, refused, ready.
+         *
+         * A record of an event, not of the present, and labelled that way. Showing
+         * it as "status" is what made a message about one M4A track look like a
+         * verdict on every track after it.
+         */
+        val usbLastEvent: String,
+
+        /**
+         * Interface, alternate setting, endpoint, packet size and rejection count,
+         * or null when no DAC is claimed. What tells one start failure from another.
+         */
+        val usbDetail: String?
     )
 
     /**

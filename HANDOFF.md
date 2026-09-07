@@ -15,7 +15,7 @@ each change and are deliberately detailed.**
 |---|---|
 | Work on | **`fix/usb-dac-never-claimed`** — PR #8 open against `main`; PR #7 merged as `c833bdc` |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (16.2 MiB, pinned debug key `CN=BitPerfect Debug`, arm64 only) |
-| Test status | 282 native C++ tests, **466** JVM unit tests, `lintDebug` 0 errors (194 warnings, all pre-existing) |
+| Test status | **287** native C++ tests, **466** JVM unit tests, `lintDebug` 0 errors (194 warnings, all pre-existing) |
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
@@ -136,7 +136,7 @@ sdk.dir=/path/to/android-sdk
 # Lint (expect 0 errors, 194 warnings; all pre-existing)
 ./gradlew :app:lintDebug
 
-# Native C++ suite, no Android SDK needed (expect 282 passing)
+# Native C++ suite, no Android SDK needed (expect 287 passing)
 cmake -S app/src/main/cpp -B build-test -DSTANDALONE_TEST=ON
 cmake --build build-test -j"$(nproc)"
 cd build-test && ctest --output-on-failure
@@ -446,9 +446,19 @@ Three things about the permission flow that are easy to get wrong again:
   failing. Starting-then-failing left the player reset to 0:00 with the reason gone.
 
 Known gaps to expect:
-- `calculateNominalPacketSize` truncates, so 44.1 kHz drifts slowly (22 vs 22.05
-  bytes/packet). 48 kHz and multiples divide evenly. The proper fix is reading
-  the asynchronous feedback endpoint, which is parsed but not consumed.
+- `calculateNominalPacketSize` **rounds up**, it does not truncate — this entry
+  used to say the opposite. For 44.1 kHz/16-bit/stereo it gives 23 bytes, not 22:
+  `((176400 * 4) + 7999) / 8000`. Two consequences, both real:
+  - 23 is not a multiple of the 4-byte frame, so frame boundaries walk through the
+    packets. On a strict DAC that is channel-swapped noise, not a clean failure.
+  - 23 B x 8000 packets/s = 184000 B/s against the 176400 B/s the stream needs, so
+    it runs ~4.3% fast. The proper fix is the asynchronous feedback endpoint,
+    which is parsed but never consumed.
+  - The divisor is **hardcoded to the high-speed 8000 microframes/s**. There is no
+    device-speed detection anywhere in the codebase, and a full-speed DAC (which
+    is most UAC1 hardware) is clocked at 1000 frames/s, wanting 176 B/packet. The
+    Audio info panel now shows the computed packet size, so this is at least
+    visible from the device.
 - DSD/DoP is implemented in the engine but not routed through the sink selection.
 
 ### P3 — Test gaps
@@ -462,11 +472,16 @@ Known gaps to expect:
   `coil/fetch/ContentUriFetcher.fetch`, and the only remaining `openInputStream`
   calls in our own code are the non-album branch plus two unrelated
   document-copy paths. Re-run that check after touching either consumer.
-- The native FLAC decoder is **not trusted**: its own header lists LPC subframes
-  as unsupported, and all 19 of its unit tests cover STREAMINFO parsing or
-  synthetic frames — none decode a real encoded file. The Android path routes
-  FLAC to MediaCodec instead. The **USB path still uses it**, so it must be
-  verified or fixed before USB FLAC playback can be trusted.
+- The native FLAC decoder is **not verified**, but it is more capable than this
+  file used to claim. The old note here (and the decoder's own header comment)
+  said LPC subframes were unsupported and emitted silence. That was false:
+  `FlacDecoder::decodeLpcSubframe` implements LPC orders 1-32 with Rice/Rice2
+  residuals. Both have been corrected, because "no LPC" means "cannot play normal
+  FLAC" and nearly got a working path written off unread.
+  What remains true: **none of its unit tests decode a real encoded FLAC file** —
+  they cover STREAMINFO and synthetic frames. The Android path routes FLAC to
+  MediaCodec, so the native decoder is only exercised on the USB path. Decoding a
+  real file byte-for-byte against a reference is the test to add.
 
 ---
 

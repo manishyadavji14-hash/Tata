@@ -190,6 +190,12 @@ class UsbAudioManager(
             Log.w(TAG, "setInterface failed for alt setting $altSetting")
         }
 
+        // Give the engine a way back here. Which alternate setting is active
+        // decides whether the kernel accepts the URBs at all, the engine is what
+        // knows which one the rate and bit depth need, and this class is the only
+        // thing holding the connection that can change it.
+        nativeEngine.setAltSettingSelector(altSettingSelector)
+
         val attached = nativeEngine.attachUsbDevice(
             fileDescriptor = connection.fileDescriptor,
             interfaceNumber = usbInterface.id,
@@ -239,6 +245,7 @@ class UsbAudioManager(
         // descriptor, so the connection must outlive the transport.
         nativeEngine.detachUsbDevice()
         nativeEngine.setControlTransferBridge(null)
+        nativeEngine.setAltSettingSelector(null)
 
         claimedInterface?.let { claimed ->
             try {
@@ -253,6 +260,49 @@ class UsbAudioManager(
         currentConnection = null
         currentDevice = null
     }
+
+    /**
+     * Makes an alternate setting the active one on the claimed interface.
+     *
+     * Android exposes every alternate setting of an interface as its own
+     * [UsbInterface] with the same id, which is what makes this selectable at all:
+     * `setInterface` picks between them, and it is the call that reaches the
+     * kernel's `USBDEVFS_SETINTERFACE`, so the kernel's idea of what is active
+     * stays in step. Sending a raw SET_INTERFACE control transfer instead would
+     * change the device and not the kernel, and the URBs would still be rejected.
+     */
+    private val altSettingSelector =
+        NativeAudioEngine.UsbAltSettingSelector { interfaceNumber, altSetting ->
+            val connection = currentConnection
+            val device = currentDevice
+            if (connection == null || device == null) {
+                Log.w(TAG, "No open connection to select alt setting $altSetting on")
+                return@UsbAltSettingSelector false
+            }
+
+            for (i in 0 until device.interfaceCount) {
+                val candidate = device.getInterface(i)
+                if (candidate.id != interfaceNumber) continue
+                if (candidate.alternateSetting != altSetting) continue
+
+                // claimedInterface is deliberately left alone: it is what
+                // closeDevice releases, and it must stay the exact object that was
+                // claimed rather than a sibling alternate setting.
+                val selected = connection.setInterface(candidate)
+                if (selected) {
+                    Log.i(TAG, "Alt setting $altSetting active on interface $interfaceNumber")
+                } else {
+                    Log.e(TAG, "Device refused alt setting $altSetting")
+                }
+                return@UsbAltSettingSelector selected
+            }
+
+            Log.e(
+                TAG,
+                "Interface $interfaceNumber has no alternate setting $altSetting"
+            )
+            false
+        }
 
     /**
      * Routes native control-transfer requests to the open connection.

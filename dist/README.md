@@ -14,12 +14,12 @@ ask you to allow installing from the browser the first time.
 
 | | |
 |---|---|
-| Contains | everything on `fix/album-art-mediastore-thumbnail`: the USB DAC wiring below, the spectrum analyser and draggable player, library sort, play statistics, the per-song menu, and the album-art fixes through to the MediaStore thumbnail fix |
+| Contains | everything on `fix/usb-dac-never-claimed`: the USB DAC wiring below, the spectrum analyser and draggable player, library sort, play statistics, the per-song menu, and the album-art fixes through to the MediaStore thumbnail fix |
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
-| Size | 16.2 MiB (16,962,702 bytes) |
-| SHA-256 | `829d6aafc7d5f2473c3120ba383d2d5a0963bc31aa48456bf7330b26a4bde81a` |
+| Size | 16.2 MiB (16,995,470 bytes) |
+| SHA-256 | `6fca78587ec43dee2576d19160050573693d71d05f9f8fda2e48edd76e5de19a` |
 
 Verify the download matches before installing:
 
@@ -46,6 +46,55 @@ badge at the bottom left, and the Audio info panel will say whether notification
 are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
+
+**The status now follows the song you are playing.** You were right, and this was a
+real fault, not a cosmetic one. That "Status" line was showing the last thing that
+*happened* to the DAC, not what is true *now* — so a message about your one M4A track
+stayed on screen as the apparent verdict on every FLAC track after it. It is now
+rebuilt from the engine every time you open the panel. The event itself is still
+there, on its own row, honestly labelled **"Last USB event"**.
+
+**Found why the FLAC track would not play, and it is not the FLAC.** Your screenshot
+was enough to pin it down exactly, because of what it ruled out: transport
+`usbdevfs isochronous`, claimed **Yes**, engine rate **44100** — so the DAC was
+claimed, the real transport was installed, and the file opened and configured fine.
+Streaming **No** with all of that true leaves exactly one possibility: the kernel
+rejected the very first block of audio.
+
+And the reason it looked like nothing happening is that the app **threw the failure
+away**. The engine's "start playing" call ignored whether the audio stream actually
+started and reported success either way — it even logged "Playback started". The only
+trace left was that flag reading No. That is fixed: a start that did not start now
+says so.
+
+**The likely cause, and the fix I have made for it.** A USB DAC advertises several
+"alternate settings" — one per bit depth and rate. Two separate pieces of this app
+were choosing one independently and never comparing notes: the USB layer switched the
+device to whichever setting it found first, while the engine addressed the audio
+endpoint belonging to the setting that matches the track's rate and bit depth. When
+those differ — which is any DAC with more than one setting — the kernel rejects the
+first block, because the endpoint is not in the setting that is actually active. The
+engine now says which setting it needs and the USB layer switches to that one, before
+any audio is sent.
+
+I cannot confirm this from here, so the same build also makes the answer readable:
+**if it still does not stream, the player now tells you precisely why** — "the DAC has
+no endpoint 0x… in its active setting 1", or "will not accept 23-byte packets", or
+"the bus has no bandwidth left". The kernel's reason for refusing was previously
+discarded on the spot; it is now kept and shown. The Audio info panel also gained a
+**Stream** row with the interface, alternate setting, endpoint, packet size and
+rejection count.
+
+> **What to send me if it still does not play:** the **Status** line, the **Stream**
+> line, and the red message on the player itself. Those three name the exact cause.
+
+**Correction to my own notes:** the FLAC decoder's documentation claimed it could not
+handle LPC compression and would emit silence. That was false — LPC has been fully
+implemented for some time. Since LPC is what every real FLAC encoder produces, that
+note read as "this cannot play normal FLAC files", and it nearly made me abandon a
+working code path. Both the decoder's comment and the project handoff are corrected.
+
+---
 
 Three faults found from your screenshots, all in the DAC path. The good news first:
 **the DAC itself works.** "TTGK Technology Co.,Ltd Audiocular Spark ready" means the

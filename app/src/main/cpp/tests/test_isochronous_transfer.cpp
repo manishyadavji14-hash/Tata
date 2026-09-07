@@ -1,9 +1,11 @@
 #include <gtest/gtest.h>
 #include "../usb/isochronous_transfer.h"
 #include <vector>
+#include <cerrno>
 #include <cstring>
 #include <atomic>
 #include <functional>
+#include <memory>
 
 using namespace bitperfect::usb;
 
@@ -432,4 +434,122 @@ TEST_F(IsochronousTransferTest, InvalidTransferIndexIgnored) {
     transfer.onTransferComplete(999, TransferStatus::COMPLETED, 100);
 
     transfer.stop();
+}
+
+
+// === A rejected submission must fail the start, and say why ===
+//
+// This is the shape of the bug that made a working DAC look dead: the kernel
+// refused the very first URB, start() correctly returned false, and the caller
+// threw that away and reported success. The only thing left to notice was
+// isActive() being false afterwards, which reads as "the transport is not
+// installed" rather than "the transport was rejected".
+
+namespace {
+
+/** Accepts configuration, then refuses every submission with a fixed errno. */
+class RefusingBackend : public UsbIsoBackend {
+public:
+    explicit RefusingBackend(int err) : err_(err) {}
+
+    bool configure(uint8_t, uint16_t, uint8_t, uint8_t) override { return true; }
+
+    bool submit(size_t, const uint8_t*, size_t) override {
+        ++submitAttempts;
+        return false;
+    }
+
+    void cancelAll() override { ++cancelCalls; }
+    bool needsCompletionThread() const override { return false; }
+    bool waitForCompletion(IsoCompletion&, int) override { return false; }
+    const char* name() const override { return "refusing (test)"; }
+    bool isHardware() const override { return true; }
+    int lastError() const override { return err_; }
+
+    int submitAttempts = 0;
+    int cancelCalls = 0;
+
+private:
+    int err_;
+};
+
+/** Accepts everything, and reports no error. The healthy case. */
+class AcceptingBackend : public UsbIsoBackend {
+public:
+    bool configure(uint8_t, uint16_t, uint8_t, uint8_t) override { return true; }
+    bool submit(size_t, const uint8_t*, size_t) override { return true; }
+    void cancelAll() override {}
+    bool needsCompletionThread() const override { return false; }
+    bool waitForCompletion(IsoCompletion&, int) override { return false; }
+    const char* name() const override { return "accepting (test)"; }
+    bool isHardware() const override { return true; }
+};
+
+IsoTransferConfig workingConfig() {
+    IsoTransferConfig config;
+    config.maxPacketSize = 192;
+    config.packetsPerTransfer = 8;
+    config.queueDepth = 4;
+    config.endpointAddress = 0x01;
+    config.interval = 1;
+    return config;
+}
+
+size_t silenceSupplier(uint8_t* buffer, size_t maxLength) {
+    std::memset(buffer, 0, maxLength);
+    return maxLength;
+}
+
+void ignoreCompletion(const uint8_t*, size_t, TransferStatus) {}
+
+} // namespace
+
+TEST_F(IsochronousTransferTest, StartFailsWhenTheBackendRefusesTheFirstSubmission) {
+    auto backend = std::make_shared<RefusingBackend>(ENOENT);
+    transfer.setBackend(backend);
+    ASSERT_TRUE(transfer.configure(workingConfig()));
+
+    EXPECT_FALSE(transfer.start(silenceSupplier, ignoreCompletion));
+
+    // Nothing must be left looking like a running stream.
+    EXPECT_FALSE(transfer.isActive());
+    // It gave up on the first refusal rather than working through the queue.
+    EXPECT_EQ(backend->submitAttempts, 1);
+    // And the refusal is counted, so a caller can tell this apart from a start
+    // that was never attempted.
+    EXPECT_GE(transfer.getStatistics().errorCount.load(), 1u);
+}
+
+TEST_F(IsochronousTransferTest, TheKernelsReasonForRefusingIsReadable) {
+    auto backend = std::make_shared<RefusingBackend>(ENOENT);
+    transfer.setBackend(backend);
+    ASSERT_TRUE(transfer.configure(workingConfig()));
+    ASSERT_FALSE(transfer.start(silenceSupplier, ignoreCompletion));
+
+    // ENOENT is the one that matters in practice: the endpoint is not present in
+    // the interface's currently active alternate setting.
+    EXPECT_EQ(transfer.backendLastError(), ENOENT);
+}
+
+TEST_F(IsochronousTransferTest, StartSucceedsAndReportsNoErrorWhenTheBackendAccepts) {
+    transfer.setBackend(std::make_shared<AcceptingBackend>());
+    ASSERT_TRUE(transfer.configure(workingConfig()));
+
+    EXPECT_TRUE(transfer.start(silenceSupplier, ignoreCompletion));
+    EXPECT_TRUE(transfer.isActive());
+    EXPECT_EQ(transfer.backendLastError(), 0);
+
+    transfer.stop();
+    EXPECT_FALSE(transfer.isActive());
+}
+
+TEST_F(IsochronousTransferTest, TheDefaultLoopbackBackendReportsNoError) {
+    // The default backend has no transport to fail, so it must not invent an
+    // errno — anything non-zero here would be read as a real kernel refusal.
+    EXPECT_EQ(transfer.backendLastError(), 0);
+}
+
+TEST_F(IsochronousTransferTest, EndpointAddressIsReportedForDiagnostics) {
+    ASSERT_TRUE(transfer.configure(workingConfig()));
+    EXPECT_EQ(transfer.getEndpointAddress(), 0x01);
 }

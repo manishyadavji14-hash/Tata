@@ -3,6 +3,7 @@ package com.bitperfect.android.player
 import android.os.Handler
 import android.os.Looper
 import android.os.Process
+import android.util.Log
 import com.bitperfect.android.engine.NativeAudioEngine
 import java.nio.ByteBuffer
 import java.util.concurrent.atomic.AtomicLong
@@ -185,15 +186,32 @@ class UsbPlaybackSink(
                 )
             }
 
-            if (!engine.startPlayback()) throw PlaybackException("Could not start USB streaming")
+            // Make the setting the transport needs the active one on the device,
+            // before a single URB is submitted. configure() above is what worked
+            // out which setting this rate and bit depth need; the kernel checks
+            // every URB's endpoint against whichever setting is *active*, so if
+            // they disagree the first submission is rejected and nothing streams.
+            //
+            // Not fatal: a device with one streaming setting has nothing to select,
+            // and the submission will succeed anyway. If it does not, the errno
+            // below says so precisely.
+            if (!engine.applyRequiredAltSetting()) {
+                Log.w(
+                    TAG,
+                    "Could not select alt setting ${engine.getRequiredAltSetting()} on " +
+                        "interface ${engine.getRequiredInterface()}"
+                )
+            }
+
+            if (!engine.startPlayback()) {
+                throw PlaybackException(describeStartFailure())
+            }
 
             // startPlayback() succeeding does not by itself mean bytes are
             // leaving the device, so this is checked explicitly rather than
             // assumed. Without it a silent failure looks like normal playback.
             if (!engine.isUsbOutputActive()) {
-                throw PlaybackException(
-                    "No USB audio transport is active (transport: ${engine.getTransportName()})"
-                )
+                throw PlaybackException(describeStartFailure())
             }
 
             val formatInfo = AudioFormatInfo(
@@ -437,9 +455,51 @@ class UsbPlaybackSink(
     private fun millisecondsToFrames(milliseconds: Long, sampleRate: Int): Long =
         (milliseconds / 1000L) * sampleRate + (milliseconds % 1000L) * sampleRate / 1000L
 
+    /**
+     * Why the stream did not start, in terms a person can act on.
+     *
+     * This used to read "No USB audio transport is active (transport: usbdevfs
+     * isochronous)", which names the transport that *is* correctly installed and so
+     * reads like a transport-selection problem. The real failure is one specific
+     * rejected submission, and the kernel's reason is the errno.
+     */
+    private fun describeStartFailure(): String {
+        val transport = runCatching { engine.getTransportName() }.getOrDefault("unknown")
+        if (transport == "loopback (no hardware)" || transport == "none") {
+            return "No USB transport is installed (transport: $transport), so there is " +
+                "nothing to stream to. Reconnect the DAC."
+        }
+
+        val errno = runCatching { engine.getUsbStartErrno() }.getOrDefault(0)
+        val alt = runCatching { engine.getRequiredAltSetting() }.getOrDefault(-1)
+        val endpoint = runCatching { engine.getUsbEndpointAddress() }.getOrDefault(0)
+        val packet = runCatching { engine.getUsbPacketSize() }.getOrDefault(0)
+
+        val cause = when (errno) {
+            ENOENT -> "the DAC has no endpoint 0x${endpoint.toString(16)} in its active " +
+                "setting $alt"
+            EINVAL -> "the DAC will not accept $packet-byte packets on endpoint " +
+                "0x${endpoint.toString(16)}"
+            ENOSPC -> "the USB bus has no bandwidth left for audio"
+            ENODEV -> "the DAC went away"
+            0 -> "the DAC accepted no audio and gave no reason"
+            else -> "the DAC rejected the audio stream (errno $errno)"
+        }
+        return "The DAC would not start streaming: $cause."
+    }
+
     private class PlaybackException(message: String) : Exception(message)
 
     private companion object {
+        const val TAG = "UsbPlaybackSink"
+
+        // The four kernel refusals a URB submission can realistically come back
+        // with. Spelled out because the numbers alone mean nothing in a bug report.
+        const val ENOENT = 2
+        const val EINVAL = 22
+        const val ENOSPC = 28
+        const val ENODEV = 19
+
         const val CHUNK_FRAMES = 2048
         const val BUFFER_MS = 50
         const val NO_SEEK = -1L

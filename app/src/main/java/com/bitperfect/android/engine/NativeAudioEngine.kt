@@ -303,6 +303,68 @@ class NativeAudioEngine {
     fun getUsbTransferErrors(): Long = nativeGetUsbTransferErrors()
 
     /**
+     * errno from the URB submission that stopped the stream starting, or 0.
+     *
+     * The kernel's reason lives only in `errno`, and it used to be discarded, which
+     * left every cause of "the DAC is claimed but nothing streams" looking
+     * identical. 2 = ENOENT, the endpoint is not in the interface's active
+     * alternate setting. 22 = EINVAL, a packet is larger than the endpoint allows.
+     * 28 = ENOSPC, the bus has no periodic bandwidth left.
+     */
+    fun getUsbStartErrno(): Int = nativeGetUsbStartErrno()
+
+    /** Endpoint the transport addresses, for diagnostics. */
+    fun getUsbEndpointAddress(): Int = nativeGetUsbEndpointAddress()
+
+    /** Bytes per isochronous packet, as computed for the current rate. */
+    fun getUsbPacketSize(): Int = nativeGetUsbPacketSize()
+
+    /**
+     * Selects the alternate setting the transport needs, through [selector].
+     *
+     * Native code cannot do this itself. The kernel validates every URB's endpoint
+     * against the interface's *currently active* alternate setting, and only the
+     * owner of the Java `UsbDeviceConnection` can change which one that is.
+     *
+     * Nothing reconciled the two before: the USB layer activated whichever setting
+     * it found first while the engine addressed the endpoint belonging to the one
+     * matching the rate and bit depth. On any device with more than one setting
+     * those differ, the first submission is rejected with ENOENT, and the stream
+     * never begins — while every status the app could show said the device was
+     * attached and the transport installed.
+     *
+     * @return true when a setting was requested and accepted.
+     */
+    fun applyRequiredAltSetting(): Boolean {
+        val interfaceNumber = nativeGetRequiredInterface()
+        val altSetting = nativeGetRequiredAltSetting()
+        if (interfaceNumber < 0 || altSetting < 0) return false
+        return altSettingSelector?.select(interfaceNumber, altSetting) ?: false
+    }
+
+    /** The interface the transport needs, or -1 when not configured. */
+    fun getRequiredInterface(): Int = nativeGetRequiredInterface()
+
+    /** The alternate setting the transport needs, or -1 when not configured. */
+    fun getRequiredAltSetting(): Int = nativeGetRequiredAltSetting()
+
+    /** Activates an alternate setting on the claimed interface. */
+    fun interface UsbAltSettingSelector {
+        fun select(interfaceNumber: Int, altSetting: Int): Boolean
+    }
+
+    @Volatile
+    private var altSettingSelector: UsbAltSettingSelector? = null
+
+    /**
+     * Install the route to `UsbDeviceConnection.setInterface`. Implemented by the
+     * USB layer, which owns the connection. Pass null to clear it.
+     */
+    fun setAltSettingSelector(selector: UsbAltSettingSelector?) {
+        altSettingSelector = selector
+    }
+
+    /**
      * Give native code a route back to `UsbDeviceConnection.controlTransfer`, so
      * UAC1/UAC2 sample-rate negotiation can run. Pass null to clear it.
      */
@@ -338,6 +400,11 @@ class NativeAudioEngine {
     private external fun nativeGetTransportName(): String
     private external fun nativeGetUsbBytesTransferred(): Long
     private external fun nativeGetUsbTransferErrors(): Long
+    private external fun nativeGetRequiredInterface(): Int
+    private external fun nativeGetRequiredAltSetting(): Int
+    private external fun nativeGetUsbStartErrno(): Int
+    private external fun nativeGetUsbEndpointAddress(): Int
+    private external fun nativeGetUsbPacketSize(): Int
     private external fun nativeSetControlTransferBridge(
         bridge: UsbControlTransferBridge?
     ): Boolean

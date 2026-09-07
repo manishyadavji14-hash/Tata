@@ -202,6 +202,32 @@ public:
     uint64_t getUsbTransferErrors() const;
 
     /**
+     * The interface and alternate setting the transport needs active on the
+     * device for the current configuration, or -1 when not known.
+     *
+     * The caller must select this alternate setting, because native code cannot:
+     * the kernel checks each URB's endpoint against the *active* setting, and
+     * only the owner of the Java UsbDeviceConnection can change it.
+     */
+    int getRequiredInterface() const { return requiredInterface_; }
+    int getRequiredAltSetting() const { return requiredAltSetting_; }
+
+    /**
+     * errno from the URB submission that stopped the stream starting, or 0.
+     *
+     * ENOENT (2) means the endpoint is not in the active alternate setting,
+     * EINVAL (22) that a packet is larger than the endpoint allows, ENOSPC (28)
+     * that the bus has no periodic bandwidth left.
+     */
+    int getUsbStartErrno() const { return usbStartErrno_; }
+
+    /** Endpoint the transport addresses, or 0 when there is no transport. */
+    int getUsbEndpointAddress() const;
+
+    /** Bytes per isochronous packet, as computed for the current rate. */
+    int getUsbPacketSize() const;
+
+    /**
      * Get current sample rate.
      */
     uint32_t getCurrentSampleRate() const { return currentConfig_.sampleRate; }
@@ -327,6 +353,16 @@ private:
     std::shared_ptr<usb::UsbdevfsIsoBackend> usbBackend_;
     uint8_t claimedInterface_ = 0;
     uint8_t claimedAltSetting_ = 0;
+
+    /**
+     * Interface and alternate setting the transport needs active on the device
+     * for the current configuration, or -1 when not known.
+     */
+    int requiredInterface_ = -1;
+    int requiredAltSetting_ = -1;
+
+    /** errno from the URB submission that stopped the stream starting, or 0. */
+    int usbStartErrno_ = 0;
 
     // Track transition callback for gapless playback JNI notification
     std::function<void(void*)> trackTransitionCallback_;

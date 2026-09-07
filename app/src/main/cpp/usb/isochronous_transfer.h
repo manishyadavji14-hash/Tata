@@ -99,6 +99,15 @@ public:
     const char* backendName() const;
 
     /**
+     * The transport's last failure as a positive errno, or 0. See
+     * UsbIsoBackend::lastError.
+     */
+    int backendLastError() const;
+
+    /** Endpoint the transfers address, for diagnostics. */
+    uint8_t getEndpointAddress() const { return config_.endpointAddress; }
+
+    /**
      * Configure the transfer parameters.
      */
     bool configure(const IsoTransferConfig& config);

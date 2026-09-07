@@ -192,8 +192,15 @@ bool UsbdevfsIsoBackend::submit(size_t index, const uint8_t* data, size_t length
     raw->status = 0;
 
     if (::ioctl(fd_, USBDEVFS_SUBMITURB, raw) < 0) {
+        // Kept, because it is the only account of why. ENOENT means this endpoint
+        // is not in the interface's currently active alternate setting, EINVAL
+        // that a packet length exceeds the endpoint's wMaxPacketSize, ENOSPC that
+        // the bus has no periodic bandwidth left. Discarded, all three looked
+        // identical from the outside.
+        lastSubmitErrno_.store(errno);
         return false;
     }
+    lastSubmitErrno_.store(0);
 
     urb->inFlight = true;
     inFlight_.fetch_add(1);

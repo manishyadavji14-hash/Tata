@@ -79,6 +79,18 @@ public:
      * throughput counters are never presented as USB output when they are not.
      */
     virtual bool isHardware() const = 0;
+
+    /**
+     * The last transport-level failure as a positive errno, or 0 if none.
+     *
+     * Exists because a rejected submission is the one failure in this whole path
+     * that says nothing about itself: the kernel's reason lives only in `errno`,
+     * and discarding it left "the stream did not start" indistinguishable from
+     * "the endpoint does not exist in the active alternate setting", "the packet
+     * size exceeds the endpoint's maximum" and "there is no periodic bandwidth
+     * left". On a phone, with no way to read a log, that is unanswerable.
+     */
+    virtual int lastError() const { return 0; }
 };
 
 /**

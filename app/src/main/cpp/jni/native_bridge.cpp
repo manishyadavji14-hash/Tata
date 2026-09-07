@@ -394,6 +394,36 @@ Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetUsbTransferErrors(
         bitperfect::jni::NativeBridge::instance().getUsbTransferErrors());
 }
 
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetRequiredInterface(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jint>(bitperfect::jni::NativeBridge::instance().getRequiredInterface());
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetRequiredAltSetting(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jint>(bitperfect::jni::NativeBridge::instance().getRequiredAltSetting());
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetUsbStartErrno(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jint>(bitperfect::jni::NativeBridge::instance().getUsbStartErrno());
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetUsbEndpointAddress(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jint>(bitperfect::jni::NativeBridge::instance().getUsbEndpointAddress());
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_bitperfect_android_engine_NativeAudioEngine_nativeGetUsbPacketSize(
+        JNIEnv* /*env*/, jobject /*thiz*/) {
+    return static_cast<jint>(bitperfect::jni::NativeBridge::instance().getUsbPacketSize());
+}
+
 /**
  * Give native code a way to perform USB control transfers.
  *
@@ -676,10 +706,25 @@ bool NativeBridge::configure(const PlaybackConfig& config) {
     bufferManager_ = std::make_unique<buffer::AudioBufferManager>(bufferSize, 0.5f);
 
     // Setup isochronous transfer
+    requiredInterface_ = -1;
+    requiredAltSetting_ = -1;
     if (audioDevice_) {
         auto outputIface = audioDevice_->getOutputStreamingInterface();
         if (outputIface) {
             isoTransfer_ = std::make_unique<usb::IsochronousTransfer>();
+
+            // Recorded so the caller can make this the *active* setting on the
+            // device. The kernel validates every URB's endpoint against the
+            // interface's currently active alternate setting, and nothing
+            // reconciled the two: Java activated whichever setting it happened to
+            // find first while this side addressed the endpoint belonging to the
+            // one matching the rate and bit depth. When they differed — which is
+            // any device with more than one setting — the first submission was
+            // rejected and the stream never began.
+            requiredInterface_ = static_cast<int>(*outputIface);
+            const auto bestAlt = audioDevice_->findBestAltSetting(
+                *outputIface, config.sampleRate, config.format);
+            if (bestAlt) requiredAltSetting_ = static_cast<int>(*bestAlt);
 
             usb::IsoTransferConfig isoConfig;
             isoConfig.maxPacketSize = usb::IsochronousTransfer::calculateNominalPacketSize(
@@ -762,7 +807,24 @@ bool NativeBridge::startPlayback() {
         };
 
         if (!isoTransfer_->isActive()) {
-            isoTransfer_->start(supplyCallback, completeCallback);
+            // The return value used to be discarded, so this function reported
+            // success whatever the transport did — and then logged "Playback
+            // started" about a stream that never began. The caller could only
+            // discover it by asking isUsbOutputActive() afterwards, which answers
+            // "no transport is active" about a transport that is installed
+            // correctly and merely had its first submission rejected. A start that
+            // did not start must say so.
+            if (!isoTransfer_->start(supplyCallback, completeCallback)) {
+                usbStartErrno_ = isoTransfer_->backendLastError();
+                diagnostics::Diagnostics::instance().recordError(
+                    diagnostics::LogCategory::TRANSFER,
+                    "Isochronous stream could not start; first URB rejected (errno " +
+                        std::to_string(usbStartErrno_) + ")"
+                );
+                state_.store(EngineState::CONFIGURED);
+                return false;
+            }
+            usbStartErrno_ = 0;
         }
     }
 
@@ -925,6 +987,16 @@ uint64_t NativeBridge::getUsbBytesTransferred() const {
 uint64_t NativeBridge::getUsbTransferErrors() const {
     if (!isoTransfer_ || !isoTransfer_->isHardwareBacked()) return 0;
     return isoTransfer_->getStatistics().errorCount.load();
+}
+
+int NativeBridge::getUsbEndpointAddress() const {
+    if (!isoTransfer_) return 0;
+    return static_cast<int>(isoTransfer_->getEndpointAddress());
+}
+
+int NativeBridge::getUsbPacketSize() const {
+    if (!isoTransfer_) return 0;
+    return static_cast<int>(isoTransfer_->getPacketSize());
 }
 
 void NativeBridge::setControlTransferFunction(usb::ControlTransferFunc func) {
