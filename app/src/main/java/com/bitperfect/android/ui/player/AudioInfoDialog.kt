@@ -78,10 +78,24 @@ fun AudioInfoDialog(
                 )
                 info.engineSampleRate?.let { InfoRow("Engine rate", "$it Hz") }
 
-                // USB-only facts. Shown only when a DAC is actually streaming, so
-                // the panel does not imply a transport that is not in use.
+                // Always shown, including when there is no DAC. "Bit-perfect: No"
+                // above is the whole reason someone opens this panel, and until this
+                // row existed there was nothing anywhere in the app that could tell
+                // "no DAC" apart from "DAC here and it could not be claimed".
+                Section("USB DAC")
+                InfoRow("Status", info.usbDacReport)
+                InfoRow(
+                    label = "Claimed by engine",
+                    value = if (info.isUsbDeviceAttached) {
+                        "Yes — the next track plays through the DAC"
+                    } else {
+                        "No"
+                    }
+                )
+
+                // Transport facts only once there is a transport, so the panel never
+                // implies one that is not in use.
                 if (info.isUsbOutputActive || info.transportName != null) {
-                    Section("USB transport")
                     InfoRow("Transport", info.transportName ?: "Not reported")
                     InfoRow(
                         label = "Streaming",

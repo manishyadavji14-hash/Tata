@@ -13,9 +13,9 @@ each change and are deliberately detailed.**
 
 | | |
 |---|---|
-| Work on | **`main`** — PR #4 merged as `eec1ed5`; embedded lyrics on `feat/embedded-lyrics` |
-| Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (15.7 MiB, debug-signed, arm64 only) |
-| Test status | 282 native C++ tests, **324** JVM unit tests, `lintDebug` 0 errors (195 warnings, all pre-existing) |
+| Work on | **`fix/album-art-mediastore-thumbnail`** — PR #7 open against `main` |
+| Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (16.2 MiB, pinned debug key `CN=BitPerfect Debug`, arm64 only) |
+| Test status | 282 native C++ tests, **463** JVM unit tests, `lintDebug` 0 errors (194 warnings, all pre-existing) |
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
@@ -130,10 +130,10 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 324 passing)
+# JVM unit tests (expect 463 passing)
 ./gradlew :app:testDebugUnitTest
 
-# Lint (expect 0 errors; warnings are pre-existing)
+# Lint (expect 0 errors, 194 warnings; all pre-existing)
 ./gradlew :app:lintDebug
 
 # Native C++ suite, no Android SDK needed (expect 282 passing)
@@ -418,8 +418,14 @@ many devices — check before committing to the approach.
 
 ### P3 — USB DAC hardware validation
 The transport is written and unit-tested but **has never moved a byte to real
-hardware**. `TESTING.md` has the procedure. Start at Diagnostics → Transport: it
+hardware**. `TESTING.md` has the procedure. Start at the player's Audio info panel
+→ **USB DAC** → `Status` and `Claimed by engine`, then Diagnostics → Transport: it
 must read `usbdevfs isochronous`, not `loopback (no hardware)`.
+
+The attach chain is now actually connected — see the trap in section 5, it was not
+until recently — and every failure in it writes a sentence into
+`ServiceLocator.usbAttachReport` that the Audio info panel shows. Ask for that
+line first; it names which step stopped.
 
 Known gaps to expect:
 - `calculateNominalPacketSize` truncates, so 44.1 kHz drifts slowly (22 vs 22.05
@@ -455,6 +461,37 @@ Known gaps to expect:
    can be anywhere. See section 2. This is trap zero because it invalidates the
    premise of every other investigation.
 
+0.5. **A complete subsystem can exist and never be called.** The whole USB attach
+   chain — `UsbAudioManager` claiming the interface, `UsbPermissionHandler` running
+   the attach → permission → open → configure sequence — was written, reviewed and
+   left with **zero call sites**. `setListener` had none for either class,
+   `startMonitoring` and `scanForDevices` had none, and the single
+   `registerReceiver()` sat in `PlaybackService`, which by design does not exist
+   until playback has already begun. The app reported "Android output" honestly for
+   months. Before assuming a subsystem is broken, grep for a call site:
+   `grep -rn "setListener(\|startMonitoring(" app/src/main/java` and read the
+   result. A definition is not a caller.
+
+   Attached to that, two things worth knowing generally:
+   - **Broadcast receiver export flags are not cosmetic.** `USB_DEVICE_ATTACHED`
+     and `USB_DEVICE_DETACHED` come from the platform, so a `RECEIVER_NOT_EXPORTED`
+     receiver does not get them; the USB permission result comes from this app's own
+     `PendingIntent`, so it must be `NOT_EXPORTED`. All three shared one
+     `NOT_EXPORTED` registration. They are now two registrations with opposite
+     flags.
+   - **A mutable `PendingIntent` needs an explicit intent.** Since Android 14,
+     `PendingIntent.getBroadcast(..., FLAG_MUTABLE)` with an implicit intent throws
+     `IllegalArgumentException`. The USB permission request needs `FLAG_MUTABLE`,
+     because the system writes `EXTRA_DEVICE` into it, so the intent carries
+     `setPackage(context.packageName)`.
+
+   Ownership rule that came out of the fix: **exactly one component holds the
+   claimed USB interface**, and it is `MainActivity`, because the
+   `USB_DEVICE_ATTACHED` intent filter targets it. It is published through
+   `ServiceLocator.setUsbAudioOwner`, paired with the engine it was built for, and
+   `PlaybackService` adopts it (`ownsUsbAudioManager = false`) rather than building
+   a second one — its `onDestroy` used to call `closeDevice()`, which detaches USB
+   from the *shared* engine, dropping a DAC the activity had claimed.
 1. **APK size.** Debug builds are R8-shrunk with `-dontobfuscate` (see
    `app/proguard-rules.pro`). Shrinking is what removes the tens of MB of unused
    `material-icons-extended`; obfuscation stays off so the JNI boundary and

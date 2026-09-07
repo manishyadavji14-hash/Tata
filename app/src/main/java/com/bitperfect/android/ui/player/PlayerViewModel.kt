@@ -491,7 +491,9 @@ class PlayerViewModel(
             isUsbOutputActive = usbActive,
             bufferLevelPercent = bufferLevel?.takeIf { it in 0f..1f }?.let { (it * 100).toInt() },
             underrunCount = underruns,
-            artworkPublishReport = ServiceLocator.artworkPublishReport.get()
+            artworkPublishReport = ServiceLocator.artworkPublishReport.get(),
+            usbDacReport = ServiceLocator.usbAttachReport.get(),
+            isUsbDeviceAttached = runCatching { engine.isUsbDeviceAttached() }.getOrDefault(false)
         )
     }
 
@@ -560,7 +562,24 @@ class PlayerViewModel(
          * come from different code. Without this the only way to tell them apart is
          * a log the maintainer cannot read.
          */
-        val artworkPublishReport: String
+        val artworkPublishReport: String,
+
+        /**
+         * How far the USB DAC got through attaching, in plain language.
+         *
+         * The panel could previously say "No — mixed by Android" with no way to tell
+         * whether there was no DAC, permission was refused, the kernel driver would
+         * not release the interface, or the device has no isochronous output at all.
+         */
+        val usbDacReport: String,
+
+        /**
+         * Whether the engine holds a claimed DAC. Distinct from [isUsbOutputActive],
+         * which is only true once audio is flowing, and from [isBitPerfect], which
+         * describes the sink the *current* track opened — a DAC attached mid-song is
+         * attached but not yet in use.
+         */
+        val isUsbDeviceAttached: Boolean
     )
 
     /** Persist the whole session. Called on track change and when clearing up. */

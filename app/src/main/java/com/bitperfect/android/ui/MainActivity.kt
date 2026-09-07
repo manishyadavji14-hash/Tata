@@ -4,6 +4,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.hardware.usb.UsbDevice
 import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
@@ -50,6 +51,7 @@ import com.bitperfect.android.ui.settings.SettingsViewModel
 import com.bitperfect.android.ui.theme.BitPerfectTheme
 import com.bitperfect.android.ui.theme.ThemeMode
 import com.bitperfect.android.usb.UsbAudioManager
+import com.bitperfect.android.usb.UsbPermissionHandler
 import java.io.File
 import java.io.IOException
 import kotlinx.coroutines.CancellationException
@@ -188,6 +190,150 @@ class MainActivity : ComponentActivity() {
         libraryViewModel?.setAudioPermissionGranted(granted)
     }
 
+    /**
+     * Get the one USB owner for this engine, building and wiring it on first call.
+     *
+     * The USB chain was fully built and never once connected. `UsbAudioManager` could
+     * claim the streaming interface and hand the file descriptor to the engine, and
+     * `UsbPermissionHandler` implemented the whole attach → permission → open →
+     * configure sequence. Nothing called any of it: `setListener` had no call sites for
+     * either class, `startMonitoring` and `scanForDevices` had none, and the single
+     * `registerReceiver()` lived in `PlaybackService` — which is deliberately not
+     * started until playback begins, so at the moment a DAC is plugged in and Android
+     * launches the app, no receiver existed at all.
+     *
+     * So `NativeAudioEngine.attachUsbDevice()` was never reached, `isUsbDeviceAttached()`
+     * was permanently false, and `PlaybackController.selectSinkForNextTrack()` — whose
+     * only condition that is — always chose the Android mixer. "Android output / mixed
+     * by Android" was an honest report: the app had simply never been told a DAC was
+     * there. Choosing BitPerfect in the system's USB dialog granted permission to a
+     * component that was not listening.
+     *
+     * Owned here because `USB_DEVICE_ATTACHED` in the manifest targets this activity,
+     * making it the one component guaranteed to exist when a device arrives. But built
+     * against the application context and cached per engine, because this method runs
+     * again on every rotation: a second manager would register a second receiver and
+     * try to claim an interface the first one is still holding.
+     */
+    private fun ensureUsbAudioOwner(
+        engine: NativeAudioEngine,
+        player: PlayerViewModel
+    ): UsbAudioManager {
+        ServiceLocator.usbAudioManagerFor(engine)?.let { return it }
+
+        val manager = UsbAudioManager(applicationContext, engine)
+        // A previous owner can only exist if it was built for a different engine — a
+        // PlayerViewModel was cleared and a new engine created. Its claim has to go
+        // before this one can succeed.
+        ServiceLocator.setUsbAudioOwner(engine, manager)?.let { retired ->
+            Log.i(TAG, "Retiring the USB owner of a previous engine")
+            retired.closeDevice()
+            retired.unregisterReceiver()
+        }
+
+        wireUsbAudio(manager, player)
+        return manager
+    }
+
+    /**
+     * Connect a [UsbAudioManager] to the permission sequence and to the UI.
+     *
+     * Every state change also writes a sentence into [ServiceLocator.usbAttachReport],
+     * which the player's audio info panel shows. The snackbar is only visible if the
+     * player happens to be open, and a DAC is usually plugged in while looking at the
+     * library or at nothing at all — but "why is this not bit-perfect" has to be
+     * answerable at any later moment, from a phone, with no log.
+     */
+    private fun wireUsbAudio(manager: UsbAudioManager, player: PlayerViewModel) {
+        val handler = UsbPermissionHandler(applicationContext, manager)
+
+        fun report(sentence: String, alsoShow: Boolean = true) {
+            ServiceLocator.usbAttachReport.set(sentence)
+            if (alsoShow) player.showExternalMessage(sentence)
+        }
+
+        // The permission result arrives as a broadcast, so this receiver has to exist
+        // before any request is made. Registering it is all the service ever did.
+        manager.registerReceiver()
+
+        manager.setListener(object : UsbAudioManager.UsbAudioListener {
+            // Routed into the handler rather than letting it register a second
+            // receiver for the same two actions.
+            override fun onDeviceAttached(device: UsbDevice) = handler.onDeviceAttached(device)
+
+            override fun onDeviceDetached(device: UsbDevice) {
+                // closeDevice() runs inside the manager for the device it opened, so
+                // the engine is already detached by the time this is read.
+                report("Disconnected — back to Android output")
+                handler.onDeviceDetached(device)
+            }
+
+            // Forwarded so the handler carries on into openAndConfigureDevice.
+            // Without this bridge the grant arrived and was dropped.
+            override fun onPermissionGranted(device: UsbDevice) =
+                handler.onPermissionGranted(device)
+
+            override fun onPermissionDenied(device: UsbDevice) =
+                handler.onPermissionDenied(device)
+
+            override fun onDeviceConfigured(
+                deviceName: String,
+                sampleRates: IntArray,
+                bitDepths: IntArray
+            ) = Unit
+
+            // The six specific reasons a claim fails — no permission, could not open,
+            // unreadable descriptors, not a UAC device, no output endpoint, another
+            // driver holding the interface. Every one of them was a log line.
+            override fun onError(message: String) {
+                report("Attach failed: $message")
+            }
+        })
+
+        handler.setListener(object : UsbPermissionHandler.PermissionListener {
+            override fun onDeviceConnected(device: UsbDevice) {
+                report(
+                    "${describe(device)} attached — asking Android for access",
+                    alsoShow = false
+                )
+            }
+
+            override fun onDeviceDisconnected(device: UsbDevice) = Unit
+            override fun onPermissionGranted(device: UsbDevice) = Unit
+
+            override fun onPermissionDenied(device: UsbDevice) {
+                report("Permission refused, so audio stays on Android output")
+            }
+
+            override fun onDeviceReady(device: UsbDevice) {
+                // The engine holds the claimed descriptor now, so the next call to
+                // selectSinkForNextTrack picks the USB sink. Said out loud because the
+                // change lands at the next track rather than mid-song: the sinks own
+                // their own worker threads and buffered audio, and swapping them under
+                // a running stream would drop or duplicate what is in flight.
+                report("${describe(device)} ready — bit-perfect from the next track")
+            }
+
+            override fun onDeviceError(device: UsbDevice, error: String) {
+                // A DAC is physically present and unusable. This is the case that used
+                // to be indistinguishable from having no DAC at all.
+                report("${describe(device)} attached but unusable: $error")
+            }
+        })
+
+        // Covers the DAC that was already plugged in, including the one whose arrival
+        // launched this activity through the system's USB dialog.
+        handler.scanForDevices()
+    }
+
+    /** A DAC's name as a person would say it, falling back to the kernel device path. */
+    private fun describe(device: UsbDevice): String {
+        val name = listOfNotNull(device.manufacturerName, device.productName)
+            .joinToString(" ")
+            .trim()
+        return name.ifBlank { device.deviceName }
+    }
+
     override fun onDestroy() {
         playbackController = null
         if (isBound) {
@@ -267,7 +413,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        val localUsbAudioManager = UsbAudioManager(this, localEngine)
+        val localUsbAudioManager = ensureUsbAudioOwner(localEngine, localPlayerViewModel)
         usbAudioManager = localUsbAudioManager
 
         val localSettingsRepository = SettingsRepository(this)

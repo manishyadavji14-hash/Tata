@@ -6,8 +6,8 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
-import android.os.Build
 import android.util.Log
+import androidx.core.content.ContextCompat
 
 /**
  * UsbPermissionHandler - Manages USB device permission lifecycle.
@@ -64,18 +64,28 @@ class UsbPermissionHandler(
     }
 
     /**
-     * Start monitoring for USB device events.
+     * Start monitoring for USB device events with this class's own receiver.
+     *
+     * For an owner that has no USB receiver of its own. An owner that does — anything
+     * holding a [UsbAudioManager], which must register one to hear the permission
+     * broadcast — should instead call [scanForDevices] once and forward its receiver's
+     * events to [onDeviceAttached] and [onDeviceDetached], rather than register a
+     * second receiver for the same two actions.
      */
     fun startMonitoring() {
         val filter = IntentFilter().apply {
             addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
             addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.registerReceiver(usbEventReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
-        } else {
-            context.registerReceiver(usbEventReceiver, filter)
-        }
+        // Exported, because both actions are sent by the platform and a NOT_EXPORTED
+        // receiver rejects broadcasts from other apps — the system included. Both are
+        // protected broadcasts only the platform may send, so nothing is exposed.
+        ContextCompat.registerReceiver(
+            context,
+            usbEventReceiver,
+            filter,
+            ContextCompat.RECEIVER_EXPORTED
+        )
         Log.i(TAG, "USB permission handler monitoring started")
 
         // Check for already connected devices
@@ -95,12 +105,42 @@ class UsbPermissionHandler(
 
     /**
      * Scan for already-connected USB audio devices.
+     *
+     * This is what covers the two cases that matter in practice: a DAC that was
+     * plugged in before the app was launched, and a DAC whose arrival launched the
+     * app through the "choose an app for this USB device" dialog. In the second case
+     * the device is already in `UsbManager.deviceList` by the time the activity
+     * exists, so nothing has to be dug out of the launch intent.
      */
     fun scanForDevices() {
         val devices = usbAudioManager.getConnectedAudioDevices()
         for (device in devices) {
-            handleDeviceAttached(device)
+            onDeviceAttached(device)
         }
+    }
+
+    /**
+     * Report a device that the caller's own receiver saw attach.
+     *
+     * Exists so an owner that already registers a USB receiver — [UsbAudioManager]
+     * must, for the permission broadcast — can drive this class without registering a
+     * second receiver for the same two actions.
+     *
+     * A device that is already open is ignored, so a repeat ATTACHED broadcast, or a
+     * [scanForDevices] call that overlaps one, cannot claim the same interface twice.
+     */
+    fun onDeviceAttached(device: UsbDevice) {
+        val existing = connectedDevices[device.deviceName]
+        if (existing != null && existing.isOpen) {
+            Log.d(TAG, "Already open, ignoring repeat attach: ${device.deviceName}")
+            return
+        }
+        handleDeviceAttached(device)
+    }
+
+    /** Report a device that the caller's own receiver saw detach. */
+    fun onDeviceDetached(device: UsbDevice) {
+        handleDeviceDetached(device)
     }
 
     /**
