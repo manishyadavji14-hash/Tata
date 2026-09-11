@@ -19,8 +19,37 @@ each change and are deliberately detailed.**
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
-Branch from `main` for new work. The old `feat/audiotrack-playback-build-fix`
-branch is fully merged and can be deleted; nothing references it.
+> ### ⚠️ `main` is behind. The current work is on a branch.
+>
+> Everything about USB DAC output — six commits, `e2185b4`..`5984d05` — is on
+> **`fix/usb-dac-never-claimed`**, open as PR #8 and **not merged**. `main` stops at
+> `c833bdc`.
+>
+> So **every `.../raw/main/...` or `heads/main.zip` URL in this file and in
+> `dist/README.md` serves stale files**, including the APK. Until PR #8 is merged,
+> substitute the branch name:
+>
+> ```
+> https://github.com/manishyadavji14-hash/Tata/archive/refs/heads/fix/usb-dac-never-claimed.zip
+> https://github.com/manishyadavji14-hash/Tata/raw/fix/usb-dac-never-claimed/dist/BitPerfect-debug-arm64.apk
+> ```
+>
+> **Merging PR #8 removes this whole problem** and makes every `main` link correct:
+> <https://github.com/manishyadavji14-hash/Tata/pull/8> → Merge. Do that first if you
+> can; the rest of this file assumes nothing either way.
+
+### START HERE — the live task
+
+**A USB DAC is claimed successfully and no audio has been confirmed reaching it.**
+Everything else in the app is working. Section 4's "USB DAC output" entry is the
+current brief: it lists what is proven on the device, what is not, which hypotheses
+are already eliminated, and what to ask the maintainer for. Read that before touching
+anything, because several rounds of this have already been spent on wrong guesses that
+the notes now rule out.
+
+Branch from `main` for new work unrelated to USB. The old
+`feat/audiotrack-playback-build-fix` branch is fully merged and can be deleted;
+nothing references it.
 
 ### Setting up a toolchain from scratch
 
@@ -43,24 +72,25 @@ Kotlin playback layer, and a C++ engine (JNI) that owns decoding and the USB
 Audio Class transport.
 
 ### Confirmed working on the device
-- Playback of WAV and FLAC.
-- The library scans and lists music.
+Reported working by the maintainer, with screenshots:
+- Playback of WAV, FLAC, MP3, AAC/M4A through Android's output.
+- The library scans and lists music; sort, the A-Z jump strip, the per-song menu.
+- Notification and lock-screen artwork, title, times and transport controls.
+- The player as one draggable surface, the artwork morph between its two faces,
+  the spectrum analyser, the output badge icon.
+- **A USB DAC is claimed**: the streaming interface is taken from the kernel's
+  `snd-usb-audio` driver and `nativeAttachUsbDevice` accepts the descriptor.
+  Diagnostics reports `usbdevfs isochronous`, not `loopback (no hardware)`.
 
-### Implemented but NOT yet confirmed on the device
-Everything from the last few commits, because a crash (since fixed in `3ca2822`)
-blocked testing:
-- Notification with transport controls; pause on incoming call and resume after;
-  pause when another app takes audio; pause on headphone unplug.
-- Session persistence — reopening the app restores the last track, position and
-  queue, paused.
-- Mini player: album art, swipe left/right for previous/next (wrapping to the
-  first track at the end), album-art-derived colour, tap or drag-up to open the
-  player, drag-down on the player's top half to dismiss.
-- Scan menu: scan all / choose folders / import from ZIP / scan by format.
-- Seeking (was broken for every non-WAV format until `bbbd352`).
-- Playback of Opus, MP3, AAC, M4A/ALAC, OGG Vorbis.
-
-**First job for whoever picks this up: install the APK and verify that list.**
+### NOT confirmed on the device
+- **Audio actually reaching the DAC.** This is the open question; see section 4.
+  `isUsbOutputActive()` has been observed false, and once observed true followed by
+  8 rejected transfers. No build has been reported as audibly playing through the DAC.
+- Anything about DSD or DoP. Implemented in the engine, never routed through sink
+  selection, never run against hardware.
+- Whether the last two builds' fixes work, because they were shipped as the
+  maintainer's credits ran out. The specific things to check are in the "New in this
+  build" section of `dist/README.md`, newest first.
 
 ### Ask the device, do not guess: the lock-screen artwork report
 Album art on the lock screen has now been "fixed" four times, three of them from
@@ -417,21 +447,65 @@ many devices — check before committing to the approach.
   manually.
 
 ### P3 — USB DAC hardware validation
-The transport is written and unit-tested but **has never moved a byte to real
-hardware**. `TESTING.md` has the procedure. Start at the player's Audio info panel
-→ **USB DAC** → `Status` and `Claimed by engine`, then Diagnostics → Transport: it
-must read `usbdevfs isochronous`, not `loopback (no hardware)`.
+**This is the live task.** Hardware: TTGK Technology "Audiocular Spark" USB-C DAC on
+a vivo I2501, Android 16.
 
-The attach chain is now actually connected — see the trap in section 5, it was not
-until recently — and every failure in it writes a sentence into
-`ServiceLocator.usbAttachReport` that the Audio info panel shows. Ask for that
-line first; it names which step stopped.
+#### Proven on the device
+- The DAC is claimed. `UsbAudioManager.claimStreamingInterface` takes the interface
+  from `snd-usb-audio` with `force = true`, and `nativeAttachUsbDevice` accepts the
+  duplicated descriptor.
+- `getTransportName()` returns `usbdevfs isochronous`, so `NativeBridge::configure`
+  found the output endpoint and installed the real backend — not the loopback fake.
+- `configure()` runs and sets the rate (`getCurrentSampleRate()` reported 44100).
+- Both the app-chooser grant and the explicit permission dialog reach the app.
 
-Confirmed on hardware (TTGK Audiocular Spark, vivo I2501): the interface is claimed
-away from `snd-usb-audio` and `nativeAttachUsbDevice` accepts the descriptor. Still
-unconfirmed is whether bytes reach the DAC — check Diagnostics -> `Sent To DAC`.
+#### Not proven, and the one thing that matters
+**No build has been reported as audibly playing through the DAC.** Two distinct
+observations, from two different builds:
+1. `isUsbOutputActive()` false immediately after `startPlayback()` — the first URB was
+   rejected, `IsochronousTransfer::start()` called `stop()` and returned false.
+2. Later, with the alternate-setting fix in: `8 rejected` in the Audio info panel with
+   `getUsbStartErrno() == 0`. Errno zero means a start *succeeded* (it is cleared on
+   success), so the rejections came afterwards, during **resubmission**. That was the
+   silent-death path fixed in `cc50e42`.
 
-Three things about the permission flow that are easy to get wrong again:
+So the sequence to expect now is: start succeeds, some resubmissions are refused, and
+the stream dies. The fix in `cc50e42` makes that death visible instead of a hang.
+
+#### Hypotheses already eliminated — do not spend rounds on these again
+- **Not the manifest.** `USB_DEVICE_ATTACHED` action and the `@xml/usb_device_filter`
+  meta-data are both present and correct (`class="1"`).
+- **Not the format policy.** `NativePcmSource.SUPPORTED_EXTENSIONS` includes `flac`, so
+  FLAC is eligible for the USB path.
+- **Not the loopback backend.** The transport name proves the real one is installed.
+- **Not the FLAC decoder's LPC support.** `decodeLpcSubframe` implements orders 1-32.
+  The old claim that it emitted silence was false; see the test-gaps entry below.
+- **Not `startPlayback()` returning false.** It could not fail: it discarded
+  `IsochronousTransfer::start()`'s return value. Fixed in `3b3d006`.
+- **Not the app not asking for permission.** Fixed in `e2185b4`/`ebdf338`.
+
+#### Candidate next steps, ranked
+1. **Ask for the numbers before changing code.** Player → output badge → Audio info →
+   the `USB DAC` section: `Status`, `Claimed by engine`, `Last configured stream`
+   (interface / alt setting / endpoint / bytes-per-packet / rejected count), plus the
+   red message on the player. Those five values distinguish every remaining cause, and
+   they exist precisely because guessing has been expensive here.
+2. **Device speed.** `calculateNominalPacketSize` hardcodes the high-speed divisor
+   (8000 microframes/s). Most UAC1 DACs are full-speed at 1000 frames/s and want
+   ~8× larger packets. Nothing in the codebase detects speed. If the panel reports a
+   small packet size (24 B for 44.1/16/2) and transfers are rejected or the audio runs
+   fast, this is the most likely remaining cause. `USBDEVFS_CONNECTINFO` gives the
+   speed; there is no wrapper for it yet.
+3. **The feedback endpoint.** 44100 frames/s does not divide into either schedule, so
+   no constant packet size can carry it exactly. The asynchronous feedback endpoint is
+   parsed and never consumed. Until it is, expect small pitch error even once audio
+   flows. Do not attempt this before audio flows at all.
+4. **`wMaxPacketSize` is never checked.** `UsbdevfsIsoBackend::submit` writes the
+   computed nominal size into every `iso_frame_desc[].length` without comparing it
+   against the endpoint's advertised maximum. If it exceeds it, the kernel returns
+   `EINVAL`. The descriptor value is parsed and available.
+
+Things in this area that are easy to get wrong again:
 - **The app-chooser is the grant.** With a `USB_DEVICE_ATTACHED` filter, picking the app
   in Android's "choose an app for the USB device" dialog grants permission *silently* —
   no `ACTION_USB_PERMISSION` broadcast, because the app never asked. `hasPermission()`
@@ -719,11 +793,14 @@ Not every assistant or IDE can link a repository. In rough order of preference:
 
 ### Option A — upload a source zip (works almost everywhere)
 
-Download the source as a single file, in a phone browser, no login needed:
+Download the source as a single file, in a phone browser, no login needed. **Use the
+branch, not `main`** — `main` does not have the USB work:
 
 ```
-https://github.com/manishyadavji14-hash/Tata/archive/refs/heads/main.zip
+https://github.com/manishyadavji14-hash/Tata/archive/refs/heads/fix/usb-dac-never-claimed.zip
 ```
+
+Once PR #8 is merged, `.../heads/main.zip` is the one to use.
 
 Then upload that zip to the platform. `.gitattributes` marks `dist/` as
 `export-ignore`, so the archive contains **only source — roughly 1.5 MB, not the
@@ -738,17 +815,20 @@ here, so if the platform can run git, prefer cloning over the zip. If it cannot,
 
 ```bash
 git clone https://github.com/manishyadavji14-hash/Tata.git
-# main already has everything; no branch checkout needed
+cd Tata
+# The USB work is NOT on main. Until PR #8 is merged:
+git checkout fix/usb-dac-never-claimed
 ```
 
-Keeps full history. Upload or point the tool at the directory.
+Keeps full history, which matters here — the commit messages are the design record.
+Upload or point the tool at the directory.
 
 ### Option C — text-only platform, no upload at all
 
 Paste these two files into the conversation, in this order:
 
 1. `AGENTS.md` (~3 KB) — the rules and how the maintainer works
-2. `HANDOFF.md` (this file, ~13 KB) — state, build, architecture, backlog, traps
+2. `HANDOFF.md` (this file, ~40 KB) — state, build, architecture, backlog, traps
 
 Together they are about 4,000 words and fit comfortably in a modern context
 window. Then paste only the specific source files the task touches — use the
@@ -760,10 +840,11 @@ For anything touching playback or the native engine, get the real source in.
 
 ### Getting the built app, independent of all of the above
 
-The APK download never requires a platform integration — it is a plain URL:
+The APK download never requires a platform integration — it is a plain URL. Again,
+the branch until PR #8 is merged:
 
 ```
-https://github.com/manishyadavji14-hash/Tata/raw/main/dist/BitPerfect-debug-arm64.apk
+https://github.com/manishyadavji14-hash/Tata/raw/fix/usb-dac-never-claimed/dist/BitPerfect-debug-arm64.apk
 ```
 
 If GitHub itself is unreachable, any assistant with a working Android toolchain
@@ -779,7 +860,7 @@ text-only session can request the right subset.
 ### Playback (Kotlin) — `app/src/main/java/com/bitperfect/android/player/`
 | File | Role |
 |---|---|
-| `PlaybackController.kt` | State machine, queue operations, **per-track sink selection** |
+| `PlaybackController.kt` | State machine, queue operations, **per-track sink selection**, `moveCurrentTrackToPreferredOutput`, the USB→Android fallback in `sinkListener.onError`, `usbBypassReason`, `usbRefusedTracks` |
 | `PlaybackSink.kt` | Interface both outputs implement |
 | `AudioTrackPlaybackSink.kt` | Android mixer output. Holds the end-of-track drain logic |
 | `UsbPlaybackSink.kt` | Bit-perfect output via the native engine ring buffer |
@@ -813,10 +894,14 @@ palette extraction — reuse this for the visualization spectrum),
 `diagnostics/`, `equalizer/`, `queue/`, `playlist/`, `detail/`, `settings/`.
 
 ### Library — `app/src/main/java/com/bitperfect/android/library/`
-`MusicLibrary.kt` (facade, all suspend; ZIP import), `LibraryDatabase.kt` (Room,
-schema v3, migrations), `MetadataExtractor.kt`,
+`MusicLibrary.kt` (facade, all suspend; ZIP import; `repairMissingArtwork`),
+`LibraryDatabase.kt` (Room, schema **v4**, migrations),
+`MetadataExtractor.kt`,
 `EmbeddedLyricsReader.kt` (ID3/Vorbis/MP4 tag parsing — pure, no Android APIs),
-`scanner/LibraryScanner.kt`, `scanner/MediaStoreAudioSource.kt`, `dao/`, `model/`.
+`scanner/LibraryScanner.kt`, `scanner/MediaStoreAudioSource.kt`,
+`scanner/AudioFormatProbe.kt` (+ `ProbedFormat`, which carries `durationMs`),
+`scanner/TrackFreshness.kt` (**pure**: is the stored row, or the media index, still
+describing the file on disk — see the trap in section 5), `dao/`, `model/`.
 
 ### Native engine — `app/src/main/cpp/`
 | Path | Role |
@@ -827,11 +912,25 @@ schema v3, migrations), `MetadataExtractor.kt`,
 | `usb/isochronous_transfer.{h,cpp}` | Queueing, resubmit loop, statistics |
 | `usb/usb_audio_device.cpp` | UAC1/UAC2 descriptor parsing |
 | `usb/usb_control.cpp` | UAC rate negotiation (`SET_CUR`, `SET_INTERFACE`) |
-| `decoder/flac_decoder.cpp` | **Not trusted for playback** — see section 4 |
+| `decoder/flac_decoder.cpp` | Verbatim, constant, fixed and **LPC** subframes. Unverified against a real encoded file — see section 4 |
 | `decoder/wav_decoder.cpp` | Reliable |
 | `buffer/ring_buffer.cpp` | Lock-free SPSC, the real-time boundary |
 | `pcm/`, `dsd/`, `dop/`, `native_dsd/` | Format conversion and DSD transport |
-| `tests/` | 282 tests; `test_usb_iso_backend.cpp` covers the transport |
+| `tests/` | 292 tests; `test_usb_iso_backend.cpp` and `test_isochronous_transfer.cpp` cover the transport |
+
+### USB (Kotlin) — `app/src/main/java/com/bitperfect/android/usb/`
+The live task's code. See section 4.
+
+| File | Role |
+|---|---|
+| `UsbAudioManager.kt` | Android USB host wrapper. Claims the streaming interface (`force = true`), hands the fd to native, owns **two** receivers with opposite export flags, and implements the alternate-setting selector |
+| `UsbPermissionHandler.kt` | attach → permission → open → configure. `reconcile()` is what notices the app-chooser's silent grant |
+| `UsbErrorRecovery.kt` | Classifies playback errors. **Its `SKIP_TRACK` action calls `playbackController.next()`** — see the trap in section 5 before routing anything new into it |
+
+Owner of the chain is `ui/MainActivity.kt` (`ensureUsbAudioOwner`, `wireUsbAudio`),
+because the `USB_DEVICE_ATTACHED` intent filter targets the activity. Published
+process-wide through `ServiceLocator.setUsbAudioOwner` / `setUsbControls`, paired with
+the engine it was built for. `PlaybackService` adopts it rather than building a second.
 
 ### Config
 `app/build.gradle.kts` (SDK/NDK versions, dependencies, R8 for debug),

@@ -5,10 +5,17 @@ without a local toolchain or a GitHub login.
 
 ## Download
 
-**[BitPerfect-debug-arm64.apk](https://github.com/manishyadavji14-hash/Tata/raw/main/dist/BitPerfect-debug-arm64.apk)**
+**[BitPerfect-debug-arm64.apk](https://github.com/manishyadavji14-hash/Tata/raw/fix/usb-dac-never-claimed/dist/BitPerfect-debug-arm64.apk)**
 
 Open that link in the phone's browser and it downloads directly. Android will
 ask you to allow installing from the browser the first time.
+
+> **That link points at the `fix/usb-dac-never-claimed` branch, not `main`.** All the
+> USB DAC work is on that branch as PR #8, unmerged, so the copy of this APK on `main`
+> is several builds old. Once
+> [PR #8](https://github.com/manishyadavji14-hash/Tata/pull/8) is merged, this becomes
+> the right link again and the note can go:
+> `https://github.com/manishyadavji14-hash/Tata/raw/main/dist/BitPerfect-debug-arm64.apk`
 
 ## What this build is
 
