@@ -38,7 +38,26 @@ class LibraryScanner(
      * Results are cached by file identity, so a rescan does not re-read covers it
      * has already extracted.
      */
-    private val artworkResolver: ((audioPath: String, mediaStoreUri: String?) -> String?)? = null
+    private val artworkResolver: ((audioPath: String, mediaStoreUri: String?) -> String?)? = null,
+    /**
+     * The file's real size and modification time, or null when it cannot be read.
+     *
+     * Injected so the freshness rules can be exercised without a filesystem, and
+     * defaulted to the filesystem itself. It exists at all because the scan used to
+     * decide whether a file had changed by comparing the media index against itself;
+     * see [TrackFreshness].
+     */
+    private val fileFacts: (String) -> TrackFreshness.FileFacts? = { path ->
+        val file = java.io.File(path)
+        if (file.isFile) {
+            TrackFreshness.FileFacts(
+                sizeBytes = file.length(),
+                lastModifiedMs = file.lastModified()
+            )
+        } else {
+            null
+        }
+    }
 ) {
 
     /**
@@ -166,15 +185,30 @@ class LibraryScanner(
             if (isCancelled) break
 
             val existing = existingTracks[entry.path]
+
+            // Read once per file and shared by both decisions below: whether the
+            // stored row is still accurate, and whether the media index is.
+            val onDisk = fileFacts(entry.path)
+
             val isUnchanged = existing != null &&
-                existing.lastModified == entry.lastModified &&
-                existing.fileSize == entry.fileSize
+                TrackFreshness.isRowCurrent(
+                    storedSizeBytes = existing.fileSize,
+                    storedModifiedMs = existing.lastModified,
+                    onDisk = onDisk
+                )
 
             if (isUnchanged) {
                 // Preserve the stored row, including its album id.
                 tracks.add(existing)
             } else {
-                tracks.add(buildTrack(entry, existingId = existing?.id ?: 0L))
+                tracks.add(
+                    buildTrack(
+                        entry = entry,
+                        existingId = existing?.id ?: 0L,
+                        existing = existing,
+                        onDisk = onDisk
+                    )
+                )
                 if (existing == null) added++ else updated++
             }
 
@@ -253,7 +287,14 @@ class LibraryScanner(
         return track.copy(
             sampleRate = probed.sampleRate,
             bitDepth = probed.bitDepth,
-            channels = probed.channels
+            channels = probed.channels,
+            // Taken from the decoder when the platform retriever gave none. A track
+            // with no duration shows a dead progress bar with no end to it.
+            duration = TrackFreshness.preferMeasuredDuration(
+                measuredMs = probed.durationMs,
+                indexedMs = 0L,
+                storedMs = track.duration
+            )
         )
     }
 
@@ -312,18 +353,36 @@ class LibraryScanner(
      */
     private fun buildTrack(
         entry: MediaStoreAudioSource.AudioFileEntry,
-        existingId: Long
+        existingId: Long,
+        existing: Track? = null,
+        onDisk: TrackFreshness.FileFacts? = null
     ): Track {
         val fallbackTitle = entry.path.substringAfterLast('/').substringBeforeLast('.')
 
-        // Only open the file when the media index left the format blank, which
-        // is every track below Android 12. Probing is per-file I/O, so it is
-        // limited to new and modified entries by the caller.
-        val probed = if (entry.sampleRate <= 0 || entry.bitDepth <= 0) {
+        // Whether the media index's own numbers can be believed for this file.
+        val indexCurrent = TrackFreshness.isIndexCurrent(
+            indexedSizeBytes = entry.fileSize,
+            indexedModifiedMs = entry.lastModified,
+            onDisk = onDisk
+        )
+
+        // Open the file when the index left the format blank — every track below
+        // Android 12 — and also when the index is demonstrably describing a
+        // different file. That second case is the one that mattered: the index
+        // reported a rate and depth with full confidence, so the probe was skipped
+        // and its stale answer was written to the library unchallenged, scan after
+        // scan. Probing is per-file I/O, which is why it stays conditional.
+        val probed = if (!indexCurrent || entry.sampleRate <= 0 || entry.bitDepth <= 0) {
             formatProbe?.probe(entry.path)
         } else {
             null
         }
+
+        // Once the index is known to be wrong about the file, its technical fields
+        // are not evidence about it either.
+        val indexedSampleRate = if (indexCurrent) entry.sampleRate else 0
+        val indexedBitDepth = if (indexCurrent) entry.bitDepth else 0
+        val indexedDuration = if (indexCurrent) entry.durationMs else 0L
 
         return Track(
             id = existingId,
@@ -339,18 +398,42 @@ class LibraryScanner(
             composer = entry.composer,
             trackNumber = entry.trackNumber,
             discNumber = entry.discNumber,
-            duration = entry.durationMs,
+            // Measured beats indexed beats stored, and nothing is ever overwritten
+            // with zero — the rule the artwork path already had, which the technical
+            // fields did not: one scan where the probe could not open a file used to
+            // empty the format text for that track.
+            duration = TrackFreshness.preferMeasuredDuration(
+                measuredMs = probed?.durationMs ?: 0L,
+                indexedMs = indexedDuration,
+                storedMs = existing?.duration ?: 0L
+            ),
             format = entry.format,
-            sampleRate = entry.sampleRate.takeIf { it > 0 } ?: probed?.sampleRate ?: 0,
-            bitDepth = entry.bitDepth.takeIf { it > 0 } ?: probed?.bitDepth ?: 0,
-            channels = probed?.channels ?: 0,
+            sampleRate = TrackFreshness.preferMeasured(
+                measured = probed?.sampleRate ?: 0,
+                indexed = indexedSampleRate,
+                stored = existing?.sampleRate ?: 0
+            ),
+            bitDepth = TrackFreshness.preferMeasured(
+                measured = probed?.bitDepth ?: 0,
+                indexed = indexedBitDepth,
+                stored = existing?.bitDepth ?: 0
+            ),
+            channels = TrackFreshness.preferMeasured(
+                measured = probed?.channels ?: 0,
+                indexed = 0,
+                stored = existing?.channels ?: 0
+            ),
             // Prefer a cover that can be shown over the one MediaStore names but
             // cannot open.
             artworkPath = artworkResolver?.invoke(entry.path, entry.artworkUri)
                 ?: entry.artworkUri,
             year = entry.year,
-            fileSize = entry.fileSize,
-            lastModified = entry.lastModified,
+            // Recorded from the filesystem when it can be read, so the next scan
+            // compares the row against the file rather than against the media
+            // index's record of the file. Storing the index's values is what made
+            // the freshness test self-confirming.
+            fileSize = onDisk?.sizeBytes?.takeIf { it > 0L } ?: entry.fileSize,
+            lastModified = onDisk?.lastModifiedMs?.takeIf { it > 0L } ?: entry.lastModified,
             // A file that does not say who made it is a recording, ringtone or
             // voice note far more often than it is music, so it is quarantined
             // out of the main library instead of cluttering it. Never deleted:

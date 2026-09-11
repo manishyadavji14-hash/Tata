@@ -19,7 +19,7 @@ ask you to allow installing from the browser the first time.
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
 | Size | 16.2 MiB (16,995,470 bytes) |
-| SHA-256 | `bbf75035ac9c913d50934b7320e184a8b3f7cdec9d6344b7d1bc008ac14e0f13` |
+| SHA-256 | `75988eb5fdb9cc1e7ea196dc3e64b73b63351d9287303a7c95ce59df1e468019` |
 
 Verify the download matches before installing:
 
@@ -46,6 +46,44 @@ badge at the bottom left, and the Audio info panel will say whether notification
 are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
+
+**Correction: last build I told you to rescan. That could not have worked.** I went
+looking for why, and the scan itself was the fault.
+
+The scan decided whether a file had changed by comparing the size and date it had
+stored against the size and date **Android's media index** reported. But the stored
+values had been copied from that same index on the previous scan. So the question it
+was really asking was *"has the index changed its mind?"* — and an index that has gone
+stale never does. Your replaced FLAC could keep its old entry forever, and no number of
+rescans would touch it, because the scan never opened the file to find out. That is why
+the library said 48 kHz / 24-bit / 4:39 for a file the player reads as 192 kHz / 7:05.
+
+**Now a scan checks the actual file.** It compares against the real size and
+modification time on disk, which cannot go stale, and stores those instead — so from
+now on the comparison is row-against-file rather than index-against-itself. And when the
+index is shown to be wrong about a file's size, its sample rate, bit depth and duration
+are no longer treated as evidence about that file either: the decoder is opened and
+asked directly.
+
+**Duration can now be measured.** It previously had no source except the media index —
+so even when a probe corrected the rate and bit depth, the duration stayed wrong
+permanently. The decoder knows the real frame count from the file's own header, so it
+reports the true length now.
+
+**A scan can no longer empty a field that was already correct.** Sample rate, bit depth
+and duration follow the same rule the album-art code already had: what the file yields
+now, then what the index says, then what was already recorded — and never overwritten
+with zero. One scan where a file could not be opened used to blank the format text for
+that track.
+
+> **So: tap refresh on the Library screen once with this build.** This time it will
+> actually re-read the files whose size on disk no longer matches what was recorded. For
+> your Céline Dion file I expect it to come back as 192 kHz with a 7:05 duration, and the
+> "Library entry is out of date" line in Audio info to disappear. Then the numbers on the
+> Library screen and in the player will finally agree, and we can go back to the DAC with
+> figures we can trust.
+
+---
 
 **"Only mono and stereo audio is supported" was the wrong message.** Your file is
 stereo, so that told you nothing true. One `if` covered two unrelated failures — a bad

@@ -15,7 +15,7 @@ each change and are deliberately detailed.**
 |---|---|
 | Work on | **`fix/usb-dac-never-claimed`** — PR #8 open against `main`; PR #7 merged as `c833bdc` |
 | Prebuilt APK | `dist/BitPerfect-debug-arm64.apk` (16.2 MiB, pinned debug key `CN=BitPerfect Debug`, arm64 only) |
-| Test status | **292** native C++ tests, **466** JVM unit tests, `lintDebug` 0 errors (194 warnings, all pre-existing) |
+| Test status | **292** native C++ tests, **479** JVM unit tests, `lintDebug` 0 errors (194 warnings, all pre-existing) |
 | Database | schema **v4** — `addedAt`, `playedMs`, `isUserEdited`; MIGRATION_3_4 also re-applies quarantine |
 | Target device used for testing | vivo I2501, Android 16 (API 36), arm64-v8a |
 
@@ -130,7 +130,7 @@ sdk.dir=/path/to/android-sdk
 # Debug APK. `clean` matters — see the packaging trap in section 5.
 ./gradlew clean :app:assembleDebug
 
-# JVM unit tests (expect 466 passing)
+# JVM unit tests (expect 479 passing)
 ./gradlew :app:testDebugUnitTest
 
 # Lint (expect 0 errors, 194 warnings; all pre-existing)
@@ -444,6 +444,18 @@ Three things about the permission flow that are easy to get wrong again:
   sends a file with no exact decoder to Android's output with
   `PlaybackController.usbBypassReason` set, rather than starting it on the USB sink and
   failing. Starting-then-failing left the player reset to 0:00 with the reason gone.
+- **The scan's freshness test used to compare the media index against itself.**
+  `LibraryScanner` decided "has this file changed" from `existing.fileSize` /
+  `lastModified` versus MediaStore's `SIZE` / `DATE_MODIFIED` — but the stored values
+  had been copied *from MediaStore* on the previous scan. So the question was "has the
+  index changed its mind", which a stale index never does: a file replaced in place
+  kept its old row for good and **rescanning could not fix it**. Advice to "just
+  rescan" was worthless, and was given. Both decisions now go through
+  `TrackFreshness`, which compares against the filesystem, and rows record the real
+  `File.length()`/`lastModified()` so the next scan compares row-to-file. Once the
+  index is known wrong about a file's size, its sample rate, bit depth and duration
+  are not believed either and the decoder is probed instead. `ProbedFormat` gained
+  `durationMs` because duration previously had no measured source at all.
 - **The library's technical metadata can be stale, and two readers will then
   disagree.** `MediaStoreAudioSource` takes `SAMPLERATE`, `BITS_PER_SAMPLE` and
   duration from Android's media index, written once by the system scanner;

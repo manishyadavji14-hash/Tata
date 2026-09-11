@@ -42,7 +42,15 @@ class NativeAudioFormatProbe(
                 ProbedFormat(
                     sampleRate = format.sampleRate,
                     bitDepth = format.bitsPerSample,
-                    channels = format.channels
+                    channels = format.channels,
+                    // The decoder knows the frame count from the file's own header,
+                    // so this is the file's real length rather than the media
+                    // index's record of it.
+                    durationMs = if (format.sampleRate > 0 && format.totalFrames > 0) {
+                        format.totalFrames * 1000L / format.sampleRate
+                    } else {
+                        0L
+                    }
                 ).takeIf { it.isUsable }
             }
         } catch (error: UnsatisfiedLinkError) {
