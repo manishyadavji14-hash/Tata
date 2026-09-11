@@ -99,6 +99,15 @@ public:
     const char* backendName() const;
 
     /**
+     * The transport's last failure as a positive errno, or 0. See
+     * UsbIsoBackend::lastError.
+     */
+    int backendLastError() const;
+
+    /** Endpoint the transfers address, for diagnostics. */
+    uint8_t getEndpointAddress() const { return config_.endpointAddress; }
+
+    /**
      * Configure the transfer parameters.
      */
     bool configure(const IsoTransferConfig& config);
@@ -151,8 +160,15 @@ public:
                                                uint32_t bytesPerFrame);
 
     /**
-     * Calculate nominal packet size for a sample rate and format.
-     * For high-speed (125us microframes): size = (sampleRate * bytesPerFrame) / 8000
+     * Nominal packet size for a sample rate and format.
+     *
+     * For high-speed (125us microframes): (sampleRate * bytesPerFrame) / 8000,
+     * rounded up, then rounded up again to a whole frame — a packet carrying part of
+     * a frame shifts the channel order of everything after it.
+     *
+     * This does not make the rate exact. 44100 frames/s does not divide into 8000
+     * packets/s, so no constant packet size can carry it; that needs the device's
+     * feedback endpoint, which is parsed and not yet consumed.
      */
     static uint32_t calculateNominalPacketSize(uint32_t sampleRate, uint32_t bytesPerFrame);
 
@@ -178,6 +194,12 @@ private:
     TransferStatistics stats_;
     std::atomic<bool> active_{false};
     std::atomic<uint32_t> outstandingTransfers_{0};
+
+    /**
+     * Consecutive failed resubmissions. When this reaches the queue depth every
+     * transfer has dropped out and the stream cannot recover on its own.
+     */
+    std::atomic<size_t> consecutiveResubmitFailures_{0};
 
     std::shared_ptr<UsbIsoBackend> backend_;
     std::thread reaperThread_;

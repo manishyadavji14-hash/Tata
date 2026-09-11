@@ -99,6 +99,18 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
     private var ownsEngineAndController = false
 
     /**
+     * False when the USB manager came from ServiceLocator, in which case the
+     * Activity claimed the DAC and this service must not close it.
+     *
+     * This service used to build its own `UsbAudioManager` unconditionally and call
+     * `closeDevice()` on it in onDestroy. `closeDevice()` detaches USB from the
+     * *engine*, and the engine is shared — so tearing this service down would have
+     * dropped a DAC the Activity had claimed, silently returning playback to the
+     * Android mixer.
+     */
+    private var ownsUsbAudioManager = false
+
+    /**
      * True once initializeComponents has completed. The lateinit fields above are
      * only safe to touch when this is set, so every entry point the system can
      * call has to check it rather than assume construction succeeded.
@@ -336,8 +348,10 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
             engine.shutdown()
         }
 
-        usbAudioManager.closeDevice()
-        usbAudioManager.unregisterReceiver()
+        if (ownsUsbAudioManager) {
+            usbAudioManager.closeDevice()
+            usbAudioManager.unregisterReceiver()
+        }
         super.onDestroy()
     }
 
@@ -506,8 +520,19 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
         // Initialize audio manager
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
-        // Initialize USB components
-        usbAudioManager = UsbAudioManager(this, engine)
+        // Adopt the USB manager that actually holds the DAC, for the same reason as
+        // the engine above: only one component may own the claimed interface, and it
+        // is the Activity, because the USB_DEVICE_ATTACHED intent filter targets it.
+        // A second manager here would register a duplicate receiver and hand error
+        // recovery a manager that has no device to recover.
+        val sharedUsbManager = ServiceLocator.usbAudioManagerFor(engine)
+        if (sharedUsbManager != null) {
+            usbAudioManager = sharedUsbManager
+            ownsUsbAudioManager = false
+        } else {
+            usbAudioManager = UsbAudioManager(this, engine)
+            ownsUsbAudioManager = true
+        }
         usbPermissionHandler = UsbPermissionHandler(this, usbAudioManager)
         usbErrorRecovery = UsbErrorRecovery(usbAudioManager, playbackController, engine)
 
@@ -530,8 +555,11 @@ class PlaybackService : MediaBrowserServiceCompat(), AudioManager.OnAudioFocusCh
             null
         }
 
-        // Register USB receiver
-        usbAudioManager.registerReceiver()
+        // Only when this service built the manager. The shared one already has its
+        // receiver registered by the Activity, against the application context.
+        if (ownsUsbAudioManager) {
+            usbAudioManager.registerReceiver()
+        }
 
         // Publish whatever is already playing.
         //

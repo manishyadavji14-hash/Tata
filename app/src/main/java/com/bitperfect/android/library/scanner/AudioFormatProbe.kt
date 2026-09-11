@@ -24,7 +24,17 @@ fun interface AudioFormatProbe {
 data class ProbedFormat(
     val sampleRate: Int,
     val bitDepth: Int,
-    val channels: Int
+    val channels: Int,
+    /**
+     * Length as the decoder computes it, or 0 when unknown.
+     *
+     * Carried because duration had no measured source at all: the scan took it from
+     * the media index and nowhere else, so a stale index meant a stale duration even
+     * once the rate and bit depth had been corrected by a probe. Duration is also the
+     * figure the player compares against to notice the library is out of date, so it
+     * being uncorrectable made the mismatch permanent.
+     */
+    val durationMs: Long = 0L
 ) {
     val isUsable: Boolean
         get() = sampleRate > 0 && bitDepth > 0

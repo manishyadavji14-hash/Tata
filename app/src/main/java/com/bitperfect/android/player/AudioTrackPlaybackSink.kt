@@ -562,11 +562,31 @@ class AudioTrackPlaybackSink(
         generation.get() == playGeneration
 
     private fun validateFormat(format: PcmSource) {
-        if (format.sampleRate <= 0 || format.channels !in 1..2) {
-            throw PlaybackException("Only mono and stereo audio is supported")
+        // One condition and one message used to cover two unrelated failures, so a
+        // file whose decoder reported no sample rate was told "only mono and stereo
+        // audio is supported" — a statement about channels, about a stereo file.
+        // Whoever read that was sent to look in the wrong place, and did.
+        //
+        // Each message now names the value that was actually found, because "this
+        // decoded as 6 channels" is a fact that can be checked and acted on, and
+        // "only mono and stereo is supported" is a policy that cannot.
+        if (format.sampleRate <= 0) {
+            throw PlaybackException(
+                "The ${format.codecName} decoder reported no sample rate for this " +
+                    "file, so there is nothing to play it at"
+            )
+        }
+        if (format.channels !in 1..2) {
+            throw PlaybackException(
+                "Android output handles mono and stereo; the ${format.codecName} " +
+                    "decoder reported ${format.channels} channels"
+            )
         }
         if (format.bitsPerSample !in SUPPORTED_BIT_DEPTHS) {
-            throw PlaybackException("Only 16-, 24-, and 32-bit integer PCM is supported")
+            throw PlaybackException(
+                "Android output handles 16-, 24- and 32-bit PCM; the " +
+                    "${format.codecName} decoder reported ${format.bitsPerSample}-bit"
+            )
         }
         if (format.bitsPerSample > 16 && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
             throw PlaybackException("24/32-bit output requires Android 12 or newer")

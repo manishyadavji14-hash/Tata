@@ -5,21 +5,28 @@ without a local toolchain or a GitHub login.
 
 ## Download
 
-**[BitPerfect-debug-arm64.apk](https://github.com/manishyadavji14-hash/Tata/raw/main/dist/BitPerfect-debug-arm64.apk)**
+**[BitPerfect-debug-arm64.apk](https://github.com/manishyadavji14-hash/Tata/raw/fix/usb-dac-never-claimed/dist/BitPerfect-debug-arm64.apk)**
 
 Open that link in the phone's browser and it downloads directly. Android will
 ask you to allow installing from the browser the first time.
+
+> **That link points at the `fix/usb-dac-never-claimed` branch, not `main`.** All the
+> USB DAC work is on that branch as PR #8, unmerged, so the copy of this APK on `main`
+> is several builds old. Once
+> [PR #8](https://github.com/manishyadavji14-hash/Tata/pull/8) is merged, this becomes
+> the right link again and the note can go:
+> `https://github.com/manishyadavji14-hash/Tata/raw/main/dist/BitPerfect-debug-arm64.apk`
 
 ## What this build is
 
 | | |
 |---|---|
-| Contains | everything on `feat/library-sort-and-track-actions`: library sort, play statistics, the per-song menu, and the album-art fixes through to the MediaStore thumbnail fix |
+| Contains | everything on `fix/usb-dac-never-claimed`: the USB DAC wiring below, the spectrum analyser and draggable player, library sort, play statistics, the per-song menu, and the album-art fixes through to the MediaStore thumbnail fix |
 | ABI | `arm64-v8a` only |
 | minSdk / targetSdk | 29 / 36 |
 | Signing | Fixed debug key committed to this repo (`CN=BitPerfect Debug`), SHA-256 `131cba07…eccff5` — stable from this build onwards, so future builds install straight over the top |
-| Size | 16.2 MiB (16,946,318 bytes) |
-| SHA-256 | `1bf39c3c2eefd904d0a3bc1107c20eb618172df314c09bd44dcbc7cd59db06bf` |
+| Size | 16.2 MiB (16,995,470 bytes) |
+| SHA-256 | `75988eb5fdb9cc1e7ea196dc3e64b73b63351d9287303a7c95ce59df1e468019` |
 
 Verify the download matches before installing:
 
@@ -47,7 +54,255 @@ are blocked, with an **Allow** button that takes you straight to the setting.
 
 ## New in this build
 
-**The output badge shows the right icon.** It was always a USB symbol, so a phone
+**Correction: last build I told you to rescan. That could not have worked.** I went
+looking for why, and the scan itself was the fault.
+
+The scan decided whether a file had changed by comparing the size and date it had
+stored against the size and date **Android's media index** reported. But the stored
+values had been copied from that same index on the previous scan. So the question it
+was really asking was *"has the index changed its mind?"* — and an index that has gone
+stale never does. Your replaced FLAC could keep its old entry forever, and no number of
+rescans would touch it, because the scan never opened the file to find out. That is why
+the library said 48 kHz / 24-bit / 4:39 for a file the player reads as 192 kHz / 7:05.
+
+**Now a scan checks the actual file.** It compares against the real size and
+modification time on disk, which cannot go stale, and stores those instead — so from
+now on the comparison is row-against-file rather than index-against-itself. And when the
+index is shown to be wrong about a file's size, its sample rate, bit depth and duration
+are no longer treated as evidence about that file either: the decoder is opened and
+asked directly.
+
+**Duration can now be measured.** It previously had no source except the media index —
+so even when a probe corrected the rate and bit depth, the duration stayed wrong
+permanently. The decoder knows the real frame count from the file's own header, so it
+reports the true length now.
+
+**A scan can no longer empty a field that was already correct.** Sample rate, bit depth
+and duration follow the same rule the album-art code already had: what the file yields
+now, then what the index says, then what was already recorded — and never overwritten
+with zero. One scan where a file could not be opened used to blank the format text for
+that track.
+
+> **So: tap refresh on the Library screen once with this build.** This time it will
+> actually re-read the files whose size on disk no longer matches what was recorded. For
+> your Céline Dion file I expect it to come back as 192 kHz with a 7:05 duration, and the
+> "Library entry is out of date" line in Audio info to disappear. Then the numbers on the
+> Library screen and in the player will finally agree, and we can go back to the DAC with
+> figures we can trust.
+
+---
+
+**"Only mono and stereo audio is supported" was the wrong message.** Your file is
+stereo, so that told you nothing true. One `if` covered two unrelated failures — a bad
+channel count *and* a missing sample rate — and printed the channel message for both.
+Every failure now names the value that was actually found, and which decoder found it,
+so the message is a fact you can check rather than a policy you can't act on.
+
+**The numbers beside the error belonged to a different moment.** The screen showed
+"FLAC · 16-bit · 192.0 kHz · 2ch" and "1:13 / 7:05" underneath a message saying nothing
+could be played. Those were left over from the last track that *did* play — the failure
+state was copying the previous state and only adding the red text. They read like
+evidence about the file that failed, and were not. They are cleared now.
+
+**Your library and your file disagree, and that is the real story here.** Look at the
+two screenshots together: the library says this file is **48 kHz / 24-bit / 4:39**, the
+player says **192 kHz / 7:05**. Both are reading the same path. The library takes rate,
+bit depth and duration from Android's media index, which is written **once** by the
+system scanner — so if a file is replaced while keeping its name, which is exactly what
+happens when you re-copy a rip, that entry goes on describing the file that used to be
+there. The player opens the real file every time. Neither was lying; nothing anywhere
+compared them.
+
+The Audio info panel now does. When the library's record does not match the file, the
+Source section says so outright — **"Library entry is out of date"** — with both
+durations and what to do about it.
+
+> **For this file: tap the refresh icon on the Library screen and let it rescan.** Then
+> check Info / Tags again. My expectation is that it will come back as 192 kHz, and that
+> the 132 MB file size will finally make sense — 132 MB is far too large for 48 kHz /
+> 24-bit at 4:39, and about right for 192 kHz at 7:05. If it does, the library was stale
+> and the player has been right all along.
+
+---
+
+**Your lossless files no longer skip themselves, and they play.** The runaway
+skipping was the worst of it and it had a single stupid cause: when a track failed on
+the DAC, the USB error-recovery code classified it as a decoder error and its response
+to that is *skip to the next track*. Every WAV and FLAC failed identically, so one tap
+ran the whole queue down at speed until it hit an MP3 — which played, because that file
+never went near the DAC. Nothing was wrong with your FLACs.
+
+A track the DAC will not take now **falls back to Android's output and keeps playing**,
+staying exactly where it is in the queue. Nothing skips. The Audio info panel says why
+under "Not using the DAC". So worst case you get your music through Android's mixer with
+an honest explanation, instead of a library that fast-forwards through itself.
+
+**Fixed a message that sent me looking in the wrong place too.** When the bit-perfect
+decoder could not open a file, the app said *"Bit-perfect USB output supports WAV and
+FLAC"* — about a FLAC file. It now distinguishes "this format has no exact decoder"
+from "the FLAC decoder could not open this particular file", which are completely
+different problems.
+
+**The transport could die mid-track in total silence.** Each block of audio is handed
+to the kernel and re-queued when it comes back. If a re-queue was refused, that block
+dropped out of the rotation permanently — and the return value was discarded. Once all
+four had dropped out the stream was dead while every flag still said it was running:
+the buffer filled, never drained, and the writer waited on a device that had stopped
+listening. Forever, with nothing reported. Your screenshot showed exactly this
+fingerprint — **8 rejected** with the stream reporting no error. Both halves are fixed:
+the stream now admits when it has died, and the player reports it.
+
+**Packets were splitting audio frames.** At 44.1 kHz/16-bit/stereo the app sent 23-byte
+packets against a 4-byte frame, so every packet after the first began part-way through a
+sample and the channel order shifted through the stream. Packet sizes are now always a
+whole number of frames. To be clear about what this does *not* fix: 44,100 frames a
+second does not divide evenly into the USB schedule, so a fixed packet size still cannot
+carry the rate exactly — that needs the DAC's feedback channel, which the engine reads
+and does not yet act on. If it now plays but sounds slightly fast, that is why.
+
+**Stale numbers are labelled as stale.** Your panel showed a 44.1 kHz packet size above
+a 48 kHz file, because those values describe the last stream that got as far as being
+configured, not the track on screen. That row now says **"Last configured stream"**, and
+the rejection count resets per attempt.
+
+---
+
+**The status now follows the song you are playing.** You were right, and this was a
+real fault, not a cosmetic one. That "Status" line was showing the last thing that
+*happened* to the DAC, not what is true *now* — so a message about your one M4A track
+stayed on screen as the apparent verdict on every FLAC track after it. It is now
+rebuilt from the engine every time you open the panel. The event itself is still
+there, on its own row, honestly labelled **"Last USB event"**.
+
+**Found why the FLAC track would not play, and it is not the FLAC.** Your screenshot
+was enough to pin it down exactly, because of what it ruled out: transport
+`usbdevfs isochronous`, claimed **Yes**, engine rate **44100** — so the DAC was
+claimed, the real transport was installed, and the file opened and configured fine.
+Streaming **No** with all of that true leaves exactly one possibility: the kernel
+rejected the very first block of audio.
+
+And the reason it looked like nothing happening is that the app **threw the failure
+away**. The engine's "start playing" call ignored whether the audio stream actually
+started and reported success either way — it even logged "Playback started". The only
+trace left was that flag reading No. That is fixed: a start that did not start now
+says so.
+
+**The likely cause, and the fix I have made for it.** A USB DAC advertises several
+"alternate settings" — one per bit depth and rate. Two separate pieces of this app
+were choosing one independently and never comparing notes: the USB layer switched the
+device to whichever setting it found first, while the engine addressed the audio
+endpoint belonging to the setting that matches the track's rate and bit depth. When
+those differ — which is any DAC with more than one setting — the kernel rejects the
+first block, because the endpoint is not in the setting that is actually active. The
+engine now says which setting it needs and the USB layer switches to that one, before
+any audio is sent.
+
+I cannot confirm this from here, so the same build also makes the answer readable:
+**if it still does not stream, the player now tells you precisely why** — "the DAC has
+no endpoint 0x… in its active setting 1", or "will not accept 23-byte packets", or
+"the bus has no bandwidth left". The kernel's reason for refusing was previously
+discarded on the spot; it is now kept and shown. The Audio info panel also gained a
+**Stream** row with the interface, alternate setting, endpoint, packet size and
+rejection count.
+
+> **What to send me if it still does not play:** the **Status** line, the **Stream**
+> line, and the red message on the player itself. Those three name the exact cause.
+
+**Correction to my own notes:** the FLAC decoder's documentation claimed it could not
+handle LPC compression and would emit silence. That was false — LPC has been fully
+implemented for some time. Since LPC is what every real FLAC encoder produces, that
+note read as "this cannot play normal FLAC files", and it nearly made me abandon a
+working code path. Both the decoder's comment and the project handoff are corrected.
+
+---
+
+Three faults found from your screenshots, all in the DAC path. The good news first:
+**the DAC itself works.** "TTGK Technology Co.,Ltd Audiocular Spark ready" means the
+app took the audio interface away from Android's driver and the engine accepted it.
+Everything below is about getting your music onto it.
+
+**"Just once" did nothing.** This is the big one. Android's "choose an app for the USB
+device" dialog *is* a permission grant — but it grants silently, because the app never
+asked, so no result is sent anywhere. The app was waiting for an answer to a question
+it hadn't been asked, and never looked to see that it already had permission. Picking
+BitPerfect and tapping "Just once" therefore left the DAC unopened and the app
+honestly reporting Android output. It now re-checks the moment that dialog is
+answered, so "Just once" and "Always" both work.
+
+**Only one dialog now.** You were getting two at once — Android's chooser, and the
+app's own permission request on top of it — where answering either dismissed the
+other. The app no longer asks on its own, because the chooser already does the job.
+If you ever dismiss the chooser by accident, there is now an **"Ask Android for DAC
+access"** button in the Audio info panel, which is a prompt you asked for rather than
+one that lands on top of another.
+
+**The DAC takes over the song that is already playing.** It used to wait for the next
+track, which is why it said "ready" and carried on through Android's output — reading
+exactly like the failure it was meant to have fixed. The current track now moves to
+the DAC at the position it had reached. There is a brief gap while it moves: each
+output owns its own worker thread and buffered audio, so this is a deliberate reopen,
+not a swap underneath the stream. Unplugging the DAC moves playback back the same way,
+instead of the music simply stopping.
+
+**A file the DAC cannot take no longer stops playback.** This is the "sometimes it
+doesn't play any song" case: your 40 Hz binaural test track is AAC, and AAC has no
+exact decoder — nothing can hand a DAC a stream that Android's codec decoded and still
+call it bit-perfect. The app used to start the track on the DAC anyway, fail, and reset
+to `0:00` with "No device" and the reason gone a moment later. It now sends that track
+to Android's output instead and says why, in the Audio info panel under **"Not using
+the DAC"**. WAV and FLAC — which is almost everything in your library — still go
+straight to the DAC untouched. The badge also no longer claims "No device" while a DAC
+is plugged in.
+
+---
+
+**The USB DAC is finally connected to the app (same build).** This is the fix for "I
+select BitPerfect in the USB dialog and it still says mixed by Android".
+
+The app was not failing to claim your DAC. It never tried. Every part of the USB
+chain was written — the code that claims the audio interface away from Android's
+driver, hands the file descriptor to the engine and negotiates the sample rate over
+control transfers — and not one line of it was ever called. Nothing registered a
+listener, nothing started monitoring, and the only place that registered for USB
+events was the playback service, which by design does not exist until music is
+already playing. So at the exact moment a DAC is plugged in and Android offers to
+launch this app, there was nothing in the app listening.
+
+The engine was therefore never told a DAC existed, and the rule that picks the output
+— "USB if a DAC is attached, otherwise Android's mixer" — had no attached DAC to find.
+"Android output / mixed by Android" was a completely honest report. Choosing BitPerfect
+in that dialog granted permission to a component that was not listening for it.
+
+Three further faults were in the way behind it:
+
+- **The permission request would have crashed the app** on Android 14 and newer, from
+  inside a broadcast receiver, because of how the pending intent was built. That is the
+  path taken by a DAC attached while the app is already open.
+- **Device-attached and device-detached events could not be received at all.** They are
+  sent by Android, and the receiver was registered as accepting nothing from outside the
+  app. The permission result, which really does come from this app, needs the opposite
+  setting — so the three were split apart.
+- **Stopping the playback service would have dropped the DAC.** It detached USB from the
+  shared engine on the way out, even though the DAC belonged to the activity, silently
+  returning playback to the Android mixer.
+
+**When you plug in a DAC, the app now says what happened.** Every failure in the attach
+sequence used to be a log line, which on a phone means it never existed. There is now a
+**USB DAC** section in the Audio info panel — player, output badge at the bottom left —
+with a plain-language status line and a "Claimed by engine" row. It distinguishes the
+cases that all used to look identical: no DAC, permission refused, another driver
+holding the audio interface, a device with no isochronous output endpoint, and a device
+the engine rejected. The same sentence appears as a message on the player when it
+happens.
+
+> **This is the one thing I need you to check**, because I have no DAC here and nothing
+> about USB can be tested without the hardware. Attach the DAC, choose BitPerfect, then
+> **play a FLAC track** and open the player → output badge → **Audio info**. Send me the
+> **USB DAC → Status** line and the **Claimed by engine** row. If the status names a
+> specific failure, that tells me exactly which step to fix next; if it says the DAC is
+> ready and claimed, **Bit-perfect** above it should read "Yes — samples unmodified".
+
+**The output badge shows the right icon (previous build).** It was always a USB symbol, so a phone
 playing through its own speaker still claimed a DAC in the chain. It now shows a phone
 when audio is going to Android's output and the USB symbol only when a DAC really is
 receiving it.
@@ -365,12 +620,16 @@ voice notes kept appearing.
 
 
 
-This is the first build in which audio can actually reach a USB DAC, so start
+This is the first build in which the app even attempts to claim a USB DAC, so start
 here rather than with playback:
 
-1. Attach the DAC by OTG and grant the USB permission prompt.
-2. Open **Diagnostics** and find the **Transport** card.
-3. It must read `usbdevfs isochronous`. If it reads `loopback (no hardware)`,
+1. Attach the DAC by OTG and grant the USB permission prompt (or choose BitPerfect
+   in Android's "choose an app for this USB device" dialog).
+2. Open the player, tap the **output badge at the bottom left**, and read the
+   **USB DAC** section. `Status` says how far the attach got; `Claimed by engine`
+   must read Yes.
+3. Then play a track and open **Diagnostics** → the **Transport** card.
+4. It must read `usbdevfs isochronous`. If it reads `loopback (no hardware)`,
    the streaming interface was never claimed and audio is going to the Android
    mixer instead.
 

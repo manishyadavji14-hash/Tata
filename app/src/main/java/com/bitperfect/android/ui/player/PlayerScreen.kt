@@ -177,7 +177,13 @@ fun PlayerScreen(
     if (isAudioInfoVisible) {
         AudioInfoDialog(
             info = viewModel.audioPipelineInfo(),
-            onDismiss = { isAudioInfoVisible = false }
+            onDismiss = { isAudioInfoVisible = false },
+            onRequestUsbAccess = {
+                isAudioInfoVisible = false
+                if (!viewModel.requestUsbAccess()) {
+                    viewModel.showExternalMessage("No USB audio device is attached")
+                }
+            }
         )
     }
 

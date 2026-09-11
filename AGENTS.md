@@ -5,9 +5,14 @@ repository. It is intentionally short; the detail is in `HANDOFF.md`.
 
 ## Start here
 
+0. **`main` is not the current state.** All USB DAC work is on
+   `fix/usb-dac-never-claimed`, open as PR #8 and unmerged. Check it out, and treat
+   every `.../raw/main/...` URL in the docs as stale until that PR is merged.
 1. **Read [`HANDOFF.md`](HANDOFF.md).** It has the current state, build commands,
    architecture and rationale, the prioritised backlog, a source map, and a list
-   of traps that have already cost real time.
+   of traps that have already cost real time. Its section 1 has a **START HERE**
+   block naming the one open task, and section 4 is the brief for it — including the
+   hypotheses already eliminated. Read those before proposing a cause.
 2. **Read recent `git log`.** Commit messages in this repo are detailed on
    purpose and are the primary design record. If you only have a source zip there
    is no history — `HANDOFF.md` is written to stand in for it.
@@ -38,6 +43,14 @@ Class isochronous transport.
 - They report bugs by attaching the crash files the app writes to
   `Download/bitperfect_crash.txt` and `bitperfect_startup.txt`. Those stack
   traces are accurate — trust them and start there.
+- **For anything that is not a crash, ask the device.** The player's Audio info panel
+  (output badge, bottom left) is the diagnostic channel: it reports the decoder, the
+  output, whether the DAC is claimed, the configured stream, the kernel's reason for
+  refusing audio, and whether the library's record still matches the file. It exists
+  because logcat is unreadable from a phone, and it has settled in one screenshot
+  questions that cost several rounds of guessing. Ask for the relevant lines before
+  theorising, and screenshots of the library entry and the player together when they
+  disagree.
 
 ## Non-negotiables in this codebase
 
@@ -58,11 +71,11 @@ Class isochronous transport.
 
 ```bash
 ./gradlew clean :app:assembleDebug          # clean matters, see HANDOFF.md §5
-./gradlew :app:testDebugUnitTest            # expect 324 passing
-./gradlew :app:lintDebug                    # expect 0 errors
+./gradlew :app:testDebugUnitTest            # expect 479 passing
+./gradlew :app:lintDebug                    # expect 0 errors, 194 warnings
 cmake -S app/src/main/cpp -B build-test -DSTANDALONE_TEST=ON \
   && cmake --build build-test -j"$(nproc)" \
-  && (cd build-test && ctest)               # expect 282 passing
+  && (cd build-test && ctest)               # expect 292 passing
 ```
 
 Then refresh `dist/BitPerfect-debug-arm64.apk`, update its checksum in

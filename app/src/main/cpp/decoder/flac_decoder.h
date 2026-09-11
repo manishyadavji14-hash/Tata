@@ -17,13 +17,19 @@ class FlacBitReader;
  * - STREAMINFO metadata block (sample rate, channels, bits per sample, total samples)
  * - Frame headers for synchronization
  * - Verbatim subframes (uncompressed passthrough)
- * - Fixed-predictor subframes (orders 0-4) with residual coding
+ * - Constant and fixed-predictor subframes (orders 0-4) with residual coding
+ * - LPC (linear prediction) subframes, orders 1-32, in decodeLpcSubframe
  * - Rice/Rice2 entropy coding for residuals
  *
- * LPC (linear prediction) subframes are not yet supported and will
- * output silence for those specific subframes. For full LPC support,
- * integrate with libFLAC. Verbatim and fixed-predictor subframes cover
- * the majority of simple FLAC encodings and all uncompressed FLAC streams.
+ * This comment previously said LPC subframes were unsupported and would emit
+ * silence. That has not been true since decodeLpcSubframe was written, and the
+ * claim was actively harmful: LPC is what essentially every real encoder emits, so
+ * "no LPC" reads as "this decoder cannot play normal FLAC files", which is the kind
+ * of thing that gets a working code path written off unread.
+ *
+ * Still true, and the real caveat: none of the unit tests decode a genuine encoded
+ * FLAC file. They cover STREAMINFO parsing and synthetic frames. So LPC is
+ * implemented, not verified.
  *
  * Supports:
  * - Up to 32-bit / 384kHz

@@ -6,8 +6,8 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
-import android.os.Build
 import android.util.Log
+import androidx.core.content.ContextCompat
 
 /**
  * UsbPermissionHandler - Manages USB device permission lifecycle.
@@ -39,6 +39,13 @@ class UsbPermissionHandler(
         fun onPermissionDenied(device: UsbDevice)
         fun onDeviceReady(device: UsbDevice)
         fun onDeviceError(device: UsbDevice, error: String)
+
+        /**
+         * A DAC is attached and access has not been granted yet — normally because
+         * Android's app-chooser is on screen waiting to be answered. Reported so the
+         * UI can say that, rather than leaving the DAC looking absent.
+         */
+        fun onPermissionPending(device: UsbDevice)
     }
 
     private var listener: PermissionListener? = null
@@ -64,18 +71,28 @@ class UsbPermissionHandler(
     }
 
     /**
-     * Start monitoring for USB device events.
+     * Start monitoring for USB device events with this class's own receiver.
+     *
+     * For an owner that has no USB receiver of its own. An owner that does — anything
+     * holding a [UsbAudioManager], which must register one to hear the permission
+     * broadcast — should instead call [scanForDevices] once and forward its receiver's
+     * events to [onDeviceAttached] and [onDeviceDetached], rather than register a
+     * second receiver for the same two actions.
      */
     fun startMonitoring() {
         val filter = IntentFilter().apply {
             addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
             addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            context.registerReceiver(usbEventReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
-        } else {
-            context.registerReceiver(usbEventReceiver, filter)
-        }
+        // Exported, because both actions are sent by the platform and a NOT_EXPORTED
+        // receiver rejects broadcasts from other apps — the system included. Both are
+        // protected broadcasts only the platform may send, so nothing is exposed.
+        ContextCompat.registerReceiver(
+            context,
+            usbEventReceiver,
+            filter,
+            ContextCompat.RECEIVER_EXPORTED
+        )
         Log.i(TAG, "USB permission handler monitoring started")
 
         // Check for already connected devices
@@ -95,12 +112,42 @@ class UsbPermissionHandler(
 
     /**
      * Scan for already-connected USB audio devices.
+     *
+     * This is what covers the two cases that matter in practice: a DAC that was
+     * plugged in before the app was launched, and a DAC whose arrival launched the
+     * app through the "choose an app for this USB device" dialog. In the second case
+     * the device is already in `UsbManager.deviceList` by the time the activity
+     * exists, so nothing has to be dug out of the launch intent.
      */
     fun scanForDevices() {
         val devices = usbAudioManager.getConnectedAudioDevices()
         for (device in devices) {
-            handleDeviceAttached(device)
+            onDeviceAttached(device)
         }
+    }
+
+    /**
+     * Report a device that the caller's own receiver saw attach.
+     *
+     * Exists so an owner that already registers a USB receiver — [UsbAudioManager]
+     * must, for the permission broadcast — can drive this class without registering a
+     * second receiver for the same two actions.
+     *
+     * A device that is already open is ignored, so a repeat ATTACHED broadcast, or a
+     * [scanForDevices] call that overlaps one, cannot claim the same interface twice.
+     */
+    fun onDeviceAttached(device: UsbDevice) {
+        val existing = connectedDevices[device.deviceName]
+        if (existing != null && existing.isOpen) {
+            Log.d(TAG, "Already open, ignoring repeat attach: ${device.deviceName}")
+            return
+        }
+        handleDeviceAttached(device)
+    }
+
+    /** Report a device that the caller's own receiver saw detach. */
+    fun onDeviceDetached(device: UsbDevice) {
+        handleDeviceDetached(device)
     }
 
     /**
@@ -145,6 +192,26 @@ class UsbPermissionHandler(
     }
 
     /**
+     * Ask Android for access to an attached DAC that does not have it, at the user's
+     * request. The fallback for a dismissed app-chooser; see [handleDeviceAttached]
+     * for why nothing prompts automatically.
+     *
+     * @return true when a device needed access and a prompt was raised.
+     */
+    fun requestAccessForAttachedDevice(): Boolean {
+        val usbManager = context.getSystemService(Context.USB_SERVICE) as UsbManager
+        val device = usbAudioManager.getConnectedAudioDevices()
+            .firstOrNull { !usbManager.hasPermission(it) }
+            ?: return false
+
+        if (connectedDevices[device.deviceName] == null) {
+            connectedDevices[device.deviceName] = DeviceState(device)
+        }
+        requestPermission(device)
+        return true
+    }
+
+    /**
      * Get the current state of a connected device.
      */
     fun getDeviceState(deviceName: String): DeviceState? = connectedDevices[deviceName]
@@ -169,6 +236,40 @@ class UsbPermissionHandler(
         it.hasPermission && it.isOpen && it.isConfigured
     }
 
+    /**
+     * Open every attached audio device that already has permission. Never prompts.
+     *
+     * This is how a grant made by Android's own "choose an app for the USB device"
+     * dialog is noticed. That dialog *is* a permission grant when the app declares a
+     * `USB_DEVICE_ATTACHED` intent filter, but it grants it silently: no
+     * `ACTION_USB_PERMISSION` broadcast is sent, because the app never asked. So a
+     * user who picked BitPerfect and tapped "Just once" left this class holding
+     * `hasPermission = false` with nothing that would ever look again, and the DAC
+     * was never opened — the app went on reporting "Android output" with permission
+     * already in hand.
+     *
+     * Call it whenever the app comes back to the foreground and when the attach
+     * intent is delivered; both happen right after that dialog is answered.
+     */
+    fun reconcile() {
+        val usbManager = context.getSystemService(Context.USB_SERVICE) as UsbManager
+        for (device in usbAudioManager.getConnectedAudioDevices()) {
+            val state = connectedDevices[device.deviceName]
+            if (state != null && state.isOpen) continue
+            if (!usbManager.hasPermission(device)) continue
+
+            Log.i(TAG, "Permission already held, opening ${device.deviceName}")
+            val tracked = state ?: DeviceState(device).also {
+                connectedDevices[device.deviceName] = it
+                listener?.onDeviceConnected(device)
+            }
+            tracked.hasPermission = true
+            pendingPermissionDevice = null
+            listener?.onPermissionGranted(device)
+            openAndConfigureDevice(device)
+        }
+    }
+
     private fun handleDeviceAttached(device: UsbDevice) {
         Log.i(TAG, "Device attached: ${device.deviceName} (${device.manufacturerName} ${device.productName})")
 
@@ -176,15 +277,28 @@ class UsbPermissionHandler(
         connectedDevices[device.deviceName] = state
         listener?.onDeviceConnected(device)
 
-        // Check if we already have permission
         val usbManager = context.getSystemService(Context.USB_SERVICE) as UsbManager
         if (usbManager.hasPermission(device)) {
             state.hasPermission = true
             listener?.onPermissionGranted(device)
             openAndConfigureDevice(device)
-        } else {
-            requestPermission(device)
+            return
         }
+
+        // Deliberately does not prompt.
+        //
+        // Attaching a DAC makes Android show its own app-chooser, because this app
+        // declares a USB_DEVICE_ATTACHED filter — and picking BitPerfect there grants
+        // the permission. Asking as well put two dialogs on screen at the same moment,
+        // one behind the other, each of which dismissed the other when answered. The
+        // chooser is the grant; [reconcile] picks it up as soon as it is answered.
+        //
+        // If the chooser is dismissed, or the user picks the other app and changes
+        // their mind, [requestPermission] is still there to be called deliberately —
+        // the Audio info panel offers it — which is a prompt the user asked for rather
+        // than one that arrived on top of another.
+        Log.i(TAG, "No permission yet for ${device.deviceName}; waiting for the chooser")
+        listener?.onPermissionPending(device)
     }
 
     private fun handleDeviceDetached(device: UsbDevice) {

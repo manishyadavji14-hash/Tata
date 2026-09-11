@@ -3,6 +3,7 @@ package com.bitperfect.android
 import com.bitperfect.android.engine.NativeAudioEngine
 import com.bitperfect.android.library.MusicLibrary
 import com.bitperfect.android.player.PlaybackController
+import com.bitperfect.android.usb.UsbAudioManager
 import java.util.concurrent.atomic.AtomicReference
 
 /**
@@ -57,6 +58,68 @@ object ServiceLocator {
      * guessed at. It was guessed at three times.
      */
     val artworkPublishReport = AtomicReference("Nothing playing")
+
+    /**
+     * Plain-language state of the USB DAC, for the same reason as
+     * [artworkPublishReport]: it is written by whoever owns the USB device and read
+     * by the player's audio info panel, and neither holds the other.
+     *
+     * Every failure in the attach sequence used to be a log line, so "the app says
+     * Android output" was indistinguishable from "no DAC", "permission refused",
+     * "another driver is holding the interface" and "this device has no output
+     * endpoint". On a phone with no way to read logcat that is unanswerable.
+     */
+    val usbAttachReport = AtomicReference("No DAC attached")
+
+    /** The engine a [UsbAudioManager] was built for, kept together so they cannot drift apart. */
+    private data class UsbAudioOwner(
+        val engine: NativeAudioEngine,
+        val manager: UsbAudioManager
+    )
+
+    private val usbAudioOwnerRef = AtomicReference<UsbAudioOwner?>(null)
+
+    /**
+     * The process-wide USB owner, but only if it wraps [engine].
+     *
+     * Paired with its engine deliberately. A `UsbAudioManager` hands a claimed file
+     * descriptor to one specific engine instance, so handing it back to a caller
+     * holding a different engine would attach the DAC to an engine nobody is playing
+     * through — which is the exact class of bug this whole change is fixing.
+     */
+    fun usbAudioManagerFor(engine: NativeAudioEngine): UsbAudioManager? =
+        usbAudioOwnerRef.get()?.takeIf { it.engine === engine }?.manager
+
+    /**
+     * Publish the USB owner, returning the one it replaced so the caller can retire
+     * it. Only one component may hold the claimed interface at a time.
+     */
+    fun setUsbAudioOwner(engine: NativeAudioEngine, manager: UsbAudioManager): UsbAudioManager? =
+        usbAudioOwnerRef.getAndSet(UsbAudioOwner(engine, manager))?.manager
+
+    /**
+     * The two things anything outside the USB package needs to ask of it.
+     *
+     * Published as plain functions rather than exposing the handler, so the activity's
+     * lifecycle and the audio info panel can reach it without either of them, or this
+     * object, depending on the USB classes. Survives an activity recreation for the
+     * same reason the manager does.
+     */
+    class UsbControls(
+        /** Open any attached DAC that already has permission. Never prompts. */
+        val reconcile: () -> Unit,
+        /** Prompt for access at the user's request; false when nothing needs it. */
+        val requestAccess: () -> Boolean
+    )
+
+    private val usbControlsRef = AtomicReference<UsbControls?>(null)
+
+    val usbControls: UsbControls?
+        get() = usbControlsRef.get()
+
+    fun setUsbControls(controls: UsbControls?) {
+        usbControlsRef.set(controls)
+    }
 
     /**
      * The single PlaybackController instance, owned by PlaybackService.

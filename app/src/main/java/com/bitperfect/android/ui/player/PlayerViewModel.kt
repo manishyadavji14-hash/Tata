@@ -93,6 +93,13 @@ class PlayerViewModel(
         /** Absolute path of the current file, for the Info sheet and actions. */
         val trackPath: String = "",
 
+        /**
+         * Duration the library recorded for this file, for comparison with what the
+         * decoder actually reads. A disagreement means the library's row no longer
+         * matches the file on disk.
+         */
+        val libraryDurationMs: Long = 0L,
+
         // Navigation targets for the album-art overflow menu. Zero or blank when
         // the file is not in the library, and the menu hides those entries.
         val albumId: Long = 0L,
@@ -193,6 +200,10 @@ class PlayerViewModel(
                     albumId = details.albumId,
                     artistId = details.artistId,
                     genre = details.genre,
+                    // Kept so the panel can compare it with what the decoder reads
+                    // out of the file. When those disagree the library's row is
+                    // stale, and nothing in the app could say so before.
+                    libraryDurationMs = details.durationMs,
                     folder = details.folder,
                     year = details.year,
                     trackNumber = details.trackNumber,
@@ -481,6 +492,7 @@ class PlayerViewModel(
             trackTitle = state.trackTitle,
             container = state.formatBadge,
             sourceFormat = describeFormat(state.sampleRate, state.bitDepth, state.channels),
+            staleLibraryNote = describeLibraryMismatch(state),
             decoder = describeDecoder(state.trackPath, state.outputMode),
             outputName = playbackController.outputName,
             outputMode = state.formatDetail,
@@ -491,12 +503,105 @@ class PlayerViewModel(
             isUsbOutputActive = usbActive,
             bufferLevelPercent = bufferLevel?.takeIf { it in 0f..1f }?.let { (it * 100).toInt() },
             underrunCount = underruns,
-            artworkPublishReport = ServiceLocator.artworkPublishReport.get()
+            artworkPublishReport = ServiceLocator.artworkPublishReport.get(),
+            usbDacReport = describeUsbState(),
+            usbLastEvent = ServiceLocator.usbAttachReport.get(),
+            isUsbDeviceAttached = runCatching { engine.isUsbDeviceAttached() }.getOrDefault(false),
+            usbBypassReason = playbackController.usbBypassReason,
+            usbDetail = describeUsbDetail()
         )
+    }
+
+    /**
+     * What the DAC is doing *now*, recomputed every time the panel is opened.
+     *
+     * This row used to show `ServiceLocator.usbAttachReport`, which is a record of
+     * the last attach event — so after plugging in a DAC while an M4A track was
+     * loaded it kept saying "M4A has no exact decoder" for every track afterwards,
+     * including the FLAC ones it did not apply to. A status that does not follow
+     * what is playing is worse than none: it invites exactly the wrong conclusion.
+     * The event itself is still shown, on its own row, labelled as an event.
+     */
+    private fun describeUsbState(): String {
+        val attached = runCatching { engine.isUsbDeviceAttached() }.getOrDefault(false)
+        if (!attached) return "No DAC claimed"
+
+        val streaming = runCatching { engine.isUsbOutputActive() }.getOrDefault(false)
+        if (streaming) {
+            val sent = runCatching { engine.getUsbBytesTransferred() }.getOrDefault(0L)
+            return if (sent > 0L) {
+                "Streaming to the DAC — ${sent / 1024} KiB sent"
+            } else {
+                "Streaming to the DAC, but no bytes have been accepted yet"
+            }
+        }
+
+        playbackController.usbBypassReason?.let { return it }
+
+        val errno = runCatching { engine.getUsbStartErrno() }.getOrDefault(0)
+        if (errno != 0) {
+            return "Claimed, but the DAC refused the audio stream (errno $errno). " +
+                "The player shows the reason in full."
+        }
+
+        return "Claimed and idle — nothing has been sent to it yet"
+    }
+
+    /**
+     * The four numbers that tell one USB start failure from another.
+     *
+     * Shown because they are the difference between "the DAC does not work" and a
+     * diagnosis. Every one of them used to be reachable only from a log, on a device
+     * whose owner has no way to read one.
+     */
+    private fun describeUsbDetail(): String? {
+        if (!runCatching { engine.isUsbDeviceAttached() }.getOrDefault(false)) return null
+
+        val iface = runCatching { engine.getRequiredInterface() }.getOrDefault(-1)
+        val alt = runCatching { engine.getRequiredAltSetting() }.getOrDefault(-1)
+        val endpoint = runCatching { engine.getUsbEndpointAddress() }.getOrDefault(0)
+        val packet = runCatching { engine.getUsbPacketSize() }.getOrDefault(0)
+        val errors = runCatching { engine.getUsbTransferErrors() }.getOrDefault(0L)
+
+        if (iface < 0 && endpoint == 0) return null
+
+        return buildList {
+            if (iface >= 0) add("interface $iface")
+            if (alt >= 0) add("alt setting $alt")
+            if (endpoint != 0) add("endpoint 0x${endpoint.toString(16)}")
+            if (packet > 0) add("$packet B/packet")
+            add("$errors rejected")
+        }.joinToString(" · ")
     }
 
     private fun percentOf(strength: Int): String =
         "${strength * 100 / AudioEffectsController.MAX_STRENGTH}%"
+
+    /**
+     * Whether the library's record of this file disagrees with the file itself.
+     *
+     * The library takes sample rate, bit depth and duration from Android's media
+     * index, which is written once by the system scanner. Replace a file and keep the
+     * path — copying a different rip over it, which is exactly what a music library
+     * gets — and that row keeps describing the file that used to be there. The player
+     * reads the real thing every time it opens one, so the two drift apart with
+     * nothing anywhere pointing it out: the library confidently lists 48 kHz / 24-bit
+     * / 4:39 while the decoder finds 192 kHz and 7:05, and both look authoritative.
+     *
+     * Duration is the comparison used because it is the one figure both sides always
+     * have, and a mismatch in it cannot be explained by anything but a different file.
+     */
+    private fun describeLibraryMismatch(state: PlayerUiState): String? {
+        val library = state.libraryDurationMs
+        val decoded = state.durationMs
+        if (library <= 0L || decoded <= 0L) return null
+        if (kotlin.math.abs(library - decoded) <= LIBRARY_DURATION_TOLERANCE_MS) return null
+
+        return "The library has this file as ${formatTime(library)}, the decoder reads " +
+            "${formatTime(decoded)}. The library's entry no longer matches the file, so " +
+            "its format and quality are describing an older version of it. A rescan " +
+            "(refresh on the Library screen) corrects it."
+    }
 
     private fun describeFormat(sampleRate: Int, bitDepth: Int, channels: Int): String {
         if (sampleRate <= 0) return "Unknown"
@@ -560,8 +665,66 @@ class PlayerViewModel(
          * come from different code. Without this the only way to tell them apart is
          * a log the maintainer cannot read.
          */
-        val artworkPublishReport: String
+        val artworkPublishReport: String,
+
+        /**
+         * How far the USB DAC got through attaching, in plain language.
+         *
+         * The panel could previously say "No — mixed by Android" with no way to tell
+         * whether there was no DAC, permission was refused, the kernel driver would
+         * not release the interface, or the device has no isochronous output at all.
+         */
+        val usbDacReport: String,
+
+        /**
+         * Whether the engine holds a claimed DAC. Distinct from [isUsbOutputActive],
+         * which is only true once audio is flowing, and from [isBitPerfect], which
+         * describes the sink the *current* track opened — a DAC attached mid-song is
+         * attached but not yet in use.
+         */
+        val isUsbDeviceAttached: Boolean,
+
+        /**
+         * Why an attached DAC is not carrying this track, or null when it is.
+         *
+         * Always a format reason: a DAC cannot be handed a stream a platform codec
+         * decoded, so a file with no exact decoder plays through Android's output.
+         */
+        val usbBypassReason: String?,
+
+        /**
+         * The last thing that happened to the DAC — attached, refused, ready.
+         *
+         * A record of an event, not of the present, and labelled that way. Showing
+         * it as "status" is what made a message about one M4A track look like a
+         * verdict on every track after it.
+         */
+        val usbLastEvent: String,
+
+        /**
+         * Interface, alternate setting, endpoint, packet size and rejection count,
+         * or null when no DAC is claimed. What tells one start failure from another.
+         */
+        val usbDetail: String?,
+
+        /**
+         * Set when the library's record of this file disagrees with the file itself,
+         * which means the library row is stale. Null when they agree.
+         */
+        val staleLibraryNote: String?
     )
+
+    /**
+     * Ask Android for access to an attached DAC, at the user's request.
+     *
+     * Nothing prompts automatically — attaching a DAC already makes Android show its
+     * own app-chooser, and asking as well put two dialogs on screen at once. This is
+     * the way back if that dialog was dismissed.
+     *
+     * @return true when a prompt was raised.
+     */
+    fun requestUsbAccess(): Boolean =
+        ServiceLocator.usbControls?.requestAccess?.invoke() ?: false
 
     /** Persist the whole session. Called on track change and when clearing up. */
     private fun saveSession() {
@@ -786,6 +949,28 @@ class PlayerViewModel(
                         isPlaying = false,
                         isPaused = false,
                         isLoading = false,
+                        // Kept, because it was only ever set on the Playing branch: a
+                        // track that failed to start left the badge reading "No device"
+                        // while a DAC was attached and claimed, which is the one thing
+                        // it must not say.
+                        deviceName = playbackController.outputName,
+
+                        // Everything below describes a stream that is not running, and
+                        // copying the previous state carried it over. So a failure was
+                        // displayed underneath a position, duration and format left
+                        // from the last track that *did* play — "1:13 of 7:05, FLAC
+                        // 16-bit 192 kHz" next to a message saying nothing could be
+                        // played. Those numbers looked like evidence about the failing
+                        // file and belonged to a different one.
+                        positionMs = 0L,
+                        durationMs = 0L,
+                        positionText = "0:00",
+                        durationText = "0:00",
+                        sampleRate = 0,
+                        bitDepth = 0,
+                        channels = 0,
+                        formatDetail = "",
+                        bufferLevel = 0f,
                         errorMessage = state.message
                     )
                 }
@@ -918,6 +1103,14 @@ class PlayerViewModel(
     }
 
     private companion object {
+        /**
+         * How far the library's duration may differ from the decoder's before the
+         * library's record is called stale. Containers round, and a platform decoder
+         * and a native one can land a second apart on the same file, so this is wide
+         * enough that only a genuinely different file trips it.
+         */
+        const val LIBRARY_DURATION_TOLERANCE_MS = 3_000L
+
         /** 250 ms ticks, so 20 ticks is a position write every 5 seconds. */
         const val POSITION_SAVE_INTERVAL_TICKS = 20
 

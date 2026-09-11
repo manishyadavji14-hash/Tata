@@ -55,9 +55,16 @@ public:
     bool waitForCompletion(IsoCompletion& out, int timeoutMs) override;
     const char* name() const override { return "usbdevfs isochronous"; }
     bool isHardware() const override { return true; }
+    int lastError() const override { return lastSubmitErrno_.load(); }
 
     /** Number of URBs the kernel currently holds. */
     uint32_t inFlightCount() const { return inFlight_.load(); }
+
+    /** Endpoint the URBs address, as configured. */
+    uint8_t endpointAddress() const { return endpointAddress_; }
+
+    /** Bytes written into every packet of every URB, as configured. */
+    uint16_t packetSize() const { return maxPacketSize_; }
 
     /**
      * Map a kernel URB status (negative errno, or per-packet status) onto the
@@ -74,6 +81,9 @@ private:
     uint8_t endpointAddress_ = 0;
     uint16_t maxPacketSize_ = 0;
     uint8_t packetsPerTransfer_ = 0;
+
+    /** errno from the most recent USBDEVFS_SUBMITURB, 0 when it succeeded. */
+    std::atomic<int> lastSubmitErrno_{0};
 
     mutable std::mutex mutex_;
     std::vector<Urb*> urbs_;

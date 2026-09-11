@@ -26,6 +26,10 @@ const char* IsochronousTransfer::backendName() const {
     return backend_ ? backend_->name() : "none";
 }
 
+int IsochronousTransfer::backendLastError() const {
+    return backend_ ? backend_->lastError() : 0;
+}
+
 bool IsochronousTransfer::configure(const IsoTransferConfig& config) {
     if (active_.load()) return false;
     if (config.maxPacketSize == 0 || config.packetsPerTransfer == 0 || config.queueDepth == 0) {
@@ -61,6 +65,7 @@ bool IsochronousTransfer::start(TransferSupplyCallback supplyCallback,
     supplyCallback_ = std::move(supplyCallback);
     completeCallback_ = std::move(completeCallback);
     stats_.reset();
+    consecutiveResubmitFailures_.store(0);
     active_.store(true);
 
     // The reaper has to be running before the first submission, otherwise a
@@ -161,8 +166,26 @@ uint64_t IsochronousTransfer::nowMicros() {
 }
 
 void IsochronousTransfer::resubmitTransfer(size_t index) {
-    if (active_.load()) {
-        submitTransfer(index);
+    if (!active_.load()) return;
+
+    if (submitTransfer(index)) {
+        consecutiveResubmitFailures_.store(0);
+        return;
+    }
+
+    // A failed resubmission takes this transfer out of the queue permanently, and
+    // the return value used to be discarded. Once every transfer has dropped out
+    // there is nothing in flight and the stream is dead — while isActive() still
+    // says it is running, the ring buffer fills and never drains, and the writer
+    // waits on backpressure for a device that stopped listening. Silent, from the
+    // outside identical to a stall.
+    //
+    // active_ is cleared directly rather than by calling stop(): this runs on the
+    // reaper thread, and stop() joins the reaper, so it would join itself. Clearing
+    // the flag is enough — the writer polls it, submitTransfer refuses once it is
+    // false, and the owner's stop() does the real teardown.
+    if (consecutiveResubmitFailures_.fetch_add(1) + 1 >= buffers_.size()) {
+        active_.store(false);
     }
 }
 
@@ -218,9 +241,15 @@ uint32_t IsochronousTransfer::calculateNominalPacketSize(uint32_t sampleRate,
     if (bytesPerFrame == 0) return 0;
 
     // For high-speed isochronous: one packet per 125us microframe
-    // Nominal size = (sampleRate * bytesPerFrame) / 8000
-    // Round up to handle fractional samples
-    return ((sampleRate * bytesPerFrame) + 7999) / 8000;
+    // Nominal size = (sampleRate * bytesPerFrame) / 8000, rounded up.
+    const uint32_t bytes = ((sampleRate * bytesPerFrame) + 7999) / 8000;
+
+    // Then rounded up again to a whole frame. A packet carrying part of a frame
+    // shifts the channel order of everything after it: 44.1 kHz / 16-bit / stereo
+    // gave 23 bytes against a 4-byte frame, so every packet started mid-sample.
+    const uint32_t remainder = bytes % bytesPerFrame;
+    if (remainder == 0) return bytes;
+    return bytes + (bytesPerFrame - remainder);
 }
 
 } // namespace usb

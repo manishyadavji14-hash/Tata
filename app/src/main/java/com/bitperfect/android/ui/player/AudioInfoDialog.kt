@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -36,10 +37,17 @@ import com.bitperfect.android.library.StoragePermissions
 @Composable
 fun AudioInfoDialog(
     info: PlayerViewModel.AudioPipelineInfo,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    onRequestUsbAccess: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val notificationsAllowed = remember { StoragePermissions.hasNotificationAccess(context) }
+
+    // Offered whenever a DAC is not claimed, because that is the only state this can
+    // help with. Nothing prompts for USB access on its own any more — attaching a DAC
+    // already makes Android show its app-chooser, and asking as well put two dialogs
+    // on screen at the same moment. This is the way back if that dialog was dismissed.
+    val canOfferUsbAccess = !info.isUsbDeviceAttached
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -58,6 +66,14 @@ fun AudioInfoDialog(
                 Section("Source")
                 InfoRow("Container", info.container)
                 InfoRow("Format", info.sourceFormat)
+
+                // Only present when the library's record and the file disagree. Shown
+                // in Source because that is where the contradiction appears: the
+                // library screen quotes one rate and bit depth for a file and this
+                // panel quotes another, and both look authoritative.
+                info.staleLibraryNote?.let { note ->
+                    InfoRow("Library entry is out of date", note)
+                }
 
                 Section("Decoding")
                 InfoRow("Decoder", info.decoder)
@@ -78,10 +94,56 @@ fun AudioInfoDialog(
                 )
                 info.engineSampleRate?.let { InfoRow("Engine rate", "$it Hz") }
 
-                // USB-only facts. Shown only when a DAC is actually streaming, so
-                // the panel does not imply a transport that is not in use.
+                // Always shown, including when there is no DAC. "Bit-perfect: No"
+                // above is the whole reason someone opens this panel, and until this
+                // row existed there was nothing anywhere in the app that could tell
+                // "no DAC" apart from "DAC here and it could not be claimed".
+                Section("USB DAC")
+
+                // Recomputed from the engine every time this panel opens, so it
+                // follows the track being played. It used to show the last attach
+                // event, which meant a message about one unsupported file stayed on
+                // screen as the apparent verdict on every file after it.
+                InfoRow("Status", info.usbDacReport)
+                InfoRow(
+                    label = "Claimed by engine",
+                    value = if (info.isUsbDeviceAttached) "Yes" else "No"
+                )
+
+                // Only ever present when a DAC is attached and this track's format has
+                // no exact decoder. Shown because the badge above then honestly reads
+                // "Android output" with a DAC plugged in, which otherwise looks exactly
+                // like the DAC not having been claimed at all.
+                info.usbBypassReason?.let { reason ->
+                    InfoRow("Not using the DAC", reason)
+                }
+
+                // Labelled as the *last configured* stream on purpose: these come
+                // from the engine's current configuration, which is whatever was set
+                // up for the last track that got as far as configuring. Shown as
+                // "Stream" it read like a description of the track on screen, which
+                // is how a 44.1 kHz packet size came to be displayed above a
+                // 48 kHz file.
+                info.usbDetail?.let { detail ->
+                    InfoRow("Last configured stream", detail)
+                }
+
+                InfoRow("Last USB event", info.usbLastEvent)
+
+                // Placed here rather than in the dialog's button row, which already
+                // carries the notification "Allow" and can only hold one action.
+                if (canOfferUsbAccess) {
+                    TextButton(
+                        onClick = onRequestUsbAccess,
+                        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 4.dp)
+                    ) {
+                        Text("Ask Android for DAC access")
+                    }
+                }
+
+                // Transport facts only once there is a transport, so the panel never
+                // implies one that is not in use.
                 if (info.isUsbOutputActive || info.transportName != null) {
-                    Section("USB transport")
                     InfoRow("Transport", info.transportName ?: "Not reported")
                     InfoRow(
                         label = "Streaming",
