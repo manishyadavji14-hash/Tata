@@ -1,0 +1,958 @@
+@id chandra_supertet_model_06
+@title SUPER TET प्राथमिक MODEL PAPER-06 (चन्द्रा इंस्टीट्यूट)
+@duration 150
+@key BCBDCCCCBB BCACCBACBA BABBABBBAC BCBCCBCBCC CAACBBCBCA CCCDCDACBA BCCBABBBCC ABBABBABBB BDABDABACA CBABBCCCCC BBCDCAADBA DABBBCBACB
+
+# HINDI
+1 वर्ण — उच्चारण स्थान
+? निम्न में से किस विकल्प में सभी वर्णों का उच्चारण-स्थान सही दिया गया है?
+- ङ — तालव्य, ञ — कंठ्य, ण — दंत्य
+- ङ — कंठ्य, ञ — तालव्य, ण — मूर्धन्य
+- ङ — मूर्धन्य, ञ — दंत्य, ण — कंठ्य
+- ङ — दंत्य, ञ — मूर्धन्य, ण — तालव्य
+= वर्गों के पंचम वर्ण: ङ (कवर्ग — कंठ्य), ञ (चवर्ग — तालव्य), ण (टवर्ग — मूर्धन्य)।
+2 संधि
+? निम्न में से किस शब्द में व्यंजन-संधि का उदाहरण है?
+- सदैव
+- महेश
+- सज्जन
+- विद्यालय
+= सत् + जन = सज्जन (व्यंजन); सदैव — वृद्धि, महेश — गुण, विद्यालय — दीर्घ।
+3 संधि-विच्छेद
+? सुमेलित कीजिए —<br>(a) स्वागत &nbsp; (b) जगदीश &nbsp; (c) उच्चारण &nbsp; (d) तल्लीन<br>(i) तत् + लीन &nbsp; (ii) सु + आगत &nbsp; (iii) जगत् + ईश &nbsp; (iv) उत् + चारण
+- a-iii, b-ii, c-i, d-iv
+- a-ii, b-iii, c-iv, d-i
+- a-iv, b-i, c-ii, d-iii
+- a-i, b-iv, c-iii, d-ii
+= स्वागत = सु + आगत, जगदीश = जगत् + ईश, उच्चारण = उत् + चारण, तल्लीन = तत् + लीन।
+4 रस
+? 'शत्रु को देखकर सैनिक के हृदय में भय उत्पन्न हुआ' — यहाँ प्रमुख रस है—
+- रौद्र
+- वीभत्स
+- करुण
+- भयानक
+= स्थायी भाव 'भय' — भयानक रस।
+5 रस — स्थायी भाव
+? सुमेलित कीजिए —<br>रस: (a) हास्य (b) वीभत्स (c) रौद्र (d) अद्भुत<br>स्थायी भाव: (i) विस्मय (ii) क्रोध (iii) हास (iv) जुगुप्सा
+- a-iv, b-iii, c-i, d-ii
+- a-ii, b-iv, c-iii, d-i
+- a-iii, b-iv, c-ii, d-i
+- a-i, b-ii, c-iv, d-iii
+= हास्य–हास, वीभत्स–जुगुप्सा, रौद्र–क्रोध, अद्भुत–विस्मय।
+6 अलंकार
+? 'काली घटा का घमंड घटा' में 'घटा' शब्द की पुनरावृत्ति भिन्न अर्थों में हुई है। यहाँ कौन-सा अलंकार है?
+- अनुप्रास
+- रूपक
+- यमक
+- श्लेष
+= एक शब्द बार-बार, हर बार अलग अर्थ (घटा = बादल, घटा = कम हुआ) — यमक।
+7 विशेषण
+? निम्नलिखित वाक्य में 'थोड़ा' किस प्रकार का विशेषण है? "थोड़ा दूध गिलास में बचा है।"
+- गुणवाचक विशेषण
+- निश्चित संख्यावाचक विशेषण
+- अनिश्चित परिमाणवाचक विशेषण
+- सार्वनामिक विशेषण
+= मापी जाने वाली वस्तु (दूध) की अनिश्चित मात्रा — अनिश्चित परिमाणवाचक।
+8 बोलियाँ
+? सुमेलित कीजिए —<br>भाषा/बोली: (a) कन्नौजी (b) छत्तीसगढ़ी (c) अवधी (d) हरियाणवी<br>क्षेत्र: (i) हरियाणा (ii) अवध (iii) छत्तीसगढ़ (iv) कन्नौज क्षेत्र
+- a-iii, b-iv, c-i, d-ii
+- a-ii, b-iii, c-iv, d-i
+- a-iv, b-iii, c-ii, d-i
+- a-i, b-ii, c-iii, d-iv
+= कन्नौजी–कन्नौज, छत्तीसगढ़ी–छत्तीसगढ़, अवधी–अवध, हरियाणवी–हरियाणा।
+9 वाच्य
+? 'राम ने पत्र लिखा।' का कर्मवाच्य रूप कौन-सा है?
+- पत्र राम ने लिखा।
+- राम द्वारा पत्र लिखा गया।
+- राम से पत्र लिखा।
+- राम पत्र लिखता गया।
+= कर्मवाच्य: कर्ता + द्वारा/से, क्रिया कर्म के अनुसार 'लिखा गया'।
+10 क्रिया
+? निम्न में से किस वाक्य में क्रिया अकर्मक है?
+- किसान खेत जोतता है।
+- पक्षी आकाश में उड़ते हैं।
+- माँ बच्चे को बुलाती है।
+- बालक ने गेंद फेंकी।
+= 'क्या उड़ते हैं?' का उत्तर नहीं — कर्म नहीं, अतः अकर्मक।
+11 समास
+? सुमेलित कीजिए —<br>समास: (a) तत्पुरुष (b) कर्मधारय (c) द्विगु (d) बहुव्रीहि<br>उदाहरण: (i) चक्रपाणि (ii) नवरात्र (iii) महापुरुष (iv) देशभक्ति
+- a-iii, b-iv, c-i, d-ii
+- a-iv, b-iii, c-ii, d-i
+- a-i, b-ii, c-iv, d-iii
+- a-iv, b-iii, c-ii, d-i
+= तत्पुरुष–देशभक्ति, कर्मधारय–महापुरुष, द्विगु–नवरात्र, बहुव्रीहि–चक्रपाणि (विष्णु)। (मूल पत्र में (b) और (d) एक जैसे छपे हैं।)
+12 समास-विग्रह
+? 'देशभक्ति' का सही विग्रह है—
+- देश के लिए भक्ति
+- देश और भक्ति
+- देश की भक्ति
+- देश में भक्ति
+= उत्तर कुंजी के अनुसार 'देश की भक्ति' (षष्ठी तत्पुरुष)। कई पुस्तकें 'देश के लिए भक्ति' (चतुर्थी) भी मानती हैं।
+13 पर्यायवाची
+? निम्न में से कौन-सा पर्यायवाची युग्म असंगत है?
+- चंद्रमा — भानु
+- पृथ्वी — धरा
+- समुद्र — रत्नाकर
+- कमल — पंकज
+= भानु = सूर्य, चंद्रमा नहीं।
+14 वाक्यांश के लिए एक शब्द
+? 'जो कभी न मरे' के लिए उपयुक्त एक शब्द है—
+- अक्षय
+- अविनाशी
+- अमर
+- अजर
+= न मरने वाला — अमर; बूढ़ा न होने वाला — अजर; क्षय न होने वाला — अक्षय।
+15 संज्ञा
+? निम्न वाक्य में रेखांकित शब्दों की संज्ञा का प्रकार सही पहचानिए — "ईमानदारी मनुष्य के चरित्र को ऊँचा उठाती है और समाज में उसका सम्मान बढ़ाती है।"
+- ईमानदारी—जातिवाचक, चरित्र—भाववाचक, समाज—व्यक्तिवाचक
+- ईमानदारी—भाववाचक, चरित्र—भाववाचक, समाज—जातिवाचक
+- ईमानदारी—भाववाचक, चरित्र—जातिवाचक, समाज—जातिवाचक
+- ईमानदारी—व्यक्तिवाचक, चरित्र—जातिवाचक, समाज—द्रव्यवाचक
+= उत्तर कुंजी के अनुसार (C): ईमानदारी भाववाचक, चरित्र व समाज जातिवाचक (समूहवाचक) माने गए।
+
+# ENGLISH
+16 Subject-Verb Agreement
+! Choose the correct sentence.
+- Neither of the boys have done his homework.
+- Neither of the boys has done his homework.
+- Neither of the four boys has done his homework.
+- Neither of the boys has do their work.
+= 'Neither' दो के लिए, singular verb 'has'; चार के लिए 'None' आता।
+17 Voice
+! Choose the correct Passive voice: "People say that he is honest."
+- He is said to be honest.
+- He was said that he is honest.
+- It is said that him to be honest
+- He has said to be honest
+= People say that… → He is said to be… (या It is said that he is honest)।
+18 Spotting Errors
+! Find the error: "Each of the students have submitted their assignment."
+- Each
+- Students
+- Have
+- Their
+= 'Each' singular है ⇒ 'has' होना चाहिए।
+19 One Word Substitution
+! One who can use both hands equally well is called.
+- Ambivalent
+- Ambidextrous
+- Amphibious
+- Ambiguous
+= Ambidextrous = दोनों हाथों से समान कुशल।
+20 Sentence Types
+! "He went to the market to buy vegetables." The sentence is:
+- Simple sentence
+- Compound sentence
+- Complex sentence
+- Compound-Complex
+= एक ही finite verb (went); 'to buy' infinitive है — Simple sentence।
+P p_exam PASSAGE
+> Competitive examinations are an important part of a student's life. They test knowledge, intelligence, hard work, and time management. To succeed in these examinations, a student should study regularly and follow a proper timetable.
+> Solving previous years' question papers and taking mock tests can improve preparation. A student should remain confident and should not lose hope after failure. Success comes through hard work, patience, and continuous practice.
+21 Reading Comprehension @p_exam
+! What do competitive examinations test?
+- Only physical strength
+- Knowledge, intelligence, hard work, and time management
+- Only memory
+- Only writing speed
+= "They test knowledge, intelligence, hard work, and time management."
+22 Reading Comprehension @p_exam
+! What should a student follow for success?
+- A proper timetable
+- No timetable
+- Only entertainment
+- Irregular study
+= "…study regularly and follow a proper timetable."
+
+# SANSKRIT
+23 प्रत्यय
+? 'सेवमानः' में प्रयुक्त प्रत्यय है–
+- शतृ
+- शानच्
+- तृच्
+- क्त
+= सेव् (आत्मनेपदी) + शानच् = सेवमानः।
+24 माहेश्वर सूत्र
+? 'अइउण्' इत्यत्र 'ण्' किमर्थं प्रयुक्तम्?
+- स्वरनिर्देशाय
+- इत्संज्ञकत्वेन
+- विभक्तिनिर्देशाय
+- प्रत्ययनिर्देशाय
+= सूत्र के अंत का हल् वर्ण इत् (हलन्त्यम्) होता है, प्रत्याहार बनाने के लिए।
+25 प्रत्याहार
+? 'अच्' प्रत्याहारः केषां वर्णानां बोधकः?
+- केवलं स्वराणाम्
+- स्वरव्यञ्जनयोः
+- केवलं व्यञ्जनानाम्
+- ऊष्मवर्णानाम्
+= अच् = सभी स्वर; हल् = सभी व्यञ्जन।
+P p_skt6 गद्यांश
+> एकस्मिन् ग्रामे एकः विद्वान् आचार्यः निवसति स्म। सः प्रतिदिनं प्रातःकाले स्वशिष्येभ्यः संस्कृतभाषां पाठयति स्म। आचार्यः केवलं पुस्तकीयज्ञानस्य महत्त्वं न मन्यते स्म, अपितु व्यावहारिकज्ञानम् अपि आवश्यकं मन्यते स्म। सः शिष्यान् कथयति स्म — "ज्ञानस्य वास्तविकं प्रयोजनं तदा एव सिद्ध्यति, यदा तत् मानवजीवनस्य उन्नतये प्रयुज्यते।" शिष्याः अपि तस्य उपदेशं स्वीकृत्य परिश्रमेण अध्ययनं कुर्वन्ति स्म।
+26 अपठित गद्यांश @p_skt6
+? आचार्यः स्वशिष्येभ्यः किम् पाठयति स्म?
+- गणितम्
+- संस्कृतभाषाम्
+- इतिहासम्
+- विज्ञानम्
+= "स्वशिष्येभ्यः संस्कृतभाषां पाठयति स्म।"
+27 अपठित गद्यांश @p_skt6
+? आचार्यस्य मते केवलं किं न पर्याप्तम्?
+- व्यावहारिकज्ञानम्
+- पुस्तकीयज्ञानम्
+- परिश्रमः
+- उपदेशः
+= "केवलं पुस्तकीयज्ञानस्य महत्त्वं न मन्यते स्म।"
+28 शब्दरूप
+? 'रामेण' इत्यस्य मूलशब्दः कः?
+- रमा
+- राम
+- रम्
+- रामन्
+= राम (अकारान्त पुं.) — तृतीया एकवचन रामेण।
+29 शब्दरूप
+? 'नद्याः' इत्यत्र का विभक्तिः तथा वचनम्?
+- षष्ठी एकवचनम्
+- पञ्चमी एकवचनम्
+- षष्ठी द्विवचनम्
+- सप्तमी एकवचनम्
+= नद्याः पञ्चमी व षष्ठी दोनों एकवचन में बनता है; कुंजी — षष्ठी एकवचनम्।
+30 कारक-विभक्ति
+? 'वृक्षात् पत्रं पतति' इत्यत्र 'वृक्षात्' पदे का विभक्तिः?
+- तृतीया
+- चतुर्थी
+- पञ्चमी
+- षष्ठी
+= अलगाव (अपादान) — "ध्रुवमपायेऽपादानम्" — पञ्चमी।
+
+# SCIENCE
+31 गतिज ऊर्जा
+? यदि किसी वस्तु का वेग दोगुना कर दिया जाए, तो उसकी गतिज ऊर्जा हो जाएगी:
+! If the velocity of a body is doubled, its kinetic energy becomes:
+- 2 गुना / 2 times
+- 4 गुना / 4 times
+- 1/2 गुना / 1/2 times
+- अपरिवर्तित / Unchanged
+= $KE = \frac12 mv^2$; v दोगुना ⇒ KE चार गुना।
+32 प्रकाश
+? कौन-सी घटना सिद्ध करती है कि प्रकाश एक अनुप्रस्थ तरंग है?
+! Which phenomenon proves that light is a transverse wave?
+- परावर्तन / Reflection
+- अपवर्तन / Refraction
+- ध्रुवण / Polarisation
+- विक्षेपण / Dispersion
+= केवल अनुप्रस्थ तरंगें ध्रुवित हो सकती हैं।
+33 लेंस की क्षमता
+? एक उत्तल लेंस की फोकस दूरी 20 cm है। इसकी शक्ति है:
+! A convex lens has focal length 20 cm. Its power is:
+- +2 D
+- +5 D
+- −5 D
+- −2 D
+= $P = \frac{100}{20} = +5$ D (उत्तल — धनात्मक)।
+34 ऑक्साइड
+? निम्नलिखित में से कौन-सा उभयधर्मी ऑक्साइड है?
+! Which of the following is an amphoteric oxide?
+- $Na_2O$
+- $CO_2$
+- $Al_2O_3$
+- $SO_2$
+= $Al_2O_3$ अम्ल व क्षार दोनों से अभिक्रिया करता है (ZnO भी)।
+35 pH
+? 25°C पर एक उदासीन विलयन का pH होता है:
+! The pH of a neutral solution at 25°C is:
+- 0
+- 5
+- 7
+- 14
+= उदासीन विलयन pH = 7।
+36 धातुकर्म
+? सल्फाइड अयस्कों के सांद्रण के लिए किस विधि का प्रयोग किया जाता है?
+! Which process is used for the concentration of sulphide ores?
+- चुंबकीय पृथक्करण / Magnetic separation
+- फेन प्लवन / Froth flotation
+- हाइड्रोलिक धुलाई / Hydraulic washing
+- हस्त चयन / Hand picking
+= सल्फाइड अयस्क — फेन प्लवन (पाइन तेल)।
+37 उत्सर्जन तंत्र
+? नेफ्रॉन का कौन-सा भाग मुख्यतः चयनात्मक पुनःअवशोषण के लिए उत्तरदायी है?
+! Which part of the nephron is mainly responsible for selective reabsorption?
+- ग्लोमेरुलस / Glomerulus
+- बोमन कैप्सूल / Bowman's capsule
+- वृक्क नलिका / Renal tubule
+- वृक्क धमनी / Renal artery
+= ग्लोमेरुलस में निस्यंदन, वृक्क नलिका में चयनात्मक पुनःअवशोषण।
+38 हार्मोन
+? कौन-सा हार्मोन रक्त में कैल्शियम के स्तर को नियंत्रित करने में सहायता करता है?
+! Which hormone helps regulate blood calcium level?
+- इंसुलिन / Insulin
+- पैराथायरॉइड हार्मोन / Parathyroid hormone
+- थायरॉक्सिन / Thyroxine
+- एड्रेनालिन / Adrenaline
+= पैराथॉर्मोन (PTH) रक्त कैल्शियम बढ़ाता है।
+
+# MATHS
+39 अनुपात
+? यदि $\frac{2a-5b}{3a-6b} = \frac{4}{7}$ हो, तो a : b का मान बराबर है-
+! If $\frac{2a-5b}{3a-6b} = \frac{4}{7}$, then the value of a : b is-
+- 21 : 36
+- 2 : 59
+- 59 : 2
+- 36 : 21
+= $14a - 35b = 12a - 24b \Rightarrow 2a = 11b \Rightarrow a:b = 11:2$। ⚠️ छपे समीकरण से 11 : 2 आता है, जो किसी विकल्प में नहीं; मूल कुंजी (C) 59 : 2 है।
+40 लाभ-हानि
+? यदि 15% लाभ और 15% हानि का अन्तर ₹450 हो, तो क्रय मूल्य है-
+! If the difference between 15% profit and 15% loss is ₹450, then the cost price is-
+- ₹2,200
+- ₹1,200
+- ₹1,500
+- ₹2,000
+= विक्रय मूल्यों का अंतर = 30% क्रय मूल्य = 450 ⇒ क्रय मूल्य = ₹1500।
+41 साधारण ब्याज
+? कोई धन राशि साधारण ब्याज से 15 वर्ष में अपने से तीन गुनी हो जाती है। कितने समय में यह अपने से 5 गुनी हो जाएगी?
+! A sum triples itself in 15 years at simple interest. In how many years will it become 5 times?
+- 40 वर्ष / years
+- 36 वर्ष / years
+- 30 वर्ष / years
+- 25 वर्ष / years
+= 15 वर्ष में ब्याज = 2P ⇒ 4P के लिए 30 वर्ष।
+42 भिन्न
+? यदि एक भिन्न के अंश को 20% और उसके हर को 25% बढ़ा दिया जाए, तो भिन्न $\frac{3}{5}$ हो जाता है, तो मूल भिन्न है-
+! If the numerator is increased by 20% and the denominator by 25%, the fraction becomes $\frac{3}{5}$. The original fraction is-
+- $\frac{5}{8}$
+- $\frac{8}{5}$
+- $\frac{8}{3}$
+- $\frac{3}{8}$
+= $\frac{1.2x}{1.25y} = \frac35 \Rightarrow \frac{x}{y} = \frac{3\times1.25}{5\times1.2} = \frac58$।
+43 HCF
+? विद्यार्थियों की अधिकतम संख्या ज्ञात कीजिए जिसमें 1001 पेन और 910 पेंसिलें इस प्रकार बाँटे जाएँ कि प्रत्येक को मिले पेनों की संख्या बराबर हो एवं प्रत्येक को मिले पेंसिलों की संख्या बराबर हो।
+! Find the maximum number of students among whom 1001 pens and 910 pencils can be distributed equally.
+- 91
+- 910
+- 1001
+- 1911
+= HCF(1001, 910) = 91।
+44 अभाज्य गुणनखंड
+? यदि $504 = 2^p \times 3^q \times 7^r$ तो (2p + q − r) का मान है-
+! If $504 = 2^p \times 3^q \times 7^r$, then the value of (2p + q − r) is-
+- 5
+- 6
+- 7
+- 8
+= $504 = 2^3 \times 3^2 \times 7$ ⇒ $2(3) + 2 - 1 = 7$।
+45 करणी
+? निम्नलिखित संख्याओं में से कौन-सी संख्या सबसे बड़ी है? $\sqrt{2}, \sqrt[3]{3}, \sqrt[4]{4}, \sqrt[6]{6}$
+! Which of the following numbers is the largest? $\sqrt{2}, \sqrt[3]{3}, \sqrt[4]{4}, \sqrt[6]{6}$
+- $\sqrt{2}$
+- $\sqrt[3]{3}$
+- $\sqrt[4]{4}$
+- $\sqrt[6]{6}$
+= घात 12 पर लाएँ: $2^6=64$, $3^4=81$, $4^3=64$, $6^2=36$ ⇒ $\sqrt[3]{3}$ सबसे बड़ा।
+46 प्रतिशत
+? पहले संख्या 350 को 20% बढ़ाकर पुनः 20% कम कर दिया गया। अन्ततः वृद्धि या कमी का प्रतिशत होगा-
+! A number 350 is first increased by 20% and then decreased by 20%. The final percentage change will be-
+- 14%
+- 4%
+- 25%
+- 20%
+= $+20 - 20 - \frac{20\times20}{100} = -4\%$ (4% कमी)।
+47 लाभ-हानि
+? 20 वस्तुओं का क्रय मूल्य, x वस्तुओं के विक्रय मूल्य के बराबर है। यदि लाभ 25% हो, तो x का मान होगा-
+! The cost price of 20 articles equals the selling price of x articles. If the profit is 25%, then x is-
+- 25
+- 18
+- 16
+- 15
+= $\frac{20 - x}{x} = \frac14 \Rightarrow x = 16$।
+48 संख्या पद्धति
+? निम्न में से कौन से कथन सही हैं?<br>(1) दो अभाज्य संख्याओं का योगफल सदैव एक अभाज्य संख्या होता है।<br>(2) एक भाज्य संख्या विषम संख्या हो सकती है।<br>(3) '2' एकमात्र सम अभाज्य संख्या है।<br>(4) सबसे छोटी अभाज्य संख्या '1' है।
+! Which statements are correct? (1) Sum of two primes is always prime. (2) A composite number can be odd. (3) 2 is the only even prime. (4) The smallest prime is 1.
+- (1) और (3) / (1) and (3)
+- (2) और (3) / (2) and (3)
+- (2) और (4) / (2) and (4)
+- (3) और (4) / (3) and (4)
+= 3+5 = 8 (कथन 1 गलत); 9 विषम भाज्य (2 सही); 2 एकमात्र सम अभाज्य (3 सही); 1 अभाज्य नहीं (4 गलत)।
+49 विभाज्यता
+? निम्नलिखित में से कौन-सी संख्या 99 से विभाजित होती है?
+! Which of the following numbers is divisible by 99?
+- 913462
+- 135792
+- 114345
+- 3572406
+= दाएँ से दो-दो अंकों का योग: 45 + 43 + 11 = 99 ⇒ 114345।
+50 बेलन
+? किसी लंब वृत्तीय बेलन का कुल पृष्ठीय क्षेत्रफल 748 cm² है तथा उसके आधार की परिधि 44 cm है। इस बेलन का आयतन है ($\pi = \frac{22}{7}$)
+! The total surface area of a right circular cylinder is 748 cm² and its base circumference is 44 cm. Its volume is ($\pi = \frac{22}{7}$)
+- 1540 cm³
+- 2260 cm³
+- 2310 cm³
+- 3080 cm³
+= $2\pi r = 44 \Rightarrow r = 7$; $44(h+7) = 748 \Rightarrow h = 10$; $V = \frac{22}{7}\times49\times10 = 1540$।
+51 समचतुर्भुज
+? एक समचतुर्भुज के विकर्णों की माप 16 सेमी तथा 30 सेमी है। इसका परिमाप ज्ञात कीजिए।
+! The diagonals of a rhombus are 16 cm and 30 cm. Find its perimeter.
+- 63.5 cm
+- 65 cm
+- 68 cm
+- 70.02 cm
+= भुजा $= \sqrt{8^2 + 15^2} = 17$; परिमाप = 68 cm।
+52 आयत
+? एक आयत, जिसकी भुजाएं केवल प्राकृत संख्याओं में हैं, का क्षेत्रफल 24 वर्ग सेमी है, उसका परिमाप नहीं हो सकता:
+! A rectangle with natural-number sides has an area of 24 cm². Which cannot be its perimeter?
+- 20 cm
+- 22 cm
+- 25 cm
+- 28 cm
+= भुजाएँ (1,24),(2,12),(3,8),(4,6) ⇒ परिमाप 50, 28, 22, 20; 25 संभव नहीं (परिमाप सम होगा)।
+53 चक्रवृद्धि ब्याज
+? किसी धनराशि पर 2 वर्ष का चक्रवृद्धि ब्याज ₹129 तथा उतने ही समय का साधारण ब्याज ₹120 है। ब्याज की वार्षिक दर है-
+! The compound interest for 2 years is ₹129 and the simple interest is ₹120. The annual rate is-
+- 12%
+- 14%
+- 15%
+- 12.5%
+= अंतर ₹9 = एक वर्ष के SI (₹60) पर ब्याज ⇒ $r = \frac{9}{60}\times100 = 15\%$।
+54 सांख्यिकी
+? किन्हीं दिए गए आंकड़ों के लिए, यदि माध्य और बहुलक क्रमशः 42 और 60 है, तो प्रयोगसिद्ध संबंध का उपयोग करते हुए उन आंकड़ों की माध्यिका ज्ञात कीजिए।
+! For a given data, if the mean and mode are 42 and 60, find the median using the empirical relation.
+- 50
+- 44
+- 46
+- 48
+= बहुलक = 3 माध्यिका − 2 माध्य ⇒ 60 = 3M − 84 ⇒ M = 48।
+
+# पर्यावरण एवं सामाजिक अध्ययन
+55 पारिस्थितिकी
+? खाद्य श्रृंखला में ऊर्जा का प्रवाह सामान्यतः किस दिशा में होता है?
+! In a food chain, in which direction does the flow of energy generally occur?
+- उपभोक्ता → उत्पादक → अपघटक / Consumer → Producer → Decomposer
+- अपघटक → उत्पादक → उपभोक्ता / Decomposer → Producer → Consumer
+- उत्पादक → उपभोक्ता → अपघटक / Producer → Consumer → Decomposer
+- उपभोक्ता → अपघटक → उत्पादक / Consumer → Decomposer → Producer
+= ऊर्जा प्रवाह एकदिशीय: सूर्य → उत्पादक → उपभोक्ता → अपघटक।
+56 अपशिष्ट प्रबंधन
+? निम्नलिखित में से कौन-सा जैव अपघटनीय कचरे का उदाहरण है?
+! Which of the following is an example of biodegradable waste?
+- प्लास्टिक बोतल / Plastic bottle
+- एल्युमिनियम कैन / Aluminium can
+- काँच / Glass
+- सब्जियों के छिलके / Vegetable peels
+= सब्जियों के छिलके सूक्ष्मजीवों द्वारा विघटित हो जाते हैं।
+57 भारत की मिट्टियाँ
+? भारत में काली मिट्टी का सर्वाधिक विस्तार मुख्यतः किस क्षेत्र में पाया जाता है?
+! In which region is the black soil of India most extensively found?
+- दक्कन का पठार / Deccan Plateau
+- गंगा का मैदान / Gangetic Plain
+- मालवा के उत्तर का मैदान / Plain north of Malwa
+- हिमालयी क्षेत्र / Himalayan region
+= बेसाल्ट के अपक्षय से बनी काली (रेगुर) मिट्टी — दक्कन पठार।
+58 भारत की नदियाँ
+? निम्नलिखित में से कौन-सी नदी अरब सागर में गिरती है?
+! Which of the following rivers drains into the Arabian Sea?
+- महानदी / Mahanadi
+- गोदावरी / Godavari
+- नर्मदा / Narmada
+- कावेरी / Kaveri
+= नर्मदा व ताप्ती पश्चिम की ओर बहकर अरब सागर में गिरती हैं।
+59 राष्ट्रीय आंदोलन
+? स्वदेशी आंदोलन का तत्काल प्रमुख कारण क्या था?
+! What was the immediate primary cause of the Swadeshi Movement?
+- रॉलेट एक्ट / Rowlatt Act
+- बंगाल का विभाजन / Partition of Bengal
+- साइमन कमीशन / Simon Commission
+- जलियाँवाला बाग हत्याकांड / Jallianwala Bagh Massacre
+= बंग-भंग (1905, कर्ज़न) के विरोध में स्वदेशी आंदोलन।
+60 राष्ट्रीय आंदोलन
+? भारत छोड़ो आंदोलन के दौरान गांधीजी ने कौन-सा प्रसिद्ध आह्वान दिया था?
+! Which famous call did Gandhiji give during the Quit India Movement?
+- करो या मरो / Do or Die
+- जय हिंद / Jai Hind
+- दिल्ली चलो / Dilli Chalo
+- इंकलाब जिंदाबाद / Inquilab Zindabad
+= 1942 — "करो या मरो"; 'दिल्ली चलो', 'जय हिंद' — सुभाष चंद्र बोस।
+61 राष्ट्रीय आय
+? राष्ट्रीय आय की गणना में 'अंतिम वस्तुओं' को शामिल करने का मुख्य उद्देश्य क्या है?
+! What is the main objective of including 'final goods' in national income calculation?
+- बेरोजगारी मापना / Measuring unemployment
+- दोहरी गणना से बचना / Avoiding double counting
+- मुद्रास्फीति कम करना / Reducing inflation
+- आयात बढ़ाना / Increasing imports
+= मध्यवर्ती वस्तुएँ जोड़ने से दोहरी गणना होगी।
+62 मुद्रास्फीति
+? जब सामान्य मूल्य स्तर लगातार बढ़ता है और मुद्रा की क्रय शक्ति घटती है, तो इसे क्या कहा जाता है?
+! What is it called when the general price level rises continuously and the purchasing power of money declines?
+- अपस्फीति / Deflation
+- मंदी / Recession
+- मुद्रास्फीति / Inflation
+- राजकोषीय घाटा / Fiscal deficit
+= मूल्य स्तर में निरंतर वृद्धि — मुद्रास्फीति।
+
+# बाल विकास (CDP)
+63 राष्ट्रीय शिक्षा नीति 1986
+? NPE 1986 के अनुसार शिक्षा पर केंद्र और राज्य सरकारों का कुल व्यय देश की GDP का कितने प्रतिशत होना चाहिए?
+! According to NPE 1986, what percentage of GDP should be the total expenditure on education?
+- 4%
+- 5%
+- 6%
+- 7%
+= कोठारी आयोग व NPE 1986 — GDP का 6%।
+64 शिक्षा समितियाँ
+? यशपाल समिति की सिफारिशों का सीधा प्रभाव किस राष्ट्रीय दस्तावेज के निर्माण पर सबसे अधिक पड़ा?
+! The Yashpal Committee recommendations had the most direct impact on which national document?
+- राष्ट्रीय शिक्षा नीति 1986 / NPE 1986
+- राष्ट्रीय पाठ्यचर्या की रूपरेखा 2005 / NCF 2005
+- शिक्षा का अधिकार अधिनियम 2009 / RTE Act 2009
+- राष्ट्रीय शिक्षा नीति 2020 / NEP 2020
+= 'बिना बोझ के शिक्षा' (1993) — NCF 2005 का आधार बनी।
+65 शिक्षा आयोग
+? समान स्कूल प्रणाली (Common School System) की वकालत किस आयोग ने की थी?
+! Which commission advocated the 'Common School System'?
+- कोठारी आयोग / Kothari Commission
+- यशपाल समिति / Yashpal Committee
+- मुदालियर आयोग / Mudaliar Commission
+- राधाकृष्णन आयोग / Radhakrishnan Commission
+= कोठारी आयोग (1964–66)।
+66 शिक्षा का इतिहास
+? लॉर्ड मैकाले के 1835 के विवरण पत्र के आधार पर किस सिद्धांत को लागू किया गया, जिसके तहत शिक्षा केवल उच्च वर्ग को दी जानी थी?
+! Based on Macaulay's Minute of 1835, which theory was implemented under which education was given only to the upper class?
+- समान स्कूल प्रणाली / Common School System
+- अधोगामी निस्यंदन सिद्धांत / Downward Filtration Theory
+- बुनियादी शिक्षा का सिद्धांत / Principle of Basic Education
+- त्रिभाषा सूत्र / Three-Language Formula
+= उच्च वर्ग से शिक्षा 'छनकर' जनसाधारण तक पहुँचेगी — अधोगामी निस्यंदन।
+67 शिक्षा का इतिहास
+? जब 1835 में मैकाले का प्रस्ताव स्वीकार किया गया और 'अंग्रेजी शिक्षा अधिनियम 1835' पारित हुआ, तब भारत के गवर्नर-जनरल कौन थे?
+! Who was the Governor-General when Macaulay's proposal was accepted (English Education Act 1835)?
+- लॉर्ड डलहौजी / Lord Dalhousie
+- लॉर्ड विलियम बेंटिक / Lord William Bentinck
+- लॉर्ड ऑकलैंड / Lord Auckland
+- वारेन हेस्टिंग्स / Warren Hastings
+= लॉर्ड विलियम बेंटिक।
+68 बौद्ध कालीन शिक्षा
+? निम्नलिखित में से कौन सा कथन बौद्ध कालीन 'उपसंपदा संस्कार' के संदर्भ में सही है?
+! Which statement is correct regarding the 'Upasampada' ceremony of the Buddhist period?
+- यह शिक्षा की शुरुआत (मठ में प्रवेश) के समय होता था। / It took place at the beginning of education.
+- यह केवल उन छात्रों के लिए अनिवार्य था जो आजीवन संघ के स्थाई भिक्षु बनना चाहते थे। / It was mandatory only for those who wished to become permanent monks.
+- यह गृहस्थ जीवन में वापस लौटने वाले छात्रों के लिए अनिवार्य था। / It was mandatory for students returning to householder life.
+- यह केवल प्राथमिक शिक्षा पूरी होने पर होता था। / It took place only after primary education.
+= प्रवेश पर 'प्रव्रज्या'; 20 वर्ष पर स्थायी भिक्षु बनने हेतु 'उपसंपदा'।
+69 बौद्ध कालीन शिक्षा
+? बौद्ध शिक्षा प्रणाली में मुख्य रूप से शिक्षण कार्य करने वाले शिक्षक को किस नाम से जाना जाता था?
+! By what name was the teacher responsible for instruction in the Buddhist system known?
+- गुरु / Guru
+- भिक्षु / Bhikshu
+- उपाध्याय / Upadhyaya
+- मौलवी / Maulvi
+= बौद्ध शिक्षा में शिक्षक 'उपाध्याय' (और आचार्य) कहलाते थे।
+70 मध्याह्न भोजन
+? PM POSHAN के पोषण मानकों के अनुसार, उच्च प्राथमिक स्तर (कक्षा VI से VIII) के बच्चे को दैनिक भोजन में न्यूनतम कितनी कैलोरी और प्रोटीन मिलना अनिवार्य है?
+! Under PM POSHAN norms, what is the minimum daily calories and protein for upper primary (VI–VIII)?
+- 450 कैलोरी और 12 ग्राम प्रोटीन / 450 calories, 12 g protein
+- 500 कैलोरी और 15 ग्राम प्रोटीन / 500 calories, 15 g protein
+- 700 कैलोरी और 20 ग्राम प्रोटीन / 700 calories, 20 g protein
+- 800 कैलोरी और 25 ग्राम प्रोटीन / 800 calories, 25 g protein
+= प्राथमिक: 450 कैलोरी + 12 g; उच्च प्राथमिक: 700 कैलोरी + 20 g।
+71 शिक्षक प्रशिक्षण
+? 'समग्र शिक्षा' के तहत शिक्षकों के व्यावसायिक विकास के लिए चलाए जा रहे 'निष्ठा' (NISHTHA) कार्यक्रम का पूर्ण रूप क्या है?
+! What is the full form of 'NISHTHA' under Samagra Shiksha?
+- National Initiative for School Heads' and Teachers' Holistic Advancement
+- National Institute for School Teachers and Higher Association
+- National Initiative for Science and Technology Higher Education
+- New Integrated System for Teachers and Headmasters Advancement
+= NISHTHA (2019) — National Initiative for School Heads' and Teachers' Holistic Advancement।
+72 उत्तर प्रदेश शिक्षा परियोजना
+? उत्तर प्रदेश बेसिक शिक्षा परियोजना (BEP) के मुख्य रूप से कितने अंग या घटक निर्धारित किए गए हैं?
+! How many main components were defined for the UP Basic Education Project (BEP)?
+- दो अंग / two components
+- तीन अंग / three components
+- पांच अंग / five components
+- छह अंग / six components
+= उत्तर कुंजी के अनुसार — तीन अंग।
+73 परीक्षण के गुण
+? यदि कोई परीक्षण बार-बार प्रयोग किए जाने पर भी एक समान परिणाम देता है, तो उस परीक्षण में कौन सा गुण मौजूद होता है?
+! If a test yields consistent results when administered repeatedly, which quality does it possess?
+- वैधता / Validity
+- विश्वसनीयता / Reliability
+- वस्तुनिष्ठता / Objectivity
+- व्यावहारिकता / Usability
+= बार-बार समान परिणाम — विश्वसनीयता; जो मापना है वही मापे — वैधता।
+74 मापन के स्तर
+? क्रिकेट खिलाड़ियों की जर्सी का नंबर, पिन कोड, या लिंग के आधार पर (पुरुष/महिला) बांटना मापन के किस स्तर का उदाहरण है?
+! Jersey numbers, PIN codes or gender categories are examples of which level of measurement?
+- नामित मापन / Nominal measurement
+- क्रमित मापन / Ordinal measurement
+- अंतराल मापन / Interval measurement
+- अनुपातिक मापन / Ratio measurement
+= केवल नाम/पहचान, कोई क्रम नहीं — नामित (Nominal)।
+75 विद्यालय प्रबंधन
+? 'शिक्षक अभिभावक संघ' (PTA) की बैठक विद्यालय में न्यूनतम कितनी बार आयोजित होनी चाहिए?
+! What is the minimum frequency for holding PTA meetings in school?
+- वर्ष में केवल एक बार / Only once a year
+- प्रत्येक माह में कम से कम एक बार / At least once every month
+- छह महीने में एक बार / Once every six months
+- केवल परीक्षा के दिन / Only on examination days
+= उत्तर कुंजी के अनुसार — प्रत्येक माह कम से कम एक बार।
+76 विद्यालय अभिलेख
+? विद्यालय को प्राप्त होने वाले धन, व्यय और बजट का लेखा-जोखा रखने के लिए किस मुख्य पंजिका का उपयोग किया जाता है?
+! Which register is used to maintain accounts of funds, expenditure and budget of a school?
+- संचयी अभिलेख पंजिका / Cumulative Record Register
+- कैश बुक या नकद बही / Cash Book
+- स्टॉक रजिस्टर / Stock Register
+- उपस्थिति पंजिका / Attendance Register
+= आय-व्यय का हिसाब — कैश बुक।
+77 विद्यालय अभिलेख
+? विद्यालय में किसी छात्र के जीवन की किसी विशेष घटना/व्यवहार का विस्तृत वर्णन शिक्षक द्वारा जिस रिकॉर्ड में दर्ज किया जाता है, उसे क्या कहते हैं?
+! What is the record in which a teacher documents a specific incident or behaviour of a student?
+- आकस्मिक या वृत्तांत अभिलेख / Anecdotal Record
+- संचयी अभिलेख / Cumulative Record
+- कैश बुक / Cash Book
+- प्रविष्टि रजिस्टर / Entry Register
+= विशेष घटना का वर्णन — घटना-वृत्त (Anecdotal) अभिलेख।
+78 अधिगम अक्षमता
+? ठीक से पेन न पकड़ पाना, बटन बंद न कर पाना, या गेंद को कैच करने में हाथ-आंख के समन्वय में कठिनाई होना किस विकार का सूचक है?
+! Inability to hold a pen, fasten buttons or catch a ball (hand-eye coordination) indicates which disorder?
+- डिसग्राफिया / Dysgraphia
+- डिसप्रैक्सिया / Dyspraxia
+- डिसकैलकुलिया / Dyscalculia
+- डिस्थीमिया / Dysthymia
+= गामक समन्वय विकार — डिसप्रैक्सिया।
+79 शिक्षण सूत्र
+? बालकों की शिक्षा में 'तर्क' का स्थान बाद में आना चाहिए, जबकि 'अनुभव और इंद्रियों' द्वारा सीखना पहले होना चाहिए। इसके लिए कौन सा सूत्र सही है?
+! Learning through experience and senses should come first and logic later. Which maxim applies?
+- तर्क से इंद्रिय की ओर / From logic to senses
+- अनुभूति से युक्ति-युक्त की ओर / From empirical to rational
+- निश्चित से अनिश्चित की ओर / From definite to indefinite
+- विश्लेषण से संश्लेषण की ओर / From analysis to synthesis
+= अनुभव (इन्द्रियजन्य) से तर्क की ओर — Empirical to Rational।
+80 सूक्ष्म शिक्षण
+? भारतीय प्रतिमान (NCERT) के अनुसार, सूक्ष्म शिक्षण चक्र में 'शिक्षण' और 'प्रतिपुष्टि' के लिए क्रमशः कितने-कितने मिनट निर्धारित हैं?
+! According to the Indian (NCERT) model, how many minutes are allotted to 'Teaching' and 'Feedback' in micro-teaching?
+- 10 मिनट और 10 मिनट / 10 and 10 minutes
+- 6 मिनट और 6 मिनट / 6 and 6 minutes
+- 5 मिनट और 5 मिनट / 5 and 5 minutes
+- 6 मिनट और 12 मिनट / 6 and 12 minutes
+= भारतीय मॉडल (36 मिनट): शिक्षण 6, प्रतिपुष्टि 6, पुनर्योजना 12, पुनर्शिक्षण 6, पुनर्प्रतिपुष्टि 6।
+81 शिक्षण कौशल
+? किसी कठिन और अमूर्त संप्रत्यय को समझाने के लिए जब शिक्षक चित्रों, चार्ट, मॉडल या उदाहरणों का प्रयोग करता है, तो उसे कौन सा कौशल कहा जाता है?
+! When a teacher uses pictures, charts, models or examples to explain an abstract concept, what is this skill called?
+- व्याख्या कौशल / Explaining skill
+- दृष्टांत कौशल / Illustrating skill
+- श्यामपट्ट कौशल / Blackboard skill
+- प्रस्तावना कौशल / Introduction skill
+= उदाहरण व दृश्य सामग्री द्वारा स्पष्ट करना — दृष्टांत कौशल।
+82 विकास के सिद्धांत
+? कथन (A): बाल विकास की सटीक भविष्यवाणी करना संभव है कि कोई बच्चा बड़ा होकर किस निश्चित क्षेत्र में शत-प्रतिशत सफल होगा।<br>कारण (R): बच्चों के विकास का क्रम और प्रतिमान पूरे विश्व में सभी बच्चों के लिए एक समान और व्यवस्थित होता है।
+! Assertion (A): It is possible to predict accurately in which field a child will be 100% successful. Reason (R): The sequence and pattern of development are uniform for all children.
+- (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है। / Both correct, R explains A.
+- (A) और (R) दोनों सही हैं, लेकिन (R), (A) की सही व्याख्या नहीं है। / Both correct, R does not explain A.
+- (A) सही है, लेकिन (R) गलत है। / A correct, R incorrect.
+- (A) गलत है, लेकिन (R) सही है। / A incorrect, R correct.
+= विकास का क्रम समान है (R सही), पर व्यक्तिगत सफलता की शत-प्रतिशत भविष्यवाणी संभव नहीं (A गलत)।
+83 पियाजे का संज्ञानात्मक विकास
+? वस्तु स्थायित्व (Object Permanence) की क्षमता पियाजे की किस अवस्था की मुख्य विशेषता है?
+! 'Object Permanence' is a key characteristic of which stage in Piaget's theory?
+- संवेदी-पेशीय अवस्था (0 से 2 वर्ष) / Sensori-motor Stage
+- पूर्व-संक्रियात्मक अवस्था / Pre-operational Stage
+- मूर्त संक्रियात्मक अवस्था / Concrete Operational Stage
+- औपचारिक संक्रियात्मक अवस्था / Formal Operational Stage
+= संवेदी-गामक अवस्था (0–2 वर्ष)।
+84 पियाजे का संज्ञानात्मक विकास
+? एक 5 वर्ष का बच्चा मानता है कि हवा चलने पर पेड़ की पत्तियाँ इसलिए हिलती हैं क्योंकि वे खुश हैं, और उसकी गुड़िया को चोट लगती है तो वह रोती है। पियाजे के अनुसार यह सोच क्या कहलाती है?
+! A 5-year-old believes leaves move because they are happy and a doll feels pain. What is this thinking called?
+- अहंकेंद्रवाद / Egocentrism
+- जीववाद / Animism
+- केंद्रीकरण / Centration
+- पलटावी गुण / Reversibility
+= निर्जीव वस्तुओं को सजीव मानना — जीववाद (पूर्व-संक्रियात्मक अवस्था)।
+85 वाइगोत्स्की
+? कथन (A): लेव वाइगोत्स्की बच्चों को ज्ञान के निष्क्रिय प्राप्तकर्ता के रूप में देखते थे।<br>कारण (R): वाइगोत्स्की का मानना था कि बच्चे अधिक योग्य व्यक्तियों (MKO) के साथ अंतःक्रिया करके सक्रिय रूप से अपने ज्ञान की संरचना करते हैं।
+! Assertion (A): Vygotsky viewed children as passive recipients of knowledge. Reason (R): Vygotsky believed children actively construct knowledge by interacting with MKOs.
+- (A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है। / Both true, R explains A.
+- (A) और (R) दोनों सही हैं, लेकिन (R), (A) की सही व्याख्या नहीं है। / Both true, R does not explain A.
+- (A) सही है, लेकिन (R) गलत है। / A true, R false.
+- (A) गलत है, लेकिन (R) सही है। / A false, R true.
+= वाइगोत्स्की बच्चे को सक्रिय, सामाजिक अंतःक्रिया से सीखने वाला मानते थे — A गलत, R सही।
+86 कोहलबर्ग
+? एक बच्चा सोचता है, "मुझे गृहकार्य समय पर पूरा करना चाहिए, नहीं तो शिक्षिका मुझे डांटेगी या सजा देगी।" कोहलबर्ग के अनुसार, यह बच्चा नैतिकता के किस स्तर पर है?
+! A child thinks, "I must finish homework or the teacher will punish me." At which level of morality (Kohlberg) is this child?
+- पूर्व-पारंपरिक स्तर (दंड एवं आज्ञाकारिता) / Pre-conventional Level
+- पारंपरिक स्तर / Conventional Level
+- उत्तर-पारंपरिक स्तर / Post-conventional Level
+- स्वायत्त स्तर / Autonomous Level
+= दंड से बचने के लिए आज्ञा पालन — पूर्व-पारंपरिक (चरण 1)।
+
+# सामान्य ज्ञान एवं समसायिक घटनाएं
+87 शिक्षण विधियाँ
+? निम्न में से कौन एक 'क्षेत्र भ्रमण' का उदाहरण है?
+! Which of the following is an example of a 'field visit'?
+- पुस्तक / Book
+- पंचायत घर / Panchayat house
+- नक्शा / Map
+- ग्लोब / Globe
+= वास्तविक स्थान पर जाकर देखना — पंचायत घर।
+88 भारतीय संविधान
+? संविधान की 11वीं अनुसूची में पंचायत राज संस्थाओं के लिए कितने विषय सूचीबद्ध हैं?
+! How many subjects are listed for Panchayati Raj institutions in the 11th Schedule?
+- 29
+- 30
+- 35
+- 37
+= 11वीं अनुसूची — 29 विषय (पंचायत); 12वीं — 18 विषय (नगरपालिका)।
+89 समाज सुधारक
+? निम्न में से कौन 'पेरियार' के नाम से प्रसिद्ध है?
+! Who among the following is famous by the name 'Periyar'?
+- सी. बी. रमन पिल्लई / C. B. Raman Pillai
+- सी. एन. मुदालियर / C. N. Mudaliar
+- ई. वी. रामास्वामी नायकर / E. V. Ramasamy Naicker
+- के. रामाकृष्ण पिल्लई / K. Ramakrishna Pillai
+= ई.वी. रामास्वामी नायकर — आत्मसम्मान आंदोलन (1925)।
+90 मध्यकालीन भारत
+? हैदराबाद की निजामशाही के प्रवर्तक थे
+! The founder of the Nizam Shahi of Hyderabad was
+- चिन किलिच खान / Chin Qilich Khan
+- सआदत खान / Saadat Khan
+- मुर्शिद कुली खान / Murshid Quli Khan
+- सफदरजंग / Safdarjung
+= चिन किलिच खान (निजाम-उल-मुल्क आसफ जाह), 1724।
+91 कला एवं संस्कृति
+? कंदरिया महादेव मंदिर के निर्माता थे
+! The builders of the Kandariya Mahadeva Temple were
+- चौहान / Chauhans
+- तोमर / Tomar
+- चंदेल / Chandelas
+- गुर्जर प्रतिहार / Gurjara-Pratiharas
+= खजुराहो (म.प्र.) — चंदेल शासक विद्याधर।
+92 आधुनिक भारत
+? भारत में साम्प्रदायिक मतदान क्षेत्र आरम्भ किये गये
+! Communal electorates were introduced in India by:
+- भारत सरकार अधिनियम, 1892 द्वारा / Government of India Act, 1892
+- मार्ले-मिन्टो सुधार, 1909 द्वारा / Morley-Minto Reforms, 1909
+- मान्टेग्यू-चेम्सफोर्ड सुधार, 1919 द्वारा / Montagu-Chelmsford Reforms, 1919
+- भारत सरकार अधिनियम, 1935 द्वारा / Government of India Act, 1935
+= 1909 के मार्ले-मिन्टो सुधार — मुसलमानों के लिए पृथक निर्वाचन।
+93 खेल 2025
+? 2025 के राष्ट्रीय खेल पुरस्कारों में Major Dhyan Chand Khel Ratna के लिए कितने खिलाड़ियों की सिफारिश की गई?
+! How many athletes were recommended for the Major Dhyan Chand Khel Ratna in the 2025 National Sports Awards?
+- 0
+- 1
+- 2
+- 4
+= उत्तर कुंजी के अनुसार — 0।
+94 खेल 2026
+? 2026 में SAFF Women's Championship की मेजबानी भारत के किस राज्य ने की?
+! Which Indian state hosted the SAFF Women's Championship in 2026?
+- केरल / Kerala
+- गोवा / Goa
+- ओडिशा / Odisha
+- महाराष्ट्र / Maharashtra
+= उत्तर कुंजी के अनुसार — गोवा।
+95 राष्ट्रीय उद्यान
+? निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?
+! Which of the following pairs is correctly matched?
+- गिर - एक सींग वाला गैंडा / Gir - One-horned rhinoceros
+- काजीरंगा - एक सींग वाला गैंडा / Kaziranga - One-horned rhinoceros
+- सुंदरबन - एशियाई सिंह / Sundarbans - Asiatic lion
+- कान्हा - हिम तेंदुआ / Kanha - Snow leopard
+= काजीरंगा (असम) — एक सींग वाला गैंडा; गिर — एशियाई सिंह; सुंदरबन — बाघ; कान्हा — बारहसिंगा।
+96 गुरुत्वाकर्षण
+? चंद्रमा पर किसी वस्तु का भार पृथ्वी की तुलना में लगभग कितना होता है?
+! Approximately how much is the weight of an object on the Moon compared to Earth?
+- 1/2
+- 1/4
+- 1/6
+- 1/9
+= चंद्रमा पर g, पृथ्वी का लगभग 1/6।
+97 अर्थव्यवस्था
+? भारत में राष्ट्रीय आय के आँकड़े किस संस्था द्वारा जारी किए जाते हैं?
+! Which organization releases national income data in India?
+- RBI
+- नीति आयोग / NITI Aayog
+- NSO
+- वित्त आयोग / Finance Commission
+= NSO (सांख्यिकी एवं कार्यक्रम कार्यान्वयन मंत्रालय)।
+98 समसामयिकी 2026
+? 2026 के स्वतंत्रता दिवस संबोधन में कितने युवाओं को AI में प्रशिक्षण देने का लक्ष्य बताया गया?
+! In the 2026 Independence Day address, what target was announced for training youth in AI?
+- 10 लाख / 10 Lakh
+- 50 लाख / 50 Lakh
+- 1 करोड़ / 1 Crore
+- 5 करोड़ / 5 Crore
+= उत्तर कुंजी के अनुसार — 1 करोड़।
+99 खेल
+? भारत ने किस वर्ष के ओलंपिक की मेजबानी का लक्ष्य रखा है?
+! India aims to host the Olympics in which year?
+- 2028
+- 2032
+- 2036
+- 2040
+= भारत ने 2036 ओलंपिक की मेजबानी हेतु दावेदारी की है।
+100 खेल 2026
+? 2026 के राष्ट्रीय खेल पुरस्कारों में 2025 के लिए कितने खिलाड़ियों को अर्जुन पुरस्कार देने की घोषणा की गई?
+! How many athletes were announced to receive the Arjuna Award for 2025 during the 2026 National Sports Awards?
+- 12
+- 15
+- 17
+- 21
+= उत्तर कुंजी के अनुसार — 17।
+101 खेल 2026
+? 2026 FIFA World Cup में आधिकारिक मैच बॉल का नाम क्या था?
+! What was the name of the official match ball for the 2026 FIFA World Cup?
+- Al Rihla
+- Trionda
+- Telstar
+- Brazuca
+= 2026 — Trionda; 2022 — Al Rihla; 2014 — Brazuca।
+102 गुरुत्वाकर्षण
+? यदि पृथ्वी के घूर्णन की गति अचानक बढ़ जाए, तो भूमध्य रेखा पर किसी वस्तु के भार पर क्या प्रभाव पड़ेगा?
+! If Earth's rotation speed suddenly increased, what would happen to the weight of an object at the equator?
+- बढ़ेगा / It would increase
+- घटेगा / It would decrease
+- कोई प्रभाव नहीं / No effect
+- पहले बढ़ेगा फिर घटेगा / It would increase first, then decrease
+= $g' = g - \omega^2 R$; ω बढ़ने पर भूमध्य रेखा पर भार घटेगा।
+103 राष्ट्रीय आंदोलन
+? निम्नलिखित में से किस आंदोलन का प्रत्यक्ष संबंध 'कर न देने' के प्रश्न से था?
+! Which movement was directly related to the issue of 'non-payment of taxes'?
+- खेड़ा सत्याग्रह / Kheda Satyagraha
+- चंपारण सत्याग्रह / Champaran Satyagraha
+- बारडोली सत्याग्रह / Bardoli Satyagraha
+- अहमदाबाद मिल हड़ताल / Ahmedabad Mill Strike
+= उत्तर कुंजी के अनुसार — बारडोली (1928, लगान वृद्धि के विरोध में 'कर न दो', पटेल)।
+104 संवैधानिक संस्थाएँ
+? नियंत्रक एवं महालेखा परीक्षक (CAG) को हटाने की प्रक्रिया किसके समान है?
+! The procedure for removing the CAG is similar to that of:
+- राष्ट्रपति / The President
+- उपराष्ट्रपति / The Vice-President
+- उच्च न्यायालय के न्यायाधीश / A High Court Judge
+- सर्वोच्च न्यायालय के न्यायाधीश / A Supreme Court Judge
+= अनुच्छेद 148: CAG को सर्वोच्च न्यायालय के न्यायाधीश की तरह हटाया जाता है।
+105 उत्तर प्रदेश
+? उत्तर प्रदेश विधान परिषद के संदर्भ में कौन-सा कथन सही है?
+! Which statement regarding the UP Legislative Council is correct?
+- यह एक अस्थायी सदन है / It is a temporary house
+- इसके सभी सदस्य प्रत्यक्ष चुनाव से चुने जाते हैं / All members are directly elected
+- यह एक स्थायी सदन है / It is a permanent house
+- इसे राज्यपाल भंग कर सकता है / The Governor can dissolve it
+= विधान परिषद स्थायी सदन है; हर 2 वर्ष में 1/3 सदस्य सेवानिवृत्त होते हैं।
+106 समसामयिकी
+? हाल ही में इथियोपिया में भारत का अगला राजदूत किसे नियुक्त किया गया है?
+! Who has recently been appointed as the next Ambassador of India to Ethiopia?
+- देवेश उत्तम / Devesh Uttam
+- विश्वेश नेगी / Vishwesh Negi
+- एन. जे. गांगटे / N. J. Gangte
+- संजय कुमार वर्मा / Sanjay Kumar Verma
+= उत्तर कुंजी के अनुसार — देवेश उत्तम।
+107 नीति निदेशक तत्व
+? राज्य के नीति निदेशक तत्वों का कौन-सा अनुच्छेद राज्य को उद्योगों के प्रबंधन में कामगारों की सहभागिता सुनिश्चित करने का निर्देश देता है?
+! Which Article of the DPSP directs the State to ensure participation of workers in management of industries?
+- 43A
+- 39A
+- 38
+- 45
+= अनुच्छेद 43A (42वें संशोधन से जोड़ा गया)।
+108 ऊर्जा
+? निम्नलिखित युग्मों में से कौन-सा एक सही सुमेलित नहीं है? (ताप विद्युत गृह — राज्य)
+- बाढ़ — बिहार
+- लारा — छत्तीसगढ़
+- कुडगी — कर्नाटक
+- गाडरवारा — आंध्र प्रदेश
+= गाडरवारा ताप विद्युत गृह मध्य प्रदेश में है।
+109 उत्तर प्रदेश
+? उत्तर प्रदेश में 'मयूर संरक्षण केंद्र' निम्नलिखित में से किस स्थान/जनपद में स्थित है?
+! In which place/district of Uttar Pradesh is the 'Peacock Conservation Centre' located?
+- महोबा / Mahoba
+- मथुरा / Mathura
+- मैनपुरी / Mainpuri
+- महाराजगंज / Maharajganj
+= उत्तर कुंजी के अनुसार — मथुरा।
+110 राज्यसभा
+? निम्नलिखित युग्मों में से कौन-सा एक सही सुमेलित नहीं है? (राज्य: राज्य सभा में सीटों की संख्या)
+! Which pair is not correctly matched? (State: Rajya Sabha seats)
+- असम - 06 / Assam - 06
+- छत्तीसगढ़ - 05 / Chhattisgarh - 05
+- हिमाचल प्रदेश - 03 / Himachal Pradesh - 03
+- उत्तर प्रदेश - 31 / Uttar Pradesh - 31
+= असम की राज्यसभा में 7 सीटें हैं।
+111 समसामयिकी
+? हाल ही में दसवीं BRICS उद्योग मंत्रियों की बैठक कहाँ हुई है?
+! Where was the 10th BRICS Industry Ministers' meeting held recently?
+- अहमदाबाद / Ahmedabad
+- भुवनेश्वर / Bhubaneswar
+- भोपाल / Bhopal
+- जयपुर / Jaipur
+= उत्तर कुंजी के अनुसार — जयपुर।
+
+# REASONING
+112 कोडिंग-डिकोडिंग
+? यदि किसी सांकेतिक भाषा में "open the door" को "ka te jo", "door is closed" को "ja pa ma" और "this is good" को "la ra pa" लिखा जाता है, तो "closed" को उसी भाषा में कैसे लिखा जाएगा?
+! If "open the door" = "ka te jo", "door is closed" = "ja pa ma", "this is good" = "la ra pa", then how is "closed" written?
+- ma
+- pa
+- ja
+- ka
+= is = pa (वाक्य 2 व 3 में उभयनिष्ठ)। उत्तर कुंजी के अनुसार closed = ma। (प्रश्न के आँकड़ों में 'door' का कोड उभयनिष्ठ नहीं है, इसलिए यह प्रश्न त्रुटिपूर्ण है।)
+113 दिशा
+? मोहन दक्षिण की ओर 25 मी चलकर दाईं ओर मुड़ गया। फिर 15 मी चलकर बाईं ओर मुड़ गया तथा 25 मी गया। अब वह अपने शुरू में चलने के स्थान से किस दिशा में है?
+! Mohan walked 25 m south, turned right, walked 15 m, turned left and went 25 m. In which direction is he from the start?
+- दक्षिण-पूर्व / South-East
+- दक्षिण / South
+- पश्चिम / West
+- उत्तर-पश्चिम / North-West
+= दक्षिण 50 मी और पश्चिम 15 मी — गणना से दक्षिण-पश्चिम आता है; उत्तर कुंजी के अनुसार 'दक्षिण'।
+114 कोडिंग-डिकोडिंग
+? यदि किसी सांकेतिक भाषा में STUDENT को RUTEDOS लिखा जाता है, तो SCHOLAR को उसी भाषा में कैसे लिखा जाएगा?
+! If STUDENT is written as RUTEDOS, then how will SCHOLAR be written?
+- RDGRKBQ
+- RDGPKBQ
+- RDHPKBQ
+- RDGRMBQ
+= बारी-बारी −1, +1: RDGPKBQ।
+115 समय
+? अध्यक्ष महोदय ने साक्षात्कार लेने के लिए सभाकक्ष में 12:30 बजे से 10 मिनट पहले प्रवेश किया। वे प्रबन्ध निदेशक से 20 मिनट पहले आए हैं, जोकि 30 मिनट विलम्ब से आए हैं। बताएँ कि साक्षात्कार का निर्धारित समय क्या था?
+! The Chairperson entered at 10 minutes before 12:30, 20 minutes before the MD, who was 30 minutes late. What was the scheduled time?
+- 12:50
+- 12:10
+- 12:40
+- 12:00
+= अध्यक्ष 12:20, MD 12:40 (30 मिनट देर) ⇒ निर्धारित समय 12:10।
+116 कोडिंग-डिकोडिंग
+? यदि E = 5 और AMENDMENT = 89 हो, तो SECRETARY = ?
+! If E = 5 and AMENDMENT = 89, then SECRETARY = ?
+- 115
+- 112
+- 114
+- 100
+= अक्षरों के स्थानीय मान का योग: S19+E5+C3+R18+E5+T20+A1+R18+Y25 = 114।
+
+# सूचना तकनीक
+117 शॉर्टकट
+? कंप्यूटर में किसी फ़ाइल या फोल्डर को रीसायकल बिन में भेजे बिना स्थायी रूप से डिलीट करने के लिए किस शॉर्टकट कुंजी का प्रयोग किया जाता है?
+! Which shortcut key permanently deletes a file without sending it to the Recycle Bin?
+- Ctrl + Delete
+- Shift + Delete
+- Alt + Delete
+- Fn + Delete
+= Shift + Delete।
+118 इंटरनेट
+? इंटरनेट पर किसी वेबसाइट या वेबपेज का विशिष्ट पता क्या कहलाता है?
+! What is the unique address of a website or webpage on the Internet called?
+- URL (Uniform Resource Locator)
+- IP Address
+- HTTP
+- HTML
+= वेबपेज का पता — URL।
+119 डिजिटल शिक्षा
+? निम्नलिखित में से कौन-सा 'मुक्त शैक्षिक संसाधन' (OER) का प्रमुख लक्षण है?
+! Which of the following is a key characteristic of Open Educational Resources (OER)?
+- इसके प्रयोग के लिए भारी लाइसेंस शुल्क देना अनिवार्य है।
+- यह केवल पंजीकृत शिक्षकों के लिए ही सीमित होता है।
+- यह निःशुल्क उपलब्ध होता है तथा इसे पुनः प्रयोग (Reuse) एवं रूपांतरित (Adapt) करने की स्वतंत्रता होती है।
+- यह केवल ऑफलाइन माध्यम में ही उपलब्ध कराया जा सकता है।
+= OER — मुफ़्त, खुला लाइसेंस, पुनः प्रयोग व संशोधन की अनुमति।
+120 डिजिटल शिक्षा
+? उत्तर प्रदेश के प्राथमिक विद्यालयों में पाठ्यपुस्तकों में दिए गए QR कोड को स्कैन करके डिजिटल सामग्री प्राप्त करने हेतु कौन-सा प्रमुख मंच संचालित किया जा रहा है?
+! Which platform is used to access digital content by scanning QR codes in textbooks of UP primary schools?
+- SWAYAM PRABHA
+- DIKSHA Portal
+- UMANG App
+- SHODH GANGA
+= DIKSHA (एनर्जाइज़्ड टेक्स्टबुक्स — QR कोड)।

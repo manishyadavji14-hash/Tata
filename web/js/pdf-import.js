@@ -397,10 +397,11 @@ export function splitQuestion(raw) {
     }
     if (chosen.length >= 2) {
       let options = chosen.map((m, i) => opt(m.id, body.slice(m.end, i + 1 < chosen.length ? chosen[i + 1].start : body.length)));
-      // 2×2 grid where only the left labels survived: "a. X <gap> Y / b. Z <gap> W" → A=X B=Z C=Y D=W
+      // 2×2 grid where only the left labels survived: "a. X <gap> Y / b. Z <gap> W".
+      // Papers number such grids row by row, so A=X B=Y C=Z D=W (verified against printed answer keys).
       if (options.length === 2) {
         const parts = chosen.map((m, i) => body.slice(m.end, i + 1 < chosen.length ? chosen[i + 1].start : body.length).trim().split(GAP).map((x) => x.trim()).filter(Boolean));
-        if (parts.every((p) => p.length === 2)) options = [opt('A', parts[0][0]), opt('B', parts[1][0]), opt('C', parts[0][1]), opt('D', parts[1][1])];
+        if (parts.every((p) => p.length === 2)) options = [opt('A', parts[0][0]), opt('B', parts[0][1]), opt('C', parts[1][0]), opt('D', parts[1][1])];
       }
       options.sort((a, b) => a.id.localeCompare(b.id));
       return { stem: body.slice(0, chosen[0].start), options };

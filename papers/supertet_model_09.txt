@@ -1,0 +1,956 @@
+@id chandra_supertet_model_09
+@title SUPER TET प्राथमिक MODEL PAPER-09 (चन्द्रा इंस्टीट्यूट)
+@duration 150
+@key CDBCCCAABD BACBBBCADC CDBDBBBCAA BCDCBBCCBB DBDDCDDCAB CCBBCDACDA BCBCBABBBB BBBBBAACBB BCCCBCBBBC CBBCCBBBCD AACCAAABAD BBCBAABDAA
+
+# HINDI
+1 पर्यायवाची
+? निम्नलिखित में से कौन-सा शब्द 'बादल' का पर्यायवाची नहीं है?
+- जलद
+- नीरद
+- वारिधि
+- मेघ
+= वारिधि = समुद्र (वारि + धि); जलद, नीरद, मेघ = बादल।
+2 तत्सम-तद्भव
+? 'पनही' शब्द का तत्सम रूप है-
+- ताम्बूल
+- पर्ण
+- पर्णहि
+- उपानह
+= पनही (जूता) ← उपानह; पान ← पर्ण; ताम्बूल — पान का पत्ता।
+3 संज्ञा
+? निम्नलिखित वाक्य में क्रियार्थक संज्ञा क्या है? "मंत्रीजी के ठहरने की व्यवस्था कीजिये।"
+- मंत्रीजी
+- ठहरने
+- व्यवस्था
+- कीजिये
+= 'ठहरना' क्रिया का संज्ञा रूप में प्रयोग — क्रियार्थक संज्ञा।
+4 विराम चिह्न
+? निम्नलिखित में से कौन-सा अल्पविराम चिह्न है?
+- (.)
+- (;)
+- (,)
+- (।)
+= (,) अल्पविराम; (;) अर्धविराम; (।) पूर्णविराम।
+5 पदबंध
+? 'लंका का राजा रावण बहुत विद्वान था', इस वाक्य में रेखांकित अंश ('लंका का राजा रावण') है-
+- विशेषण पदबन्ध
+- क्रिया-विशेषण पदबन्ध
+- संज्ञा पदबन्ध
+- सर्वनाम पदबन्ध
+= 'लंका का राजा रावण' — शीर्ष शब्द संज्ञा (रावण) है, अतः संज्ञा पदबंध।
+6 विलोम
+? निम्नांकित में 'अभिज्ञ' का विलोम है
+- अल्पज्ञ
+- सर्वज्ञ
+- अनभिज्ञ
+- विज्ञ
+= अभिज्ञ ↔ अनभिज्ञ।
+7 काव्यशास्त्र
+? 'वाक्यं रसात्मकं काव्यम्' किसका कथन है?
+- विश्वनाथ
+- मम्मट
+- राजशेखर
+- पण्डितराज जगन्नाथ
+= आचार्य विश्वनाथ (साहित्यदर्पण); जगन्नाथ — "रमणीयार्थप्रतिपादकः शब्दः काव्यम्"।
+8 समास
+? निम्नांकित में किस शब्द में तत्पुरुष समास है?
+- वाचस्पति
+- घनश्याम
+- त्रिभुवन
+- चन्द्रशेखर
+= वाचस्पति = वाचः पतिः (षष्ठी तत्पुरुष, अलुक्); घनश्याम — कर्मधारय, त्रिभुवन — द्विगु, चन्द्रशेखर — बहुव्रीहि।
+9 संधि
+? 'पित्राज्ञा' में कौन-सी सन्धि है?
+- गुण सन्धि
+- यण् सन्धि
+- पूर्वरूप सन्धि
+- पररूप सन्धि
+= पितृ + आज्ञा: ऋ + आ = रा — यण् संधि।
+10 प्रत्यय
+? 'अनुकरणीय' में लगा है प्रत्यय -
+- अनु
+- करण
+- इय
+- ईय
+= उत्तर कुंजी के अनुसार 'ईय' (अनुकरण + ईय)।
+11 समास
+? 'पॉकिटमार' शब्द में समास है-
+- अव्ययीभाव
+- तत्पुरुष
+- कर्मधारय
+- द्वन्द्व
+= पॉकेट को मारने वाला — कर्म तत्पुरुष।
+12 समास
+? जब किसी समास में दोनों शब्द प्रधान हों तो उसको कहते हैं
+- द्वन्द्व समास
+- द्विगु समास
+- प्रधान समास
+- तत्पुरुष समास
+= दोनों पद प्रधान — द्वन्द्व; उत्तर पद प्रधान — तत्पुरुष; अन्य पद प्रधान — बहुव्रीहि।
+13 उपसर्ग
+? 'अ' उपसर्ग के प्रयोग से बना शब्द है-
+- अनन्त
+- अन्वेषण
+- अवैतनिक
+- अपेक्षा
+= अ + वैतनिक; अनन्त में 'अन्', अन्वेषण में 'अनु', अपेक्षा में 'अप'।
+14 वाक्य भेद
+? निम्नलिखित में से कौन-सा मिश्र वाक्य है?
+- उसमें न पत्ते थे, न फूल थे।
+- मैंने सुना है कि आपके देश में अच्छा राजप्रबन्ध है।
+- यज्ञदत्त देवदत्त को व्याकरण पढ़ाता है।
+- वह उड़ती हुई चिड़िया पहचानता है।
+= 'कि' से जुड़ा आश्रित उपवाक्य — मिश्र वाक्य।
+15 समास
+? किस शब्द में तत्पुरुष समास है?
+- दौड़धूप
+- मधुमक्खी
+- पीताम्बर
+- त्रिभुवन
+= मधु की मक्खी — तत्पुरुष; दौड़धूप — द्वन्द्व; पीताम्बर — बहुव्रीहि/कर्मधारय; त्रिभुवन — द्विगु।
+
+# ENGLISH
+P p_soc Passage 1: Social Awareness
+> Social awareness is very important for a healthy society. It teaches us to respect others, help poor people, and protect the environment. A socially aware person follows rules, keeps the surroundings clean, and treats everyone equally. We should save water, avoid plastic bags, and educate people about their rights and duties. Social awareness helps to build a peaceful and responsible society.
+16 Reading Comprehension @p_soc
+! What does social awareness teach us?
+- To fight with others
+- To respect others
+- To waste water
+- To break rules
+= "It teaches us to respect others…"
+17 Reading Comprehension @p_soc
+! What should we do to protect the environment?
+- Use more plastic bags
+- Waste water
+- Keep our surroundings clean
+- Cut more trees
+= "…keeps the surroundings clean."
+18 Reading Comprehension @p_soc
+! A socially aware person treats everyone
+- Equally
+- Rudely
+- Unfairly
+- Carelessly
+= "…treats everyone equally."
+19 Reading Comprehension @p_soc
+! Social awareness helps to build a ______ society.
+- Careless
+- Unhealthy
+- Irresponsible
+- Peaceful and responsible
+= "…build a peaceful and responsible society."
+20 Gerund
+! She avoided _______. (Choose the correct form.)
+- Talk to him.
+- To talk
+- Talking
+- Talked
+= 'avoid' के बाद gerund (V-ing) आता है: She avoided talking.
+21 Synonyms
+! Synonym of "PERNICIOUS"
+- Beneficial
+- Harmless
+- Harmful
+- Useful
+= Pernicious = हानिकारक (Harmful)।
+22 Narration
+! Change into Indirect: She said to me, "Please, please help me."
+- She requested me to help her!
+- She begs me to help her!
+- She requested me to helped her.
+- She requested/begged me to help her.
+= Imperative (request) → requested/begged + object + to + V1।
+
+# SANSKRIT
+23 प्रत्यय
+? 'पठितुम्' इति पदे कः प्रत्ययः?
+- क्त्वा
+- तुमुन्
+- ल्यप्
+- क्त
+= पठ् + तुमुन् = पठितुम् (पढ़ने के लिए)।
+24 लकार
+? 'बालकः पुस्तकं पठेत्' इत्यत्र 'पठेत्' इति क्रियापदे कः लकारः?
+- लट्
+- लङ्
+- लोट्
+- विधिलिङ्
+= चाहिए अर्थ — विधिलिङ् (पठेत्, पठेताम्, पठेयुः)।
+25 शब्दरूप
+? 'पितृ' शब्दस्य तृतीयाविभक्तेः बहुवचनरूपं किम्?
+- पितॄन्
+- पितृभिः
+- पितॄणाम्
+- पितृषु
+= तृतीया: पित्रा, पितृभ्याम्, पितृभिः।
+26 धातुरूप
+? 'गम्' धातोः लङ्लकारस्य प्रथमपुरुषबहुवचनरूपं किम्?
+- गच्छन्ति
+- अगच्छन्
+- अगच्छत्
+- गमिष्यन्ति
+= लङ् (भूतकाल): अगच्छत्, अगच्छताम्, अगच्छन्।
+27 समास
+? 'नीलकण्ठः' इति पदे कः समासः?
+- द्वन्द्वः
+- बहुव्रीहिः
+- कर्मधारयः
+- द्विगुः
+= नीलः कण्ठः यस्य सः (शिवः) — बहुव्रीहि।
+28 कारक-विभक्ति
+? 'रामः बाणेन रावणं हन्ति' इत्यत्र 'बाणेन' इति पदे का विभक्तिः?
+- प्रथमा
+- द्वितीया
+- तृतीया
+- चतुर्थी
+= साधन (करण) — तृतीया।
+29 संख्या शब्द
+? 'त्रयः' इति संख्यावाचकपदं कस्मिन् लिङ्गे प्रयुज्यते?
+- पुंल्लिङ्गे
+- स्त्रीलिङ्गे
+- नपुंसकलिङ्गे
+- त्रिषु लिङ्गेषु भिन्नरूपेण
+= त्रयः — पुंल्लिङ्ग; तिस्रः — स्त्रीलिङ्ग; त्रीणि — नपुंसक।
+30 सन्धि
+? 'सदैव' इत्यस्य सन्धिविच्छेदः कः?
+- सदा + एव
+- सद् + एव
+- सत् + एव
+- सदा + इव
+= आ + ए = ऐ — वृद्धि सन्धि।
+
+# SCIENCE
+31 दैनिक रसायन
+? उस रसायन का नाम बताइए जो आम को पकाने के काम आता है
+! Name the chemical used for ripening mangoes.
+- कैल्शियम सल्फाइड / Calcium sulphide
+- कैल्शियम कार्बाइड / Calcium carbide
+- कैल्शियम कार्बोनेट / Calcium carbonate
+- कैल्शियम क्लोराइड / Calcium chloride
+= $CaC_2$ नमी से एसिटिलीन गैस देता है जो फल पकाती है।
+32 दैनिक विज्ञान
+? रेफ्रिजरेटर में सामान्यतः किस शीतलक (कूलैंट) का प्रयोग किया जाता है?
+! Which coolant is commonly used in refrigerators?
+- अमोनिया / Ammonia
+- नाइट्रोजन / Nitrogen
+- फ्रेऑन / Freon
+- ऑक्सीजन / Oxygen
+= घरेलू फ्रिज में फ्रेऑन (CFC); बड़े प्लांट में अमोनिया।
+33 प्रकाश
+? सूर्य की किरणों को पृथ्वी तक पहुँचने में लगभग कितना समय लगता है?
+! Approximately how much time do the sun's rays take to reach the earth?
+- लगभग 90 सेकण्ड / Approximately 90 seconds
+- लगभग 180 सेकण्ड / Approximately 180 seconds
+- लगभग 340 सेकण्ड / Approximately 340 seconds
+- लगभग 500 सेकण्ड / Approximately 500 seconds
+= लगभग 8 मिनट 20 सेकंड ≈ 500 सेकंड।
+34 गति के नियम
+? न्यूटन का पहला नियम ....... के रूप में भी जाना जाता है।
+! Newton's first law is also known as ....
+- घर्षण का नियम / Law of friction
+- आघूर्ण का नियम / Law of moment
+- जड़त्व का नियम / Law of inertia
+- गति का नियम / Law of motion
+= प्रथम नियम — जड़त्व का नियम।
+35 नाइट्रोजन स्थिरीकरण
+? वायुमण्डलीय नाइट्रोजन को विलेय पदार्थों में परिवर्तित कर देते हैं-
+! Atmospheric nitrogen is converted into soluble substances by –
+- शैवाल / Algae
+- राइजोबियम / Rhizobium
+- कवक / Fungi
+- लाइकेन / Lichen
+= दलहनी पौधों की जड़-ग्रंथियों में राइजोबियम नाइट्रोजन स्थिर करता है।
+36 अंतःस्रावी तंत्र
+? सबसे बड़ी अन्तःस्रावी ग्रन्थि है-
+! The largest endocrine gland is-
+- अग्न्याशय / Pancreas
+- अवटुग्रन्थि / Thyroid gland
+- पीयूष ग्रन्थि / Pituitary gland
+- टेस्टिस / Testis
+= थायरॉयड सबसे बड़ी अंतःस्रावी ग्रंथि; पीयूष — मास्टर ग्रंथि।
+37 रक्त
+? हमारे रुधिर में ऑक्सीजन का परिवहन एक प्रोटीन द्वारा होता है, जिसका नाम है -
+! Oxygen is transported in our blood by a protein named –
+- कोलैजन / Collagen
+- मायोग्लोबिन / Myoglobin
+- हीमोग्लोबिन / Hemoglobin
+- किरेटिन / Keratin
+= RBC का हीमोग्लोबिन (आयरन युक्त) ऑक्सीजन ढोता है।
+38 पाचन
+? टायलिन एन्जाइम का सम्बन्ध है-
+! Ptyalin enzyme is related to-
+- आंत्रिय रस / Intestinal juice
+- जठर रस / Gastric juice
+- लार / Saliva
+- उपरोक्त में से कोई नहीं / None of the above
+= लार का टायलिन (एमाइलेज) स्टार्च को माल्टोज़ में बदलता है।
+
+# MATHS
+39 कैलेंडर
+? यदि 4/8/2017 को शुक्रवार है, तब 61 दिनों के बाद कौन सा दिन होगा?
+! If 4/8/2017 is Friday, then what day will it be after 61 days?
+- मंगलवार / Tuesday
+- बुधवार / Wednesday
+- बृहस्पतिवार / Thursday
+- शुक्रवार / Friday
+= 61 ÷ 7 शेष 5 ⇒ शुक्रवार + 5 = बुधवार।
+40 समांतर रेखाएँ
+? दिए गए चित्र में AB ∥ CD तब y° − x° का मान है- [चित्र: AB व CD समांतर, दो तिर्यक रेखाएँ; AB पर 110°, CD पर 120° के कोण अंकित]
+! In the given figure, AB ∥ CD, then the value of y° − x° is-
+- 10°
+- 20°
+- 30°
+- 40°
+= चित्र के अनुसार संगत/एकांतर कोणों से y° − x° = 20° (उत्तर कुंजी)। मूल चित्र PDF में देखें।
+41 लाभ-हानि
+? यदि किसी दुकानदार को एक वस्तु को रु 390 पर बेचने पर 20% का लाभ होता है, वस्तु का क्रय-मूल्य है
+! If a shopkeeper gets 20% profit on selling an article for Rs 390, the cost price is
+- रु 321 / Rs 321
+- रु 323 / Rs 323
+- रु 324 / Rs 324
+- रु 325 / Rs 325
+= $\frac{390}{1.2} = 325$।
+42 प्रतिशत
+? यदि किसी कस्बे की जनसंख्या 60000 से बढ़कर 65000 हो जाती है, तो जनसंख्या में वृद्धि (प्रतिशत में) है
+! If the population increases from 60000 to 65000, the percentage increase is
+- $7\frac{9}{13}$
+- $8\frac{1}{9}$
+- $7\frac{1}{4}$
+- $8\frac{1}{3}$
+= $\frac{5000}{60000}\times100 = 8\frac13\%$। ⚠️ गणना से (D) आता है; मूल कुंजी में (B) छपा है।
+43 समय एवं कार्य
+? 40 व्यक्ति 30 दिनों में 200 kg चावल खाते हैं। कितने दिनों में 30 व्यक्ति 500 kg चावल खाएंगे?
+! 40 persons eat 200 kg of rice in 30 days. In how many days will 30 persons eat 500 kg?
+- 120
+- 80
+- 90
+- 100
+= $\frac{40\times30}{200} = \frac{30\times D}{500} \Rightarrow D = 100$।
+44 समचतुर्भुज
+? एक समचतुर्भुज के विकर्णों की लम्बाइयाँ 16 cm तथा 12 cm हैं। समचतुर्भुज की भुजा है?
+! The diagonals of a rhombus are 16 cm and 12 cm. The side is?
+- 7 cm
+- 8 cm
+- 9 cm
+- 10 cm
+= $\sqrt{8^2 + 6^2} = 10$ cm।
+45 लाभ-हानि
+? यदि 8 पेन का क्रय-मूल्य 6 पेन के विक्रय-मूल्य के बराबर है, तो लाभ प्रतिशत है?
+! If the cost price of 8 pens equals the selling price of 6 pens, the profit percentage is?
+- $11\frac19\%$
+- $13\frac13\%$
+- $33\frac13\%$
+- 25%
+= $\frac{8-6}{6}\times100 = 33\frac13\%$।
+46 परिमेय संख्याएँ
+? निम्न में से कौन-सी परिमेय संख्या $\frac35$ और $\frac45$ के मध्य नहीं आती है?
+! Which rational number does not lie between $\frac35$ and $\frac45$?
+- $\frac{19}{30}$
+- $\frac23$
+- $\frac{7}{10}$
+- $\frac{16}{30}$
+= $\frac35 = \frac{18}{30}$, $\frac45 = \frac{24}{30}$; $\frac{16}{30}$ इनके बीच नहीं है।
+47 रैखिक समीकरण
+? यदि 3 पेन, 2 पेंसिल और 4 रबर का मूल्य रु 92 है तथा 8 पेंसिल और 16 रबर का मूल्य रु 68 है, तब 24 पेन का मूल्य है?
+! If 3 pens, 2 pencils and 4 erasers cost Rs 92 and 8 pencils and 16 erasers cost Rs 68, the price of 24 pens is?
+- रु 625 / Rs 625
+- रु 500 / Rs 500
+- रु 675 / Rs 675
+- रु 600 / Rs 600
+= 2 पेंसिल + 4 रबर = 68/4 = 17 ⇒ 3 पेन = 75 ⇒ 1 पेन = 25 ⇒ 24 पेन = 600।
+48 त्रिभुज की रचना
+? हम एक त्रिभुज की रचना नहीं कर सकते हैं, यदि हमें दिया गया है
+! We cannot construct a unique triangle if we are given
+- दो कोण और एक भुजा / Two angles and one side
+- केवल तीन भुजाएँ / Only three sides
+- केवल तीन कोण / Only three angles
+- दो भुजा और उनके मध्य कोण / Two sides and their included angle
+= केवल तीन कोणों से अनगिनत समरूप त्रिभुज बनते हैं, अद्वितीय नहीं।
+49 क्षेत्रफल
+? यदि किसी आयताकार भूखण्ड की लम्बाई और चौड़ाई में क्रमशः 50% तथा 20% की वृद्धि कर दी जाए, तो इसका क्षेत्रफल कितना गुना हो जाएगा?
+! If length and breadth of a rectangular plot increase by 50% and 20%, the area becomes how many times?
+- $1\frac45$
+- $\frac15$
+- $\frac45$
+- $\frac{4^2}{5}$
+= $1.5 \times 1.2 = 1.8 = 1\frac45$ गुना।
+50 ताप
+? सामान्य मनुष्य के शरीर का ताप 37°C है। फारेनहाइट पैमाने में यह ताप है?
+! The temperature of a normal human body is 37°C. What is this on the Fahrenheit scale?
+- 98.4°F
+- 98.6°F
+- 98°F
+- 98.8°F
+= $F = \frac95 C + 32 = 66.6 + 32 = 98.6°F$।
+51 वर्गों का योग
+? यदि $1^2 + 2^2 + \cdots + 9^2 = 285$ हो, तो $(0.11)^2 + (0.22)^2 + \cdots + (0.99)^2$ का मान है
+! If $1^2 + 2^2 + \cdots + 9^2 = 285$, then $(0.11)^2 + (0.22)^2 + \cdots + (0.99)^2$ is
+- 2.4485
+- 0.24485
+- 3.4485
+- 0.34485
+= $(0.11)^2 \times 285 = 0.0121 \times 285 = 3.4485$।
+52 साधारण ब्याज
+? एक राशि साधारण ब्याज पर 10 वर्षों में दुगुनी हो जाती है। कितने वर्षों में यह राशि उसी ब्याज दर से तिगुनी हो जाएगी?
+! A sum doubles in 10 years at simple interest. In how many years will it triple?
+- 30 वर्ष / 30 years
+- 25 वर्ष / 25 years
+- 20 वर्ष / 20 years
+- 15 वर्ष / 15 years
+= 10 वर्ष में ब्याज = P; 2P के लिए 20 वर्ष।
+53 क्षेत्रमिति
+? 80 m व्यास वाले एक वृत्ताकार पार्क के अन्दर अधिकतम क्षेत्रफल का एक वर्गाकार खेल का मैदान बना है। खेल के मैदान का क्षेत्रफल है
+! Inside a circular park of diameter 80 m, a square playground of maximum area is built. Its area is
+- 6400 m²
+- 3200 m²
+- 1600 m²
+- 12800 m²
+= वर्ग का विकर्ण = 80 ⇒ क्षेत्रफल $= \frac{80^2}{2} = 3200$ m²।
+54 पाई चार्ट
+? 240 अंकों की एक परीक्षा में किसी परीक्षार्थी ने 52 अंक अर्जित किए। पाई-आलेख में इसका संगत कोण है?
+! A candidate scored 52 out of 240 marks. What is the corresponding angle in a pie chart?
+- 75°
+- 78°
+- 63°
+- $\left(21\frac23\right)°$
+= $\frac{52}{240}\times360° = 78°$।
+
+# पर्यावरण एवं सामाजिक अध्ययन
+55 भारत की नदियाँ
+? भारत की कौन सी नदी 'वृद्ध गंगा' या 'दक्षिण गंगा' के नाम से जानी जाती है?
+! Which river of India is known as 'Vriddh Ganga' or 'Dakshin Ganga'?
+- नर्मदा / Narmada
+- कृष्णा / Krishna
+- गोदावरी / Godavari
+- कावेरी / Kaveri
+= गोदावरी — प्रायद्वीप की सबसे लंबी नदी।
+56 मौलिक अधिकार
+? भारतीय संविधान के किस अनुच्छेद के तहत 'समता का अधिकार' प्रदान किया गया है?
+! Under which article is the 'Right to Equality' granted?
+- अनुच्छेद 19-22 / Article 19-22
+- अनुच्छेद 23-24 / Article 23-24
+- अनुच्छेद 25-28 / Article 25-28
+- अनुच्छेद 14-18 / Article 14-18
+= समता 14–18, स्वतंत्रता 19–22, शोषण के विरुद्ध 23–24, धर्म 25–28।
+57 राष्ट्रीय आंदोलन
+? वर्ष 1920 में प्रारंभ हुए असहयोग आंदोलन को महात्मा गांधी द्वारा किस घटना के बाद अचानक स्थगित करना पड़ा था?
+! After which incident did Gandhi suspend the Non-Cooperation Movement?
+- चौरी-चौरा हिंसा के कारण / Due to Chauri-Chaura violence
+- काकोरी कांड के कारण / Due to Kakori conspiracy
+- जलियांवाला बाग हत्याकांड के कारण / Due to Jallianwala Bagh massacre
+- साइमन कमीशन के विरोध के कारण / Due to opposition to the Simon Commission
+= 5 फरवरी 1922, चौरी-चौरा (गोरखपुर) की हिंसा के बाद।
+58 पर्यावरण समझौते
+? अंतर्राष्ट्रीय समझौता 'क्योटो प्रोटोकॉल' मुख्य रूप से किससे संबंधित है?
+! The 'Kyoto Protocol' is mainly related to what?
+- ओजोन परत का क्षरण रोकना / Preventing ozone depletion
+- जैव विविधता का संरक्षण / Conservation of biodiversity
+- ग्रीनहाउस गैसों का उत्सर्जन कम करना / Reducing greenhouse gas emissions
+- आर्द्रभूमि का संरक्षण / Conservation of wetlands
+= क्योटो (1997) — ग्रीनहाउस गैस; मॉन्ट्रियल — ओजोन; रामसर — आर्द्रभूमि।
+59 पंचवर्षीय योजनाएँ
+? भारत में किस पंचवर्षीय योजना में कृषि और सिंचाई को सर्वोच्च प्राथमिकता दी गई थी?
+! In which Five Year Plan were agriculture and irrigation given top priority?
+- द्वितीय पंचवर्षीय योजना / Second Five Year Plan
+- तृतीय पंचवर्षीय योजना / Third Five Year Plan
+- चतुर्थ पंचवर्षीय योजना / Fourth Five Year Plan
+- प्रथम पंचवर्षीय योजना / First Five Year Plan
+= प्रथम योजना (1951–56, हैरोड-डोमर मॉडल) — कृषि व सिंचाई।
+60 मानसून
+? भारत में दक्षिण-पश्चिम मानसून का सबसे पहले आगमन निम्नलिखित में से किस राज्य में होता है?
+! In which state does the South-West Monsoon first arrive in India?
+- केरल / Kerala
+- तमिलनाडु / Tamil Nadu
+- महाराष्ट्र / Maharashtra
+- गोवा / Goa
+= सामान्यतः 1 जून के आसपास केरल तट।
+61 राष्ट्रपति
+? भारतीय संविधान के किस अनुच्छेद के अंतर्गत राष्ट्रपति पर महाभियोग चलाने की प्रक्रिया का प्रावधान है?
+! Under which article is the impeachment of the President provided?
+- अनुच्छेद 60 / Article 60
+- अनुच्छेद 61 / Article 61
+- अनुच्छेद 72 / Article 72
+- अनुच्छेद 356 / Article 356
+= अनुच्छेद 61 — महाभियोग; 60 — शपथ; 72 — क्षमादान।
+62 आधुनिक भारत
+? वर्ष 1885 में जब भारतीय राष्ट्रीय कांग्रेस की स्थापना हुई, तब भारत का वायसराय कौन था?
+! Who was the Viceroy when the INC was established in 1885?
+- लॉर्ड रिपन / Lord Ripon
+- लॉर्ड कर्जन / Lord Curzon
+- लॉर्ड डफरिन / Lord Dufferin
+- लॉर्ड माउन्टबेटन / Lord Mountbatten
+= लॉर्ड डफरिन (कांग्रेस संस्थापक — ए.ओ. ह्यूम)।
+
+# बाल विकास (CDP)
+63 क्रियात्मक अनुसंधान
+? क्रियात्मक अनुसंधान (Action Research) का प्राथमिक उद्देश्य क्या होता है?
+! What is the primary objective of 'Action Research' in education?
+- नए मूलभूत सिद्धांतों का प्रतिपादन करना / Propounding new fundamental theories
+- कक्षा एवं विद्यालय की व्यावहारिक समस्याओं का समाधान करना / Solving practical problems of classroom and school
+- व्यापक स्तर पर राष्ट्रीय नीतियां बनाना / Formulating national policies
+- छात्रों के अंतिम अंकों का विश्लेषण करना / Analyzing final marks
+= क्रियात्मक अनुसंधान (स्टीफन एम. कोरे) — तात्कालिक स्थानीय समस्या का समाधान।
+64 ब्लूम का वर्गीकरण
+? ब्लूम के ज्ञानात्मक पक्ष के वर्गीकरण का उच्चतम स्तर कौन सा है?
+! Which is the highest level of Bloom's Cognitive Domain?
+- ज्ञान / Knowledge
+- विश्लेषण / Analysis
+- मूल्यांकन / Evaluation
+- अनुप्रयोग / Application
+= मूल वर्गीकरण (1956) में मूल्यांकन सर्वोच्च (संशोधित में 'सृजन')।
+65 शिक्षा दर्शन
+? जॉन डीवी के अनुसार, शिक्षा एक ______ प्रक्रिया है।
+! According to John Dewey, education is a ______ process.
+- द्वि-ध्रुवीय / Bipolar
+- त्रि-ध्रुवीय / Tri-polar
+- एक-आयामी / One-dimensional
+- शिक्षक-केंद्रित / Teacher-centered
+= डीवी — त्रिध्रुवीय (शिक्षक, शिक्षार्थी, समाज); एडम्स — द्विध्रुवीय।
+66 शिक्षण विधियाँ
+? 'प्रोजेक्ट विधि' का प्रतिपादन जॉन डीवी के किस शिष्य द्वारा किया गया था?
+! The 'Project Method' was propounded by which student of John Dewey?
+- विलियम किलपैट्रिक / William Kilpatrick
+- एडवर्ड थॉर्नडाइक / Edward Thorndike
+- बी. एफ. स्किनर / B. F. Skinner
+- जेरोम ब्रूनर / Jerome Bruner
+= विलियम हर्ड किलपैट्रिक (1918)।
+67 भाषा और शिक्षा
+? प्राथमिक स्तर पर मातृभाषा में शिक्षा देना क्यों महत्वपूर्ण माना जाता है?
+! Why is it important to teach in the mother tongue at the primary level?
+- यह राष्ट्रीय एकता को बढ़ावा देता है / It promotes national integration
+- यह बच्चों को स्वाभाविक वातावरण में आसानी से सीखने में मदद करता है / It helps children learn easily in a natural environment
+- यह विदेशी भाषाओं के प्रभाव को कम करता है / It reduces the influence of foreign languages
+- यह शिक्षकों के लिए सुविधाजनक है / It is convenient for teachers
+= मातृभाषा में समझ व अभिव्यक्ति सहज होती है।
+68 संविधान और शिक्षा
+? प्राथमिक स्तर पर मातृभाषा में शिक्षा देने की सिफारिश भारतीय संविधान के किस अनुच्छेद में की गई है?
+! Which Article recommends instruction in the mother tongue at the primary stage?
+- अनुच्छेद 343 / Article 343
+- अनुच्छेद 350A / Article 350A
+- अनुच्छेद 351 / Article 351
+- अनुच्छेद 21A / Article 21A
+= 350A — मातृभाषा में प्राथमिक शिक्षा; 343 — राजभाषा; 351 — हिंदी का विकास।
+69 सूक्ष्म शिक्षण
+? सूक्ष्म शिक्षण (Micro Teaching) तकनीक का विकास सबसे पहले कहाँ हुआ था?
+! Where was the 'Micro Teaching' technique first developed?
+- ऑक्सफोर्ड विश्वविद्यालय / Oxford University
+- स्टैनफोर्ड विश्वविद्यालय / Stanford University
+- हार्वर्ड विश्वविद्यालय / Harvard University
+- कैम्ब्रिज विश्वविद्यालय / Cambridge University
+= 1961, स्टैनफोर्ड — डी. डब्ल्यू. एलन।
+70 शिक्षण विधियाँ
+? शिक्षण के 'निगमनात्मक दृष्टिकोण' (Deductive Approach) की मुख्य विशेषता क्या है?
+! What is the main feature of the 'Deductive Approach'?
+- उदाहरणों से नियमों की ओर जाता है / Examples to rules
+- सामान्य नियमों से विशिष्ट उदाहरणों की ओर जाता है / General rules to specific examples
+- प्रत्यक्ष अनुभव द्वारा सीखना / Learning by direct experience
+- मूर्त से अमूर्त की ओर जाना / Concrete to abstract
+= निगमन: नियम → उदाहरण; आगमन: उदाहरण → नियम।
+71 शिक्षण विधियाँ
+? 'प्रोजेक्ट विधि' के जन्मदाता कौन माने जाते हैं?
+! Who is considered the originator of the 'Project Method'?
+- मारिया मोंटेसरी / Maria Montessori
+- विलियम हर्ड किलपैट्रिक / William Heard Kilpatrick
+- फ्रेडरिक फ्रोबेल / Friedrich Fröbel
+- जीन पियाजे / Jean Piaget
+= किलपैट्रिक (डीवी के प्रयोजनवाद पर आधारित)।
+72 वाइगोत्स्की
+? 'समीपस्थ विकास का क्षेत्र' (ZPD) की अवधारणा किसके द्वारा प्रस्तुत की गई थी?
+! The concept of 'Zone of Proximal Development' was introduced by whom?
+- जीन पियाजे / Jean Piaget
+- लेव वाइगोत्स्की / Lev Vygotsky
+- जेरोम ब्रूनर / Jerome Bruner
+- अल्बर्ट बांडुरा / Albert Bandura
+= लेव वाइगोत्स्की।
+73 बहु-बुद्धि सिद्धांत
+? हावर्ड गार्डनर के अनुसार, दूसरों की भावनाओं, मनोदशाओं और प्रेरणाओं को समझने की क्षमता क्या कहलाती है?
+! According to Howard Gardner, the ability to understand others' feelings and motivations is called?
+- अंतःवैयक्तिक बुद्धि / Intrapersonal Intelligence
+- अंतर-वैयक्तिक बुद्धि / Interpersonal Intelligence
+- स्थानिक बुद्धि / Spatial Intelligence
+- भाषाई बुद्धि / Linguistic Intelligence
+= दूसरों को समझना — अंतर-वैयक्तिक; स्वयं को समझना — अंतःवैयक्तिक।
+74 थॉर्नडाइक
+? 'प्रयास एवं त्रुटि का सिद्धांत' का प्रतिपादन किसने किया और उन्होंने अपना प्रयोग किस पशु पर किया था?
+! Who formulated the 'Trial and Error Theory' and on what animal?
+- पावलोव - कुत्ता / Pavlov - Dog
+- थॉर्नडाइक - बिल्ली / Thorndike - Cat
+- स्किनर - चूहा / Skinner - Rat
+- कोहलर - चिंपैंजी / Kohler - Chimpanzee
+= थॉर्नडाइक — भूखी बिल्ली, पज़ल बॉक्स।
+75 कोहलबर्ग
+? कोहलबर्ग के नैतिक विकास के सिद्धांत के अनुसार, "अच्छा लड़का-अच्छी लड़की" अभिविन्यास किस चरण/स्तर में आता है?
+! According to Kohlberg, "Good boy-Nice girl" orientation belongs to which level?
+- पूर्व-पारंपरिक स्तर / Pre-conventional level
+- पारंपरिक स्तर / Conventional level
+- उत्तर-पारंपरिक स्तर / Post-conventional level
+- स्वायत्त नैतिक स्तर / Autonomous level
+= चरण 3 (अच्छा लड़का-अच्छी लड़की) और 4 (कानून-व्यवस्था) — पारंपरिक स्तर।
+76 कोहलबर्ग
+? कोहलबर्ग के नैतिक विकास सिद्धांत के अनुसार, जब कोई बच्चा किसी कार्य को केवल दंड से बचने के लिए करता है, तो वह किस स्तर पर है?
+! According to Kohlberg, when a child acts merely to avoid punishment, at which level is he?
+- पूर्व-पारंपरिक स्तर / Pre-conventional Level
+- पारंपरिक स्तर / Conventional Level
+- उत्तर-पारंपरिक स्तर / Post-conventional Level
+- स्वायत्त नैतिक स्तर / Autonomous Level
+= दंड व आज्ञाकारिता (चरण 1) — पूर्व-पारंपरिक।
+77 थॉर्नडाइक
+? 'प्रयास एवं त्रुटि' अधिगम सिद्धांत के प्रयोग में थॉर्नडाइक ने किस प्राणी पर अपना प्रसिद्ध प्रयोग किया था?
+! In the 'Trial and Error' experiment, Thorndike used which animal?
+- भूखी बिल्ली / Hungry Cat
+- कुत्ता / Dog
+- कबूतर / Pigeon
+- सफेद चूहा / White Rat
+= भूखी बिल्ली (पज़ल बॉक्स के बाहर मछली)।
+78 विशिष्ट बालक
+? प्रतिभाशाली बालकों की बुद्धिलब्धि (IQ) सामान्यतः कितनी मानी जाती है?
+! What is the general IQ range for 'Gifted Children'?
+- 90 - 110
+- 110 - 120
+- 140 या उससे अधिक / 140 or above
+- 70 - 80
+= 140+ प्रतिभाशाली (टरमन)।
+79 व्यक्तित्व मापन
+? व्यक्तित्व मापन का 'रोर्शा स्याही धब्बा परीक्षण' किस प्रकार की विधि है?
+! What type of method is the 'Rorschach Inkblot Test'?
+- वस्तुनिष्ठ विधि / Objective Method
+- प्रक्षेपी विधि / Projective Technique
+- आत्मनिष्ठ विधि / Subjective Method
+- मनोमितीय विधि / Psychometric Method
+= रोर्शा (10 स्याही धब्बे) — प्रक्षेपी विधि।
+80 सृजनात्मकता
+? 'सृजनात्मकता' का मुख्य लक्षण निम्नलिखित में से कौन सा है?
+! Which is the primary characteristic of 'Creativity'?
+- अभिसारी चिंतन / Convergent Thinking
+- अपसारी चिंतन / Divergent Thinking
+- अति-सक्रियता / Hyperactivity
+- रटने की क्षमता / Rote Learning Ability
+= अपसारी चिंतन — एक समस्या के अनेक समाधान।
+81 विकास के सिद्धांत
+? बाल विकास में 'मस्तकाधोमुखी' (Cephalocaudal) विकास के सिद्धांत का क्या अर्थ है?
+! What does the principle of 'Cephalocaudal' development mean?
+- विकास केंद्र से परिधि की ओर होता है / Development from center to periphery
+- विकास सिर से पैर की ओर होता है / Development from head to toe
+- विकास सामान्य से विशिष्ट की ओर होता है / Development from general to specific
+- विकास पैर से सिर की ओर होता है / Development from toe to head
+= मस्तकाधोमुखी = सिर से पैर।
+82 व्यक्तित्व मापन
+? Thematic Apperception Test (TAT) एक प्रक्षेपी मनोवैज्ञानिक परीक्षण है जिसका उपयोग मुख्य रूप से किसके आकलन के लिए किया जाता है?
+! The Thematic Apperception Test (TAT) is used primarily to assess:
+- मोटर कौशल / Motor skills
+- बुद्धि लब्धि (IQ) / Intelligence Quotient
+- व्यक्तित्व और अंतर्निहित उद्देश्य / Personality and underlying motives
+- गणितीय योग्यता / Mathematical aptitude
+= TAT (मरे व मॉर्गन) — 30 चित्र, कहानी से व्यक्तित्व व अचेतन इच्छाएँ।
+83 अभिप्रेरणा
+? निम्नलिखित में से कौन सा आंतरिक प्रेरणा का उदाहरण है?
+! Which of the following is an example of intrinsic motivation?
+- पुरस्कार जीतने के लिए किताब पढ़ना / Reading a book to win a prize
+- सजा से बचने के लिए कड़ी मेहनत करना / Studying hard to avoid punishment
+- पहेली को हल करना क्योंकि यह सुखद और चुनौतीपूर्ण है / Solving a puzzle because it is enjoyable and challenging
+- अच्छे ग्रेड पाने के लिए होमवर्क पूरा करना / Completing homework to get good grades
+= कार्य में आनंद स्वयं प्रेरणा है — आंतरिक; पुरस्कार/दंड — बाह्य।
+84 कोहलबर्ग
+? लॉरेंस कोहलबर्ग के अनुसार, नैतिक विकास के किस चरण में व्यक्ति अपने नैतिक निर्णय सार्वभौमिक नैतिक सिद्धांतों पर आधारित करते हैं?
+! According to Kohlberg, at which stage do individuals base moral judgments on universal ethical principles?
+- पूर्व-पारंपरिक चरण / Pre-conventional stage
+- पारंपरिक चरण / Conventional stage
+- उत्तर-पारंपरिक चरण / Post-conventional stage
+- संवेदी-पेशीय चरण / Sensorimotor stage
+= चरण 6 (सार्वभौमिक नैतिक सिद्धांत) — उत्तर-पारंपरिक स्तर।
+85 डिजिटल शिक्षा
+? डिजिटल शिक्षा के संदर्भ में, OER का पूर्ण रूप क्या है?
+! In digital education, what does OER stand for?
+- Online Education Record / ऑनलाइन एजुकेशन रिकॉर्ड
+- Open Educational Resources / ओपन एजुकेशनल रिसोर्सेज
+- Optical Education Reader / ऑप्टिकल एजुकेशन रीडर
+- Organized E-learning Repository / ऑर्गेनाइज्ड ई-लर्निंग रिपॉजिटरी
+= OER — Open Educational Resources।
+86 शिक्षक की व्यावसायिक नैतिकता
+? शिक्षण में व्यावसायिक नैतिकता मुख्य रूप से यह मांग करती है कि एक शिक्षक को:
+! Professional ethics in teaching primarily demands that a teacher must:
+- निजी ट्यूशन से कमाई अधिकतम करनी चाहिए / Maximize private tuition earnings
+- छात्रों की पृष्ठभूमि के आधार पर पूर्वाग्रह दिखाना चाहिए / Show prejudice based on backgrounds
+- छात्रों के रिकॉर्ड और व्यक्तिगत मुद्दों की गोपनीयता बनाए रखनी चाहिए / Maintain confidentiality of student records and personal issues
+- सख्त शारीरिक अनुशासन लागू करना चाहिए / Enforce strict physical discipline
+= गोपनीयता व निष्पक्षता शिक्षक की व्यावसायिक नैतिकता है।
+
+# सामान्य ज्ञान एवं समसायिक घटनाएं
+87 पुरस्कार
+? ऑस्कर पुरस्कार प्रदान करने वाली संस्था कौन-सी है?
+! Which organization presents the Oscar awards?
+- UNESCO
+- Academy of Motion Picture Arts and Sciences
+- UNICEF
+- International Film Festival Association
+= ऑस्कर (अकादमी पुरस्कार) — AMPAS, अमेरिका।
+88 समसामयिकी
+? हाल ही में लुवसन्नामस्रेन ओयुन-एर्डीन किस देश के नए प्रधानमंत्री बने हैं?
+! Which country's new Prime Minister has Luvsannamsrain Oyun-Erdene recently become?
+- म्यांमार / Myanmar
+- मंगोलिया / Mongolia
+- वियतनाम / Vietnam
+- इनमें से कोई नहीं / None of these
+= मंगोलिया।
+89 खेल
+? एशियाई खेलों के आयोजन की अवधारणा को आगे बढ़ाने वाले भारतीय खेल प्रशासक कौन थे?
+! Who was the Indian sports administrator who championed the Asian Games?
+- मेजर ध्यानचंद / Major Dhyan Chand
+- गुरु दत्त सोंधी / Guru Dutt Sondhi
+- मिल्खा सिंह / Milkha Singh
+- पी. टी. उषा / P. T. Usha
+= प्रो. गुरु दत्त सोंधी; पहले एशियाई खेल 1951, नई दिल्ली।
+90 समसामयिकी
+? हाल ही में किस राज्य सरकार ने आवारा पशुओं और जंगली सूअरों से फसलों की रक्षा के लिए 'मुख्यमंत्री खेत सुरक्षा योजना' शुरू की है?
+! Which state recently launched the 'Mukhyamantri Khet Suraksha Yojana' to protect crops?
+- महाराष्ट्र / Maharashtra
+- हरियाणा / Haryana
+- उत्तर प्रदेश / Uttar Pradesh
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — उत्तर प्रदेश।
+91 कला एवं संस्कृति
+? 'अभिनय दर्पण' किससे संबंधित ग्रंथ है?
+! 'Abhinaya Darpan' is a text related to which?
+- आयुर्वेद / Ayurveda
+- वास्तुकला / Architecture
+- नृत्य एवं अभिनय / Dance and acting
+- ज्योतिष / Astrology
+= नंदिकेश्वर रचित — नृत्य व अभिनय।
+92 खेल 2026
+? हाल ही में ग्लासगो में आयोजित 2026 राष्ट्रमंडल खेलों में पदक तालिका में कौन शीर्ष पर रहा है?
+! Who topped the medal tally at the 2026 Commonwealth Games in Glasgow?
+- इंग्लैंड / England
+- ऑस्ट्रेलिया / Australia
+- कनाडा / Canada
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — ऑस्ट्रेलिया।
+93 पुरस्कार
+? पुलित्जर पुरस्कार मूलतः किस देश से संबंधित है?
+! With which country is the Pulitzer Prize primarily associated?
+- फ्रांस / France
+- अमेरिका / America
+- ब्रिटेन / Britain
+- स्वीडन / Sweden
+= अमेरिका (जोसेफ पुलित्जर)।
+94 समसामयिकी
+? हाल ही में किस भारतीय शहर ने UNESCO क्रिएटिव सिटी और वर्ल्ड क्राफ्ट सिटी का प्रतिष्ठित दर्जा प्राप्त किया है?
+! Which Indian city recently received the status of UNESCO Creative City and World Craft City?
+- सूरत / Surat
+- कोच्चि / Kochi
+- श्रीनगर / Srinagar
+- इनमें से कोई नहीं / None of these
+= श्रीनगर (शिल्प एवं लोक कला)।
+95 लोकनृत्य
+? 'तेरह ताली' लोकनृत्य परंपरा मुख्यतः किस राज्य से संबंधित है?
+! The 'Terah Tali' folk dance tradition mainly belongs to which state?
+- महाराष्ट्र / Maharashtra
+- असम / Assam
+- राजस्थान / Rajasthan
+- सिक्किम / Sikkim
+= तेरहताली — राजस्थान (कामड़ समुदाय)।
+96 समसामयिकी
+? हाल ही में चर्चा में रही भारत की पहली किसी ब्रांड के नाम पर रखी गई "स्प्राइट तेजस एक्सप्रेस" का संबंध किस रेलमार्ग से है?
+! With which route is the brand-named "Sprite Tejas Express" associated?
+- जयपुर-दिल्ली / Jaipur-Delhi
+- लखनऊ-दिल्ली / Lucknow-Delhi
+- मुंबई-दिल्ली / Mumbai-Delhi
+- सूरत-दिल्ली / Surat-Delhi
+= उत्तर कुंजी के अनुसार — लखनऊ-दिल्ली।
+97 मुद्राएँ
+? भूटान की मुद्रा क्या है?
+! What is the currency of Bhutan?
+- क्यात / Kyat
+- न्गुल्ट्रम / Ngultrum
+- टका / Taka
+- रुफिया / Rufiyaa
+= भूटान — न्गुल्ट्रम; म्यांमार — क्यात; बांग्लादेश — टका; मालदीव — रुफिया।
+98 पर्यावरण सम्मेलन
+? निम्नलिखित में से किस सम्मेलन को 'पर्यावरण का मैग्नाकार्टा' कहा जाता है, जिसके तहत UNEP की स्थापना हुई?
+! Which conference is called the 'Magna Carta of Environment', leading to the establishment of UNEP?
+- रियो पृथ्वी सम्मेलन (1992) / Rio Earth Summit (1992)
+- स्टॉकहोम सम्मेलन (1972) / Stockholm Conference (1972)
+- रामसर सम्मेलन (1971) / Ramsar Convention (1971)
+- क्योटो सम्मेलन (1997) / Kyoto Conference (1997)
+= स्टॉकहोम 1972 — UNEP; 5 जून विश्व पर्यावरण दिवस।
+99 समसामयिकी
+? हाल ही में डोपिंग के कारण निलंबित ट्रैक एंड फील्ड एथलीटों की वैश्विक सूची में कौन शीर्ष पर रहा है?
+! Which country recently topped the global list of track and field athletes suspended for doping?
+- रूस / Russia
+- जर्मनी / Germany
+- भारत / India
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — भारत।
+100 अंतरिक्ष संस्थान
+? 'राष्ट्रीय सुदूर संवेदन केंद्र' (NRSC), जो इसरो का एक प्रमुख केंद्र है, कहाँ स्थित है?
+! Where is the 'National Remote Sensing Centre' (NRSC) of ISRO located?
+- बेंगलुरु / Bengaluru
+- तिरुवनंतपुरम / Thiruvananthapuram
+- अहमदाबाद / Ahmedabad
+- हैदराबाद / Hyderabad
+= NRSC — हैदराबाद।
+101 खेल
+? हाल ही में भारत के 93वें ग्रैंडमास्टर कौन बने हैं?
+! Who has recently become India's 93rd Grandmaster?
+- राहुल वी.एस. / Rahul V.S.
+- आर्यन वार्ष्णेय / Aryan Varshney
+- आरव डेंगला / Aarav Dengla
+- इलमपार्थी ए.आर. / Ilamparthi A.R.
+= उत्तर कुंजी के अनुसार — राहुल वी.एस.।
+102 पंचायती राज
+? भारत में 73वें संविधान संशोधन के लागू होने के उपलक्ष्य में 'राष्ट्रीय पंचायती राज दिवस' कब मनाया जाता है?
+! When is 'National Panchayati Raj Day' celebrated?
+- 24 अप्रैल / 24 April
+- 2 अक्टूबर / 2 October
+- 15 अगस्त / 15 August
+- 26 नवंबर / 26 November
+= 24 अप्रैल (73वाँ संशोधन 1993 से प्रभावी)।
+103 संसद
+? संसद या राज्य विधानमंडल की बैठकों को आयोजित करने के लिए न्यूनतम गणपूर्ति (Quorum) कितनी होनी चाहिए?
+! What should be the minimum quorum to hold meetings of Parliament or State Legislature?
+- कुल सदस्यों का 1/5 भाग / 1/5th of total members
+- कुल सदस्यों का 1/6 भाग / 1/6th of total members
+- कुल सदस्यों का 1/10 भाग / 1/10th of total members
+- कुल सदस्यों का 1/3 भाग / 1/3rd of total members
+= अनुच्छेद 100 — कुल सदस्यों का 1/10।
+104 समसामयिकी
+? हाल ही में Swiggy और किस बैंक ने भोजन, खरीदारी पर ₹48,000 तक की बचत वाले कार्ड लॉन्च किए हैं?
+! Swiggy and which bank launched cards offering savings up to ₹48,000?
+- ICICI बैंक / ICICI Bank
+- एक्सिस बैंक / Axis Bank
+- HDFC बैंक / HDFC Bank
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — HDFC बैंक।
+105 समसामयिकी
+? हाल ही में US प्रेसिडेंट ट्रंप ने 50 साल में पहली बड़ी US रिफाइनरी बनाने के लिए किसके साथ साझेदारी की घोषणा की है?
+! With whom did President Trump announce a partnership to build the first major US refinery in 50 years?
+- अदानी / Adani
+- रिलायंस / Reliance
+- ओएनजीसी / ONGC
+- गेल इंडिया / GAIL India
+= उत्तर कुंजी के अनुसार — अदानी।
+106 पुस्तकें
+? प्रसिद्ध बॉलीवुड निर्देशक और निर्माता करण जौहर की आत्मकथा का क्या नाम है?
+! What is the name of Karan Johar's autobiography?
+- एन अनसूटेबल बॉय / An Unsuitable Boy
+- द सब्सटेंस एंड द शैडो / The Substance and the Shadow
+- क्रैकिंग द कोड / Cracking the Code
+- खुल्लम खुल्ला / Khullam Khulla
+= An Unsuitable Boy (2017); खुल्लम खुल्ला — ऋषि कपूर; द सब्सटेंस… — दिलीप कुमार।
+107 पुस्तकें
+? 'इंडिया विन्स फ्रीडम' किस भारतीय स्वतंत्रता सेनानी और आज़ाद भारत के पहले शिक्षा मंत्री की रचना है?
+! 'India Wins Freedom' is the work of which freedom fighter and first Education Minister?
+- मौलाना अबुल कलाम आज़ाद / Maulana Abul Kalam Azad
+- दादाभाई नौरोजी / Dadabhai Naoroji
+- बंकिम चंद्र चटर्जी / Bankim Chandra Chatterjee
+- शचींद्रनाथ सान्याल / Sachindra Nath Sanyal
+= मौलाना आज़ाद; उनका जन्मदिन 11 नवंबर — राष्ट्रीय शिक्षा दिवस।
+108 खेल
+? प्रसिद्ध भारतीय खिलाड़ी 'लवलीना बोरगोहेन' का संबंध किस खेल से है?
+! The famous Indian sportsperson 'Lovlina Borgohain' is associated with which sport?
+- तीरंदाजी / Archery
+- मुक्केबाजी / Boxing
+- भारोत्तोलन / Weightlifting
+- कुश्ती / Wrestling
+= मुक्केबाजी (टोक्यो 2020 कांस्य)।
+109 खेल
+? कॉमनवेल्थ यूथ गेम्स 2027 का आयोजन कहाँ किया जाएगा?
+! Where will the 2027 Commonwealth Youth Games be held?
+- माल्टा / Malta
+- ऑस्ट्रेलिया / Australia
+- कनाडा / Canada
+- इंग्लैंड / England
+= माल्टा।
+110 भूगोल
+? भारत का कौन-सा राज्य तीन तरफ से बांग्लादेश से घिरा हुआ है?
+! Which Indian state is surrounded by Bangladesh on three sides?
+- असम / Assam
+- पश्चिम बंगाल / West Bengal
+- मेघालय / Meghalaya
+- त्रिपुरा / Tripura
+= त्रिपुरा।
+111 खेल
+? हाल ही में गुरजंत सिंह किस खेल से संबंधित हैं जिन्होंने हाल ही में संन्यास की घोषणा की है?
+! Gurjant Singh, who recently announced retirement, is associated with which sport?
+- फुटबॉल / Football
+- हॉकी / Hockey
+- बास्केटबॉल / Basketball
+- इनमें से कोई नहीं / None of these
+= गुरजंत सिंह — भारतीय हॉकी (टोक्यो कांस्य)।
+
+# REASONING
+112 सादृश्यता
+? हृदय : कार्डियोलॉजिस्ट :: वृक्क (Kidney) : ?
+! Heart : Cardiologist :: Kidney : ?
+- न्यूरोलॉजिस्ट / Neurologist
+- नेफ्रोलॉजिस्ट / Nephrologist
+- ऑन्कोलॉजिस्ट / Oncologist
+- गाइनोकोलॉजिस्ट / Gynecologist
+= गुर्दा — नेफ्रोलॉजिस्ट; मस्तिष्क — न्यूरोलॉजिस्ट; कैंसर — ऑन्कोलॉजिस्ट।
+113 कैलेंडर
+? यदि परसों शनिवार था, तो कल के बाद कौन सा दिन होगा?
+! If the day before yesterday was Saturday, what day will it be the day after tomorrow?
+- सोमवार / Monday
+- मंगलवार / Tuesday
+- बुधवार / Wednesday
+- गुरुवार / Thursday
+= आज सोमवार ⇒ परसों (आगे) बुधवार।
+114 घड़ी
+? 3:40 पर घंटे और मिनट की सुई के बीच का कोण क्या है?
+! What is the angle between the hour and minute hands at 3:40?
+- 120°
+- 130°
+- 140°
+- 150°
+= $|30H - 5.5M| = |90 - 220| = 130°$।
+115 दिशा परिवर्तन
+? यदि 'उत्तर' को 'पश्चिम' कहा जाए, तो 'दक्षिण' को क्या कहा जाएगा?
+! If 'North' is called 'West', then what will 'South' be called?
+- पूर्व / East
+- पश्चिम / West
+- उत्तर / North
+- दक्षिण / South
+= 90° वामावर्त घुमाव: दक्षिण → पूर्व।
+116 कोडिंग-डिकोडिंग
+? यदि 'ROSE' को '6821' और 'CHAIR' को '73456' लिखा जाता है, तो 'SEARCH' का कोड क्या होगा?
+! If 'ROSE' is '6821' and 'CHAIR' is '73456', what is the code for 'SEARCH'?
+- 214673
+- 214763
+- 213674
+- 214637
+= S=2, E=1, A=4, R=6, C=7, H=3 ⇒ 214673।
+
+# सूचना तकनीक
+117 MS Word
+? MS Word में 'Format Painter' का उपयोग मुख्य रूप से किसलिए किया जाता है?
+! What is 'Format Painter' in MS Word mainly used for?
+- केवल चुनिंदा टेक्स्ट को कॉपी करने के लिए / Only to copy selected text
+- किसी टेक्स्ट की फॉर्मेटिंग (फॉन्ट, कलर, साइज) को कॉपी करके दूसरे टेक्स्ट पर लागू करने के लिए / To copy formatting and apply it to other text
+- डॉक्यूमेंट में सीधे इमेज इन्सर्ट करने के लिए / To insert images directly
+- पूरे पेज का बैकग्राउंड कलर बदलने के लिए / To change the page background colour
+= Format Painter केवल फॉर्मेटिंग कॉपी करता है (Ctrl + Shift + C / V)।
+118 इंटरनेट
+? निम्नलिखित में से कौन सा विकल्प एक 'सर्च इंजन' (Search Engine) नहीं है?
+! Which of the following is not a 'Search Engine'?
+- Google
+- Bing
+- Yahoo
+- Chrome
+= Chrome वेब ब्राउज़र है।
+119 डिजिटल शिक्षा
+? भारत सरकार की प्रसिद्ध डिजिटल पहल 'SWAYAM' का पूर्ण रूप (Full Form) क्या है?
+! What is the full form of 'SWAYAM'?
+- Study Webs of Active-Learning for Young Aspiring Minds
+- Student Welfare Association for Young Achievers Movement
+- Study Wise Association for Youth And Matured
+- System of Web-based Assessment for Young Minds
+= SWAYAM — Study Webs of Active-Learning for Young Aspiring Minds (2017)।
+120 डिजिटल शिक्षा
+? उच्च शिक्षा के लिए ई-सामग्री और शैक्षिक टीवी चैनल प्रदान करने वाले डिजिटल प्लेटफॉर्म 'CEC' का सही अर्थ क्या है?
+! What is the correct meaning of 'CEC', which provides e-content and educational TV channels for higher education?
+- Consortium for Educational Communication
+- Center for Education and Culture
+- Council for Electronic Content
+- Consortium for E-learning Colleges
+= CEC — Consortium for Educational Communication (UGC)।

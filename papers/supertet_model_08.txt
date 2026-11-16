@@ -1,0 +1,956 @@
+@id chandra_supertet_model_08
+@title SUPER TET प्राथमिक MODEL PAPER-08 (चन्द्रा इंस्टीट्यूट)
+@duration 150
+@key DBDDBAADCC CCBBCBADAC ACACBABBBB BCBCDBABCB CABABBADCC BCBABCAACB DBCBBDCBBB BABDBBCADB DCBABDCADB AAACBBBBAA ACAACCCACB DDBCAACCAB
+
+# HINDI
+1 कारक एवं विभक्ति
+? "चारपाई पर राम बैठा है।" इस वाक्य में कारक बताइए-
+- करण
+- सम्प्रदान
+- संबंध
+- अधिकरण
+= 'चारपाई पर' क्रिया का आधार बताता है। 'में, पर' अधिकरण कारक के चिह्न हैं।
+2 लिंग
+? "विधवा" शब्द का पुल्लिंग रूप-
+- विदुष
+- विधुर
+- विदुषी
+- विद्वान
+= विधवा का पुल्लिंग 'विधुर' है। विदुषी–विद्वान अलग युग्म है।
+3 वचन
+? "चाकू" शब्द का बहुवचन क्या होगा?
+- चाकुएँ
+- चाकूओं
+- चाकुओं
+- चाकू
+= ऊकारान्त पुल्लिंग शब्द (चाकू, आलू) का बहुवचन (प्रत्यक्ष रूप में) वही रहता है — चाकू।
+4 संज्ञा
+? क्रियार्थक संज्ञा की पहचान करें-
+- हमें सत्य बोलना चाहिए।
+- झूठ मत बोलो।
+- वर्षा हो रही है।
+- टहलना स्वास्थ्य के लिए अच्छा है।
+= 'टहलना' क्रिया होकर भी संज्ञा (कर्ता) की तरह प्रयुक्त है — क्रियार्थक संज्ञा।
+5 क्रिया
+? सकर्मक क्रिया की पहचान करें-
+- मंदाकिनी सोती है।
+- बालिका निबन्ध लिख रही है।
+- पक्षी आकाश में उड़ते हैं।
+- बालक खिलौना पाकर हँसता है।
+= 'क्या लिख रही है?' — निबन्ध; कर्म उपस्थित है, अतः सकर्मक।
+6 विराम चिह्न
+? आशीष राहुल राजा शुक्ल और वैभव अपने कार्य में संलग्न हैं। इस वाक्य में उचित विराम चिह्न है-
+- ,
+- ;
+- ।
+- :
+= एक ही प्रकार के कई नामों को अलग करने के लिए अल्पविराम (,) लगता है।
+7 अलंकार
+? दी गयी पंक्तियों में अलंकार बताइए —<br>"जो घनीभूत पीड़ा थी मस्तक में स्मृति-सी छाई।<br>दुर्दिन में आँसू बनकर वह आज बरसने आई॥"
+- श्लेष
+- वक्रोक्ति
+- यमक
+- अनुप्रास
+= उत्तर कुंजी के अनुसार श्लेष। (पंक्तियों में 'स्मृति-सी' से उपमा भी है।)
+8 अलंकार
+? 'जब से है आँख लगी तब से न आँख लगी' इसमें कौन-से अलंकार का प्रयोग हुआ है?
+- सन्देह अलंकार
+- अतिशयोक्ति अलंकार
+- अन्योक्ति अलंकार
+- विरोधाभास अलंकार
+= 'आँख लगी' (प्रेम हुआ) और 'आँख न लगी' (नींद न आई) में विरोध का आभास है — विरोधाभास। (आवृत्ति के कारण यमक भी।)
+9 संधि
+? पुनर्जन्म का सन्धि-विच्छेद है-
+- पुनर + जन्म
+- पुः + नरजन्म
+- पुनः + जन्म
+- पुनर् + आजन्म
+= पुनः + जन्म — विसर्ग संधि (विसर्ग का 'र्')।
+10 प्रत्यय
+? 'सावधानी' में कौन-सा प्रत्यय है?
+- नी
+- धानी
+- ई
+- आनी
+= सावधान + ई = सावधानी।
+11 वाक्यांश के लिए एक शब्द
+? वाक्यांश के लिए एक शब्द से सम्बन्धित कौन-सा जोड़ा गलत है?
+- जिसका इलाज कठिन हो — दुःसाध्य
+- जो मनुष्यता से दूर हो — अमानुषिक
+- जो कम खर्च करने वाला हो — अपव्ययी
+- जो इतिहास लिखे जाने के युग से पूर्व का हो — प्रागैतिहासिक
+= कम खर्च करने वाला 'मितव्ययी' होता है; अपव्ययी = अधिक/व्यर्थ खर्च करने वाला।
+12 हिंदी साहित्य
+? 'रानी केतकी की कहानी' के लेखक हैं-
+- सदल मिश्र
+- लल्लू लाल
+- इंशा अल्ला खाँ
+- सदासुख लाल
+= 'रानी केतकी की कहानी' (उदयभान चरित) — इंशा अल्ला खाँ।
+13 विभक्ति
+? संज्ञाओं के साथ आने वाली विभक्तियों को क्या कहा जाता है?
+- संश्लिष्ट
+- विश्लिष्ट
+- श्लिष्ट
+- उपर्युक्त में कोई नहीं
+= संज्ञा के साथ विभक्ति अलग लिखी जाती है (राम ने) — विश्लिष्ट; सर्वनाम के साथ मिलाकर (उसने) — संश्लिष्ट।
+14 लिंग
+? वर्णमाला का कौन-सा 'अक्षर' पुल्लिंग नहीं है?
+- अ, प
+- इ, ई
+- च, ट
+- ज, आ
+= वर्णमाला में इ, ई, ऋ स्त्रीलिंग माने जाते हैं; शेष वर्ण पुल्लिंग।
+15 पर्यायवाची
+? खगेश का पर्यायवाची है-
+- वासुदेव
+- वाक्
+- वैनतेय
+- विधु
+= खगेश (पक्षियों का राजा) = गरुड़ = वैनतेय (विनता का पुत्र)।
+
+# ENGLISH
+16 Plural (Noun)
+! Plural form of "Dwarf".
+- Dwarves
+- Dwarfs
+- Dwarvesis
+- Dwarf
+= Dwarf का बहुवचन Dwarfs (और Dwarves भी चलता है); कुंजी के अनुसार Dwarfs।
+17 Gender
+! Feminine gender of "Duke".
+- Duchess
+- Ducheis
+- Dukes
+- Dukches
+= Duke → Duchess।
+18 Narration
+! Change into indirect: He said, "How clever she is!"
+- He exclaims in surprise that she very clever.
+- He exclaimed in surprise that she is very clever.
+- He exclaimed in surprise that I was very clever.
+- He exclaimed in surprise that she was very clever.
+= Exclamatory → exclaimed (in surprise) that…; reporting verb past होने से 'is' → 'was'।
+19 Spotting Errors
+! Until you will stay here (a) / how will you (b) / meet the president (c) / No error (d). Find the part with an error.
+- Until you will stay here
+- how will you
+- meet the president
+- No error
+= 'Until' वाले समय-सूचक clause में future (will) नहीं आता: 'Until you stay here…' होना चाहिए।
+20 Reading Comprehension @p_env
+! What does the environment include?
+- Only plants
+- Only animals
+- Air, water, soil, plants, animals, and human beings
+- Only water
+= Passage की पहली पंक्ति में यही सूची दी है।
+21 Reading Comprehension @p_env
+! Why is a clean environment important?
+- For a healthy life
+- For more pollution
+- For cutting trees
+- For wasting water
+= "A clean environment is important for a healthy life."
+22 Reading Comprehension @p_env
+! Which of the following causes pollution?
+- Planting trees
+- Saving water
+- Cutting down trees
+- Keeping surroundings clean
+= "Cutting down trees, throwing garbage… cause pollution."
+P p_env Passage: Environment
+> The environment is everything around us, including air, water, soil, plants, animals, and human beings. A clean environment is important for a healthy life. Pollution is harmful to our environment. Cutting down trees, throwing garbage, and using too much plastic cause pollution. We should plant more trees, save water, reduce the use of plastic, and keep our surroundings clean. It is our responsibility to protect the environment.
+
+# SANSKRIT
+23 सन्धि
+? 'विद्यालयः' पदस्य सन्धि-विच्छेदः कः भविष्यति?
+- विद्या + आलयः
+- विद् + आलयः
+- विद्या + लयः
+- विदो + आलयः
+= आ + आ = आ — दीर्घ सन्धि।
+24 विभक्ति
+? 'कविना' पदे का विभक्तिः अस्ति?
+- प्रथमा
+- द्वितीया
+- तृतीया
+- चतुर्थी
+= कवि (इकारान्त पुं.) — तृतीया एकवचन 'कविना'।
+25 अपठित गद्यांश @p_skt
+? प्रश्नः — सज्जनानां सङ्गतिः किं कथ्यते?
+- दुःसङ्गतिः
+- सत्सङ्गतिः
+- कुसङ्गतिः
+- संगीतिः
+= गद्यांश: "सज्जनानां सङ्गतिः सत्सङ्गतिः कथ्यते।"
+26 अपठित गद्यांश @p_skt
+? प्रश्नः — सत्सङ्गतिः कस्याः जाड्यं हरति?
+- बुद्धेः
+- वाण्याः
+- कायायाः
+- मनसः
+= "सत्सङ्गत्या मानवस्य बुद्धेः जाड्यं हरति।"
+P p_skt संस्कृत गद्यांश
+> सज्जनानां सङ्गतिः सत्सङ्गतिः कथ्यते। सत्सङ्गत्या मानवस्य बुद्धेः जाड्यं हरति, वाचि सत्यं सिञ्चति, मानमुन्नतिं च दिशति। अतः सर्वदा सत्सङ्गतिः करणीया।
+27 सन्धि
+? 'गणेशः' पदस्य सन्धिविच्छेदः कः भविष्यति?
+- गणा + ईशः
+- गण + ईशः
+- गणे + शः
+- गण + इशः
+= अ + ई = ए — गुण सन्धि (गण + ईशः)।
+28 समास
+? 'पितरौ' इत्यस्मिन् पदे कः समासः अस्ति?
+- तत्पुरुष समासः
+- द्वन्द्व समासः
+- बहुव्रीहि समासः
+- अव्ययीभाव समासः
+= माता च पिता च = पितरौ — एकशेष द्वन्द्व।
+29 उपपद विभक्ति
+? 'सह', 'साकं', 'सार्धं' योगे का विभक्तिः भवति?
+- द्वितीया
+- तृतीया
+- चतुर्थी
+- पंचमी
+= "सहयुक्तेऽप्रधाने" — सह, साकं, सार्धं, समं के योग में तृतीया।
+30 प्रत्यय
+? 'पठित्वा' इत्यस्मिन् पदे कः प्रत्ययः अस्ति?
+- तुमुन्
+- क्त्वा
+- ल्यप्
+- शतृ
+= पठ् + क्त्वा = पठित्वा (पढ़कर)।
+
+# SCIENCE
+31 गुरुत्वाकर्षण
+? किसी वस्तु का भार अधिकतम कहाँ होता है?
+! Where is the weight of an object maximum?
+- भूमध्य रेखा पर / At the equator
+- ध्रुवों पर / At the poles
+- पृथ्वी के केंद्र पर / At the center of Earth
+- अंतरिक्ष में / In space
+= ध्रुवों पर g अधिकतम (त्रिज्या कम, घूर्णन प्रभाव शून्य) — अतः भार अधिकतम।
+32 प्रकाश
+? प्रकाश के किस रंग का तरंगदैर्ध्य (Wavelength) सबसे अधिक होता है?
+! Which color of light has the longest wavelength?
+- बैंगनी / Violet
+- हरा / Green
+- लाल / Red
+- पीला / Yellow
+= VIBGYOR में लाल का तरंगदैर्ध्य सबसे अधिक (~700 nm), बैंगनी का सबसे कम।
+33 मानव शरीर
+? मानव शरीर की सबसे बड़ी ग्रंथि कौन सी है?
+! Which is the largest gland in the human body?
+- अग्न्याशय / Pancreas
+- यकृत (लिवर) / Liver
+- थायरॉयड / Thyroid
+- पीयूष ग्रंथि / Pituitary Gland
+= यकृत सबसे बड़ी ग्रंथि; थायरॉयड सबसे बड़ी अंतःस्रावी ग्रंथि।
+34 विटामिन
+? विटामिन 'सी' की कमी से कौन सा रोग होता है?
+! Which disease is caused by the deficiency of Vitamin C?
+- रतौंधी / Night Blindness
+- बेरी-बेरी / Beriberi
+- स्कर्वी / Scurvy
+- रिकेट्स / Rickets
+= विटामिन C — स्कर्वी; A — रतौंधी; B1 — बेरी-बेरी; D — रिकेट्स।
+35 ध्वनि
+? ध्वनि तरंगें किस माध्यम में गमन नहीं कर सकती हैं?
+! In which medium sound waves cannot travel?
+- ठोस / Solids
+- द्रव / Liquids
+- गैस / Gases
+- निर्वात / Vacuum
+= ध्वनि यांत्रिक तरंग है, इसे माध्यम चाहिए — निर्वात में नहीं चलती।
+36 पादप ऊतक
+? पौधों में जल का संवहन किस ऊतक द्वारा होता है?
+! Transportation of water in plants takes place through which tissue?
+- फ्लोएम / Phloem
+- जाइलम / Xylem
+- एपिडर्मिस / Epidermis
+- कैम्बियम / Cambium
+= जाइलम — जल व खनिज; फ्लोएम — भोजन का संवहन।
+37 मात्रक एवं विमाएँ
+? सार्वत्रिक गुरुत्वाकर्षण नियतांक (G) का विमीय सूत्र क्या है?
+! The dimensional formula of Universal Gravitational Constant (G) is
+- $[M^{-1}L^{3}T^{-2}]$
+- $[M^{1}L^{3}T^{-2}]$
+- $[M^{-1}L^{2}T^{-2}]$
+- $[M^{-2}L^{3}T^{-1}]$
+= $G = \dfrac{Fr^2}{m_1m_2} = \dfrac{[MLT^{-2}][L^2]}{[M^2]} = [M^{-1}L^3T^{-2}]$
+38 प्रकाश — लेंस
+? निकट दृष्टिदोष (Myopia) के निवारण के लिए किस लेंस का उपयोग किया जाता है?
+! Which lens is used for correcting Near-Sightedness (Myopia)?
+- उत्तल लेंस / Convex Lens
+- अवतल लेंस / Concave Lens
+- समतल लेंस / Plane Lens
+- बेलनाकार लेंस / Cylindrical Lens
+= निकट दृष्टिदोष — अवतल (अपसारी) लेंस; दूर दृष्टिदोष — उत्तल लेंस।
+
+# MATHS
+39 त्रिभुज — अनुपात
+? एक त्रिभुज के कोणों का अनुपात 3 : 4 : 5 है। सबसे बड़े कोण और सबसे छोटे कोण का अंतर कितना है?
+! The ratio of the angles of a triangle is 3 : 4 : 5. What is the difference between the largest and the smallest angle?
+- 20°
+- 25°
+- 30°
+- 35°
+= $12x = 180° \Rightarrow x = 15°$; कोण 45°, 60°, 75°; अंतर $75-45 = 30°$।
+40 क्षेत्रमिति — घन
+? एक घन का कुल पृष्ठीय क्षेत्रफल 864 सेमी² है। उसका आयतन कितना होगा?
+! The total surface area of a cube is 864 cm². What will be its volume?
+- 1440 सेमी³
+- 1728 सेमी³
+- 1944 सेमी³
+- 2197 सेमी³
+= $6a^2 = 864 \Rightarrow a = 12$; आयतन $= 12^3 = 1728$ सेमी³।
+41 क्षेत्रमिति — आयत
+? एक आयत की लंबाई उसकी चौड़ाई से 8 मीटर अधिक है। यदि उसका क्षेत्रफल 240 वर्ग मीटर है, तो उसका परिमाप कितना होगा?
+! The length of a rectangle is 8 meters more than its width. If its area is 240 square meters, what will be its perimeter?
+- 56 मीटर
+- 60 मीटर
+- 64 मीटर
+- 68 मीटर
+= $b(b+8) = 240 \Rightarrow b = 12, l = 20$; परिमाप $= 2(20+12) = 64$ मी।
+42 औसत
+? 20 संख्याओं का औसत 35 है। यदि उनमें से 48 और 52 को हटाकर उनके स्थान पर 38 और 42 रख दिया जाए, तो नया औसत क्या होगा?
+! The average of 20 numbers is 35. If 48 and 52 are removed from them and replaced by 38 and 42, what will be the new average?
+- 33
+- 34
+- 34.5
+- 35
+= योग $= 700 - 100 + 80 = 680$; औसत $= 680/20 = 34$। ⚠️ गणना से उत्तर 34 (B) आता है; मूल उत्तर कुंजी में (A) 33 छपा है।
+43 घातांक एवं विभाज्यता
+? $(3^{31}+3^{32}+3^{33}+3^{34})$ निम्न में से किस संख्या से विभक्त होगा?
+! $(3^{31}+3^{32}+3^{33}+3^{34})$ will be divisible by which of the following numbers?
+- 5 से
+- 11 से
+- 16 से
+- 25 से
+= $3^{31}(1+3+9+27) = 3^{31}\times 40$ — यह 5 (और 10) से विभाज्य है। ⚠️ गणना से उत्तर (A) 5 आता है; मूल कुंजी में (B) छपा है।
+44 घातांक
+? यदि $2^{x+4} - 2^{x+2} = 3$ हो, तो x = ?
+! If $2^{x+4} - 2^{x+2} = 3$, then x = ?
+- -2
+- -1
+- 0
+- 2
+= $2^{x+2}(4-1) = 3 \Rightarrow 2^{x+2} = 1 = 2^0 \Rightarrow x = -2$।
+45 समय एवं कार्य
+? यदि 15 व्यक्ति किसी काम को 20 दिनों में कर सकते हैं, तो उसी काम को 12 दिनों में समाप्त करने के लिए कितने अतिरिक्त व्यक्तियों की आवश्यकता होगी?
+! If 15 men can do a piece of work in 20 days, how many extra men are needed to complete the same work in 12 days?
+- 8
+- 10
+- 12
+- 15
+= $15\times20 = M\times12 \Rightarrow M = 25$; अतिरिक्त $= 25-15 = 10$।
+46 द्विघात समीकरण
+? समीकरण $2x^2 - 8x + m = 0$ के मूल वास्तविक और बराबर हैं, तो m का मान ज्ञात कीजिए।
+! The roots of the equation $2x^2 - 8x + m = 0$ are real and equal, find the value of m.
+- 6
+- 8
+- 10
+- 4
+= बराबर मूल: $b^2 - 4ac = 0 \Rightarrow 64 - 8m = 0 \Rightarrow m = 8$।
+47 हीरोन सूत्र
+? यदि किसी त्रिभुज की भुजाएँ 13 सेमी, 14 सेमी और 15 सेमी हैं, तो उसका क्षेत्रफल ज्ञात कीजिए।
+! If the sides of a triangle are 13 cm, 14 cm, and 15 cm, find its area.
+- 84 cm²
+- 91 cm²
+- 70 cm²
+- 105 cm²
+= $s = 21$; क्षेत्रफल $= \sqrt{21\cdot8\cdot7\cdot6} = \sqrt{7056} = 84$ cm²।
+48 प्रतिशत
+? एक त्रिभुज की ऊँचाई 10% बढ़ायी गयी है। तदनुसार उस त्रिभुज का आधार कितना कम करना होगा ताकि त्रिभुज का क्षेत्रफल अपरिवर्तित रहे?
+! The height of a triangle is increased by 10%. By what percentage must the base of the triangle be reduced so that the area remains unchanged?
+- $11\frac{1}{9}\%$
+- 10%
+- 9%
+- $9\frac{1}{11}\%$
+= कमी $= \dfrac{10}{110}\times100 = 9\frac{1}{11}\%$।
+49 मात्रक रूपांतरण
+? एक टंकी में 2500 लीटर पानी है। इसे cm³ में व्यक्त करने पर मिलेगा-
+! A tank contains 2500 liters of water. Expressing this in cm³ yields—
+- 25,000 cm³
+- 2,50,000 cm³
+- 25,00,000 cm³
+- 2,500 cm³
+= 1 लीटर = 1000 cm³ ⇒ 2500 × 1000 = 25,00,000 cm³।
+50 क्षेत्रमिति — घनाभ
+? एक घनाभ की तीनों विमाएँ 4 सेमी, 5 सेमी और 6 सेमी हैं। यदि प्रत्येक विमा दोगुनी कर दी जाए, तो नया आयतन कितना होगा?
+! The three dimensions of a cuboid are 4 cm, 5 cm, and 6 cm. If each dimension is doubled, what will be the new volume?
+- 240 cm³
+- 480 cm³
+- 960 cm³
+- 1920 cm³
+= $8\times5\times10\times12 = 960$ cm³ (आयतन 8 गुना: 120 × 8)।
+51 बहुभुज
+? दो समबहुभुजों की भुजाओं की संख्याओं के बीच का अनुपात 1 : 2 है और उनके आन्तरिक कोणों के बीच का अनुपात 2 : 3 है, तो उन दोनों बहुभुजों की भुजाओं की संख्या क्रमशः कितनी है?
+! The ratio of the number of sides of two regular polygons is 1:2, and the ratio of their interior angles is 2:3; what are the numbers of sides?
+- 6, 12
+- 4, 8
+- 7, 14
+- 5, 10
+= 4 भुजा: 90°, 8 भुजा: 135° ⇒ 90 : 135 = 2 : 3 ✓।
+52 क्षेत्रमिति — वर्ग
+? एक वर्ग का क्षेत्रफल 144 वर्ग सेमी है। इसका परिमाप क्या होगा?
+! The area of a square is 144 sq cm. What will be its perimeter?
+- 24 सेमी / 24 cm
+- 36 सेमी / 36 cm
+- 48 सेमी / 48 cm
+- 60 सेमी / 60 cm
+= भुजा 12, परिमाप $4\times12 = 48$ सेमी।
+53 LCM
+? 15 और 25 का लघुत्तम समापवर्त्य (LCM) क्या होगा?
+! What is the Least Common Multiple (LCM) of 15 and 25?
+- 45
+- 75
+- 150
+- 300
+= $15 = 3\times5$, $25 = 5^2$ ⇒ LCM $= 3\times25 = 75$।
+54 अनुपात
+? यदि a:b = 2:3 तथा b:c = 4:5 है, तो a:c का मान ज्ञात कीजिए।
+! If a:b = 2:3 and b:c = 4:5, find the value of a:c.
+- 8:15
+- 2:5
+- 6:15
+- 8:12
+= a:b:c = 8:12:15 ⇒ a:c = 8:15।
+
+# पर्यावरण एवं सामाजिक अध्ययन
+55 महासागरीय धाराएँ
+? पृथ्वी के पश्चिमी तटों पर ठंडी समुद्री धाराओं के कारण सामान्यतः कौन-सी स्थिति उत्पन्न होती है?
+! What condition generally arises on the western coasts of continents due to cold ocean currents?
+- अत्यधिक वर्षा / Excessive rainfall
+- शुष्क जलवायु और तटीय मरुस्थल / Arid climate and coastal deserts
+- उष्णकटिबंधीय चक्रवातों की अधिकता / High frequency of tropical cyclones
+- घने विषुवतीय वन / Dense equatorial forests
+= ठंडी धाराएँ वायु को ठंडा करती हैं, वर्षा कम होती है — जैसे अटाकामा, नामिब मरुस्थल।
+56 वायुमंडलीय दाब
+? यदि किसी स्थान की समुद्र तल से ऊँचाई बढ़ती जाए, तो सामान्यतः वायुमंडलीय दाब में क्या परिवर्तन होता है?
+! If the elevation of a place above sea level increases, what change generally occurs in atmospheric pressure?
+- दाब बढ़ता है / Pressure increases
+- दाब स्थिर रहता है / Pressure remains constant
+- दाब घटता है / Pressure decreases
+- दाब पहले बढ़ता फिर घटता है / Pressure first increases and then decreases
+= ऊँचाई बढ़ने पर ऊपर की वायु-स्तंभ कम होता है, इसलिए दाब घटता है।
+57 आधुनिक भारत
+? भारत में स्थायी बंदोबस्त व्यवस्था के अंतर्गत भू-राजस्व वसूली की जिम्मेदारी मुख्यतः किस वर्ग को दी गई थी?
+! Under the Permanent Settlement system in India, the responsibility for land revenue collection was primarily assigned to which class?
+- जमींदार / Zamindars
+- रैयत / Ryots
+- ग्राम पंचायत / Gram Panchayat
+- सरकारी कर्मचारी / Government officials
+= स्थायी बंदोबस्त (1793, कॉर्नवालिस) — जमींदार; रैयतवाड़ी — सीधे किसान; महालवाड़ी — गाँव।
+58 राष्ट्रीय आंदोलन
+? भारत छोड़ो आंदोलन के दौरान गांधीजी द्वारा दिया गया प्रसिद्ध आह्वान कौन-सा था?
+! What was the famous call given by Gandhiji during the Quit India Movement?
+- करो या मरो / Do or Die
+- जय जवान जय किसान / Jai Jawan Jai Kisan
+- पूर्ण स्वराज्य अभी / Purna Swaraj Now
+- दिल्ली चलो / Dilli Chalo
+= 8 अगस्त 1942, बम्बई — "करो या मरो"।
+59 अर्थशास्त्र — माँग
+? जब किसी वस्तु की कीमत बढ़ने पर भी उसकी माँग में बहुत कम कमी आती है, तो उसकी माँग को क्या कहा जाता है?
+! When the demand for a good decreases very little despite an increase in its price, what is that demand called?
+- लोचदार माँग / Elastic demand
+- पूर्ण लोचदार माँग / Perfectly elastic demand
+- बेलोचदार माँग / Inelastic demand
+- इकाई लोचदार माँग / Unitary elastic demand
+= कीमत के प्रति माँग की कम प्रतिक्रिया = बेलोचदार (जैसे नमक, दवाइयाँ)।
+60 भारतीय संविधान
+? भारतीय संविधान में मूल कर्तव्यों को किस संविधान संशोधन द्वारा जोड़ा गया था?
+! By which constitutional amendment were Fundamental Duties added to the Indian Constitution?
+- 24वाँ संशोधन / 24th Amendment
+- 42वाँ संशोधन / 42nd Amendment
+- 44वाँ संशोधन / 44th Amendment
+- 73वाँ संशोधन / 73rd Amendment
+= 42वाँ संशोधन (1976), स्वर्ण सिंह समिति — भाग 4A, अनुच्छेद 51A।
+61 पारिस्थितिकी
+? खाद्य श्रृंखला में जैव आवर्धन (Biomagnification) का प्रभाव सामान्यतः किस पोषी स्तर पर सर्वाधिक दिखाई देता है?
+! At which trophic level is the effect of biomagnification in a food chain generally most visible?
+- उत्पादक / Producers
+- प्राथमिक उपभोक्ता / Primary consumers
+- द्वितीयक उपभोक्ता / Secondary consumers
+- शीर्ष उपभोक्ता / Apex consumers
+= विषैले पदार्थ हर स्तर पर बढ़ते जाते हैं, शीर्ष उपभोक्ता में सर्वाधिक (जैसे DDT — बाज)।
+62 पारिस्थितिकी
+? किसी पारिस्थितिकी तंत्र में अपघटक मुख्य रूप से किस कार्य में महत्वपूर्ण भूमिका निभाते हैं?
+! In an ecosystem, what important role do decomposers primarily play?
+- सौर ऊर्जा का उत्पादन / Production of solar energy
+- मृत जैव पदार्थ को विघटित करके पोषक तत्वों का पुनर्चक्रण / Recycling nutrients by decomposing dead organic matter
+- केवल ऑक्सीजन का उपभोग / Consumption of oxygen only
+- खाद्य श्रृंखला को समाप्त करना / Ending the food chain
+= अपघटक (जीवाणु, कवक) मृत पदार्थ तोड़कर पोषक तत्व मिट्टी में लौटाते हैं।
+
+# बाल विकास (CDP)
+63 NCF 2005 — शिक्षक की भूमिका
+? राष्ट्रीय पाठ्यचर्या की रूपरेखा (NCF) के अनुसार, एक आदर्श शिक्षक की व्यावसायिक भूमिका छात्रों के ज्ञान सृजन में किस रूप में निर्धारित की गई है?
+! According to the National Curriculum Framework (NCF), how is the professional role of an ideal teacher defined regarding the creation of knowledge by students?
+- अधिनायक/तानाशाह / Dictator
+- दाता / Giver
+- सुगमकर्ता/सुविधादाता / Facilitator
+- उपदेशक / Instructor
+= NCF 2005 (रचनावाद) — शिक्षक सुगमकर्ता (Facilitator) है, ज्ञान बच्चा स्वयं रचता है।
+64 शिक्षक आचार संहिता
+? व्यावसायिक आचरण एवं नीति के तहत, प्राथमिक विद्यालय के शिक्षक के लिए उत्तर प्रदेश बेसिक शिक्षा नियमावली के अनुसार कौन सा कृत्य पूर्णतः प्रतिबंधित और दंडनीय है?
+! Under professional conduct and ethics, which act is completely prohibited and punishable for a primary school teacher according to the Uttar Pradesh Basic Education Rules?
+- छात्रों का सतत मूल्यांकन करना / Conducting continuous assessment of students
+- विद्यालय के बाद निजी ट्यूशन या व्यावसायिक गतिविधियां चलाना / Conducting private tuition or commercial activities after school hours
+- अभिभावक-शिक्षक बैठक (PTA) का आयोजन करना / Organizing Parent-Teacher Association (PTA) meetings
+- उपचारात्मक शिक्षण देना / Providing remedial teaching
+= RTE धारा 28 भी शिक्षकों के निजी ट्यूशन पर रोक लगाती है।
+65 अभिप्रेरणा
+? अभिप्रेरणा (Motivation) के 'मूल प्रवृत्ति सिद्धांत' (Instinct Theory) का प्रतिपादन निम्नलिखित में से किस मनोवैज्ञानिक ने किया था?
+! Which of the following psychologists propounded the 'Instinct Theory of Motivation'?
+- अब्राहम मैस्लो / Abraham Maslow
+- विलियम मैकडूगल / William McDougall
+- बी. एफ. स्किनर / B. F. Skinner
+- क्लार्क हल / Clark Hull
+= मैकडूगल — 14 मूल प्रवृत्तियाँ; मैस्लो — आवश्यकता पदानुक्रम; हल — अन्तर्नोद न्यूनता।
+66 संविधान मूल्य
+? भारतीय संविधान की प्रस्तावना में वर्णित वह कौन सा संवैधानिक मूल्य है जो नागरिकों के बीच भाईचारे, आपसी सौहार्द और देश की एकता व अखंडता को बढ़ावा देने की बात करता है?
+! Which constitutional value, enshrined in the Preamble, advocates for promoting fraternity, mutual harmony, and the unity and integrity of the nation?
+- न्याय / Justice
+- स्वतंत्रता / Liberty
+- समता / Equality
+- बंधुत्व / Fraternity
+= प्रस्तावना: "…व्यक्ति की गरिमा और राष्ट्र की एकता और अखंडता सुनिश्चित करने वाली बंधुता…"।
+67 समावेशी शिक्षा — RPwD Act
+? भारत सरकार द्वारा 'दिव्यांगजन अधिकार अधिनियम' (RPwD Act) किस वर्ष पारित किया गया था, जिसके तहत विकलांगता की श्रेणियों को 7 से बढ़ाकर 21 कर दिया गया?
+! In which year did the Government of India pass the RPwD Act, under which the categories of disabilities were increased from 7 to 21?
+- वर्ष 1995
+- वर्ष 2009
+- वर्ष 2016
+- वर्ष 2020
+= RPwD Act 2016 (PwD Act 1995 में 7 श्रेणियाँ थीं)।
+68 शिक्षण विधियाँ — आगमन
+? शिक्षण की 'आगमन विधि' (Inductive Method) के अंतर्गत शिक्षण का तार्किक क्रम किस प्रकार आगे बढ़ता है?
+! Under the 'Inductive Method' of teaching, how does the logical sequence proceed?
+- नियम से उदाहरण की ओर / From rule to example
+- उदाहरण से नियम की ओर / From example to rule
+- अमूर्त से मूर्त की ओर / From abstract to concrete
+- कठिन से सरल की ओर / From difficult to simple
+= आगमन: उदाहरण → नियम (विशिष्ट से सामान्य); निगमन: नियम → उदाहरण।
+69 जीवन कौशल
+? जीवन कौशल के अंतर्गत 'निर्णय लेने की क्षमता' (Decision Making) का सबसे पहला और अनिवार्य चरण कौन सा माना जाता है?
+! Which is considered the first and essential step of 'decision-making' within life skills?
+- विकल्पों का मूल्यांकन करना / Evaluating the alternatives
+- समस्या या स्थिति की सटीक पहचान करना / Accurately identifying the problem or situation
+- अंतिम निर्णय को लागू करना / Implementing the final decision
+- दूसरों से सलाह लेना / Seeking advice from others
+= पहले समस्या की पहचान, फिर विकल्प, मूल्यांकन, निर्णय और क्रियान्वयन।
+70 संविधान मूल्य — समता
+? कक्षा कक्ष प्रबंधन में एक शिक्षक द्वारा छात्रों को बिना किसी भेदभाव के समान अवसर देना और लोकतांत्रिक माहौल बनाना, भारतीय संविधान के किस जीवन मूल्य को सीधे प्रदर्शित करता है?
+! In classroom management, a teacher providing equal opportunities without discrimination directly reflects which constitutional value?
+- व्यक्तिवाद / Individualism
+- समता/समानता का मूल्य / The value of equality
+- पूंजीवाद / Capitalism
+- सत्तावादी ढांचा / Authoritarian
+= बिना भेदभाव समान अवसर — समता (अनुच्छेद 14–18)।
+71 शिक्षक आचार संहिता
+? प्राथमिक विद्यालयों में शिक्षकों के लिए उत्तर प्रदेश सरकार द्वारा निर्धारित 'व्यावसायिक आचरण संहिता' के अनुसार, एक शिक्षक सप्ताह में न्यूनतम कितने घंटे कार्य करने के लिए बाध्य है (RTE के प्रावधानों सहित)?
+! According to the Code of Professional Conduct for UP primary teachers, what is the minimum number of working hours per week (including RTE provisions)?
+- 40 घंटे / 40 hours
+- 45 घंटे / 45 hours
+- 36 घंटे / 36 hours
+- 50 घंटे / 50 hours
+= RTE अनुसूची: शिक्षक के लिए प्रति सप्ताह न्यूनतम 45 कार्य-घंटे (तैयारी सहित)।
+72 अभिप्रेरणा
+? अभिप्रेरणा के 'द्वि-कारक सिद्धांत' का प्रतिपादन किसने किया था, जिसमें कार्य संतुष्टि और असंतुष्टि के तत्वों को अलग किया गया है?
+! Who propounded the 'Two-Factor Theory' (Hygiene Theory) of motivation?
+- फ्रेडरिक हर्जबर्ग / Frederick Herzberg
+- अब्राहम मैस्लो / Abraham Maslow
+- क्लार्क हल / Clark Hull
+- विक्टर वूम / Victor Vroom
+= हर्जबर्ग — हाइजीन (असंतोष रोकने वाले) और मोटिवेटर (संतोष देने वाले) कारक।
+73 शिक्षा का इतिहास
+? बुनियादी शिक्षा या वर्धा शिक्षा योजना (1937) के तहत महात्मा गांधी ने शिक्षा के किस सिद्धांत पर सबसे अधिक बल दिया था?
+! Under the Basic (Wardha) Education Scheme (1937), on which principle did Gandhi place the greatest emphasis?
+- केवल अंग्रेजी माध्यम में शिक्षा / Education solely in the English medium
+- मातृभाषा के माध्यम से हस्तशिल्प और उत्पादक कार्य आधारित शिक्षा / Education based on handicrafts and productive work through the mother tongue
+- केवल धार्मिक ग्रंथों की शिक्षा / Education solely based on religious texts
+- विशुद्ध रूप से तकनीकी कंप्यूटर शिक्षा / Purely technical computer education
+= नई तालीम — मातृभाषा, हस्तशिल्प केंद्रित, 7–14 वर्ष की निःशुल्क अनिवार्य शिक्षा।
+74 ब्लूम का वर्गीकरण
+? ब्लूम के शैक्षिक उद्देश्यों के वर्गीकरण के अंतर्गत 'ज्ञानात्मक पक्ष' (Cognitive Domain) का सबसे उच्च स्तर का सोपान कौन सा है?
+! Which is the highest level in the 'Cognitive Domain' within Bloom's Taxonomy?
+- ज्ञान / Knowledge
+- विश्लेषण / Analysis
+- संश्लेषण / Synthesis
+- मूल्यांकन / Evaluation
+= मूल (1956) क्रम: ज्ञान → बोध → अनुप्रयोग → विश्लेषण → संश्लेषण → मूल्यांकन।
+75 शिक्षा का इतिहास
+? भारतीय शिक्षा के इतिहास में किस आयोग/दस्तावेज को "भारतीय शिक्षा का महाधिकार पत्र" (Magna Carta of English Education in India) कहा जाता है?
+! Which document is referred to as the "Magna Carta of English Education in India"?
+- मैकाले का विवरण पत्र (1835) / Macaulay's Minute (1835)
+- वुड का घोषणा पत्र (1854) / Wood's Despatch (1854)
+- हंटर आयोग (1882) / Hunter Commission (1882)
+- सार्जेंट योजना (1944) / Sargent Plan (1944)
+= वुड का घोषणा पत्र (1854) — मैग्नाकार्टा।
+76 थॉर्नडाइक
+? थॉर्नडाइक के 'प्रयास एवं त्रुटि' के सिद्धांत में, जब कोई बिल्ली भूखी होती है और भोजन (उद्दीपक) को देखकर बार-बार क्रिया करती है, तो भोजन और अनुक्रिया के बीच के संबंध को मजबूत करने वाले नियम को क्या कहते हैं?
+! In Thorndike's 'Trial and Error' theory, what is the law that strengthens the connection between the food and the response?
+- अभ्यास का नियम / Law of Exercise
+- प्रभाव का नियम / Law of Effect
+- तत्परता का नियम / Law of Readiness
+- आंशिक क्रिया का नियम
+= संतोषजनक परिणाम (भोजन) से S-R संबंध मजबूत होता है — प्रभाव का नियम।
+77 विशिष्ट बालक
+? विशिष्ट बालकों की श्रेणी में 'डिस्ग्राफिया' (Dysgraphia) से ग्रसित बालक में मुख्य रूप से किस शारीरिक अंग के समन्वय की कमी पाई जाती है?
+! A child suffering from 'Dysgraphia' primarily exhibits a lack of coordination in which body part(s)?
+- आँखों और पैरों की मांसपेशियों में / Muscles of the eyes and legs
+- केवल सुनने की क्षमता में / Hearing ability only
+- उंगलियों की सूक्ष्म गामक क्षमता और आँखों में / Fine motor skills of the fingers and the eyes
+- स्वर तंत्रियों में / Vocal cords
+= डिस्ग्राफिया = लेखन विकार — हाथ-आँख समन्वय व सूक्ष्म गामक कौशल की कमी।
+78 विकासात्मक कार्य
+? 'विकासात्मक कार्य' (Developmental Tasks) का प्रत्यय सबसे पहले किस मनोवैज्ञानिक द्वारा प्रतिपादित किया गया था?
+! Which psychologist first propounded the concept of 'Developmental Tasks'?
+- रॉबर्ट हैविघर्स्ट / Robert Havighurst
+- एलिजाबेथ हरलॉक / Elizabeth Hurlock
+- जेरोम ब्रूनर / Jerome Bruner
+- डेविड आसुबेल / David Ausubel
+= रॉबर्ट जे. हैविघर्स्ट (1948)।
+79 वाइगोत्स्की
+? लेव वाइगोत्स्की के सिद्धांत में, बालक द्वारा स्वयं को निर्देशित करने और अपने व्यवहार को नियंत्रित करने के लिए बोली जाने वाली 'निजी वाक' (Private Speech) को उन्होंने क्या नाम दिया है?
+! In Lev Vygotsky's theory, what term did he use for the 'Private Speech' spoken by a child to direct themselves?
+- आत्मकेंद्रित वाक / Egocentric Speech
+- सामाजिक वाक / Social Speech
+- आंतरिक वाक / Inner Speech
+- वैयक्तिक वार्ता / Private Speech
+= वाइगोत्स्की ने इसे 'Private Speech' कहा और इसे चिंतन का साधन माना (पियाजे ने 'आत्मकेंद्रित वाक')।
+80 बंडुरा
+? अल्बर्ट बंडुरा के सामाजिक अधिगम सिद्धांत के अनुसार, अनुकरण/अवलोकन अधिगम के चार चरणों का सही तार्किक क्रम क्या है?
+! According to Bandura's Social Learning Theory, what is the correct sequence of the four stages of observational learning?
+- अवधान - पुनरुत्पादन - धारणा - अभिप्रेरणा / Attention - Reproduction - Retention - Motivation
+- अवधान - धारणा - पुनरुत्पादन - अभिप्रेरणा / Attention - Retention - Reproduction - Motivation
+- धारणा - अवधान - अभिप्रेरणा - पुनरुत्पादन / Retention - Attention - Motivation - Reproduction
+- अभिप्रेरणा - अवधान - धारणा - पुनरुत्पादन / Motivation - Attention - Retention - Reproduction
+= ट्रिक "ADPM नहीं, ARRM": Attention → Retention → Reproduction → Motivation।
+81 पियाजे का संज्ञानात्मक विकास
+? जीन पियाजे के संज्ञानात्मक विकास सिद्धांत के अनुसार, किस उप-अवस्था में शिशु में 'वस्तु स्थायित्व' का गुण पूरी तरह से विकसित हो जाता है?
+! According to Piaget, in which sub-stage does 'Object Permanence' fully develop?
+- प्राथमिक वृत्तीय अनुक्रियाएँ / Primary Circular Reactions
+- द्वितीयक योजनाओं का समन्वय / Coordination of Secondary Schemata
+- तृतीयक वृत्तीय अनुक्रियाएँ / Tertiary Circular Reactions
+- मानसिक संयोग द्वारा नए साधनों की खोज / Mental Combinations
+= संवेदी-गामक की छठी उप-अवस्था (18–24 माह, मानसिक संयोग) में वस्तु स्थायित्व पूर्ण होता है।
+82 विकास के सिद्धांत
+? विकास के सिद्धांतों के अनुसार, बालक के भीतर 'सीफेलोकॉडल अनुक्रम' (Cephalocaudal Sequence) विकास की किस दिशा को सटीक रूप से दर्शाता है?
+! Which direction of development does the 'Cephalocaudal Sequence' represent?
+- पैर से सिर की ओर / From feet to head
+- केंद्र से परिधि की ओर / From center to periphery
+- सिर से पैर की ओर / From head to feet
+- सामान्य से विशिष्ट की ओर / From general to specific
+= मस्तकाधोमुखी = सिर से पैर; केंद्र से परिधि = समीप-दूराभिमुख (Proximodistal)।
+83 RTE Act 2009
+? शिक्षा का अधिकार अधिनियम (RTE Act 2009) की धारा 25 के अनुसार, प्राथमिक स्तर (कक्षा 1 से 5) पर छात्र-शिक्षक अनुपात अधिकतम कितना होना निर्धारित है?
+! According to Section 25 of the RTE Act 2009, what is the maximum Pupil-Teacher Ratio at the primary level?
+- 25:1
+- 30:1
+- 35:1
+- 40:1
+= प्राथमिक 30:1, उच्च प्राथमिक 35:1।
+84 शिक्षण कौशल — प्रस्तावना
+? शिक्षण कौशल में 'प्रस्तावना कौशल' (Introduction Skill) का उपयोग करते समय, शिक्षक का मुख्य आधार निम्नलिखित में से क्या होना चाहिए?
+! When using the 'Introduction Skill' in teaching, what should be the teacher's primary basis?
+- छात्रों का पूर्व ज्ञान / Students' prior knowledge
+- कठिन पाठ्यपुस्तक के शब्द / Difficult words from the textbook
+- शिक्षक का अपना व्यक्तिगत अनुभव / The teacher's own personal experience
+- केवल आधुनिक दृश्य-श्रव्य सामग्री / Only modern audio-visual aids
+= प्रस्तावना पूर्व ज्ञान को नए पाठ से जोड़ती है (ज्ञात से अज्ञात की ओर)।
+85 थॉर्नडाइक
+? थॉर्नडाइक के 'प्रयास एवं त्रुटि' के सिद्धांत में, भूखी बिल्ली के भोजन (उद्दीपक) और अनुक्रिया के बीच संबंध को मजबूत करने वाले नियम को क्या कहते हैं?
+! In Thorndike's 'Trial and Error' theory, what is the law that strengthens the connection between the food (stimulus) and the response?
+- अभ्यास का नियम / Law of Exercise
+- प्रभाव का नियम / Law of Effect
+- तत्परता का नियम / Law of Readiness
+- आंशिक क्रिया का नियम
+= (प्रश्न 76 की पुनरावृत्ति) संतोषजनक परिणाम — प्रभाव का नियम।
+86 वाइगोत्स्की
+? लेव वाइगोत्स्की के सिद्धांत में, बालक द्वारा स्वयं को निर्देशित करने के लिए बोली जाने वाली 'निजी वाक' (Private Speech) को उन्होंने क्या नाम दिया है?
+- आत्मकेंद्रित वाक (Egocentric Speech)
+- सामाजिक वाक (Social Speech)
+- आंतरिक वाक (Inner Speech)
+- वैयक्तिक वार्ता (Private Speech)
+= (प्रश्न 79 की पुनरावृत्ति) — Private Speech।
+
+# सामान्य ज्ञान एवं समसायिक घटनाएं
+87 अंतरराष्ट्रीय संगठन
+? मानव विकास रिपोर्ट, निम्नलिखित में से किस संस्था द्वारा प्रकाशित की जाती है?
+! Which of the following organizations publishes the Human Development Report?
+- यूनेस्को / UNESCO
+- विश्व बैंक / World Bank
+- यू.एन.डी.पी. / UNDP
+- आई.एम.एफ. / IMF
+= UNDP (1990 से; अवधारणा — महबूब उल हक, अमर्त्य सेन)।
+88 समसामयिकी 2026
+? 2026 में भारत-जापान Joint Working Group on Forests की 7वीं बैठक कहाँ हुई?
+! Where was the 7th meeting of the India-Japan Joint Working Group on Forests held in September 2026?
+- नई दिल्ली / New Delhi
+- पुणे / Pune
+- बेंगलुरु / Bengaluru
+- देहरादून / Dehradun
+= उत्तर कुंजी के अनुसार — नई दिल्ली।
+89 समसामयिकी 2026
+? सितंबर 2026 में भारत ने WorldSkills Shanghai में कितने नए skills में debut करने की घोषणा की?
+! In September 2026, in how many new skills did India announce it would debut at WorldSkills Shanghai?
+- 7
+- 9
+- 10
+- 11
+= उत्तर कुंजी के अनुसार — 11।
+90 समसामयिकी 2026
+? PM-SETU के अंतर्गत सितंबर 2026 में 5वीं National Steering Committee ने SIPs के लिए लगभग कितनी राशि स्वीकृत की?
+! Under PM-SETU, approximately what amount was approved for SIPs by the 5th National Steering Committee in September 2026?
+- ₹535.70 करोड़ / ₹535.70 crore
+- ₹635.70 करोड़ / ₹635.70 crore
+- ₹735.70 करोड़ / ₹735.70 crore
+- ₹835.70 करोड़ / ₹835.70 crore
+= उत्तर कुंजी के अनुसार — ₹635.70 करोड़।
+91 प्राचीन भारत
+? 'कांचीपुरम' ऐतिहासिक रूप से किसके लिए प्रसिद्ध रहा है?
+! For what has 'Kanchipuram' historically been famous?
+- मंदिर स्थापत्य / Temple architecture
+- लौह उद्योग / Iron industry
+- मरुस्थलीय व्यापार / Desert trade
+- बौद्ध गुफाएँ / Buddhist caves
+= पल्लवों की राजधानी — कैलाशनाथ मंदिर; 'हजार मंदिरों का नगर'।
+92 प्राचीन भारत
+? 'नागार्जुनकोंडा' का प्रमुख ऐतिहासिक संबंध किससे है?
+! With what is 'Nagarjunakonda' primarily historically associated?
+- बौद्ध संस्कृति / Buddhist culture
+- मुगल संस्कृति / Mughal culture
+- सिख इतिहास / Sikh history
+- औपनिवेशिक स्थापत्य / Colonial architecture
+= इक्ष्वाकु काल का बौद्ध केंद्र (आंध्र प्रदेश), आचार्य नागार्जुन से संबंधित।
+93 खेल
+? संतोष ट्रॉफी किस खेल की प्रमुख प्रतियोगिता है?
+! The Santosh Trophy is a major competition of which sport?
+- फुटबॉल / Football
+- क्रिकेट / Cricket
+- हॉकी / Hockey
+- कबड्डी / Kabaddi
+= संतोष ट्रॉफी — राष्ट्रीय फुटबॉल चैंपियनशिप।
+94 समसामयिकी 2026 — उत्तर प्रदेश
+? उत्तर प्रदेश में सितंबर 2026 में 9वें राष्ट्रीय पोषण माह का शुभारंभ किस शहर में किया गया?
+! In which city was the 9th Rashtriya Poshan Maah launched in Uttar Pradesh in September 2026?
+- वाराणसी / Varanasi
+- आगरा / Agra
+- अयोध्या / Ayodhya
+- गोरखपुर / Gorakhpur
+= उत्तर कुंजी के अनुसार — अयोध्या।
+95 समसामयिकी 2026 — उत्तर प्रदेश
+? सितंबर 2026 में उत्तर प्रदेश में 'UP Textile-2026' कार्यक्रम कितने दिनों का कॉन्क्लेव था?
+! How many days long was the 'UP Textile-2026' conclave held in Uttar Pradesh in September 2026?
+- एक दिवसीय / One-day
+- दो दिवसीय / Two-day
+- तीन दिवसीय / Three-day
+- चार दिवसीय / Four-day
+= उत्तर कुंजी के अनुसार — दो दिवसीय।
+96 समसामयिकी 2026 — उत्तर प्रदेश
+? सितंबर 2026 में बाढ़ से प्रभावित 800 परिवारों को राहत सामग्री किस जनपद में वितरित की गई?
+! In which district were relief materials distributed to 800 flood-affected families in September 2026?
+- चित्रकूट / Chitrakoot
+- फर्रुखाबाद / Farrukhabad
+- बाराबंकी / Barabanki
+- मिर्जापुर / Mirzapur
+= उत्तर कुंजी के अनुसार — फर्रुखाबाद।
+97 पुरस्कार
+? 'एबेल पुरस्कार' किस विषय में दिया जाता है?
+! In which field is the 'Abel Prize' awarded?
+- भौतिकी / Physics
+- गणित / Mathematics
+- रसायन / Chemistry
+- जीव विज्ञान / Biology
+= एबेल पुरस्कार (नॉर्वे) — गणित; 'गणित का नोबेल'।
+98 पुरस्कार
+? 'पुलित्जर पुरस्कार' की शुरुआत मुख्यतः किस देश में हुई?
+! In which country did the 'Pulitzer Prize' originate?
+- ब्रिटेन / Britain
+- अमेरिका / America
+- फ्रांस / France
+- कनाडा / Canada
+= अमेरिका (1917, कोलंबिया विश्वविद्यालय) — पत्रकारिता, साहित्य, संगीत।
+99 भारतीय संस्थान
+? राष्ट्रीय पर्यावरण अभियांत्रिकी अनुसंधान संस्थान (NEERI) कहाँ स्थित है?
+! Where is the National Environmental Engineering Research Institute (NEERI) located?
+- नागपुर / Nagpur
+- देहरादून / Dehradun
+- नई दिल्ली / New Delhi
+- हैदराबाद / Hyderabad
+= NEERI (CSIR) — नागपुर।
+100 व्यक्तित्व
+? 'हरित क्रांति' में कृषि वैज्ञानिक के रूप में भारत में किसका प्रमुख योगदान माना जाता है?
+! Who is considered to have made the major contribution as an agricultural scientist to the 'Green Revolution' in India?
+- एम.एस. स्वामीनाथन / M.S. Swaminathan
+- होमी सेठना / Homi Sethna
+- विक्रम साराभाई / Vikram Sarabhai
+- पी.सी. महालनोबिस / P.C. Mahalanobis
+= भारत में हरित क्रांति के जनक — एम.एस. स्वामीनाथन (विश्व में — नॉर्मन बोरलॉग)।
+101 व्यक्तित्व
+? 'भारतीय सांख्यिकी के जनक' के रूप में किसे जाना जाता है?
+! Who is known as the 'Father of Indian Statistics'?
+- पी.सी. महालनोबिस / P.C. Mahalanobis
+- डी. आर. गाडगिल / D.R. Gadgil
+- वी.के.आर.वी. राव / V.K.R.V. Rao
+- अमर्त्य सेन / Amartya Sen
+= पी.सी. महालनोबिस — उनका जन्मदिन 29 जून 'राष्ट्रीय सांख्यिकी दिवस'।
+102 खेल 2026
+? 2026 US Open पुरुष एकल खिताब किसने जीता?
+! Who won the 2026 US Open Men's Singles title?
+- Carlos Alcaraz
+- Novak Djokovic
+- Jannik Sinner
+- Alexander Zverev
+= उत्तर कुंजी के अनुसार — Jannik Sinner।
+103 खेल 2026
+? 2026 Asian Games में भारतीय खिलाड़ियों के उत्कृष्ट प्रदर्शन के लिए IOA द्वारा घोषित memorial trophy में किसका नाम शामिल है?
+! Whose name is associated with the memorial trophy announced by the IOA for the outstanding performance of Indian athletes at the 2026 Asian Games?
+- मिल्खा सिंह / Milkha Singh
+- ध्यानचंद / Dhyan Chand
+- रणधीर सिंह / Randhir Singh
+- प्रकाश पादुकोण / Prakash Padukone
+= उत्तर कुंजी के अनुसार — मिल्खा सिंह।
+104 भारतीय संस्कृति
+? 'लावणी' लोकनृत्य मुख्यतः किस राज्य से संबंधित है?
+! With which state is the 'Lavani' folk dance primarily associated?
+- महाराष्ट्र / Maharashtra
+- गुजरात / Gujarat
+- पंजाब / Punjab
+- असम / Assam
+= लावणी — महाराष्ट्र।
+105 अंतरराष्ट्रीय संगठन
+? न्यू डेवलपमेंट बैंक (NDB) का मुख्यालय कहाँ स्थित है?
+! Where is the headquarters of the New Development Bank (NDB) located?
+- मनीला / Manila
+- बीजिंग / Beijing
+- शंघाई / Shanghai
+- जेनेवा / Geneva
+= NDB (BRICS बैंक) — शंघाई; मनीला — ADB।
+106 भारतीय संविधान
+? भारतीय गणतंत्र की 26-1-1950 को सही संवैधानिक वस्तुस्थिति क्या थी, जब संविधान लागू किया गया था?
+! What was the exact constitutional status of the Republic of India on January 26, 1950?
+- लोकतंत्रात्मक गणतंत्र / Democratic Republic
+- संपूर्ण प्रभुत्वसंपन्न धर्मनिरपेक्ष लोकतंत्रात्मक गणराज्य / Sovereign Secular Democratic Republic
+- संपूर्ण प्रभुत्वसंपन्न लोकतंत्रात्मक गणराज्य / Sovereign Democratic Republic
+- संपूर्ण प्रभुत्वसंपन्न समाजवादी धर्मनिरपेक्ष लोकतंत्रात्मक गणराज्य / Sovereign Socialist Secular Democratic Republic
+= 'समाजवादी' और 'पंथनिरपेक्ष' 42वें संशोधन (1976) से जुड़े; 1950 में — संपूर्ण प्रभुत्वसंपन्न लोकतंत्रात्मक गणराज्य।
+107 समसामयिकी 2026
+? BRICS New Delhi Declaration 2026 की थीम क्या थी?
+! What was the theme of the BRICS New Delhi Declaration 2026?
+- One Earth, One Future
+- Global South for Peace
+- Building for Resilience, Innovation, Cooperation and Sustainability
+- Inclusive Growth for All
+= उत्तर कुंजी के अनुसार — Building for Resilience, Innovation, Cooperation and Sustainability (BRICS)।
+108 समसामयिकी 2026
+? 2026 का World Circular Economy Forum भारत में किस स्थान पर आयोजित किया गया?
+! At which place in India was the 2026 World Circular Economy Forum held?
+- गांधीनगर / Gandhinagar
+- जयपुर / Jaipur
+- पुणे / Pune
+- भोपाल / Bhopal
+= उत्तर कुंजी के अनुसार — गांधीनगर।
+109 पुरस्कार
+? ग्रेमी अवार्ड्स निम्नलिखित में से किस क्षेत्र में योगदान के लिये प्रदान किये जाते हैं?
+! Grammy Awards are presented for contribution in which of the following fields?
+- खेल / Sports
+- साहित्य / Literature
+- संगीत / Music
+- औषधि / Medicine
+= ग्रेमी — संगीत; ऑस्कर — फिल्म; पुलित्जर — पत्रकारिता।
+110 महत्वपूर्ण दिवस
+? निम्नलिखित में से किस तारीख को अंतर्राष्ट्रीय शांति दिवस के रूप में मनाया जाता है?
+! Which of the following dates is observed as an International Day of Peace?
+- 15 सितंबर / 15th September
+- 21 सितंबर / 21st September
+- 2 सितंबर / 2nd September
+- 28 सितंबर / 28th September
+= 21 सितंबर — अंतर्राष्ट्रीय शांति दिवस।
+111 कृषि
+? अंगूर की खेती को आमतौर पर क्या कहा जाता है?
+! Cultivation of grapes is usually known as
+- सेरीकल्चर / Sericulture
+- एवीकल्चर / Aviculture
+- मोरीकल्चर / Moriculture
+- विटीकल्चर / Viticulture
+= विटीकल्चर — अंगूर; सेरीकल्चर — रेशम; एवीकल्चर — पक्षी पालन; मोरीकल्चर — शहतूत।
+
+# REASONING
+112 विषम चुनना
+! Find the odd one.
+- लार्वा / Larva
+- प्यूपा / Pupa
+- कैटरपिलर / Caterpillar
+- युवा तिलचट्टा / Nymph
+= लार्वा, प्यूपा, कैटरपिलर पूर्ण कायांतरण (तितली) की अवस्थाएँ हैं; निम्फ अपूर्ण कायांतरण (तिलचट्टा) की।
+113 कोडिंग-डिकोडिंग
+? यदि किसी सांकेतिक भाषा में STUDENT को RUTEDOS लिखा जाता है, तो SCHOLAR को उसी भाषा में कैसे लिखा जाएगा?
+! If STUDENT is written as RUTEDOS in a certain code language, how will SCHOLAR be written?
+- RDGRKBQ
+- RDGPKBQ
+- RDHPKBQ
+- RDGRMBQ
+= अक्षर बारी-बारी से −1, +1: S−1=R, C+1=D, H−1=G, O+1=P, L−1=K, A+1=B, R−1=Q ⇒ RDGPKBQ।
+114 गणितीय संक्रियाएँ
+? यदि (−) विभाजन का चिह्न हो, (+) गुणन का चिह्न हो, (÷) घटाने का चिह्न हो और (×) जोड़ने का चिह्न हो, तो निम्न प्रश्न का उत्तर क्या होगा? 100 + 5 − 10 × 250 − 200 = ?
+! If (−) means ÷, (+) means ×, (÷) means − and (×) means +, then 100 + 5 − 10 × 250 − 200 = ?
+- 150
+- 200
+- 50
+- 100
+= चिह्न बदलकर: 100 × 5 ÷ 10 + 250 ÷ 200 = 50 + 1.25 = 51.25 ≈ 50; उत्तर कुंजी के अनुसार 50।
+115 घड़ी
+? 3 और 4 बजे के बीच घड़ी की घण्टे तथा मिनट की सूइयाँ कब एक-दूसरे के विपरीत होंगी या कब एक-दूसरे से 180° का कोण बनाएँगी?
+! Between 3 and 4 o'clock, when will the hour and minute hands be opposite each other (180°)?
+- $3\text{ बजकर }49\frac{1}{11}\text{ मिनट}$
+- $3\text{ बजकर }54\frac{4}{11}\text{ मिनट}$
+- $3\text{ बजकर }16\frac{4}{11}\text{ मिनट}$
+- $3\text{ बजकर }16\frac{3}{11}\text{ मिनट}$
+= विपरीत: $t = \frac{12}{11}(5H+30) = \frac{12}{11}(45) = \frac{540}{11} = 49\frac{1}{11}$ मिनट।
+116 दिशा परिवर्तन
+? परिवर्तनः यदि पश्चिम को दक्षिण-पश्चिम कहा जाए, तो उत्तर को क्या कहेंगे?
+! Transformation: If West is called South-West, then what will North be called?
+- उत्तर-पश्चिम / North-West
+- दक्षिण-पश्चिम / South-West
+- दक्षिण-पूर्व / South-East
+- इनमें से कोई नहीं / None of these
+= पश्चिम → दक्षिण-पश्चिम यानी 45° वामावर्त घुमाव; उत्तर 45° वामावर्त = उत्तर-पश्चिम।
+
+# सूचना तकनीक
+117 विशिष्ट बालक — IQ
+? प्रतिभाशाली बालकों की बुद्धि लब्धि (IQ) सामान्यतः कितनी होती है?
+! What is the Intelligence Quotient (IQ) of gifted children generally?
+- 90 से 110 / 90 to 110
+- 110 से 120 / 110 to 120
+- 140 या इससे अधिक / 140 or above
+- 70 से कम / Below 70
+= टरमन के अनुसार 140+ प्रतिभाशाली; 90–110 सामान्य।
+118 कंप्यूटर मूल बातें
+? कंप्यूटर का मस्तिष्क (Brain of Computer) किसे कहा जाता है?
+! What is called the 'Brain of Computer'?
+- RAM
+- Hard Disk
+- CPU
+- Monitor
+= CPU (Central Processing Unit)।
+119 शिक्षा संस्थान
+? शिक्षा में 'DIET' का पूर्ण रूप क्या है?
+! What is the full form of 'DIET' in education?
+- District Institute of Education and Training
+- Direct Institute of Elementary Teaching
+- Department of Indian Educational Training
+- District Innovation in Educational Teaching
+= DIET — District Institute of Education and Training (जिला शिक्षा एवं प्रशिक्षण संस्थान)।
+120 इनपुट-आउटपुट डिवाइस
+? निम्नलिखित में से कौन सा एक 'इनपुट डिवाइस' है?
+! Which of the following is an 'Input Device'?
+- प्रिंटर / Printer
+- माउस / Mouse
+- मॉनिटर / Monitor
+- स्पीकर / Speaker
+= माउस इनपुट; प्रिंटर, मॉनिटर, स्पीकर आउटपुट डिवाइस।

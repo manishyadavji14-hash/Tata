@@ -1,0 +1,957 @@
+@id chandra_supertet_model_07
+@title SUPER TET प्राथमिक MODEL PAPER-07 (चन्द्रा इंस्टीट्यूट)
+@duration 150
+@key BCBDCBABCB CDAACAAABC BDCBAAAAAA CBBCBCCBDA DDDBBBCBDA DBCDBCDACB BCCCBCBBCB BBCCACABBD DBCCCBBBBB CBABBAAAAA BDDDAAABCB CDDCAACADB
+
+# HINDI
+1 शब्द भेद (उत्पत्ति)
+? सूची-I के समूहों का मिलान सूची-II से कीजिए और दिए गए कूट से सही उत्तर का चयन कीजिए —<br><table><tr><th>सूची-I</th><th>सूची-II</th></tr><tr><td>(A) खचाखच</td><td>(i) योगरूढ़ शब्द</td></tr><tr><td>(B) मुरलीधर</td><td>(ii) तद्भव शब्द</td></tr><tr><td>(C) टिकटघर</td><td>(iii) देशज शब्द</td></tr><tr><td>(D) साँप</td><td>(iv) संकर शब्द</td></tr></table>कूट (A B C D):
+- (ii) (iii) (i) (iv)
+- (iii) (i) (iv) (ii)
+- (iii) (i) (ii) (iv)
+- (iii) (ii) (iv) (i)
+= खचाखच — देशज, मुरलीधर — योगरूढ़ (कृष्ण), टिकटघर — संकर (अंग्रेज़ी + हिंदी), साँप — तद्भव (सर्प)।
+2 विलोम शब्द
+? 'अभिज्ञ' शब्द का विलोम है-
+- भिज्ञ
+- सभिज्ञ
+- अनभिज्ञ
+- सुभिज्ञ
+= अभिज्ञ (जानकार) ↔ अनभिज्ञ (अनजान)।
+3 उपसर्ग
+? कौन-सा शब्द 'अन्' उपसर्ग से बना हुआ नहीं है?
+- अनादर
+- अनपढ़
+- अनभ्यस्त
+- अनादि
+= अनादर, अनभ्यस्त, अनादि में संस्कृत उपसर्ग 'अन्'; 'अनपढ़' में हिंदी उपसर्ग 'अन' (अन + पढ़)।
+4 काल
+? क्रिया के उस रूपान्तर को क्या कहते हैं जिससे उसके कार्य-व्यापार के समय और उसकी पूर्ण अथवा अपूर्ण अवस्था का बोध हो?
+- संज्ञा
+- परिमाणबोधक विशेषण
+- अव्यय
+- काल
+= क्रिया के समय व पूर्णता/अपूर्णता का बोध — काल।
+5 लिंग
+? 'कवि' का स्त्रीलिंग होगा-
+- कवियत्री
+- कवियित्री
+- कवयित्री
+- कवियित्रि
+= शुद्ध रूप 'कवयित्री' है।
+6 संधि
+? 'तदाकार' का शुद्ध सन्धि-विच्छेद है-
+- तद + आकार
+- तत् + आकार
+- तदा + कार
+- तदा + आकार
+= तत् + आकार — व्यंजन संधि (त् → द्)।
+7 वर्तनी
+? वर्तनी की दृष्टि से कौन-सा शब्द सही है?
+- संन्यासी
+- सन्यासी
+- सनियासी
+- सनयासी
+= सम् + न्यासी = संन्यासी।
+8 छंद
+? कुण्डलिया छन्द किन दो छन्दों से मिलकर बनता है?
+- सोरठा और रोला
+- दोहा और रोला
+- दोहा और चौपाई
+- दोहा और सोरठा
+= कुण्डलिया = एक दोहा + एक रोला (6 चरण); छप्पय = रोला + उल्लाला।
+9 रस — अनुभाव
+? 'वेपथु' कैसा अनुभाव है?
+- आंगिक
+- वाचिक
+- सात्त्विक
+- बौद्धिक
+= 8 सात्त्विक अनुभाव: स्तम्भ, स्वेद, रोमांच, स्वरभंग, वेपथु (कम्प), वैवर्ण्य, अश्रु, प्रलय।
+10 अलंकार
+? उपमेय पर उपमान का अभेद आरोप होने पर होता है-
+- उपमालंकार
+- रूपकालंकार
+- श्लेषालंकार
+- उत्प्रेक्षालंकार
+= अभेद आरोप — रूपक; समानता — उपमा; संभावना — उत्प्रेक्षा।
+11 वाक्य भेद
+? "पिता ने समझाया कि सदा सत्य बोलना चाहिए।" यह वाक्य उदाहरण है-
+- सरल वाक्य का
+- इच्छावाचक वाक्य का
+- मिश्र वाक्य का
+- आज्ञावाचक वाक्य का
+= प्रधान उपवाक्य + 'कि' से जुड़ा आश्रित उपवाक्य — मिश्र वाक्य।
+12 पद
+? व्याकरण के नियमों में बँधे, वाक्य में प्रयुक्त शब्द कहलाते हैं-
+- व्याकरण
+- वाक्य
+- शब्द
+- पद
+= वाक्य में प्रयुक्त शब्द 'पद' कहलाता है।
+13 समास
+? 'पर्णकुटी' शब्द का समास है-
+- तत्पुरुष
+- द्वन्द्व
+- कर्मधारय
+- बहुव्रीहि
+= पर्णों से बनी कुटी — करण तत्पुरुष।
+14 अलंकार
+? जहाँ कारण बिना कार्य की उत्पत्ति होती हो, वहाँ कौन-सा अलंकार होता है?
+- विभावना
+- विशेषोक्ति
+- असंगति
+- दीपक
+= कारण के बिना कार्य — विभावना; कारण होने पर भी कार्य न हो — विशेषोक्ति।
+15 बोलियाँ
+? रामपुर, मुरादाबाद, बिजनौर, मेरठ, देहरादून (मैदानी भाग) और सहारनपुर की बोली है-
+- गढ़वाली
+- छत्तीसगढ़ी
+- खड़ी बोली
+- बाँगरू
+= पश्चिमी उत्तर प्रदेश की खड़ी बोली (कौरवी)।
+
+# ENGLISH
+16 Plural (Noun)
+! The plural of "Bovine" is:
+- Bovines
+- Bovina
+- Bovi
+- Boven
+= Bovine (गाय-बैल वंश का पशु) का बहुवचन Bovines।
+17 Voice
+! Change into Passive voice: "Never ridicule the poor."
+- Let the poor never be ridiculed.
+- Let the poor never ridiculed.
+- The poor should never ridicule.
+- The poor are never ridicule.
+= Imperative का passive: Let + object + be + V3।
+18 Vocabulary
+! What adjective means "extremely careful and precise"?
+- Meticulous
+- Mediocre
+- Mercenary
+- Malicious
+= Meticulous = अत्यंत सावधान व सटीक।
+P p_edu Part 2: Reading Comprehension
+> Education is one of the most important things in human life. It gives us knowledge, develops our thinking, and helps us understand the world around us. An educated person can distinguish between right and wrong and make better decisions in life. Education also teaches us discipline, honesty, responsibility, and respect for others.
+> Education is not limited to reading books or passing examinations. It prepares us to face the challenges of life and become useful members of society. It helps people get better opportunities and earn a respectable living. Moreover, education plays an important role in the progress of a country. An educated population can contribute to science, technology, economy, and social development.
+> Therefore, every child should have access to quality education. Education is a powerful tool that can change individuals as well as society.
+19 Reading Comprehension @p_edu
+! What does education develop in a person?
+- Wealth
+- Thinking
+- Physical strength
+- Fame
+= "It gives us knowledge, develops our thinking…"
+20 Reading Comprehension @p_edu
+! An educated person can distinguish between:
+- Rich and poor
+- Young and old
+- Right and wrong
+- Easy and difficult
+= "An educated person can distinguish between right and wrong."
+21 Reading Comprehension @p_edu
+! Education prepares us to:
+- Avoid all problems
+- Face the challenges of life
+- Become famous
+- Travel the world
+= "It prepares us to face the challenges of life."
+22 Reading Comprehension @p_edu
+! Education contributes to the progress of a country through:
+- Science and technology
+- Social development
+- Economic development
+- All of the above
+= Passage में science, technology, economy, social development — सभी।
+
+# SANSKRIT
+23 वर्ण विचार
+? वर्णमाला के सन्दर्भ में 'अयोगवाह' पद के अन्तर्गत सामान्यतः कौन-से वर्ण परिगण्यन्ते?
+- अन्तःस्थ-वर्णाः
+- ऊष्म-वर्णाः
+- अनुस्वार-विसर्गौ
+- स्पर्श-वर्णाः
+= अनुस्वार (ं) और विसर्ग (ः) अयोगवाह हैं।
+24 सन्धि
+? 'तत् + एव' इत्यत्र कः सन्धिः भवति?
+- गुणसन्धिः
+- व्यञ्जनसन्धिः
+- वृद्धिसन्धिः
+- यणसन्धिः
+= तत् + एव = तदेव — त् का द् (जश्त्व), व्यञ्जन सन्धि।
+25 समास
+? 'राज्ञः पुरुषः' इत्यस्य समस्तरूपं किम्?
+- राजपुरुषः
+- राज्ञपुरुषः
+- राजपुरुषम्
+- राजस्यपुरुषः
+= षष्ठी तत्पुरुष — राजपुरुषः।
+26 कारक-विभक्ति
+? 'ग्रामं गच्छति' इत्यत्र 'ग्रामम्' इति पदे का विभक्तिः, कश्च कारकः?
+- द्वितीया — कर्म
+- तृतीया — करण
+- चतुर्थी — सम्प्रदान
+- पञ्चमी — अपादान
+= कर्मणि द्वितीया।
+27 वाच्य
+? 'रामेण सीता वनं नीयते' इत्यस्य कर्तृवाच्यरूपं किम्?
+- रामः सीतां वनं नयति।
+- रामः सीता वनं नीयते।
+- रामेण सीतां वनं नयति।
+- सीता रामं वनं नयति।
+= कर्तृवाच्य: कर्ता प्रथमा (रामः), कर्म द्वितीया (सीतां), क्रिया कर्ता अनुसार (नयति)।
+28 संख्या शब्द
+? 'पञ्च' इत्यस्य प्रयोगे विशेष्यस्य लिङ्गानुसारं रूपपरिवर्तनं कथं भवति?
+- सर्वत्र पञ्च एव
+- पुंलिङ्गे पञ्च, स्त्रीलिङ्गे पञ्च, नपुंसके पञ्च
+- पुंलिङ्गे पञ्चः, स्त्रीलिङ्गे पञ्चा
+- पुंलिङ्गे पञ्चम्, नपुंसके पञ्चः
+= पञ्च से आगे की संख्याएँ तीनों लिंगों में समान रहती हैं।
+29 शब्दरूप
+? 'नदी' शब्दस्य तृतीया-बहुवचनरूपं किम्?
+- नदीभिः
+- नदिभिः
+- नदीभ्यः
+- नदीनाम्
+= नदी — तृतीया: नद्या, नदीभ्याम्, नदीभिः।
+30 अनुवाद
+? 'विद्यार्थी प्रतिदिन विद्यालय जाता है।' अस्य शुद्धः संस्कृतानुवादः कः?
+- विद्यार्थी प्रतिदिनं विद्यालयं गच्छति।
+- विद्यार्थी प्रतिदिनं विद्यालयेन गच्छति।
+- विद्यार्थी प्रतिदिनं विद्यालयात् गच्छति।
+- विद्यार्थी प्रतिदिनं विद्यालयाय गच्छति।
+= गन्तव्य स्थान में द्वितीया — विद्यालयं गच्छति।
+
+# SCIENCE
+31 वृत्तीय गति
+? एक वस्तु एकसमान चाल से वृत्तीय पथ पर गति कर रही है। निम्नलिखित में से कौन-सा कथन सही है?
+! A body is moving in a circular path with constant speed. Which of the following statements is correct?
+- इसका वेग नियत रहता है। / Its velocity remains constant.
+- इसका त्वरण शून्य होता है। / Its acceleration is zero.
+- इसका वेग लगातार बदलता रहता है। / Its velocity changes continuously.
+- इस पर कोई बल कार्य नहीं करता। / No force acts on it.
+= चाल नियत पर दिशा हर पल बदलती है, अतः वेग बदलता है (अभिकेंद्र त्वरण)।
+32 लेंस की क्षमता
+? एक उत्तल लेंस की फोकस दूरी 20 cm है। इसकी शक्ति होगी:
+! A convex lens has a focal length of 20 cm. Its power is:
+- +2 D
+- +5 D
+- 5 D
+- +20 D
+= $P = \frac{100}{f(\text{cm})} = \frac{100}{20} = +5$ D।
+33 दर्पण
+? एक वस्तु को अवतल दर्पण के वक्रता केंद्र पर रखा जाता है। बनने वाला प्रतिबिंब होगा:
+! An object is placed at the centre of curvature of a concave mirror. The image formed is:
+- आभासी, सीधा और बड़ा / Virtual, erect and magnified
+- वास्तविक, उल्टा और समान आकार का / Real, inverted and same size
+- वास्तविक, सीधा और छोटा / Real, erect and diminished
+- आभासी, उल्टा और समान आकार का / Virtual, inverted and same size
+= C पर वस्तु → C पर ही वास्तविक, उल्टा, समान आकार का प्रतिबिंब।
+34 उत्सर्जन तंत्र
+? नेफ्रॉन का कौन-सा भाग उपयोगी पदार्थों के अधिकतम पुनः अवशोषण के लिए मुख्य रूप से उत्तरदायी है?
+! Which part of the nephron is primarily responsible for the maximum reabsorption of useful substances?
+- ग्लोमेरुलस / Glomerulus
+- बोमन कैप्सूल / Bowman's capsule
+- समीपस्थ कुंडलित नलिका / Proximal convoluted tubule
+- संग्रह नलिका / Collecting duct
+= PCT में लगभग 70–80% जल, ग्लूकोज़, अमीनो अम्ल का पुनः अवशोषण होता है।
+35 पाचन तंत्र
+? निम्नलिखित में से कौन-सा कथन बताता है कि छोटी आंत पचे हुए भोजन के अवशोषण में अत्यधिक दक्ष क्यों है?
+! Which of the following correctly explains why the small intestine is highly efficient in absorbing digested food?
+- इसकी केवल मोटी पेशीय दीवार होती है। / It has a thick muscular wall only.
+- इसमें विल्ली होती हैं, जो अवशोषण क्षेत्रफल बढ़ाती हैं। / It contains villi that increase the absorptive surface area.
+- यह बड़ी मात्रा में पित्त बनाती है। / It produces bile in large quantities.
+- इसमें रक्त वाहिकाएँ नहीं होती हैं। / It lacks blood vessels.
+= दीर्घरोम (villi) सतही क्षेत्रफल बढ़ाते हैं।
+36 प्रतिरक्षा
+? रक्त का कौन-सा घटक मुख्य रूप से प्रतिरक्षी (Antibodies) के निर्माण के लिए उत्तरदायी है?
+! Which blood component is mainly responsible for the formation of antibodies?
+- लाल रक्त कोशिकाएँ / Red blood cells
+- प्लेटलेट्स / Platelets
+- B-लिम्फोसाइट्स / B-lymphocytes
+- न्यूट्रोफिल्स / Neutrophils
+= B-लिम्फोसाइट (प्लाज़्मा कोशिका बनकर) एंटीबॉडी बनाते हैं।
+37 pH
+? किसी विलयन का pH 3 है। pH 5 वाले विलयन की तुलना में इसमें हाइड्रोजन आयन की सांद्रता कितनी गुना अधिक होगी?
+! A solution has a pH of 3. Compared with a solution of pH 5, how many times greater is its hydrogen ion concentration?
+- 2 गुना / 2 times
+- 10 गुना / 10 times
+- 100 गुना / 100 times
+- 1,000 गुना / 1,000 times
+= $\frac{10^{-3}}{10^{-5}} = 10^2 = 100$ गुना।
+38 आयनिक यौगिक
+? निम्नलिखित में से कौन-सा सही कारण है कि सोडियम क्लोराइड का जलीय विलयन विद्युत का चालन करता है, लेकिन ठोस सोडियम क्लोराइड नहीं?
+! Why does sodium chloride solution conduct electricity, but solid sodium chloride does not?
+- ठोस NaCl में आयन नहीं होते। / Solid NaCl has no ions.
+- जलीय विलयन में आयन स्वतंत्र रूप से गति कर सकते हैं। / In aqueous solution, ions are free to move.
+- जल NaCl को इलेक्ट्रॉनों में बदल देता है। / Water converts NaCl into electrons.
+- ठोस NaCl में केवल अणु होते हैं। / Solid NaCl contains only molecules.
+= ठोस में आयन जालक में स्थिर होते हैं; विलयन में मुक्त होकर चालन करते हैं।
+
+# MATHS
+39 लाभ-हानि
+? एक मेज जिसकी कीमत 750 रु. थी, 4% हानि पर बेची गई, उसका विक्रय मूल्य क्या था?
+! A table costing Rs. 750 was sold at a loss of 4%, what was its selling price?
+- 746 रु.
+- 730 रु.
+- 780 रु.
+- 720 रु.
+= $750 \times 0.96 = 720$ रु.।
+40 घातांक
+? $\left(\frac{x^a}{x^b}\right)^{a+b}\left(\frac{x^b}{x^c}\right)^{b+c}\left(\frac{x^c}{x^a}\right)^{c+a}$ का मान बराबर है-
+- 1
+- $x^{a^2-b^2}$
+- x
+- $x^2$
+= घात $= (a^2-b^2)+(b^2-c^2)+(c^2-a^2) = 0$ ⇒ $x^0 = 1$।
+41 क्षेत्रमिति — गोला
+? धातु के तीन ठोस गोलों, जिनके व्यास 6 सेमी, 8 सेमी और 10 सेमी हैं, को पिघलाकर एक नए ठोस गोले के रूप में ढाला गया है। नए गोले का व्यास है-
+! Three solid metal spheres of diameters 6 cm, 8 cm and 10 cm are melted to form a new solid sphere. The diameter of the new sphere is-
+- 4 सेमी
+- 6 सेमी
+- 8 सेमी
+- 12 सेमी
+= $R^3 = 3^3+4^3+5^3 = 216 \Rightarrow R = 6$, व्यास = 12 सेमी।
+42 विभाज्यता
+? यदि संख्या 4 8 3 2 7 * 8 संख्या 11 से विभाजित हो, तो लुप्त अंक (*) होगा?
+! If the number 4 8 3 2 7 * 8 is divisible by 11, then the missing digit (*) will be?
+- 5
+- 3
+- 2
+- 1
+= विषम स्थानों का योग (4+3+7+8)=22, सम (8+2+*)=10+*; अंतर 12−* = 11 ⇒ * = 1।
+43 कोण
+? किसी कोण x के पूरक और संपूरक कोणों का योग 140° है। तब, 2x − 10° का मान है:
+! The sum of the complementary and supplementary angles of an angle x is 140°. Then, the value of 2x − 10° is:
+- 130°
+- 140°
+- 110°
+- 120°
+= $(90-x)+(180-x) = 140 \Rightarrow x = 65°$; $2x-10 = 120°$।
+44 समांतर रेखाएँ
+? दिये गये चित्र में OP ∥ RS, ∠OPQ = 100° तथा ∠QRS = 140°, तो ∠PQR बराबर होगा [चित्र: O→P→Q→R→S टेढ़ी रेखा, P पर 100°, R पर 140°]
+! In the given figure, OP ∥ RS, ∠OPQ = 100°, and ∠QRS = 140°; then ∠PQR will be equal to:
+- 80°
+- 60°
+- 70°
+- 50°
+= R पर बाह्य कोण $180-140 = 40°$; ∠PQR $= 100° - 40° = 60°$ (चित्र के अनुसार)।
+45 चक्रवृद्धि ब्याज
+? कोई धनराशि चक्रवृद्धि ब्याज से 15 वर्षों में दुगुनी हो जाती है। यह राशि कितने वर्षों में आठ गुनी हो जायेगी?
+! A sum doubles itself in 15 years at compound interest. In how many years will it become eight times?
+- 30
+- 45
+- 50
+- 60
+= $8 = 2^3$ ⇒ $3 \times 15 = 45$ वर्ष।
+46 शेषफल प्रमेय
+? यदि $4x^3 - 2x^2 + 5x - 8$ को (x − 2) से विभाजित किया जाए तो शेष क्या होगा?
+! If $4x^3 - 2x^2 + 5x - 8$ is divided by (x − 2), then what will be the remainder?
+- 16
+- 26
+- 42
+- 81
+= $f(2) = 32 - 8 + 10 - 8 = 26$।
+47 लाभ-हानि
+? एक व्यक्ति दो वस्तुएँ 99 रु. प्रति वस्तु की दर से बेचता है। उसे एक पर 10 प्रतिशत लाभ तथा दूसरे पर 10 प्रतिशत हानि होती है। कुल दोनों वस्तुओं पर उसे—
+! A person sells two items at Rs. 99 each, gaining 10% on one and losing 10% on the other. On both items together, he gets—
+- न लाभ न हानि / Neither profit nor loss
+- 2 प्रतिशत लाभ / 2% profit
+- 1 प्रतिशत हानि / 1% loss
+- 1 प्रतिशत लाभ / 1% profit
+= समान विक्रय मूल्य पर x% लाभ व x% हानि ⇒ हानि $\frac{x^2}{100}\% = 1\%$।
+48 भिन्न
+? $\frac{15}{16}, \frac{19}{20}, \frac{24}{25}, \frac{34}{35}$ से सबसे छोटी भिन्न कौन सी है-
+! Which is the smallest fraction among $\frac{15}{16}, \frac{19}{20}, \frac{24}{25}, \frac{34}{35}$?
+- $\frac{34}{35}$
+- $\frac{15}{16}$
+- $\frac{19}{20}$
+- $\frac{24}{25}$
+= अंश-हर का अंतर 1 समान हो तो छोटा हर = छोटी भिन्न ⇒ 15/16। (मूल पत्र के विकल्प (b) में '16/16' छपा है, जो 15/16 की छपाई गलती है।)
+49 वृत्त
+? एक वृत्त की त्रिज्या 5 सेमी है। केन्द्र के विपरीत दो समान्तर जीवाओं की लम्बाईयां क्रमशः 8 सेमी तथा 6 सेमी हैं। इन जीवाओं के बीच की दूरी कितनी है-
+! The radius of a circle is 5 cm. Two parallel chords on opposite sides of the centre are 8 cm and 6 cm. What is the distance between these chords?
+- 9 सेमी
+- 8 सेमी
+- 7.5 सेमी
+- 7 सेमी
+= केंद्र से दूरी $\sqrt{25-16} = 3$, $\sqrt{25-9} = 4$; कुल $3+4 = 7$ सेमी।
+50 प्रतिशत
+? एक परीक्षार्थी 30 प्रतिशत अंक प्राप्त करके 5 अंकों से फेल हो जाता है। एक अन्य विद्यार्थी 40 प्रतिशत अंक प्राप्त करके आवश्यक न्यूनतम अंकों से 10 अंक अधिक प्राप्त करता है। उत्तीर्ण होने के लिए आवश्यक न्यूनतम अंक कितने हैं-
+! A candidate fails by 5 marks after securing 30%. Another secures 40% and gets 10 marks more than the pass marks. What are the minimum pass marks?
+- 50
+- 70
+- 100
+- 150
+= 10% = 15 ⇒ पूर्णांक 150; उत्तीर्णांक $= 45 + 5 = 50$।
+51 आवर्ती दशमलव
+? यदि 0.11111… = $\frac{1}{9}$ हो, तो 0.88888… किसके बराबर होगा-
+! If 0.11111… = $\frac{1}{9}$, then what will 0.88888… be equal to?
+- $\frac{1}{90}$
+- $\frac{2}{45}$
+- $\frac{1}{99}$
+- $\frac{8}{9}$
+= $0.\bar{8} = 8 \times 0.\bar{1} = \frac{8}{9}$।
+52 वृत्त — परिधि
+? एक पहिये की त्रिज्या 7 cm है तो यह पहिया 500 चक्करों में कुल कितनी दूरी तय कर लेगी?
+! If the radius of a wheel is 7 cm, what total distance will it cover in 500 revolutions?
+- 110 मी
+- 220 मी
+- 20 मी
+- 420 मी
+= परिधि $= 2 \times \frac{22}{7} \times 7 = 44$ cm; $44 \times 500 = 22000$ cm = 220 मी।
+53 लाभ-हानि
+? एक व्यापारी 2 रु. के 3 की दर से कुछ नींबू खरीदता है और उन्हें 3 रु. के 2 की दर से बेच देता है तो उसे कितना % का लाभ होगा?
+! A merchant buys lemons at 3 for ₹2 and sells them at 2 for ₹3; what is his percentage profit?
+- 25%
+- 75%
+- 125%
+- 150%
+= क्रय मूल्य $\frac{2}{3}$, विक्रय मूल्य $\frac{3}{2}$; लाभ $= \frac{3/2 - 2/3}{2/3}\times100 = 125\%$।
+54 अनुपात
+? यदि x : y = 3 : 4 तथा y : z = 3 : 4 हो तो $\frac{x+y+z}{z}$ का मान क्या होगा?
+! If x : y = 3 : 4 and y : z = 3 : 4, then what is the value of $\frac{x+y+z}{z}$?
+- $\frac{13}{27}$
+- $\frac{1}{2}$
+- $\frac{73}{84}$
+- $\frac{38}{16}$
+= x : y : z = 9 : 12 : 16 ⇒ $\frac{37}{16}$। ⚠️ सही मान 37/16 है; विकल्प (d) में 38/16 छपा है, कुंजी में (d)।
+
+# पर्यावरण एवं सामाजिक अध्ययन
+55 जलवायु — एल नीनो
+? निम्नलिखित कथनों पर विचार कीजिए:<br>1. वाकर परिसंचरण प्रशांत महासागर में वायुमंडलीय दाब और महासागरीय परिसंचरण का द्विध्रुवीय पैटर्न प्रस्तुत करता है।<br>2. जब 'एल नीनो' घटना होती है, तो प्रशांत महासागर के पूर्वी भाग में वायुमंडलीय दाब बढ़ जाता है और पश्चिमी प्रशांत में दाब घट जाता है।<br>3. 'सकारात्मक हिंद महासागर द्विध्रुव' (Positive IOD) के दौरान पश्चिमी हिंद महासागर का तापमान पूर्वी हिंद महासागर की तुलना में अधिक गर्म होता है।<br>उपर्युक्त में से कौन-सा/से कथन सही है/हैं?
+! Consider the statements about Walker Circulation, El Niño and Positive IOD. Which is/are correct?
+- केवल 1 और 2 / 1 and 2 only
+- केवल 1 और 3 / 1 and 3 only
+- केवल 2 और 3 / 2 and 3 only
+- 1, 2 और 3 / 1, 2 and 3
+= एल नीनो में पूर्वी प्रशांत गर्म होकर वहाँ दाब घटता है (कथन 2 गलत); कथन 1 और 3 सही।
+56 पारिस्थितिकी — अनुक्रमण
+? 'पारिस्थितिकी अनुक्रमण' और 'कार्बन पृथक्कीकरण' के संदर्भ में निम्नलिखित में से कौन-सा कथन सही है?
+! Which statement is correct regarding 'Ecological Succession' and 'Carbon Sequestration'?
+- चरम समुदाय में शुद्ध प्राथमिक उत्पादकता अपने उच्चतम स्तर पर होती है। / NPP is highest in the Climax Community.
+- अनुक्रमण के शुरुआती चरणों में स्वपोषी श्वसन GPP से अधिक होता है। / In early stages, autotrophic respiration exceeds GPP.
+- मध्यवर्ती चरणों में कार्बन पृथक्कीकरण की दर चरमावस्था की तुलना में अधिक तीव्र होती है। / Carbon sequestration is more rapid in seral stages than in the climax.
+- अनुक्रमण के दौरान बायोमास का अनुपात घटता है और प्रजातियों की विविधता स्थिर रहती है। / Biomass ratio decreases and diversity remains constant.
+= मध्यवर्ती (सेरल) अवस्था में वृद्धि तेज होती है; चरम में NPP लगभग शून्य (उत्पादन ≈ श्वसन)।
+57 राष्ट्रीय आंदोलन
+? 1916 के 'लखनऊ समझौते' और उसके प्रभावों के संबंध में निम्नलिखित में से कौन-सा कथन असत्य है?
+! Which statement is incorrect regarding the 'Lucknow Pact' of 1916?
+- इसने मुस्लिम लीग और कांग्रेस को पहली बार साझा राजनीतिक मंच पर ला खड़ा किया। / It brought the League and Congress onto a shared platform for the first time.
+- कांग्रेस ने मुस्लिम पृथक निर्वाचक मंडल के सिद्धांत को औपचारिक रूप से स्वीकार कर लिया। / Congress formally accepted separate electorates for Muslims.
+- इसके तहत प्रांतीय विधान परिषदों में मुसलमानों के लिए सीटों के आरक्षण का अनुपात तय किया गया। / The proportion of seats for Muslims in provincial councils was fixed.
+- इसके परिणामस्वरूप कांग्रेस के नरमपंथी और गरमपंथी धड़े पुनः एक नहीं हो सके। / As a result, Moderates and Extremists could not reunite.
+= लखनऊ अधिवेशन 1916 में ही नरम-गरम दल फिर एक हुए, अतः (D) असत्य है।
+58 राष्ट्रीय आंदोलन — कालक्रम
+? निम्नलिखित ऐतिहासिक घटनाओं को उनके सही कालानुक्रम में व्यवस्थित कीजिए:<br>1. नेहरू रिपोर्ट का प्रकाशन<br>2. सी. राजगोपालाचारी फॉर्मूला<br>3. शिमला सम्मेलन (वेवेल योजना)<br>4. अगस्त प्रस्ताव
+! Arrange in chronological order: 1. Nehru Report 2. C. Rajagopalachari Formula 3. Shimla Conference (Wavell Plan) 4. August Offer
+- 1 - 4 - 2 - 3
+- 1 - 2 - 4 - 3
+- 4 - 1 - 3 - 2
+- 4 - 2 - 1 - 3
+= नेहरू रिपोर्ट 1928 → अगस्त प्रस्ताव 1940 → सी.आर. फॉर्मूला 1944 → शिमला सम्मेलन 1945।
+59 संविधान संशोधन
+? भारतीय संविधान के अनुच्छेद 368 के तहत 'विशेष बहुमत' और राज्य विधानसभाओं के अनुसमर्थन से संबंधित कौन-सा विषय संशोधित नहीं किया जा सकता?
+! Which subject cannot be amended under Article 368 through a 'Special Majority' and ratification by state legislatures?
+- राष्ट्रपति के निर्वाचन की प्रक्रिया (अनुच्छेद 54 और 55) / Election of the President (Art. 54, 55)
+- सातवीं अनुसूची की कोई भी सूची / Any list in the Seventh Schedule
+- नए राज्यों का प्रवेश या स्थापना (अनुच्छेद 2) / Admission or establishment of new states (Art. 2)
+- संसद में राज्यों का प्रतिनिधित्व / Representation of states in Parliament
+= अनुच्छेद 2 (नए राज्य) साधारण बहुमत से बदलता है, यह अनुच्छेद 368 के दायरे से बाहर है।
+60 मौलिक अधिकार
+? उच्चतम न्यायालय के किस ऐतिहासिक निर्णय में यह व्यवस्था दी गई थी कि "अनुच्छेद 21 के तहत निजता का अधिकार एक मौलिक अधिकार है"?
+! In which historic judgment was it ruled that the "Right to Privacy is a fundamental right under Article 21"?
+- मेनका गांधी बनाम भारत संघ (1978) / Maneka Gandhi v. Union of India (1978)
+- न्यायमूर्ति के.एस. पुट्टास्वामी (सेवानिवृत्त) बनाम भारत संघ (2017) / Justice K.S. Puttaswamy (Retd.) v. Union of India (2017)
+- नवतेज सिंह जोहर बनाम भारत संघ (2018) / Navtej Singh Johar v. Union of India (2018)
+- श्रेया सिंघल बनाम भारत संघ (2015) / Shreya Singhal v. Union of India (2015)
+= पुट्टास्वामी (2017), 9 न्यायाधीशों की पीठ।
+61 मौद्रिक नीति
+? यदि भारतीय रिज़र्व बैंक नीतिगत दर (Repo Rate) में वृद्धि करता है और साथ ही CRR बढ़ा देता है, तो अर्थव्यवस्था पर इसका तात्कालिक प्रभाव क्या होगा?
+! If the RBI increases the Repo Rate and simultaneously raises the CRR, what will be the immediate impact?
+- बाज़ार में तरलता बढ़ेगी और मुद्रास्फीति में वृद्धि होगी। / Liquidity will increase, and inflation will rise.
+- व्यावसायिक बैंकों की ऋण देने की क्षमता घटेगी और मुद्रास्फीति पर नियंत्रण में मदद मिलेगी। / Lending capacity will decrease, helping to control inflation.
+- भारतीय रुपये का मूल्य डॉलर की तुलना में तेज़ी से गिरेगा। / The Rupee will depreciate rapidly.
+- सरकारी प्रतिभूतियों की कीमतें बढ़ेंगी और बाज़ार दरें घटेंगी। / G-sec prices will rise, and market rates will fall.
+= रेपो व CRR दोनों बढ़ना = संकुचनकारी मौद्रिक नीति।
+62 मुद्रास्फीति
+? 'मुद्रास्फीति जनित मंदी' (Stagflation) की स्थिति में अर्थव्यवस्था में कौन-से लक्षण एक साथ देखे जाते हैं?
+! Which characteristics are observed simultaneously in an economy experiencing 'Stagflation'?
+- उच्च मुद्रास्फीति, उच्च आर्थिक वृद्धि, निम्न बेरोजगारी / High inflation, high growth, low unemployment
+- निम्न मुद्रास्फीति, धीमी वृद्धि, उच्च बेरोजगारी / Low inflation, slow growth, high unemployment
+- उच्च मुद्रास्फीति, धीमी/अवरुद्ध वृद्धि, उच्च बेरोजगारी / High inflation, stagnant growth, high unemployment
+- अपस्फीति, उच्च वृद्धि, उच्च बेरोजगारी / Deflation, high growth, high unemployment
+= Stagnation + Inflation: ऊँची महँगाई, ठहरी वृद्धि, ऊँची बेरोज़गारी।
+
+# बाल विकास (CDP)
+63 प्राचीन शिक्षा — वैदिक काल
+? वैदिक काल में उपनयन संस्कार के संदर्भ में कौन-सा कथन 'असत्य' है?
+! Which statement regarding the Upanayana ceremony during the Vedic period is 'incorrect'?
+- इसके बाद बालक 'द्विज' कहलाता था। / After this, the boy was known as 'Dvij'.
+- क्षत्रिय बालक का उपनयन ग्रीष्म ऋतु में त्रिष्टुप मंत्र के साथ होता था। / A Kshatriya boy's Upanayana took place in summer with the Trishtup mantra.
+- गुरु द्वारा वैश्य बालक को गायत्री मंत्र की दीक्षा दी जाती थी। / The Guru initiated the Vaishya boy in the Gayatri mantra.
+- शूद्रों को इस संस्कार का अधिकार नहीं था। / Shudras did not have the right to this ceremony.
+= ब्राह्मण — वसंत, गायत्री; क्षत्रिय — ग्रीष्म, त्रिष्टुप; वैश्य — शरद, जगती मंत्र। अतः (C) असत्य।
+64 मध्यकालीन शिक्षा
+? मध्यकाल में मदरसा शिक्षा के अंतर्गत 'तर्कशास्त्र और दर्शनशास्त्र' में सर्वोच्च विद्वता प्राप्त करने वाले छात्र को दी जाने वाली उपाधि कौन-सी थी?
+! In the medieval Madrasa system, what title was conferred upon a student who achieved the highest scholarship in 'Logic and Philosophy'?
+- आमिल / Amil
+- आलिम / Alim
+- फाजिल / Fazil
+- काजी / Qazi
+= तर्क-दर्शन — फाजिल; धर्मशास्त्र — आलिम; साहित्य — काबिल।
+65 शिक्षा आयोग
+? हंटर आयोग (1882) में कुल 20 सदस्य शामिल थे, जिनमें से कितने सदस्य 'भारतीय' थे?
+! The Hunter Commission (1882) comprised 20 members; how many were Indian members?
+- 5 भारतीय सदस्य / 5 Indian members
+- 7 भारतीय सदस्य / 7 Indian members
+- 10 भारतीय सदस्य / 10 Indian members
+- कोई भारतीय सदस्य नहीं था / There were no Indian members
+= हंटर आयोग के 20 सदस्यों में 7 भारतीय थे।
+66 संविधान और शिक्षा
+? भारतीय संविधान के किस अनुच्छेद के अंतर्गत 'अल्पसंख्यक वर्गों' को अपनी रुचि की शिक्षण संस्थाओं की स्थापना और प्रशासन करने का अधिकार प्राप्त है?
+! Under which Article do minority communities possess the right to establish and administer educational institutions of their choice?
+- अनुच्छेद 29(1) / Article 29(1)
+- अनुच्छेद 29(2) / Article 29(2)
+- अनुच्छेद 30(1) / Article 30(1)
+- अनुच्छेद 350(A) / Article 350(A)
+= अनुच्छेद 30(1); 350A — मातृभाषा में प्राथमिक शिक्षा।
+67 शिक्षा कार्यक्रम — DPEP
+? जिला प्राथमिक शिक्षा कार्यक्रम (DPEP) के अंतर्गत 'अपव्यय और अवरोधन' को रोकने के लिए किस विशिष्ट आयु वर्ग के बच्चों के शत-प्रतिशत ठहराव का लक्ष्य था?
+! Under DPEP, what was the age group for which 100% retention was the goal to curb 'wastage and stagnation'?
+- 3 से 6 वर्ष / 3 to 6 years
+- 6 से 11 वर्ष / 6 to 11 years
+- 6 से 14 वर्ष / 6 to 14 years
+- 11 से 14 वर्ष / 11 to 14 years
+= DPEP (1994) प्राथमिक स्तर (6–11 वर्ष) पर केंद्रित था।
+68 विद्यालय प्रबंधन
+? विद्यालय समय-सारणी निर्माण का वह कौन सा मूल सिद्धांत है जिसके अनुसार समय-सारणी कठोर न होकर परिस्थितियों के अनुसार परिवर्तनशील होनी चाहिए?
+! Which principle of timetable construction states it should be adaptable rather than rigid?
+- विविधता का सिद्धांत / Principle of variety
+- लचीलेपन का सिद्धांत / Principle of flexibility
+- अपव्यय का सिद्धांत / Principle of avoidance of waste
+- विशिष्टता का सिद्धांत / Principle of specificity
+= परिस्थिति अनुसार परिवर्तन — लचीलेपन का सिद्धांत।
+69 मापन के स्तर
+? "बुद्धि लब्धि (IQ) मापन, तापमान मापन (सेंटीग्रेड या फारेनहाइट) और शैक्षिक उपलब्धि परीक्षण" को स्टीवंस के वर्गीकरण के अनुसार मापन के किस स्तर के अंतर्गत रखा जाता है?
+! According to Stevens' classification, under which level are IQ, temperature (°C/°F) and achievement tests classified?
+- नामित मापन / Nominal measurement
+- क्रमिक मापन / Ordinal measurement
+- अंतराल मापन / Interval measurement
+- अनुपात मापन / Ratio measurement
+= समान अंतराल पर निरपेक्ष शून्य नहीं — अंतराल मापनी।
+70 शैक्षिक प्रशासन
+? "शैक्षिक प्रशासन और पर्यवेक्षण एक ही सिक्के के दो पहलू हैं; प्रशासन नीति तय करता है और पर्यवेक्षण देखता है कि नीति मानवीय गरिमा के साथ लागू हो रही है या नहीं।" यह विचार किसका है?
+! "Educational administration and supervision are two sides of the same coin…" Whose view is this?
+- फ्रेडरिक टेलर / Frederick Taylor
+- जे. बी. सीयर्स / J. B. Sears
+- मैक्स वेबर / Max Weber
+- लूथर गुलिक / Luther Gulick
+= जे. बी. सीयर्स।
+71 समावेशी शिक्षा — RPwD
+? 'दिव्यांगजन अधिकार अधिनियम, 2016' के अनुसार, कुल 21 प्रकार की दिव्यांगताओं में किस रक्त-संबंधी बीमारी को शामिल किया गया है?
+! According to the RPwD Act 2016, which blood-related condition has been included among the 21 disabilities?
+- ऑटिज़्म / Autism
+- थैलेसीमिया और हीमोफीलिया / Thalassemia and Hemophilia
+- मस्कुलर डिस्ट्रॉफी / Muscular Dystrophy
+- प्रमस्तिष्क घात / Cerebral Palsy
+= रक्त विकार: थैलेसीमिया, हीमोफीलिया, सिकल सेल रोग।
+72 समावेशी शिक्षा — संस्थान
+? राष्ट्रीय मानसिक विकलांग संस्थान (NIMH), जो बौद्धिक अक्षमता वाले बालकों के पुनर्वास और अनुसंधान की शीर्ष संस्था है, किस शहर में स्थित है?
+! In which city is the National Institute for the Mentally Handicapped (NIMH) located?
+- देहरादून / Dehradun
+- सिकंदराबाद / Secunderabad
+- कोलकाता / Kolkata
+- नई दिल्ली / New Delhi
+= NIMH (अब NIEPID) — सिकंदराबाद; देहरादून — दृष्टिबाधित (NIEPVD)।
+73 शिक्षण कौशल
+? कक्षा शिक्षण के दौरान छात्रों का ध्यान आकर्षित करने और रुचि बनाए रखने के लिए शिक्षक द्वारा हाव-भाव, आवाज के उतार-चढ़ाव और स्थान में परिवर्तन करने को कौन सा कौशल कहा जाता है?
+! What skill is shown when a teacher uses gestures, voice modulation and movement to maintain attention?
+- प्रस्तावना कौशल / Skill of Introduction
+- पुनर्बलन कौशल / Skill of Reinforcement
+- उद्दीपन परिवर्तन कौशल / Skill of Stimulus Variation
+- श्यामपट्ट लेखन कौशल / Skill of Blackboard Writing
+= हाव-भाव, स्वर परिवर्तन, गतिविधि — उद्दीपन परिवर्तन कौशल।
+74 ब्लूम का वर्गीकरण
+? एक छात्र सीखी गई गणितीय संक्रियाओं का उपयोग करके दैनिक जीवन की किसी नई समस्या को हल करता है। ब्लूम के अनुसार यह व्यवहार ज्ञानात्मक पक्ष के किस स्तर को दर्शाता है?
+! A student solves a new real-life problem using learned mathematical operations. Which level of Bloom's cognitive domain is this?
+- ज्ञान / Knowledge
+- बोध / Comprehension
+- अनुप्रयोग / Application
+- विश्लेषण / Analysis
+= सीखे ज्ञान का नई स्थिति में प्रयोग — अनुप्रयोग।
+75 शिक्षण के सिद्धांत
+? शिक्षण का वह कौन-सा सिद्धांत है जिसके अनुसार शिक्षक को छात्रों की मानसिक आयु, व्यक्तिगत भिन्नताओं और स्थानीय पर्यावरण को ध्यान में रखकर विषय-वस्तु चुननी चाहिए?
+! Which principle dictates selecting subject matter considering mental age, individual differences and local environment?
+- चयन का सिद्धांत / Principle of Selection
+- विभाजन का सिद्धांत / Principle of Division
+- कठोरता का सिद्धांत / Principle of Rigidity
+- सार्वभौमिक सिद्धांत / Universal Principle
+= विषय-वस्तु का उपयुक्त चुनाव — चयन का सिद्धांत।
+76 विकास के सिद्धांत
+? बाल विकास के 'समीप-दूराभिमुख सिद्धांत' (Proximodistal) के अनुसार विकास की शारीरिक गति किस तार्किक क्रम का अनुसरण करती है?
+! According to the 'Proximodistal Principle', which sequence does physical development follow?
+- सिर से पैर की ओर / From head to toe
+- रीढ़ की हड्डी से मस्तिष्क की ओर / From the spinal cord to the brain
+- केंद्र/मध्य भाग से परिधि या बाहर के अंगों की ओर / From the center towards the periphery
+- परिधि से केंद्र की ओर / From the periphery towards the center
+= समीप-दूराभिमुख = केंद्र से बाहर; मस्तकाधोमुखी = सिर से पैर।
+77 वैयक्तिक भिन्नता
+? जब "एक ही बालक के भीतर विभिन्न योग्यताओं में भिन्नता" पाई जाती है (जैसे गणित में तेज़, खेलकूद में कमजोर), तो यह किस प्रकार की भिन्नता है?
+! When variation is found in different abilities within the same child, what type of variation is it?
+- अंतः-वैयक्तिक भिन्नता / Intra-individual difference
+- अंतर-वैयक्तिक भिन्नता / Inter-individual difference
+- लैंगिक भिन्नता / Gender difference
+- वंशानुगत समरूपता / Hereditary similarity
+= एक ही व्यक्ति के भीतर — अंतः (Intra); दो व्यक्तियों के बीच — अंतर (Inter)।
+78 गैने का अधिगम पदानुक्रम
+? गैने के अनुसार, अधिगम का दूसरा स्तर 'उद्दीपक-अनुक्रिया अधिगम' किस मनोवैज्ञानिक के सिद्धांतों (जैसे क्रियाप्रसूत अनुबंधन) की तार्किक संपुष्टि करता है?
+! According to Gagné, 'Stimulus-Response Learning' confirms the theories of which psychologists?
+- पावलोव और कोहलर / Pavlov and Köhler
+- थॉर्नडाइक और बी. एफ. स्किनर / Thorndike and B.F. Skinner
+- जीन पियाजे / Jean Piaget
+- अल्बर्ट बांडुरा / Albert Bandura
+= S-R अधिगम — थॉर्नडाइक (प्रयास-त्रुटि) और स्किनर (क्रियाप्रसूत)।
+79 बुद्धि के सिद्धांत
+? बुद्धि के 'द्वि-कारक सिद्धांत' के प्रतिपादक चार्ल्स स्पीयरमैन के अनुसार, अधिगम का स्थानांतरण मुख्य रूप से बुद्धि के किस कारक के कारण संभव होता है?
+! According to Spearman's Two-Factor Theory, transfer of learning is made possible mainly by which factor?
+- विशिष्ट कारक (S-Factor) / Specific Factor
+- सामान्य कारक (G-Factor) / General Factor
+- समूह कारक / Group Factor
+- भाषाई कारक / Linguistic Factor
+= G-कारक सभी कार्यों में समान रूप से उपस्थित रहता है, इसी से स्थानांतरण होता है।
+80 थॉर्नडाइक
+? थॉर्नडाइक द्वारा प्रतिपादित सीखने के तीन मुख्य नियमों में निम्नलिखित में से कौन-सा नियम शामिल नहीं है?
+! Which of the following is not among Thorndike's three main laws of learning?
+- तत्परता का नियम / Law of Readiness
+- अभ्यास का नियम / Law of Exercise
+- प्रभाव का नियम / Law of Effect
+- आत्मीकरण या सादृश्यता का नियम / Law of Assimilation or Analogy
+= मुख्य नियम: तत्परता, अभ्यास, प्रभाव; आत्मीकरण गौण नियम है।
+81 मूल्यांकन
+? निम्नलिखित में से कौन-सा उपकरण रचनात्मक मूल्यांकन (Formative Evaluation) का हिस्सा नहीं है?
+! Which of the following tools is not a part of Formative Evaluation?
+- मौखिक प्रश्न / Oral questions
+- दैनिक अवलोकन / Daily observation
+- क्विज़ और असाइनमेंट / Quizzes and assignments
+- सत्रांत परीक्षा / वार्षिक परीक्षा / End-of-term / Annual examination
+= वार्षिक/सत्रांत परीक्षा योगात्मक (Summative) मूल्यांकन है।
+82 मूल्यांकन उपकरण
+? विद्यार्थियों के पूरे वर्ष के शैक्षिक कार्यों, कलाकृतियों और विशेष उपलब्धियों के प्रामाणिक रिकॉर्ड को एक फाइल में रखना क्या कहलाता है?
+! An authentic record of students' academic work, artworks and achievements throughout the year in a file is called…
+- संचय अभिलेख / Cumulative Record
+- पोर्टफोलियो / Portfolio
+- लॉग बुक / Log Book
+- रेटिंग स्केल / Rating Scale
+= छात्र के कार्यों का संग्रह — पोर्टफोलियो।
+83 राष्ट्रीय शिक्षा नीति 1986
+? NPE 1986 के किस भाग में पहली बार उच्च शिक्षा में 'मुक्त विश्वविद्यालय' और 'दूरस्थ शिक्षा' के विकास का खाका तैयार किया गया था?
+! In which part of NPE 1986 was a framework first prepared for 'Open Universities' and 'Distance Education'?
+- भाग- III / Part-III
+- भाग- IV / Part-IV
+- भाग- V / Part-V
+- भाग- VII / Part-VII
+= उत्तर कुंजी के अनुसार भाग V (विभिन्न स्तरों पर शिक्षा का पुनर्गठन)।
+84 RTE Act 2009
+? शिक्षा का अधिकार अधिनियम, 2009 की धारा 17 के अनुसार स्कूलों में किस प्रकार के दंड पर पूर्णतः प्रतिबंध लगाया गया है?
+! According to Section 17 of the RTE Act, which type of punishment is completely banned in schools?
+- केवल मानसिक प्रताड़ना पर / Only mental harassment
+- केवल आर्थिक दंड (जुर्माने) पर / Only financial punishment
+- शारीरिक दंड / Corporal punishment
+- केवल होमवर्क देने पर / Only assigning homework
+= धारा 17 — शारीरिक दंड व मानसिक उत्पीड़न दोनों निषिद्ध।
+85 जीवन कौशल
+? उपलब्ध विकल्पों का मूल्यांकन करके जीवन की किसी परिस्थिति में सबसे सही और सटीक रास्ता चुनना कौन सा कौशल है?
+! Which skill involves choosing the most correct path in a life situation by evaluating available options?
+- समस्या समाधान / Problem Solving
+- निर्णय लेना / Decision Making
+- प्रभावी संचार / Effective communication
+- आत्म-जागरूकता / Self-awareness
+= विकल्पों का मूल्यांकन कर चुनना 'निर्णय लेना' है। ⚠️ सही उत्तर (B) होना चाहिए; मूल कुंजी में (C) छपा है।
+86 अभिप्रेरणा
+? 'प्रोत्साहन का सिद्धांत' (Incentive Theory of Motivation) किसके द्वारा प्रतिपादित किया गया था, जो मानता है कि बाहरी उद्दीपक व्यक्ति को कार्य करने के लिए आकर्षित करते हैं?
+! By whom was the 'Incentive Theory of Motivation' propounded?
+- मैस्लो और मैकडूगल / Maslow and McDougall
+- बोल्स और कॉफमैन / Boles & Kaufman
+- स्किनर और थॉर्नडाइक / Skinner and Thorndike
+- वाटसन और वुडवर्थ / Watson and Woodworth
+= प्रोत्साहन सिद्धांत — बोल्स एवं कॉफमैन।
+
+# सामान्य ज्ञान एवं समसायिक घटनाएं
+87 महत्वपूर्ण दिवस
+? भारत में 'राष्ट्रीय मतदाता दिवस' कब मनाया जाता है?
+! When is 'National Voters' Day' celebrated in India?
+- 26 जनवरी / 26 January
+- 25 जनवरी / 25 January
+- 15 अगस्त / 15 August
+- 24 जनवरी / 24 January
+= 25 जनवरी (चुनाव आयोग स्थापना 1950)।
+88 उत्तर प्रदेश
+? उत्तर प्रदेश का 'चिकनकारी' उद्योग मुख्यतः किस शहर से संबंधित है?
+! With which city is UP's 'Chikankari' industry primarily associated?
+- आगरा / Agra
+- लखनऊ / Lucknow
+- वाराणसी / Varanasi
+- मेरठ / Meerut
+= चिकनकारी — लखनऊ।
+89 समसामयिकी 2026
+? 2026 में Khelo India Beach Games कहाँ आयोजित हुए?
+! Where were the Khelo India Beach Games held in 2026?
+- गोवा / Goa
+- दीव / Diu
+- पुरी / Puri
+- कोच्चि / Kochi
+= उत्तर कुंजी के अनुसार — दीव।
+90 भारतीय संस्कृति
+? निम्न में से कौन-सा युग्म सही सुमेलित है?
+! Which of the following pairs is correctly matched?
+- कथकली - पंजाब / Kathakali - Punjab
+- बिहू - असम / Bihu - Assam
+- गरबा - राजस्थान / Garba - Rajasthan
+- घूमर - केरल / Ghoomar - Kerala
+= बिहू — असम; कथकली — केरल; गरबा — गुजरात; घूमर — राजस्थान।
+91 अर्थव्यवस्था
+? भारत में राष्ट्रीय आय का अनुमान वर्तमान में किस संस्था द्वारा जारी किया जाता है?
+! Which institution currently releases estimates of national income in India?
+- RBI
+- नीति आयोग / NITI Aayog
+- NSO
+- वित्त आयोग / Finance Commission
+= राष्ट्रीय सांख्यिकी कार्यालय (NSO), MoSPI।
+92 समसामयिकी 2026
+? 2026 में उत्तर प्रदेश में Census 2027 की population enumeration किस अवधि में निर्धारित की गई है?
+! During which period is the population enumeration for Census 2027 scheduled in Uttar Pradesh?
+- 1 जनवरी – 31 जनवरी 2027 / 1 January – 31 January 2027
+- 1 दिसंबर 2026 – 4 जनवरी 2027 / 1 December 2026 – 4 January 2027
+- 1 नवंबर – 30 नवंबर 2026 / 1 November – 30 November 2026
+- 15 दिसंबर 2026 – 15 जनवरी 2027 / 15 December 2026 – 15 January 2027
+= उत्तर कुंजी के अनुसार — (B)।
+93 समसामयिकी 2026
+? 2026 में उत्तर प्रदेश अल्पसंख्यक आयोग के अध्यक्ष के रूप में किसे नियुक्त किया गया?
+! Who was appointed as the Chairman of the UP Minorities Commission in 2026?
+- मोहसिन रज़ा / Mohsin Raza
+- दिनेश शर्मा / Dinesh Sharma
+- स्वतंत्र देव सिंह / Swatantra Dev Singh
+- केशव प्रसाद मौर्य / Keshav Prasad Maurya
+= उत्तर कुंजी के अनुसार — मोहसिन रज़ा।
+94 समसामयिकी 2026
+? 2026 में संयुक्त राष्ट्र के संदर्भ में Equal Earth Map की चर्चा मुख्यतः किस कारण से हुई?
+! For what primary reason was the 'Equal Earth Map' discussed in the context of the UN in 2026?
+- समुद्र की गहराई मापने के लिए / To measure ocean depth
+- विश्व के क्षेत्रफल को अधिक वास्तविक अनुपात में दर्शाने के लिए / To depict land area in more realistic proportion
+- मौसम पूर्वानुमान के लिए / For weather forecasting
+- GPS navigation के लिए / For GPS navigation
+= Equal Earth प्रक्षेप क्षेत्रफल को सही अनुपात में दिखाता है (मर्केटर की विकृति दूर)।
+95 जलवायु
+? 'एल नीनो' का भारतीय मानसून पर सामान्य प्रभाव क्या माना जाता है?
+! What is considered the general impact of 'El Niño' on the Indian monsoon?
+- मानसून को अत्यधिक मजबूत करना / Intensifying the monsoon
+- मानसून को कमजोर करने की प्रवृत्ति / Tendency to weaken the monsoon
+- हिमालय में हिमपात समाप्त करना / Ending snowfall in the Himalayas
+- पश्चिमी विक्षोभ बढ़ाना / Increasing Western Disturbances
+= एल नीनो — कमजोर मानसून/सूखा; ला नीना — अच्छा मानसून।
+96 पुस्तकें
+? 'India Wins Freedom' किसकी प्रसिद्ध कृति है?
+! Who is the author of 'India Wins Freedom'?
+- मौलाना अबुल कलाम आज़ाद / Maulana Abul Kalam Azad
+- डॉ. राजेंद्र प्रसाद / Dr. Rajendra Prasad
+- सी. राजगोपालाचारी / C. Rajagopalachari
+- जवाहरलाल नेहरू / Jawaharlal Nehru
+= मौलाना अबुल कलाम आज़ाद (भारत के प्रथम शिक्षा मंत्री)।
+97 पुरस्कार
+? हाल ही में 60वें ज्ञानपीठ पुरस्कार के लिए किसे चुना गया है?
+! Who has recently been selected for the 60th Jnanpith Award?
+- वैरामुथु / Vairamuthu
+- जी. शंकर कुरुप / G. Sankara Kurup
+- आशापूर्णा देवी / Ashapurna Devi
+- विनोद कुमार शुक्ल / Vinod Kumar Shukla
+= उत्तर कुंजी के अनुसार — वैरामुथु (तमिल)। (59वाँ — विनोद कुमार शुक्ल; पहला — जी. शंकर कुरुप।)
+98 कृषि क्रांतियाँ
+? 'ब्लू रेवोल्यूशन' का संबंध किससे है?
+! What is the 'Blue Revolution' related to?
+- मत्स्य उत्पादन / Fish production
+- दुग्ध उत्पादन / Milk production
+- खाद्यान्न उत्पादन / Food grain production
+- तेल उत्पादन / Oil production
+= नीली क्रांति — मत्स्य; श्वेत — दुग्ध; हरित — खाद्यान्न; पीली — तिलहन।
+99 भारतीय संविधान
+? भारत में वित्त आयोग का गठन किस अनुच्छेद के तहत होता है?
+! Under which Article is the Finance Commission constituted in India?
+- अनुच्छेद 280 / Article 280
+- अनुच्छेद 279 / Article 279
+- अनुच्छेद 281 / Article 281
+- अनुच्छेद 275 / Article 275
+= अनुच्छेद 280 — वित्त आयोग (हर 5 वर्ष)।
+100 अंतरिक्ष
+? EOS-05 का संबंध किस क्षेत्र से है?
+! With which field is EOS-05 associated?
+- पृथ्वी एवं अंतरिक्ष अवलोकन / Earth and space observation
+- समुद्री परिवहन / Maritime transport
+- परमाणु ऊर्जा / Nuclear energy
+- मौसम पूर्वानुमान मात्र / Weather forecasting only
+= EOS = Earth Observation Satellite (ISRO)।
+101 प्राचीन साहित्य
+? 'नाट्यशास्त्र' के रचयिता माने जाते हैं-
+! Who is considered the author of 'Natya Shastra'?
+- कालिदास / Kalidasa
+- भरतमुनि / Bharata Muni
+- बाणभट्ट / Banabhatta
+- पतंजलि / Patanjali
+= नाट्यशास्त्र — भरतमुनि।
+102 उत्तर प्रदेश
+? निम्न में से कौन-सा युग्म गलत है?
+! Which of the following pairs is incorrect?
+- भदोही - कालीन / Bhadohi - Carpets
+- फिरोजाबाद - काँच / Firozabad - Glass
+- मुरादाबाद - पीतल / Moradabad - Brass
+- कानपुर - चिकनकारी / Kanpur - Chikankari
+= चिकनकारी लखनऊ की है; कानपुर — चमड़ा उद्योग।
+103 पुरस्कार
+? निम्न में से कौन-सा युग्म गलत है?
+! Which of the following pairs is incorrect?
+- भारत रत्न - सर्वोच्च नागरिक सम्मान / Bharat Ratna - Highest civilian award
+- परमवीर चक्र - सर्वोच्च युद्धकालीन वीरता पुरस्कार / Param Vir Chakra - Highest wartime gallantry award
+- अशोक चक्र - सर्वोच्च शांतिकालीन वीरता पुरस्कार / Ashoka Chakra - Highest peacetime gallantry award
+- अर्जुन पुरस्कार - साहित्य / Arjuna Award - Literature
+= अर्जुन पुरस्कार खेल के लिए है।
+104 समसामयिकी
+? हाल ही में WHO ने कहाँ इबोला के प्रकोप की घोषणा की है?
+! Where has the WHO recently declared an Ebola outbreak?
+- कांगो / Congo
+- युगांडा / Uganda
+- नाइजीरिया / Nigeria
+- a व b दोनों / Both (a) and (b)
+= उत्तर कुंजी के अनुसार — कांगो और युगांडा दोनों।
+105 अर्थशास्त्र
+? करों (Taxes) की कटौती के बाद व्यक्ति के पास उपलब्ध आय को क्या कहते हैं?
+! What is the income available to an individual after deduction of taxes called?
+- प्रयोग के लिए उपलब्ध आय / Disposable income
+- नकद आय / Cash income
+- वेतन / Salary
+- सामान्य आय / General income
+= व्यय-योग्य (Disposable) आय।
+106 समसामयिकी 2026
+? 2026 में भारत का पहला पूर्णतः Paperless Judiciary वाला राज्य कौन बना?
+! Which state became India's first to have a completely paperless judiciary in 2026?
+- सिक्किम / Sikkim
+- गोवा / Goa
+- केरल / Kerala
+- हिमाचल प्रदेश / Himachal Pradesh
+= उत्तर कुंजी के अनुसार — सिक्किम।
+107 खेल
+? 'थॉमस कप' किस खेल की पुरुष टीम की विश्व चैंपियनशिप है?
+! The 'Thomas Cup' is the world championship for the men's team of which sport?
+- बैडमिंटन / Badminton
+- टेबल टेनिस / Table Tennis
+- हॉकी / Hockey
+- स्क्वैश / Squash
+= थॉमस कप (पुरुष) व उबेर कप (महिला) — बैडमिंटन।
+108 समसामयिकी 2026
+? हाल ही में वन हेल्थ समिट 2026 का आयोजन कहाँ किया गया है?
+! Where was the 'One Health Summit 2026' recently organized?
+- रूस / Russia
+- फ्रांस / France
+- जर्मनी / Germany
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — फ्रांस।
+109 अंतरराष्ट्रीय संगठन
+? निम्न में से किस संगठन का मुख्यालय वियना में है?
+! Which of the following organizations has its headquarters in Vienna?
+- WHO
+- UNESCO
+- OPEC
+- FAO
+= OPEC — वियना; WHO — जिनेवा; UNESCO — पेरिस; FAO — रोम।
+110 समसामयिकी
+? हाल ही में कौन दुनिया का तीसरा सबसे बड़ा Electronics Exporter बना है?
+! Which country has recently become the world's third-largest electronics exporter?
+- चीन / China
+- भारत / India
+- जापान / Japan
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — भारत।
+111 वित्तीय संस्थाएँ
+? भारतीय प्रतिभूति और विनिमय बोर्ड (SEBI) को वैधानिक संस्था का दर्जा किस वर्ष मिला?
+! In which year did SEBI receive the status of a statutory body?
+- 1988
+- 1991
+- 1992
+- 1995
+= स्थापना 1988, वैधानिक दर्जा 1992 (SEBI Act)।
+
+# REASONING
+112 पासा
+? नीचे एक पासे के दो प्रारूपों को दर्शाया गया है — [चित्र: पासा I में ऊपर 1, सामने 2, दाएँ 3; पासा II में ऊपर 4, सामने 5, दाएँ 6]। इस पासे में अंक 1 के विपरीत फलक पर कौन-सा अंक होगा?
+! Two positions of a dice are shown (I: 1 top, 2 front, 3 right; II: 4 top, 5 front, 6 right). Which number will be opposite to 1?
+- 4
+- 5
+- 6
+- 4/5/6
+= दोनों स्थितियों में कोई अंक उभयनिष्ठ नहीं; 1 के विपरीत 4, 5 या 6 में से कोई भी हो सकता है।
+113 समय
+? अपने पड़ाव से प्रत्येक 40 मिनट पर इलाहाबाद के लिए एक बस रवाना होती है। इनक्वायरी क्लर्क ने यात्री से कहा कि 10 मिनट पहले एक बस चली गई है और अगली बस 9:45 बजे सुबह रवाना होगी। क्लर्क ने यह जानकारी कितने बजे दी थी?
+! A bus leaves every 40 minutes. The clerk said a bus left 10 minutes ago and the next leaves at 9:45 AM. At what time was this said?
+- 8:55 बजे
+- 9:35 बजे
+- 9:25 बजे
+- 9:15 बजे
+= पिछली बस $9{:}45 - 40 = 9{:}05$; उसके 10 मिनट बाद = 9:15।
+114 गणितीय संक्रियाएँ
+? यदि '+' के लिए '×', '−' के लिए '÷', '×' के लिए '−' और '÷' के लिए '+' हो, तो 26 + 74 − 4 × 5 ÷ 2 = ?
+! If '+' stands for '×', '−' for '÷', '×' for '−' and '÷' for '+', find 26 + 74 − 4 × 5 ÷ 2 = ?
+- 220
+- 376
+- 478
+- 488
+= $26 \times 74 \div 4 - 5 + 2 = 481 - 5 + 2 = 478$।
+115 सादृश्यता
+? क्रिया : प्रतिक्रिया
+! Action : Reaction
+- उद्दीपन : अनुक्रिया / Stimulus : Response
+- पुस्तक : आवरण / Book : Cover
+- गोलीकाण्ड : दौड़ / Shooting : Run
+- जन्म : मृत्यु / Birth : Death
+= क्रिया के बाद प्रतिक्रिया, उद्दीपन के बाद अनुक्रिया।
+116 कोडिंग-डिकोडिंग
+? यदि किसी सांकेतिक भाषा में UNITY को FMRGB लिखा जाता है, तो TRANQUIL को कैसे लिखा जाएगा?
+! If UNITY is written as FMRGB, then how will TRANQUIL be written?
+- GIZMJFRO
+- TZMFJROM
+- MJROIZBS
+- GMPFZROI
+= विपरीत अक्षर (A↔Z): T→G, R→I, A→Z, N→M, Q→J, U→F, I→R, L→O ⇒ GIZMJFRO।
+
+# सूचना तकनीक
+117 प्रोग्रामिंग भाषाएँ
+? निम्नलिखित में से कौन सी एक लो-लेवल प्रोग्रामिंग भाषा है?
+! Which of the following is a Low-Level programming language?
+- पाइथन / Python
+- जावा / Java
+- असेंबली भाषा / Assembly language
+- सी प्लस प्लस (C++) / C Plus Plus (C++)
+= मशीन व असेंबली भाषा लो-लेवल; Python, Java, C++ हाई-लेवल।
+118 नेटवर्किंग
+? मॉडेम का मुख्य कार्य क्या है?
+! What is the main function of a Modem?
+- डिजिटल सिग्नल को एनालॉग में और एनालॉग को डिजिटल में बदलना / To convert digital signals to analog and analog to digital
+- कंप्यूटर को पावर सप्लाई देना / To supply power to the computer
+- कंप्यूटर को वायरस से बचाना / To protect the computer from viruses
+- केवल डिजिटल सिग्नल को एनालॉग में बदलना / To convert only digital signals to analog
+= MODEM = Modulator + Demodulator।
+119 सॉफ्टवेयर
+? निम्नलिखित में से कौन सा एक सिस्टम सॉफ्टवेयर नहीं है?
+! Which of the following is not a system software?
+- डिवाइस ड्राइवर / Device driver
+- ऑपरेटिंग सिस्टम / Operating system
+- यूटिलिटी प्रोग्राम / Utility program
+- वर्ड प्रोसेसर / Word processor
+= वर्ड प्रोसेसर एप्लिकेशन सॉफ्टवेयर है।
+120 MS Word
+? MS Word में किसी टेक्स्ट को सबस्क्रिप्ट (Subscript) करने के लिए किस शॉर्टकट की का उपयोग किया जाता है?
+! Which shortcut key is used to subscript a text in MS Word?
+- Ctrl + Shift + +
+- Ctrl + =
+- Alt + Shift + S
+- Ctrl + Shift + S
+= Subscript — Ctrl + = ; Superscript — Ctrl + Shift + +।

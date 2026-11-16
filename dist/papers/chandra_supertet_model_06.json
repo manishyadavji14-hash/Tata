@@ -1,0 +1,5318 @@
+{
+ "exam_meta": {
+  "exam_id": "chandra_supertet_model_06",
+  "title": "SUPER TET प्राथमिक MODEL PAPER-06 (चन्द्रा इंस्टीट्यूट)",
+  "duration_minutes": 150,
+  "max_marks": 120,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "सभी प्रश्नों के अंक समान हैं। उत्तर कुंजी मूल प्रश्न-पत्र (चन्द्रा इंस्टीट्यूट) के अनुसार है।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "HINDI",
+  "ENGLISH",
+  "SANSKRIT",
+  "SCIENCE",
+  "MATHS",
+  "पर्यावरण एवं सामाजिक अध्ययन",
+  "बाल विकास (CDP)",
+  "सामान्य ज्ञान एवं समसायिक घटनाएं",
+  "REASONING",
+  "सूचना तकनीक"
+ ],
+ "passages": {
+  "p_exam": {
+   "title": "PASSAGE",
+   "text_hi": "",
+   "text_en": "Competitive examinations are an important part of a student's life. They test knowledge, intelligence, hard work, and time management. To succeed in these examinations, a student should study regularly and follow a proper timetable.<br>Solving previous years' question papers and taking mock tests can improve preparation. A student should remain confident and should not lose hope after failure. Success comes through hard work, patience, and continuous practice."
+  },
+  "p_skt6": {
+   "title": "गद्यांश",
+   "text_hi": "एकस्मिन् ग्रामे एकः विद्वान् आचार्यः निवसति स्म। सः प्रतिदिनं प्रातःकाले स्वशिष्येभ्यः संस्कृतभाषां पाठयति स्म। आचार्यः केवलं पुस्तकीयज्ञानस्य महत्त्वं न मन्यते स्म, अपितु व्यावहारिकज्ञानम् अपि आवश्यकं मन्यते स्म। सः शिष्यान् कथयति स्म — \"ज्ञानस्य वास्तविकं प्रयोजनं तदा एव सिद्ध्यति, यदा तत् मानवजीवनस्य उन्नतये प्रयुज्यते।\" शिष्याः अपि तस्य उपदेशं स्वीकृत्य परिश्रमेण अध्ययनं कुर्वन्ति स्म।",
+   "text_en": ""
+  }
+ },
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "HINDI",
+   "topic": "वर्ण — उच्चारण स्थान",
+   "syllabus_tag": "HINDI - वर्ण — उच्चारण स्थान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से किस विकल्प में सभी वर्णों का उच्चारण-स्थान सही दिया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ङ — तालव्य, ञ — कंठ्य, ण — दंत्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ङ — कंठ्य, ञ — तालव्य, ण — मूर्धन्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ङ — मूर्धन्य, ञ — दंत्य, ण — कंठ्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ङ — दंत्य, ञ — मूर्धन्य, ण — तालव्य",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "वर्गों के पंचम वर्ण: ङ (कवर्ग — कंठ्य), ञ (चवर्ग — तालव्य), ण (टवर्ग — मूर्धन्य)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 2,
+   "section": "HINDI",
+   "topic": "संधि",
+   "syllabus_tag": "HINDI - संधि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से किस शब्द में व्यंजन-संधि का उदाहरण है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सदैव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "महेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सज्जन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विद्यालय",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "सत् + जन = सज्जन (व्यंजन); सदैव — वृद्धि, महेश — गुण, विद्यालय — दीर्घ।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 3,
+   "section": "HINDI",
+   "topic": "संधि-विच्छेद",
+   "syllabus_tag": "HINDI - संधि-विच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सुमेलित कीजिए —<br>(a) स्वागत &nbsp; (b) जगदीश &nbsp; (c) उच्चारण &nbsp; (d) तल्लीन<br>(i) तत् + लीन &nbsp; (ii) सु + आगत &nbsp; (iii) जगत् + ईश &nbsp; (iv) उत् + चारण",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "a-iii, b-ii, c-i, d-iv",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "a-ii, b-iii, c-iv, d-i",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "a-iv, b-i, c-ii, d-iii",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "a-i, b-iv, c-iii, d-ii",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "स्वागत = सु + आगत, जगदीश = जगत् + ईश, उच्चारण = उत् + चारण, तल्लीन = तत् + लीन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 4,
+   "section": "HINDI",
+   "topic": "रस",
+   "syllabus_tag": "HINDI - रस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'शत्रु को देखकर सैनिक के हृदय में भय उत्पन्न हुआ' — यहाँ प्रमुख रस है—",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "रौद्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वीभत्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "करुण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भयानक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "स्थायी भाव 'भय' — भयानक रस।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 5,
+   "section": "HINDI",
+   "topic": "रस — स्थायी भाव",
+   "syllabus_tag": "HINDI - रस — स्थायी भाव",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सुमेलित कीजिए —<br>रस: (a) हास्य (b) वीभत्स (c) रौद्र (d) अद्भुत<br>स्थायी भाव: (i) विस्मय (ii) क्रोध (iii) हास (iv) जुगुप्सा",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "a-iv, b-iii, c-i, d-ii",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "a-ii, b-iv, c-iii, d-i",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "a-iii, b-iv, c-ii, d-i",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "a-i, b-ii, c-iv, d-iii",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "हास्य–हास, वीभत्स–जुगुप्सा, रौद्र–क्रोध, अद्भुत–विस्मय।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 6,
+   "section": "HINDI",
+   "topic": "अलंकार",
+   "syllabus_tag": "HINDI - अलंकार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'काली घटा का घमंड घटा' में 'घटा' शब्द की पुनरावृत्ति भिन्न अर्थों में हुई है। यहाँ कौन-सा अलंकार है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुप्रास",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रूपक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "यमक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "श्लेष",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "एक शब्द बार-बार, हर बार अलग अर्थ (घटा = बादल, घटा = कम हुआ) — यमक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 7,
+   "section": "HINDI",
+   "topic": "विशेषण",
+   "syllabus_tag": "HINDI - विशेषण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित वाक्य में 'थोड़ा' किस प्रकार का विशेषण है? \"थोड़ा दूध गिलास में बचा है।\"",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गुणवाचक विशेषण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "निश्चित संख्यावाचक विशेषण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनिश्चित परिमाणवाचक विशेषण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सार्वनामिक विशेषण",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "मापी जाने वाली वस्तु (दूध) की अनिश्चित मात्रा — अनिश्चित परिमाणवाचक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 8,
+   "section": "HINDI",
+   "topic": "बोलियाँ",
+   "syllabus_tag": "HINDI - बोलियाँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सुमेलित कीजिए —<br>भाषा/बोली: (a) कन्नौजी (b) छत्तीसगढ़ी (c) अवधी (d) हरियाणवी<br>क्षेत्र: (i) हरियाणा (ii) अवध (iii) छत्तीसगढ़ (iv) कन्नौज क्षेत्र",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "a-iii, b-iv, c-i, d-ii",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "a-ii, b-iii, c-iv, d-i",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "a-iv, b-iii, c-ii, d-i",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "a-i, b-ii, c-iii, d-iv",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "कन्नौजी–कन्नौज, छत्तीसगढ़ी–छत्तीसगढ़, अवधी–अवध, हरियाणवी–हरियाणा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 9,
+   "section": "HINDI",
+   "topic": "वाच्य",
+   "syllabus_tag": "HINDI - वाच्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'राम ने पत्र लिखा।' का कर्मवाच्य रूप कौन-सा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पत्र राम ने लिखा।",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "राम द्वारा पत्र लिखा गया।",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "राम से पत्र लिखा।",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राम पत्र लिखता गया।",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "कर्मवाच्य: कर्ता + द्वारा/से, क्रिया कर्म के अनुसार 'लिखा गया'।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 10,
+   "section": "HINDI",
+   "topic": "क्रिया",
+   "syllabus_tag": "HINDI - क्रिया",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से किस वाक्य में क्रिया अकर्मक है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "किसान खेत जोतता है।",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पक्षी आकाश में उड़ते हैं।",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "माँ बच्चे को बुलाती है।",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बालक ने गेंद फेंकी।",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "'क्या उड़ते हैं?' का उत्तर नहीं — कर्म नहीं, अतः अकर्मक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 11,
+   "section": "HINDI",
+   "topic": "समास",
+   "syllabus_tag": "HINDI - समास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सुमेलित कीजिए —<br>समास: (a) तत्पुरुष (b) कर्मधारय (c) द्विगु (d) बहुव्रीहि<br>उदाहरण: (i) चक्रपाणि (ii) नवरात्र (iii) महापुरुष (iv) देशभक्ति",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "a-iii, b-iv, c-i, d-ii",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "a-iv, b-iii, c-ii, d-i",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "a-i, b-ii, c-iv, d-iii",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "a-iv, b-iii, c-ii, d-i",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "तत्पुरुष–देशभक्ति, कर्मधारय–महापुरुष, द्विगु–नवरात्र, बहुव्रीहि–चक्रपाणि (विष्णु)। (मूल पत्र में (b) और (d) एक जैसे छपे हैं।)",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 12,
+   "section": "HINDI",
+   "topic": "समास-विग्रह",
+   "syllabus_tag": "HINDI - समास-विग्रह",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'देशभक्ति' का सही विग्रह है—",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "देश के लिए भक्ति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "देश और भक्ति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "देश की भक्ति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "देश में भक्ति",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार 'देश की भक्ति' (षष्ठी तत्पुरुष)। कई पुस्तकें 'देश के लिए भक्ति' (चतुर्थी) भी मानती हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 13,
+   "section": "HINDI",
+   "topic": "पर्यायवाची",
+   "syllabus_tag": "HINDI - पर्यायवाची",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से कौन-सा पर्यायवाची युग्म असंगत है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चंद्रमा — भानु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पृथ्वी — धरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "समुद्र — रत्नाकर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कमल — पंकज",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "भानु = सूर्य, चंद्रमा नहीं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 14,
+   "section": "HINDI",
+   "topic": "वाक्यांश के लिए एक शब्द",
+   "syllabus_tag": "HINDI - वाक्यांश के लिए एक शब्द",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'जो कभी न मरे' के लिए उपयुक्त एक शब्द है—",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अक्षय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अविनाशी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अमर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अजर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "न मरने वाला — अमर; बूढ़ा न होने वाला — अजर; क्षय न होने वाला — अक्षय।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 15,
+   "section": "HINDI",
+   "topic": "संज्ञा",
+   "syllabus_tag": "HINDI - संज्ञा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न वाक्य में रेखांकित शब्दों की संज्ञा का प्रकार सही पहचानिए — \"ईमानदारी मनुष्य के चरित्र को ऊँचा उठाती है और समाज में उसका सम्मान बढ़ाती है।\"",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ईमानदारी—जातिवाचक, चरित्र—भाववाचक, समाज—व्यक्तिवाचक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ईमानदारी—भाववाचक, चरित्र—भाववाचक, समाज—जातिवाचक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ईमानदारी—भाववाचक, चरित्र—जातिवाचक, समाज—जातिवाचक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ईमानदारी—व्यक्तिवाचक, चरित्र—जातिवाचक, समाज—द्रव्यवाचक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार (C): ईमानदारी भाववाचक, चरित्र व समाज जातिवाचक (समूहवाचक) माने गए।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 16,
+   "section": "ENGLISH",
+   "topic": "Subject-Verb Agreement",
+   "syllabus_tag": "ENGLISH - Subject-Verb Agreement",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "",
+   "question_en": "Choose the correct sentence.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Neither of the boys have done his homework.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Neither of the boys has done his homework.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Neither of the four boys has done his homework.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Neither of the boys has do their work.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "'Neither' दो के लिए, singular verb 'has'; चार के लिए 'None' आता।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 17,
+   "section": "ENGLISH",
+   "topic": "Voice",
+   "syllabus_tag": "ENGLISH - Voice",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "",
+   "question_en": "Choose the correct Passive voice: \"People say that he is honest.\"",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "He is said to be honest.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "He was said that he is honest.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "It is said that him to be honest",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "He has said to be honest",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "People say that… → He is said to be… (या It is said that he is honest)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 18,
+   "section": "ENGLISH",
+   "topic": "Spotting Errors",
+   "syllabus_tag": "ENGLISH - Spotting Errors",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "",
+   "question_en": "Find the error: \"Each of the students have submitted their assignment.\"",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Each",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Students",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Have",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Their",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "'Each' singular है ⇒ 'has' होना चाहिए।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 19,
+   "section": "ENGLISH",
+   "topic": "One Word Substitution",
+   "syllabus_tag": "ENGLISH - One Word Substitution",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "",
+   "question_en": "One who can use both hands equally well is called.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Ambivalent",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Ambidextrous",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Amphibious",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Ambiguous",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "Ambidextrous = दोनों हाथों से समान कुशल।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 20,
+   "section": "ENGLISH",
+   "topic": "Sentence Types",
+   "syllabus_tag": "ENGLISH - Sentence Types",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "",
+   "question_en": "\"He went to the market to buy vegetables.\" The sentence is:",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Simple sentence",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Compound sentence",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Complex sentence",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Compound-Complex",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "एक ही finite verb (went); 'to buy' infinitive है — Simple sentence।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 21,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_exam",
+   "question_hi": "",
+   "question_en": "What do competitive examinations test?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Only physical strength",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Knowledge, intelligence, hard work, and time management",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Only memory",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Only writing speed",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "\"They test knowledge, intelligence, hard work, and time management.\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 22,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_exam",
+   "question_hi": "",
+   "question_en": "What should a student follow for success?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "A proper timetable",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "No timetable",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Only entertainment",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Irregular study",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "\"…study regularly and follow a proper timetable.\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 23,
+   "section": "SANSKRIT",
+   "topic": "प्रत्यय",
+   "syllabus_tag": "SANSKRIT - प्रत्यय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'सेवमानः' में प्रयुक्त प्रत्यय है–",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "शतृ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "शानच्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तृच्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "क्त",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "सेव् (आत्मनेपदी) + शानच् = सेवमानः।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 24,
+   "section": "SANSKRIT",
+   "topic": "माहेश्वर सूत्र",
+   "syllabus_tag": "SANSKRIT - माहेश्वर सूत्र",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'अइउण्' इत्यत्र 'ण्' किमर्थं प्रयुक्तम्?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "स्वरनिर्देशाय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इत्संज्ञकत्वेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "विभक्तिनिर्देशाय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रत्ययनिर्देशाय",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "सूत्र के अंत का हल् वर्ण इत् (हलन्त्यम्) होता है, प्रत्याहार बनाने के लिए।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 25,
+   "section": "SANSKRIT",
+   "topic": "प्रत्याहार",
+   "syllabus_tag": "SANSKRIT - प्रत्याहार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'अच्' प्रत्याहारः केषां वर्णानां बोधकः?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केवलं स्वराणाम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "स्वरव्यञ्जनयोः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केवलं व्यञ्जनानाम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ऊष्मवर्णानाम्",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "अच् = सभी स्वर; हल् = सभी व्यञ्जन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 26,
+   "section": "SANSKRIT",
+   "topic": "अपठित गद्यांश",
+   "syllabus_tag": "SANSKRIT - अपठित गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_skt6",
+   "question_hi": "आचार्यः स्वशिष्येभ्यः किम् पाठयति स्म?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गणितम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "संस्कृतभाषाम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "इतिहासम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विज्ञानम्",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "\"स्वशिष्येभ्यः संस्कृतभाषां पाठयति स्म।\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 27,
+   "section": "SANSKRIT",
+   "topic": "अपठित गद्यांश",
+   "syllabus_tag": "SANSKRIT - अपठित गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_skt6",
+   "question_hi": "आचार्यस्य मते केवलं किं न पर्याप्तम्?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "व्यावहारिकज्ञानम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पुस्तकीयज्ञानम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "परिश्रमः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उपदेशः",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "\"केवलं पुस्तकीयज्ञानस्य महत्त्वं न मन्यते स्म।\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 28,
+   "section": "SANSKRIT",
+   "topic": "शब्दरूप",
+   "syllabus_tag": "SANSKRIT - शब्दरूप",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'रामेण' इत्यस्य मूलशब्दः कः?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "रमा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "राम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रामन्",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "राम (अकारान्त पुं.) — तृतीया एकवचन रामेण।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 29,
+   "section": "SANSKRIT",
+   "topic": "शब्दरूप",
+   "syllabus_tag": "SANSKRIT - शब्दरूप",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'नद्याः' इत्यत्र का विभक्तिः तथा वचनम्?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "षष्ठी एकवचनम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पञ्चमी एकवचनम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "षष्ठी द्विवचनम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सप्तमी एकवचनम्",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "नद्याः पञ्चमी व षष्ठी दोनों एकवचन में बनता है; कुंजी — षष्ठी एकवचनम्।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 30,
+   "section": "SANSKRIT",
+   "topic": "कारक-विभक्ति",
+   "syllabus_tag": "SANSKRIT - कारक-विभक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'वृक्षात् पत्रं पतति' इत्यत्र 'वृक्षात्' पदे का विभक्तिः?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तृतीया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "चतुर्थी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पञ्चमी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "षष्ठी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "अलगाव (अपादान) — \"ध्रुवमपायेऽपादानम्\" — पञ्चमी।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 31,
+   "section": "SCIENCE",
+   "topic": "गतिज ऊर्जा",
+   "syllabus_tag": "SCIENCE - गतिज ऊर्जा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि किसी वस्तु का वेग दोगुना कर दिया जाए, तो उसकी गतिज ऊर्जा हो जाएगी:",
+   "question_en": "If the velocity of a body is doubled, its kinetic energy becomes:",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "2 गुना",
+     "text_en": "2 times",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "4 गुना",
+     "text_en": "4 times",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "1/2 गुना",
+     "text_en": "1/2 times",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अपरिवर्तित",
+     "text_en": "Unchanged",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$KE = \\frac12 mv^2$; v दोगुना ⇒ KE चार गुना।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 32,
+   "section": "SCIENCE",
+   "topic": "प्रकाश",
+   "syllabus_tag": "SCIENCE - प्रकाश",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कौन-सी घटना सिद्ध करती है कि प्रकाश एक अनुप्रस्थ तरंग है?",
+   "question_en": "Which phenomenon proves that light is a transverse wave?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "परावर्तन",
+     "text_en": "Reflection",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अपवर्तन",
+     "text_en": "Refraction",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ध्रुवण",
+     "text_en": "Polarisation",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विक्षेपण",
+     "text_en": "Dispersion",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "केवल अनुप्रस्थ तरंगें ध्रुवित हो सकती हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 33,
+   "section": "SCIENCE",
+   "topic": "लेंस की क्षमता",
+   "syllabus_tag": "SCIENCE - लेंस की क्षमता",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक उत्तल लेंस की फोकस दूरी 20 cm है। इसकी शक्ति है:",
+   "question_en": "A convex lens has focal length 20 cm. Its power is:",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "+2 D",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "+5 D",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "−5 D",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "−2 D",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$P = \\frac{100}{20} = +5$ D (उत्तल — धनात्मक)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 34,
+   "section": "SCIENCE",
+   "topic": "ऑक्साइड",
+   "syllabus_tag": "SCIENCE - ऑक्साइड",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सा उभयधर्मी ऑक्साइड है?",
+   "question_en": "Which of the following is an amphoteric oxide?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "$Na_2O$",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "$CO_2$",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "$Al_2O_3$",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "$SO_2$",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "$Al_2O_3$ अम्ल व क्षार दोनों से अभिक्रिया करता है (ZnO भी)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 35,
+   "section": "SCIENCE",
+   "topic": "pH",
+   "syllabus_tag": "SCIENCE - pH",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "25°C पर एक उदासीन विलयन का pH होता है:",
+   "question_en": "The pH of a neutral solution at 25°C is:",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "0",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "7",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "14",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उदासीन विलयन pH = 7।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 36,
+   "section": "SCIENCE",
+   "topic": "धातुकर्म",
+   "syllabus_tag": "SCIENCE - धातुकर्म",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सल्फाइड अयस्कों के सांद्रण के लिए किस विधि का प्रयोग किया जाता है?",
+   "question_en": "Which process is used for the concentration of sulphide ores?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चुंबकीय पृथक्करण",
+     "text_en": "Magnetic separation",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "फेन प्लवन",
+     "text_en": "Froth flotation",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हाइड्रोलिक धुलाई",
+     "text_en": "Hydraulic washing",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हस्त चयन",
+     "text_en": "Hand picking",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "सल्फाइड अयस्क — फेन प्लवन (पाइन तेल)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 37,
+   "section": "SCIENCE",
+   "topic": "उत्सर्जन तंत्र",
+   "syllabus_tag": "SCIENCE - उत्सर्जन तंत्र",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "नेफ्रॉन का कौन-सा भाग मुख्यतः चयनात्मक पुनःअवशोषण के लिए उत्तरदायी है?",
+   "question_en": "Which part of the nephron is mainly responsible for selective reabsorption?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ग्लोमेरुलस",
+     "text_en": "Glomerulus",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बोमन कैप्सूल",
+     "text_en": "Bowman's capsule",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वृक्क नलिका",
+     "text_en": "Renal tubule",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वृक्क धमनी",
+     "text_en": "Renal artery",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "ग्लोमेरुलस में निस्यंदन, वृक्क नलिका में चयनात्मक पुनःअवशोषण।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 38,
+   "section": "SCIENCE",
+   "topic": "हार्मोन",
+   "syllabus_tag": "SCIENCE - हार्मोन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कौन-सा हार्मोन रक्त में कैल्शियम के स्तर को नियंत्रित करने में सहायता करता है?",
+   "question_en": "Which hormone helps regulate blood calcium level?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "इंसुलिन",
+     "text_en": "Insulin",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पैराथायरॉइड हार्मोन",
+     "text_en": "Parathyroid hormone",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "थायरॉक्सिन",
+     "text_en": "Thyroxine",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एड्रेनालिन",
+     "text_en": "Adrenaline",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "पैराथॉर्मोन (PTH) रक्त कैल्शियम बढ़ाता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 39,
+   "section": "MATHS",
+   "topic": "अनुपात",
+   "syllabus_tag": "MATHS - अनुपात",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि $\\frac{2a-5b}{3a-6b} = \\frac{4}{7}$ हो, तो a : b का मान बराबर है-",
+   "question_en": "If $\\frac{2a-5b}{3a-6b} = \\frac{4}{7}$, then the value of a : b is-",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "21 : 36",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2 : 59",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "59 : 2",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "36 : 21",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "$14a - 35b = 12a - 24b \\Rightarrow 2a = 11b \\Rightarrow a:b = 11:2$। ⚠️ छपे समीकरण से 11 : 2 आता है, जो किसी विकल्प में नहीं; मूल कुंजी (C) 59 : 2 है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 40,
+   "section": "MATHS",
+   "topic": "लाभ-हानि",
+   "syllabus_tag": "MATHS - लाभ-हानि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि 15% लाभ और 15% हानि का अन्तर ₹450 हो, तो क्रय मूल्य है-",
+   "question_en": "If the difference between 15% profit and 15% loss is ₹450, then the cost price is-",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "₹2,200",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "₹1,200",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "₹1,500",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "₹2,000",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "विक्रय मूल्यों का अंतर = 30% क्रय मूल्य = 450 ⇒ क्रय मूल्य = ₹1500।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 41,
+   "section": "MATHS",
+   "topic": "साधारण ब्याज",
+   "syllabus_tag": "MATHS - साधारण ब्याज",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कोई धन राशि साधारण ब्याज से 15 वर्ष में अपने से तीन गुनी हो जाती है। कितने समय में यह अपने से 5 गुनी हो जाएगी?",
+   "question_en": "A sum triples itself in 15 years at simple interest. In how many years will it become 5 times?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "40 वर्ष",
+     "text_en": "years",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "36 वर्ष",
+     "text_en": "years",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "30 वर्ष",
+     "text_en": "years",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "25 वर्ष",
+     "text_en": "years",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "15 वर्ष में ब्याज = 2P ⇒ 4P के लिए 30 वर्ष।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 42,
+   "section": "MATHS",
+   "topic": "भिन्न",
+   "syllabus_tag": "MATHS - भिन्न",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि एक भिन्न के अंश को 20% और उसके हर को 25% बढ़ा दिया जाए, तो भिन्न $\\frac{3}{5}$ हो जाता है, तो मूल भिन्न है-",
+   "question_en": "If the numerator is increased by 20% and the denominator by 25%, the fraction becomes $\\frac{3}{5}$. The original fraction is-",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "$\\frac{5}{8}$",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "$\\frac{8}{5}$",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "$\\frac{8}{3}$",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "$\\frac{3}{8}$",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "$\\frac{1.2x}{1.25y} = \\frac35 \\Rightarrow \\frac{x}{y} = \\frac{3\\times1.25}{5\\times1.2} = \\frac58$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 43,
+   "section": "MATHS",
+   "topic": "HCF",
+   "syllabus_tag": "MATHS - HCF",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विद्यार्थियों की अधिकतम संख्या ज्ञात कीजिए जिसमें 1001 पेन और 910 पेंसिलें इस प्रकार बाँटे जाएँ कि प्रत्येक को मिले पेनों की संख्या बराबर हो एवं प्रत्येक को मिले पेंसिलों की संख्या बराबर हो।",
+   "question_en": "Find the maximum number of students among whom 1001 pens and 910 pencils can be distributed equally.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "91",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "910",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1001",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1911",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "HCF(1001, 910) = 91।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 44,
+   "section": "MATHS",
+   "topic": "अभाज्य गुणनखंड",
+   "syllabus_tag": "MATHS - अभाज्य गुणनखंड",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि $504 = 2^p \\times 3^q \\times 7^r$ तो (2p + q − r) का मान है-",
+   "question_en": "If $504 = 2^p \\times 3^q \\times 7^r$, then the value of (2p + q − r) is-",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "7",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "8",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "$504 = 2^3 \\times 3^2 \\times 7$ ⇒ $2(3) + 2 - 1 = 7$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 45,
+   "section": "MATHS",
+   "topic": "करणी",
+   "syllabus_tag": "MATHS - करणी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित संख्याओं में से कौन-सी संख्या सबसे बड़ी है? $\\sqrt{2}, \\sqrt[3]{3}, \\sqrt[4]{4}, \\sqrt[6]{6}$",
+   "question_en": "Which of the following numbers is the largest? $\\sqrt{2}, \\sqrt[3]{3}, \\sqrt[4]{4}, \\sqrt[6]{6}$",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "$\\sqrt{2}$",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "$\\sqrt[3]{3}$",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "$\\sqrt[4]{4}$",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "$\\sqrt[6]{6}$",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "घात 12 पर लाएँ: $2^6=64$, $3^4=81$, $4^3=64$, $6^2=36$ ⇒ $\\sqrt[3]{3}$ सबसे बड़ा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 46,
+   "section": "MATHS",
+   "topic": "प्रतिशत",
+   "syllabus_tag": "MATHS - प्रतिशत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पहले संख्या 350 को 20% बढ़ाकर पुनः 20% कम कर दिया गया। अन्ततः वृद्धि या कमी का प्रतिशत होगा-",
+   "question_en": "A number 350 is first increased by 20% and then decreased by 20%. The final percentage change will be-",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "14%",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "4%",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "25%",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "20%",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$+20 - 20 - \\frac{20\\times20}{100} = -4\\%$ (4% कमी)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 47,
+   "section": "MATHS",
+   "topic": "लाभ-हानि",
+   "syllabus_tag": "MATHS - लाभ-हानि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "20 वस्तुओं का क्रय मूल्य, x वस्तुओं के विक्रय मूल्य के बराबर है। यदि लाभ 25% हो, तो x का मान होगा-",
+   "question_en": "The cost price of 20 articles equals the selling price of x articles. If the profit is 25%, then x is-",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "25",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "18",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "16",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "15",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "$\\frac{20 - x}{x} = \\frac14 \\Rightarrow x = 16$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 48,
+   "section": "MATHS",
+   "topic": "संख्या पद्धति",
+   "syllabus_tag": "MATHS - संख्या पद्धति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से कौन से कथन सही हैं?<br>(1) दो अभाज्य संख्याओं का योगफल सदैव एक अभाज्य संख्या होता है।<br>(2) एक भाज्य संख्या विषम संख्या हो सकती है।<br>(3) '2' एकमात्र सम अभाज्य संख्या है।<br>(4) सबसे छोटी अभाज्य संख्या '1' है।",
+   "question_en": "Which statements are correct? (1) Sum of two primes is always prime. (2) A composite number can be odd. (3) 2 is the only even prime. (4) The smallest prime is 1.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "(1) और (3)",
+     "text_en": "(1) and (3)",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "(2) और (3)",
+     "text_en": "(2) and (3)",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "(2) और (4)",
+     "text_en": "(2) and (4)",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "(3) और (4)",
+     "text_en": "(3) and (4)",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "3+5 = 8 (कथन 1 गलत); 9 विषम भाज्य (2 सही); 2 एकमात्र सम अभाज्य (3 सही); 1 अभाज्य नहीं (4 गलत)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 49,
+   "section": "MATHS",
+   "topic": "विभाज्यता",
+   "syllabus_tag": "MATHS - विभाज्यता",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सी संख्या 99 से विभाजित होती है?",
+   "question_en": "Which of the following numbers is divisible by 99?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "913462",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "135792",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "114345",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "3572406",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "दाएँ से दो-दो अंकों का योग: 45 + 43 + 11 = 99 ⇒ 114345।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 50,
+   "section": "MATHS",
+   "topic": "बेलन",
+   "syllabus_tag": "MATHS - बेलन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किसी लंब वृत्तीय बेलन का कुल पृष्ठीय क्षेत्रफल 748 cm² है तथा उसके आधार की परिधि 44 cm है। इस बेलन का आयतन है ($\\pi = \\frac{22}{7}$)",
+   "question_en": "The total surface area of a right circular cylinder is 748 cm² and its base circumference is 44 cm. Its volume is ($\\pi = \\frac{22}{7}$)",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1540 cm³",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2260 cm³",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2310 cm³",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "3080 cm³",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "$2\\pi r = 44 \\Rightarrow r = 7$; $44(h+7) = 748 \\Rightarrow h = 10$; $V = \\frac{22}{7}\\times49\\times10 = 1540$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 51,
+   "section": "MATHS",
+   "topic": "समचतुर्भुज",
+   "syllabus_tag": "MATHS - समचतुर्भुज",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक समचतुर्भुज के विकर्णों की माप 16 सेमी तथा 30 सेमी है। इसका परिमाप ज्ञात कीजिए।",
+   "question_en": "The diagonals of a rhombus are 16 cm and 30 cm. Find its perimeter.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "63.5 cm",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "65 cm",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "68 cm",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "70.02 cm",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "भुजा $= \\sqrt{8^2 + 15^2} = 17$; परिमाप = 68 cm।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 52,
+   "section": "MATHS",
+   "topic": "आयत",
+   "syllabus_tag": "MATHS - आयत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक आयत, जिसकी भुजाएं केवल प्राकृत संख्याओं में हैं, का क्षेत्रफल 24 वर्ग सेमी है, उसका परिमाप नहीं हो सकता:",
+   "question_en": "A rectangle with natural-number sides has an area of 24 cm². Which cannot be its perimeter?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "20 cm",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "22 cm",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "25 cm",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "28 cm",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "भुजाएँ (1,24),(2,12),(3,8),(4,6) ⇒ परिमाप 50, 28, 22, 20; 25 संभव नहीं (परिमाप सम होगा)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 53,
+   "section": "MATHS",
+   "topic": "चक्रवृद्धि ब्याज",
+   "syllabus_tag": "MATHS - चक्रवृद्धि ब्याज",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किसी धनराशि पर 2 वर्ष का चक्रवृद्धि ब्याज ₹129 तथा उतने ही समय का साधारण ब्याज ₹120 है। ब्याज की वार्षिक दर है-",
+   "question_en": "The compound interest for 2 years is ₹129 and the simple interest is ₹120. The annual rate is-",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "12%",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "14%",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "15%",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "12.5%",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "अंतर ₹9 = एक वर्ष के SI (₹60) पर ब्याज ⇒ $r = \\frac{9}{60}\\times100 = 15\\%$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 54,
+   "section": "MATHS",
+   "topic": "सांख्यिकी",
+   "syllabus_tag": "MATHS - सांख्यिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किन्हीं दिए गए आंकड़ों के लिए, यदि माध्य और बहुलक क्रमशः 42 और 60 है, तो प्रयोगसिद्ध संबंध का उपयोग करते हुए उन आंकड़ों की माध्यिका ज्ञात कीजिए।",
+   "question_en": "For a given data, if the mean and mode are 42 and 60, find the median using the empirical relation.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "50",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "44",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "46",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "48",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "बहुलक = 3 माध्यिका − 2 माध्य ⇒ 60 = 3M − 84 ⇒ M = 48।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 55,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "पारिस्थितिकी",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - पारिस्थितिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "खाद्य श्रृंखला में ऊर्जा का प्रवाह सामान्यतः किस दिशा में होता है?",
+   "question_en": "In a food chain, in which direction does the flow of energy generally occur?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "उपभोक्ता → उत्पादक → अपघटक",
+     "text_en": "Consumer → Producer → Decomposer",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अपघटक → उत्पादक → उपभोक्ता",
+     "text_en": "Decomposer → Producer → Consumer",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उत्पादक → उपभोक्ता → अपघटक",
+     "text_en": "Producer → Consumer → Decomposer",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उपभोक्ता → अपघटक → उत्पादक",
+     "text_en": "Consumer → Decomposer → Producer",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "ऊर्जा प्रवाह एकदिशीय: सूर्य → उत्पादक → उपभोक्ता → अपघटक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 56,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "अपशिष्ट प्रबंधन",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - अपशिष्ट प्रबंधन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सा जैव अपघटनीय कचरे का उदाहरण है?",
+   "question_en": "Which of the following is an example of biodegradable waste?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्लास्टिक बोतल",
+     "text_en": "Plastic bottle",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एल्युमिनियम कैन",
+     "text_en": "Aluminium can",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "काँच",
+     "text_en": "Glass",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सब्जियों के छिलके",
+     "text_en": "Vegetable peels",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "सब्जियों के छिलके सूक्ष्मजीवों द्वारा विघटित हो जाते हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 57,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "भारत की मिट्टियाँ",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - भारत की मिट्टियाँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत में काली मिट्टी का सर्वाधिक विस्तार मुख्यतः किस क्षेत्र में पाया जाता है?",
+   "question_en": "In which region is the black soil of India most extensively found?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "दक्कन का पठार",
+     "text_en": "Deccan Plateau",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गंगा का मैदान",
+     "text_en": "Gangetic Plain",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मालवा के उत्तर का मैदान",
+     "text_en": "Plain north of Malwa",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हिमालयी क्षेत्र",
+     "text_en": "Himalayan region",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "बेसाल्ट के अपक्षय से बनी काली (रेगुर) मिट्टी — दक्कन पठार।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 58,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "भारत की नदियाँ",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - भारत की नदियाँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सी नदी अरब सागर में गिरती है?",
+   "question_en": "Which of the following rivers drains into the Arabian Sea?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "महानदी",
+     "text_en": "Mahanadi",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गोदावरी",
+     "text_en": "Godavari",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नर्मदा",
+     "text_en": "Narmada",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कावेरी",
+     "text_en": "Kaveri",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "नर्मदा व ताप्ती पश्चिम की ओर बहकर अरब सागर में गिरती हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 59,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "राष्ट्रीय आंदोलन",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - राष्ट्रीय आंदोलन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "स्वदेशी आंदोलन का तत्काल प्रमुख कारण क्या था?",
+   "question_en": "What was the immediate primary cause of the Swadeshi Movement?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "रॉलेट एक्ट",
+     "text_en": "Rowlatt Act",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बंगाल का विभाजन",
+     "text_en": "Partition of Bengal",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "साइमन कमीशन",
+     "text_en": "Simon Commission",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जलियाँवाला बाग हत्याकांड",
+     "text_en": "Jallianwala Bagh Massacre",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "बंग-भंग (1905, कर्ज़न) के विरोध में स्वदेशी आंदोलन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 60,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "राष्ट्रीय आंदोलन",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - राष्ट्रीय आंदोलन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत छोड़ो आंदोलन के दौरान गांधीजी ने कौन-सा प्रसिद्ध आह्वान दिया था?",
+   "question_en": "Which famous call did Gandhiji give during the Quit India Movement?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "करो या मरो",
+     "text_en": "Do or Die",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जय हिंद",
+     "text_en": "Jai Hind",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "दिल्ली चलो",
+     "text_en": "Dilli Chalo",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इंकलाब जिंदाबाद",
+     "text_en": "Inquilab Zindabad",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "1942 — \"करो या मरो\"; 'दिल्ली चलो', 'जय हिंद' — सुभाष चंद्र बोस।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 61,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "राष्ट्रीय आय",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - राष्ट्रीय आय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय आय की गणना में 'अंतिम वस्तुओं' को शामिल करने का मुख्य उद्देश्य क्या है?",
+   "question_en": "What is the main objective of including 'final goods' in national income calculation?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बेरोजगारी मापना",
+     "text_en": "Measuring unemployment",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "दोहरी गणना से बचना",
+     "text_en": "Avoiding double counting",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मुद्रास्फीति कम करना",
+     "text_en": "Reducing inflation",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "आयात बढ़ाना",
+     "text_en": "Increasing imports",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "मध्यवर्ती वस्तुएँ जोड़ने से दोहरी गणना होगी।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 62,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "मुद्रास्फीति",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - मुद्रास्फीति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जब सामान्य मूल्य स्तर लगातार बढ़ता है और मुद्रा की क्रय शक्ति घटती है, तो इसे क्या कहा जाता है?",
+   "question_en": "What is it called when the general price level rises continuously and the purchasing power of money declines?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अपस्फीति",
+     "text_en": "Deflation",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मंदी",
+     "text_en": "Recession",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मुद्रास्फीति",
+     "text_en": "Inflation",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजकोषीय घाटा",
+     "text_en": "Fiscal deficit",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "मूल्य स्तर में निरंतर वृद्धि — मुद्रास्फीति।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 63,
+   "section": "बाल विकास (CDP)",
+   "topic": "राष्ट्रीय शिक्षा नीति 1986",
+   "syllabus_tag": "बाल विकास (CDP) - राष्ट्रीय शिक्षा नीति 1986",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "NPE 1986 के अनुसार शिक्षा पर केंद्र और राज्य सरकारों का कुल व्यय देश की GDP का कितने प्रतिशत होना चाहिए?",
+   "question_en": "According to NPE 1986, what percentage of GDP should be the total expenditure on education?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "4%",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "5%",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "6%",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "7%",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "कोठारी आयोग व NPE 1986 — GDP का 6%।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 64,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षा समितियाँ",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षा समितियाँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यशपाल समिति की सिफारिशों का सीधा प्रभाव किस राष्ट्रीय दस्तावेज के निर्माण पर सबसे अधिक पड़ा?",
+   "question_en": "The Yashpal Committee recommendations had the most direct impact on which national document?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "राष्ट्रीय शिक्षा नीति 1986",
+     "text_en": "NPE 1986",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "राष्ट्रीय पाठ्यचर्या की रूपरेखा 2005",
+     "text_en": "NCF 2005",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "शिक्षा का अधिकार अधिनियम 2009",
+     "text_en": "RTE Act 2009",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राष्ट्रीय शिक्षा नीति 2020",
+     "text_en": "NEP 2020",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "'बिना बोझ के शिक्षा' (1993) — NCF 2005 का आधार बनी।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 65,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षा आयोग",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षा आयोग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "समान स्कूल प्रणाली (Common School System) की वकालत किस आयोग ने की थी?",
+   "question_en": "Which commission advocated the 'Common School System'?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कोठारी आयोग",
+     "text_en": "Kothari Commission",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यशपाल समिति",
+     "text_en": "Yashpal Committee",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मुदालियर आयोग",
+     "text_en": "Mudaliar Commission",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राधाकृष्णन आयोग",
+     "text_en": "Radhakrishnan Commission",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "कोठारी आयोग (1964–66)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 66,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षा का इतिहास",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षा का इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "लॉर्ड मैकाले के 1835 के विवरण पत्र के आधार पर किस सिद्धांत को लागू किया गया, जिसके तहत शिक्षा केवल उच्च वर्ग को दी जानी थी?",
+   "question_en": "Based on Macaulay's Minute of 1835, which theory was implemented under which education was given only to the upper class?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "समान स्कूल प्रणाली",
+     "text_en": "Common School System",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अधोगामी निस्यंदन सिद्धांत",
+     "text_en": "Downward Filtration Theory",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बुनियादी शिक्षा का सिद्धांत",
+     "text_en": "Principle of Basic Education",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "त्रिभाषा सूत्र",
+     "text_en": "Three-Language Formula",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उच्च वर्ग से शिक्षा 'छनकर' जनसाधारण तक पहुँचेगी — अधोगामी निस्यंदन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 67,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षा का इतिहास",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षा का इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जब 1835 में मैकाले का प्रस्ताव स्वीकार किया गया और 'अंग्रेजी शिक्षा अधिनियम 1835' पारित हुआ, तब भारत के गवर्नर-जनरल कौन थे?",
+   "question_en": "Who was the Governor-General when Macaulay's proposal was accepted (English Education Act 1835)?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "लॉर्ड डलहौजी",
+     "text_en": "Lord Dalhousie",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लॉर्ड विलियम बेंटिक",
+     "text_en": "Lord William Bentinck",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लॉर्ड ऑकलैंड",
+     "text_en": "Lord Auckland",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वारेन हेस्टिंग्स",
+     "text_en": "Warren Hastings",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "लॉर्ड विलियम बेंटिक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 68,
+   "section": "बाल विकास (CDP)",
+   "topic": "बौद्ध कालीन शिक्षा",
+   "syllabus_tag": "बाल विकास (CDP) - बौद्ध कालीन शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन सा कथन बौद्ध कालीन 'उपसंपदा संस्कार' के संदर्भ में सही है?",
+   "question_en": "Which statement is correct regarding the 'Upasampada' ceremony of the Buddhist period?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "यह शिक्षा की शुरुआत (मठ में प्रवेश) के समय होता था।",
+     "text_en": "It took place at the beginning of education.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यह केवल उन छात्रों के लिए अनिवार्य था जो आजीवन संघ के स्थाई भिक्षु बनना चाहते थे।",
+     "text_en": "It was mandatory only for those who wished to become permanent monks.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "यह गृहस्थ जीवन में वापस लौटने वाले छात्रों के लिए अनिवार्य था।",
+     "text_en": "It was mandatory for students returning to householder life.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "यह केवल प्राथमिक शिक्षा पूरी होने पर होता था।",
+     "text_en": "It took place only after primary education.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "प्रवेश पर 'प्रव्रज्या'; 20 वर्ष पर स्थायी भिक्षु बनने हेतु 'उपसंपदा'।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 69,
+   "section": "बाल विकास (CDP)",
+   "topic": "बौद्ध कालीन शिक्षा",
+   "syllabus_tag": "बाल विकास (CDP) - बौद्ध कालीन शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बौद्ध शिक्षा प्रणाली में मुख्य रूप से शिक्षण कार्य करने वाले शिक्षक को किस नाम से जाना जाता था?",
+   "question_en": "By what name was the teacher responsible for instruction in the Buddhist system known?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गुरु",
+     "text_en": "Guru",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भिक्षु",
+     "text_en": "Bhikshu",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उपाध्याय",
+     "text_en": "Upadhyaya",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मौलवी",
+     "text_en": "Maulvi",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "बौद्ध शिक्षा में शिक्षक 'उपाध्याय' (और आचार्य) कहलाते थे।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 70,
+   "section": "बाल विकास (CDP)",
+   "topic": "मध्याह्न भोजन",
+   "syllabus_tag": "बाल विकास (CDP) - मध्याह्न भोजन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "PM POSHAN के पोषण मानकों के अनुसार, उच्च प्राथमिक स्तर (कक्षा VI से VIII) के बच्चे को दैनिक भोजन में न्यूनतम कितनी कैलोरी और प्रोटीन मिलना अनिवार्य है?",
+   "question_en": "Under PM POSHAN norms, what is the minimum daily calories and protein for upper primary (VI–VIII)?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "450 कैलोरी और 12 ग्राम प्रोटीन",
+     "text_en": "450 calories, 12 g protein",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "500 कैलोरी और 15 ग्राम प्रोटीन",
+     "text_en": "500 calories, 15 g protein",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "700 कैलोरी और 20 ग्राम प्रोटीन",
+     "text_en": "700 calories, 20 g protein",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "800 कैलोरी और 25 ग्राम प्रोटीन",
+     "text_en": "800 calories, 25 g protein",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "प्राथमिक: 450 कैलोरी + 12 g; उच्च प्राथमिक: 700 कैलोरी + 20 g।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 71,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षक प्रशिक्षण",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षक प्रशिक्षण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'समग्र शिक्षा' के तहत शिक्षकों के व्यावसायिक विकास के लिए चलाए जा रहे 'निष्ठा' (NISHTHA) कार्यक्रम का पूर्ण रूप क्या है?",
+   "question_en": "What is the full form of 'NISHTHA' under Samagra Shiksha?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "National Initiative for School Heads' and Teachers' Holistic Advancement",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "National Institute for School Teachers and Higher Association",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "National Initiative for Science and Technology Higher Education",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "New Integrated System for Teachers and Headmasters Advancement",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "NISHTHA (2019) — National Initiative for School Heads' and Teachers' Holistic Advancement।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 72,
+   "section": "बाल विकास (CDP)",
+   "topic": "उत्तर प्रदेश शिक्षा परियोजना",
+   "syllabus_tag": "बाल विकास (CDP) - उत्तर प्रदेश शिक्षा परियोजना",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "उत्तर प्रदेश बेसिक शिक्षा परियोजना (BEP) के मुख्य रूप से कितने अंग या घटक निर्धारित किए गए हैं?",
+   "question_en": "How many main components were defined for the UP Basic Education Project (BEP)?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "दो अंग",
+     "text_en": "two components",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "तीन अंग",
+     "text_en": "three components",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पांच अंग",
+     "text_en": "five components",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "छह अंग",
+     "text_en": "six components",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर कुंजी के अनुसार — तीन अंग।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 73,
+   "section": "बाल विकास (CDP)",
+   "topic": "परीक्षण के गुण",
+   "syllabus_tag": "बाल विकास (CDP) - परीक्षण के गुण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि कोई परीक्षण बार-बार प्रयोग किए जाने पर भी एक समान परिणाम देता है, तो उस परीक्षण में कौन सा गुण मौजूद होता है?",
+   "question_en": "If a test yields consistent results when administered repeatedly, which quality does it possess?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वैधता",
+     "text_en": "Validity",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "विश्वसनीयता",
+     "text_en": "Reliability",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वस्तुनिष्ठता",
+     "text_en": "Objectivity",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "व्यावहारिकता",
+     "text_en": "Usability",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "बार-बार समान परिणाम — विश्वसनीयता; जो मापना है वही मापे — वैधता।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 74,
+   "section": "बाल विकास (CDP)",
+   "topic": "मापन के स्तर",
+   "syllabus_tag": "बाल विकास (CDP) - मापन के स्तर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "क्रिकेट खिलाड़ियों की जर्सी का नंबर, पिन कोड, या लिंग के आधार पर (पुरुष/महिला) बांटना मापन के किस स्तर का उदाहरण है?",
+   "question_en": "Jersey numbers, PIN codes or gender categories are examples of which level of measurement?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नामित मापन",
+     "text_en": "Nominal measurement",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "क्रमित मापन",
+     "text_en": "Ordinal measurement",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अंतराल मापन",
+     "text_en": "Interval measurement",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुपातिक मापन",
+     "text_en": "Ratio measurement",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "केवल नाम/पहचान, कोई क्रम नहीं — नामित (Nominal)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 75,
+   "section": "बाल विकास (CDP)",
+   "topic": "विद्यालय प्रबंधन",
+   "syllabus_tag": "बाल विकास (CDP) - विद्यालय प्रबंधन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'शिक्षक अभिभावक संघ' (PTA) की बैठक विद्यालय में न्यूनतम कितनी बार आयोजित होनी चाहिए?",
+   "question_en": "What is the minimum frequency for holding PTA meetings in school?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वर्ष में केवल एक बार",
+     "text_en": "Only once a year",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्रत्येक माह में कम से कम एक बार",
+     "text_en": "At least once every month",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "छह महीने में एक बार",
+     "text_en": "Once every six months",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केवल परीक्षा के दिन",
+     "text_en": "Only on examination days",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर कुंजी के अनुसार — प्रत्येक माह कम से कम एक बार।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 76,
+   "section": "बाल विकास (CDP)",
+   "topic": "विद्यालय अभिलेख",
+   "syllabus_tag": "बाल विकास (CDP) - विद्यालय अभिलेख",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विद्यालय को प्राप्त होने वाले धन, व्यय और बजट का लेखा-जोखा रखने के लिए किस मुख्य पंजिका का उपयोग किया जाता है?",
+   "question_en": "Which register is used to maintain accounts of funds, expenditure and budget of a school?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "संचयी अभिलेख पंजिका",
+     "text_en": "Cumulative Record Register",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कैश बुक या नकद बही",
+     "text_en": "Cash Book",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "स्टॉक रजिस्टर",
+     "text_en": "Stock Register",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उपस्थिति पंजिका",
+     "text_en": "Attendance Register",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "आय-व्यय का हिसाब — कैश बुक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 77,
+   "section": "बाल विकास (CDP)",
+   "topic": "विद्यालय अभिलेख",
+   "syllabus_tag": "बाल विकास (CDP) - विद्यालय अभिलेख",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विद्यालय में किसी छात्र के जीवन की किसी विशेष घटना/व्यवहार का विस्तृत वर्णन शिक्षक द्वारा जिस रिकॉर्ड में दर्ज किया जाता है, उसे क्या कहते हैं?",
+   "question_en": "What is the record in which a teacher documents a specific incident or behaviour of a student?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "आकस्मिक या वृत्तांत अभिलेख",
+     "text_en": "Anecdotal Record",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "संचयी अभिलेख",
+     "text_en": "Cumulative Record",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कैश बुक",
+     "text_en": "Cash Book",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रविष्टि रजिस्टर",
+     "text_en": "Entry Register",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "विशेष घटना का वर्णन — घटना-वृत्त (Anecdotal) अभिलेख।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 78,
+   "section": "बाल विकास (CDP)",
+   "topic": "अधिगम अक्षमता",
+   "syllabus_tag": "बाल विकास (CDP) - अधिगम अक्षमता",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ठीक से पेन न पकड़ पाना, बटन बंद न कर पाना, या गेंद को कैच करने में हाथ-आंख के समन्वय में कठिनाई होना किस विकार का सूचक है?",
+   "question_en": "Inability to hold a pen, fasten buttons or catch a ball (hand-eye coordination) indicates which disorder?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "डिसग्राफिया",
+     "text_en": "Dysgraphia",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "डिसप्रैक्सिया",
+     "text_en": "Dyspraxia",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डिसकैलकुलिया",
+     "text_en": "Dyscalculia",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "डिस्थीमिया",
+     "text_en": "Dysthymia",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "गामक समन्वय विकार — डिसप्रैक्सिया।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 79,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षण सूत्र",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षण सूत्र",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बालकों की शिक्षा में 'तर्क' का स्थान बाद में आना चाहिए, जबकि 'अनुभव और इंद्रियों' द्वारा सीखना पहले होना चाहिए। इसके लिए कौन सा सूत्र सही है?",
+   "question_en": "Learning through experience and senses should come first and logic later. Which maxim applies?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तर्क से इंद्रिय की ओर",
+     "text_en": "From logic to senses",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुभूति से युक्ति-युक्त की ओर",
+     "text_en": "From empirical to rational",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "निश्चित से अनिश्चित की ओर",
+     "text_en": "From definite to indefinite",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विश्लेषण से संश्लेषण की ओर",
+     "text_en": "From analysis to synthesis",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "अनुभव (इन्द्रियजन्य) से तर्क की ओर — Empirical to Rational।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 80,
+   "section": "बाल विकास (CDP)",
+   "topic": "सूक्ष्म शिक्षण",
+   "syllabus_tag": "बाल विकास (CDP) - सूक्ष्म शिक्षण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारतीय प्रतिमान (NCERT) के अनुसार, सूक्ष्म शिक्षण चक्र में 'शिक्षण' और 'प्रतिपुष्टि' के लिए क्रमशः कितने-कितने मिनट निर्धारित हैं?",
+   "question_en": "According to the Indian (NCERT) model, how many minutes are allotted to 'Teaching' and 'Feedback' in micro-teaching?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "10 मिनट और 10 मिनट",
+     "text_en": "10 and 10 minutes",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "6 मिनट और 6 मिनट",
+     "text_en": "6 and 6 minutes",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "5 मिनट और 5 मिनट",
+     "text_en": "5 and 5 minutes",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "6 मिनट और 12 मिनट",
+     "text_en": "6 and 12 minutes",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "भारतीय मॉडल (36 मिनट): शिक्षण 6, प्रतिपुष्टि 6, पुनर्योजना 12, पुनर्शिक्षण 6, पुनर्प्रतिपुष्टि 6।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 81,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षण कौशल",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षण कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किसी कठिन और अमूर्त संप्रत्यय को समझाने के लिए जब शिक्षक चित्रों, चार्ट, मॉडल या उदाहरणों का प्रयोग करता है, तो उसे कौन सा कौशल कहा जाता है?",
+   "question_en": "When a teacher uses pictures, charts, models or examples to explain an abstract concept, what is this skill called?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "व्याख्या कौशल",
+     "text_en": "Explaining skill",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "दृष्टांत कौशल",
+     "text_en": "Illustrating skill",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "श्यामपट्ट कौशल",
+     "text_en": "Blackboard skill",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रस्तावना कौशल",
+     "text_en": "Introduction skill",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उदाहरण व दृश्य सामग्री द्वारा स्पष्ट करना — दृष्टांत कौशल।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 82,
+   "section": "बाल विकास (CDP)",
+   "topic": "विकास के सिद्धांत",
+   "syllabus_tag": "बाल विकास (CDP) - विकास के सिद्धांत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कथन (A): बाल विकास की सटीक भविष्यवाणी करना संभव है कि कोई बच्चा बड़ा होकर किस निश्चित क्षेत्र में शत-प्रतिशत सफल होगा।<br>कारण (R): बच्चों के विकास का क्रम और प्रतिमान पूरे विश्व में सभी बच्चों के लिए एक समान और व्यवस्थित होता है।",
+   "question_en": "Assertion (A): It is possible to predict accurately in which field a child will be 100% successful. Reason (R): The sequence and pattern of development are uniform for all children.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+     "text_en": "Both correct, R explains A.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "(A) और (R) दोनों सही हैं, लेकिन (R), (A) की सही व्याख्या नहीं है।",
+     "text_en": "Both correct, R does not explain A.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "(A) सही है, लेकिन (R) गलत है।",
+     "text_en": "A correct, R incorrect.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "(A) गलत है, लेकिन (R) सही है।",
+     "text_en": "A incorrect, R correct.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "विकास का क्रम समान है (R सही), पर व्यक्तिगत सफलता की शत-प्रतिशत भविष्यवाणी संभव नहीं (A गलत)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 83,
+   "section": "बाल विकास (CDP)",
+   "topic": "पियाजे का संज्ञानात्मक विकास",
+   "syllabus_tag": "बाल विकास (CDP) - पियाजे का संज्ञानात्मक विकास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वस्तु स्थायित्व (Object Permanence) की क्षमता पियाजे की किस अवस्था की मुख्य विशेषता है?",
+   "question_en": "'Object Permanence' is a key characteristic of which stage in Piaget's theory?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "संवेदी-पेशीय अवस्था (0 से 2 वर्ष)",
+     "text_en": "Sensori-motor Stage",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पूर्व-संक्रियात्मक अवस्था",
+     "text_en": "Pre-operational Stage",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मूर्त संक्रियात्मक अवस्था",
+     "text_en": "Concrete Operational Stage",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "औपचारिक संक्रियात्मक अवस्था",
+     "text_en": "Formal Operational Stage",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "संवेदी-गामक अवस्था (0–2 वर्ष)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 84,
+   "section": "बाल विकास (CDP)",
+   "topic": "पियाजे का संज्ञानात्मक विकास",
+   "syllabus_tag": "बाल विकास (CDP) - पियाजे का संज्ञानात्मक विकास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक 5 वर्ष का बच्चा मानता है कि हवा चलने पर पेड़ की पत्तियाँ इसलिए हिलती हैं क्योंकि वे खुश हैं, और उसकी गुड़िया को चोट लगती है तो वह रोती है। पियाजे के अनुसार यह सोच क्या कहलाती है?",
+   "question_en": "A 5-year-old believes leaves move because they are happy and a doll feels pain. What is this thinking called?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अहंकेंद्रवाद",
+     "text_en": "Egocentrism",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जीववाद",
+     "text_en": "Animism",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केंद्रीकरण",
+     "text_en": "Centration",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पलटावी गुण",
+     "text_en": "Reversibility",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "निर्जीव वस्तुओं को सजीव मानना — जीववाद (पूर्व-संक्रियात्मक अवस्था)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 85,
+   "section": "बाल विकास (CDP)",
+   "topic": "वाइगोत्स्की",
+   "syllabus_tag": "बाल विकास (CDP) - वाइगोत्स्की",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कथन (A): लेव वाइगोत्स्की बच्चों को ज्ञान के निष्क्रिय प्राप्तकर्ता के रूप में देखते थे।<br>कारण (R): वाइगोत्स्की का मानना था कि बच्चे अधिक योग्य व्यक्तियों (MKO) के साथ अंतःक्रिया करके सक्रिय रूप से अपने ज्ञान की संरचना करते हैं।",
+   "question_en": "Assertion (A): Vygotsky viewed children as passive recipients of knowledge. Reason (R): Vygotsky believed children actively construct knowledge by interacting with MKOs.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।",
+     "text_en": "Both true, R explains A.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "(A) और (R) दोनों सही हैं, लेकिन (R), (A) की सही व्याख्या नहीं है।",
+     "text_en": "Both true, R does not explain A.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "(A) सही है, लेकिन (R) गलत है।",
+     "text_en": "A true, R false.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "(A) गलत है, लेकिन (R) सही है।",
+     "text_en": "A false, R true.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "वाइगोत्स्की बच्चे को सक्रिय, सामाजिक अंतःक्रिया से सीखने वाला मानते थे — A गलत, R सही।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 86,
+   "section": "बाल विकास (CDP)",
+   "topic": "कोहलबर्ग",
+   "syllabus_tag": "बाल विकास (CDP) - कोहलबर्ग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक बच्चा सोचता है, \"मुझे गृहकार्य समय पर पूरा करना चाहिए, नहीं तो शिक्षिका मुझे डांटेगी या सजा देगी।\" कोहलबर्ग के अनुसार, यह बच्चा नैतिकता के किस स्तर पर है?",
+   "question_en": "A child thinks, \"I must finish homework or the teacher will punish me.\" At which level of morality (Kohlberg) is this child?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पूर्व-पारंपरिक स्तर (दंड एवं आज्ञाकारिता)",
+     "text_en": "Pre-conventional Level",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पारंपरिक स्तर",
+     "text_en": "Conventional Level",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उत्तर-पारंपरिक स्तर",
+     "text_en": "Post-conventional Level",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "स्वायत्त स्तर",
+     "text_en": "Autonomous Level",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "दंड से बचने के लिए आज्ञा पालन — पूर्व-पारंपरिक (चरण 1)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 87,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "शिक्षण विधियाँ",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - शिक्षण विधियाँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से कौन एक 'क्षेत्र भ्रमण' का उदाहरण है?",
+   "question_en": "Which of the following is an example of a 'field visit'?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पुस्तक",
+     "text_en": "Book",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पंचायत घर",
+     "text_en": "Panchayat house",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नक्शा",
+     "text_en": "Map",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ग्लोब",
+     "text_en": "Globe",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "वास्तविक स्थान पर जाकर देखना — पंचायत घर।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 88,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "भारतीय संविधान",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - भारतीय संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संविधान की 11वीं अनुसूची में पंचायत राज संस्थाओं के लिए कितने विषय सूचीबद्ध हैं?",
+   "question_en": "How many subjects are listed for Panchayati Raj institutions in the 11th Schedule?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "29",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "30",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "35",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "37",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "11वीं अनुसूची — 29 विषय (पंचायत); 12वीं — 18 विषय (नगरपालिका)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 89,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "समाज सुधारक",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - समाज सुधारक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से कौन 'पेरियार' के नाम से प्रसिद्ध है?",
+   "question_en": "Who among the following is famous by the name 'Periyar'?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सी. बी. रमन पिल्लई",
+     "text_en": "C. B. Raman Pillai",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सी. एन. मुदालियर",
+     "text_en": "C. N. Mudaliar",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ई. वी. रामास्वामी नायकर",
+     "text_en": "E. V. Ramasamy Naicker",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "के. रामाकृष्ण पिल्लई",
+     "text_en": "K. Ramakrishna Pillai",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "ई.वी. रामास्वामी नायकर — आत्मसम्मान आंदोलन (1925)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 90,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "मध्यकालीन भारत",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - मध्यकालीन भारत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हैदराबाद की निजामशाही के प्रवर्तक थे",
+   "question_en": "The founder of the Nizam Shahi of Hyderabad was",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चिन किलिच खान",
+     "text_en": "Chin Qilich Khan",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सआदत खान",
+     "text_en": "Saadat Khan",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मुर्शिद कुली खान",
+     "text_en": "Murshid Quli Khan",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सफदरजंग",
+     "text_en": "Safdarjung",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "चिन किलिच खान (निजाम-उल-मुल्क आसफ जाह), 1724।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 91,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "कला एवं संस्कृति",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - कला एवं संस्कृति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कंदरिया महादेव मंदिर के निर्माता थे",
+   "question_en": "The builders of the Kandariya Mahadeva Temple were",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चौहान",
+     "text_en": "Chauhans",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "तोमर",
+     "text_en": "Tomar",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "चंदेल",
+     "text_en": "Chandelas",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "गुर्जर प्रतिहार",
+     "text_en": "Gurjara-Pratiharas",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "खजुराहो (म.प्र.) — चंदेल शासक विद्याधर।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 92,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "आधुनिक भारत",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - आधुनिक भारत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत में साम्प्रदायिक मतदान क्षेत्र आरम्भ किये गये",
+   "question_en": "Communal electorates were introduced in India by:",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भारत सरकार अधिनियम, 1892 द्वारा",
+     "text_en": "Government of India Act, 1892",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मार्ले-मिन्टो सुधार, 1909 द्वारा",
+     "text_en": "Morley-Minto Reforms, 1909",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मान्टेग्यू-चेम्सफोर्ड सुधार, 1919 द्वारा",
+     "text_en": "Montagu-Chelmsford Reforms, 1919",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भारत सरकार अधिनियम, 1935 द्वारा",
+     "text_en": "Government of India Act, 1935",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "1909 के मार्ले-मिन्टो सुधार — मुसलमानों के लिए पृथक निर्वाचन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 93,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल 2025",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल 2025",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "2025 के राष्ट्रीय खेल पुरस्कारों में Major Dhyan Chand Khel Ratna के लिए कितने खिलाड़ियों की सिफारिश की गई?",
+   "question_en": "How many athletes were recommended for the Major Dhyan Chand Khel Ratna in the 2025 National Sports Awards?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "0",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर कुंजी के अनुसार — 0।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 94,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल 2026",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल 2026",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "2026 में SAFF Women's Championship की मेजबानी भारत के किस राज्य ने की?",
+   "question_en": "Which Indian state hosted the SAFF Women's Championship in 2026?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केरल",
+     "text_en": "Kerala",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गोवा",
+     "text_en": "Goa",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ओडिशा",
+     "text_en": "Odisha",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "महाराष्ट्र",
+     "text_en": "Maharashtra",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर कुंजी के अनुसार — गोवा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 95,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "राष्ट्रीय उद्यान",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - राष्ट्रीय उद्यान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?",
+   "question_en": "Which of the following pairs is correctly matched?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गिर - एक सींग वाला गैंडा",
+     "text_en": "Gir - One-horned rhinoceros",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "काजीरंगा - एक सींग वाला गैंडा",
+     "text_en": "Kaziranga - One-horned rhinoceros",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सुंदरबन - एशियाई सिंह",
+     "text_en": "Sundarbans - Asiatic lion",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कान्हा - हिम तेंदुआ",
+     "text_en": "Kanha - Snow leopard",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "काजीरंगा (असम) — एक सींग वाला गैंडा; गिर — एशियाई सिंह; सुंदरबन — बाघ; कान्हा — बारहसिंगा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 96,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "गुरुत्वाकर्षण",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - गुरुत्वाकर्षण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "चंद्रमा पर किसी वस्तु का भार पृथ्वी की तुलना में लगभग कितना होता है?",
+   "question_en": "Approximately how much is the weight of an object on the Moon compared to Earth?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1/2",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1/4",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1/6",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1/9",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "चंद्रमा पर g, पृथ्वी का लगभग 1/6।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 97,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "अर्थव्यवस्था",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - अर्थव्यवस्था",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत में राष्ट्रीय आय के आँकड़े किस संस्था द्वारा जारी किए जाते हैं?",
+   "question_en": "Which organization releases national income data in India?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "RBI",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नीति आयोग",
+     "text_en": "NITI Aayog",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "NSO",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वित्त आयोग",
+     "text_en": "Finance Commission",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "NSO (सांख्यिकी एवं कार्यक्रम कार्यान्वयन मंत्रालय)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 98,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "समसामयिकी 2026",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - समसामयिकी 2026",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "2026 के स्वतंत्रता दिवस संबोधन में कितने युवाओं को AI में प्रशिक्षण देने का लक्ष्य बताया गया?",
+   "question_en": "In the 2026 Independence Day address, what target was announced for training youth in AI?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "10 लाख",
+     "text_en": "10 Lakh",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "50 लाख",
+     "text_en": "50 Lakh",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "1 करोड़",
+     "text_en": "1 Crore",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "5 करोड़",
+     "text_en": "5 Crore",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — 1 करोड़।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 99,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत ने किस वर्ष के ओलंपिक की मेजबानी का लक्ष्य रखा है?",
+   "question_en": "India aims to host the Olympics in which year?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2028",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2032",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2036",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "2040",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "भारत ने 2036 ओलंपिक की मेजबानी हेतु दावेदारी की है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 100,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल 2026",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल 2026",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "2026 के राष्ट्रीय खेल पुरस्कारों में 2025 के लिए कितने खिलाड़ियों को अर्जुन पुरस्कार देने की घोषणा की गई?",
+   "question_en": "How many athletes were announced to receive the Arjuna Award for 2025 during the 2026 National Sports Awards?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "12",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "15",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "17",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "21",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — 17।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 101,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल 2026",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल 2026",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "2026 FIFA World Cup में आधिकारिक मैच बॉल का नाम क्या था?",
+   "question_en": "What was the name of the official match ball for the 2026 FIFA World Cup?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Al Rihla",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Trionda",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Telstar",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Brazuca",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "2026 — Trionda; 2022 — Al Rihla; 2014 — Brazuca।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 102,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "गुरुत्वाकर्षण",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - गुरुत्वाकर्षण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि पृथ्वी के घूर्णन की गति अचानक बढ़ जाए, तो भूमध्य रेखा पर किसी वस्तु के भार पर क्या प्रभाव पड़ेगा?",
+   "question_en": "If Earth's rotation speed suddenly increased, what would happen to the weight of an object at the equator?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बढ़ेगा",
+     "text_en": "It would increase",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "घटेगा",
+     "text_en": "It would decrease",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कोई प्रभाव नहीं",
+     "text_en": "No effect",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पहले बढ़ेगा फिर घटेगा",
+     "text_en": "It would increase first, then decrease",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$g' = g - \\omega^2 R$; ω बढ़ने पर भूमध्य रेखा पर भार घटेगा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 103,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "राष्ट्रीय आंदोलन",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - राष्ट्रीय आंदोलन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से किस आंदोलन का प्रत्यक्ष संबंध 'कर न देने' के प्रश्न से था?",
+   "question_en": "Which movement was directly related to the issue of 'non-payment of taxes'?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "खेड़ा सत्याग्रह",
+     "text_en": "Kheda Satyagraha",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "चंपारण सत्याग्रह",
+     "text_en": "Champaran Satyagraha",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बारडोली सत्याग्रह",
+     "text_en": "Bardoli Satyagraha",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अहमदाबाद मिल हड़ताल",
+     "text_en": "Ahmedabad Mill Strike",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — बारडोली (1928, लगान वृद्धि के विरोध में 'कर न दो', पटेल)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 104,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "संवैधानिक संस्थाएँ",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - संवैधानिक संस्थाएँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "नियंत्रक एवं महालेखा परीक्षक (CAG) को हटाने की प्रक्रिया किसके समान है?",
+   "question_en": "The procedure for removing the CAG is similar to that of:",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "राष्ट्रपति",
+     "text_en": "The President",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "उपराष्ट्रपति",
+     "text_en": "The Vice-President",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उच्च न्यायालय के न्यायाधीश",
+     "text_en": "A High Court Judge",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सर्वोच्च न्यायालय के न्यायाधीश",
+     "text_en": "A Supreme Court Judge",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "अनुच्छेद 148: CAG को सर्वोच्च न्यायालय के न्यायाधीश की तरह हटाया जाता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 105,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "उत्तर प्रदेश",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - उत्तर प्रदेश",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "उत्तर प्रदेश विधान परिषद के संदर्भ में कौन-सा कथन सही है?",
+   "question_en": "Which statement regarding the UP Legislative Council is correct?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "यह एक अस्थायी सदन है",
+     "text_en": "It is a temporary house",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इसके सभी सदस्य प्रत्यक्ष चुनाव से चुने जाते हैं",
+     "text_en": "All members are directly elected",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "यह एक स्थायी सदन है",
+     "text_en": "It is a permanent house",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इसे राज्यपाल भंग कर सकता है",
+     "text_en": "The Governor can dissolve it",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "विधान परिषद स्थायी सदन है; हर 2 वर्ष में 1/3 सदस्य सेवानिवृत्त होते हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 106,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "समसामयिकी",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - समसामयिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में इथियोपिया में भारत का अगला राजदूत किसे नियुक्त किया गया है?",
+   "question_en": "Who has recently been appointed as the next Ambassador of India to Ethiopia?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "देवेश उत्तम",
+     "text_en": "Devesh Uttam",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "विश्वेश नेगी",
+     "text_en": "Vishwesh Negi",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एन. जे. गांगटे",
+     "text_en": "N. J. Gangte",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "संजय कुमार वर्मा",
+     "text_en": "Sanjay Kumar Verma",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर कुंजी के अनुसार — देवेश उत्तम।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 107,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "नीति निदेशक तत्व",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - नीति निदेशक तत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राज्य के नीति निदेशक तत्वों का कौन-सा अनुच्छेद राज्य को उद्योगों के प्रबंधन में कामगारों की सहभागिता सुनिश्चित करने का निर्देश देता है?",
+   "question_en": "Which Article of the DPSP directs the State to ensure participation of workers in management of industries?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "43A",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "39A",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "38",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "45",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "अनुच्छेद 43A (42वें संशोधन से जोड़ा गया)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 108,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "ऊर्जा",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - ऊर्जा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित युग्मों में से कौन-सा एक सही सुमेलित नहीं है? (ताप विद्युत गृह — राज्य)",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बाढ़ — बिहार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लारा — छत्तीसगढ़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कुडगी — कर्नाटक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "गाडरवारा — आंध्र प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "गाडरवारा ताप विद्युत गृह मध्य प्रदेश में है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 109,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "उत्तर प्रदेश",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - उत्तर प्रदेश",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "उत्तर प्रदेश में 'मयूर संरक्षण केंद्र' निम्नलिखित में से किस स्थान/जनपद में स्थित है?",
+   "question_en": "In which place/district of Uttar Pradesh is the 'Peacock Conservation Centre' located?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "महोबा",
+     "text_en": "Mahoba",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मथुरा",
+     "text_en": "Mathura",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मैनपुरी",
+     "text_en": "Mainpuri",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "महाराजगंज",
+     "text_en": "Maharajganj",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर कुंजी के अनुसार — मथुरा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 110,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "राज्यसभा",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - राज्यसभा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित युग्मों में से कौन-सा एक सही सुमेलित नहीं है? (राज्य: राज्य सभा में सीटों की संख्या)",
+   "question_en": "Which pair is not correctly matched? (State: Rajya Sabha seats)",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "असम - 06",
+     "text_en": "Assam - 06",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "छत्तीसगढ़ - 05",
+     "text_en": "Chhattisgarh - 05",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हिमाचल प्रदेश - 03",
+     "text_en": "Himachal Pradesh - 03",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उत्तर प्रदेश - 31",
+     "text_en": "Uttar Pradesh - 31",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "असम की राज्यसभा में 7 सीटें हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 111,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "समसामयिकी",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - समसामयिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में दसवीं BRICS उद्योग मंत्रियों की बैठक कहाँ हुई है?",
+   "question_en": "Where was the 10th BRICS Industry Ministers' meeting held recently?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अहमदाबाद",
+     "text_en": "Ahmedabad",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भुवनेश्वर",
+     "text_en": "Bhubaneswar",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भोपाल",
+     "text_en": "Bhopal",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जयपुर",
+     "text_en": "Jaipur",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर कुंजी के अनुसार — जयपुर।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 112,
+   "section": "REASONING",
+   "topic": "कोडिंग-डिकोडिंग",
+   "syllabus_tag": "REASONING - कोडिंग-डिकोडिंग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि किसी सांकेतिक भाषा में \"open the door\" को \"ka te jo\", \"door is closed\" को \"ja pa ma\" और \"this is good\" को \"la ra pa\" लिखा जाता है, तो \"closed\" को उसी भाषा में कैसे लिखा जाएगा?",
+   "question_en": "If \"open the door\" = \"ka te jo\", \"door is closed\" = \"ja pa ma\", \"this is good\" = \"la ra pa\", then how is \"closed\" written?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "ma",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "pa",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "ja",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "ka",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "is = pa (वाक्य 2 व 3 में उभयनिष्ठ)। उत्तर कुंजी के अनुसार closed = ma। (प्रश्न के आँकड़ों में 'door' का कोड उभयनिष्ठ नहीं है, इसलिए यह प्रश्न त्रुटिपूर्ण है।)",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 113,
+   "section": "REASONING",
+   "topic": "दिशा",
+   "syllabus_tag": "REASONING - दिशा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मोहन दक्षिण की ओर 25 मी चलकर दाईं ओर मुड़ गया। फिर 15 मी चलकर बाईं ओर मुड़ गया तथा 25 मी गया। अब वह अपने शुरू में चलने के स्थान से किस दिशा में है?",
+   "question_en": "Mohan walked 25 m south, turned right, walked 15 m, turned left and went 25 m. In which direction is he from the start?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "दक्षिण-पूर्व",
+     "text_en": "South-East",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "दक्षिण",
+     "text_en": "South",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पश्चिम",
+     "text_en": "West",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उत्तर-पश्चिम",
+     "text_en": "North-West",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "दक्षिण 50 मी और पश्चिम 15 मी — गणना से दक्षिण-पश्चिम आता है; उत्तर कुंजी के अनुसार 'दक्षिण'।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 114,
+   "section": "REASONING",
+   "topic": "कोडिंग-डिकोडिंग",
+   "syllabus_tag": "REASONING - कोडिंग-डिकोडिंग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि किसी सांकेतिक भाषा में STUDENT को RUTEDOS लिखा जाता है, तो SCHOLAR को उसी भाषा में कैसे लिखा जाएगा?",
+   "question_en": "If STUDENT is written as RUTEDOS, then how will SCHOLAR be written?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "RDGRKBQ",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "RDGPKBQ",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "RDHPKBQ",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "RDGRMBQ",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "बारी-बारी −1, +1: RDGPKBQ।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 115,
+   "section": "REASONING",
+   "topic": "समय",
+   "syllabus_tag": "REASONING - समय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अध्यक्ष महोदय ने साक्षात्कार लेने के लिए सभाकक्ष में 12:30 बजे से 10 मिनट पहले प्रवेश किया। वे प्रबन्ध निदेशक से 20 मिनट पहले आए हैं, जोकि 30 मिनट विलम्ब से आए हैं। बताएँ कि साक्षात्कार का निर्धारित समय क्या था?",
+   "question_en": "The Chairperson entered at 10 minutes before 12:30, 20 minutes before the MD, who was 30 minutes late. What was the scheduled time?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "12:50",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "12:10",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "12:40",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "12:00",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "अध्यक्ष 12:20, MD 12:40 (30 मिनट देर) ⇒ निर्धारित समय 12:10।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 116,
+   "section": "REASONING",
+   "topic": "कोडिंग-डिकोडिंग",
+   "syllabus_tag": "REASONING - कोडिंग-डिकोडिंग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि E = 5 और AMENDMENT = 89 हो, तो SECRETARY = ?",
+   "question_en": "If E = 5 and AMENDMENT = 89, then SECRETARY = ?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "115",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "112",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "114",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "100",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "अक्षरों के स्थानीय मान का योग: S19+E5+C3+R18+E5+T20+A1+R18+Y25 = 114।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 117,
+   "section": "सूचना तकनीक",
+   "topic": "शॉर्टकट",
+   "syllabus_tag": "सूचना तकनीक - शॉर्टकट",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कंप्यूटर में किसी फ़ाइल या फोल्डर को रीसायकल बिन में भेजे बिना स्थायी रूप से डिलीट करने के लिए किस शॉर्टकट कुंजी का प्रयोग किया जाता है?",
+   "question_en": "Which shortcut key permanently deletes a file without sending it to the Recycle Bin?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Ctrl + Delete",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Shift + Delete",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Alt + Delete",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Fn + Delete",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "Shift + Delete।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 118,
+   "section": "सूचना तकनीक",
+   "topic": "इंटरनेट",
+   "syllabus_tag": "सूचना तकनीक - इंटरनेट",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "इंटरनेट पर किसी वेबसाइट या वेबपेज का विशिष्ट पता क्या कहलाता है?",
+   "question_en": "What is the unique address of a website or webpage on the Internet called?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "URL (Uniform Resource Locator)",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "IP Address",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "HTTP",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "HTML",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "वेबपेज का पता — URL।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 119,
+   "section": "सूचना तकनीक",
+   "topic": "डिजिटल शिक्षा",
+   "syllabus_tag": "सूचना तकनीक - डिजिटल शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सा 'मुक्त शैक्षिक संसाधन' (OER) का प्रमुख लक्षण है?",
+   "question_en": "Which of the following is a key characteristic of Open Educational Resources (OER)?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "इसके प्रयोग के लिए भारी लाइसेंस शुल्क देना अनिवार्य है।",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यह केवल पंजीकृत शिक्षकों के लिए ही सीमित होता है।",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "यह निःशुल्क उपलब्ध होता है तथा इसे पुनः प्रयोग (Reuse) एवं रूपांतरित (Adapt) करने की स्वतंत्रता होती है।",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "यह केवल ऑफलाइन माध्यम में ही उपलब्ध कराया जा सकता है।",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "OER — मुफ़्त, खुला लाइसेंस, पुनः प्रयोग व संशोधन की अनुमति।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 120,
+   "section": "सूचना तकनीक",
+   "topic": "डिजिटल शिक्षा",
+   "syllabus_tag": "सूचना तकनीक - डिजिटल शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "उत्तर प्रदेश के प्राथमिक विद्यालयों में पाठ्यपुस्तकों में दिए गए QR कोड को स्कैन करके डिजिटल सामग्री प्राप्त करने हेतु कौन-सा प्रमुख मंच संचालित किया जा रहा है?",
+   "question_en": "Which platform is used to access digital content by scanning QR codes in textbooks of UP primary schools?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "SWAYAM PRABHA",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "DIKSHA Portal",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "UMANG App",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "SHODH GANGA",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "DIKSHA (एनर्जाइज़्ड टेक्स्टबुक्स — QR कोड)।",
+   "solution_en": "",
+   "key_concept": ""
+  }
+ ]
+}
