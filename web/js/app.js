@@ -5,7 +5,7 @@ import { DEMO_SET } from './demo-set.js';
 import { icon, toast } from './ui.js';
 import { $, esc } from './util.js';
 
-export const APP_VERSION = '1.3.0';
+export const APP_VERSION = '1.4.0';
 
 const routes = {
   home: () => import('./views/home.js'),
@@ -17,6 +17,7 @@ const routes = {
   solutions: () => import('./views/solutions.js'),
   history: () => import('./views/history.js'),
   bookmarks: () => import('./views/bookmarks.js'),
+  practice: () => import('./views/practice.js'),
   analytics: () => import('./views/analytics.js'),
   settings: () => import('./views/settings.js'),
 };
@@ -24,7 +25,7 @@ const routes = {
 const NAV = [
   ['home', 'होम', 'home'],
   ['import', 'इम्पोर्ट', 'upload'],
-  ['bookmarks', 'बुकमार्क', 'bookmark'],
+  ['practice', 'अभ्यास', 'target'],
   ['history', 'हिस्ट्री', 'history'],
   ['settings', 'सेटिंग्स', 'settings'],
 ];
@@ -103,7 +104,7 @@ async function route() {
   document.getElementById('modal-root').innerHTML = '';
   const full = name === 'exam';
   setChrome(full);
-  if (!full) renderNav(['home', 'import', 'bookmarks', 'history', 'settings'].includes(name) ? name : name === 'analytics' ? 'history' : 'home');
+  if (!full) renderNav(['home', 'import', 'practice', 'history', 'settings'].includes(name) ? name : name === 'analytics' ? 'history' : name === 'bookmarks' ? 'practice' : 'home');
   setHeader({});
   // Fresh <main> per route so event listeners of the previous view are dropped.
   const old = $('#view');

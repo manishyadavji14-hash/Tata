@@ -1,0 +1,963 @@
+@id chandra_supertet_model_04
+@title SUPER TET प्राथमिक MODEL PAPER-04 (चन्द्रा इंस्टीट्यूट)
+@duration 150
+@key CAACBABBAA BAADBCABBA BBDCAAABBB CCDCDCCBCC CBBBBABBAB ABBBBDCBCC BBBACCCAAB BCBCBDBABB BBDADADDDD ACAADDBCCB CCBDBDCCDB BBAABDBCBB
+
+# HINDI
+1 बोलियाँ
+? निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?
+- ब्रजभाषा — पूर्वी हिंदी
+- अवधी — पश्चिमी हिंदी
+- बुंदेली — पश्चिमी हिंदी
+- भोजपुरी — पश्चिमी हिंदी
+= पश्चिमी हिंदी: ब्रज, खड़ी बोली, बुंदेली, कन्नौजी, हरियाणवी; पूर्वी हिंदी: अवधी, बघेली, छत्तीसगढ़ी; भोजपुरी — बिहारी।
+2 बोलियाँ
+? निम्नलिखित में से कौन-सी बोली 'राजस्थानी' वर्ग से संबंधित है?
+- मेवाती
+- कन्नौजी
+- बघेली
+- बुंदेली
+= राजस्थानी: मारवाड़ी, जयपुरी (ढूँढाड़ी), मेवाती, मालवी।
+3 संधि
+? 'परोपकार' का सही संधि-विच्छेद है—
+- पर + उपकार
+- परो + पकार
+- परः + उपकार
+- पर + ओपकार
+= पर + उपकार (अ + उ = ओ) — गुण संधि।
+4 संधि
+? 'महौषधि' में कौन-सी संधि है?
+- दीर्घ
+- गुण
+- वृद्धि
+- यण
+= महा + औषधि (आ + औ = औ) — वृद्धि।
+5 समास
+? 'गंगाजल' में समास का सही विग्रह है—
+- गंगा और जल
+- गंगा का जल
+- गंगा के समान जल
+- गंगा में जल
+= गंगा का जल — षष्ठी तत्पुरुष।
+6 समास
+? 'पीतांबर' शब्द का प्रयोग यदि 'पीला वस्त्र' अर्थ में हो, तो इसमें कौन-सा समास होगा?
+- कर्मधारय
+- बहुव्रीहि
+- द्वंद्व
+- द्विगु
+= पीला है जो अंबर — कर्मधारय; 'पीला है अंबर जिसका' (कृष्ण) — बहुव्रीहि।
+7 समास
+? 'लंबोदर' शब्द में कौन-सा समास है?
+- कर्मधारय
+- बहुव्रीहि
+- तत्पुरुष
+- द्वंद्व
+= लंबा है उदर जिसका (गणेश) — बहुव्रीहि।
+8 उपसर्ग
+? 'अनुकरण' शब्द में प्रयुक्त उपसर्ग है—
+- अन्
+- अनु
+- अ
+- करण
+= अनु + करण।
+9 प्रत्यय
+? निम्नलिखित में से किस शब्द में 'इक' प्रत्यय प्रयुक्त हुआ है?
+- सामाजिक
+- मानवता
+- मिठास
+- बचपन
+= समाज + इक = सामाजिक।
+10 वर्तनी
+? निम्नलिखित में से शुद्ध वर्तनी वाला शब्द चुनिए—
+- प्रज्वलित
+- प्रज्ज्वलित
+- प्रज्वालित
+- प्रज्ज्वलित्
+= शुद्ध: प्रज्वलित।
+11 वर्तनी
+? निम्नलिखित में से कौन-सा शब्द अशुद्ध है?
+- स्वाधीन
+- सौहार्द्र
+- दायित्व
+- औदार्य
+= शुद्ध रूप 'सौहार्द' है।
+12 विलोम
+? 'उत्कर्ष' का विलोम है—
+- अपकर्ष
+- उत्क्रमण
+- अवरोह
+- पतनशील
+= उत्कर्ष ↔ अपकर्ष।
+13 वाक्यांश
+? 'जो दूसरों का उपकार करता है' के लिए एक शब्द है—
+- परोपकारी
+- परमार्थी
+- उपकारी
+- हितैषी
+= परोपकारी।
+14 पर्यायवाची
+? 'नयन' का पर्यायवाची नहीं है—
+- लोचन
+- नेत्र
+- अक्षि
+- बदन
+= बदन = शरीर; बाकी आँख के पर्याय।
+15 क्रिया-विशेषण
+? 'वह लड़का धीरे-धीरे चलता है।' यहाँ 'धीरे-धीरे' है—
+- गुणवाचक विशेषण
+- रीतिवाचक क्रियाविशेषण
+- परिमाणवाचक क्रियाविशेषण
+- संबंधबोधक अव्यय
+= क्रिया कैसे हो रही है — रीतिवाचक क्रियाविशेषण।
+
+# ENGLISH
+16 Error Detection
+! Choose the correct sentence.
+- He does not likes Coffee.
+- He does not liked Coffee.
+- Priti as well as her daughters is collecting ripe mangoes.
+- I resembled to you.
+= With "as well as" the verb agrees with the first subject (Priti → is). "does not like"; "resembled you" (no 'to').
+17 Noun
+! Identify the abstract noun.
+- Courage
+- Table
+- Soldier
+- Garden
+= Courage is a quality — abstract.
+18 Voice
+! Which sentence is in passive voice?
+- Devesh wrote a letter.
+- A letter was written by Devesh.
+- She has been washing the plates since morn.
+- Both Amit and Sumit are struggling.
+= was + V3 + by.
+19 One-word Substitution
+! One who cannot read or write is called
+- Literate
+- Illiterate
+- Scholar
+- Author
+= illiterate.
+20 Spelling
+! Find the correctly spelt word.
+- Accommodation
+- Accomodation
+- Acommodation
+- Accommudation
+= double c, double m.
+P p_beti Passage: Beti Bachao, Beti Padhao
+> The Beti Bachao, Beti Padhao campaign was started to save the girl child and promote her education. It encourages people to treat girls equally and provide them with good education. Educated girls become confident, independent, and help in the progress of their families and the nation. Every child, whether a boy or a girl, deserves equal love, care, and opportunities.
+21 Reading Comprehension @p_beti
+! What is the main aim of the Beti Bachao, Beti Padhao campaign?
+- To build roads
+- To save and educate girls
+- To plant trees
+- To provide jobs
+= "…to save the girl child and promote her education."
+22 Reading Comprehension @p_beti
+! What does the campaign encourage?
+- Gender discrimination
+- Equal treatment of girls
+- Child labour
+- Pollution
+= "It encourages people to treat girls equally…"
+
+# SANSKRIT
+23 माहेश्वर सूत्र
+? माहेश्वरसूत्रेषु अन्तिमः सूत्रः कः?
+- लण्
+- हल् (सूत्र)
+- हल् इति प्रत्याहारः
+- हल्
+= 14वाँ अंतिम सूत्र 'हल्' है। (पेपर में (B) और (D) दोनों 'हल्' छपे हैं; कुंजी में (D))
+24 कारक
+? 'रामेण बाणेन रावणः हतः।' इत्यत्र 'बाणेन' पदे कः कारकः?
+- कर्ता
+- कर्म
+- करणम्
+- अपादानम्
+= बाण साधन है — करण कारक, तृतीया।
+25 समास
+? 'गङ्गाजलम्' इति समासस्य विग्रहः कः?
+- गङ्गायाः जलम्
+- गङ्गायै जलम्
+- गङ्गायाम् जलम्
+- गङ्गात् जलम्
+= षष्ठी तत्पुरुष — गङ्गायाः जलम्।
+26 अव्यय
+? अधोलिखितेषु अव्ययपदम् किम्?
+- पुनः
+- वृक्षः
+- नदी
+- बालिका
+= पुनः (फिर) — अव्यय।
+27 विभक्ति
+? 'रामात्' इत्यत्र का विभक्तिः?
+- पञ्चमी एकवचनम्
+- षष्ठी एकवचनम्
+- चतुर्थी एकवचनम्
+- तृतीया एकवचनम्
+= राम: पञ्चमी — रामात्; षष्ठी — रामस्य; चतुर्थी — रामाय; तृतीया — रामेण।
+28 धातुरूप
+? 'भू' धातोः लोट्-लकारे मध्यमपुरुष एकवचनरूपम् किम्?
+- भवसि
+- भव
+- भवतु
+- अभवः
+= लोट् म.पु. एक. — भव; भवसि — लट्; भवतु — लोट् प्र.पु.; अभवः — लङ्।
+P p_kak गद्यांश: काकः
+> काकः तृषार्तः आसीत्। स जलस्य अन्वेषणं कुर्वन् एकं घटम् अपश्यत्। घटे अल्पं जलम् आसीत्। तदा स बुद्ध्या उपायम् अचिन्तयत्। स एकैकशः कङ्कतान् घटे अक्षिपत्। तेन जलस्य स्तरः ऊर्ध्वम् अगच्छत्। अन्ते स जलं पीत्वा सन्तुष्टः अभवत्। अतः बुद्धिः बलात् श्रेष्ठा इति प्रसिद्धम्।
+29 गद्यांश @p_kak
+? काकः कीदृशः आसीत्?
+- क्षुधार्तः
+- तृषार्तः
+- श्रान्तः
+- रोगी
+= "काकः तृषार्तः आसीत्" (प्यासा)।
+30 गद्यांश @p_kak
+? 'अन्वेषणम्' इति पदस्य अर्थः कः?
+- त्यागः
+- खोजः
+- गमनम्
+- अध्ययनम्
+= अन्वेषण = खोज।
+
+# SCIENCE
+31 विटामिन
+? कौन-सा विटामिन कैल्शियम के अवशोषण में सहायता करता है?
+! Which vitamin helps in the absorption of calcium?
+- विटामिन A / Vitamin A
+- विटामिन C / Vitamin C
+- विटामिन D / Vitamin D
+- विटामिन K / Vitamin K
+= विटामिन D आंत से Ca व P अवशोषण बढ़ाता है।
+32 पाचन
+? आमाशय में प्रोटीन को पेप्टोन में कौन-सा एंजाइम बदलता है?
+! Which enzyme converts proteins into peptones in the stomach?
+- टायलिन / Ptyalin
+- ट्रिप्सिन / Trypsin
+- पेप्सिन / Pepsin
+- लाइपेज / Lipase
+= पेप्सिन (आमाशय); टायलिन — लार (स्टार्च); ट्रिप्सिन — अग्न्याशय।
+33 परिसंचरण
+? फेफड़ों से हृदय तक ऑक्सीजन युक्त रक्त कौन-सी रक्तवाहिनी ले जाती है?
+! Which blood vessel carries oxygenated blood from the lungs to the heart?
+- फुफ्फुसीय धमनी / Pulmonary artery
+- महाधमनी / Aorta
+- महाशिरा / Vena cava
+- फुफ्फुसीय शिरा / Pulmonary vein
+= फुफ्फुसीय शिरा — एकमात्र शिरा जिसमें शुद्ध रक्त बहता है।
+34 पादप ऊतक
+? पौधे के तने की मोटाई बढ़ाने के लिए मुख्य रूप से कौन-सा ऊतक उत्तरदायी है?
+! Which tissue is mainly responsible for increasing the girth of a plant stem?
+- शीर्षस्थ विभज्योतक / Apical meristem
+- अंतर्वर्ती विभज्योतक / Intercalary meristem
+- पार्श्व विभज्योतक / कैम्बियम / Lateral meristem / Cambium
+- पैरेंकाइमा / Parenchyma
+= पार्श्व विभज्योतक (कैम्बियम) — द्वितीयक वृद्धि (मोटाई); शीर्षस्थ — लंबाई।
+35 रक्त समूह
+? कौन-सा रक्त समूह सार्वभौमिक ग्राही (Universal Recipient) कहलाता है?
+! Which blood group is known as the universal recipient?
+- O−
+- A+
+- B+
+- AB+
+= AB+ (कोई प्रतिरक्षी नहीं); O− सार्वभौमिक दाता।
+36 मोल अवधारणा
+? CO₂ का मोलर द्रव्यमान कितना है?
+! The molar mass of CO₂ is:
+- 22 g/mol
+- 28 g/mol
+- 44 g/mol
+- 48 g/mol
+= 12 + 2 × 16 = 44 g/mol।
+37 सूचक
+? क्षारीय (Basic) विलयन में कौन-सा संकेतक (Indicator) गुलाबी रंग का हो जाता है?
+! Which indicator turns pink in a basic solution?
+- मिथाइल ऑरेंज / Methyl Orange
+- लिटमस / Litmus
+- फिनॉल्फ्थेलीन / Phenolphthalein
+- हल्दी / Turmeric
+= फिनॉल्फ्थेलीन क्षार में गुलाबी; लिटमस नीला; हल्दी लाल-भूरी।
+38 गति
+? एक वस्तु 15 सेकंड में 120 मीटर चलती है। उसका औसत वेग कितना होगा?
+! A body travels 120 m in 15 s. Its average speed is:
+- 6 m/s
+- 8 m/s
+- 10 m/s
+- 12 m/s
+= 120 ÷ 15 = 8 m/s।
+
+# MATHS
+39 लाभ-हानि
+? यदि किसी वस्तु का विक्रय मूल्य, उसके क्रय मूल्य के $\frac{5}{4}$ के बराबर है, तो इस संव्यवहार में प्राप्त प्रतिशत लाभ ज्ञात कीजिए।
+! If the selling price of an article is equal to $\frac{5}{4}$ of its cost price, find the percentage profit.
+- 35%
+- 30%
+- 25%
+- 40%
+= लाभ $=\frac{1}{4}=25\%$।
+40 HCF
+? $\frac{14}{33}, \frac{42}{55}, \frac{21}{22}$ का महत्तम समापवर्तक है-
+! The HCF of $\frac{14}{33}, \frac{42}{55}, \frac{21}{22}$ is-
+- $\frac{330}{7}$
+- $\frac{17}{330}$
+- $\frac{7}{330}$
+- $\frac{330}{17}$
+= भिन्नों का HCF = अंशों का HCF / हरों का LCM = $\frac{7}{330}$।
+41 भिन्न
+? किसी संख्या का $\frac{1}{5}$, उसी संख्या के $\frac{1}{7}$ से 10 अधिक है। वह संख्या है-
+! $\frac{1}{5}$ of a number is 10 more than $\frac{1}{7}$ of the same number. The number is-
+- 125
+- 150
+- 175
+- 200
+= $\frac{N}{5}-\frac{N}{7}=\frac{2N}{35}=10$ ⇒ $N=175$।
+42 संख्या पद्धति
+? 100 तथा 300 के मध्य कितनी संख्याएँ 7 से विभाज्य हैं?
+! How many numbers between 100 and 300 are divisible by 7?
+- 42
+- 28
+- 35
+- 31
+= पहली 105, अंतिम 294 ⇒ $\frac{294-105}{7}+1=28$।
+43 घातांक
+? x का मान ज्ञात कीजिए, यदि $5^{x-3}\cdot3^{2x-8}=225$
+! Find the value of x, if $5^{x-3}\cdot3^{2x-8}=225$
+- 3
+- 5
+- 6
+- 7
+= $225=5^2\cdot3^2$ ⇒ $x-3=2$ और $2x-8=2$ ⇒ $x=5$।
+44 अनुपात
+? यदि a : b = 2 : 3 और b : c = 4 : 5 है, तो a² : b² : bc ज्ञात कीजिए-
+! If a : b = 2 : 3 and b : c = 4 : 5, then find a² : b² : bc-
+- 4 : 9 : 45
+- 16 : 36 : 45
+- 16 : 36 : 20
+- 4 : 36 : 20
+= a : b : c = 8 : 12 : 15 ⇒ 64 : 144 : 180 = 16 : 36 : 45।
+45 क्षेत्रमिति
+? 5 मीटर चौड़ाई वाली एक-दूसरे को लम्बवत् काटकर जाने वाली दो सड़कें एक 80 मीटर × 60 मीटर साइज के आयताकार क्षेत्र के बीचो-बीच बनाई गई हैं। सड़कों पर 10 रु. प्रति वर्गमीटर की दर से बजरी डालने का खर्च होगा?
+! Two roads 5 m wide crossing each other at right angles are built through the middle of an 80 m × 60 m rectangular field. What is the cost of gravelling the roads at ₹10 per m²?
+- ₹ 650
+- ₹ 6750
+- ₹ 7250
+- ₹ 7000
+= क्षेत्रफल = 80×5 + 60×5 − 5×5 = 400 + 300 − 25 = 675 मी² ⇒ ₹6750। (बीच का 5×5 वर्ग दो बार गिना जाता है, इसलिए घटाया)
+=* figures/sol_p04_q45_roads.png
+46 वृत्त
+? यदि किसी अर्धवृत्ताकार क्षेत्र का परिमाप 144 मीटर हो तो क्षेत्र का व्यास होगा – (π = 22/7 लीजिए)।
+! If the perimeter of a semi-circular region is 144 m, then its diameter is – (take π = 22/7)
+- 56 मीटर / 56 m
+- 28 मीटर / 28 m
+- 30 मीटर / 30 m
+- 55 मीटर / 55 m
+= $\pi r+2r=\frac{36}{7}r=144$ ⇒ $r=28$ ⇒ व्यास 56 मी।
+47 माध्य
+? पाँच प्रेक्षणों x+1, x+2, x+3, x+6, x+8 का माध्य 11 है। बीच के तीन प्रेक्षणों का माध्य होगा-
+! The mean of five observations x+1, x+2, x+3, x+6, x+8 is 11. The mean of the middle three observations will be-
+- 11
+- 10
+- $\frac{32}{3}$
+- 12
+= $\frac{5x+20}{5}=11$ ⇒ $x=7$; बीच के तीन 9, 10, 13 ⇒ माध्य $\frac{32}{3}$। ⚠️ गणना से (C) $\frac{32}{3}$; मूल कुंजी में (B) छपा है।
+48 त्रिभुज
+? एक समबाहु △ABC में यदि AD ⊥ BC हो, तो निम्नलिखित में से कौन सा कथन सत्य होगा?
+! In an equilateral △ABC, if AD ⊥ BC, then which of the following is true?
+- 4 AB² = 3 AD²
+- 3 AB² = 4 AD²
+- 2 AB² = 4 AD²
+- 3 AB² = 2 AD²
+= BD = AB/2 ⇒ AD² = AB² − AB²/4 = ¾AB² ⇒ 4AD² = 3AB²।
+=* figures/sol_p04_q48_triangle.png
+49 वृत्त
+? 30 सेमी लम्बी एक जीवा एक वृत्त के केन्द्र से 8 सेमी दूर है तो उस वृत्त की त्रिज्या कितनी है?
+! A chord 30 cm long is at a distance of 8 cm from the centre of a circle. What is the radius?
+- 17 सेमी / 17 cm
+- 21 सेमी / 21 cm
+- 23 सेमी / 23 cm
+- 19 सेमी / 19 cm
+= केंद्र से लंब जीवा को समद्विभाजित करता है: $r=\sqrt{15^2+8^2}=\sqrt{289}=17$।
+=* figures/sol_p04_q49_chord.png
+50 बहुभुज
+? एक पंचभुज का एक कोण 140° है। शेष 4 कोणों का अनुपात 1:2:3:4 है, तो पंचभुज के सबसे बड़े कोण का मान बताइये?
+! One angle of a pentagon is 140°. The remaining 4 angles are in the ratio 1:2:3:4. What is the largest angle?
+- 150°
+- 160°
+- 170°
+- 145°
+= शेष योग 540 − 140 = 400 = 10 भाग ⇒ 1 भाग 40° ⇒ सबसे बड़ा 160°।
+51 क्षेत्रमिति
+? एक बेलनाकार स्तम्भ का वक्रपृष्ठ 264 मी² और इसका आयतन 924 मी³ है, तो इसके व्यास का इसकी ऊँचाई से अनुपात बताइये?
+! The curved surface area of a cylindrical pillar is 264 m² and its volume is 924 m³. Find the ratio of its diameter to its height.
+- 7 : 6
+- 6 : 7
+- 7 : 3
+- 3 : 7
+= $\frac{\pi r^2h}{2\pi rh}=\frac{r}{2}=\frac{924}{264}$ ⇒ r = 7; h = 264/(2π·7) = 6 ⇒ d : h = 14 : 6 = 7 : 3। ⚠️ गणना से (C); मूल कुंजी में (A) छपा है।
+52 प्रतिशत
+? x की आय y की आय से 20% अधिक है। y की आय x की आय से कितने प्रतिशत कम है?
+! The income of x is 20% more than that of y. By what percentage is y's income less than x's?
+- $83\frac{1}{3}\%$
+- $16\frac{2}{3}\%$
+- $82\frac{2}{3}\%$
+- $16\frac{1}{3}\%$
+= $\frac{20}{120}\times100=16\frac{2}{3}\%$।
+53 कार्य-समय
+? यदि 15 मजदूर एक सड़क को 48 घंटे में बनाते हैं, तो उसी काम को 30 घंटे में करने के लिए आवश्यक मजदूरों की संख्या है?
+! If 15 workers can build a road in 48 hours, how many workers are needed to do it in 30 hours?
+- 18
+- 24
+- 20
+- 22
+= 15 × 48 = x × 30 ⇒ x = 24।
+54 शेषफल प्रमेय
+? यदि $4x^3-2x^2+5x-8$ को $(x-2)$ से विभाजित किया जाए तो शेष क्या होगा?
+! If $4x^3-2x^2+5x-8$ is divided by $(x-2)$, what is the remainder?
+- 16
+- 26
+- 42
+- 81
+= f(2) = 32 − 8 + 10 − 8 = 26।
+
+# पर्यावरण एवं सामाजिक अध्ययन
+55 दर्रे
+? निम्नलिखित में से किस पर्वत दर्रे से होकर भारत, चीन तथा पाकिस्तान के सीमांत क्षेत्र पर सामरिक संपर्क स्थापित होता है?
+! Through which mountain pass is strategic connectivity established across the border regions of India, China, and Pakistan?
+- जोजी ला / Zoji La
+- काराकोरम दर्रा / Karakoram Pass
+- नाथू ला / Nathu La
+- बारा-लाचा ला / Bara-lacha La
+= काराकोरम दर्रा — लद्दाख में, तीनों देशों के संगम क्षेत्र के पास।
+56 मृदा
+? निम्नलिखित में से कौन-सा युग्म असंगत (Incorrectly Matched) है?
+! Which of the following pairs is incorrectly matched?
+- लेटराइट मृदा — काजू / Laterite soil — Cashew
+- काली मृदा — कपास / Black soil — Cotton
+- जलोढ़ मृदा — गन्ना / Alluvial soil — Sugarcane
+- लाल मृदा — जूट / Red soil — Jute
+= जूट जलोढ़ (डेल्टाई) मृदा में उगता है, लाल मृदा में नहीं।
+57 राष्ट्रीय आंदोलन
+? भारतीय राष्ट्रीय कांग्रेस के किस अधिवेशन में पहली बार 'मौलिक अधिकारों' एवं 'राष्ट्रीय आर्थिक कार्यक्रम' का प्रस्ताव पारित किया गया?
+! In which INC session was the resolution on 'Fundamental Rights' and the 'National Economic Programme' first passed?
+- लाहौर अधिवेशन (1929) / Lahore Session (1929)
+- हरिपुरा अधिवेशन (1938) / Haripura Session (1938)
+- कराची अधिवेशन (1931) / Karachi Session (1931)
+- फैजपुर अधिवेशन (1936) / Faizpur Session (1936)
+= कराची 1931, अध्यक्ष सरदार पटेल।
+58 राष्ट्रीय आंदोलन
+? निम्नलिखित में से किस क्रांतिकारी ने 'द फिलॉसफी ऑफ द बॉम्ब' नामक प्रसिद्ध पुस्तिका के लेखन में प्रमुख भूमिका निभाई?
+! Which revolutionary played a key role in writing the famous pamphlet 'The Philosophy of the Bomb'?
+- भगत सिंह / Bhagat Singh
+- भगवती चरण वोहरा / Bhagwati Charan Vohra
+- चंद्रशेखर आज़ाद / Chandrashekhar Azad
+- बटुकेश्वर दत्त / Batukeshwar Dutt
+= भगवती चरण वोहरा (1930) — गांधीजी के लेख 'The Cult of the Bomb' के उत्तर में।
+59 अर्थव्यवस्था
+? यदि भारतीय रिज़र्व बैंक नकद आरक्षित अनुपात (CRR) बढ़ा देता है, तो उसका तात्कालिक प्रभाव क्या होगा?
+! If the RBI raises the Cash Reserve Ratio (CRR), what will be the immediate effect?
+- बैंकों की ऋण देने की क्षमता बढ़ेगी / Banks' lending capacity will increase
+- बाजार में मुद्रा आपूर्ति बढ़ेगी / Money supply in the market will increase
+- बैंकों की ऋण देने की क्षमता घटेगी / Banks' lending capacity will decrease
+- विदेशी निवेश स्वतः बढ़ जाएगा / Foreign investment will automatically increase
+= अधिक नकदी RBI के पास रखनी होगी ⇒ ऋण योग्य राशि घटेगी।
+60 अर्थव्यवस्था
+? 'कोर मुद्रास्फीति (Core Inflation)' में सामान्यतः किसे शामिल नहीं किया जाता?
+! What is generally not included in 'Core Inflation'?
+- आवास / Housing
+- शिक्षा / Education
+- खाद्य एवं ईंधन / Food and fuel
+- स्वास्थ्य / Health
+= अस्थिर कीमतों वाले खाद्य व ईंधन बाहर रखे जाते हैं।
+61 पारिस्थितिकी
+? 'एज इफेक्ट (Edge Effect)' शब्द मुख्यतः किससे संबंधित है?
+! The term 'Edge Effect' is primarily related to what?
+- मृदा अपरदन / Soil erosion
+- आवास विखंडन / Habitat fragmentation
+- जल प्रदूषण / Water pollution
+- अम्लीय वर्षा / Acid rain
+= दो आवासों की सीमा (इकोटोन) पर बदलाव — विखंडन से किनारे बढ़ते हैं।
+62 पर्यावरण
+? निम्नलिखित में से कौन-सी ग्रीनहाउस गैस वैश्विक तापवृद्धि क्षमता (GWP) की दृष्टि से CO₂ की तुलना में अत्यधिक प्रभावी मानी जाती है?
+! Which greenhouse gas is significantly more potent than CO₂ in terms of Global Warming Potential?
+- ऑक्सीजन / Oxygen
+- नाइट्रस ऑक्साइड / Nitrous oxide
+- नाइट्रोजन / Nitrogen
+- हाइड्रोजन / Hydrogen
+= N₂O का GWP लगभग 270–300 गुना।
+
+# बाल विकास (CDP)
+63 शिक्षक प्रशिक्षण
+? PMOST का पूरा नाम (Full Form) क्या है?
+! What is the full form of PMOST?
+- Primary Management of School Teachers
+- Program of Mass Orientation of School Teachers
+- Program of Modern Orientation of Science Teachers
+- Planning and Management of School Teachers
+= 1986 — शिक्षकों का व्यापक अभिमुखीकरण कार्यक्रम।
+64 अधिगम नियम
+? वुडवर्थ ने थॉर्नडाइक के 'तत्परता के नियम' को किस अन्य मानसिक संप्रत्यय के समतुल्य माना है?
+! To which mental concept did Woodworth consider Thorndike's 'Law of Readiness' equivalent?
+- मानसिक विन्यास या तैयारी / Mental Set or Preparation
+- पुनर्बलन / Reinforcement
+- उद्दीपक सामान्यीकरण / Stimulus Generalisation
+- सहचर्यात्मक स्थानांतरण / Associative Shifting
+= वुडवर्थ — तत्परता = मानसिक विन्यास (Mental Set)।
+65 भाषा विकास
+? बी. एफ. स्किनर के अनुसार, बच्चों में भाषा का विकास किसका परिणाम होता है?
+! According to B. F. Skinner, language development in children is the result of what?
+- जन्मजात व्याकरणिक क्षमता का / Innate grammatical capacity
+- परिपक्वता का / Maturation
+- अनुकरण एवं पुनर्बलन का / Imitation & Reinforcement
+- केवल अंतर्दृष्टि का / Insight only
+= स्किनर (व्यवहारवाद) — अनुकरण व पुनर्बलन; चॉम्स्की — जन्मजात क्षमता (LAD)।
+66 मध्यकालीन शिक्षा
+? मध्यकालीन शिक्षा में जो छात्र 'तर्कशास्त्र और दर्शनशास्त्र' में विशेष योग्यता प्राप्त करते थे, उन्हें मदरसा द्वारा कौन सी उपाधि दी जाती थी?
+! In medieval education, what title was given by Madrasas to students who excelled in 'Logic & Philosophy'?
+- आमिल / Aamil
+- काजिल / Kaajil
+- फाजिल / Fazil
+- काबिल / Kaabil
+= तर्क-दर्शन में — फ़ाज़िल; धर्मशास्त्र में — आलिम; साहित्य में — काबिल।
+67 अधिगम
+? "अधिगम आदतों, ज्ञान और अभिवृत्तियों का अर्जन है।" यह परिभाषा किसकी है?
+! "Learning is the acquisition of habits, knowledge, and attitudes." Whose definition is this?
+- गेट्स / Gates
+- गिलफोर्ड / Guilford
+- क्रो एंड क्रो / Crow and Crow
+- स्किनर / Skinner
+= क्रो एवं क्रो की परिभाषा।
+68 विकास
+? परिपक्वता (Maturation) और अधिगम (Learning) में मुख्य अंतर क्या है?
+! What is the primary difference between Maturation and Learning?
+- परिपक्वता एक जैविक प्रक्रिया है, अधिगम एक अभ्यास आधारित प्रक्रिया है। / Maturation is biological; learning is practice-based.
+- अधिगम जन्मजात होता है, परिपक्वता अर्जित। / Learning is innate; maturation is acquired.
+- परिपक्वता जीवनभर चलती है, अधिगम रुक जाता है। / Maturation continues throughout life; learning stops.
+- दोनों में कोई अंतर नहीं है। / There is no difference.
+= परिपक्वता स्वाभाविक जैविक वृद्धि; अधिगम अनुभव व अभ्यास से।
+69 शिक्षा के स्तंभ
+? शिक्षा का वह स्तंभ जो छात्र को 'अधिगम कैसे किया जाए' (Learning how to learn) की तकनीक सिखाता है ताकि वह जीवन भर स्वयं नया ज्ञान अर्जित कर सके, क्या कहलाता है?
+! Which pillar of education teaches 'learning how to learn' so that one can acquire new knowledge throughout life?
+- जानने के लिए सीखना / Learning to know
+- कुछ करने के लिए सीखना / Learning to do
+- बनने के लिए सीखना / Learning to be
+- साथ रहने के लिए सीखना / Learning to live together
+= डेलर्स आयोग (1996) — 'Learning to know' में सीखना सीखना शामिल है।
+70 जीवन कौशल
+? एक शिक्षक अपनी कक्षा में छात्रों के सामने एक दुविधा रखता है: "एक व्यक्ति की पत्नी बीमार है और उसके पास दवा के पैसे नहीं हैं, क्या उसे दवा चुरानी चाहिए?" छात्र इस पर गंभीर विचार-विमर्श करते हैं और नैतिक नियमों तथा मानवीय जीवन की रक्षा के आधार पर उत्तर देते हैं। शिक्षक यहाँ किस जीवन कौशल युग्म का सामूहिक विकास कर रहा है?
+! A teacher presents a dilemma: "A man's wife is sick and he has no money for medicine; should he steal it?" Students deliberate and answer on the basis of moral rules and protection of life. Which pair of life skills is being developed?
+- समस्या समाधान एवं आत्म-जागरूकता / Problem Solving and Self-awareness
+- समालोचनात्मक चिंतन एवं निर्णय लेना / Critical Thinking and Decision Making
+- रचनात्मक चिंतन एवं प्रभावी संप्रेषण / Creative Thinking and Effective Communication
+- तनाव प्रबंधन एवं सहानुभूति / Coping with Stress and Empathy
+= कोहलबर्ग की हाइंज दुविधा — तर्क से परखना और निर्णय करना।
+71 पियाजे
+? पियाजे के अनुसार 'अतिविस्तारण' (Over-extension) किस अवस्था में होता है?
+! According to Piaget, in which stage does 'Over-extension' occur?
+- संवेदी-गामक / Sensory-motor
+- पूर्व-संक्रियात्मक / Pre-operational
+- मूर्त-संक्रियात्मक / Concrete-operational
+- औपचारिक / Formal-operational
+= उत्तर कुंजी के अनुसार पूर्व-संक्रियात्मक (जैसे हर चार पैर वाले जानवर को 'कुत्ता' कहना)।
+72 कोहलबर्ग
+? कोहलबर्ग के किस चरण में 'विवेक की अंतरात्मा' जागृत होती है?
+! At which stage of Kohlberg's theory does the 'conscience/universal ethical principle' awaken?
+- चरण 4 / Stage 4
+- चरण 5 / Stage 5
+- चरण 6 / Stage 6
+- चरण 3 / Stage 3
+= चरण 6 — सार्वभौमिक नैतिक सिद्धांत (अंतरात्मा)।
+73 मैस्लो
+? मैस्लो के पदानुक्रम में 'चतुर्थ स्तर' की आवश्यकता कौन सी है?
+! Which is the 'fourth level' need in Maslow's hierarchy?
+- सामाजिक / Social needs
+- सम्मान की आवश्यकता / Esteem needs
+- आत्म-सिद्धि / Self-actualisation
+- सुरक्षा / Safety needs
+= 1 शारीरिक, 2 सुरक्षा, 3 सामाजिक (प्रेम), 4 सम्मान, 5 आत्म-सिद्धि।
+74 शिक्षक की भूमिका
+? यदि कोई शिक्षक कक्षा में अपनी 'अभिवृत्ति' (Attitude) को पूरी तरह से 'अधिगम-केंद्रित' बनाना चाहता है, तो उसे निम्नलिखित में से किस व्यवहार को प्राथमिकता देनी चाहिए?
+! If a teacher wants a completely 'learning-centred' classroom attitude, which behaviour should be prioritised?
+- छात्रों की गलतियों पर तुरंत कठोर प्रशासनिक अनुशासनात्मक कार्रवाई करना / Strict disciplinary action on mistakes
+- पाठ्यक्रम को समय से पहले समाप्त करने के लिए केवल व्याख्यान विधि का उपयोग करना / Only lecture method to finish syllabus early
+- छात्रों के पूर्वज्ञान और व्यक्तिगत विभिन्नताओं के आधार पर लचीली शिक्षण विधियों को अपनाना / Flexible methods based on prior knowledge and individual differences
+- केवल उन मेधावी छात्रों पर ध्यान केंद्रित करना जो कक्षा का परिणाम बेहतर कर सकते हैं / Focusing only on meritorious students
+= पूर्वज्ञान व वैयक्तिक भिन्नता के अनुसार लचीला शिक्षण।
+75 कक्षा प्रबंधन
+? हेनरी फेयोल और लूथर गुलिक के प्रबंधन सिद्धांतों के अनुसार, कक्षा-कक्ष प्रबंधन में एक सफल शिक्षक के लिए सबसे महत्वपूर्ण 'नियोजन कार्य' (Planning) क्या दर्शाता है?
+! According to Fayol and Gulick, what does the most important 'Planning' task represent for a teacher in classroom management?
+- कक्षा में छात्रों की बैठकों की दैनिक भौतिक व्यवस्था तय करना / Daily seating arrangement
+- शिक्षण उद्देश्यों, शिक्षण विधियों और मूल्यांकन उपकरणों का पहले से तार्किक निर्धारण करना / Pre-determining objectives, methods and evaluation tools
+- प्रधानाचार्य को साप्ताहिक प्रशासनिक रिपोर्ट सौंपना / Weekly report to principal
+- परीक्षा के बाद केवल असफल छात्रों की सूची तैयार करना / List of failed students after exam
+= नियोजन = उद्देश्य, विधि, मूल्यांकन पहले से तय करना।
+76 संविधान
+? भारतीय संविधान के अनुच्छेद 51A(k) के तहत, माता-पिता या संरक्षक का यह मूल कर्तव्य है कि वे अपने बच्चों को शिक्षा के अवसर प्रदान करें। यह कर्तव्य किस आयु वर्ग के बच्चों के लिए अनिवार्य किया गया है?
+! Under Article 51A(k), parents/guardians must provide opportunities for education to their child. For which age group?
+- 3 से 6 वर्ष / 3 to 6 years
+- 6 से 18 वर्ष / 6 to 18 years
+- 0 से 14 वर्ष / 0 to 14 years
+- 6 से 14 वर्ष / 6 to 14 years
+= 86वाँ संशोधन 2002 — 11वाँ मूल कर्तव्य, 6–14 वर्ष।
+77 निर्देशन-परामर्श
+? मार्गदर्शक और परामर्शदाता के रूप में, किशोर छात्रों की संवेगात्मक समस्याओं को हल करने के लिए शिक्षक को कौन सी प्रणाली अपनानी चाहिए?
+! As a guide and counsellor, which approach should a teacher adopt for adolescents' emotional problems?
+- सत्तावादी दृष्टिकोण / Authoritarian Approach
+- गैर-निदेशात्मक और सहानुभूतिपूर्ण परामर्श / Non-directive and Empathic Counseling
+- दंडात्मक और उपचारात्मक विमुखता / Punitive and remedial aversion
+- उपेक्षापूर्ण दृष्टिकोण / Neglectful approach
+= कार्ल रोजर्स — अनिदेशात्मक (सेवार्थी-केंद्रित) परामर्श।
+78 मूल्यांकन
+? निदानात्मक परीक्षण (Diagnostic Test) का मुख्य कार्य क्या होता है?
+! What is the primary function of a Diagnostic Test?
+- छात्रों की विशिष्ट अधिगम कठिनाइयों और कमियों के अंतर्निहित कारणों का पता लगाना / Finding causes of specific learning difficulties
+- छात्रों को फाइनल ग्रेड या रैंक देना / Assigning final grades
+- वार्षिक परीक्षा का आयोजन करना / Conducting annual exams
+- छात्रों को अगली कक्षा में प्रोन्नत करना / Promoting students
+= निदान → फिर उपचारात्मक शिक्षण।
+79 CCE
+? सीसीई (CCE) के अंतर्गत 'पोर्टफोलियो' (Portfolio) का क्या महत्व है?
+! What is the significance of a 'Portfolio' under CCE?
+- यह केवल शिक्षक की उपस्थिति का रिकॉर्ड है / Record of teacher attendance
+- इसमें बच्चे के काम का एक निश्चित अवधि में किया गया क्रमिक संग्रह होता है, जो उसकी प्रगति दिखाता है / Progressive collection of a child's work showing growth
+- यह केवल खेलकूद का सर्टिफिकेट है / Only a sports certificate
+- यह विद्यालय के बजट का लेखा-जोखा है / School budget ledger
+= पोर्टफोलियो — बच्चे के कार्यों का क्रमिक संग्रह।
+80 सूक्ष्म शिक्षण
+? सूक्ष्म शिक्षण (Micro-teaching) चक्र का सही और तार्किक वैज्ञानिक क्रम कौन सा है?
+! Which is the correct sequence of the Micro-teaching cycle?
+- शिक्षण → प्रतिपुष्टि → योजना → पुनः शिक्षण → पुनः प्रतिपुष्टि / Teach → Feedback → Plan → Re-teach → Re-feedback
+- योजना → शिक्षण → प्रतिपुष्टि → पुनः योजना → पुनः शिक्षण → पुनः प्रतिपुष्टि / Plan → Teach → Feedback → Re-plan → Re-teach → Re-feedback
+- प्रतिपुष्टि → योजना → शिक्षण → पुनः शिक्षण → पुनः योजना / Feedback → Plan → Teach → Re-teach → Re-plan
+- योजना → प्रतिपुष्टि → शिक्षण → पुनः योजना → पुनः प्रतिपुष्टि / Plan → Feedback → Teach → Re-plan → Re-feedback
+= सूक्ष्म शिक्षण चक्र: योजना, शिक्षण (6 मि.), प्रतिपुष्टि, पुनर्योजना, पुनर्शिक्षण, पुनर्प्रतिपुष्टि।
+81 शिक्षा आयोग
+? भारत में 'स्थानीय स्वशासी संस्थाओं को प्राथमिक शिक्षा का भार सौंपने' का सुझाव सबसे पहले किस आयोग ने दिया था?
+! Which commission first suggested handing primary education to local self-governing bodies?
+- वुड का घोषणा पत्र (1854) / Wood's Despatch (1854)
+- हंटर आयोग (1882) / Hunter Commission (1882)
+- सैडलर आयोग (1917) / Sadler Commission (1917)
+- सार्जेंट योजना (1944) / Sargent Scheme (1944)
+= हंटर आयोग — प्राथमिक शिक्षा जिला/नगर बोर्डों को।
+82 विद्यालय अभिलेख
+? विद्यालय अभिलेखों में 'लॉग बुक' (Log Book) का मुख्य उपयोग क्या दर्ज करने के लिए किया जाता है?
+! What is the primary purpose of a 'Log Book' in school records?
+- छात्रों की दैनिक उपस्थिति / Daily attendance of students
+- विद्यालय की विशेष घटनाएं, निरीक्षण अधिकारियों के रिमार्क और संस्था के विकास का इतिहास / Special events, inspection remarks and history of development
+- शिक्षकों का आकस्मिक अवकाश / Casual leave of teachers
+- वित्तीय लेन-देन का दैनिक विवरण / Daily financial transactions
+= लॉग बुक — विद्यालय का इतिहास-अभिलेख।
+83 शिक्षा संस्थान
+? जिला स्तर पर प्राथमिक शिक्षा के प्रबंधन और शिक्षकों के सेवाकालीन प्रशिक्षण के लिए जिम्मेदार सर्वोच्च शीर्ष संस्था कौन सी है?
+! Which apex body is responsible for primary education management and in-service teacher training at the district level?
+- SCERT
+- BRC
+- NCERT
+- DIET (जिला शिक्षा एवं प्रशिक्षण संस्थान)
+= DIET — जिला स्तर; SCERT — राज्य; NCERT — राष्ट्रीय; BRC — विकासखंड।
+84 संस्थागत योजना
+? संस्थागत योजना (Institutional Planning) का सबसे मजबूत और व्यावहारिक आधार क्या होना चाहिए?
+! What should be the strongest and most practical baseline for Institutional Planning?
+- संस्था की वास्तविक आवश्यकताएं, उपलब्ध स्थानीय संसाधन और उनका सर्वोत्तम उपयोग / Actual needs, local resources and their best use
+- केवल बाहरी प्रशासनिक और सरकारी दबाव / Only external pressure
+- प्रधानाध्यापक की व्यक्तिगत रुचि और इच्छा / Headmaster's personal wish
+- बजट की अत्यधिक उपलब्धता / Excessive budget
+= उपलब्ध संसाधनों से वास्तविक आवश्यकताओं की पूर्ति।
+85 शिक्षा आयोग
+? कोठारी आयोग (1964-66) की रिपोर्ट का आधिकारिक शीर्षक क्या था, जिसने शिक्षा को राष्ट्रीय विकास की मुख्यधारा से जोड़ा?
+! What was the official title of the Kothari Commission (1964-66) report?
+- राष्ट्र और शिक्षा / Nation and Education
+- शिक्षा एवं राष्ट्रीय प्रगति / Education and National Progress
+- आधुनिक भारत में शिक्षा / Education in Modern India
+- शिक्षा एवं राष्ट्रीय विकास / Education and National Development
+= "Education and National Development"।
+86 शिक्षा योजना
+? ऑपरेशन ब्लैक बोर्ड योजना (1987-88) को राष्ट्रीय शिक्षा नीति 1986 के तहत शुरू किया गया था। बाद में किस वर्ष इसका विस्तार 'उच्च प्राथमिक स्तर' तक किया गया?
+! Operation Blackboard (1987-88) was launched under NPE 1986. In which year was it extended to the upper primary level?
+- 1992
+- 1990
+- 1995
+- 2000
+= संशोधित NPE / POA 1992।
+
+# सामान्य ज्ञान एवं समसायिक घटनाएं
+87 भारत
+? किस शहर को 'वेनिस ऑफ द ईस्ट (Venice of the East)' कहा जाता है, जहाँ सिटी पैलेस स्थित है?
+! Which city is called the 'Venice of the East', where City Palace is located?
+- मैसूर / Mysore
+- मनाली / Manali
+- मुम्बई / Mumbai
+- उदयपुर / Udaipur
+= उदयपुर — झीलों की नगरी।
+88 योजनाएँ
+? भारत सरकार द्वारा 'मेक इन इंडिया' (Make in India) कार्यक्रम की शुरुआत कब की गई थी?
+! When was the 'Make in India' program launched?
+- 1 जुलाई 2015 / 1 July 2015
+- 8 नवंबर 2016 / 8 November 2016
+- 12 मई 2020 / 12 May 2020
+- 25 सितंबर 2014 / 25 September 2014
+= 25 सितंबर 2014। (1 जुलाई 2015 — डिजिटल इंडिया)
+89 समसामयिकी
+? हाल ही में स्कूली शिक्षा और साक्षरता विभाग के सचिव के रूप में किसे नियुक्त किया गया है?
+! Who has recently been appointed Secretary of the Department of School Education and Literacy?
+- एस सोमनाथ / S. Somanath
+- टी के अनिल कुमार / T. K. Anil Kumar
+- गोपाल कृष्ण शर्मा / Gopal Krishna Sharma
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — इनमें से कोई नहीं।
+90 अर्थव्यवस्था
+? स्वतंत्रता के बाद से भारत में अब तक कुल कितनी बार रुपये का अवमूल्यन (Devaluation) किया जा चुका है?
+! How many times has the Rupee been devalued since independence?
+- 1 बार / 1 time
+- 2 बार / 2 times
+- 4 बार / 4 times
+- 3 बार / 3 times
+= 1949, 1966, 1991 — तीन बार।
+91 समसामयिकी
+? भारत की मेज़बानी में इंटरनेशनल टाइप 1 डायबिटीज समिट 2026 कहाँ आयोजित होगी?
+! Where will the International Type 1 Diabetes Summit 2026 be hosted by India?
+- पुणे / Pune
+- जोधपुर / Jodhpur
+- कोलकाता / Kolkata
+- सूरत / Surat
+= उत्तर कुंजी के अनुसार — पुणे।
+92 समसामयिकी
+? वित्तीय वर्ष को बदल कर जनवरी से दिसंबर तक करने वाला पहला भारतीय राज्य कौन सा है?
+! Which is the first Indian state to change its financial year to January–December?
+- आंध्र प्रदेश / Andhra Pradesh
+- तमिलनाडु / Tamil Nadu
+- मध्य प्रदेश / Madhya Pradesh
+- कर्नाटक / Karnataka
+= मध्य प्रदेश (2018 में निर्णय)।
+93 खेल
+? आईएसएसएफ विश्व कप 2026 में महिला 25 मीटर पिस्टल स्पर्धा का स्वर्ण पदक किसने जीता?
+! Who won the gold in the Women's 25 m Pistol at the ISSF World Cup 2026?
+- ईशा सिंह / Esha Singh
+- मनु भाकर / Manu Bhaker
+- सैन्यम / Sainyam
+- याओ कियानशुन / Yao Qianxun
+= उत्तर कुंजी के अनुसार — ईशा सिंह।
+94 कर
+? GST के अंतर्गत सोने (Gold) और चांदी पर कर की दर (Tax Slab) कितनी निर्धारित की गई है?
+! What is the GST rate on gold and silver?
+- 3%
+- 5%
+- 0.25%
+- 12%
+= 3% (कच्चे हीरे 0.25%)।
+95 समसामयिकी
+? हाल ही में लद्दाख में कितनी नई तहसीलों का गठन किया गया है?
+! How many new tehsils have recently been created in Ladakh?
+- 10
+- 12
+- 17
+- 20
+= उत्तर कुंजी के अनुसार — 20।
+96 समसामयिकी
+? हाल ही में उच्च शिक्षा विभाग का नया सचिव किसे नियुक्त किया गया है?
+! Who has recently been appointed the new Secretary of the Department of Higher Education?
+- विनीत जोशी / Vineet Joshi
+- विवेक भारद्वाज / Vivek Bhardwaj
+- नरेश पाल गंगवार / Naresh Pal Gangwar
+- अनुराग जैन / Anurag Jain
+= उत्तर कुंजी के अनुसार — अनुराग जैन।
+97 खेल
+? हाल ही में वर्ल्ड जूनियर स्क्वैश चैंपियनशिप 2026 का खिताब किसने जीता है?
+! Who has won the World Junior Squash Championship 2026?
+- बार्ब साहेम / Barb Sameh
+- अनाहत सिंह / Anahat Singh
+- रुकैया सालेम / Rokeaya Salem
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — अनाहत सिंह।
+98 संविधान
+? राज्यसभा का पदेन सभापति कौन होता है?
+! Who is the ex-officio Chairman of Rajya Sabha?
+- राष्ट्रपति / President
+- प्रधानमंत्री / Prime Minister
+- उपराष्ट्रपति / Vice President
+- लोकसभा अध्यक्ष / Speaker of Lok Sabha
+= अनु. 64 — उपराष्ट्रपति।
+99 संगठन
+? विश्व व्यापार संगठन (WTO) की स्थापना कब हुई?
+! When was the World Trade Organization (WTO) established?
+- 1991
+- 1993
+- 1995
+- 2000
+= 1 जनवरी 1995 (GATT का स्थान)।
+100 अर्थव्यवस्था
+? 'मौद्रिक नीति' किसके द्वारा बनाई जाती है?
+! By whom is 'Monetary Policy' formulated?
+- वित्त मंत्रालय / Ministry of Finance
+- RBI
+- नीति आयोग / NITI Aayog
+- संसद / Parliament
+= RBI (MPC); राजकोषीय नीति — वित्त मंत्रालय।
+101 संगठन
+? निम्नलिखित में से कौन-सा देश उत्तरी अटलांटिक संधि संगठन का 31वां सदस्य बन गया है?
+! Which country became the 31st member of NATO?
+- जर्मनी / Germany
+- यूके / UK
+- फिनलैंड / Finland
+- डेनमार्क / Denmark
+= फ़िनलैंड (अप्रैल 2023); स्वीडन 32वाँ (2024)।
+102 खेल
+? हाल ही में टी20 अंतरराष्ट्रीय क्रिकेट में अर्धशतक लगाने वाले विश्व के सबसे युवा खिलाड़ी कौन बने हैं?
+! Who has become the youngest player in the world to score a fifty in T20 International cricket?
+- शुभमन गिल / Shubman Gill
+- यशस्वी जायसवाल / Yashasvi Jaiswal
+- वैभव सूर्यवंशी / Vaibhav Suryavanshi
+- अभिषेक शर्मा / Abhishek Sharma
+= उत्तर कुंजी के अनुसार — वैभव सूर्यवंशी।
+103 समसामयिकी
+? हाल ही में केंद्र सरकार ने किन मूल्यवर्गों के भारतीय रिज़र्व बैंक के पॉलिमर बैंक नोटों के field trial को मंजूरी दी है?
+! The Central Government approved field trials of RBI polymer banknotes of which denominations?
+- ₹50 और ₹100 / ₹50 and ₹100
+- ₹10 और ₹20 / ₹10 and ₹20
+- ₹100 और ₹200 / ₹100 and ₹200
+- ₹200 और ₹500 / ₹200 and ₹500
+= उत्तर कुंजी के अनुसार — ₹10 और ₹20।
+104 दिवस
+? नोबेल पुरस्कार विजेता डॉ. सी.वी. रमन की खोज के उपलक्ष्य में भारत में 'राष्ट्रीय विज्ञान दिवस' कब मनाया जाता है?
+! When is 'National Science Day' celebrated in India?
+- 22 अप्रैल / 22 April
+- 11 मई / 11 May
+- 4 मार्च / 4 March
+- 28 फरवरी / 28 February
+= 28 फरवरी 1928 — रमन प्रभाव की खोज। (11 मई — राष्ट्रीय प्रौद्योगिकी दिवस)
+105 समसामयिकी
+? हाल ही में माउंट एवरेस्ट पर सफलतापूर्वक चढ़ाई करने वाली असम की पहली महिला कौन बनी हैं?
+! Who recently became the first woman from Assam to summit Mount Everest?
+- रूपामोनी गोरे / Rupamoni Gor
+- भानिता तिमुंगपी / Bhanita Timungpi
+- अरुणिमा सिन्हा / Arunima Sinha
+- प्रेमलता अग्रवाल / Premalata Agrawal
+= उत्तर कुंजी के अनुसार — भानिता तिमुंगपी।
+106 समसामयिकी
+? हाल ही में अंतरराष्ट्रीय अपराध न्यायालय (ICC) ने अपने मुख्य अभियोजक के पद से किसे हटा दिया है?
+! Who has recently been removed as Chief Prosecutor of the International Criminal Court?
+- लुइस मोरेनो ओकाम्पो / Luis Moreno Ocampo
+- फातू बेन्सौदा / Fatou Bensouda
+- एंटोनियो गुटेरेस / António Guterres
+- करीम खान / Karim Khan
+= उत्तर कुंजी के अनुसार — करीम खान।
+107 समसामयिकी
+? हाल ही में किस राज्य ने साइबर वित्तीय धोखाधड़ी e-Zero FIR सेवा शुरू की है?
+! Which state has recently launched the e-Zero FIR service for cyber financial fraud?
+- केरल / Kerala
+- पंजाब / Punjab
+- गुजरात / Gujarat
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — गुजरात।
+108 संगठन
+? एम.टी.सी.आर. (MTCR) का गठन किस वर्ष में हुआ?
+! In which year was the MTCR formed?
+- 1985
+- 1986
+- 1987
+- 1988
+= मिसाइल प्रौद्योगिकी नियंत्रण व्यवस्था — 1987; भारत 2016 में सदस्य।
+109 इतिहास
+? भारत में सर्वप्रथम Medical College कहाँ खुला था?
+! Where was the first Medical College opened in India?
+- लखनऊ / Lucknow
+- मद्रास (चेन्नई) / Madras (Chennai)
+- वाराणसी / Varanasi
+- कलकत्ता (कोलकाता) / Calcutta (Kolkata)
+= कलकत्ता मेडिकल कॉलेज, 1835।
+110 पुरस्कार
+? 'ग्रैमी पुरस्कार' किस क्षेत्र में दिया जाता है?
+! In which field is the 'Grammy Award' given?
+- वास्तुकला / Architecture
+- संगीत / Music
+- नृत्य / Dance
+- रंगमंच / Theatre
+= ग्रैमी — संगीत।
+111 खेल
+? 'ओलिम्पिक ऑर्डर' किसके द्वारा प्रदान किया जाता है?
+! By whom is the 'Olympic Order' conferred?
+- संयुक्त राष्ट्र / United Nations
+- अंतरराष्ट्रीय ओलंपिक समिति (IOC) / International Olympic Committee (IOC)
+- फीफा / FIFA
+- यूनेस्को / UNESCO
+= IOC का सर्वोच्च सम्मान (1975 से)।
+
+# REASONING
+112 कैलेंडर
+? वह दिन जो आने वाले कल से दो दिन बाद आएगा वह गुरुवार है, तो बीते हुए कल से तीन दिन पहले क्या दिन था?
+! The day after the day after tomorrow is Thursday. What day was it three days before yesterday?
+- गुरुवार / Thursday
+- मंगलवार / Tuesday
+- सोमवार / Monday
+- इनमें से कोई नहीं / N.O.T
+= आज + 3 = गुरुवार ⇒ आज सोमवार; कल (बीता) रविवार; उससे 3 दिन पहले गुरुवार। ⚠️ गणना से (A) गुरुवार; मूल कुंजी में (B) छपा है।
+113 विषम
+? विषम चुनिए-
+! Choose the odd one.
+- टेल्यूरियम / Tellurium
+- फ्रैंशियम / Francium
+- स्ट्रॉन्शियम / Strontium
+- स्कैंडियम / Scandium
+= टेल्यूरियम उपधातु (metalloid) है; बाकी धातुएँ।
+114 रक्त संबंध
+? A और B बहनें हैं। D की माता A है। B की एक पुत्री C है, जो F से विवाहित है। A का पति G है, तो C का D से क्या सम्बन्ध है?
+! A and B are sisters. A is D's mother. B has a daughter C, who is married to F. A's husband is G. How is C related to D?
+- मौसेरी बहन / Cousin sister
+- भांजी / Niece
+- मौसी / Aunt
+- साली / Sister-in-law
+= D की माँ A और C की माँ B बहनें ⇒ C, D की मौसेरी बहन।
+=* figures/sol_p04_q114_tree.png
+115 दिशा
+? बिन्दु P, बिन्दु Q के पूर्व की ओर 11 किमी है। एक व्यक्ति बिन्दु Q से शुरू करता है और पश्चिम की ओर 9 किमी चलता है। वह फिर बाएँ मुड़ता है और 4 किमी चलता है। वह अन्ततः बाएँ मुड़ता है और रुकने से पहले 20 किमी चलता है। बिन्दु P तक पहुँचने के लिए उसे किस दिशा में और कितनी दूर चलना चाहिए?
+! Point P is 11 km east of point Q. A person starts from point Q and walks 9 km west. He then turns left and walks 4 km. He finally turns left and walks 20 km before stopping. In which direction and how far should he walk to reach P?
+- दक्षिण, 11 किमी / South, 11 km
+- उत्तर, 4 किमी / North, 4 km
+- दक्षिण, 24 किमी / South, 24 km
+- उत्तर, 9 किमी / North, 9 km
+= Q से पश्चिम 9, बाएँ (दक्षिण) 4, बाएँ (पूर्व) 20 ⇒ Q से 11 किमी पूर्व और 4 किमी दक्षिण ⇒ P ठीक 4 किमी उत्तर में। (पेपर में प्रारंभ बिंदु स्पष्ट नहीं छपा; उत्तर कुंजी (B) Q से शुरुआत मानने पर ही बनता है। पेपर का 5वाँ विकल्प "(e) इनमें से कोई नहीं" भी था।)
+=* figures/sol_p04_q115_path.png
+116 गणितीय संक्रियाएँ
+? यदि '+' का अर्थ '−', '−' का अर्थ '×', '×' का अर्थ '÷' और '÷' का अर्थ '+' है, तो 15 × 3 ÷ 4 − 6 + 7 = ?
+! If '+' means '−', '−' means '×', '×' means '÷' and '÷' means '+', then 15 × 3 ÷ 4 − 6 + 7 = ?
+- 22
+- 25
+- 30
+- 33
+= बदलकर: 15 ÷ 3 + 4 × 6 − 7 = 5 + 24 − 7 = 22। ⚠️ गणना से (A) 22; मूल कुंजी में (D) छपा है।
+
+# सूचना तकनीक
+117 मेमोरी
+? Cache Memory का मुख्य उद्देश्य क्या है?
+! What is the main purpose of Cache Memory?
+- Secondary Storage बढ़ाना / Increase secondary storage
+- CPU और Main Memory के बीच Speed Gap कम करना / Reduce the speed gap between CPU and main memory
+- कंप्यूटर की Power बढ़ाना / Increase computer power
+- Operating System को Store करना / Store the operating system
+= बार-बार प्रयुक्त डेटा CPU के पास रखकर गति बढ़ाना।
+118 नेटवर्क
+? निम्न में से कौन-सा Protocol Internet पर सुरक्षित Web Communication के लिए प्रयुक्त होता है?
+! Which protocol is used for secure web communication on the Internet?
+- HTTP
+- FTP
+- HTTPS
+- SMTP
+= HTTPS = HTTP + SSL/TLS एन्क्रिप्शन।
+119 नेटवर्क
+? IPv4 Address की लंबाई कितनी होती है?
+! What is the length of an IPv4 address?
+- 16 बिट
+- 32 बिट
+- 64 बिट
+- 128 बिट
+= IPv4 — 32 बिट; IPv6 — 128 बिट।
+120 सुरक्षा
+? निम्न में से कौन-सा Malware स्वयं को दूसरे Programs में जोड़कर फैलता है?
+! Which malware spreads by attaching itself to other programs?
+- Worm
+- Virus
+- Trojan
+- Spyware
+= वायरस होस्ट प्रोग्राम से जुड़ता है; वर्म स्वतंत्र रूप से नेटवर्क पर फैलता है।

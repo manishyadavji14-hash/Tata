@@ -25,7 +25,7 @@ export async function render({ root, setHeader }) {
       <div class="card flex items-center gap-3 !p-3">
         <a href="#/${a.state === 'submitted' ? 'result' : 'exam'}/${encodeURIComponent(a.id)}" class="min-w-0 flex-1">
           <div class="truncate text-sm font-semibold">${esc(a.title)}</div>
-          <div class="truncate text-[11px] text-slate-500">${esc(titles.get(a.setId) || 'सेट डिलीट हो चुका')} • ${fmtDate(a.startedAt)}</div>
+          <div class="truncate text-[11px] text-slate-500">${esc(titles.get(a.setId) || a.title || 'सेट डिलीट हो चुका')} • ${fmtDate(a.startedAt)}</div>
           <div class="text-[11px] text-slate-500">${esc((MODE_LABEL[a.mode] || a.mode).split(' / ')[0])} • ${a.qNos.length} प्रश्न</div>
         </a>
         ${a.state === 'submitted' && a.result

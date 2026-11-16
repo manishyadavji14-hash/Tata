@@ -11,6 +11,7 @@
 //   -* <image> | <option>   option with a picture (path relative to the paper file); text after | is optional
 //   * <image>               picture for the question (png/jpg/webp, embedded as base64)
 //   = <solution (Hindi)>    ~ <key concept>
+//   =* <image>              picture inside the solution (diagram that explains the answer)
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { basename, join, dirname, resolve, extname } from 'node:path';
 
@@ -75,7 +76,9 @@ export function convert(src, file = 'paper', baseDir = '.') {
     else if (line.startsWith('* ')) {
       try { q.img = embed(baseDir, line.slice(2)); } catch (e) { errors.push(`${at}: ${e.message}`); }
     }
-    else if (line.startsWith('= ')) q.sol.push(line.slice(2));
+    else if (line.startsWith('=* ')) {
+      try { q.sol.push(`<img src="${embed(baseDir, line.slice(3))}" alt="हल का चित्र">`); } catch (e) { errors.push(`${at}: ${e.message}`); }
+    } else if (line.startsWith('= ')) q.sol.push(line.slice(2));
     else if (line.startsWith('~ ')) q.kc = line.slice(2);
     else errors.push(`${at}: unknown line "${line.slice(0, 40)}"`);
   });

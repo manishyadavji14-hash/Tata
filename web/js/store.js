@@ -3,7 +3,7 @@ import { db } from './db.js';
 import { uid } from './util.js';
 
 export async function listSets() {
-  const sets = await db.all('sets');
+  const sets = (await db.all('sets')).filter((s) => s.kind !== 'practice');
   return sets.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0)); // newest import first
 }
 
@@ -42,6 +42,7 @@ export async function deleteSet(id) {
   for (const a of await db.byIndex('attempts', 'setId', id)) await db.delete('attempts', a.id);
   for (const b of await db.byIndex('bookmarks', 'setId', id)) await db.delete('bookmarks', b.key);
   for (const c of await db.all('chats')) if (c.setId === id) await db.delete('chats', c.key);
+  for (const m of await db.all('mistakes')) if (m.setId === id) await db.delete('mistakes', m.key);
   await db.delete('sets', id);
 }
 

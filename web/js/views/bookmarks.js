@@ -8,7 +8,7 @@ import { refresh } from '../app.js';
 
 export async function render({ root, settings, setHeader }) {
   setHeader({ title: 'बुकमार्क / Bookmarks' });
-  const [rows, sets] = await Promise.all([db.all('bookmarks'), listSets()]);
+  const [rows, sets] = await Promise.all([db.all('bookmarks'), db.all('sets')]);
   const setMap = new Map(sets.map((s) => [s.id, s]));
   const groups = new Map();
   for (const b of rows.sort((a, c) => c.createdAt - a.createdAt)) {

@@ -1,6 +1,6 @@
 // IndexedDB storage layer. Every piece of app data lives here so the app works fully offline.
 const DB_NAME = 'abhyas-cbt';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 const STORES = {
   sets: { keyPath: 'id' },
@@ -10,6 +10,7 @@ const STORES = {
   settings: { keyPath: 'key' },
   chats: { keyPath: 'key' },
   importDrafts: { keyPath: 'key' },
+  mistakes: { keyPath: 'key' }, // wrong-answers bank: `${setId}|${q_no}` -> { correct, wrong, ... }
 };
 
 let dbPromise = null;

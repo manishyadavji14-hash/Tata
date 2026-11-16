@@ -330,13 +330,15 @@ P p_edu Part 2: Reading Comprehension
 - 120°
 = $(90-x)+(180-x) = 140 \Rightarrow x = 65°$; $2x-10 = 120°$।
 44 समांतर रेखाएँ
-? दिये गये चित्र में OP ∥ RS, ∠OPQ = 100° तथा ∠QRS = 140°, तो ∠PQR बराबर होगा [चित्र: O→P→Q→R→S टेढ़ी रेखा, P पर 100°, R पर 140°]
+? दिये गये चित्र में OP ∥ RS, ∠OPQ = 100° तथा ∠QRS = 140°, तो ∠PQR बराबर होगा
+* figures/q_lines_100_140.png
 ! In the given figure, OP ∥ RS, ∠OPQ = 100°, and ∠QRS = 140°; then ∠PQR will be equal to:
 - 80°
 - 60°
 - 70°
 - 50°
-= R पर बाह्य कोण $180-140 = 40°$; ∠PQR $= 100° - 40° = 60°$ (चित्र के अनुसार)।
+= Q से OP के समांतर रेखा खींचें। P पर 180° − 100° = 80°, R पर 180° − 140° = 40° ⇒ ∠PQR = 180° − 80° − 40° = 60°। (सूत्र: ∠OPQ + ∠QRS − 180°)
+=* figures/sol_lines_100_140.png
 45 चक्रवृद्धि ब्याज
 ? कोई धनराशि चक्रवृद्धि ब्याज से 15 वर्षों में दुगुनी हो जाती है। यह राशि कितने वर्षों में आठ गुनी हो जायेगी?
 ! A sum doubles itself in 15 years at compound interest. In how many years will it become eight times?

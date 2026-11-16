@@ -1,0 +1,5313 @@
+{
+ "exam_meta": {
+  "exam_id": "chandra_supertet_model_01",
+  "title": "SUPER TET प्राथमिक MODEL PAPER-01 (चन्द्रा इंस्टीट्यूट)",
+  "duration_minutes": 150,
+  "max_marks": 120,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "सभी प्रश्नों के अंक समान हैं। उत्तर कुंजी मूल प्रश्न-पत्र (चन्द्रा इंस्टीट्यूट) के अनुसार है।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "HINDI",
+  "ENGLISH",
+  "SANSKRIT",
+  "SCIENCE",
+  "MATHS",
+  "पर्यावरण एवं सामाजिक अध्ययन",
+  "बाल विकास (CDP)",
+  "सामान्य ज्ञान एवं समसायिक घटनाएं",
+  "REASONING",
+  "सूचना तकनीक"
+ ],
+ "passages": {
+  "p_nari": {
+   "title": "Passage: Nari Shakti",
+   "text_hi": "",
+   "text_en": "A woman is a full circle. Within her is the power to create, nurture and transform. Nari Shakti is a concept that has existed in Indian culture since time immemorial. The mother goddess has been worshipped from ancient times in various forms—Durga and Kali in East India, Mahishasura Mardini and Bhagawati in Kerala, etc. She has always been portrayed as the epitome of Shakti, able to accomplish that which man cannot.<br>This, however, is only one side of the picture. The flip side is a grim scenario of women having no voice in their own lives, leave alone the decisions of the family. They had been subservient to the men in their lives. Their aspirations were not considered important enough to be encouraged. Their hardships were submerged in their responsibilities as mother, wife and daughter."
+  }
+ },
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "HINDI",
+   "topic": "वर्ण",
+   "syllabus_tag": "HINDI - वर्ण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"अं, अः\" होते हैं-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अयोगवाह",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुस्वार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "विसर्ग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ये सभी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "अं (अनुस्वार) और अः (विसर्ग) न स्वर हैं न व्यंजन — इन्हें अयोगवाह कहते हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 2,
+   "section": "HINDI",
+   "topic": "संज्ञा",
+   "syllabus_tag": "HINDI - संज्ञा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भाववाचक संज्ञा का निर्माण कितने प्रकार से होता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "8",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "पाँच प्रकार से: जातिवाचक संज्ञा (बच्चा→बचपन), सर्वनाम (अपना→अपनत्व), विशेषण (मीठा→मिठास), क्रिया (पढ़ना→पढ़ाई), अव्यय (दूर→दूरी)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 3,
+   "section": "HINDI",
+   "topic": "शब्द भेद",
+   "syllabus_tag": "HINDI - शब्द भेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"चारपाई\" किस प्रकार का शब्द है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "यौगिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "योगरूढ़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रूढ़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "चार + पाई (पाया) — खंड सार्थक, पर अर्थ विशेष (खाट) में रूढ़ — योगरूढ़।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 4,
+   "section": "HINDI",
+   "topic": "सर्वनाम",
+   "syllabus_tag": "HINDI - सर्वनाम",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"आप भला तो जग भला\" — 'आप' किस प्रकार का सर्वनाम है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "निजवाचक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सम्बन्धवाचक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "प्रश्नवाचक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भाववाचक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "यहाँ 'आप' = स्वयं — निजवाचक सर्वनाम।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 5,
+   "section": "HINDI",
+   "topic": "क्रिया",
+   "syllabus_tag": "HINDI - क्रिया",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"पक्षी आकाश में उड़ते हैं।\" किस प्रकार की क्रिया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सकर्मक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अकर्मक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नामधातु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रेरणार्थक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "'उड़ना' का कोई कर्म नहीं — अकर्मक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 6,
+   "section": "HINDI",
+   "topic": "संधि",
+   "syllabus_tag": "HINDI - संधि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'स्वार्थ' शब्द में संधि है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "दीर्घ संधि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गुण संधि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "यण् संधि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अयादि संधि",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "स्व + अर्थ = स्वार्थ (अ + अ = आ) — दीर्घ संधि।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 7,
+   "section": "HINDI",
+   "topic": "काल",
+   "syllabus_tag": "HINDI - काल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"रमेश जाता होगा\" — काल है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "संदिग्ध भूतकाल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "संदिग्ध वर्तमान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सामान्य वर्तमान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "'जाता होगा' — वर्तमान में होने का संदेह — संदिग्ध वर्तमान।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 8,
+   "section": "HINDI",
+   "topic": "कारक",
+   "syllabus_tag": "HINDI - कारक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"मैं तुमसे टेलीफोन पर बात करूँगा।\" कौन-सा कारक है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अधिकरण कारक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सम्प्रदान कारक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अपादान कारक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "करण कारक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर कुंजी के अनुसार करण कारक — टेलीफोन बात करने का साधन है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 9,
+   "section": "HINDI",
+   "topic": "लिंग",
+   "syllabus_tag": "HINDI - लिंग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पुल्लिंग शब्द है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गंगा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यमुना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सरस्वती",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सोन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "सोन (शोण) नद है — पुल्लिंग; गंगा, यमुना, सरस्वती स्त्रीलिंग।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 10,
+   "section": "HINDI",
+   "topic": "वचन",
+   "syllabus_tag": "HINDI - वचन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "नित्य बहुवचन शब्द है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सभा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पानी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भीड़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्राण",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "प्राण, दर्शन, होश, आँसू आदि सदा बहुवचन में प्रयुक्त होते हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 11,
+   "section": "HINDI",
+   "topic": "वर्ण",
+   "syllabus_tag": "HINDI - वर्ण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सी बात गलत है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "'ध' सघोष, महाप्राण, दन्त्य है",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "'ब' सघोष, ओष्ठ्य, महाप्राण है",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "'च' अघोष, तालव्य, अल्पप्राण है",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "'ख' कंठ्य, महाप्राण, अघोष है",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "'ब' सघोष, ओष्ठ्य पर अल्पप्राण है ('भ' महाप्राण)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 12,
+   "section": "HINDI",
+   "topic": "वर्ण",
+   "syllabus_tag": "HINDI - वर्ण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "उच्चारण की दृष्टि से 'ग' व्यंजन का सही रूप होगा-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कंठ्य, स्पर्श, अघोष, अल्पप्राण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कंठ्य, स्पर्श, सघोष, अल्पप्राण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कंठ्य, स्पर्श, सघोष, महाप्राण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कंठ्य, स्पर्श, अघोष, महाप्राण",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "वर्ग का तीसरा वर्ण — सघोष, अल्पप्राण। (क अघोष-अल्प, ख अघोष-महा, घ सघोष-महा)",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 13,
+   "section": "HINDI",
+   "topic": "संधि",
+   "syllabus_tag": "HINDI - संधि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "इनमें कौन-सा संधि-शब्द सही है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नदी + अर्पण = नद्यार्पण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सत् + नारी = सन्नारी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "त्रि + अंबक = त्रयंबक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रति + ईक्षा = प्रतिक्षा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "सत् + नारी = सन्नारी (त् + न = न्न)। सही रूप: नद्यर्पण, त्र्यंबक, प्रतीक्षा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 14,
+   "section": "HINDI",
+   "topic": "संधि",
+   "syllabus_tag": "HINDI - संधि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किस विकल्प में वृद्धि स्वर संधि का उदाहरण नहीं है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भावौचित्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यथौचित्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वाण्यौचित्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विश्वैक्य",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "वाणी + औचित्य = वाण्यौचित्य (ई → य्) — यण् संधि। बाकी अ/आ + ए/औ — वृद्धि।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 15,
+   "section": "HINDI",
+   "topic": "समास",
+   "syllabus_tag": "HINDI - समास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किस शब्द में बहुव्रीहि समास है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गोबरगणेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नीलकंठ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "धर्मभ्रष्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जलयान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "नीला है कंठ जिसका (शिव) — बहुव्रीहि।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 16,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_nari",
+   "question_hi": "",
+   "question_en": "The word \"however\", used in the passage, is a/an",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Verb",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Adverb",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Preposition",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Pronoun",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "\"however\" here is a (conjunctive) adverb.",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 17,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_nari",
+   "question_hi": "",
+   "question_en": "In the passage there is a word which means 'dismal and gloomy'. Find the word.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "nurture",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "encouraged",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "grim",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "alone",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "grim = dismal, gloomy.",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 18,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_nari",
+   "question_hi": "",
+   "question_en": "Find the correct one.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "A women is a complete circle.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "A woman is spherical circle.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "A woman is a semi-circle.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "A woman is a full circle.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "First line: \"A woman is a full circle.\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 19,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_nari",
+   "question_hi": "",
+   "question_en": "Whose hardships were submerged in their responsibilities as mother, wife and daughter?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Man",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Woman",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Goddess",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Mardani",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "Passage के अनुसार महिलाओं (Woman) की कठिनाइयाँ। ⚠️ अर्थ के अनुसार उत्तर (B); मूल कुंजी में (A) छपा है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 20,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_nari",
+   "question_hi": "",
+   "question_en": "Find out the word which is similar to \"change\".",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Transform",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Create",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Nurture",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Circle",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "transform = change.",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 21,
+   "section": "ENGLISH",
+   "topic": "Voice",
+   "syllabus_tag": "ENGLISH - Voice",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "",
+   "question_en": "Passive voice of 'She taught me'.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "I am taught by her.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "I am teaching by her.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "I were taught by she.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "I was taught by her.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "Past simple → was/were + V3; me → I, she → her.",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 22,
+   "section": "ENGLISH",
+   "topic": "Error Detection",
+   "syllabus_tag": "ENGLISH - Error Detection",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "",
+   "question_en": "Which of the following is the correct sentence?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "He was elected an M.P.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "The rich exploits the poor.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "I teach in the college.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Sudhir always comes on Monday.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर कुंजी के अनुसार (D)। \"The rich\" बहुवचन है (exploit); \"elected M.P.\" में article नहीं लगता।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 23,
+   "section": "SANSKRIT",
+   "topic": "उपसर्ग",
+   "syllabus_tag": "SANSKRIT - उपसर्ग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'समागमः' में उपसर्ग है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सम् + आ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनु",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "सम् + आ + गम् + घञ् = समागमः।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 24,
+   "section": "SANSKRIT",
+   "topic": "प्रत्यय",
+   "syllabus_tag": "SANSKRIT - प्रत्यय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'गमनम्' शब्द में प्रत्यय है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "घञ्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ल्युट्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "क्त",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "शतृ",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "गम् + ल्युट् (अन) = गमनम्।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 25,
+   "section": "SANSKRIT",
+   "topic": "प्रत्यय",
+   "syllabus_tag": "SANSKRIT - प्रत्यय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'कृतः' शब्द में प्रयुक्त प्रत्यय है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "क्त",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "क्तवत्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "शतृ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "तुमुन्",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "कृ + क्त = कृत।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 26,
+   "section": "SANSKRIT",
+   "topic": "संधि",
+   "syllabus_tag": "SANSKRIT - संधि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'अत्यन्तम्' का संधि-विच्छेद क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अति + अन्तम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अत् + यन्तम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अ + त्यन्तम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अति + यन्तम्",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "अति + अन्तम् (इ → य्) — यण् संधि।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 27,
+   "section": "SANSKRIT",
+   "topic": "समास",
+   "syllabus_tag": "SANSKRIT - समास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'नीलकण्ठः' में कौन-सा समास है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "द्वन्द्व",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कर्मधारय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बहुव्रीहि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अव्ययीभाव",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "नीलः कण्ठः यस्य सः (शिवः) — बहुव्रीहि।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 28,
+   "section": "SANSKRIT",
+   "topic": "समास",
+   "syllabus_tag": "SANSKRIT - समास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'गङ्गाजलम्' में कौन-सा समास है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "षष्ठी तत्पुरुष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कर्मधारय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बहुव्रीहि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "द्वन्द्व",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "गङ्गायाः जलम् — षष्ठी तत्पुरुष।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 29,
+   "section": "SANSKRIT",
+   "topic": "अव्यय",
+   "syllabus_tag": "SANSKRIT - अव्यय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'सदैव' में कौन-सा अव्यय प्रयुक्त है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कालवाचक अव्यय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "स्थानवाचक अव्यय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रीतिवाचक अव्यय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "निषेधवाचक अव्यय",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "सदा (हमेशा) — समय बताता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 30,
+   "section": "SANSKRIT",
+   "topic": "विभक्ति",
+   "syllabus_tag": "SANSKRIT - विभक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'पितृभ्यः' में कौन-सी विभक्ति है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तृतीया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "चतुर्थी/पञ्चमी (बहुवचन)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "षष्ठी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सप्तमी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "पितृ — चतुर्थी व पञ्चमी बहुवचन दोनों 'पितृभ्यः'।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 31,
+   "section": "SCIENCE",
+   "topic": "विद्युत",
+   "syllabus_tag": "SCIENCE - विद्युत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विद्युत प्रतिरोधकता (Resistivity) की SI इकाई क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Ω (Ohm)",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Ω m (Ohm metre)",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Ω/m",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Ω m²",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$\\rho=\\frac{RA}{l}$ ⇒ Ω·m²/m = Ω m।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 32,
+   "section": "SCIENCE",
+   "topic": "प्रकाश",
+   "syllabus_tag": "SCIENCE - प्रकाश",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दृश्य प्रकाश में किस रंग की आवृत्ति (Frequency) सबसे अधिक होती है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "लाल",
+     "text_en": "Red",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हरा",
+     "text_en": "Green",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नीला",
+     "text_en": "Blue",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बैंगनी",
+     "text_en": "Violet",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "बैंगनी — तरंगदैर्ध्य सबसे कम, आवृत्ति सबसे अधिक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 33,
+   "section": "SCIENCE",
+   "topic": "लेंस",
+   "syllabus_tag": "SCIENCE - लेंस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि उत्तल लेंस की शक्ति +5 D है, तो उसकी फोकस दूरी होगी—",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5 cm",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "10 cm",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "20 cm",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "25 cm",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "$f=\\frac{1}{P}=\\frac{1}{5}$ m = 20 cm।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 34,
+   "section": "SCIENCE",
+   "topic": "रसायन",
+   "syllabus_tag": "SCIENCE - रसायन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सबसे अधिक विद्युतऋणात्मकता (Electronegativity) किस तत्व की होती है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ऑक्सीजन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "क्लोरीन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "फ्लोरीन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "नाइट्रोजन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "फ्लोरीन (पॉलिंग मान 4.0)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 35,
+   "section": "SCIENCE",
+   "topic": "रसायन",
+   "syllabus_tag": "SCIENCE - रसायन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से कौन ऑक्सीकारक तथा अपचायक दोनों की तरह कार्य कर सकता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "H₂O₂",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "KMnO₄",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "HCl",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "NaCl",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "H₂O₂ में O की ऑक्सीकरण अवस्था −1 है, जो −2 या 0 दोनों हो सकती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 36,
+   "section": "SCIENCE",
+   "topic": "रसायन",
+   "syllabus_tag": "SCIENCE - रसायन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जिंक की तनु HCl से अभिक्रिया कराने पर कौन-सी गैस निकलती है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ऑक्सीजन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हाइड्रोजन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "क्लोरीन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कार्बन डाइऑक्साइड",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$Zn + 2HCl \\to ZnCl_2 + H_2\\uparrow$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 37,
+   "section": "SCIENCE",
+   "topic": "विटामिन",
+   "syllabus_tag": "SCIENCE - विटामिन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "रक्त का थक्का जमाने के लिए कौन-सा विटामिन आवश्यक है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Vitamin A",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Vitamin C",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Vitamin D",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Vitamin K",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "विटामिन K — प्रोथ्रोम्बिन निर्माण।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 38,
+   "section": "SCIENCE",
+   "topic": "उत्सर्जन",
+   "syllabus_tag": "SCIENCE - उत्सर्जन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वृक्क (Kidney) की क्रियात्मक इकाई है—",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "न्यूरॉन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नेफ्रॉन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एल्वियोलस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विलस",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "नेफ्रॉन; न्यूरॉन — तंत्रिका, एल्वियोलस — फेफड़ा, विलस — आंत।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 39,
+   "section": "MATHS",
+   "topic": "सांख्यिकी",
+   "syllabus_tag": "MATHS - सांख्यिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दिये हुए आंकड़ों 10, 6, 15, 50, 120, 80, 100, 15, 10, 8, 15 का माध्य, बहुलक और माध्यिका क्रमशः है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "39, 15, 17",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "15, 15, 39",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "39, 15, 15",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "37, 15, 15",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "योग 429, माध्य = 429/11 = 39; बहुलक 15 (3 बार); क्रम 6,8,10,10,15,<b>15</b>,15,50,80,100,120 ⇒ माध्यिका 15।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 40,
+   "section": "MATHS",
+   "topic": "बीजगणित",
+   "syllabus_tag": "MATHS - बीजगणित",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि a तथा b दो वास्तविक संख्यायें ऐसी हों कि ab = 0, तो?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "a = 0 तथा b = 0",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "a = 0 या b = 0 अथवा दोनों में से प्रत्येक 0",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "a = 0 तथा b ≠ 0",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "b = 0 तथा a ≠ 0",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "गुणनफल शून्य तभी जब कम से कम एक गुणनखंड शून्य हो।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 41,
+   "section": "MATHS",
+   "topic": "HCF",
+   "syllabus_tag": "MATHS - HCF",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "2.4, 0.36 तथा 7.2 का महत्तम समापवर्तक कितना है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "12",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1.2",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "0.12",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "120",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "240, 36, 720 का HCF = 12 ⇒ 12/100 = 0.12।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 42,
+   "section": "MATHS",
+   "topic": "LCM-HCF",
+   "syllabus_tag": "MATHS - LCM-HCF",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दो संख्यायें 5 : 6 के अनुपात में हैं। यदि इनका महत्तम समापवर्तक 4 हो, तो इनका ल.स. कितना होगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "90",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "96",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "120",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "150",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "संख्याएँ 20, 24 ⇒ LCM = 4 × 5 × 6 = 120।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 43,
+   "section": "MATHS",
+   "topic": "कार्य-समय",
+   "syllabus_tag": "MATHS - कार्य-समय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कुछ व्यक्ति एक काम को 90 दिनों में पूरा करते हैं। यदि 15 व्यक्ति कम हो जायें तो 10 दिन अधिक लगेंगे। आरम्भ में कितने व्यक्ति थे?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "160",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "150",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "145",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "120",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$90x=100(x-15)$ ⇒ $10x=1500$ ⇒ $x=150$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 44,
+   "section": "MATHS",
+   "topic": "शेषफल प्रमेय",
+   "syllabus_tag": "MATHS - शेषफल प्रमेय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि व्यंजक $x^2-2ax+a^2$ को $x+a$ से भाग दिया जाये तो शेष 4 बचता है, a का मान-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "0",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "±1",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "±2",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "±3",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$x=-a$ रखें: $a^2+2a^2+a^2=4a^2=4$ ⇒ $a=\\pm1$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 45,
+   "section": "MATHS",
+   "topic": "श्रेणी",
+   "syllabus_tag": "MATHS - श्रेणी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "1 + 2 + 3 + ……… + 10 − 50 का मान है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "10",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "55",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$\\frac{10\\times11}{2}=55$; 55 − 50 = 5।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 46,
+   "section": "MATHS",
+   "topic": "माध्य",
+   "syllabus_tag": "MATHS - माध्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि प्रेक्षणों x, x + 3, x + 5, x + 7, x + 10 का माध्य 9 है, तब अन्तिम तीन प्रेक्षणों का माध्य है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "$10\\frac{1}{3}$",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "$10\\frac{2}{3}$",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "$11\\frac{1}{3}$",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "$11\\frac{2}{3}$",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "$\\frac{5x+25}{5}=9$ ⇒ $x=4$; अंतिम तीन 9, 11, 14 ⇒ माध्य $\\frac{34}{3}=11\\frac{1}{3}$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 47,
+   "section": "MATHS",
+   "topic": "चतुर्भुज",
+   "syllabus_tag": "MATHS - चतुर्भुज",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि किसी चतुर्भुज के विकर्ण एक दूसरे को समकोण पर समद्विभाजित करते हैं तो यह है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "समचतुर्भुज",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "समलम्ब चतुर्भुज",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आयत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पतंग",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "विकर्ण परस्पर लंब-समद्विभाजक ⇒ चारों भुजाएँ बराबर ⇒ समचतुर्भुज। (पतंग में केवल एक विकर्ण दूसरे को समद्विभाजित करता है।)<br><img src=\"data:image/png;base64,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\" alt=\"हल का चित्र\">",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 48,
+   "section": "MATHS",
+   "topic": "निर्देशांक ज्यामिति",
+   "syllabus_tag": "MATHS - निर्देशांक ज्यामिति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कार्तीय तल में बिन्दु (−2, −3) किस चतुर्थांश में स्थित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्रथम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "द्वितीय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तृतीय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चतुर्थ",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "x ऋणात्मक व y ऋणात्मक ⇒ तृतीय चतुर्थांश।<br><img src=\"data:image/png;base64,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\" alt=\"हल का चित्र\">",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 49,
+   "section": "MATHS",
+   "topic": "घातांक",
+   "syllabus_tag": "MATHS - घातांक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "$2^{250}, 3^{150}, 4^{100}, 5^{50}$ में सबसे बड़ा कौन है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "$4^{100}$",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "$2^{250}$",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "$3^{150}$",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "$5^{50}$",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "घात 50 बनाएँ: $32^{50}, 27^{50}, 16^{50}, 5^{50}$ ⇒ $2^{250}$ सबसे बड़ा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 50,
+   "section": "MATHS",
+   "topic": "श्रेणी",
+   "syllabus_tag": "MATHS - श्रेणी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "$\\left(2-\\frac{1}{3}\\right)\\times\\left(2-\\frac{3}{5}\\right)\\times\\left(2-\\frac{5}{7}\\right)\\times\\cdots\\times\\left(2-\\frac{997}{999}\\right)$ का मान ज्ञात कीजिए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "5/999",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "3/5",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1001/3",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "$\\frac{5}{3}\\cdot\\frac{7}{5}\\cdot\\frac{9}{7}\\cdots\\frac{1001}{999}=\\frac{1001}{3}$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 51,
+   "section": "MATHS",
+   "topic": "अनुपात",
+   "syllabus_tag": "MATHS - अनुपात",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि $\\frac{a}{2}=\\frac{b}{3}=\\frac{c}{5}$ हो तो $\\frac{a+b+c}{c}$ ज्ञात कीजिए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "7",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$a=2k, b=3k, c=5k$ ⇒ $\\frac{10k}{5k}=2$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 52,
+   "section": "MATHS",
+   "topic": "लाभ-हानि",
+   "syllabus_tag": "MATHS - लाभ-हानि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किसी वस्तु को 20% हानि पर ₹7200 में बेच दिया गया। 20% लाभ कमाने के लिए इस वस्तु को किस मूल्य पर बेचना होगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "₹10800",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "₹9800",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "₹9000",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इनमें से कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "CP = 7200/0.8 = 9000; SP = 9000 × 1.2 = 10800।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 53,
+   "section": "MATHS",
+   "topic": "लाभ-हानि",
+   "syllabus_tag": "MATHS - लाभ-हानि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "12 वस्तुओं का क्रयमूल्य 15 वस्तुओं के विक्रय मूल्य के बराबर है तो % हानि ज्ञात कीजिए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "15%",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "25%",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "20%",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "40%",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "हानि% = (15 − 12)/15 × 100 = 20%।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 54,
+   "section": "MATHS",
+   "topic": "बहुभुज",
+   "syllabus_tag": "MATHS - बहुभुज",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किसी समबहुभुज के सभी अन्तः कोणों का योग 2160° है तो बहुभुज में कुल कितनी भुजाएँ हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "12",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "14",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "15",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "18",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$(n-2)\\times180=2160$ ⇒ $n-2=12$ ⇒ $n=14$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 55,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "वनस्पति",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - वनस्पति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'क्लाउड फॉरेस्ट' (Cloud Forest) मुख्य रूप से किस प्रकार के क्षेत्रों में पाए जाते हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सवाना जलवायु क्षेत्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "उच्च पर्वतीय उष्णकटिबंधीय क्षेत्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भूमध्यरेखीय मरुस्थल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "टुंड्रा प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "क्लाउड फॉरेस्ट उष्णकटिबंधीय पर्वतों पर मिलते हैं, जहाँ लगातार बादल/कोहरा रहता है। ⚠️ तथ्य के अनुसार उत्तर (B); मूल कुंजी में (A) छपा है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 56,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "भूगोल",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'मोहोविच्छिन्नता' (Mohorovičić discontinuity) पृथ्वी की किन दो परतों के बीच स्थित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ऊपरी क्रस्ट और निचली क्रस्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "क्रस्ट और मेंटल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ऊपरी मेंटल और निचला मेंटल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मेंटल और कोर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "मोहो — क्रस्ट/मेंटल; गुटेनबर्ग — मेंटल/कोर; कोनराड — ऊपरी/निचली क्रस्ट।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 57,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "राष्ट्रीय आंदोलन",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - राष्ट्रीय आंदोलन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "1942 के भारत छोड़ो आंदोलन के दौरान 'स्वराज पार्टी' का गठन जेल के भीतर से किन दो नेताओं ने गुप्त रूप से किया था?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जयप्रकाश नारायण और राम मनोहर लोहिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अच्युत पटवर्धन और अरुणा आसफ अली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उषा मेहता और बीजू पटनायक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जे.बी. कृपलानी और सुचेता कृपलानी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर कुंजी के अनुसार — जयप्रकाश नारायण और राम मनोहर लोहिया (1942 में भूमिगत आंदोलन के प्रमुख नेता)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 58,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "राष्ट्रीय आंदोलन",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - राष्ट्रीय आंदोलन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किस अधिवेशन में कांग्रेस ने पहली बार 'पूर्ण स्वराज' को अपना लक्ष्य घोषित किया था?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कलकत्ता अधिवेशन (1928)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लाहौर अधिवेशन (1929)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कराची अधिवेशन (1931)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फैजपुर अधिवेशन (1936)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "लाहौर 1929, अध्यक्ष जवाहरलाल नेहरू।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 59,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'बायोलॉजिकल ऑक्सीजन डिमांड' (BOD) का उच्च स्तर क्या संकेत देता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जल में ऑक्सीजन की अधिकता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जल में प्रदूषकों/कार्बनिक कचरे की अधिकता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जल का अत्यधिक शुद्ध होना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जल में शैवाल का अभाव",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "अधिक कार्बनिक कचरा ⇒ सूक्ष्मजीव अधिक ऑक्सीजन खर्च करते हैं ⇒ BOD ऊँचा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 60,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'मोंट्रियल प्रोटोकॉल' (Montreal Protocol) मुख्य रूप से किसके संरक्षण से संबंधित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वैश्विक तापमान (Global Warming)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ओजोन परत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जैव विविधता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मरुस्थलीकरण",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "1987 — ओजोन क्षयकारी पदार्थों (CFC) पर नियंत्रण।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 61,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "अर्थशास्त्र",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - अर्थशास्त्र",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'फिलिप्स वक्र' (Phillips Curve) किन दो चरों के बीच के विपरीत संबंध को दर्शाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मुद्रास्फीति और बेरोजगारी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ब्याज दर और निवेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बचत और उपभोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मांग और आपूर्ति",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "ए. डब्ल्यू. फिलिप्स — मुद्रास्फीति बढ़े तो बेरोजगारी घटती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 62,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "अर्थशास्त्र",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - अर्थशास्त्र",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'हॉकिन्स-साइमन शर्त' (Hawkins-Simon condition) किस विश्लेषण से संबंधित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मांग एवं पूर्ति का नियम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इनपुट-आउटपुट मॉडल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भुगतान संतुलन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राष्ट्रीय आय की गणना",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "लियोन्टीफ़ के इनपुट-आउटपुट मॉडल में व्यवहार्यता की शर्त।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 63,
+   "section": "बाल विकास (CDP)",
+   "topic": "अधिगम स्थानांतरण",
+   "syllabus_tag": "बाल विकास (CDP) - अधिगम स्थानांतरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अधिगम स्थानांतरण के 'समान तत्वों का सिद्धांत' के प्रतिपादक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रॉस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "थॉर्नडाइक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पियाजे",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "थॉर्नडाइक — दो कार्यों में समान तत्व हों तो स्थानांतरण होता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 64,
+   "section": "बाल विकास (CDP)",
+   "topic": "अधिगम",
+   "syllabus_tag": "बाल विकास (CDP) - अधिगम",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"सीखने में सफल अनुभव अधिक सीखने की प्रेरणा देता है।\" यह परिभाषा है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "स्पियरमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पियाजे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रेंडसन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर कुंजी के अनुसार — फ्रेंडसन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 65,
+   "section": "बाल विकास (CDP)",
+   "topic": "मूल प्रवृत्ति",
+   "syllabus_tag": "बाल विकास (CDP) - मूल प्रवृत्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रमुख मूल प्रवृत्ति एवं सहयोगी संवेग हैं क्रमशः-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पलायन, भय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "निवृत्ति, घृणा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जिज्ञासा, आश्चर्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उपर्युक्त सभी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "मैक्डूगल: पलायन–भय, निवृत्ति–घृणा, जिज्ञासा–आश्चर्य — तीनों सही युग्म।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 66,
+   "section": "बाल विकास (CDP)",
+   "topic": "मनोविज्ञान",
+   "syllabus_tag": "बाल विकास (CDP) - मनोविज्ञान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'Types of Men' किसकी रचना है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मॉरिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "स्प्रैंजर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पेस्टालॉजी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "एडवर्ड स्प्रैंजर — मनुष्यों के 6 प्रकार (सैद्धांतिक, आर्थिक, सौंदर्यात्मक, सामाजिक, राजनीतिक, धार्मिक)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 67,
+   "section": "बाल विकास (CDP)",
+   "topic": "वैयक्तिक भिन्नता",
+   "syllabus_tag": "बाल विकास (CDP) - वैयक्तिक भिन्नता",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वैयक्तिक भिन्नता के कौन-से कारक हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वंशानुक्रम एवं वातावरण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जाति, प्रजाति व देश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आयु, बुद्धि, शिक्षा व आर्थिक दशा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उपर्युक्त सभी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "सभी कारक भिन्नता उत्पन्न करते हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 68,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षा आयोग",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षा आयोग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किस आयोग की सिफारिश पर आंगनबाड़ी केंद्रों की व्यवस्था की गई है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कोठारी आयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मेहता आयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रंगराजन आयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "तेंदुलकर समिति",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर कुंजी के अनुसार — कोठारी आयोग (पूर्व-प्राथमिक शिक्षा पर बल)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 69,
+   "section": "बाल विकास (CDP)",
+   "topic": "पियाजे",
+   "syllabus_tag": "बाल विकास (CDP) - पियाजे",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पियाजे ने अपने सिद्धांत में किन पदों पर विशेष बल दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुकूलन एवं साम्यधारणा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "संरक्षण एवं संज्ञानात्मक संरचना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मानसिक क्रिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उपर्युक्त सभी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "अनुकूलन, साम्यधारणा, संरक्षण, स्कीमा (संरचना), मानसिक संक्रिया — सभी।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 70,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षा संस्थान",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षा संस्थान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय शैक्षिक अनुसंधान एवं प्रशिक्षण परिषद (NCERT) की स्थापना कब हुई थी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "1 अप्रैल, 1961",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "1 जून, 1961",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "1 सितंबर, 1961",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "1 मार्च, 1961",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "NCERT — 1 सितंबर 1961, नई दिल्ली।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 71,
+   "section": "बाल विकास (CDP)",
+   "topic": "उ.प्र. शिक्षा",
+   "syllabus_tag": "बाल विकास (CDP) - उ.प्र. शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "उत्तर प्रदेश बेसिक शिक्षा अधिनियम कब लागू हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "25 जुलाई, 1972",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "1 जनवरी, 1972",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "26 जुलाई, 1972",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "15 अगस्त, 1972",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उ.प्र. बेसिक शिक्षा अधिनियम 1972 — 25 जुलाई 1972।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 72,
+   "section": "बाल विकास (CDP)",
+   "topic": "साक्षरता",
+   "syllabus_tag": "बाल विकास (CDP) - साक्षरता",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय साक्षरता मिशन की शुरुआत कब की गई थी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वर्ष 1961",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वर्ष 1988",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वर्ष 2002",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वर्ष 2001",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "5 मई 1988 — 15–35 आयु वर्ग की साक्षरता।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 73,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षण उद्देश्य",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षण उद्देश्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बेंजामिन ब्लूम का संबंध किससे है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "संज्ञानात्मक विकास",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "संवेगात्मक विकास",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "शिक्षण उद्देश्यों की वर्गिकी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अभिप्रेरणा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "ब्लूम्स टैक्सोनॉमी (1956) — ज्ञान, बोध, अनुप्रयोग, विश्लेषण, संश्लेषण, मूल्यांकन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 74,
+   "section": "बाल विकास (CDP)",
+   "topic": "विद्यालय प्रबंधन",
+   "syllabus_tag": "बाल विकास (CDP) - विद्यालय प्रबंधन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किसी विद्यालय में भौतिक संसाधन के प्रमुख अंग हैं-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "विद्यालय प्रयोगशाला भवन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "शौचालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "शैक्षिक उपकरण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उपरोक्त सभी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "भवन, प्रयोगशाला, शौचालय, उपकरण — सभी भौतिक संसाधन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 75,
+   "section": "बाल विकास (CDP)",
+   "topic": "विद्यालय भवन",
+   "syllabus_tag": "बाल विकास (CDP) - विद्यालय भवन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विद्यालय भवन के प्रमुख आकार में कौन सम्मिलित नहीं है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "E",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Z",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "T",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Y",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर कुंजी के अनुसार Z — विद्यालय भवन प्रायः E, T, U, L, H आकार के बनाए जाते हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 76,
+   "section": "बाल विकास (CDP)",
+   "topic": "मूल्य",
+   "syllabus_tag": "बाल विकास (CDP) - मूल्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"मूल्य वह है जो मानव इच्छाओं की तुष्टि करे।\" यह विचार दिया गया-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अरस्तू द्वारा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ह्यूम द्वारा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अर्बन द्वारा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हॉफडिंग द्वारा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "अर्बन (W. M. Urban) की परिभाषा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 77,
+   "section": "बाल विकास (CDP)",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "बाल विकास (CDP) - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सा एक सामाजिक प्रेरक है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "आत्मगौरव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्रेम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भूख",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्यास",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "भूख-प्यास जैविक प्रेरक; आत्मगौरव (प्रतिष्ठा) सामाजिक/अर्जित प्रेरक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 78,
+   "section": "बाल विकास (CDP)",
+   "topic": "सृजनात्मकता",
+   "syllabus_tag": "बाल विकास (CDP) - सृजनात्मकता",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अलग ढंग से कार्य करने तथा नये तरीकों का इस्तेमाल करने की योग्यता कहलाती है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सृजनात्मकता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "व्यक्तित्व विकास",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नवीनता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जागरूकता",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "नवीन, मौलिक ढंग से सोचना-करना — सृजनात्मकता।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 79,
+   "section": "बाल विकास (CDP)",
+   "topic": "निर्देशन",
+   "syllabus_tag": "बाल विकास (CDP) - निर्देशन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "व्यावसायिक निर्देशन का प्रयोग सर्वप्रथम किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मायर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पारसन्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हॉक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ब्रेवर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "फ्रैंक पारसन्स (1908, बोस्टन) — व्यावसायिक निर्देशन के जनक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 80,
+   "section": "बाल विकास (CDP)",
+   "topic": "मूल्य शिक्षा",
+   "syllabus_tag": "बाल विकास (CDP) - मूल्य शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एन.सी.ई.आर.टी. ने शैक्षिक संदर्भ में निम्नलिखित मूल्यों में से किसको स्वीकार किया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सफाई एवं सच्चाई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "श्रम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "समानता एवं सहयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उपर्युक्त सभी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "NCERT की मूल्य सूची में ये सभी सम्मिलित हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 81,
+   "section": "बाल विकास (CDP)",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "बाल विकास (CDP) - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पुरस्कार किस प्रकार की अभिप्रेरणा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "धनात्मक एवं प्रत्यक्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "धनात्मक एवं अप्रत्यक्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ऋणात्मक एवं प्रत्यक्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ऋणात्मक एवं अप्रत्यक्ष",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "पुरस्कार — धनात्मक; सीधे व्यवहार से जुड़ा — प्रत्यक्ष। दंड ऋणात्मक है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 82,
+   "section": "बाल विकास (CDP)",
+   "topic": "जीवन कौशल",
+   "syllabus_tag": "बाल विकास (CDP) - जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जीवन कौशल का मुख्य उद्देश्य है-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "क्षमताएँ विकसित करना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "चुनौतियों एवं माँगों के अनुसार योग्यता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "प्रत्येक प्रश्न का उत्तर प्राप्त करना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एक अच्छा शिक्षक बनना",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "WHO: जीवन की माँगों व चुनौतियों का प्रभावी ढंग से सामना करने की योग्यता।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 83,
+   "section": "बाल विकास (CDP)",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "बाल विकास (CDP) - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अभिप्रेरणा के मूल प्रवृत्ति सिद्धान्त के प्रतिपादक हैं-",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फ्रायड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "क्लार्क एल. हल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मैक्डूगल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मॉर्गन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "विलियम मैक्डूगल — 14 मूल प्रवृत्तियाँ। हल — अंतर्नोद (Drive) सिद्धांत।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 84,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षा नीति",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षा नीति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय शिक्षा नीति – 1986 का प्रमुख सुझाव ........ है।",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "शिक्षा का आधार बाल केन्द्रित होना चाहिए",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "शिक्षा क्रियाकलाप आधारित होना चाहिए",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "a व b दोनों",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इनमें से कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "NPE 1986 — बाल-केंद्रित तथा क्रिया-आधारित शिक्षा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 85,
+   "section": "बाल विकास (CDP)",
+   "topic": "RTE 2009",
+   "syllabus_tag": "बाल विकास (CDP) - RTE 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "R.T.E. 2009 के अनुसार 1 सप्ताह में शिक्षण एवं तैयारी का समय .......... निर्धारित किया गया।",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "36 घंटे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "40 घंटे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "45 घंटे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "54 घंटे",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "RTE अनुसूची — शिक्षक के लिए प्रति सप्ताह न्यूनतम 45 घंटे (तैयारी सहित)। (पेपर में \"min\" छपा है, घंटे होना चाहिए।)",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 86,
+   "section": "बाल विकास (CDP)",
+   "topic": "शिक्षा आयोग",
+   "syllabus_tag": "बाल विकास (CDP) - शिक्षा आयोग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किस आयोग / विधेयक / समिति द्वारा प्राथमिक शिक्षा को व्यावहारिक बनाने पर बल दिया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हर्टोग समिति – 1929",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हण्टर आयोग – 1882/83",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "गोखले विधेयक – 1911",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ये सभी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर कुंजी के अनुसार — हण्टर आयोग (प्राथमिक शिक्षा को व्यावहारिक एवं उपयोगी बनाने पर बल)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 87,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "समसामयिकी",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - समसामयिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में 100% बीमा कवरेज हासिल करने वाला भारत का पहला जिला कौन-सा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्रयागराज",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भोपाल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अलवर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रांची",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — अलवर।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 88,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में 2025 का फिजियोलॉजी या मेडिसिन का नोबेल पुरस्कार किसे दिया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मैरी ई. ब्रुनको",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "फ्रेड रामस्डेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "शिमोन साकागुची",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उपरोक्त सभी",
+     "text_en": "All of the above",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "तीनों को संयुक्त रूप से — परिधीय प्रतिरक्षा सहिष्णुता (regulatory T cells) की खोज के लिए।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 89,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "दिवस",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत में, 30 जनवरी को किस दिवस के रूप में मनाया जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पितृ दिवस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "शहीद दिवस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "शिक्षक दिवस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मातृ दिवस",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "महात्मा गांधी की पुण्यतिथि — शहीद दिवस।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 90,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "पुस्तक",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - पुस्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'ए लाइफ अपार्ट' किसकी आत्मकथा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्रभा खेतान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बिंदु भट्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "विनीता अग्रवाल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मन्नू भंडारी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "प्रभा खेतान की आत्मकथा 'अन्या से अनन्या' का अंग्रेज़ी अनुवाद 'A Life Apart'।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 91,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में कॉमनवेल्थ गेम्स 2030 में किसे नए खेल के रूप में शामिल किया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हॉकी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "आर्चरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "योगासन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इनमें से कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — योगासन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 92,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "संगठन",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - संगठन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अंतर्राष्ट्रीय ओलंपिक समिति का मुख्यालय ..... में है।",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "यूएसए",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इनमें से कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जर्मनी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "स्विट्जरलैंड",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "IOC मुख्यालय — लुसाने, स्विट्ज़रलैंड।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 93,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में नॉर्वे चेस 2026 किसने जीता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "विन्सेंट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कार्लसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आर प्रज्ञानानंद",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इनमें से कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — आर. प्रज्ञानानंद।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 94,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में 10वें ICC महिला T20 वर्ल्ड कप 2026 की मेजबानी कौन करेगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वेल्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इंग्लैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उपर्युक्त दोनों",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इनमें से कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — इंग्लैंड व वेल्स दोनों।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 95,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "समसामयिकी",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - समसामयिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में इंटरनेशनल बिग कैट अलायंस (IBCA) का 27वां सदस्य देश कौन बन गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नेपाल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "निकारागुआ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सऊदी अरब",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बांग्लादेश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर कुंजी के अनुसार — बांग्लादेश।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 96,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "भूगोल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'ग्रेट बैरियर रीफ' किस देश के तट पर स्थित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "न्यूजीलैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ऑस्ट्रेलिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "इंडोनेशिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पापुआ न्यू गिनी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "ऑस्ट्रेलिया (क्वींसलैंड तट) — विश्व की सबसे बड़ी प्रवाल भित्ति।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 97,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "अंतरराष्ट्रीय संबंध",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - अंतरराष्ट्रीय संबंध",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से किस वर्ष में भारत आसियान का क्षेत्रीय सम्भाषण भागीदार (पार्टनर) बना?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2012",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1996",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1992",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1995",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "1992 — क्षेत्रीय (sectoral) संवाद भागीदार; 1995/96 — पूर्ण संवाद भागीदार; 2012 — रणनीतिक भागीदार।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 98,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में पांचवें खेलो इंडिया यूनिवर्सिटी गेम्स कहाँ आयोजित किये जायेंगे?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बिहार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हरियाणा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर कुंजी के अनुसार — राजस्थान।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 99,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "दिवस",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'विश्व मौखिक स्वास्थ्य दिवस' (वर्ल्ड ओरल हेल्थ डे) 2023 कब मनाया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "20 मार्च",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "16 मार्च",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "11 मार्च",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "18 मार्च",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "हर वर्ष 20 मार्च।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 100,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "अंतरिक्ष",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - अंतरिक्ष",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में इसरो ने गगनयान मिशन के लिए कौन सा परीक्षण मिशन लॉन्च किया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मिशन शक्ति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मिशन उड़ान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मिशन मित्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मिशन आकाश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — मिशन मित्र।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 101,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "भूगोल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत के किस राज्य की सीमा सबसे अधिक राज्यों को स्पर्श करती है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मध्य प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "उत्तर प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "महाराष्ट्र",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर प्रदेश — 8 राज्य + दिल्ली (केंद्र शासित) को स्पर्श करता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 102,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "उत्तर प्रदेश",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - उत्तर प्रदेश",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "उत्तर प्रदेश के निम्नलिखित में से किस जिले में 'नैमिषारण्य' तीर्थस्थान अवस्थित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सीतापुर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बलिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अयोध्या",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मुरादाबाद",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "नैमिषारण्य (नीमसार) — सीतापुर, गोमती तट।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 103,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में 2026 FIFA वर्ल्ड कप का आगाज कहाँ हुआ है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मेक्सिको",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यूएसए",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कनाडा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कतर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "पहला मैच एस्टाडियो एज़्टेका, मेक्सिको सिटी (11 जून 2026)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 104,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "इतिहास",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से किसे \"भारतीय पुनर्जागरण का जनक\" कहा जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ईश्वरचंद्र विद्यासागर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "राजा राममोहन राय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "स्वामी दयानंद सरस्वती",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केशवचंद्र सेन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "राजा राममोहन राय — ब्रह्म समाज (1828)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 105,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "परिवहन",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - परिवहन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत का पहला पूर्णतः कंप्यूटरीकृत बंदरगाह कौन-सा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चेन्नई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मुंबई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जवाहरलाल नेहरू पोर्ट (न्हावा शेवा)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कोलकाता",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "JNPT (न्हावा शेवा, नवी मुंबई)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 106,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "कला",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - कला",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "……… कला मथुरा में स्टेंसिलिंग की पारंपरिक कला है।",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कजरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लघु कला",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सांझी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इनमें से कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "सांझी — मथुरा-वृंदावन की कागज़ काटकर (स्टेंसिल) बनाई जाने वाली कला।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 107,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "शिक्षा",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हाल ही में शिक्षा मंत्रालय ने एक विशिष्ट श्रेणी के तहत किसे 'डीम्ड टू बी यूनिवर्सिटी' घोषित किया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "NCERT",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "UPSC",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "CBSE",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इनमें से कोई नहीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "NCERT को विशिष्ट श्रेणी में डीम्ड विश्वविद्यालय का दर्जा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 108,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "खेल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'सर्व' और 'वॉली' शब्द किस खेल से जुड़े हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "टेनिस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वॉलीबॉल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "टेबल टेनिस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "स्क्वैश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर कुंजी के अनुसार — टेनिस (\"serve and volley\" शैली)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 109,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "रिपोर्ट",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - रिपोर्ट",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "World Happiness Report 2026 में भारत की रैंक क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "96वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "108वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "116वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "126वीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — 116वीं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 110,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "संस्थान",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - संस्थान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय समुद्र-विज्ञान संस्थान (NIO) का मुख्यालय निम्नलिखित में से किस स्थान पर है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कोच्चि, केरल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "डोना पौला, गोवा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मुंबई, महाराष्ट्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विशाखापत्तनम, आंध्र प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "NIO — डोना पौला, गोवा (1966)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 111,
+   "section": "सामान्य ज्ञान एवं समसायिक घटनाएं",
+   "topic": "रिपोर्ट",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसायिक घटनाएं - रिपोर्ट",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "Global Peace Index 2026 में भारत का स्थान क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "115वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "120वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "127वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "132वाँ",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर कुंजी के अनुसार — 127वाँ।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 112,
+   "section": "REASONING",
+   "topic": "घड़ी",
+   "syllabus_tag": "REASONING - घड़ी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "3:30 बजे घड़ी की दोनों सुइयों के बीच कितना कोण होगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "75°",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "90°",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "105°",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "120°",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "घंटे की सुई $3\\times30+30\\times0.5=105^\\circ$, मिनट की सुई $30\\times6=180^\\circ$ ⇒ अंतर $75^\\circ$। (सूत्र: $|30H-5.5M|=|90-165|=75^\\circ$)<br><img src=\"data:image/png;base64,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\" alt=\"हल का चित्र\">",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 113,
+   "section": "REASONING",
+   "topic": "कैलेंडर",
+   "syllabus_tag": "REASONING - कैलेंडर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि 15 अगस्त 2026 शनिवार है, तो 22 अगस्त 2026 कौन-सा दिन होगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "शुक्रवार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "शनिवार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रविवार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सोमवार",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "7 दिन बाद वही दिन — शनिवार।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 114,
+   "section": "REASONING",
+   "topic": "रक्त संबंध",
+   "syllabus_tag": "REASONING - रक्त संबंध",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "A, B का भाई है। C, B की माँ है। D, C का पिता है। D का A से क्या संबंध है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पिता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नाना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मामा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चाचा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "C, A और B दोनों की माँ है; D, C का पिता ⇒ A का नाना।<br><img src=\"data:image/png;base64,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\" alt=\"हल का चित्र\">",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 115,
+   "section": "REASONING",
+   "topic": "विषम",
+   "syllabus_tag": "REASONING - विषम",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से विषम (Odd One Out) चुनिए:",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गुलाब",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कमल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चमेली",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "गुलाब, कमल, चमेली फूल हैं; आम फल है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 116,
+   "section": "REASONING",
+   "topic": "पासा",
+   "syllabus_tag": "REASONING - पासा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक मानक पासे में यदि 1 के विपरीत 6 है और 2 के विपरीत 5 है, तो 3 के विपरीत कौन-सा अंक होगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "मानक पासे में आमने-सामने के अंकों का योग 7 ⇒ 3 के विपरीत 4।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 117,
+   "section": "सूचना तकनीक",
+   "topic": "ई-लर्निंग",
+   "syllabus_tag": "सूचना तकनीक - ई-लर्निंग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत सरकार द्वारा उच्च शिक्षा के लिए शुरू किया गया 'MOOC' (मैसिव ओपन ऑनलाइन कोर्स) प्लेटफॉर्म कौन सा है, जिसके माध्यम से छात्र घर बैठे शीर्ष विश्वविद्यालयों के पाठ्यक्रम निःशुल्क पढ़ सकते हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "स्वयं (SWAYAM)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "परख (PARAKH)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "निपुण (NIPUN)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "दिशा (DISHA)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "SWAYAM (2017) — MOOC पोर्टल।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 118,
+   "section": "सूचना तकनीक",
+   "topic": "हार्डवेयर",
+   "syllabus_tag": "सूचना तकनीक - हार्डवेयर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कक्षा-शिक्षण में प्रयुक्त होने वाला वह कौन सा आउटपुट डिवाइस (Output Device) है, जो कंप्यूटर की स्क्रीन को किसी बड़ी दीवार या सफेद पर्दे पर बड़े रूप में प्रदर्शित (Project) करता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "स्कैनर (Scanner)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मॉनिटर (Monitor)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डेटा प्रोजेक्टर (Data Projector)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्लॉटर (Plotter)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "डेटा प्रोजेक्टर; स्कैनर इनपुट डिवाइस है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 119,
+   "section": "सूचना तकनीक",
+   "topic": "क्लाउड",
+   "syllabus_tag": "सूचना तकनीक - क्लाउड",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक शिक्षक के रूप में अपनी डिजिटल शिक्षण-सामग्री (PDF, पीपीटी, वीडियो) को सुरक्षित ऑनलाइन स्टोर करने और उसे कहीं भी स्मार्टफोन पर एक्सेस करने के लिए आप किस निःशुल्क क्लाउड स्टोरेज सेवा का उपयोग करेंगे?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गूगल ड्राइव (Google Drive)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गूगल क्रोम (Google Chrome)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "व्हाट्सऐप (WhatsApp)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एडोब रीडर (Adobe Reader)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "गूगल ड्राइव — 15 GB निःशुल्क क्लाउड स्टोरेज। क्रोम ब्राउज़र है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 120,
+   "section": "सूचना तकनीक",
+   "topic": "सुरक्षा",
+   "syllabus_tag": "सूचना तकनीक - सुरक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "इंटरनेट का उपयोग करके डिजिटल शिक्षण सामग्री डाउनलोड करते समय, कंप्यूटर को अनधिकृत एक्सेस (Unauthorized Access) और वायरस से बचाने वाले सुरक्षा कवच/सॉफ्टवेयर को क्या कहा जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फायरवॉल (Firewall)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मैलवेयर (Malware)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ब्राउज़र (Browser)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "स्पैम (Spam)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "फायरवॉल नेटवर्क ट्रैफ़िक की निगरानी कर अनधिकृत पहुँच रोकता है; मैलवेयर स्वयं हानिकारक सॉफ्टवेयर है।",
+   "solution_en": "",
+   "key_concept": ""
+  }
+ ]
+}

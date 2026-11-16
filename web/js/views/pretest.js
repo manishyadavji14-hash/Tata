@@ -24,7 +24,7 @@ export async function render({ root, params, query, settings, navigate, setHeade
     if (!parent?.result) { root.innerHTML = '<div class="card">पिछला प्रयास नहीं मिला</div>'; return; }
     qNos = pickQuestions(parent.result, mode);
   }
-  setHeader({ title: 'टेस्ट निर्देश / Instructions', sub: set.meta.title, back: parent ? `result/${parent.id}` : `set/${set.id}` });
+  setHeader({ title: 'टेस्ट निर्देश / Instructions', sub: set.meta.title, back: parent ? `result/${parent.id}` : set.kind === 'practice' ? 'practice' : `set/${set.id}` });
   if (!qNos.length) {
     root.innerHTML = `<div class="card text-center"><div class="text-3xl">🎉</div><div class="mt-2 font-semibold">इस श्रेणी में कोई प्रश्न नहीं है!</div><a href="#/result/${parent.id}" class="btn-primary mt-3">वापस</a></div>`;
     return;

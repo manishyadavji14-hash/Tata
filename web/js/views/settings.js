@@ -205,7 +205,7 @@ export async function render({ root, settings: s, setHeader }) {
     if (act === 'demo') { await seedDemo(true); toast('डेमो सेट जोड़ा गया', 'success'); }
     if (act === 'wipe') {
       if (await confirmDialog('सभी प्रैक्टिस सेट, प्रयास, बुकमार्क, एनालिटिक्स और API सेटिंग स्थायी रूप से मिट जाएँगे। पहले बैकअप ले लें।', { ok: 'सब मिटाएँ', danger: true })) {
-        for (const st of ['sets', 'attempts', 'bookmarks', 'topicStats', 'chats', 'importDrafts', 'settings']) await db.clear(st);
+        for (const st of ['sets', 'attempts', 'bookmarks', 'topicStats', 'chats', 'importDrafts', 'settings', 'mistakes']) await db.clear(st);
         toast('सारा डेटा मिटा दिया', 'success');
         setTimeout(() => location.reload(), 600);
       }

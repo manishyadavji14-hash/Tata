@@ -1,0 +1,971 @@
+@id chandra_supertet_model_03
+@title SUPER TET प्राथमिक MODEL PAPER-03 (चन्द्रा इंस्टीट्यूट)
+@duration 150
+@key CDDCBBDBCC BBADDCBDAC DABCCCAABB BCBABBABAD ABCADABCCB CABABCABBC ABBCCCCCCD DADDDBDBDC DDCBADABDD CDAABBBDBD ACBDCCBDBB DBDBDAABCA D
+
+# HINDI
+1 उच्चारण स्थान
+? निम्नलिखित वर्णों को उनके उच्चारण स्थान से सुमेलित कीजिए: A. क, B. त, C. न, D. श; i. दन्त, ii. तालु, iii. कण्ठ, iv. नासिका
+- A-i, B-ii, C-iii, D-iv
+- A-i, B-iii, C-iv, D-ii
+- A-iii, B-i, C-iv, D-ii
+- A-ii, B-i, C-i, D-iii
+= क — कण्ठ, त — दन्त, न — नासिका (अनुनासिक), श — तालु।
+2 शब्द भेद
+? दो भिन्न भाषाओं के मेल से बना शब्द कहलाता है-
+- तद्भव
+- देशज
+- विदेशज
+- संकर
+= जैसे रेलगाड़ी (अंग्रेज़ी + हिंदी) — संकर शब्द।
+3 सर्वनाम
+? 'अपने से बड़ों का आदर करना उचित है।' वाक्य में रेखांकित शब्द ('अपने') कौन-सा सर्वनाम है?
+- निश्चयवाचक सर्वनाम
+- अनिश्चयवाचक सर्वनाम
+- संबंधवाचक सर्वनाम
+- निजवाचक सर्वनाम
+= अपना/अपने/स्वयं — निजवाचक।
+4 शब्द भेद
+? जिन शब्दों में प्रयोग के अनुसार कोई परिवर्तन नहीं होता है, उन्हें कहा जाता है-
+- पद
+- विकारी शब्द
+- अविकारी शब्द
+- पदबंध
+= अव्यय — अविकारी (लिंग, वचन, कारक से नहीं बदलते)।
+5 विराम चिह्न
+? लाघव-चिह्न का प्रयोग होता है-
+- उद्धरण के लिए
+- बड़े अंश का संक्षिप्त रूप लिखने के लिए
+- त्रुटि सुधार के लिए
+- अभिवादन के लिए
+= लाघव चिह्न (॰) — संक्षेप, जैसे डॉ॰, उ॰प्र॰।
+6 क्रिया
+? किस वाक्य में अकर्मक क्रिया है?
+- आप आज शाम को क्या कर रहे हैं?
+- बच्चा रोता है।
+- पूजा कपड़े धो रही है।
+- मोहन सितार बजा रहा है।
+= 'रोना' का कोई कर्म नहीं।
+7 उपसर्ग
+? 'निवारण' शब्द में उपसर्ग है-
+- निः
+- नी
+- निर्
+- नि
+= उत्तर कुंजी के अनुसार 'नि' (नि + वारण)।
+8 संधि
+? 'परोपकार' में किस संधि का प्रयोग हुआ है?
+- वृद्धि संधि
+- गुण संधि
+- यण संधि
+- अयादि संधि
+= पर + उपकार (अ + उ = ओ) — गुण संधि।
+9 समास
+? जिस समास में सामासिक पद के दोनों पदों में विशेषण-विशेष्य या उपमेय-उपमान का संबंध हो, वह है-
+- द्विगु समास
+- द्वंद्व समास
+- कर्मधारय समास
+- बहुव्रीहि समास
+= जैसे नीलकमल (विशेषण-विशेष्य), चंद्रमुख (उपमेय-उपमान) — कर्मधारय।
+10 वाक्य
+? वाक्य के कितने अंग माने गए हैं?
+- चार
+- एक
+- दो
+- तीन
+= उद्देश्य और विधेय — दो।
+11 वाक्य
+? 'दुष्ट लड़के ऊधम मचाते हैं।' वाक्यांश में उद्देश्य का विस्तार है-
+- लड़के
+- दुष्ट
+- ऊधम
+- मचाते हैं
+= उद्देश्य 'लड़के', उसका विशेषण 'दुष्ट' — उद्देश्य का विस्तार।
+12 क्रिया
+? किस वाक्य में प्रेरणार्थक क्रिया है?
+- लड़का बहुत पढ़ रहा है
+- किसान खेत के सूखे पेड़ कटवा चुका है
+- आप बहुत ईमानदार हैं
+- मेरे घर की छत टपकती है
+= 'कटवाना' — दूसरे से काम करवाना — प्रेरणार्थक।
+13 मुहावरा
+? 'आँखें बिछाना' मुहावरे का अर्थ है-
+- प्रेमपूर्वक स्वागत करना
+- अत्यन्त प्रिय होना
+- जरा भी कष्ट न आने देना
+- वश में न रह पाना
+= आँखें बिछाना — प्रेम से स्वागत करना।
+14 पर्यायवाची
+? 'खेचर' का पर्याय होगा-
+- आकाश में चलने वाला
+- पक्षी
+- ग्रह
+- इनमें से सभी
+= खे (आकाश) + चर — पक्षी, ग्रह, देवता आदि सभी।
+15 विलोम
+? 'स्थावर' का विलोम शब्द है-
+- सचल
+- चंचल
+- चेतन
+- जंगम
+= स्थावर (अचल) ↔ जंगम (चल)।
+
+# ENGLISH
+P p_lang Passage: Languages
+> Some languages are used by a few people. Others, such as Mandarin Chinese and English, are spoken by millions. Many people speak two or more languages. They may use one language at home with family and friends, and another at work or school. Regional variations of language are known as dialects. The Anglo-Saxons, who conquered Britain at the end of the Roman Empire, spoke a Germanic language, which later became English. Other Germanic languages include Danish, Dutch, German and Swedish. English also contains French-derived words after it was ruled by French-speaking kings following the Norman Conquest.
+16 Reading Comprehension @p_lang
+! Mandarin Chinese is spoken by ............... people.
+- little
+- few
+- many
+- big
+= "spoken by millions".
+17 Vocabulary @p_lang
+! A person who is good at foreign languages is known as-
+- Virtuoso
+- Linguist
+- Ventriloquist
+- Scholar
+= linguist = one skilled in languages; ventriloquist = speaks without moving lips.
+18 Reading Comprehension @p_lang
+! ............. are regional variations of a language.
+- English
+- Mandarin Chinese
+- Home language
+- Dialects
+= "Regional variations of language are known as dialects."
+19 Reading Comprehension @p_lang
+! English also included French words ................ the Norman Conquest.
+- after
+- prior
+- before
+- during
+= "…following the Norman Conquest" = after.
+20 Reading Comprehension @p_lang
+! ............. is part of a Germanic language.
+- Britain
+- Anglo-Saxons
+- English
+- Roman Empire
+= The Germanic language of the Anglo-Saxons "later became English".
+21 Error Detection
+! Which of the following is the correct sentence?
+- Slow and steady win the race.
+- All the men and women are always ready to co-operate with each other.
+- He does not did it.
+- The baby started crying to see its mother.
+= Key (D). "Slow and steady wins the race"; "one another" for more than two; "does not do".
+22 Spelling
+! Fill in the blank: A crowd of _____ came to see that wounded man.
+- spectators
+- spectator
+- spectatorer
+- spectate
+= "a crowd of" + plural noun.
+
+# SANSKRIT
+23 व्याकरण
+? "प्रातिपदिक" संज्ञा कस्य दीयते?
+- धातोः
+- नामरूपस्य मूलशब्दस्य
+- उपसर्गस्य
+- निपातस्य
+= अर्थवत् धातु-प्रत्यय-भिन्न मूल शब्द (राम, फल) — प्रातिपदिक।
+24 प्रत्याहार
+? 'अचोऽन्त्यादि टि' सूत्र में 'अच्' प्रत्याहार किसका बोधक है?
+- केवल ह्रस्व स्वर
+- केवल दीर्घ स्वर
+- समस्त स्वर
+- स्वर एवं अन्तःस्थ वर्ण
+= अच् = अ से औ तक सभी स्वर।
+25 संधि
+? 'अत्युत्तमः' शब्द में कौन-सी संधि है?
+- गुण संधि
+- वृद्धि संधि
+- यण् संधि
+- व्यंजन संधि
+= अति + उत्तमः (इ → य्) — यण्।
+26 धातुरूप
+? धातु 'गम्' का लट् लकार, प्रथम पुरुष, एकवचन रूप क्या है?
+- गच्छामि
+- गच्छसि
+- गच्छति
+- अगच्छत्
+= गच्छति (प्र.पु.), गच्छसि (म.पु.), गच्छामि (उ.पु.); अगच्छत् — लङ्।
+27 अव्यय
+? निम्नलिखित में अव्यय कौन-सा है?
+- च
+- रामः
+- फलम्
+- बालकः
+= च (और) — अव्यय।
+28 शब्द
+? 'मित्र' का विलोम तथा 'सूर्य' का पर्यायवाची क्रमशः क्या है?
+- शत्रु, भानु
+- बन्धु, चन्द्र
+- सुहृद्, शशी
+- रिपु, निशाकर
+= मित्र ↔ शत्रु; सूर्य = भानु। (शशी, निशाकर = चंद्रमा)
+P p_paro गद्यांश: परोपकार
+> परोपकाराय फलन्ति वृक्षाः, परोपकाराय वहन्ति नद्यः। परोपकाराय दुहन्ति गावः, परोपकारार्थमिदं शरीरम्। सज्जनाः स्वार्थं न पश्यन्ति, ते सर्वदा लोकहिताय एव कार्यं कुर्वन्ति।
+29 गद्यांश @p_paro
+? के फलन्ति?
+- नद्यः
+- वृक्षाः
+- गावः
+- जनाः
+= "परोपकाराय फलन्ति वृक्षाः"।
+30 गद्यांश @p_paro
+? नद्यः किमर्थं वहन्ति?
+- स्वार्थाय
+- परोपकाराय
+- क्रीडार्थम्
+- विश्रामाय
+= "परोपकाराय वहन्ति नद्यः"।
+
+# SCIENCE
+31 मात्रक
+? पास्कल (Pa) किस भौतिक राशि की SI इकाई है?
+! Which physical quantity has the SI unit Pascal (Pa)?
+- बल / Force
+- दाब / Pressure
+- ऊर्जा / Energy
+- शक्ति / Power
+= 1 Pa = 1 N/m²।
+32 ध्वनि
+? ध्वनि की चाल सबसे अधिक किस माध्यम में होती है?
+! The speed of sound is maximum in:
+- वायु / Air
+- जल / Water
+- इस्पात / Steel
+- निर्वात / Vacuum
+= ठोस > द्रव > गैस; निर्वात में ध्वनि नहीं चलती। इस्पात में ~5960 m/s।
+33 दर्पण
+? वाहनों में रियर-व्यू मिरर के रूप में किस दर्पण का उपयोग किया जाता है?
+! Which mirror is used as a rear-view mirror in vehicles?
+- समतल / Plane
+- उत्तल / Convex
+- अवतल / Concave
+- बेलनाकार / Cylindrical
+= उत्तल दर्पण — सीधा, छोटा प्रतिबिंब और विस्तृत दृष्टि क्षेत्र।
+34 मिश्रधातु
+? स्टेनलेस स्टील मुख्यतः किसका मिश्रधातु है?
+! Stainless steel is mainly an alloy of:
+- लोहा, क्रोमियम और निकेल / Iron, Chromium and Nickel
+- तांबा और जस्ता / Copper and Zinc
+- लोहा और कार्बन / Iron and Carbon
+- एल्युमिनियम और तांबा / Aluminium and Copper
+= Fe + Cr (~18%) + Ni (~8%); पीतल = Cu + Zn।
+35 धातु
+? किस धातु को मिट्टी के तेल में रखा जाता है?
+! Which metal is stored in kerosene oil?
+- तांबा / Copper
+- सोडियम / Sodium
+- चाँदी / Silver
+- लोहा / Iron
+= सोडियम वायु व जल से तीव्र अभिक्रिया करता है।
+36 पादप
+? क्लोरोफिल के निर्माण के लिए कौन-सा तत्व आवश्यक है?
+! Which element is essential for the formation of chlorophyll?
+- कैल्शियम / Calcium
+- मैग्नीशियम / Magnesium
+- सोडियम / Sodium
+- सल्फर / Sulphur
+= क्लोरोफिल के केंद्र में Mg परमाणु होता है।
+37 पादप
+? पौधे का कौन-सा भाग मुख्य रूप से जल एवं खनिज लवणों का अवशोषण करता है?
+! Which part of the plant is mainly responsible for the absorption of water and minerals?
+- मूल रोम / Root hairs
+- तना / Stem
+- पत्तियाँ / Leaves
+- फूल / Flower
+= मूल रोम सतह-क्षेत्र बढ़ाकर अवशोषण करते हैं।
+38 अंतःस्रावी तंत्र
+? मानव अंतःस्रावी तंत्र की "मास्टर ग्रंथि" किसे कहा जाता है?
+! Which gland is known as the "Master Gland" of the human endocrine system?
+- थायरॉयड ग्रंथि / Thyroid gland
+- पीयूष (पिट्यूटरी) ग्रंथि / Pituitary gland
+- अधिवृक्क ग्रंथि / Adrenal gland
+- अग्न्याशय / Pancreas
+= पिट्यूटरी अन्य ग्रंथियों को नियंत्रित करती है।
+
+# MATHS
+39 बीजगणित
+? यदि a = 11 तथा b = 9 तो $\frac{a^2+b^2+ab}{a^3-b^3}$ का मान है।
+! If a = 11 and b = 9 then the value of $\frac{a^2+b^2+ab}{a^3-b^3}$ is:
+- $\frac{1}{2}$
+- 2
+- $\frac{1}{20}$
+- 20
+= $a^3-b^3=(a-b)(a^2+ab+b^2)$ ⇒ मान $=\frac{1}{a-b}=\frac{1}{2}$।
+40 संख्या पद्धति
+? निम्नलिखित में से कौन सा युग्म सह-अभाज्य है?
+! Which of the following pairs is co-prime?
+- (15, 27)
+- (35, 63)
+- (42, 56)
+- (16, 25)
+= 16 = 2⁴, 25 = 5² — HCF 1।
+41 LCM-HCF
+? तीन संख्यायें 3:4:5 के अनुपात में हैं और उनका ल.स. 2400 है तो उनका म.स. कितना होगा?
+! Three numbers are in the ratio 3:4:5 and their LCM is 2400. What will be their HCF?
+- 40
+- 80
+- 120
+- 200
+= संख्याएँ 3k, 4k, 5k ⇒ LCM = 60k = 2400 ⇒ k = 40 = HCF।
+42 लाभ-हानि
+? 36 वस्तुओं का क्रय मूल्य, 40 वस्तुओं के विक्रय मूल्य के बराबर है तो लाभ/हानि % बताइये।
+! If the cost price of 36 items is equal to the selling price of 40 items, find the profit/loss %.
+- 10% लाभ / 10% profit
+- 10% हानि / 10% loss
+- 20% लाभ / 20% profit
+- 20% हानि / 20% loss
+= हानि% = (40 − 36)/40 × 100 = 10%।
+43 क्षेत्रमिति
+? किसी आयताकार मैदान का क्षेत्रफल 120 मी² तथा परिमाप 46 मी. है तो आयत की लम्बाई बताइये। जहाँ, लम्बाई > चौड़ाई
+! The area of a rectangular field is 120 m² and the perimeter is 46 m. Find the length (length > breadth).
+- 10 मी. / 10 m
+- 20 मी. / 20 m
+- 15 मी. / 15 m
+- 8 मी. / 8 m
+= l + b = 23, lb = 120 ⇒ 15 और 8 ⇒ लंबाई 15 मी।
+44 सांख्यिकी
+? दिये गए अंकों के माध्य और माध्यिका के लिए निम्नलिखित में से कौन सा कथन सत्य है: 15, 8, 13, 1, 23, 15, 20, 1
+! Which statement is true for the mean and median of the scores: 15, 8, 13, 1, 23, 15, 20, 1
+- माध्य माध्यिका से अधिक है / Mean is greater than median
+- माध्यिका माध्य से अधिक है / Median is greater than mean
+- माध्य और माध्यिका दोनों समान हैं / Both mean and median are equal
+- माध्यिका ज्ञात नहीं की जा सकती क्योंकि अंकों की संख्या सम है / Median cannot be determined as the number of scores is even
+= योग 96 ⇒ माध्य 12; क्रम 1, 1, 8, 13, 15, 15, 20, 23 ⇒ माध्यिका (13+15)/2 = 14 > 12। ⚠️ गणना से (B); मूल कुंजी में (A) छपा है।
+45 अनुपात
+? यदि a : b = c : d = e : f = 1 : 2 हो, तो (3a + 5c + 7e) : (3b + 5d + 7f) बराबर होगा-
+! If a : b = c : d = e : f = 1 : 2, then (3a + 5c + 7e) : (3b + 5d + 7f) is equal to-
+- 8 : 7
+- 2 : 1
+- 1 : 4
+- 1 : 2
+= b = 2a, d = 2c, f = 2e ⇒ हर = 2 × अंश ⇒ 1 : 2।
+46 प्रतिशत
+? किसी आयताकार पार्क की लम्बाई 25% बढ़ाकर चौड़ाई को 16% कम कर दिया जाता है, तो इसके क्षेत्रफल में कितने % वृद्धि या कमी होगी?
+! The length of a rectangular park is increased by 25% and its width is reduced by 16%. What will be the % increase or decrease in its area?
+- 5% वृद्धि / 5% increase
+- 5% कमी / 5% decrease
+- 10% वृद्धि / 10% increase
+- 10% कमी / 10% decrease
+= 1.25 × 0.84 = 1.05 ⇒ 5% वृद्धि। (या 25 − 16 − 25×16/100 = +5)
+47 साधारण ब्याज
+? 10% वार्षिक ब्याज की दर से किसी निश्चित समय के बाद एक निश्चित मूलधन और साधारण ब्याज का अनुपात 10 : 3 था। निवेश की अवधि कितने वर्ष थी?
+! The ratio of a principal and its simple interest after some time at 10% per annum was 10 : 3. What was the period?
+- 1
+- 3
+- 5
+- 7
+= SI = 0.3P = P × 10 × t/100 ⇒ t = 3।
+48 घातांक
+? यदि $2^a+3^b=17$ तथा $2^{a+2}-3^{b+1}=5$ हो, तो a व b का मान है-
+! If $2^a+3^b=17$ and $2^{a+2}-3^{b+1}=5$, then the values of a and b are-
+- 2, 3
+- −2, −3
+- 3, 2
+- −3, −2
+= a = 3, b = 2: 8 + 9 = 17 और 32 − 27 = 5 ✓। (पेपर में $2^{b+1}$ छपा है, जो $3^{b+1}$ होना चाहिए।)
+49 बहुभुज
+? यदि पाँच भुजाओं वाले किसी बहुभुज के अंतः कोण 2:3:3:5:5 के अनुपात में हैं, तो सबसे छोटे कोण का माप है-
+! If the interior angles of a five-sided polygon are in the ratio 2:3:3:5:5, then the smallest angle is
+- 20°
+- 30°
+- 60°
+- 90°
+= योग 540°, भाग 18 ⇒ 1 भाग 30° ⇒ सबसे छोटा 2 × 30 = 60°।
+50 कोण
+? दो संपूरक कोणों की माप क्रमशः (2a + b)° और (3a − b)° है, तब 3a का मान है-
+! The measures of two supplementary angles are (2a + b)° and (3a − b)°, then the value of 3a is
+- 54
+- 108
+- 72
+- 84
+= 5a = 180 ⇒ a = 36 ⇒ 3a = 108।
+51 लाभ-हानि
+? किसी भूखंड को 45,000 रु. में बेचने पर एक व्यक्ति को 10% की हानि होती है। 15% का लाभ प्राप्त करने के लिए वह उसे किस मूल्य पर बेचे?
+! A man loses 10% by selling a plot of land for ₹45,000. At what price should he sell it to make a profit of 15%?
+- 50,000 रु. / ₹50,000
+- 55,000 रु. / ₹55,000
+- 57,500 रु. / ₹57,500
+- 60,000 रु. / ₹60,000
+= CP = 45000/0.9 = 50000; SP = 57500।
+52 शेषफल
+? जब $(127^{97}+97^{97})$ को 32 से विभाजित किया जाता है, तो कितना शेष बचता है?
+! What is the remainder when $(127^{97}+97^{97})$ is divided by 32?
+- 0
+- 4
+- 2
+- 7
+= विषम n पर $a^n+b^n$, $(a+b)$ से विभाज्य ⇒ 224 = 32 × 7 से विभाज्य ⇒ शेष 0।
+53 घन
+? 40500 में कौन सी न्यूनतम संख्या से गुणा कर दिया जाये कि प्राप्त गुणनफल पूर्ण घन हो?
+! By which least number should 40500 be multiplied to get a perfect cube?
+- 12
+- 18
+- 5
+- इनमें से कोई नहीं
+= $40500=2^2\cdot3^4\cdot5^3$ ⇒ $2\cdot3^2=18$ से गुणा कर $2^3\cdot3^6\cdot5^3$।
+54 क्षेत्रमिति
+? दो वर्गों की भुजाओं का अनुपात 4 : 3 है और उनके क्षेत्रफलों का योग 225 cm² है। छोटे वर्ग का परिमाप (cm) में ज्ञात कीजिए।
+! The sides of two squares are in the ratio 4:3 and the sum of their areas is 225 cm². Find the perimeter of the smaller square.
+- 36
+- 48
+- 30
+- 44
+= 16k² + 9k² = 225 ⇒ k = 3 ⇒ छोटी भुजा 9 ⇒ परिमाप 36।
+
+# पर्यावरण एवं सामाजिक अध्ययन
+55 दर्रे
+? भारत का कौन-सा दर्रा जम्मू-कश्मीर (लद्दाख) को तिब्बत से जोड़ता है?
+! Which mountain pass in India connects Jammu & Kashmir (Ladakh) with Tibet?
+- नाथू ला / Nathu La
+- काराकोरम दर्रा / Karakoram Pass
+- शिपकी ला / Shipki La
+- जोजी ला / Zoji La
+= उत्तर कुंजी के अनुसार काराकोरम। (नाथू ला — सिक्किम-तिब्बत; शिपकी ला — हि.प्र.-तिब्बत; जोजी ला — श्रीनगर-लेह)
+56 नदियाँ
+? निम्नलिखित में से कौन-सी नदी भ्रंश घाटी (Rift Valley) में बहती है?
+! Which of the following rivers flows through a rift valley?
+- महानदी / Mahanadi
+- गोदावरी / Godavari
+- नर्मदा / Narmada
+- कावेरी / Kaveri
+= नर्मदा (विंध्य-सतपुड़ा के बीच) और तापी भ्रंश घाटी में पश्चिम की ओर बहती हैं।
+57 राष्ट्रीय आंदोलन
+? महात्मा गांधी ने प्रथम सत्याग्रह भारत में किस स्थान से प्रारम्भ किया था?
+! From which place in India did Mahatma Gandhi launch his first Satyagraha?
+- चंपारण / Champaran
+- खेड़ा / Kheda
+- बारडोली / Bardoli
+- अहमदाबाद / Ahmedabad
+= चंपारण 1917 (नील किसान); अहमदाबाद व खेड़ा 1918।
+58 राष्ट्रीय आंदोलन
+? 'पूर्ण स्वराज' का प्रस्ताव भारतीय राष्ट्रीय कांग्रेस के किस अधिवेशन में पारित किया गया?
+! At which session of the INC was the 'Purna Swaraj' resolution passed?
+- कलकत्ता (1928) / Calcutta (1928)
+- लाहौर (1929) / Lahore (1929)
+- कराची (1931) / Karachi (1931)
+- बेलगांव (1924) / Belgaum (1924)
+= लाहौर 1929, अध्यक्ष नेहरू।
+59 अर्थव्यवस्था
+? भारत में मुद्रा जारी करने का एकाधिकार मुख्यतः किस संस्था के पास है?
+! Which institution primarily holds the monopoly on currency issuance in India?
+- वित्त मंत्रालय / Ministry of Finance
+- भारतीय रिज़र्व बैंक / Reserve Bank of India
+- सेबी / SEBI
+- नीति आयोग / NITI Aayog
+= RBI (₹1 का नोट व सिक्के वित्त मंत्रालय जारी करता है)।
+60 अर्थव्यवस्था
+? यदि किसी अर्थव्यवस्था में महँगाई लगातार बढ़ रही हो, तो उसे नियंत्रित करने के लिए RBI सामान्यतः क्या करता है?
+! If inflation is continuously rising, what does the RBI generally do to control it?
+- रेपो दर घटाता है / Reduces the repo rate
+- CRR घटाता है / Reduces the CRR
+- रेपो दर बढ़ाता है / Increases the repo rate
+- नोटों की छपाई बढ़ा देता है / Increases the printing of currency notes
+= रेपो दर बढ़ाने से ऋण महँगा ⇒ मुद्रा आपूर्ति घटती है।
+61 पारिस्थितिकी
+? किसी पारिस्थितिकी तंत्र में ऊर्जा का सबसे बड़ा स्रोत क्या है?
+! What is the largest source of energy in an ecosystem?
+- सूर्य / Sun
+- मिट्टी / Soil
+- जल / Water
+- वायु / Air
+= सूर्य — उत्पादक प्रकाश संश्लेषण द्वारा ऊर्जा ग्रहण करते हैं।
+62 अपशिष्ट
+? निम्नलिखित में से कौन-सा जैव निम्नीकरणीय (Biodegradable) अपशिष्ट है?
+! Which of the following is biodegradable waste?
+- प्लास्टिक की बोतल / Plastic bottle
+- सब्जियों के छिलके / Vegetable peels
+- काँच / Glass
+- एल्युमिनियम कैन / Aluminium can
+= सूक्ष्मजीवों द्वारा विघटित होने वाले — सब्ज़ियों के छिलके।
+
+# बाल विकास (CDP)
+63 शिक्षा संस्थान
+? जिला शिक्षा एवं प्रशिक्षण संस्थान (DIET) की स्थापना हुई-
+! The District Institute of Education and Training (DIET) was established—
+- एन.सी.ई.आर.टी. की अनुशंसा पर / On the recommendation of NCERT
+- राष्ट्रीय शिक्षा नीति, 1986 की अनुशंसा पर / On the recommendation of NPE, 1986
+- कोठारी आयोग की अनुशंसा पर / On the recommendation of the Kothari Commission
+- मुदालियर आयोग की अनुशंसा पर / On the recommendation of the Mudaliar Commission
+= NPE 1986 के अंतर्गत हर जिले में DIET।
+64 समस्या समाधान
+? 'समस्या समाधान' का प्रमुख अंग है-
+! A key component of problem-solving is—
+- अनुशासन प्रक्रिया / the discipline process
+- अधिगम प्रक्रिया / the learning process
+- निर्णयन प्रक्रिया / the decision-making process
+- शिक्षण प्रक्रिया / the teaching process
+= विकल्पों में से सर्वोत्तम चुनना — निर्णयन।
+65 शिक्षा संस्थान
+? राज्य शिक्षा संस्थान कहाँ स्थित है?
+! Where is the State Institute of Education located?
+- लखनऊ / Lucknow
+- आगरा / Agra
+- प्रयागराज / Prayagraj
+- वाराणसी / Varanasi
+= राज्य शिक्षा संस्थान (SIE), उ.प्र. — प्रयागराज।
+66 शिक्षा का इतिहास
+? 'छनाई का सिद्धान्त' किसके द्वारा प्रतिपादित किया गया-
+! By whom was the 'Downward Filtration Theory' propounded?
+- विलियम वुड / William Wood
+- लार्ड कर्जन / Lord Curzon
+- लार्ड मैकाले / Lord Macaulay
+- माइकल सैडलर / Michael Sadler
+= मैकाले, 1835।
+67 शिक्षा नीति
+? नवोदय विद्यालय की स्थापना किसकी संस्तुति पर की गई-
+! On whose recommendation were the Navodaya Vidyalayas established?
+- कोठारी आयोग / Kothari Commission
+- माध्यमिक शिक्षा आयोग / Secondary Education Commission
+- नई शिक्षा नीति (1986) / New Education Policy (1986)
+- यशपाल समिति / Yashpal Committee
+= NPE 1986 — प्रतिभाशाली ग्रामीण बच्चों के लिए जवाहर नवोदय विद्यालय।
+68 शिक्षा
+? जब कोई बालक किसी भी अवस्था में प्राथमिक शिक्षा पूर्ण किये बिना ही विद्यालय छोड़कर चला जाता है, तो यह कहलाता है-
+! When a child leaves school at any stage without completing primary education, it is termed as—
+- अवरोध / Stagnation
+- पृथक्करण / Separation
+- अपव्यय / Wastage
+- विभाजन / Division
+= बीच में पढ़ाई छोड़ना — अपव्यय; एक कक्षा में बार-बार रुकना — अवरोधन।
+69 शिक्षा का इतिहास
+? चार्ल्स ग्रान्ट के शैक्षिक प्रयास थे-
+! Charles Grant's educational efforts included—
+- भारत में विद्यालयों की स्थापना / Establishment of schools in India
+- अंग्रेजी माध्यम से शिक्षा प्रदान करना / Providing education through the English medium
+- अ एवं ब दोनों / Both (a) and (b)
+- उपर्युक्त में से कोई नहीं / None of the above
+= चार्ल्स ग्रांट — "आधुनिक शिक्षा का जनक", अंग्रेज़ी माध्यम के विद्यालयों पर बल।
+70 विशिष्ट बालक
+? पूर्ण अथवा गहन श्रवण-बाधित बच्चों का सुनने का डेसीबल स्तर होता है-
+! The hearing level (in decibels) for children with profound or severe hearing impairment is—
+- 35 से 51 डेसीबल तक / 35 to 51 decibels
+- 55 से 69 डेसीबल तक / 55 to 69 decibels
+- 70 से 89 डेसीबल तक / 70 to 89 decibels
+- 90 से 100 डेसीबल तक / 90 to 100 decibels
+= 90 dB से अधिक श्रवण हानि — पूर्ण/गहन (Profound)।
+71 आकलन
+? सीखने के लिए आकलन निम्नलिखित का ध्यान रखता है सिवाय -
+! Assessment for learning takes into account the following, except -
+- विद्यार्थियों की त्रुटियाँ / Students' errors
+- विद्यार्थियों की अधिगम शैलियाँ / Students' learning styles
+- विद्यार्थियों की क्षमताएँ / Students' abilities
+- विद्यार्थियों की आवश्यकताएँ / Students' needs
+= उत्तर कुंजी के अनुसार (D)।
+72 अधिगम अक्षमता
+? डिसलेक्सिया मुख्यतः .......... की समस्या के साथ सम्बन्धित है।
+! Dyslexia is primarily associated with the problem of ..........
+- पढ़ने / reading
+- लिखने / writing
+- बोलने / speaking
+- बोलने और सुनने / speaking and listening
+= डिस्लेक्सिया — पठन; डिसग्राफिया — लेखन।
+73 प्राचीन शिक्षा
+? निम्नलिखित में से कौन-सा बौद्धकालीन शिक्षा का उद्देश्य नहीं था-
+! Which of the following was not an objective of education during the Buddhist period?
+- निर्वाण प्राप्ति / Attainment of Nirvana
+- अष्टांग योग का पालन / Practice of Ashtanga Yoga
+- दुःखों का विनाश / Destruction of suffering
+- कर्मकाण्ड की प्रधानता / Primacy of rituals
+= बौद्ध शिक्षा कर्मकांड-विरोधी थी।
+74 शिक्षा दर्शन
+? 'प्रोजेक्ट पद्धति' किस दर्शन की प्रमुख विधि मानी जाती है-
+! The 'Project Method' is considered a major method of which philosophy?
+- यथार्थवाद / Realism
+- प्रकृतिवाद / Naturalism
+- आदर्शवाद / Idealism
+- प्रयोजनवाद / Pragmatism
+= डीवी का प्रयोजनवाद; किलपैट्रिक ने विधि विकसित की।
+75 मूल्य
+? मूल्य हमारे व्यवहार को क्या करते हैं-
+! What do values do to our behaviour?
+- दर्शित / Reflect
+- प्रेरित / Motivate
+- नियन्त्रित / Control
+- उपर्युक्त सभी / All of the above
+= मूल्य व्यवहार को दिशा, प्रेरणा और नियंत्रण देते हैं।
+76 प्राचीन शिक्षा
+? वैदिक कालीन (गुरुकुल) शिक्षा किस जीवन दर्शन पर आधारित थी-
+! On which philosophy of life was Vedic-era (Gurukul) education based?
+- प्रकृतिवाद / Naturalism
+- आदर्शवाद / Idealism
+- समाजवाद / Socialism
+- व्यवहारवाद / Pragmatism
+= आध्यात्मिक मूल्य, ब्रह्म-ज्ञान — आदर्शवाद।
+77 शिक्षण सिद्धांत
+? शिक्षक द्वारा कक्षा में अन्त्याक्षरी एवं काव्य पाठ प्रतियोगिता कराना कौन-सा शिक्षण सिद्धान्त है?
+! Which teaching principle is exemplified by a teacher conducting Antakshari and poetry recitation competitions in the classroom?
+- नियोजन का सिद्धान्त / Principle of planning
+- निश्चित उद्देश्य का सिद्धान्त / Principle of definite objectives
+- क्रियाशीलता का सिद्धान्त / Principle of activity
+- अभिप्रेरण एवं रुचि का सिद्धान्त / Principle of motivation and interest
+= प्रतियोगिता से रुचि व प्रेरणा जागती है — उत्तर कुंजी के अनुसार (D)।
+78 शिक्षण सूत्र
+? उदाहरणों एवं दृष्टान्तों के द्वारा कोई सामान्य नियम या सिद्धान्त बनाना कौन-सा शिक्षण सूत्र है?
+! Which maxim of teaching involves formulating a general rule from examples and illustrations?
+- तर्कना की ओर / Towards reasoning
+- विशिष्ट से सामान्य की ओर / From specific to general
+- विश्लेषण से संश्लेषण की ओर / From analysis to synthesis
+- संश्लेषण से विश्लेषण की ओर / From synthesis to analysis
+= उदाहरण → नियम — आगमन विधि।
+79 शिक्षण सिद्धांत
+? शिक्षण का मूलभूत सिद्धान्त है-
+! The fundamental principle of teaching is—
+- क्रियाशीलता का सिद्धान्त / Principle of activity
+- अन्वेषण का सिद्धान्त / Principle of exploration
+- आगमन विधि का सिद्धान्त / Principle of the inductive method
+- उपर्युक्त सभी / All of the above
+= उत्तर कुंजी के अनुसार — उपर्युक्त सभी।
+80 शांति शिक्षा
+? शान्ति की दृष्टि से निम्नांकित में से कौन-सा गुण आवश्यक है-
+! Which of the following qualities is necessary from the point of view of peace?
+- अहमग्रस्तता / Egoism
+- स्वार्थपरता / Selfishness
+- भाईचारा / Brotherhood
+- परनिन्दा / Slander
+= भाईचारा।
+81 तनाव प्रबंधन
+? तनाव प्रबन्धन की तकनीक नहीं है-
+! Which of the following is not a stress management technique?
+- सामाजिक सरोकार / Social engagement
+- व्यायाम करना / Exercising
+- परिस्थितियों के साथ सामंजस्य स्थापित करना / Harmonizing with the situation
+- सदैव चिंताग्रस्त रहना / Remaining constantly worried
+= चिंता करना तनाव बढ़ाता है।
+82 भाषा शिक्षण
+? पठन की प्रक्रिया में उचित आरोह-अवरोह का समावेश न होने का प्रमुख कारण है-
+! The primary reason for the failure to use proper intonation while reading is—
+- शीघ्रता से पठन / reading too quickly
+- भाव को समझकर न पढ़ना / reading without grasping the meaning
+- अधिक तेज आवाज में पढ़ना / reading in an excessively loud voice
+- उपर्युक्त सभी / all of the above
+= सभी कारण आरोह-अवरोह बिगाड़ते हैं।
+83 विकास
+? निम्नलिखित में से कौन-सा विकास का सिद्धांत नहीं है?
+! Which of the following is not a principle of development?
+- परस्पर सम्बन्ध का सिद्धांत / Theory of Interrelation
+- निरंतर विकास का सिद्धांत / Theory of Continuous Growth
+- अनुकूलित प्रत्यावर्तन सिद्धांत / Theory of Conditioned Reflex
+- समान प्रतिमान का सिद्धांत / Theory of Uniform Pattern
+= अनुकूलित अनुक्रिया (पावलव) अधिगम का सिद्धांत है, विकास का नहीं।
+84 मूल प्रवृत्ति
+? मूल प्रवृत्तियों को चौदह प्रकार से किसने वर्गीकृत किया है?
+! Instincts are classified into fourteen types by—
+- थॉर्नडाइक / Thorndike
+- मैक्डूगल / McDougall
+- ड्रेवर / Drever
+- वुडवर्थ / Woodworth
+= मैक्डूगल — 14 मूल प्रवृत्तियाँ व उनके संवेग।
+85 अधिगम
+? सीखने में प्रयास व भूल के सिद्धांत का प्रतिपादन किसने किया?
+! Who propounded the trial and error theory of learning?
+- थॉर्नडाइक / Thorndike
+- पावलव / Pavlov
+- कोहलर / Kohler
+- गेस्टाल्ट / Gestalt
+= थॉर्नडाइक — बिल्ली पर प्रयोग।
+86 RTE
+? भारतीय संविधान में 6-14 वर्ष के बच्चों के लिए निःशुल्क व अनिवार्य शिक्षा का अधिकार निम्न में शामिल है।
+! The right to free and compulsory education for children of 6-14 years is included in the Constitution as—
+- अनुच्छेद 15 में / Article 15
+- अनुच्छेद 26 में / Article 26
+- अनुच्छेद 45 में / Article 45
+- अनुच्छेद 21 ए में / Article 21A
+= 86वाँ संशोधन 2002 — अनु. 21A।
+
+# सामान्य ज्ञान एवं समसायिक घटनाएं
+87 राज्य
+? छत्तीसगढ़ राज्य स्वरूप में आया-
+! Chhattisgarh state came into existence on-
+- 1 नवंबर, 2000 को / 1 November 2000
+- 9 नवंबर, 2000 को / 9 November 2000
+- 10 नवंबर, 2000 को / 10 November 2000
+- 1 जनवरी, 2000 को / 1 January 2000
+= छत्तीसगढ़ 1 नवंबर, उत्तराखंड 9 नवंबर, झारखंड 15 नवंबर 2000।
+88 पुरस्कार
+? ज्ञानपीठ पुरस्कार प्राप्त करने वाली पहली महिला कौन थीं?
+! Who was the first woman to receive the Jnanpith Award?
+- महादेवी वर्मा / Mahadevi Varma
+- आशापूर्णा देवी / Ashapurna Devi
+- अमृता प्रीतम / Amrita Pritam
+- कृष्णा सोबती / Krishna Sobti
+= आशापूर्णा देवी (बांग्ला) — 1976।
+89 विश्व
+? किस देश को व्हाइन यार्ड कहा जाता है?
+! Which country is called the Wine Yard?
+- उत्तरी अमेरिका / North America
+- स्विट्ज़रलैंड / Switzerland
+- नॉर्वे / Norway
+- फ्रांस / France
+= उत्तर कुंजी के अनुसार — फ्रांस (अंगूर के बागान व वाइन उत्पादन)।
+90 पुरस्कार
+? हाल ही में प्रतिष्ठित लोकमान्य तिलक राष्ट्रीय पुरस्कार किसे दिया जाएगा?
+! Who will be conferred the prestigious Lokmanya Tilak National Award?
+- अमित शाह / Amit Shah
+- अजीत डोभाल / Ajit Doval
+- धर्मेन्द्र प्रधान / Dharmendra Pradhan
+- इनमें से कोई नहीं / None of the above
+= उत्तर कुंजी के अनुसार — इनमें से कोई नहीं।
+91 संविधान
+? भारत के राष्ट्रपति ने जिस एकमात्र मामले में अपने वीटो की शक्ति का प्रयोग किया वह था-
+! The only case in which the President of India exercised his power of veto was-
+- हिंदू कोड बिल / Hindu Code Bill
+- पेप्सू विनियोग विधेयक / Pepsu Appropriation Bill
+- भारतीय डाक घर (संशोधन) विधेयक / Indian Post Office (Amendment) Bill
+- दहेज प्रतिषेध विधेयक / Dowry Prohibition Bill
+= 1986 में ज्ञानी जैल सिंह ने डाकघर (संशोधन) विधेयक पर पॉकेट वीटो लगाया। (पेप्सू विधेयक 1954 पर पूर्ण वीटो भी प्रसिद्ध है)
+92 खेल
+? हाल ही में ऑस्ट्रेलिया की बिग बैश लीग के उद्घाटन मैच की मेजबानी कौन-सा भारतीय शहर करेगा?
+! Which Indian city will host the inaugural match of Australia's Big Bash League?
+- गोवा / Goa
+- मुंबई / Mumbai
+- चेन्नई / Chennai
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — इनमें से कोई नहीं।
+93 न्यायपालिका
+? इलाहाबाद उच्च न्यायालय के प्रथम मुख्य न्यायाधीश (Chief Justice) कौन थे?
+! Who was the first Chief Justice of the Allahabad High Court?
+- सर वाल्टर मॉर्गन / Sir Walter Morgan
+- सर रॉबर्ट स्टुअर्ट / Sir Robert Stuart
+- सर एडवर्ड ग्रिमवुड मेयर्स / Sir Edward Grimwood Mears
+- श्री बिधु भूषण मलिक / Shri Bidhu Bhushan Malik
+= सर वाल्टर मॉर्गन (1866)।
+94 विश्व
+? राजाओं की घाटी अवस्थित है-
+! The Valley of the Kings is located in-
+- मिस्र में / Egypt
+- नाइजीरिया में / Nigeria
+- यूनान में / Greece
+- तुर्की में / Turkey
+= लक्सर (मिस्र) — फ़राओ की कब्रें।
+95 खेल
+? हाल ही में 14वें साउथ एशियन गेम्स का आयोजन कहाँ किया जाएगा?
+! Where will the 14th South Asian Games be held?
+- भारत / India
+- पाकिस्तान / Pakistan
+- बांग्लादेश / Bangladesh
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — पाकिस्तान।
+96 शिक्षा
+? सर्वोच्च न्यायालय ने CBSE को तीसरी भाषा किस कक्षा से शुरू करने का सुझाव दिया है?
+! From which class has the Supreme Court suggested that the CBSE introduce a third language?
+- चौथी या पाँचवीं / Fourth or fifth
+- पाँचवीं या छठी / Fifth or sixth
+- छठी या सातवीं / Sixth or seventh
+- सातवीं या आठवीं / Seventh or eighth
+= उत्तर कुंजी के अनुसार — पाँचवीं या छठी।
+97 संविधान
+? समान कार्य के लिए समान वेतन भारत के संविधान में सुनिश्चित किया गया एक-
+! Equal pay for equal work in the Constitution of India-
+- मौलिक अधिकार है / is a fundamental right
+- राज्य के नीति-निदेशक सिद्धांतों का अंग है / is a part of the Directive Principles of State Policy
+- मौलिक कर्तव्य है / is a fundamental duty
+- आर्थिक अधिकार है / is an economic right
+= अनुच्छेद 39(d) — नीति-निदेशक तत्व।
+98 रिपोर्ट
+? हाल ही में जारी पर्यावरण प्रदर्शन सूचकांक (EPI) 2026 में भारत ने कौन-सा स्थान प्राप्त किया है?
+! What rank has India secured in the Environment Performance Index (EPI) 2026?
+- 170वाँ / 170th
+- 174वाँ / 174th
+- 176वाँ / 176th
+- 177वाँ / 177th
+= उत्तर कुंजी के अनुसार — 177वाँ।
+99 संगठन
+? निम्नलिखित में से किस संगठन का मुख्यालय वियना (Vienna) में स्थित है?
+! The headquarters of which of the following organizations is located in Vienna?
+- UNESCO
+- IAEA
+- UNICEF
+- WHO
+= IAEA — वियना; UNESCO — पेरिस; UNICEF — न्यूयॉर्क; WHO — जिनेवा।
+100 खेल
+? हाल ही में जापान ओपन 2026 का महिला एकल खिताब जीतने वाली पहली भारतीय खिलाड़ी कौन बनी हैं?
+! Who became the first Indian player to win the Women's Singles title at the Japan Open 2026?
+- साइना नेहवाल / Saina Nehwal
+- अकाने यामागुची / Akane Yamaguchi
+- पी. वी. सिंधु / P. V. Sindhu
+- अश्मिता चालिहा / Ashmita Chaliha
+= उत्तर कुंजी के अनुसार — अश्मिता चालिहा।
+101 संगीत
+? आगरा घराने को अन्य किस नाम से भी जाना जाता है?
+! By what other name is the Agra Gharana known?
+- कव्वाल बच्चा घराना / Qawwal Bachcha Gharana
+- ख्याल घराना / Khayal Gharana
+- सेनिया घराना / Senia Gharana
+- पूरब घराना / Purab Gharana
+= उत्तर कुंजी के अनुसार — कव्वाल बच्चा घराना।
+102 समसामयिकी
+? हाल ही में 'हेली टूरिज्म और एयर टूरिज्म सर्विस योजना' किसने शुरू की है?
+! Who has recently launched the 'Heli Tourism and Air Tourism Service Scheme'?
+- बिहार / Bihar
+- झारखंड / Jharkhand
+- छत्तीसगढ़ / Chhattisgarh
+- मध्य प्रदेश / Madhya Pradesh
+= उत्तर कुंजी के अनुसार — छत्तीसगढ़।
+103 समसामयिकी
+? हाल ही में किस राज्य सरकार ने अपनी महिला समृद्धि योजना का नाम बदल दिया है?
+! Which state government has recently renamed its 'Mahila Samriddhi Yojana'?
+- केरल / Kerala
+- तेलंगाना / Telangana
+- दिल्ली / Delhi
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — तेलंगाना।
+104 संविधान
+? भारत के राष्ट्रपति ..... की अनुशंसा पर लोक सभा को भंग कर सकते हैं-
+! The President of India can dissolve the Lok Sabha on the recommendation of-
+- राज्यसभा / Rajya Sabha
+- चुनाव आयोग / Election Commission
+- भारत के मुख्य न्यायाधीश / Chief Justice of India
+- मंत्रिपरिषद / Council of Ministers
+= अनु. 85 — प्रधानमंत्री व मंत्रिपरिषद की सलाह पर।
+105 रक्षा
+? हाल ही में जारी ग्लोबल एयरपावर रैंकिंग 2026 में भारतीय वायु सेना कौन से स्थान पर रही है?
+! What rank did the Indian Air Force secure in the Global Air Power Ranking 2026?
+- दूसरे / Second
+- पहले / First
+- तीसरे / Third
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — तीसरे।
+106 भूगोल
+? निम्न में से कौन-सा भारत का प्राचीनतम भू-स्थल है?
+! Which of the following is the oldest landmass of India?
+- हिमालय पर्वत / Himalayan Mountains
+- अरावली / Aravalli
+- प्रायद्वीपीय पठार / Peninsular Plateau
+- तटीय क्षेत्र / Coastal region
+= प्रायद्वीपीय पठार — गोंडवाना भूभाग का भाग, सबसे प्राचीन।
+107 उत्तर प्रदेश
+? उत्तर प्रदेश सरकार द्वारा 'आर्टिफिशियल इंटेलिजेंस (AI) सिटी' कहाँ स्थापित की जा रही है?
+! Where is the 'Artificial Intelligence (AI) City' being established by the UP Government?
+- नोएडा / Noida
+- लखनऊ / Lucknow
+- आगरा / Agra
+- गाजियाबाद / Ghaziabad
+= लखनऊ — देश की पहली AI सिटी।
+108 समसामयिकी
+? हाल ही में किसे नीति आयोग का उपाध्यक्ष नियुक्त किया गया है?
+! Who has recently been appointed as the Vice Chairman of NITI Aayog?
+- गोवर्धन दास / Govardhan Das
+- अशोक कुमार लाहिड़ी / Ashok Kumar Lahiri
+- एम श्रीनिवास / M. Srinivas
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — इनमें से कोई नहीं।
+109 स्वास्थ्य
+? हाल ही में किसने नवजात शिशुओं के लिए पहली बार Malaria की खास दवा को मंजूरी दी है?
+! Who has recently approved a special malaria drug for newborns for the first time?
+- IMA
+- WHO
+- ICMR
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — WHO।
+110 संगठन
+? IMF की स्थापना किस सम्मेलन के परिणामस्वरूप हुई?
+! The IMF was established as a result of which conference?
+- जेनेवा सम्मेलन / Geneva Conference
+- ब्रेटन वुड्स सम्मेलन / Bretton Woods Conference
+- सैन फ्रांसिस्को सम्मेलन / San Francisco Conference
+- पेरिस सम्मेलन / Paris Conference
+= ब्रेटन वुड्स 1944 — IMF और विश्व बैंक।
+111 पुरस्कार
+? निम्नलिखित में से कौन-सा पुरस्कार खेल के क्षेत्र से संबंधित नहीं है?
+! Which of the following awards is not related to the field of sports?
+- मेजर ध्यानचंद खेल रत्न / Major Dhyan Chand Khel Ratna
+- अर्जुन पुरस्कार / Arjuna Award
+- द्रोणाचार्य पुरस्कार / Dronacharya Award
+- सरस्वती सम्मान / Saraswati Samman
+= सरस्वती सम्मान — साहित्य (के. के. बिड़ला फाउंडेशन)।
+
+# REASONING
+112 कैलेंडर
+? यदि बीते हुए दिन के एक दिन पहले मंगलवार था तो आने वाले कल के एक दिन बाद कौन सा दिन होगा?
+! If the day before yesterday was Tuesday, then what day will it be the day after tomorrow?
+- शुक्रवार / Friday
+- शनिवार / Saturday
+- रविवार / Sunday
+- सोमवार / Monday
+= परसों-बीता (आज − 2) = मंगलवार ⇒ आज गुरुवार ⇒ आज + 2 = शनिवार।
+113 घड़ी
+? 5 से 6 बजे के बीच घड़ी की सुइयाँ कब एक दूसरे को ढक लेंगी?
+! When will the hands of the clock overlap between 5 and 6 o'clock?
+- 5 : $5\frac{5}{11}$ बजे
+- 5 : $15\frac{5}{11}$ बजे
+- 5 : $42\frac{7}{11}$ बजे
+- इनमें से कोई नहीं
+= सुइयाँ $\frac{60H}{11}=\frac{300}{11}=27\frac{3}{11}$ मिनट पर मिलती हैं ⇒ 5:27 3/11 — दिए विकल्पों में नहीं।
+114 आकृति गणना
+? कुल वर्गों की संख्या ज्ञात कीजिए।
+! Find the total number of squares.
+* figures/q_p03_q114_grid.png
+- 32
+- 30
+- 42
+- 21
+= 4×4 ग्रिड: 1×1 वाले 16, 2×2 वाले 9, 3×3 वाले 4, 4×4 वाला 1 ⇒ 16 + 9 + 4 + 1 = 30।
+=* figures/sol_p03_q114_squares.png
+115 विषम
+? चार शब्द दिये गए हैं जिनमें से तीन एक समान हैं और चौथा विषम है, वह है-
+! Choose the odd one out.
+- मलेरिया / Malaria
+- प्लेग / Plague
+- डेंगू / Dengue
+- टिटनेस / Tetanus
+= मलेरिया, प्लेग, डेंगू वाहक (मच्छर/पिस्सू) से फैलते हैं; टिटनेस घाव से (जीवाणु बीजाणु)।
+116 रक्त संबंध
+? अमृता, बबलू की बहन है। बबलू, दीपक का भाई है। दीपक, मालती का पुत्र है और मालती, लखन की पत्नी है। नेहल, लखन का भाई है। नेहल का अमृता से क्या संबंध है?
+! Amrita is Bablu's sister. Bablu is Deepak's brother. Deepak is Malti's son, and Malti is Lakhan's wife. Nehal is Lakhan's brother. How is Nehal related to Amrita?
+- पिता का भाई (चाचा/ताऊ) / Father's brother (Uncle)
+- भाई / Brother
+- पुत्र / Son
+- माता का भाई (मामा) / Mother's brother (Maternal uncle)
+= अमृता, बबलू, दीपक — लखन-मालती की संतान; नेहल, लखन (पिता) का भाई ⇒ चाचा/ताऊ।
+=* figures/sol_p03_q116_tree.png
+
+# सूचना तकनीक
+117 मेमोरी
+? EPROM का पूरा नाम क्या है?
+! What is the full form of EPROM?
+- Erasable Programmable Read Only Memory
+- Electrically Programmable ROM
+- External Programmable ROM
+- Extended Programmable ROM
+= EPROM — पराबैंगनी किरणों से मिटाई जा सकने वाली ROM।
+118 ऑपरेटिंग सिस्टम
+? पहला GUI आधारित Operating System किस कंपनी ने विकसित किया था?
+! Which company developed the first GUI-based Operating System?
+- Microsoft
+- Apple
+- IBM
+- Intel
+= उत्तर कुंजी के अनुसार Apple (Lisa/Macintosh)। (GUI की शुरुआत Xerox PARC में हुई थी।)
+119 लॉजिक गेट
+? किस Logic Gate को Universal Gate कहा जाता है?
+! Which Logic Gate is called a Universal Gate?
+- AND
+- OR
+- NAND
+- XOR
+= NAND (और NOR) से कोई भी गेट बनाया जा सकता है।
+120 मेमोरी
+? किस मेमोरी का Access Time सबसे कम होता है?
+! Which memory has the shortest access time?
+- Cache Memory
+- RAM
+- ROM
+- Hard Disk
+= Register > Cache > RAM > Hard Disk (गति के क्रम में)।
+
+# बाल विकास (CDP)
+121 प्रबंधन
+? प्रबन्धन की मुख्य प्रक्रिया है- (मूल पेपर में यह प्रश्न Q65 के बाद बिना क्रमांक छपा है)
+! The main process of management is—
+- नियोजन करना / Planning
+- व्यवस्था करना / Organizing
+- प्रशासन / Administration
+- उपर्युक्त सभी / All of the above
+= नियोजन, संगठन (व्यवस्था) और प्रशासन — सभी प्रबंधन की प्रक्रियाएँ हैं। (उत्तर कुंजी में Q65 के बाद बिना क्रमांक "D" छपा है।)

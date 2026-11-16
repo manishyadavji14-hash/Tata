@@ -1,3 +1,4 @@
+import { recordMistakes } from '../practice.js';
 // Testbook-style CBT exam player.
 import { db } from '../db.js';
 import { getSet, bookmarkSet, toggleBookmark } from '../store.js';
@@ -221,6 +222,7 @@ export async function render({ root, params, navigate, setLeaveGuard }) {
     attempt.result = evaluate(set, attempt);
     await save();
     try { await recordTopicStats(attempt.result); } catch (e) { console.error(e); }
+    try { await recordMistakes(set, attempt.result); } catch (e) { console.error(e); }
     setLeaveGuard(null);
     if (auto) toast('⏰ समय समाप्त! टेस्ट सबमिट हो गया', 'warn', 4000);
     navigate(`result/${attempt.id}`, { replace: true });
