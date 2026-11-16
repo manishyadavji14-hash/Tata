@@ -2,8 +2,9 @@
 
 कोचिंग की प्रश्न-पत्र PDF या JSON से Testbook जैसा CBT मॉक टेस्ट, विस्तृत सॉल्यूशन, टॉपिक-वार कमजोरी विश्लेषण और AI डाउट सॉल्वर। पूरा डेटा फ़ोन के IndexedDB में रहता है, ऐप बिना इंटरनेट चलता है (सिर्फ़ AI फ़ीचर को इंटरनेट चाहिए)।
 
-- **Android APK:** [`dist/AbhyasCBT.apk`](dist/AbhyasCBT.apk)
-- **PWA (ब्राउज़र में):** https://manishyadavji14-hash.github.io/abhyas-cbt/
+- **Android APK (डायरेक्ट डाउनलोड):** https://github.com/manishyadavji14-hash/Tata/raw/abhyas-cbt/dist/AbhyasCBT.apk
+
+यह प्रोजेक्ट `Tata` रिपॉज़िटरी की अलग `abhyas-cbt` ब्रांच में है (BitPerfect कोड से इसका कोई संबंध नहीं)।
 
 ## फ़ीचर
 
