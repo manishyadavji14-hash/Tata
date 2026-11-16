@@ -31,6 +31,7 @@ export const icon = {
   x: (c) => svg('<path d="M18 6L6 18M6 6l12 12"/>', c),
   play2: (c) => svg('<circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z"/>', c),
   info: (c) => svg('<circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/>', c),
+  bulb: (c) => svg('<path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V17h5v-1.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/>', c),
   target: (c) => svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>', c),
 };
 

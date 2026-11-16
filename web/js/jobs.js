@@ -81,7 +81,7 @@ export async function createJob({ kind, title, params, sources = [], pasted = ''
     out.push({ fileId: id, name: f.name, type: f.type, size: f.size, lastModified: f.lastModified || Date.now(), pages: s.pages || '' });
   }
   const job = {
-    id: uid('job'), kind, title: String(title || '').trim() || (kind === 'pdf' ? 'PDF डिजिटाइज़' : 'AI प्रश्न'),
+    id: uid('job'), kind, title: String(title || '').trim() || (kind === 'pdf' ? 'PDF डिजिटाइज़' : kind === 'concepts' ? 'AI कॉन्सेप्ट' : 'AI प्रश्न'),
     status: 'queued', createdAt: Date.now(), updatedAt: Date.now(), startedAt: null, finishedAt: null,
     params, sources: out, pasted, parentId, avoid, rootTitle, progress: { pct: 0, msg: 'कतार में…' }, log: [], state: null, result: null, savedSetId: null, autoResumes: 0,
   };
@@ -134,6 +134,9 @@ async function run(job) {
     if (job.kind === 'generate') {
       const { runGeneration } = await import('./generate.js');
       await runGeneration(job, { files, signal: controller.signal, log, progress, saveState: () => persist(job, true) });
+    } else if (job.kind === 'concepts') {
+      const { runConceptJob } = await import('./concepts.js');
+      await runConceptJob(job, { files, signal: controller.signal, log, progress, saveState: () => persist(job, true) });
     } else {
       const { importPdf } = await import('./pdf-import.js');
       if (!files.length) throw new Error('PDF फ़ाइल नहीं मिली');
@@ -233,11 +236,12 @@ function nativeStatus() {
 
 function notifyDone(job) {
   const nb = window.AndroidBridge;
-  if (nb && typeof nb.notifyDone === 'function') { try { nb.notifyDone(job.title, job.kind === 'generate' ? `${job.state?.questions?.length || 0} प्रश्न तैयार` : `${job.result?.set?.questions?.length || 0} प्रश्न तैयार`); } catch { /* ignore */ } }
+  if (nb && typeof nb.notifyDone === 'function') { try { nb.notifyDone(job.title, `${jobQuestionCount(job)} ${job.kind === 'concepts' ? 'कॉन्सेप्ट' : 'प्रश्न'} तैयार`); } catch { /* ignore */ } }
 }
 
 /** Number of questions produced so far. */
 export function jobQuestionCount(job) {
   if (job.kind === 'generate') return job.state?.questions?.length || 0;
+  if (job.kind === 'concepts') return (job.state?.subjects || []).reduce((a, s) => a + s.topics.reduce((b, t) => b + t.concepts.length, 0), 0);
   return job.result?.set?.questions?.length || 0;
 }

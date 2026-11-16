@@ -72,10 +72,17 @@ export async function render({ root, query, settings, navigate, setHeader }) {
   // Several texts (files / shared from other apps) → previews. Bundles may hold many tests.
   async function handleTexts(items) {
     const parts = [];
+    let conceptSets = 0, conceptCount = 0;
     for (const it of items) {
       let data;
       try { data = JSON.parse(it.text); } catch {
         try { data = extractJson(it.text); } catch (e) { throw new Error(`${it.name}: मान्य JSON नहीं है — ${e.message}`); }
+      }
+      // Concept / revision-note files go to the कॉन्सेप्ट tab.
+      const C = await import('../concepts.js');
+      if (C.isConceptData(data)) {
+        for (const { set, count } of C.expandConcepts(data)) { await C.saveConceptSet(set); conceptSets++; conceptCount += count; }
+        continue;
       }
       if (/"svg"\s*:\s*"/.test(it.text) || /solution_svg/.test(it.text)) {
         const { resolveRawFigures } = await import('../generate.js');
@@ -83,6 +90,11 @@ export async function render({ root, query, settings, navigate, setHeader }) {
       }
       parts.push(...expandImport(data));
     }
+    if (conceptSets) {
+      toast(`💡 ${conceptSets} कॉन्सेप्ट सेट जुड़े (${conceptCount} कॉन्सेप्ट) — कॉन्सेप्ट टैब में पढ़ें`, 'success', 4000);
+      if (!parts.length) { navigate('concepts'); return; }
+    }
+    if (!parts.length) return;
     // Only parts with the same exam_id are Parts of one paper → combine those; different papers stay separate.
     const groups = new Map();
     for (const p of parts) {

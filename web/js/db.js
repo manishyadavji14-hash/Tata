@@ -1,6 +1,6 @@
 // IndexedDB storage layer. Every piece of app data lives here so the app works fully offline.
 const DB_NAME = 'abhyas-cbt';
-const DB_VERSION = 3;
+const DB_VERSION = 4;
 
 const STORES = {
   sets: { keyPath: 'id' },
@@ -13,6 +13,8 @@ const STORES = {
   mistakes: { keyPath: 'key' }, // wrong-answers bank: `${setId}|${q_no}` -> { correct, wrong, ... }
   jobs: { keyPath: 'id' },      // background AI work (PDF digitising, question generation) with progress + log
   jobFiles: { keyPath: 'id' },  // source documents of jobs (Blob) so a job can resume or "make more" later
+  concepts: { keyPath: 'id' },  // concept / revision note sets (subject → topic → concept cards)
+  conceptProgress: { keyPath: 'key' }, // concept id -> { learned, star, views }
 };
 
 let dbPromise = null;

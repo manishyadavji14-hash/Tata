@@ -5,7 +5,7 @@ import { DEMO_SET } from './demo-set.js';
 import { icon, toast } from './ui.js';
 import { $, esc } from './util.js';
 
-export const APP_VERSION = '1.6.0';
+export const APP_VERSION = '1.7.0';
 
 const routes = {
   home: () => import('./views/home.js'),
@@ -23,12 +23,15 @@ const routes = {
   share: () => import('./views/share.js'),
   jobs: () => import('./views/jobs.js'),
   job: () => import('./views/job.js'),
+  concepts: () => import('./views/concepts.js'),
+  focus: () => import('./views/focus.js'),
 };
 
 const NAV = [
   ['home', 'होम', 'home'],
   ['import', 'इम्पोर्ट', 'upload'],
   ['practice', 'अभ्यास', 'target'],
+  ['concepts', 'कॉन्सेप्ट', 'bulb'],
   ['history', 'हिस्ट्री', 'history'],
   ['settings', 'सेटिंग्स', 'settings'],
 ];
@@ -105,9 +108,9 @@ async function route() {
   if (cleanup) { try { cleanup(); } catch { /* ignore */ } cleanup = null; }
   leaveGuard = null;
   document.getElementById('modal-root').innerHTML = '';
-  const full = name === 'exam';
+  const full = name === 'exam' || name === 'focus';
   setChrome(full);
-  if (!full) renderNav(['home', 'import', 'practice', 'history', 'settings'].includes(name) ? name : name === 'analytics' ? 'history' : name === 'bookmarks' ? 'practice' : name === 'jobs' || name === 'job' ? 'import' : 'home');
+  if (!full) renderNav(['home', 'import', 'practice', 'concepts', 'history', 'settings'].includes(name) ? name : name === 'analytics' ? 'history' : name === 'bookmarks' ? 'practice' : name === 'jobs' || name === 'job' ? 'import' : 'home');
   setHeader({});
   // Fresh <main> per route so event listeners of the previous view are dropped.
   const old = $('#view');

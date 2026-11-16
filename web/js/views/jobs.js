@@ -12,16 +12,16 @@ export function jobCard(j) {
   return `<div class="card !p-3" data-job="${esc(j.id)}">
     <a href="#/job/${encodeURIComponent(j.id)}" class="block">
       <div class="flex items-start gap-2">
-        <span class="text-xl">${j.kind === 'pdf' ? '📑' : '✨'}</span>
+        <span class="text-xl">${j.kind === 'pdf' ? '📑' : j.kind === 'concepts' ? '💡' : '✨'}</span>
         <div class="min-w-0 flex-1">
           <div class="truncate text-sm font-bold">${esc(j.title)}</div>
-          <div class="text-[11px] text-slate-500">${j.kind === 'pdf' ? 'Fixed — PDF डिजिटाइज़' : 'Custom — AI प्रश्न'}${j.parentId ? ' • और बनवाए' : ''} • ${fmtDate(j.createdAt)}</div>
+          <div class="text-[11px] text-slate-500">${j.kind === 'pdf' ? 'Fixed — PDF डिजिटाइज़' : j.kind === 'concepts' ? 'AI — कॉन्सेप्ट नोट्स' : 'Custom — AI प्रश्न'}${j.parentId ? ' • और बनवाए' : ''} • ${fmtDate(j.createdAt)}</div>
         </div>
         <span class="chip shrink-0 ${cls}">${ic} ${label}</span>
       </div>
       ${j.status !== 'done' ? `<div class="bar mt-2"><span data-pbar class="${j.status === 'error' ? 'bg-rose-500' : 'bg-brand-600'} transition-all" style="width:${pct}%"></span></div>` : ''}
       <div class="mt-1 truncate text-xs text-slate-600 dark:text-slate-300" data-pmsg>${esc(j.progress?.msg || '')}</div>
-      <div class="mt-1 text-[11px] text-slate-500"><span data-pn>${n}</span> प्रश्न${want ? ` / ${want}` : ''}${j.savedSetId ? ' • 💾 सेट में सेव' : ''}</div>
+      <div class="mt-1 text-[11px] text-slate-500"><span data-pn>${n}</span> ${j.kind === 'concepts' ? 'कॉन्सेप्ट' : 'प्रश्न'}${want ? ` / ${want}` : ''}${j.savedSetId || j.savedConceptId ? ' • 💾 सेव' : ''}</div>
     </a>
     <div class="mt-2 flex gap-2">
       ${canPause ? '<button class="btn-outline btn-sm flex-1" data-jact="pause">⏸ रोकें</button>' : ''}
@@ -78,6 +78,7 @@ export async function render({ root, query, setHeader }) {
       </div>
       <div class="mb-3 flex gap-2">
         <a href="#/import?tab=ai&mode=custom" class="btn-primary btn-sm flex-1">✨ नए प्रश्न बनवाएँ</a>
+        <a href="#/concepts?ai=1" class="btn-outline btn-sm flex-1">💡 कॉन्सेप्ट बनवाएँ</a>
         <a href="#/import?tab=ai&mode=fixed" class="btn-outline btn-sm flex-1">📑 PDF डिजिटाइज़</a>
       </div>
       ${tab === 'active' ? `<div class="mb-3 rounded-xl bg-slate-100 p-2 text-[11px] text-slate-600 dark:bg-slate-800 dark:text-slate-300">एक साथ ${MAX_PARALLEL} काम चलते हैं (अभी ${running}), बाकी कतार में। ऐप में कहीं भी जाएँ या दूसरा ऐप खोलें — काम चलते रहेंगे (फ़ोन पर सूचना दिखेगी)। ऐप बंद हो जाए तो दोबारा खोलने पर वहीं से जारी होंगे।</div>` : ''}

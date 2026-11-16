@@ -9,6 +9,7 @@ import { esc, fmtDate, fmtDur, bilingualHtml, renderRich, imgTag } from '../util
 const PAGE = 25;
 
 async function buildSet(job) {
+  if (job.kind === 'concepts') return null;
   if (job.kind === 'generate') {
     const { buildGenSet } = await import('../generate.js');
     return buildGenSet(job);
@@ -51,7 +52,9 @@ export async function render({ root, params, navigate, setHeader }) {
   const id = params[0];
   let job = await getJob(id);
   if (!job) { root.innerHTML = '<div class="card">यह काम नहीं मिला (शायद हटा दिया गया)। <a class="text-brand-600 underline" href="#/jobs">सभी काम</a></div>'; return; }
-  setHeader({ title: job.title, sub: job.kind === 'pdf' ? 'Fixed — PDF डिजिटाइज़' : 'Custom — AI प्रश्न', back: 'jobs' });
+  const isC = job.kind === 'concepts';
+  const unit = isC ? 'कॉन्सेप्ट' : 'प्रश्न';
+  setHeader({ title: job.title, sub: job.kind === 'pdf' ? 'Fixed — PDF डिजिटाइज़' : isC ? 'AI — कॉन्सेप्ट नोट्स' : 'Custom — AI प्रश्न', back: 'jobs' });
   let shown = PAGE, lastCount = -1, built = null;
 
   root.innerHTML = `<div data-head></div><div data-sources></div><details class="card mb-3" data-logwrap><summary class="cursor-pointer text-sm font-bold">📜 प्रक्रिया लॉग / Log</summary><div class="mt-2 max-h-72 space-y-0.5 overflow-y-auto rounded-lg bg-slate-100 p-2 font-mono text-[11px] dark:bg-slate-800" data-log></div></details><div data-qs></div>`;
@@ -62,20 +65,21 @@ export async function render({ root, params, navigate, setHeader }) {
   async function drawHead(force = false) {
     const [ic, label, cls] = STATUS[job.status] || STATUS.queued;
     const n = jobQuestionCount(job);
-    const sig = [job.status, n, job.savedSetId, job.appendedTo, job.error].join('|');
+    const sig = [job.status, n, job.savedSetId, job.savedConceptId, job.appendedTo, job.error].join('|');
     if (!force && sig === headSig && $('[data-head] [data-hbar]')) {
       // Only progress changed: patch in place so the buttons stay tappable.
       const pct0 = Math.max(0, Math.min(100, job.progress?.pct || 0));
       $('[data-head] [data-hbar]').style.width = `${job.status === 'done' ? 100 : pct0}%`;
       $('[data-head] [data-hmsg]').textContent = job.progress?.msg || '';
       $('[data-head] [data-hpct]').textContent = `${pct0}%`;
-      $('[data-head] [data-hbatch]').textContent = job.kind === 'generate' ? job.state?.batchesDone || 0 : job.result?.stats?.aiCalls ?? '—';
+      $('[data-head] [data-hbatch]').textContent = job.kind !== 'pdf' ? job.state?.batchesDone || 0 : job.result?.stats?.aiCalls ?? '—';
       return;
     }
     headSig = sig;
     const want = job.kind === 'generate' ? Number(job.params?.count) || 0 : 0;
     const pct = Math.max(0, Math.min(100, job.progress?.pct || 0));
     const saved = job.savedSetId ? await getSet(job.savedSetId) : null;
+    const savedC = isC && job.savedConceptId ? await db.get('concepts', job.savedConceptId) : null;
     const pset = !saved && job.kind === 'generate' ? await parentSet(job) : null;
     const took = (job.finishedAt || Date.now()) - (job.startedAt || job.createdAt);
     $('[data-head]').innerHTML = `<div class="card mb-3">
@@ -83,15 +87,17 @@ export async function render({ root, params, navigate, setHeader }) {
       <div class="bar mt-3"><span data-hbar class="${job.status === 'error' ? 'bg-rose-500' : job.status === 'done' ? 'bg-emerald-500' : 'bg-brand-600'} transition-all" style="width:${job.status === 'done' ? 100 : pct}%"></span></div>
       <div class="mt-2 text-sm font-semibold" data-hmsg>${esc(job.progress?.msg || '')}</div>
       <div class="mt-1 grid grid-cols-3 gap-2 text-center">
-        <div class="stat"><div class="stat-v">${n}${want ? `<span class="text-xs text-slate-400">/${want}</span>` : ''}</div><div class="stat-l">प्रश्न बने</div></div>
-        <div class="stat"><div class="stat-v" data-hbatch>${job.kind === 'generate' ? job.state?.batchesDone || 0 : job.result?.stats?.aiCalls ?? '—'}</div><div class="stat-l">${job.kind === 'generate' ? 'बैच' : 'AI कॉल'}</div></div>
+        <div class="stat"><div class="stat-v">${n}${want ? `<span class="text-xs text-slate-400">/${want}</span>` : ''}</div><div class="stat-l">${unit} बने</div></div>
+        <div class="stat"><div class="stat-v" data-hbatch>${job.kind !== 'pdf' ? job.state?.batchesDone || 0 : job.result?.stats?.aiCalls ?? '—'}</div><div class="stat-l">${job.kind !== 'pdf' ? 'बैच' : 'AI कॉल'}</div></div>
         <div class="stat"><div class="stat-v" data-hpct>${pct}%</div><div class="stat-l">प्रगति</div></div>
       </div>
       ${job.error ? `<div class="mt-2 rounded-lg bg-rose-50 p-2 text-xs text-rose-700 dark:bg-rose-950/30 dark:text-rose-300">${esc(job.error)}</div>` : ''}
       <div class="mt-3 grid grid-cols-2 gap-2">
         ${isActive(job) ? '<button class="btn-outline" data-a="pause">⏸ रोकें</button>' : ''}
         ${['paused', 'interrupted', 'error'].includes(job.status) ? '<button class="btn-primary" data-a="resume">▶ जारी रखें</button>' : ''}
-        ${n ? `<button class="btn-success col-span-2" data-a="save">💾 ${saved ? 'सेट अपडेट करें' : `${job.status === 'done' ? '' : 'अभी तक बने '}${n} प्रश्न सेट में सेव करें`}</button>` : ''}
+        ${n && isC ? `<button class="btn-success col-span-2" data-a="save">💾 ${savedC ? 'कॉन्सेप्ट सेट अपडेट करें' : `${job.status === 'done' ? '' : 'अभी तक बने '}${n} कॉन्सेप्ट सेव करें`}</button>` : ''}
+        ${savedC ? `<a class="btn-outline col-span-2" href="#/concepts?src=${encodeURIComponent(savedC.id)}">💡 कॉन्सेप्ट टैब में पढ़ें</a>` : ''}
+        ${n && !isC ? `<button class="btn-success col-span-2" data-a="save">💾 ${saved ? 'सेट अपडेट करें' : `${job.status === 'done' ? '' : 'अभी तक बने '}${n} प्रश्न सेट में सेव करें`}</button>` : ''}
         ${saved ? `<a class="btn-outline" href="#/set/${encodeURIComponent(saved.id)}">📚 सेट खोलें</a><a class="btn-outline" href="#/pretest/${encodeURIComponent(saved.id)}">▶ टेस्ट दें</a>` : ''}
         ${pset && n ? `<button class="btn-purple col-span-2" data-a="append">➕ "${esc(pset.meta.title).slice(0, 40)}" में जोड़ें (${pset.questions.length} + ${n})</button>` : ''}
         ${n ? '<button class="btn-outline" data-a="share">📤 शेयर करें</button>' : ''}
@@ -108,7 +114,7 @@ export async function render({ root, params, navigate, setHeader }) {
     $('[data-sources]').innerHTML = `<details class="card mb-3"><summary class="cursor-pointer text-sm font-bold">📂 स्रोत और सेटिंग</summary>
       <div class="mt-2 space-y-1 text-xs">${src.map((s) => `<div>📄 ${esc(s.name)}${s.pages ? ` — पेज ${esc(s.pages)}` : ''} <span class="text-slate-400">(${(s.size / 1048576).toFixed(1)} MB)</span></div>`).join('') || '<div class="text-slate-500">कोई फ़ाइल नहीं</div>'}
       ${job.pasted ? `<div>📝 पेस्ट किया टेक्स्ट: ${job.pasted.length} अक्षर</div>` : ''}
-      ${job.kind === 'generate' ? `<div class="pt-1 text-slate-500">प्रकार: ${esc(types.join(', ') || 'स्वतः')} • भाषा: ${esc(p.lang)} • कठिनाई: ${esc(p.difficulty)}</div>${p.custom ? `<div class="text-slate-500">निर्देश: ${esc(p.custom)}</div>` : ''}` : `<div class="pt-1 text-slate-500">AI: ${p.useAI ? `हाँ (${esc(p.pdf?.pdfMode || '')})` : 'नहीं — ऑफ़लाइन पार्सर'}</div>`}</div></details>`;
+      ${isC ? `<div class="pt-1 text-slate-500">विषय: ${esc(p.subject || 'स्वतः')} • भाषा: ${esc(p.lang || 'hi')} • ${p.detail === 'short' ? 'संक्षिप्त' : 'विस्तृत'}${p.fromSets?.length ? ` • ${p.fromSets.length} प्रश्न-पत्रों के हल से` : ''}</div>${p.custom ? `<div class="text-slate-500">निर्देश: ${esc(p.custom)}</div>` : ''}` : job.kind === 'generate' ? `<div class="pt-1 text-slate-500">प्रकार: ${esc(types.join(', ') || 'स्वतः')} • भाषा: ${esc(p.lang)} • कठिनाई: ${esc(p.difficulty)}</div>${p.custom ? `<div class="text-slate-500">निर्देश: ${esc(p.custom)}</div>` : ''}` : `<div class="pt-1 text-slate-500">AI: ${p.useAI ? `हाँ (${esc(p.pdf?.pdfMode || '')})` : 'नहीं — ऑफ़लाइन पार्सर'}</div>`}</div></details>`;
   }
   function drawLog() {
     const el = $('[data-log]');
@@ -120,6 +126,15 @@ export async function render({ root, params, navigate, setHeader }) {
     const n = jobQuestionCount(job);
     if (!force && n === lastCount) return;
     lastCount = n;
+    if (isC) {
+      const subs = job.state?.subjects || [];
+      $('[data-qs]').innerHTML = n ? `<div class="mb-2 flex items-center justify-between"><h2 class="text-xs font-bold uppercase tracking-wide text-slate-500">बने कॉन्सेप्ट — जाँचें (${n})</h2><span class="text-[11px] text-slate-500">जो ठीक न लगे उसे ✕ से हटाएँ</span></div>
+        ${subs.map((s, si) => `<div class="card mb-2 !p-3"><div class="mb-1 font-bold">${esc(s.subject)}</div>${s.topics.map((t, ti) => `<details class="mb-1 rounded-lg border border-slate-200 p-2 dark:border-slate-700"><summary class="cursor-pointer text-sm font-semibold">${esc(t.topic)} <span class="text-xs text-slate-400">(${t.concepts.length})</span></summary>
+          <div class="mt-1 space-y-1">${t.concepts.map((c, ci) => `<div class="rounded-lg bg-slate-50 p-2 text-sm dark:bg-slate-800/60"><div class="flex gap-2"><b class="min-w-0 flex-1">${esc(c.title)}</b><button class="text-xs text-rose-600" data-rmc="${si}.${ti}.${ci}">✕</button></div>
+            <ul class="mt-1 list-disc pl-5 text-xs text-slate-600 dark:text-slate-300">${c.items.filter((i) => i.text).slice(0, 12).map((i) => `<li>${esc(i.text)}</li>`).join('')}</ul></div>`).join('')}</div></details>`).join('')}</div>`).join('')}`
+        : (isActive(job) ? '<div class="card text-sm text-slate-500">कॉन्सेप्ट बनते ही यहाँ दिखेंगे…</div>' : '');
+      return;
+    }
     built = n ? await buildSet(job) : null;
     const qs = built?.set.questions || [];
     $('[data-qs]').innerHTML = qs.length ? `
@@ -142,6 +157,17 @@ export async function render({ root, params, navigate, setHeader }) {
   });
 
   async function save(mode) {
+    if (isC) {
+      const { conceptSetFromJob, saveConceptSet } = await import('../concepts.js');
+      const cset = conceptSetFromJob(job);
+      if (!cset) return;
+      if (job.savedConceptId) cset.id = job.savedConceptId;
+      const { row, replaced } = await saveConceptSet(cset);
+      job.savedConceptId = row.id;
+      await updateJob(job);
+      toast(`${replaced ? 'अपडेट हुआ' : 'सेव हुआ'}: ${jobQuestionCount(job)} कॉन्सेप्ट — कॉन्सेप्ट टैब में देखें`, 'success', 3500);
+      return;
+    }
     const b = built || (await buildSet(job));
     if (!b) return;
     if (mode === 'append') {
@@ -230,6 +256,18 @@ export async function render({ root, params, navigate, setHeader }) {
   }
 
   root.addEventListener('click', async (e) => {
+    const rmc = e.target.closest('[data-rmc]');
+    if (rmc) {
+      const [si, ti, ci] = rmc.dataset.rmc.split('.').map(Number);
+      const t = job.state?.subjects?.[si]?.topics?.[ti];
+      if (!t) return;
+      t.concepts.splice(ci, 1);
+      if (!t.concepts.length) job.state.subjects[si].topics.splice(ti, 1);
+      if (!job.state.subjects[si].topics.length) job.state.subjects.splice(si, 1);
+      await updateJob(job);
+      await drawHead(true); await drawQs(true);
+      return;
+    }
     const rmq = e.target.closest('[data-rmq]');
     if (rmq) {
       const i = Number(rmq.dataset.rmq);
@@ -247,6 +285,14 @@ export async function render({ root, params, navigate, setHeader }) {
     if (a === 'resume') { await startJob(id); job = await getJob(id); await drawHead(true); }
     if (a === 'moreq') { shown += PAGE; await drawQs(true); }
     if (a === 'save' || a === 'append') { await save(a); await drawHead(true); }
+    if (a === 'share' && isC) {
+      const { conceptSetFromJob, conceptBundle } = await import('../concepts.js');
+      const cset = conceptSetFromJob(job);
+      if (!cset) return;
+      const how = await shareFile(`abhyas_concepts_${cset.id.slice(0, 40)}.json`, JSON.stringify(conceptBundle([cset])), `💡 ${cset.title} — Abhyas CBT कॉन्सेप्ट फ़ाइल। ऐप में कॉन्सेप्ट → इम्पोर्ट करें।`);
+      if (how === 'saved') toast('फ़ाइल डाउनलोड हुई — इसे Telegram/WhatsApp में भेजें', 'info', 4000);
+      return;
+    }
     if (a === 'share') {
       const b = built || (await buildSet(job));
       if (!b) return;
@@ -256,7 +302,7 @@ export async function render({ root, params, navigate, setHeader }) {
     }
     if (a === 'more') moreDialog();
     if (a === 'delete') {
-      if (await confirmDialog(`यह काम और इसका लॉग हटेगा।${job.savedSetId ? ' सेव किया गया प्रैक्टिस सेट बना रहेगा।' : ' बने प्रश्न अभी सेव नहीं हैं — वे भी हटेंगे।'}`, { ok: 'हटाएँ', danger: true })) {
+      if (await confirmDialog(`यह काम और इसका लॉग हटेगा।${job.savedSetId || job.savedConceptId ? ' सेव किया गया सेट बना रहेगा।' : ` बने ${unit} अभी सेव नहीं हैं — वे भी हटेंगे।`}`, { ok: 'हटाएँ', danger: true })) {
         await deleteJob(id);
         toast('काम हटाया गया', 'success');
         navigate('jobs');

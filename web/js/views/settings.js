@@ -223,7 +223,7 @@ export async function render({ root, settings: s, setHeader }) {
     if (act === 'wipe') {
       if (!(await requirePin('सारा डेटा मिटाने के लिए'))) return;
       if (await confirmDialog('सभी प्रैक्टिस सेट, प्रयास, बुकमार्क, एनालिटिक्स और API सेटिंग स्थायी रूप से मिट जाएँगे। पहले बैकअप ले लें।', { ok: 'सब मिटाएँ', danger: true })) {
-        for (const st of ['sets', 'attempts', 'bookmarks', 'topicStats', 'chats', 'importDrafts', 'settings', 'mistakes', 'jobs', 'jobFiles']) await db.clear(st);
+        for (const st of ['sets', 'attempts', 'bookmarks', 'topicStats', 'chats', 'importDrafts', 'settings', 'mistakes', 'jobs', 'jobFiles', 'concepts', 'conceptProgress']) await db.clear(st);
         toast('सारा डेटा मिटा दिया', 'success');
         setTimeout(() => location.reload(), 600);
       }
