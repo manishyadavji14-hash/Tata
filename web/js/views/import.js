@@ -71,7 +71,7 @@ export async function render({ root, query, settings, navigate, setHeader }) {
     body.innerHTML = `
       <div class="card mb-3">
         <div class="mb-1 font-bold">Import JSON Practice Set</div>
-        <div class="mb-3 text-sm text-slate-500">ऑफ़लाइन काम करता है। एक साथ कई .json फ़ाइलें (Part 1, 2, 3…) चुन सकते हैं — एक ही exam_id वाली फ़ाइलें अपने-आप जुड़ जाएँगी।</div>
+        <div class="mb-3 text-sm text-slate-500">ऑफ़लाइन काम करता है। एक साथ कई .json फ़ाइलें चुन सकते हैं। अलग-अलग पेपर अलग सेट बनेंगे; एक ही exam_id वाले हिस्से (Part 1, 2, 3…) अपने-आप जुड़ जाएँगे।</div>
         <label class="btn-primary w-full cursor-pointer">${icon.upload('h-5 w-5')} .json फ़ाइल चुनें<input type="file" accept=".json,application/json,text/plain" multiple class="hidden" data-files></label>
       </div>
       <div class="card mb-3">
@@ -92,21 +92,70 @@ export async function render({ root, query, settings, navigate, setHeader }) {
       try {
         const parts = [];
         for (const f of files) parts.push(importJsonText(await readFile(f), f.name));
-        if (parts.length === 1) { preview(parts[0].set, parts[0].warnings); return; }
-        // Several parts → combine into the first one before preview
-        const base = parts[0].set;
-        const warnings = [...parts[0].warnings];
-        const map = new Map(base.questions.map((q) => [q.q_no, q]));
-        for (const p of parts.slice(1)) {
-          for (const q of p.set.questions) map.set(q.q_no, q);
-          Object.assign(base.passages, p.set.passages);
-          for (const s of p.set.sections) if (!base.sections.includes(s)) base.sections.push(s);
-          warnings.push(...p.warnings);
+        // Only files with the same exam_id are Parts of one paper → combine those; different papers stay separate.
+        const groups = new Map();
+        for (const p of parts) {
+          const id = p.set.meta.exam_id;
+          if (!groups.has(id)) groups.set(id, []);
+          groups.get(id).push(p);
         }
-        base.questions = [...map.values()].sort((a, b) => a.q_no - b.q_no);
-        base.meta.max_marks = Math.max(base.meta.max_marks, base.questions.length * base.meta.positive_marks);
-        preview(base, warnings);
+        const combined = [...groups.values()].map(combineParts);
+        if (combined.length === 1) { preview(combined[0].set, combined[0].warnings); return; }
+        batchPreview(combined, files.length);
       } catch (err) { toast(err.message, 'error', 5000); }
+    };
+  }
+
+  function combineParts(list) {
+    if (list.length === 1) return list[0];
+    const base = list[0].set;
+    const warnings = [...list[0].warnings];
+    const map = new Map(base.questions.map((q) => [q.q_no, q]));
+    for (const p of list.slice(1)) {
+      for (const q of p.set.questions) map.set(q.q_no, q);
+      Object.assign(base.passages, p.set.passages);
+      for (const s of p.set.sections) if (!base.sections.includes(s)) base.sections.push(s);
+      warnings.push(...p.warnings);
+    }
+    base.questions = [...map.values()].sort((a, b) => a.q_no - b.q_no);
+    base.meta.max_marks = Math.max(base.meta.max_marks, base.questions.length * base.meta.positive_marks);
+    return { set: base, warnings };
+  }
+
+  // Several different papers selected together → one list, save all at once.
+  async function batchPreview(items, fileCount) {
+    const rows = await Promise.all(items.map(async (it) => ({ ...it, existing: await findSetByExamId(it.set.meta.exam_id) })));
+    const md = modal({
+      title: `✅ ${rows.length} अलग प्रैक्टिस सेट / ${rows.length} sets`, size: 'lg',
+      body: `
+        <div class="mb-2 text-xs text-slate-500">${fileCount} फ़ाइलें चुनी गईं → ${rows.length} अलग पेपर मिले। हर पेपर अलग सेट बनेगा।</div>
+        <div class="space-y-2">${rows.map((r, i) => {
+          const noKey = r.set.questions.filter((q) => !q.correct_option).length;
+          return `<div class="rounded-xl border border-slate-200 p-3 dark:border-slate-700">
+            <div class="text-sm font-bold">${esc(r.set.meta.title)}</div>
+            <div class="mt-0.5 text-xs text-slate-500">${r.set.questions.length} प्रश्न • उत्तर मिले ${r.set.questions.length - noKey}${r.warnings.length ? ` • ⚠️ ${r.warnings.length}` : ''}</div>
+            ${r.existing ? `<div class="mt-1 text-xs text-brand-700 dark:text-brand-300">पहले से है (${r.existing.questions.length} प्रश्न)</div>` : ''}
+            <select class="input mt-2 !py-1.5 text-sm" data-mode="${i}">
+              ${r.existing ? '<option value="merge">पुराने सेट को अपडेट करें (Merge)</option><option value="new">नया अलग सेट सेव करें</option><option value="skip">छोड़ दें</option>'
+                : '<option value="new">सेव करें</option><option value="skip">छोड़ दें</option>'}
+            </select>
+          </div>`;
+        }).join('')}</div>`,
+      footer: '<button class="btn-outline" data-close>Cancel</button><button class="btn-primary" data-all>सभी सेव करें / Save all</button>',
+    });
+    md.el.querySelector('[data-all]').onclick = async (e) => {
+      e.target.disabled = true;
+      let saved = 0;
+      for (const [i, r] of rows.entries()) {
+        const mode = md.el.querySelector(`[data-mode="${i}"]`).value;
+        if (mode === 'skip') continue;
+        if (mode === 'merge' && r.existing) await mergeIntoSet(r.existing, r.set);
+        else await saveNewSet(r.set);
+        saved++;
+      }
+      md.close();
+      toast(`${saved} सेट सेव हुए`, 'success', 3000);
+      navigate('home');
     };
   }
 

@@ -1,0 +1,958 @@
+@id chandra_supertet_model_05
+@title SUPER TET प्राथमिक MODEL PAPER-05 (चन्द्रा इंस्टीट्यूट)
+@duration 150
+@key CDDDABDAAC BCDABBDBBC BCCBBABBCC BBACBBBBBD DCBBBABBDC AABCBACBCB AABACBDBCA CBBCBBBCCA BDDDDDABBD BBABBBCCCA CCBCCCBDCD DBDAABABCB
+
+# HINDI
+1 संधि
+? निम्नलिखित में से किस विकल्प में संधि-विच्छेद और संधि का प्रकार सही नहीं है?
+- अत्यधिक = अति + अधिक — यण संधि
+- सदैव = सदा + एव — वृद्धि संधि
+- प्रत्येक = प्रति + एक — गुण संधि
+- इत्यादि = इति + आदि — यण संधि
+= प्रति + एक = प्रत्येक में इ → य् हुआ, अतः यण संधि है, गुण नहीं।
+2 संधि
+? निम्न में से किस विकल्प में 'विसर्ग संधि' का उदाहरण नहीं है?
+- मनोहर
+- तपोवन
+- यशोदा
+- सदाचार
+= मनः + हर, तपः + वन, यशः + दा — विसर्ग संधि। सत् + आचार = सदाचार — व्यंजन संधि।
+3 संधि
+? निम्न कथनों पर विचार कीजिए— 1. 'सज्जन' में व्यंजन संधि है। 2. 'महेश' में गुण संधि है। 3. 'सदैव' में वृद्धि संधि है। 4. 'इत्यादि' में यण संधि है। सही उत्तर है—
+- केवल 1 और 2
+- केवल 2 और 3
+- 1, 2 और 3
+- 1, 2, 3 और 4
+= सत् + जन (व्यंजन), महा + ईश (गुण), सदा + एव (वृद्धि), इति + आदि (यण) — चारों सही।
+4 समास
+? निम्न में से किस विकल्प में समास-विग्रह और समास-भेद सही नहीं है?
+- नीलांबर — नीला है जो अंबर — कर्मधारय
+- यथारुचि — रुचि के अनुसार — अव्ययीभाव
+- त्रिभुवन — तीन भुवनों का समाहार — द्विगु
+- राजपुत्र — राजा के समान पुत्र — कर्मधारय
+= राजपुत्र = राजा का पुत्र — षष्ठी तत्पुरुष।
+5 समास
+? 'पाप-पुण्य' और 'रात-दिन' में क्रमशः कौन-सा समास है?
+- द्वंद्व, द्वंद्व
+- कर्मधारय, द्वंद्व
+- द्वंद्व, कर्मधारय
+- तत्पुरुष, द्वंद्व
+= पाप और पुण्य, रात और दिन — दोनों द्वंद्व।
+6 समास
+? निम्न में से किस शब्द में बहुव्रीहि समास है?
+- पीतांबर — पीला वस्त्र
+- पीतांबर — पीला है अंबर जिसका
+- महापुरुष — महान पुरुष
+- नीलकमल — नीला कमल
+= 'पीला है अंबर जिसका' (श्रीकृष्ण) — अन्य पद प्रधान, बहुव्रीहि।
+7 उपसर्ग
+? निम्न में से किस विकल्प में उपसर्ग का अर्थ सही नहीं दिया गया है?
+- 'अति' — अधिकता
+- 'अनु' — पीछे/अनुसार
+- 'उप' — निकट/सहायक
+- 'दुर्' — अच्छाई/श्रेष्ठता
+= 'दुर्' का अर्थ बुरा/कठिन है (दुर्जन, दुर्गम)।
+8 प्रत्यय
+? 'मानवता', 'मित्रता', 'मूर्खता'—इन तीनों में समान प्रत्यय है। यह प्रत्यय है—
+- ता
+- त्व
+- इक
+- ईय
+= मानव + ता, मित्र + ता, मूर्ख + ता।
+9 प्रत्यय
+? निम्न में से किस विकल्प में सभी शब्द कृदंत हैं?
+- पढ़ना, लिखकर, गया
+- सुंदरता, मानवता, मित्रता
+- सामाजिक, धार्मिक, भारतीय
+- मिठास, बचपन, बुढ़ापा
+= क्रिया धातु से बने (कृत् प्रत्यय): पढ़ना, लिखकर, गया। बाकी तद्धित हैं।
+10 विशेषण
+? निम्न में से किस वाक्य में 'सार्वनामिक विशेषण' है?
+- वह आया और चला गया।
+- यह मेरा है।
+- यह लड़का बहुत होनहार है।
+- कौन आया है?
+= 'यह' संज्ञा 'लड़का' से पहले आकर विशेषण का काम कर रहा है।
+11 कारक
+? निम्न में से किस वाक्य में 'को' कर्मकारक का चिह्न है?
+- मैंने राम को पुस्तक दी।
+- राम को बुलाओ।
+- गरीब को भोजन दो।
+- मोहन को पुरस्कार मिला।
+= 'बुलाओ' क्रिया का फल राम पर — कर्म। (A), (C) में 'को' सम्प्रदान है।
+12 कारक
+? निम्न में से किस वाक्य में 'को' संप्रदान कारक का चिह्न है?
+- मैंने मोहन को देखा।
+- शिक्षक ने छात्र को बुलाया।
+- पिता ने पुत्र को पुस्तक दी।
+- पुलिस ने चोर को पकड़ा।
+= देने के अर्थ में 'को' — सम्प्रदान।
+13 वाक्य
+? अर्थ के आधार पर वाक्य के कितने भेद होते हैं?
+- 2
+- 4
+- 6
+- 8
+= विधानवाचक, निषेधवाचक, प्रश्नवाचक, आज्ञावाचक, इच्छावाचक, संदेहवाचक, संकेतवाचक, विस्मयादिबोधक — 8।
+14 वाच्य
+? 'राम ने पत्र लिखा।' और 'राम से पत्र लिखा गया।' में क्रमशः वाच्य हैं—
+- कर्तृवाच्य, कर्मवाच्य
+- कर्मवाच्य, कर्तृवाच्य
+- कर्तृवाच्य, भाववाच्य
+- भाववाच्य, कर्मवाच्य
+= पहले में कर्ता प्रधान; दूसरे में 'से' + 'लिखा गया' — कर्मवाच्य।
+15 काल
+? निम्न में से किस वाक्य में 'हेतुहेतुमद्भूत' काल है?
+- वह आया था।
+- यदि वह पढ़ता, तो पास हो जाता।
+- वह पढ़ रहा था।
+- वह पढ़ चुका था।
+= एक क्रिया दूसरी पर निर्भर (यदि…तो), भूतकाल में — हेतुहेतुमद्भूत।
+
+# ENGLISH
+P p_cul Passage: Ancient Culture
+> Ancient culture is a valuable part of our history and heritage. India has one of the oldest and richest cultures in the world. Ancient Indians made great progress in science, mathematics, medicine, art, literature, and architecture. They built beautiful temples, monuments, and cities. They also followed traditions that taught people to respect elders, help others, speak the truth, and live peacefully. Ancient culture gives us knowledge about the life and achievements of our ancestors. It also teaches us important values and reminds us of our roots. We should respect, protect, and preserve our ancient culture for future generations.
+16 Reading Comprehension @p_cul
+! India has one of the ______ cultures in the world.
+- Newest
+- Oldest and richest
+- Smallest
+- Weakest
+= "India has one of the oldest and richest cultures in the world."
+17 Reading Comprehension @p_cul
+! In which fields did ancient Indians make great progress?
+- Science and mathematics
+- Medicine and art
+- Literature and architecture
+- All of these
+= Passage lists science, mathematics, medicine, art, literature and architecture.
+18 Reading Comprehension @p_cul
+! What did ancient traditions teach people?
+- To fight with others
+- To respect elders and speak the truth
+- To waste time
+- To ignore others
+= "…taught people to respect elders, help others, speak the truth…"
+19 Reading Comprehension @p_cul
+! What does ancient culture tell us about?
+- Our future
+- Our ancestors and their achievements
+- Modern technology
+- Sports
+= "…knowledge about the life and achievements of our ancestors."
+20 Reading Comprehension @p_cul
+! What should we do with our ancient culture?
+- Forget it
+- Destroy it
+- Protect and preserve it
+- Ignore it
+= "We should respect, protect, and preserve our ancient culture…"
+21 Conjunction
+! Fill in the blank. Hardly had the train left ………. it started raining.
+- Than
+- When
+- Then
+- While
+= Fixed pair: "Hardly/Scarcely … when"; "No sooner … than".
+22 Sentence Types
+! "Though he is poor, he is happy" is a—
+- Simple Sentence
+- Compound Sentence
+- Complex Sentence
+- Compound & Complex Sentence
+= 'Though he is poor' is a dependent (subordinate) clause + one main clause ⇒ Complex.
+
+# SANSKRIT
+23 समास
+? 'पीताम्बरः' इत्यत्र कः समासः?
+- द्वन्द्वः
+- तत्पुरुषः
+- बहुव्रीहिः
+- अव्ययीभावः
+= पीतम् अम्बरं यस्य सः (विष्णुः) — बहुव्रीहिः।
+24 विभक्ति
+? 'मया पुस्तकं पठ्यते' इत्यत्र 'मया' पदे का विभक्तिः?
+- द्वितीया
+- तृतीया
+- चतुर्थी
+- पञ्चमी
+= कर्मवाच्य में कर्ता तृतीया — अस्मद् तृतीया एकवचन 'मया'।
+25 प्रत्यय
+? 'पठन् बालकः गच्छति' इत्यत्र 'पठन्' में कौन-सा प्रत्यय है?
+- शानच्
+- शतृ
+- क्त
+- तुमुन्
+= पठ् + शतृ = पठत् (पुं. प्रथमा: पठन्) — परस्मैपदी वर्तमान कृदन्त।
+26 पर्यायवाची
+? 'कमलम्' का पर्यायवाची है-
+- पङ्कजम्
+- पर्वतः
+- पल्लवः
+- सरित्
+= पङ्कजम् (कीचड़ में जन्मा) = कमल।
+27 विशेषण-विशेष्य
+? 'वीरः सैनिकः' में 'वीरः' का विशेष्य कौन-सा है?
+- वीरः
+- सैनिकः
+- उभयम्
+- कोई नहीं
+= 'वीरः' विशेषण, 'सैनिकः' विशेष्य।
+P p_krishak गद्यांश: कृषकः
+> एकस्मिन् ग्रामे एकः कृषकः निवसति स्म। सः प्रतिदिनं प्रातःकाले उत्थाय स्वक्षेत्रं गच्छति स्म। सः परिश्रमेण भूमिं कर्षति, बीजानि वपति, समये समये च क्षेत्रस्य सिञ्चनं करोति स्म। तस्य परिश्रमस्य फलरूपेण क्षेत्रे बहूनि धान्यानि अभवन्। कृषकः तानि धान्यानि गृहम् आनीय स्वपरिवारस्य पालनं करोति स्म। सः सर्वदा मन्यते स्म- "परिश्रमः एव सफलतायाः मूलम्।"
+28 गद्यांश @p_krishak
+? कृषकः कुत्र निवसति स्म?
+- नगरे
+- ग्रामे
+- वने
+- पर्वते
+= "एकस्मिन् ग्रामे एकः कृषकः निवसति स्म।"
+29 गद्यांश @p_krishak
+? कृषकः कदा उत्तिष्ठति स्म?
+- रात्रौ
+- मध्याह्ने
+- प्रातःकाले
+- सायंकाले
+= "सः प्रतिदिनं प्रातःकाले उत्थाय…"
+30 सन्धि
+? 'इत्येवम्' इत्यत्र कः सन्धिः?
+- गुण
+- वृद्धि
+- यण्
+- अयादि
+= इति + एवम् — इ → य् (इको यणचि) — यण् सन्धि।
+
+# SCIENCE
+31 विटामिन
+? निम्नलिखित में से कौन-सा विटामिन, हार्मोन की तरह कार्य करता है?
+! Which of the following vitamins acts as hormone?
+- विटामिन C / Vitamin C
+- विटामिन D / Vitamin D
+- विटामिन E / Vitamin E
+- विटामिन B / Vitamin B
+= विटामिन D (कैल्सिट्रिऑल) त्वचा में बनता है और हार्मोन की तरह कैल्शियम-फॉस्फोरस नियंत्रित करता है।
+32 वर्गीकरण
+? पांच जगत वर्गीकरण विधि के अनुसार बैक्टीरिया और नील हरित शैवाल को सम्मिलित किया गया है
+! According to five kingdom system of classification, bacteria and blue green algae are included in
+- कवक में / Fungi
+- मोनेरा में / Monera
+- पादप में / Plantae
+- प्रोटिस्टा में / Protista
+= व्हिटेकर (1969) — प्रोकैरियोट्स (बैक्टीरिया, सायनोबैक्टीरिया) मोनेरा में।
+33 ऊतक
+? निम्न में से कौन-सा ऊतक है?
+! Which of the following is a tissue?
+- रक्त / Blood
+- वृक्क / Kidney
+- फेफड़ा / Lung
+- अण्डाशय / Ovary
+= रक्त तरल संयोजी ऊतक है; बाकी अंग हैं।
+34 हार्मोन
+? अंडजनन (अंडोत्सर्ग) की प्रक्रिया में जो हार्मोन अधिकतम होता है, उसका नाम है?
+! Name of the hormone which is at the peak during ovulation is
+- एस्ट्रोजेन / Estrogen
+- एफ.एस.एच. / FSH
+- एल.एच. / LH
+- प्रोजेस्टेरान / Progesterone
+= LH सर्ज (लगभग 14वाँ दिन) अंडोत्सर्ग कराता है।
+35 जंतु जगत
+? हिप्पोकैम्पस है एक
+! Hippocampus is a
+- प्रोटोकार्डेट / Protochordate
+- मीन / Fish
+- स्तनधारी / Mammal
+- सीलेन्टरेट / Coelenterate
+= हिप्पोकैम्पस = समुद्री घोड़ा (Sea horse) — एक मछली।
+36 ध्वनि
+? डेसीबल है
+! Decibel is
+- शोर का तरंगदैर्ध्य / The wavelength of noise
+- ध्वनि स्तर की एक माप / A measure of sound level
+- एक वाद्य स्वरक / A musical note
+- एक वाद्ययंत्र / A musical instrument
+= dB — ध्वनि तीव्रता स्तर का लघुगणकीय मात्रक।
+37 विद्युत
+? किरचॉफ धारा नियम किसके संरक्षण पर आधारित है?
+! Kirchhoff's current law is based on the conservation of
+- द्रव्यमान / Mass
+- आवेश / Charge
+- इनमें से कोई नहीं / None of these
+- संवेग / Momentum
+= KCL — आवेश संरक्षण; KVL — ऊर्जा संरक्षण।
+38 ऊर्जा
+? m द्रव्यमान के एक कण की गतिज ऊर्जा E है। इसका संवेग होगा
+! The kinetic energy of a particle having mass m is E. Its momentum will be
+- $2mE$
+- $\sqrt{\frac{1}{2}mE}$
+- $\sqrt{2mE}$
+- $\frac{1}{2}mE$
+= $E=\frac{p^2}{2m}$ ⇒ $p=\sqrt{2mE}$। ⚠️ गणना से (C) $\sqrt{2mE}$; मूल कुंजी में (B) छपा है।
+
+# MATHS
+39 संक्रिया
+? यदि a * b = 2a − 3b + ab हो, तो 3 * 5 + 5 * 3 बराबर है-
+! If a * b = 2a − 3b + ab, then 3 * 5 + 5 * 3 is equal to-
+- 22
+- 24
+- 26
+- 28
+= $3*5=6-15+15=6$; $5*3=10-9+15=16$; योग $=22$। ⚠️ गणना से (A) 22; मूल कुंजी में (B) छपा है।
+40 विभाज्यता
+? वह न्यूनतम अंक x है, जिसके लिए संख्या 324x342, 11 से विभाज्य हो, है-
+! The minimum digit x for which the number 324x342 is divisible by 11 is-
+- 6
+- 5
+- 3
+- 8
+= अंक 3,2,4,x,3,4,2। दाएँ से एकांतर योग: $2-4+3-x+4-2+3=6-x$ ⇒ $x=6$। ⚠️ गणना से (A) 6; मूल कुंजी में (D) छपा है।
+41 भिन्न
+? यदि किसी संख्या के एक-चौथाई का एक-तिहाई भाग 15 है तो उस संख्या का 3/10 वाँ भाग होगा-
+! If one-third of one-fourth of a number is 15, then three-tenths of that number will be-
+- 35
+- 36
+- 45
+- 54
+= $\frac{N}{12}=15$ ⇒ $N=180$; $\frac{3}{10}\times180=54$।
+42 LCM-HCF
+? मान लीजिए दो संख्या के लघुत्तम समापवर्त्य (LCM) और महत्तम समापवर्तक (HCF) क्रम से 276 और 3 है। यदि उसके एक संख्या का एक-तिहाई 23 है, तब दूसरी संख्या होगी-
+! Let the LCM and HCF of two numbers be 276 and 3, respectively. If one-third of one of the numbers is 23, then the other number will be-
+- 10
+- 23
+- 12
+- 92
+= पहली संख्या $=69$; दूसरी $=\frac{276\times3}{69}=12$।
+43 बीजगणित
+? यदि $a+b=3$ और $a^2+b^2=89$ है, तो $\frac{1}{a}+\frac{1}{b}$ का मान क्या होगा?
+! If $a+b=3$ and $a^2+b^2=89$, then what will be the value of $\frac{1}{a}+\frac{1}{b}$?
+- $\frac{3}{20}$
+- $-\frac{3}{40}$
+- $-\frac{1}{4}$
+- $\frac{1}{8}$
+= $2ab=9-89=-80$ ⇒ $ab=-40$; $\frac{a+b}{ab}=-\frac{3}{40}$।
+44 माध्यिका
+? निम्नलिखित प्रेक्षणों को आरोही क्रम में व्यवस्थित किया गया है। 29, 32, 48, 50, x, x+2, 72, 78, 84, 95. यदि माध्यिका 63 है, तो x का मान क्या है?
+! The following observations have been arranged in ascending order: 29, 32, 48, 50, x, x+2, 72, 78, 84, 95. If the median is 63, what is the value of x?
+- 31
+- 62
+- 50
+- 63
+= 10 प्रेक्षण ⇒ माध्यिका $=\frac{x+(x+2)}{2}=x+1=63$ ⇒ $x=62$।
+45 चतुर्भुज
+? यदि 54°, x°, 80° और 116° एक चतुर्भुज के कोण हैं, तो 3x − 140 का मान है:
+! If 54°, x°, 80°, and 116° are the angles of a quadrilateral, then the value of 3x − 140 is:
+- 170
+- 190
+- 132
+- 110
+= $x=360-250=110$; $3x-140=190$।
+46 त्रिभुज
+? ΔABC के ∠B और ∠C के आंतरिक द्विभाजक O पर प्रतिच्छेद करते हैं। यदि ∠A = 100° है तो ∠BOC का माप है:
+! The internal bisectors of angles B and C of ΔABC intersect at O. If ∠A = 100°, then the measure of ∠BOC is:
+- 140°
+- 120°
+- 110°
+- 130°
+= $\angle BOC=90^\circ+\frac{\angle A}{2}=90^\circ+50^\circ=140^\circ$।
+47 साधारण ब्याज
+? वार्षिक ब्याज की दर 11.5% से 10% रह जाने पर किसी व्यक्ति को 55.50 रुपये वार्षिक की हानि होती है। उसकी पूँजी (रुपयों में) है-
+! A person incurs an annual loss of ₹55.50 when the annual interest rate drops from 11.5% to 10%. His capital (in rupees) is—
+- 3700
+- 7400
+- 8325
+- 11100
+= $P\times1.5\%=55.50$ ⇒ $P=3700$। ⚠️ गणना से (A) 3700; मूल कुंजी में (B) छपा है।
+48 लाभ-हानि
+? एक व्यक्ति अपने सामान को उसके क्रय मूल्य से 30% अधिक पर अंकित करता है तथा अंकित मूल्य पर 20% बट्टा देता है। उसका लाभ/हानि प्रतिशत है
+! A person marks his goods 30% above the cost price and offers a 20% discount on the marked price. His profit/loss percentage is—
+- हानि 4% / Loss 4%
+- लाभ 4% / Profit 4%
+- लाभ 10% / Profit 10%
+- कोई हानि / लाभ नहीं / No profit or loss
+= $1.3\times0.8=1.04$ ⇒ 4% लाभ।
+49 लाभ-हानि
+? राजेन्द्र को एक रेडियो ₹510 में बेचने पर 15% की हानि होती है। रेडियो को कितने रुपये में बेचा जाए ताकि 15% का लाभ हो?
+! Rajendra incurs a loss of 15% by selling a radio for ₹510. At what price should the radio be sold to make a profit of 15%?
+- 600
+- 660
+- 620
+- 690
+= CP $=\frac{510}{0.85}=600$; SP $=600\times1.15=690$।
+50 करणी
+? कौन-सा बड़ा है $\sqrt[3]{2}$ या $\sqrt{3}$?
+! Which is greater: $\sqrt[3]{2}$ or $\sqrt{3}$?
+- तुलना नहीं की जा सकती / Cannot be compared
+- $\sqrt[3]{2}$
+- $\sqrt{3}$
+- समान / Equal
+= घात 6 पर: $\sqrt[3]{2}=\sqrt[6]{4}$, $\sqrt{3}=\sqrt[6]{27}$ ⇒ $\sqrt{3}$ बड़ा।
+51 घातांक
+? यदि $27^{(2x-1)}=(243)^3$ हो, तो x का मान है:
+! If $27^{(2x-1)}=(243)^3$, then the value of x is:
+- 3
+- 4
+- 2
+- 5
+= $3^{6x-3}=3^{15}$ ⇒ $6x=18$ ⇒ $x=3$।
+52 अनुपात
+? A, B तथा C के वेतन का अनुपात 3 : 2 : 9 है, यदि A को B से ₹2100 ज्यादा मिलता है, तो A का वेतन बताएँ।
+! The ratio of the salaries of A, B, and C is 3:2:9. If A receives ₹2100 more than B, find A's salary.
+- ₹900
+- ₹1050
+- ₹780
+- ₹1320
+= A − B = 1 भाग = ₹2100 ⇒ A = 3 × 2100 = ₹6300। ⚠️ गणना से कोई विकल्प सही नहीं बैठता; मूल कुंजी में (A) ₹900 छपा है। (पेपर में "यदि 8 को B से" छपा है, यहाँ A माना गया।)
+53 प्रतिशत
+? एक कस्बे के 1000 निवासियों में से 60% पुरुष हैं जिनमें से 20% साक्षर हैं। यदि कुल 25% निवासी साक्षर हों, तो कस्बे की कितनी प्रतिशत महिलाएँ साक्षर हैं?
+! Out of 1000 residents of a town, 60% are men, of whom 20% are literate. If a total of 25% of the residents are literate, what percentage of the town's women are literate?
+- 30
+- 37.5
+- 35
+- 32.5
+= साक्षर पुरुष 120, कुल साक्षर 250 ⇒ साक्षर महिलाएँ 130; $\frac{130}{400}=32.5\%$। ⚠️ गणना से (D) 32.5; मूल कुंजी में (B) छपा है।
+54 क्षेत्रमिति
+? एक घन की भुजा 5 सेमी. है। अगर घन की भुजा को दोगुना कर दिया जाए तो घन का पृष्ठीय क्षेत्रफल कितना गुना हो जाएगा?
+! The side of a cube is 5 cm. If the side of the cube is doubled, by how many times will the surface area of the cube increase?
+- 2 गुना / 2 times
+- 3 गुना / 3 times
+- 4 गुना / 4 times
+- 6 गुना / 6 times
+= पृष्ठीय क्षेत्रफल $\propto a^2$ ⇒ $2^2=4$ गुना।
+
+# पर्यावरण एवं सामाजिक अध्ययन
+55 भूगोल
+? किसी नदी के मुहाने पर ज्वार की तीव्रता अधिक होने तथा नदी द्वारा लाए गए अवसाद की मात्रा कम होने पर सामान्यतः किस प्रकार का मुहाना विकसित होने की संभावना अधिक होती है?
+! At a river mouth, if tidal intensity is high and the volume of sediment brought by the river is low, what type of estuary is most likely to develop?
+- डेल्टा / Delta
+- ज्वारनदमुख / Estuary (Tidal mouth)
+- जलोढ़ पंख / Alluvial fan
+- अंतःस्थलीय बेसिन / Inland basin
+= तेज़ ज्वार अवसाद बहा ले जाता है ⇒ एश्चुअरी (जैसे नर्मदा, तापी)। अधिक अवसाद व कम ज्वार ⇒ डेल्टा।
+56 जलवायु
+? निम्नलिखित में से कौन-सा युग्म जलवायु और प्राकृतिक वनस्पति के बीच सही संबंध को दर्शाता है?
+! Which of the following pairs correctly represents the relationship between climate and natural vegetation?
+- भूमध्यसागरीय जलवायु — सदाबहार कठोर-पत्ती वन / Mediterranean climate — Evergreen hard-leaved forest
+- टुंड्रा जलवायु — उष्णकटिबंधीय वर्षावन / Tundra climate — Tropical rainforest
+- विषुवतीय जलवायु — कांटेदार झाड़ियाँ / Equatorial climate — Thorny shrubs
+- मरुस्थलीय जलवायु — शंकुधारी वन / Desert climate — Coniferous forest
+= भूमध्यसागरीय क्षेत्र — कठोर-पत्ती सदाबहार (जैतून, कॉर्क ओक)।
+57 राष्ट्रीय आंदोलन
+? भारतीय राष्ट्रीय आंदोलन में 'व्यक्तिगत सत्याग्रह' का प्रमुख उद्देश्य क्या था?
+! What was the primary objective of 'Individual Satyagraha' in the Indian national movement?
+- तत्काल ब्रिटिश शासन को सशस्त्र संघर्ष द्वारा समाप्त करना / To immediately end British rule through armed struggle
+- भारत में साम्यवादी शासन स्थापित करना / To establish communist rule in India
+- बिना हिंसा के युद्ध में भारतीय भागीदारी के विरोध का अधिकार व्यक्त करना / To express the right to oppose Indian participation in the war without violence
+- केवल किसानों की आर्थिक समस्याओं को उठाना / To raise only the economic issues of farmers
+= 1940 — युद्ध-विरोधी भाषण की स्वतंत्रता; पहले सत्याग्रही विनोबा भावे।
+58 राष्ट्रीय आंदोलन
+? निम्नलिखित में से किस घटना ने भारतीय राजनीति में 'पूर्ण स्वराज्य' को कांग्रेस के आधिकारिक लक्ष्य के रूप में स्थापित करने में महत्वपूर्ण भूमिका निभाई?
+! Which of the following events played a significant role in establishing 'Purna Swaraj' as the official goal of the Congress?
+- लखनऊ समझौता, 1916 / Lucknow Pact, 1916
+- लाहौर अधिवेशन, 1929 / Lahore Session, 1929
+- सूरत विभाजन, 1907 / Surat Split, 1907
+- गांधी-इरविन समझौता, 1931 / Gandhi-Irwin Pact, 1931
+= लाहौर 1929 (नेहरू) — पूर्ण स्वराज प्रस्ताव; 26 जनवरी 1930 स्वतंत्रता दिवस।
+59 अर्थव्यवस्था
+? यदि किसी अर्थव्यवस्था में नाममात्र GDP बढ़ता है, लेकिन वास्तविक GDP में कोई वृद्धि नहीं होती, तो इसका सबसे उपयुक्त कारण क्या हो सकता है?
+! If nominal GDP increases in an economy but there is no growth in real GDP, what is the most likely reason for this?
+- उत्पादन में भारी वृद्धि / Massive increase in production
+- बेरोजगारी का पूर्ण अंत / Complete elimination of unemployment
+- केवल कीमतों के सामान्य स्तर में वृद्धि / Increase only in the general price level
+- निर्यात में पूर्ण कमी / Complete decline in exports
+= नाममात्र GDP = वास्तविक उत्पादन × कीमत; उत्पादन स्थिर ⇒ केवल कीमतें (मुद्रास्फीति) बढ़ीं।
+60 अर्थव्यवस्था
+? किसी वस्तु के उत्पादन में ऐसी लागत लगती है जिसका कुछ हिस्सा समाज को प्रभावित करता है, लेकिन उत्पादक उसे अपनी निजी लागत में शामिल नहीं करता। यह स्थिति किसका उदाहरण है?
+! The production of a good involves a cost, a portion of which affects society, yet the producer does not include it in their private costs. Of what is this situation an example?
+- सकारात्मक बाह्यता / Positive externality
+- नकारात्मक बाह्यता / Negative externality
+- उपभोक्ता अधिशेष / Consumer surplus
+- अवसर लागत / Opportunity cost
+= जैसे कारखाने का प्रदूषण — समाज पर लागत, उत्पादक पर नहीं।
+61 संविधान
+? भारतीय संविधान की कौन-सी विशेषता केंद्र और राज्यों के बीच शक्तियों के विभाजन को स्पष्ट रूप से निर्धारित करती है?
+! Which feature of the Indian Constitution clearly defines the division of powers between the Centre and the States?
+- सातवीं अनुसूची / Seventh Schedule
+- आठवीं अनुसूची / Eighth Schedule
+- दसवीं अनुसूची / Tenth Schedule
+- बारहवीं अनुसूची / Twelfth Schedule
+= सातवीं अनुसूची — संघ, राज्य, समवर्ती सूची।
+62 संविधान
+? यदि किसी व्यक्ति के मौलिक अधिकार का उल्लंघन होता है, तो वह सीधे सर्वोच्च न्यायालय की शरण किस अनुच्छेद के अंतर्गत ले सकता है?
+! If a person's fundamental rights are violated, under which Article can they directly approach the Supreme Court?
+- अनुच्छेद 32 / Article 32
+- अनुच्छेद 19 / Article 19
+- अनुच्छेद 21 / Article 21
+- अनुच्छेद 226 / Article 226
+= अनुच्छेद 32 — संवैधानिक उपचारों का अधिकार ("संविधान का हृदय और आत्मा")। अनु. 226 उच्च न्यायालय। (पेपर के अंग्रेज़ी विकल्प में "Article 12" छपा है।)
+
+# बाल विकास (CDP)
+63 प्राचीन शिक्षा
+? बौद्ध काल में प्राथमिक स्तर पर बालक को वर्णमाला और बुनियादी अक्षर ज्ञान सिखाने के लिए 6 महीनों तक किस प्रसिद्ध बाल-पोथी (Textbook) का अध्ययन कराया जाता था?
+! During the Buddhist period, which famous primer (textbook) was studied for six months at the primary level to teach children the alphabet and basic letter recognition?
+- अमरकोश / Amarkosh
+- सिद्धिरस्तु / Siddhirastu
+- सुत्तपिटक / Sutta Pitaka
+- मिलिंदपन्हो / Milindapanha
+= ह्वेनसांग के अनुसार 'सिद्धिरस्तु' (सिद्धम्) — 6 माह में वर्णमाला।
+64 प्राचीन शिक्षा
+? वैदिक काल में वह कौन सी विदुषी स्त्रियाँ या महिलाएं थीं जो जीवन भर अविवाहित रहकर वेदों और दर्शन का गंभीर अध्ययन तथा शोध करती थीं?
+! Who were the learned women of the Vedic period who remained unmarried throughout their lives and engaged in the serious study and research of the Vedas and philosophy?
+- ब्रह्मवादिनी / Brahmavadini
+- सद्योवधू / Sadyovadhu
+- भिक्षुणी / Bhikshuni
+- उपाध्याय / Upadhyaya
+= ब्रह्मवादिनी — आजीवन अध्ययन; सद्योवधू — विवाह तक अध्ययन।
+65 गैने
+? रॉबर्ट गैने के अधिगम पदानुक्रम (Learning Hierarchy) में 'सिद्धांत अधिगम' (Rule Learning) किन दो अधिगम प्रकारों के ठीक मध्य में आता है?
+! In Robert Gagné's Learning Hierarchy, 'Rule Learning' falls exactly between which two types of learning?
+- उद्दीपक-अनुक्रिया अधिगम और श्रृंखला अधिगम / Stimulus-Response learning and Chaining
+- बहु-विभेदन अधिगम और संप्रत्यय अधिगम / Multiple-discrimination learning and Concept learning
+- संप्रत्यय अधिगम और समस्या समाधान अधिगम / Concept learning and Problem-solving learning
+- शाब्दिक साहचर्य अधिगम और बहु-विभेदन अधिगम / Verbal association learning and Multiple-discrimination learning
+= क्रम: संकेत → S-R → श्रृंखला → शाब्दिक साहचर्य → बहु-विभेदन → संप्रत्यय → सिद्धांत → समस्या समाधान।
+66 पावलव
+? पावलव के शास्त्रीय अनुबंधन में, यदि अनुबंधित उद्दीपक (CS - घंटी) और अननुबंधित उद्दीपक (UCS - भोजन) के बीच समय का अंतराल बहुत अधिक बढ़ जाता है, तो अनुबंधन की प्रक्रिया पर क्या प्रभाव पड़ेगा?
+! In Pavlov's classical conditioning, if the time interval between the CS (bell) and the UCS (food) is significantly increased, what effect will it have on the conditioning process?
+- अनुबंधन और अधिक मजबूत हो जाएगा। / Conditioning will become stronger.
+- अनुबंधन स्थापित होना अत्यंत कठिन या असंभव हो जाएगा। / Establishing conditioning will become extremely difficult or impossible.
+- अनुबंधन तुरंत स्थापित होगा लेकिन स्थायी नहीं रहेगा। / Conditioning will be established immediately but will not be permanent.
+- अग्रगामी अनुबंधन प्रभावी हो जाएगा। / Forward conditioning will become effective.
+= समीपता का नियम — CS और UCS का अंतराल कम (लगभग 0.5 सेकंड) होना चाहिए।
+67 व्यवहारवाद
+? "S-O-R (Stimulus-Organism-Response)" संप्रत्यय किसके द्वारा प्रतिपादित या प्रस्तावित किया गया था?
+! By whom was the "S-O-R (Stimulus-Organism-Response)" concept propounded or proposed?
+- जॉन बी. वाटसन / John B. Watson
+- आई. पी. पावलव / I. P. Pavlov
+- बी. एफ. स्किनर / B. F. Skinner
+- वुडवर्थ / Woodworth
+= वुडवर्थ ने S-R के बीच 'जीव' (O) को जोड़ा।
+68 पियाजे
+? किस अवस्था में बच्चा 'अंतःप्रज्ञात्मक चिंतन' (Intuitive Thought) प्रदर्शित करता है परंतु तार्किक नियमों को पलटने (Reversibility) में असमर्थ होता है?
+! In which stage does a child exhibit 'Intuitive Thought' but is unable to apply the logical rule of reversibility?
+- संवेदी-गामक अवस्था / Sensorimotor stage
+- पूर्व-संक्रियात्मक अवस्था / Pre-operational stage
+- मूर्त-संक्रियात्मक अवस्था / Concrete operational stage
+- औपचारिक संक्रियात्मक अवस्था / Formal operational stage
+= पूर्व-संक्रियात्मक (2–7 वर्ष): अंतःप्रज्ञा उप-अवस्था (4–7), अपरिवर्तनीयता।
+69 पावलव
+? पावलव के अनुसार, अनुबंधन स्थापित होने के बाद 'उद्दीपक सामान्यीकरण' (Stimulus Generalization) का ठीक विपरीत संप्रत्यय क्या है?
+! According to Pavlov, what is the concept exactly opposite to 'Stimulus Generalization' after conditioning has been established?
+- विलोपन / Extinction
+- उच्च-क्रम अनुबंधन / Higher-order conditioning
+- उद्दीपक विभेदीकरण / Stimulus Discrimination
+- सहज पुनर्प्राप्ति / Spontaneous recovery
+= सामान्यीकरण — मिलते-जुलते उद्दीपक पर अनुक्रिया; विभेदीकरण — केवल विशिष्ट उद्दीपक पर।
+70 पावलव
+? शास्त्रीय अनुबंधन में सबसे प्रभावी अनुबंधन प्रक्रिया कौन सी मानी जाती है?
+! Which conditioning procedure is considered the most effective in classical conditioning?
+- विलंबित अनुबंधन / Delayed Conditioning
+- सहगामी अनुबंधन / Simultaneous Conditioning
+- पश्चगामी अनुबंधन / Backward Conditioning
+- चिह्न अनुबंधन / Trace Conditioning
+= विलंबित (अग्रगामी) — CS पहले शुरू होकर UCS तक बना रहता है; पश्चगामी सबसे कम प्रभावी।
+71 वैयक्तिक भिन्नता
+? "इंट्रा-इंडिविजुअल डिफरेंस" (अंतःव्यक्तिगत भिन्नता) सांख्यिकीय रूप से क्या दर्शाती है?
+! What does "Intra-individual difference" statistically represent?
+- दो अलग-अलग जुड़वां बच्चों के आईक्यू (IQ) में अंतर। / The difference in IQ between two separate twins.
+- विभिन्न पृष्ठभूमि के छात्रों के बीच भाषाई अंतर। / Linguistic differences among students from diverse backgrounds.
+- एक ही व्यक्ति के भीतर अलग-अलग योग्यताओं या कौशलों में पाया जाने वाला अंतर। / The difference found in various abilities or skills within the same individual.
+- लड़कों और लड़कियों की औसत शारीरिक क्षमता में अंतर। / The difference in average physical capacity between boys and girls.
+= अंतः (intra) = एक ही व्यक्ति के भीतर; अंतर (inter) = व्यक्तियों के बीच।
+72 सूक्ष्म शिक्षण
+? सूक्ष्म शिक्षण में 'कक्षा के आकार' और 'समय' को कम करने को तकनीकी रूप से क्या कहते हैं?
+! In micro-teaching, what is the technical term for reducing 'class size' and 'time'?
+- शिक्षण विस्तार / Teaching Extension
+- शिक्षण न्यूनता उपागम / Scale-down Encounter
+- मैक्रो टीचिंग / Macro Teaching
+- अनौपचारिक शिक्षण / Informal Teaching
+= एलन — "scaled-down teaching encounter" (5–10 छात्र, 5–10 मिनट)।
+73 पुनर्बलन
+? मुस्कुराना या सकारात्मक रूप से सिर हिलाना किस प्रकार का पुनर्बलन (Reinforcement) है?
+! What type of reinforcement is smiling or nodding affirmatively?
+- धनात्मक शाब्दिक / Positive Verbal
+- धनात्मक अशाब्दिक / Positive Non-Verbal
+- ऋणात्मक शाब्दिक / Negative Verbal
+- ऋणात्मक अशाब्दिक / Negative Non-Verbal
+= बिना शब्दों के प्रोत्साहन — धनात्मक अशाब्दिक।
+74 शिक्षण विधि
+? ह्यूरिस्टिक विधि (Heuristic/Discovery Method) के प्रतिपादक कौन हैं, जिसका मुख्य सिद्धांत छात्र को एक 'अन्वेषक' या खोजकर्ता के रूप में देखना है?
+! Who is the proponent of the Heuristic (Discovery) Method, the main principle of which is to view the student as an 'investigator' or discoverer?
+- किलपैट्रिक / Kilpatrick
+- जॉन डीवी / John Dewey
+- एच. ई. आर्मस्ट्रांग / H. E. Armstrong
+- फ्रोबेल / Froebel
+= ह्यूरिस्टिक (अन्वेषण) विधि — एच. ई. आर्मस्ट्रांग।
+75 शिक्षण विधि
+? प्रोजेक्ट विधि (Project Method) मुख्य रूप से जॉन डीवी के किस दार्शनिक विचार और किस मनोवैज्ञानिक के प्रयासों पर आधारित है?
+! The Project Method is primarily based on which philosophical idea of John Dewey and the efforts of which psychologist?
+- आदर्शवाद - प्लेटो / Idealism - Plato
+- प्रयोजनवाद - विलियम किलपैट्रिक / Pragmatism - William Kilpatrick
+- प्रकृतिवाद - रूसो / Naturalism - Rousseau
+- यथार्थवाद - अरस्तू / Realism - Aristotle
+= डीवी का प्रयोजनवाद; किलपैट्रिक ने प्रोजेक्ट विधि (1918) विकसित की।
+76 शिक्षण सिद्धांत
+? "कक्षा में शिक्षण कार्य शुरू करने से पहले शिक्षक छात्रों के ध्यान को आकर्षित करने के लिए एक कहानी सुनाता है।" यह शिक्षण के किस सिद्धांत का पालन करता है?
+! "Before starting the teaching activity in the classroom, the teacher tells a story to capture the students' attention." Which principle of teaching does this follow?
+- क्रियाशीलता का सिद्धांत / Principle of Activity
+- अभिप्रेरणा और रुचि का सिद्धांत / Principle of Motivation and Interest
+- निश्चित उद्देश्य का सिद्धांत / Principle of Definite Aim/Objective
+- चयन का सिद्धांत / Principle of Selection
+= कहानी से रुचि जगाना — अभिप्रेरणा व रुचि।
+77 सृजनात्मकता
+? सृजनात्मकता के विकास के चार चरणों (Phases of Creativity) में से वह कौन सा चरण है जिसमें समस्या पर अचेतन रूप से काम होता है और अचानक विचार दिमाग में नहीं आता (यानी विचार पक रहा होता है)?
+! Among the four phases of creativity, which phase involves working on a problem at an unconscious level where the idea does not suddenly appear in the mind (i.e., the idea is 'brewing')?
+- तैयारी / Preparation
+- उद्भवन / Incubation
+- प्रदीप्ति / Illumination
+- सत्यापन / Verification
+= वालास (1926): तैयारी → उद्भवन (अचेतन) → प्रदीप्ति → सत्यापन।
+78 सृजनात्मकता
+? किसी समस्या पर काम करते समय अचानक से कोई नया विचार या समाधान दिमाग में आ जाना, सृजनात्मकता के किस सोपान के अंतर्गत आता है?
+! The sudden occurrence of a new idea or solution in the mind while working on a problem falls under which stage of creativity?
+- तैयारी / Preparation
+- उद्भवन / Incubation
+- प्रदीप्ति / अंतर्दृष्टि / Illumination (Insight)
+- सत्यापन / Verification
+= 'अहा!' क्षण — प्रदीप्ति।
+79 अधिगम अक्षमता
+? गामक कौशलों (Motor Skills) जैसे सुई में धागा डालना, गेंद पकड़ना, टाई बांधना या शारीरिक संतुलन बनाने में कठिनाई होना किस विकार का लक्षण है?
+! Difficulty in performing motor skills—such as threading a needle, catching a ball, tying a tie, or maintaining physical balance—is a symptom of which disorder?
+- डिस्लेक्सिया / Dyslexia
+- डिस्कैलकुलिया / Dyscalculia
+- डिस्प्रेक्सिया (अप्रेक्सिया) / Dyspraxia (Apraxia)
+- डिस्फेजिया / Dysphagia
+= डिस्प्रेक्सिया — गामक समन्वय विकार; डिस्फेजिया — निगलने में कठिनाई।
+80 शिक्षा आयोग
+? लॉर्ड रिपन द्वारा वर्ष 1882 में गठित 'भारतीय शिक्षा आयोग' (हंटर आयोग) का मुख्य ध्यान शिक्षा के किस स्तर के सुधार और विकास पर केंद्रित था?
+! The 'Indian Education Commission' (Hunter Commission), constituted by Lord Ripon in 1882, focused primarily on the reform and development of which level of education?
+- प्राथमिक और माध्यमिक शिक्षा / Primary and Secondary Education
+- केवल उच्च तकनीकी शिक्षा / Higher technical education only
+- विश्वविद्यालयी अनुसंधान / University research
+- केवल प्रौढ़ शिक्षा / Adult education only
+= हंटर आयोग — मुख्यतः प्राथमिक (और माध्यमिक) शिक्षा; स्थानीय निकायों को ज़िम्मेदारी।
+81 शिक्षा का इतिहास
+? 'अधोमुखी निस्पंदन सिद्धांत' (Downward Filtration Theory) किसने दिया था?
+! Who propounded the 'Downward Filtration Theory'?
+- लॉर्ड विलियम बेंटिक / Lord William Bentinck
+- लॉर्ड मैकाले / Lord Macaulay
+- चार्ल्स वुड / Charles Wood
+- लॉर्ड कर्जन / Lord Curzon
+= मैकाले का विवरण-पत्र (1835)।
+82 शिक्षा आयोग
+? प्राथमिक शिक्षा में होने वाले 'अपव्यय और अवरोधन' (Wastage & Stagnation) की गंभीर समस्या की पहचान सबसे पहले किसने की थी?
+! Who first identified the serious problem of 'Wastage and Stagnation' in primary education?
+- हंटर आयोग (1882) / Hunter Commission (1882)
+- सैडलर आयोग (1917) / Sadler Commission (1917)
+- सार्जेंट समिति (1944) / Sargent Committee (1944)
+- हार्टोग समिति (1929) / Hartog Committee (1929)
+= हार्टोग समिति 1929 — अपव्यय व अवरोधन।
+83 RTE
+? आरटीई (RTE) के अनुसार, प्राथमिक विद्यालय के शिक्षक के लिए प्रति सप्ताह न्यूनतम कार्य घंटे कितने हैं?
+! According to the RTE, what are the minimum working hours per week for a primary school teacher?
+- 30 घंटे / 30 hours
+- 40 घंटे / 40 hours
+- 50 घंटे / 50 hours
+- 45 घंटे / 45 hours
+= RTE अनुसूची: शिक्षक के लिए न्यूनतम 45 घंटे प्रति सप्ताह (तैयारी सहित)।
+84 शैक्षिक प्रशासन
+? "POSDCORB" सूत्र में अक्षर 'P' का तकनीकी अर्थ क्या है?
+! What is the technical meaning of the letter 'P' in the "POSDCORB" formula?
+- Performance (प्रदर्शन)
+- Procurement (प्राप्ति)
+- Personnel (कर्मचारी)
+- Planning (नियोजन)
+= लूथर गुलिक: Planning, Organising, Staffing, Directing, Co-ordinating, Reporting, Budgeting।
+85 शैक्षिक प्रशासन
+? किसी संस्था के कार्यों की सफलता की जाँच करने वाले प्रशासनिक तत्व को क्या कहते हैं?
+! What is the administrative element that checks the success of an institution's operations called?
+- नियोजन / Planning
+- संगठन / Organizing
+- बजट / Budgeting
+- नियंत्रण / Controlling
+= नियंत्रण — लक्ष्य से तुलना कर प्रगति की जाँच।
+86 विद्यालय
+? विद्यालय का 'हृदय' (Heart of the School) किसे कहा जाता है?
+! What is known as the 'Heart of the School'?
+- खेल का मैदान / Playground
+- प्रधानाचार्य का कक्ष / Principal's office
+- स्कूल की कैंटीन / School canteen
+- पुस्तकालय / Library
+= पुस्तकालय — विद्यालय का हृदय।
+
+# सामान्य ज्ञान एवं समसायिक घटनाएं
+87 नदियाँ
+? पंजाब की प्रसिद्ध पांच नदियों में से वह कौन सी एकमात्र नदी है, जिसका उद्गम और मुहाना दोनों पूरी तरह से भारत की सीमा के भीतर ही स्थित है?
+! Which is the only river among the famous five rivers of Punjab whose origin and mouth both are situated entirely within the borders of India?
+- ब्यास नदी / Beas River
+- रावी नदी / Ravi River
+- झेलम नदी / Jhelum River
+- चेनाब नदी / Chenab River
+= ब्यास — रोहतांग (हि.प्र.) से हरिके (पंजाब) में सतलुज से संगम।
+88 विश्व
+? 'Land of Thunder Dragon' किस देश का उपनाम है?
+! Which country is known by the nickname 'Land of the Thunder Dragon'?
+- नेपाल / Nepal
+- भूटान / Bhutan
+- मंगोलिया / Mongolia
+- तिब्बत / Tibet
+= भूटान — 'द्रुक युल'।
+89 समसामयिकी
+? हाल ही में जेनेज जान्शा को किस देश का प्रधानमंत्री नियुक्त किया गया है?
+! Janez Janša has recently been appointed as the Prime Minister of which country?
+- फिजी / Fiji
+- स्लोवेनिया / Slovenia
+- पोलैंड / Poland
+- इनमें से कोई नहीं / None of these
+= जेनेज जान्शा — स्लोवेनिया के नेता।
+90 घास के मैदान
+? सूची-I (महाद्वीप) और सूची-II (घास के मैदान) को सुमेलित कीजिए। सूची-I: 1. उत्तरी अमेरिका 2. अफ्रीका 3. यूरोप 4. दक्षिणी अमेरिका; सूची-II: A. लानोज़ B. स्टैपी C. प्रेयरीज़ D. वेल्ड। कूट (A B C D के क्रम में):
+! Match List-I (continents: 1. North America 2. Africa 3. Europe 4. South America) with List-II (grasslands: A. Llanos B. Steppe C. Prairies D. Veld). Code (A B C D):
+- 4 3 1 2
+- 2 3 4 1
+- 4 3 2 1
+- 4 1 3 2
+= लानोज़ — द. अमेरिका (4), स्टैपी — यूरोप/यूरेशिया (3), प्रेयरीज़ — उ. अमेरिका (1), वेल्ड — अफ्रीका (2) ⇒ 4 3 1 2। ⚠️ गणना से (A); मूल कुंजी में (D) छपा है।
+91 समसामयिकी
+? हाल ही में भारत की अर्थव्यवस्था को वैश्विक स्तर पर AI परफॉर्मेंस में कौनसा स्थान मिला है?
+! What rank has India's economy recently secured globally in terms of AI performance?
+- पहला / First
+- दूसरा / Second
+- तीसरा / Third
+- चौथा / Fourth
+= उत्तर कुंजी के अनुसार — दूसरा।
+92 संस्कृति
+? 'हॉर्नबिल महोत्सव' किस राज्य से संबंधित है?
+! With which state is the 'Hornbill Festival' associated?
+- मिजोरम / Mizoram
+- नागालैंड / Nagaland
+- मेघालय / Meghalaya
+- अरुणाचल प्रदेश / Arunachal Pradesh
+= नागालैंड — 1–10 दिसंबर, 'त्योहारों का त्योहार'।
+93 संस्कृति
+? 'लोसार' पर्व मुख्यतः किस समुदाय/क्षेत्र से संबंधित है?
+! With which community/region is the 'Losar' festival primarily associated?
+- बौद्ध हिमालयी क्षेत्र / Buddhist Himalayan region
+- राजस्थान के जनजातीय क्षेत्र / Tribal regions of Rajasthan
+- केरल / Kerala
+- गुजरात / Gujarat
+= लोसार — तिब्बती/बौद्ध नववर्ष (लद्दाख, सिक्किम, अरुणाचल)।
+94 समसामयिकी
+? हाल ही में नीति आयोग की शिक्षा गुणवत्ता रिपोर्ट 2026 के अनुसार किस राज्य ने स्कूली शिक्षा में पहला स्थान प्राप्त किया है?
+! According to the NITI Aayog's recent School Education Quality Report 2026, which state has secured the first position in school education?
+- बिहार / Bihar
+- पंजाब / Punjab
+- झारखंड / Jharkhand
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — पंजाब।
+95 दर्रे
+? सूची-I (पहाड़ी दर्रा) को सूची-II (राज्य) के साथ सुमेलित कीजिए। A. बनिहाल B. नाथू ला C. नीति D. शिपकी; 1. हिमाचल प्रदेश 2. जम्मू एवं कश्मीर 3. सिक्किम 4. उत्तराखंड। कूट (A B C D):
+! Match List-I (passes: A. Banihal B. Nathu La C. Niti D. Shipki) with List-II (states: 1. Himachal Pradesh 2. Jammu & Kashmir 3. Sikkim 4. Uttarakhand). Code (A B C D):
+- 2 1 4 3
+- 2 3 4 1
+- 4 3 1 2
+- 3 4 2 1
+= बनिहाल — J&K (2), नाथू ला — सिक्किम (3), नीति — उत्तराखंड (4), शिपकी ला — हि.प्र. (1)।
+96 इतिहास
+? चार्टर एक्ट, 1813 का सबसे महत्वपूर्ण प्रभाव क्या था?
+! What was the most significant impact of the Charter Act of 1813?
+- कंपनी का शासन समाप्त हुआ / Company rule ended
+- कंपनी का भारतीय व्यापारिक एकाधिकार समाप्त हुआ / The Company's monopoly on Indian trade ended
+- द्वैध शासन समाप्त हुआ / Dyarchy ended
+- भारत में प्रेस की स्वतंत्रता मिली / Freedom of the press was granted in India
+= 1813: भारत से व्यापार एकाधिकार समाप्त (चाय व चीन व्यापार छोड़कर); शिक्षा पर ₹1 लाख।
+97 समसामयिकी
+? हाल ही में प्रधानमंत्री मोदी को किस देश का सर्वोच्च नागरिक पुरस्कार "गार्जियन ऑफ द ब्लू होराइजन" दिया गया है?
+! Which country recently conferred its highest civilian award, "Guardian of the Blue Horizon," upon Prime Minister Modi?
+- यूक्रेन / Ukraine
+- पोलैंड / Poland
+- सेशेल्स / Seychelles
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — सेशेल्स।
+98 संगठन
+? प्रसिद्ध 'ग्लोबल जेंडर गैप रिपोर्ट' किस संस्था द्वारा जारी की जाती है?
+! Which organization releases the famous 'Global Gender Gap Report'?
+- विश्व बैंक / World Bank
+- IMF
+- WEF
+- UNDP
+= विश्व आर्थिक मंच (WEF), 2006 से।
+99 संगठन
+? पेट्रोलियम निर्यातक देशों के संगठन 'OPEC' की स्थापना 1960 में किस शहर के सम्मेलन में हुई थी?
+! In which city's conference was OPEC established in 1960?
+- वियना / Vienna
+- रियाद / Riyadh
+- बगदाद / Baghdad
+- कुवैत सिटी / Kuwait City
+= बगदाद सम्मेलन, सितंबर 1960; मुख्यालय वियना।
+100 पुरस्कार
+? मम्मूटी को Best Actor का राष्ट्रीय फिल्म पुरस्कार किस फिल्म के लिए मिला?
+! For which film did Mammootty receive the National Film Award for Best Actor?
+- ब्रमायुगम / Bramayugam
+- अमरन / Amaran
+- कांतारा / Kantara
+- पुष्पा 2 / Pushpa 2
+= उत्तर कुंजी के अनुसार — ब्रमायुगम।
+101 समसामयिकी
+? हाल ही में किस देश के रोबोट भिक्षु गाबी ने बौद्ध दीक्षा ली है?
+! Which country's robot monk, Gabie, recently received Buddhist initiation?
+- चीन / China
+- जापान / Japan
+- दक्षिण कोरिया / South Korea
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — दक्षिण कोरिया।
+102 समसामयिकी
+? हाल ही में किस राज्य सरकार ने प्राथमिक विद्यालयों में शून्य प्राथमिक ड्रॉपआउट दर हासिल की है?
+! Which state government has recently achieved a zero primary school dropout rate?
+- असम / Assam
+- झारखंड / Jharkhand
+- नागालैंड / Nagaland
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — नागालैंड।
+103 साहित्य
+? ज्ञानपीठ पुरस्कार प्राप्त करने वाले पहले हिंदी लेखक कौन थे?
+! Who was the first Hindi writer to receive the Jnanpith Award?
+- मुंशी प्रेमचंद / Munshi Premchand
+- सुमित्रानंदन पंत / Sumitranandan Pant
+- रामधारी सिंह दिनकर / Ramdhari Singh Dinkar
+- एस. एच. वात्स्यायन 'अज्ञेय' / S. H. Vatsyayan 'Agyeya'
+= सुमित्रानंदन पंत — 1968, 'चिदंबरा'।
+104 बैंकिंग
+? वह दर जिस पर भारतीय रिज़र्व बैंक अन्य बैंकों से ऋण लेती है, क्या कहलाती है?
+! The rate at which Reserve Bank of India borrows money from other banks is called
+- तरलता दर / Liquidity rate
+- एक्सचेंज दर / Exchange rate
+- रिवर्स रेपो दर / Reverse repo rate
+- रेपो दर / Repo rate
+= रिवर्स रेपो — RBI बैंकों से उधार लेता है; रेपो — बैंक RBI से लेते हैं।
+105 रक्षा
+? 'सूर्य किरण' भारत और किसके बीच एक संयुक्त सैन्य अभ्यास है?
+! 'Surya Kiran' is a joint military exercise between India and:
+- श्रीलंका / Sri Lanka
+- भूटान / Bhutan
+- नेपाल / Nepal
+- मालदीव / Maldives
+= सूर्य किरण — भारत-नेपाल।
+106 पुरस्कार
+? हाल ही में किसे प्रतिष्ठित 2026 का इंटरनेशनल बुकर प्राइज़ प्रदान किया गया है?
+! Who has recently been awarded the prestigious 2026 International Booker Prize?
+- बानू मुश्ताक / Banu Mushtaq
+- दीपा भस्ती / Deepa Bhasti
+- यांग शुआंग जी / Yang Shuang-ji
+- इनमें से कोई नहीं / None of these
+= उत्तर कुंजी के अनुसार — यांग शुआंग-ज़ी। (बानू मुश्ताक व दीपा भस्ती को 2025 में 'हार्ट लैंप' के लिए मिला था।)
+107 संविधान
+? संविधान के किस अनुच्छेद के द्वारा उद्योग के प्रबंधन में कर्मकारों की भागीदारी का प्रावधान दिया गया है?
+! Which article of the Constitution provides for the participation of workers in the management of industry?
+- अनुच्छेद 43 / Article 43
+- अनुच्छेद 43A / Article 43A
+- अनुच्छेद 45 / Article 45
+- अनुच्छेद 47 / Article 47
+= अनुच्छेद 43A — 42वें संशोधन (1976) से जोड़ा गया।
+108 पुस्तकें
+? हाल ही में चर्चा में रही 'All-Time Favourite Friendship Stories' के लेखक कौन हैं?
+! Who is the author of the recently discussed book 'All-Time Favourite Friendship Stories'?
+- सुधा मूर्ति / Sudha Murty
+- शिवराज सिंह चौहान / Shivraj Singh Chouhan
+- श्याम श्रीनिवासन / Shyam Srinivasan
+- रस्किन बॉन्ड / Ruskin Bond
+= उत्तर कुंजी के अनुसार — रस्किन बॉन्ड।
+109 दिवस
+? राष्ट्रीय सांख्यिकी दिवस भारत में कब मनाया जाता है?
+! When is National Statistics Day celebrated in India?
+- 27 जून / 27 June
+- 28 जून / 28 June
+- 29 जून / 29 June
+- 30 जून / 30 June
+= 29 जून — पी. सी. महालनोबिस की जयंती।
+110 पुरस्कार
+? 72वें राष्ट्रीय फिल्म पुरस्कार में Best Debut Director का पुरस्कार किसे मिला?
+! Who received the 'Best Debut Director' award at the 72nd National Film Awards?
+- नाग अश्विन / Nag Ashwin
+- रणदीप हुड्डा / Randeep Hooda
+- राजकुमार पेरियासामी / Rajkumar Periasamy
+- आदित्य सुहास जंभाले / Aditya Suhas Jambhale
+= उत्तर कुंजी के अनुसार — आदित्य सुहास जंभाले।
+111 कृषि
+? निम्नलिखित में से कौन उद्दीपक फसल है?
+! Which of the following is a stimulant crop?
+- गेहूं / Wheat
+- मक्का / Maize
+- अरहर / Pigeon pea
+- चाय / Tea
+= चाय व कॉफी (कैफ़ीन) — उद्दीपक/पेय फसलें।
+
+# REASONING
+112 रक्त संबंध
+? एक फोटो की ओर संकेत करते हुए मोहन ने कहा "उसकी माता की एकमात्र सन्तान मेरे पिता का एकमात्र पुत्र है।" मोहन किसके फोटो की ओर संकेत कर रहा है?
+! Pointing towards a photograph, Mohan said, "Her mother's only child is my father's only son." Whose photograph is Mohan pointing to?
+- भाई के / Brother's
+- स्वयं के / His own
+- चचेरे भाई के / Cousin's
+- पिता के / Father's
+= "मेरे पिता का एकमात्र पुत्र" = मोहन स्वयं; फोटो वाले की माता की एकमात्र सन्तान भी मोहन ⇒ फोटो मोहन का ही। (मूल पेपर में 5वाँ विकल्प "(e) भांजे के / Nephew's" भी था, जो यहाँ हटाया गया है।)
+113 पासा
+? नीचे एक पासे की दो स्थितियाँ दर्शायी गयी हैं। 'R' दर्शाने वाले फलक के विपरीत फलक पर कौन-सा अक्षर आयेगा? [चित्र: पहली स्थिति में P और A दिखते हैं; दूसरी स्थिति में H, R और A दिखते हैं]
+! Two positions of a die are shown below. Which letter will appear on the face opposite the face showing 'R'?
+- A
+- H
+- Q
+- P
+= R, H और A के साथ दिखता है, इसलिए इनके विपरीत नहीं हो सकता। P और Q बचते हैं; चित्र का पूरा विवरण यहाँ नहीं है, उत्तर कुंजी के अनुसार P।
+114 विषम युग्म
+? विषम युग्म चुनिए।
+! Choose the odd one.
+- Death : Disease / मृत्यु : रोग
+- Milk : Butter / दूध : मक्खन
+- Grape : Wine / अंगूर : शराब
+- Water : Oxygen / पानी : ऑक्सीजन
+= बाकी तीन में पहली वस्तु से दूसरी बनती/निकलती है; रोग से मृत्यु होती है (क्रम उल्टा)। (पेपर में "Geath : रोग" छपा है, Death माना गया।)
+115 विषम युग्म
+? विषम युग्म चुनिए।
+! Choose the odd one.
+- धातु : अयस्क / metal : ore
+- घी : दूध / Ghee : Milk
+- पेट्रोल : पेट्रोलियम / Gasoline : Petroleum
+- मिट्टी : भूमि / Soil : Earth
+= उत्तर कुंजी के अनुसार (A) धातु : अयस्क। घी : दूध और पेट्रोल : पेट्रोलियम में उत्पाद : कच्चा पदार्थ है; मिट्टी : भूमि भी अलग लग सकता है, इसलिए यह प्रश्न विवादित है।
+116 कैलेंडर
+? यदि आज रविवार है तो 72 दिन बाद कौन सा दिन होगा?
+! If today is Sunday, then which day will it be after 72 days?
+- सोमवार / Monday
+- मंगलवार / Tuesday
+- बुधवार / Wednesday
+- शुक्रवार / Friday
+= 72 ÷ 7 शेष 2 ⇒ रविवार + 2 = मंगलवार।
+
+# सूचना तकनीक
+117 डेटा
+? निम्न में से कौन-सा Data Compression का उदाहरण है?
+! Which of the following is an example of data compression?
+- ZIP
+- PDF
+- BIOS
+- HTML
+= ZIP — फ़ाइलों को संपीड़ित करने का फ़ॉर्मेट।
+118 CPU
+? CPU में Instruction को Decode करने का कार्य कौन करता है?
+! Which component of the CPU performs the task of decoding instructions?
+- ALU
+- Control Unit
+- Register
+- Cache
+= Control Unit निर्देश fetch व decode करता है; ALU गणना करता है।
+119 मेमोरी
+? निम्न में से कौन-सी Memory Volatile होती है?
+! Which of the following types of memory is volatile?
+- ROM
+- SSD
+- RAM
+- Flash Memory
+= RAM — बिजली जाने पर डेटा मिट जाता है।
+120 बूटिंग
+? कंप्यूटर में 'Booting' का मुख्य उद्देश्य क्या है?
+! What is the primary purpose of 'booting' in a computer?
+- वायरस हटाना / Removing viruses
+- Operating System को Memory में Load करना / Loading the Operating System into memory
+- फाइल Compress करना / Compressing files
+- Internet Connect करना / Connecting to the Internet
+= बूटिंग — POST के बाद OS को RAM में लोड करना।
