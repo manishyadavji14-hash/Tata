@@ -38,6 +38,7 @@ export async function render({ root, params, navigate, setHeader }) {
         <a href="#/pretest/${encodeURIComponent(set.id)}" class="btn-primary col-span-2">${icon.play('h-4 w-4')} टेस्ट शुरू करें / Start Test</a>
         <a href="#/solutions/study?set=${encodeURIComponent(set.id)}" class="btn-outline">📚 प्रश्न + हल देखें</a>
         <button class="btn-outline" data-act="edit">✏️ सेटिंग बदलें</button>
+        <a href="#/share?set=${encodeURIComponent(set.id)}" class="btn-outline">📤 शेयर करें</a>
         <button class="btn-outline" data-act="export">${icon.download('h-4 w-4')} JSON Export</button>
         <button class="btn-outline text-rose-600" data-act="delete">${icon.trash('h-4 w-4')} डिलीट</button>
       </div>

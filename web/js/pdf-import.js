@@ -800,3 +800,38 @@ async function enrichBatch(batch, passages, signal, stats) {
     if (it.difficulty) q.difficulty = q.difficulty || it.difficulty;
   }
 }
+
+// ---------------------------------------------------------------------------
+// Source pages for AI question generation (book / notes PDF): ordered text + page image.
+// ---------------------------------------------------------------------------
+export async function pdfPageCount(buffer) {
+  const doc = await openPdf(buffer.slice(0));
+  const n = doc.numPages;
+  doc.destroy();
+  return n;
+}
+
+export async function pdfSourcePages(buffer, pageList, { images = true, scale = 1.6, maxSide = 1600, onPage = () => {}, signal } = {}) {
+  const doc = await openPdf(buffer.slice(0));
+  const out = [];
+  try {
+    for (const [i, p] of pageList.entries()) {
+      if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+      if (p < 1 || p > doc.numPages) continue;
+      const page = await doc.getPage(p);
+      const { lines } = await extractPage(page, []);
+      const text = lines.join('\n');
+      let image = null;
+      // Scanned pages have no text layer — always send their image.
+      if (images || text.replace(/\s/g, '').length < 80) {
+        const canvas = await renderPage(page, scale);
+        image = canvasToJpeg(canvas, maxSide);
+        canvas.width = 0; canvas.height = 0;
+      }
+      page.cleanup();
+      out.push({ page: p, text, image });
+      onPage(i + 1, pageList.length);
+    }
+  } finally { doc.destroy(); }
+  return out;
+}

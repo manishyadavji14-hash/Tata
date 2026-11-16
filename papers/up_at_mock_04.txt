@@ -1,0 +1,969 @@
+@id adhyayan_up_at_2026_mock_04
+@title UP ASSISTANT TEACHER 2026 MOCK TEST-4 (अध्ययन मंत्र)
+@duration 120
+@pos 3
+@neg 1
+@instr 120 प्रश्न, प्रत्येक 3 अंक (कुल 360)। प्रत्येक गलत उत्तर पर उस प्रश्न के अंकों का एक-तिहाई (1 अंक) काटा जाएगा; छोड़े गए प्रश्न पर कोई दंड नहीं। उत्तर कुंजी मूल प्रश्न-पत्र (अध्ययन मंत्र) के अनुसार है।
+@key DDBDACAADA CADBACABBD CBCACBDCDA DACDAADADB CADCABACAB CDBABAACCA DACDABBCBA CBDDACAACC BDCADCBDDB DABCADBDDC ABBDBCBDCA CDABBCCDBB
+
+# सामान्य ज्ञान एवं समसामयिकी
+1 संविधान
+? '6 से 14 वर्ष के बच्चों के लिए निःशुल्क और अनिवार्य शिक्षा' का संवैधानिक प्रावधान किस अनुच्छेद में है?
+! Which Article contains the constitutional provision concerning free and compulsory education for children aged 6 to 14 years?
+- अनुच्छेद 44 / Article 44
+- अनुच्छेद 32 / Article 32
+- अनुच्छेद 50 / Article 50
+- अनुच्छेद 21A / Article 21A
+= अनु. 21A (86वाँ संशोधन 2002) — 6-14 वर्ष के बच्चों को निःशुल्क व अनिवार्य शिक्षा। 44 — समान नागरिक संहिता, 32 — संवैधानिक उपचार, 50 — न्यायपालिका का पृथक्करण।
+2 संविधान
+? किस संविधान संशोधन ने मौलिक कर्तव्यों को जोड़ा और प्रस्तावना में समाजवादी, पंथनिरपेक्ष तथा अखंडता शब्द जोड़े?
+! Which Constitutional Amendment added Fundamental Duties and the words socialist, secular and integrity to the Preamble?
+- उनहत्तरवाँ संशोधन, 1991 / Sixty-ninth Amendment, 1991
+- बावनवाँ संशोधन, 1985 / Fifty-second Amendment, 1985
+- चौहत्तरवाँ संशोधन, 1992 / Seventy-fourth Amendment, 1992
+- बयालीसवाँ संशोधन, 1976 / Forty-second Amendment, 1976
+= 42वाँ संशोधन 1976 ('लघु संविधान') — मौलिक कर्तव्य (अनु. 51A) और प्रस्तावना में तीन शब्द।
+3 संविधान
+? भारतीय संविधान में 'राज्यसभा में राज्यों और संघ राज्य क्षेत्रों को सीटों का आवंटन' कहाँ वर्णित है?
+! Where in the Constitution of India is the allocation of seats to States and Union Territories in the Rajya Sabha provided?
+- दशम अनुसूची / Tenth Schedule
+- चतुर्थ अनुसूची / Fourth Schedule
+- भाग III / Part III
+- सप्तम अनुसूची / Seventh Schedule
+= चौथी अनुसूची — राज्यसभा सीटें। दसवीं — दल-बदल, सातवीं — संघ/राज्य/समवर्ती सूची, भाग III — मौलिक अधिकार।
+4 संविधान
+? निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?
+! Which of the following pairs is correctly matched?
+- राष्ट्रीय अनुसूचित जाति आयोग — अनुच्छेद 110(3) / National Commission for Scheduled Castes — Article 110(3)
+- वित्त आयोग — अनुच्छेद 338 / Finance Commission — Article 338
+- लोकसभा अध्यक्ष — अनुच्छेद 280 / Speaker of the Lok Sabha — Article 280
+- संघ लोक सेवा आयोग — अनुच्छेद 315 / Union Public Service Commission — Article 315
+= UPSC — अनु. 315। SC आयोग — 338, वित्त आयोग — 280, अनु. 110(3) — धन विधेयक पर अध्यक्ष का निर्णय।
+5 प्राचीन इतिहास
+? प्राचीन भारतीय इतिहास के संदर्भ में कौन-सा युग्म सही सुमेलित है?
+! Which pair is correctly matched in the context of ancient Indian history?
+- राखीगढ़ी — हरियाणा में स्थित विशाल हड़प्पा नगर / Rakhigarhi — a major Harappan urban site in Haryana
+- चतुर्थ बौद्ध संगीति — राजा मिलिन्द और नागसेन के संवाद / Fourth Buddhist Council — a dialogue between King Milinda and Nagasena
+- जेम्स प्रिन्सेप — कनिष्क के शासन और कश्मीर से संबद्ध / James Prinsep — associated with Kanishka's reign and Kashmir
+- मिलिन्दपन्हो — ब्राह्मी लिपि के आधुनिक पाठोद्धार से संबद्ध / Milindapanho — associated with the modern decipherment of the Brahmi script
+= राखीगढ़ी (हिसार, हरियाणा) — बड़ा हड़प्पा नगर। चौथी संगीति — कनिष्क, कश्मीर; मिलिन्दपन्हो — मिलिन्द-नागसेन संवाद; प्रिंसेप — ब्राह्मी पाठोद्धार।
+6 मध्यकालीन इतिहास
+? 'आमुक्तमाल्यदा' के बारे में कौन-सा कथन सही है?
+! Which statement about Amuktamalyada is correct?
+- दिल्ली सल्तनत में राजस्व-अधिकार के बदले प्रशासनिक एवं सैन्य दायित्व / assignment of revenue rights in return for administrative and military obligations under the Delhi Sultanate
+- भारत में ख्वाजा मुइनुद्दीन चिश्ती की प्रमुख परंपरा / a prominent Indian Sufi tradition associated with Khwaja Muinuddin Chishti
+- कृष्णदेवराय द्वारा रचित तेलुगु काव्य / a Telugu poem composed by Krishnadevaraya
+- अकबर द्वारा गुजरात विजय की स्मृति में फतेहपुर सीकरी में निर्मित / built by Akbar at Fatehpur Sikri to commemorate the Gujarat victory
+= आमुक्तमाल्यदा — विजयनगर सम्राट कृष्णदेवराय का तेलुगु काव्य। (a) इक्ता, (b) चिश्ती सिलसिला, (d) बुलंद दरवाज़ा।
+7 आधुनिक इतिहास
+? चम्पारण सत्याग्रह के संबंध में सही विवरण चुनिए।
+! Choose the correct description of the Champaran Satyagraha.
+- 1917 में नील कृषकों से संबंधित गांधी का भारत में पहला सत्याग्रह / Gandhi's first satyagraha in India in 1917 concerning indigo cultivators
+- 1923 में सी. आर. दास और मोतीलाल नेहरू द्वारा स्थापित / founded in 1923 by C. R. Das and Motilal Nehru
+- 1918 में श्रमिक-मालिक विवाद में गांधी का हस्तक्षेप / Gandhi's 1918 intervention in a labour dispute
+- अगस्त 1942 में 'करो या मरो' आह्वान / launched in August 1942 with the call 'Do or Die'
+= चम्पारण (बिहार) 1917 — तिनकठिया प्रथा के विरुद्ध नील किसानों का आंदोलन। (b) स्वराज पार्टी, (c) अहमदाबाद मिल हड़ताल, (d) भारत छोड़ो।
+8 आधुनिक इतिहास
+? चार्टर एक्ट, 1833 का प्रमुख प्रभाव क्या था?
+! What was a major effect of the Charter Act, 1833?
+- बंगाल के गवर्नर-जनरल को भारत का गवर्नर-जनरल बनाया / made the Governor-General of Bengal the Governor-General of India
+- भारतीय भाषा के समाचार-पत्रों पर दमनकारी नियंत्रण / imposed repressive controls on the Indian-language press
+- प्रांतों में द्वैध शासन / introduced dyarchy in the provinces
+- विधायी परिषदों का विस्तार और पोर्टफोलियो प्रणाली को मान्यता / expanded legislative councils and recognised the portfolio system
+= 1833 — लॉर्ड विलियम बेंटिक भारत के पहले गवर्नर-जनरल; केंद्रीकरण पूरा। (b) 1878 वर्नाक्युलर प्रेस एक्ट, (c) 1919, (d) 1861।
+9 आधुनिक इतिहास
+? निम्न घटनाओं को प्राचीन से नवीन क्रम में व्यवस्थित कीजिए: 1. भारतीय राष्ट्रीय कांग्रेस की स्थापना; 2. बंगाल विभाजन; 3. मुस्लिम लीग की स्थापना; 4. सूरत विभाजन
+! Arrange from earliest to latest: 1. foundation of INC; 2. Partition of Bengal; 3. foundation of Muslim League; 4. Surat Split
+- 1-3-2-4
+- 2-3-1-4
+- 2-1-3-4
+- 1-2-3-4
+= कांग्रेस 1885 → बंगाल विभाजन 1905 → मुस्लिम लीग 1906 → सूरत विभाजन 1907 ⇒ 1-2-3-4।
+10 भूगोल
+? ब्रह्मपुत्र के संबंध में सही कथन चुनिए।
+! Choose the correct statement about the Brahmaputra.
+- तिब्बत में त्सांगपो के नाम से जानी जाती है / is known as the Tsangpo in Tibet
+- प्रायद्वीपीय भारत की सबसे लंबी नदी और 'दक्षिण गंगा' / is the longest peninsular river and is called the Dakshin Ganga
+- राजस्थान की अंतःस्थलीय प्रवाह वाली नदी जो कच्छ के रण की ओर जाती है / is an inland-drainage river of Rajasthan flowing towards the Rann of Kachchh
+- कर्नाटक के तलकावेरी से उद्गमित होती है / rises at Talakaveri in Karnataka
+= ब्रह्मपुत्र — तिब्बत में त्सांगपो, अरुणाचल में दिहांग/सियांग। (b) गोदावरी, (c) लूनी, (d) कावेरी।
+11 भूगोल
+? 'मध्यमंडल' का सही अर्थ/लक्षण कौन-सा है?
+! Which option correctly defines or characterises mesosphere?
+- पर्वत की पवन-विमुख ढाल पर अपेक्षाकृत कम वर्षा / relatively low rainfall on the leeward side of a mountain
+- मध्य और पूर्वी विषुवतीय प्रशांत का असामान्य शीतलन / abnormal cooling of the central and eastern equatorial Pacific
+- जहाँ अधिकांश उल्काएँ जलती हैं / the layer in which most meteors burn up
+- भूमध्य रेखा पर शून्य और ध्रुवों पर अधिकतम / zero at the equator and maximum at the poles
+= मध्यमंडल (≈50-80 km) — सबसे ठंडी परत, उल्काएँ यहीं जलती हैं। (a) वृष्टि छाया, (b) ला-नीना, (d) कोरिऑलिस बल।
+12 विश्व भूगोल
+? विश्व भूगोल के संदर्भ में कौन-सा युग्म सही सुमेलित है?
+! Which pair is correctly matched in world geography?
+- वोल्गा — कैस्पियन सागर / Volga — Caspian Sea
+- ग्रेट डिवाइडिंग रेंज — भूमध्य सागर और लाल सागर को जोड़ती है / Great Dividing Range — connects the Mediterranean Sea and the Red Sea
+- स्वेज नहर — पृष्ठीय क्षेत्रफल की दृष्टि से विश्व की सबसे बड़ी मीठे पानी की झील / Suez Canal — the world's largest freshwater lake by surface area
+- सुपीरियर झील — पूर्वी ऑस्ट्रेलिया / Lake Superior — eastern Australia
+= वोल्गा (यूरोप की सबसे लंबी नदी) कैस्पियन में गिरती है। स्वेज — भूमध्य-लाल सागर; ग्रेट डिवाइडिंग रेंज — पूर्वी ऑस्ट्रेलिया; सुपीरियर — सबसे बड़ी मीठे पानी की झील।
+13 पर्यावरण
+? 'कीस्टोन प्रजाति' का सर्वाधिक उपयुक्त अर्थ क्या है?
+! What is the most appropriate meaning of keystone species?
+- अंतरराष्ट्रीय महत्त्व की आर्द्रभूमियों से संबंधित / concerns wetlands of international importance
+- विकसित देशों के लिए ग्रीनहाउस गैस उत्सर्जन लक्ष्य / set greenhouse-gas emission targets for developed countries
+- प्रजातियों का उनके प्राकृतिक आवास में संरक्षण / conservation of species in their natural habitats
+- संख्या की तुलना में पारितंत्र पर असामान्य रूप से बड़ा प्रभाव डालने वाली प्रजाति / a species having a disproportionately large ecological effect relative to its abundance
+= कीस्टोन प्रजाति (जैसे बाघ, समुद्री ऊदबिलाव) हटे तो पूरा पारितंत्र बदल जाता है। (a) रामसर, (b) क्योटो, (c) इन-सीटू।
+14 अर्थशास्त्र
+? 'उपभोक्ता मूल्य सूचकांक' की सही परिभाषा कौन-सी है?
+! Which option correctly defines Consumer Price Index?
+- राजस्व व्यय और राजस्व प्राप्तियों के बीच अंतर / difference between revenue expenditure and revenue receipts
+- उपभोक्ता द्वारा खरीदी जाने वाली वस्तुओं और सेवाओं की टोकरी के मूल्य परिवर्तन का माप / measures price change in a basket of goods and services purchased by consumers
+- देश की घरेलू सीमा में एक अवधि में उत्पादित अंतिम वस्तुओं और सेवाओं का बाजार मूल्य / market value of final goods and services produced within a country's domestic territory during a period
+- जिसका भार करदाता से उपभोक्ता पर स्थानांतरित किया जा सकता है / a tax whose burden can be shifted from the taxpayer to the consumer
+= CPI — खुदरा स्तर पर उपभोक्ता टोकरी का मूल्य परिवर्तन (RBI का मुद्रास्फीति लक्ष्य CPI पर)। (a) राजस्व घाटा, (c) GDP, (d) अप्रत्यक्ष कर।
+15 अर्थशास्त्र
+? 'नकद आरक्षित अनुपात' के बारे में सही कथन चुनिए।
+! Choose the correct statement about Cash Reserve Ratio.
+- बैंकों की शुद्ध मांग और समय देयताओं का वह हिस्सा जो RBI के पास नकद रूप में रखना होता है / the share of net demand and time liabilities that banks keep as cash with RBI
+- बड़े मूल्य के अंतरण का वास्तविक समय और सकल आधार पर निपटान / real-time settlement of high-value transfers on a gross basis
+- सामान्यतः 90 दिनों से अधिक मूलधन या ब्याज अतिदेय रहने वाला ऋण / a loan where principal or interest generally remains overdue for more than 90 days
+- RBI की दीर्घकालिक पुनर्वित्त/दंडात्मक संदर्भ दर / RBI's longer-term refinance and penal reference rate
+= CRR — NDTL का हिस्सा RBI के पास नकद। (b) RTGS, (c) NPA, (d) बैंक दर।
+16 कला-संस्कृति
+? भारतीय कला परंपराओं के संदर्भ में कौन-सा युग्म सही सुमेलित है?
+! Which pair is correctly matched in the context of Indian performing arts?
+- भरतनाट्यम — असम की वैष्णव मठीय परंपरा / Bharatanatyam — Vaishnav monastic tradition of Assam
+- ठुमरी — तमिलनाडु / Thumri — Tamil Nadu
+- मोहिनीअट्टम — केरल / Mohiniyattam — Kerala
+- सत्रिया — भावप्रधान अर्धशास्त्रीय गायकी, विशेषतः उत्तर प्रदेश से संबद्ध / Sattriya — an emotive semi-classical vocal form strongly associated with Uttar Pradesh
+= मोहिनीअट्टम — केरल। सत्रिया — असम (वैष्णव सत्र); ठुमरी — उत्तर प्रदेश की अर्धशास्त्रीय गायकी; भरतनाट्यम — तमिलनाडु।
+17 कला-संस्कृति
+? 'सांची स्तूप' का सही परिचय चुनिए।
+! Choose the correct description of Sanchi Stupa.
+- बौद्ध स्तूप, तोरण और वेदिका के लिए प्रसिद्ध / noted for Buddhist stupas, toranas and railings
+- माउंट आबू के सूक्ष्म संगमरमर जैन मंदिर / finely carved marble Jain temples at Mount Abu
+- मुहम्मद कुली कुतुब शाह द्वारा हैदराबाद में निर्मित / built at Hyderabad by Muhammad Quli Qutb Shah
+- चंदेल शासकों की नागर स्थापत्य परंपरा / Nagara architecture under the Chandela rulers
+= सांची (म.प्र., अशोककालीन) — स्तूप, अलंकृत तोरण द्वार और वेदिका। (b) दिलवाड़ा, (c) चारमीनार, (d) खजुराहो।
+18 साहित्य
+? 'हर्षचरित' के रचनाकार कौन हैं?
+! Who is the author of Harshacharita?
+- रवीन्द्रनाथ ठाकुर / Rabindranath Tagore
+- बाणभट्ट / Banabhatta
+- जयदेव / Jayadeva
+- महात्मा गांधी / Mahatma Gandhi
+= हर्षचरित व कादम्बरी — बाणभट्ट (हर्षवर्धन के दरबारी कवि)। जयदेव — गीतगोविन्द।
+19 समसामयिकी
+? नोबेल शांति पुरस्कार 2025 के संबंध में सही उत्तर चुनिए।
+! Choose the correct answer regarding the Nobel Peace Prize 2025.
+- 'हार्ट लैम्प'—लेखिका बानू मुश्ताक, अनुवादक दीपा भास्थी / Heart Lamp by Banu Mushtaq, translated by Deepa Bhasthi
+- मारिया कोरीना मचाडो / Maria Corina Machado
+- #BeatPlasticPollution; वैश्विक मेजबान कोरिया गणराज्य / #BeatPlasticPollution; globally hosted by the Republic of Korea
+- कुल 131 पुरस्कार / a total of 131 awards
+= नोबेल शांति 2025 — वेनेज़ुएला की मारिया कोरीना मचाडो। (a) अंतरराष्ट्रीय बुकर 2025, (c) विश्व पर्यावरण दिवस 2025।
+20 खेल
+? खेलो इंडिया यूथ गेम्स 2025 के बारे में सही तथ्य कौन-सा है?
+! Which is the correct fact about the Khelo India Youth Games 2025?
+- आइची-नागोया, जापान / Aichi-Nagoya, Japan
+- ई-स्पोर्ट्स / esports
+- मिलानो-कोर्तिना, इटली / Milano Cortina, Italy
+- सातवाँ संस्करण बिहार द्वारा आयोजित / the seventh edition was hosted by Bihar
+= खेलो इंडिया यूथ गेम्स का 7वाँ संस्करण 2025 — बिहार। (a) एशियाई खेल 2026, (c) शीतकालीन ओलंपिक 2026।
+21 विज्ञान-प्रौद्योगिकी
+? 'SpaDeX उपलब्धि का वैश्विक संदर्भ' के संबंध में सही कथन चुनिए।
+! Choose the correct statement regarding global significance of SpaDeX.
+- कोशिकाओं को प्रतिजन बनाने का अस्थायी आनुवंशिक निर्देश देता है / provides temporary genetic instructions for cells to produce an antigen
+- सूर्य-पृथ्वी L1 के चारों ओर halo orbit में सौर वेधशाला / a solar observatory in a halo orbit around Sun-Earth L1
+- भारत अंतरिक्ष docking प्रदर्शित करने वाला चौथा देश बना / India became the fourth nation to demonstrate space docking
+- उपग्रह लगभग समान स्थानीय सौर समय पर किसी स्थान के ऊपर से गुजरता है / allows a satellite to pass over a location at nearly the same local solar time
+= SpaDeX (जनवरी 2025) से भारत अमेरिका, रूस, चीन के बाद docking करने वाला चौथा देश। (a) mRNA टीका, (b) आदित्य-L1, (d) सूर्य-तुल्यकालिक कक्षा।
+22 समसामयिकी
+? निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?
+! Which of the following pairs is correctly matched?
+- अंतरराष्ट्रीय परमाणु ऊर्जा एजेंसी — वॉशिंगटन, डी.सी. / International Atomic Energy Agency — Washington, D.C.
+- विश्व स्वास्थ्य संगठन — जिनेवा / World Health Organization — Geneva
+- अंतरराष्ट्रीय मुद्रा कोष — काठमांडू / International Monetary Fund — Kathmandu
+- सार्क सचिवालय — वियना / SAARC Secretariat — Vienna
+= WHO — जिनेवा। IAEA — वियना, IMF — वॉशिंगटन, SAARC — काठमांडू।
+23 उत्तर प्रदेश
+? ऐतिहासिक महत्त्व के संदर्भ में 'सारनाथ' के बारे में सही कथन चुनिए।
+! Choose the correct statement regarding the historical significance of Sarnath.
+- कन्नौज / Kannauj
+- वाराणसी / Varanasi
+- बुद्ध के प्रथम उपदेश से संबद्ध / associated with the Buddha's first sermon
+- लखनऊ / Lucknow
+= सारनाथ (वाराणसी के निकट) — बुद्ध का पहला उपदेश 'धर्मचक्र प्रवर्तन'। प्रश्न ऐतिहासिक महत्त्व पूछता है, इसलिए (c)।
+24 समाज सुधारक
+? सावित्रीबाई फुले का सर्वाधिक उपयुक्त योगदान कौन-सा है?
+! Which contribution is most appropriately associated with Savitribai Phule?
+- आधुनिक भारत में बालिका शिक्षा की अग्रणी शिक्षिका / a pioneering teacher of girls in modern India
+- आत्मसम्मान आन्दोलन / Self-Respect Movement
+- अलीगढ़ आन्दोलन और आधुनिक मुस्लिम शिक्षा / Aligarh Movement and modern Muslim education
+- विश्वभारती और मानवतावादी शिक्षा / Visva-Bharati and humanistic education
+= सावित्रीबाई — भारत की पहली महिला शिक्षिका (1848 पुणे बालिका विद्यालय)। (b) पेरियार, (c) सर सैयद, (d) टैगोर।
+25 संविधान
+? अभिकथन (A): लोकसभा भंग की जा सकती है। कारण (R): राज्यसभा को राष्ट्रपति प्रत्येक पाँच वर्ष में भंग करता है।
+! Assertion (A): The Lok Sabha may be dissolved. Reason (R): The President dissolves the Rajya Sabha every five years.
+- A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है। / Both A and R are true, and R correctly explains A.
+- A असत्य है, पर R सत्य है। / A is false, but R is true.
+- A सत्य है, पर R असत्य है। / A is true, but R is false.
+- A और R दोनों सत्य हैं, पर R, A की सही व्याख्या नहीं है। / Both A and R are true, but R does not correctly explain A.
+= लोकसभा भंग हो सकती है (A सत्य)। राज्यसभा स्थायी सदन है, भंग नहीं होती; हर 2 वर्ष में 1/3 सदस्य सेवानिवृत्त (R असत्य)।
+
+# REASONING
+26 संख्या श्रृंखला
+? श्रृंखला में अगली संख्या ज्ञात कीजिए: 7, 10, 16, 28, 52, ?
+! Find the next number in the series: 7, 10, 16, 28, 52, ?
+- 102
+- 100
+- 98
+- 106
+= अंतर 3, 6, 12, 24 (हर बार दोगुना) ⇒ अगला अंतर 48 ⇒ 52 + 48 = 100।
+27 कूटलेखन
+? A = 1, B = 2, …, Z = 26 होने पर HEN का मान क्या है?
+! If A = 1, B = 2, …, Z = 26, what is the value of HEN?
+- 26
+- 25
+- 29
+- 27
+= H = 8, E = 5, N = 14 ⇒ 8 + 5 + 14 = 27।
+28 कैलेंडर
+? यदि 1 जनवरी 2025 बुधवार था, तो 1 जनवरी 2026 कौन-सा दिन था?
+! If 1 January 2025 was Wednesday, what day was 1 January 2026?
+- मंगलवार / Tuesday
+- शुक्रवार / Friday
+- गुरुवार / Thursday
+- बुधवार / Wednesday
+= 2025 साधारण वर्ष = 365 दिन = 52 सप्ताह + 1 दिन ⇒ एक दिन आगे: बुधवार → गुरुवार।
+29 न्याय निगमन
+? कथन: कुछ पुस्तकें पत्रिकाएँ हैं। कोई पत्रिका डिजिटल नहीं है। निष्कर्ष: I. कुछ पुस्तकें डिजिटल नहीं हैं। II. कोई डिजिटल वस्तु पुस्तक नहीं है।
+! Statements: Some books are journals. No journal is digital. Conclusions: I. Some books are not digital. II. No digital item is a book.
+- केवल निष्कर्ष II अनुसरण करता है। / Only conclusion II follows.
+- न I न II अनुसरण करता है। / Neither I nor II follows.
+- I और II दोनों अनुसरण करते हैं। / Both I and II follow.
+- केवल निष्कर्ष I अनुसरण करता है। / Only conclusion I follows.
+= जो पुस्तकें पत्रिकाएँ हैं वे डिजिटल नहीं ⇒ I सही। बाकी पुस्तकें डिजिटल हो भी सकती हैं ⇒ II निश्चित नहीं।
+30 पासा
+? एक मानक पासे में विपरीत सतहों का योग 7 है। यदि ऊपर 2 और सामने 3 है, तो 2 के विपरीत कौन-सा अंक होगा?
+! On a standard die, opposite faces sum to 7. If 2 is on top and 3 in front, which number is opposite 2?
+- 5
+- 3
+- 4
+- 6
+= विपरीत योग 7 ⇒ 2 के विपरीत 7 − 2 = 5 ('सामने 3' सिर्फ़ भ्रम के लिए है)।
+
+# HINDI
+31 वर्तनी
+? शुद्ध वर्तनी वाला विकल्प चुनिए।
+- अत्याधीक
+- अतिअधिक
+- अत्याधिक
+- अत्यधिक
+= अति + अधिक = अत्यधिक (यण संधि: इ + अ = य)। 'अत्याधिक' अशुद्ध है।
+32 समास
+? 'नीलकंठ' शब्द जब शिव के लिए प्रयुक्त हो, तब कौन-सा समास है?
+- बहुव्रीहि
+- द्वंद्व
+- अव्ययीभाव
+- कर्मधारय
+= नीला है कंठ जिसका — शिव (अन्य पद प्रधान) ⇒ बहुव्रीहि। केवल 'नीला कंठ' अर्थ हो तो कर्मधारय।
+33 एक शब्द
+? 'जो कहा न जा सके' के लिए एक शब्द है—
+- अश्रव्य
+- अपठनीय
+- अकथनीय
+- अदृश्य
+= अकथनीय (अवर्णनीय)। अश्रव्य — जो सुना न जा सके, अपठनीय — जो पढ़ा न जा सके, अदृश्य — जो दिखे नहीं।
+34 कारक
+? 'बच्चे मैदान में खेलते हैं।' में 'मैदान में' कौन-सा कारक है?
+- सम्बोधन
+- करण
+- अपादान
+- अधिकरण
+= 'में/पर' — क्रिया का आधार/स्थान ⇒ अधिकरण कारक।
+35 अलंकार
+? 'चारु चंद्र की चंचल किरणें' में प्रमुख अलंकार है—
+- अनुप्रास
+- श्लेष
+- उपमा
+- अतिशयोक्ति
+= 'च' वर्ण की आवृत्ति (चारु, चंद्र, चंचल) ⇒ अनुप्रास।
+P p_sahyog अपठित गद्यांश: सार्थक सहयोग
+> सहयोग का अर्थ यह नहीं कि समूह में सभी लोग एक ही ढंग से सोचें। प्रभावी समूह भिन्न विचारों को सुनता है, कार्यों का न्यायपूर्ण विभाजन करता है और मतभेद को व्यक्ति पर आक्रमण बनने से रोकता है। जब सदस्य अपनी भूमिका के साथ सामूहिक लक्ष्य को भी समझते हैं, तब समूह की उपलब्धि किसी एक व्यक्ति की क्षमता से आगे जा सकती है।
+36 अपठित गद्यांश @p_sahyog
+? प्रभावी समूह की विशेषता है—
+- भिन्न विचारों को सुनना
+- कार्य एक व्यक्ति को देना
+- मतभेद को व्यक्तिगत संघर्ष बनाना
+- सभी को एक जैसा सोचने पर मजबूर करना
+= "प्रभावी समूह भिन्न विचारों को सुनता है"।
+37 अपठित गद्यांश @p_sahyog
+? कार्य-विभाजन कैसा होना चाहिए?
+- मनमाना
+- केवल वरिष्ठता-आधारित
+- गोपनीय
+- न्यायपूर्ण
+= "कार्यों का न्यायपूर्ण विभाजन करता है"।
+38 अपठित गद्यांश @p_sahyog
+? समूह की उपलब्धि कब बढ़ती है?
+- जब सदस्य अपनी भूमिका और साझा लक्ष्य दोनों समझें
+- जब कोई लक्ष्य न हो
+- जब एक व्यक्ति सब निर्णय करे
+- जब मतभेद दबा दिए जाएँ
+= अंतिम वाक्य: भूमिका के साथ सामूहिक लक्ष्य समझने पर उपलब्धि एक व्यक्ति की क्षमता से आगे जाती है।
+39 शब्दार्थ @p_sahyog
+? 'मतभेद' का निकटतम अर्थ है—
+- पूर्ण सहमति
+- व्यक्तिगत मित्रता
+- कार्य-विभाजन
+- विचारों में अंतर
+= मत (विचार) + भेद (अंतर) = विचारों में अंतर।
+40 शीर्षक @p_sahyog
+? उपयुक्त शीर्षक है—
+- व्यक्तिगत विजय
+- सार्थक सहयोग
+- समूह से दूरी
+- एकरूपता का दबाव
+= गद्यांश प्रभावी सामूहिक कार्य पर है ⇒ 'सार्थक सहयोग'।
+
+# SANSKRIT
+41 विभक्ति
+? 'बालकेन पत्रं लिख्यते।' अत्र 'बालकेन' पदे का विभक्तिः?
+- प्रथमा
+- चतुर्थी
+- तृतीया
+- षष्ठी
+= कर्मवाच्य में कर्ता तृतीया में ⇒ बालकेन (तृतीया एकवचन)।
+42 सन्धि
+? 'इत्यादि' इत्यस्य सन्धिविच्छेदः कः?
+- इति + आदि
+- इत्य + आदि
+- इति + यादि
+- इत् + यादि
+= इ + आ = या (यण सन्धि) ⇒ इति + आदि = इत्यादि।
+43 समास
+? 'यथाशक्ति' इत्यस्य समासभेदः कः?
+- बहुव्रीहिः
+- कर्मधारयः
+- द्विगुः
+- अव्ययीभावः
+= शक्तिम् अनतिक्रम्य — पूर्वपद 'यथा' अव्यय प्रधान ⇒ अव्ययीभाव।
+44 पुरुष
+? 'अहं पठामि।' अत्र क्रियापदस्य पुरुषः कः?
+- प्रथमपुरुषः
+- मध्यमपुरुषः
+- उत्तमपुरुषः
+- अन्यः
+= अहम् — उत्तम पुरुष; पठामि — लट् उत्तम पुरुष एकवचन।
+45 शब्दरूप
+? 'किम्' शब्दस्य स्त्रीलिङ्ग-प्रथमा-एकवचनरूपं किम्?
+- का
+- किम्
+- कः
+- के
+= किम् — पुं. कः, स्त्री. का, नपुं. किम् (प्रथमा एकवचन)।
+P p_swachh गद्यांशः स्वच्छता
+> स्वच्छता स्वास्थ्यस्य आधारः अस्ति। भोजनात् पूर्वं हस्तप्रक्षालनं, शुद्धजलस्य सेवनं, परिवेशस्य स्वच्छता च रोगान् निवारयन्ति। व्यक्तिगतस्वच्छतया सह सार्वजनिकस्थलानां स्वच्छता अपि आवश्यकाऽस्ति।
+46 गद्यांश @p_swachh
+? स्वच्छता कस्य आधारः?
+- धनस्य
+- स्वास्थ्यस्य
+- यात्रायाः
+- क्रीडायाः
+= "स्वच्छता स्वास्थ्यस्य आधारः अस्ति।"
+47 गद्यांश @p_swachh
+? भोजनात् पूर्वं किं करणीयम्?
+- हस्तप्रक्षालनम्
+- क्रीडा
+- निद्रा
+- धावनम्
+= "भोजनात् पूर्वं हस्तप्रक्षालनं"।
+48 गद्यांश @p_swachh
+? शुद्धजलस्य सेवनं कान् निवारयति?
+- मेघान्
+- पर्वतान्
+- रोगान्
+- वृक्षान्
+= "…रोगान् निवारयन्ति।"
+49 गद्यांश @p_swachh
+? केषां स्वच्छता अपि आवश्यका?
+- सार्वजनिकस्थलानाम्
+- केवलं पुस्तकस्य
+- केवलं गृहस्य
+- केवलं वस्त्रस्य
+= "सार्वजनिकस्थलानां स्वच्छता अपि आवश्यका"।
+50 गद्यांश @p_swachh
+? गद्यांशस्य मुख्यविचारः कः?
+- क्रीडा अनावश्यकी
+- स्वच्छता स्वास्थ्यं रक्षति
+- जलस्य अभावः
+- धनं सर्वश्रेष्ठम्
+= व्यक्तिगत और सार्वजनिक स्वच्छता से रोग दूर होते हैं ⇒ स्वच्छता स्वास्थ्य की रक्षा करती है।
+
+# ENGLISH
+51 Subject-Verb Agreement
+? Fill in the blank: Each of the students ______ a separate portfolio.
+- were
+- have
+- has
+- are having
+= 'Each' is singular → singular verb 'has'.
+52 Voice
+? Change into passive voice: 'They are repairing the bridge.'
+- The bridge is repaired by them yesterday.
+- The bridge was being repair.
+- The bridge has repaired.
+- The bridge is being repaired.
+= Present continuous passive: is/am/are + being + V3 → 'The bridge is being repaired.'
+53 Idioms
+? The idiom 'to read between the lines' means:
+- to skip alternate lines
+- to understand an implied meaning
+- to correct punctuation
+- to read very quickly
+= To find the hidden / implied meaning, not the literal words.
+54 Fewer vs Less
+? Choose the correct sentence.
+- Fewer students attended, but less time was wasted.
+- Less students attended, but fewer time was wasted.
+- Fewer students attended, but fewer time was wasted.
+- Less students attended, but less times were wasted.
+= 'Fewer' with countable plurals (students); 'less' with uncountables (time).
+55 Ambiguity
+? Choose the sentence free from ambiguity.
+- Rita told Meena that she would submit her form.
+- Rita told Meena, "I will submit my own form."
+- When Rita met Meena, she had her form.
+- Rita informed Meena about her submission.
+= In the others 'she/her' may mean Rita or Meena; direct speech removes the doubt.
+P p_trees Passage: Urban Trees
+> Urban trees provide more than visual beauty. Their shade reduces surface temperature, their roots slow rainwater runoff, and their leaves can trap some airborne particles. Yet planting alone is not enough. Species must suit local conditions, young trees require care, and planning must protect adequate soil and space for long-term growth.
+56 Reading Comprehension @p_trees
+? What is the main point?
+- Urban tree programmes require both planting and long-term planning.
+- Young trees need no maintenance.
+- All tree species suit every city.
+- Trees serve only decorative purposes.
+= Benefits are described, then "planting alone is not enough" — planning and care are also needed.
+57 Reading Comprehension @p_trees
+? How do roots help during rain?
+- They slow runoff.
+- They remove all pollution.
+- They raise surface temperature.
+- They increase traffic.
+= "their roots slow rainwater runoff".
+58 Reading Comprehension @p_trees
+? Why is planting alone insufficient?
+- Only old trees are useful.
+- Rainfall always kills trees.
+- Species, care, soil and space also matter.
+- Trees cannot survive in cities.
+= Last sentence lists suitable species, care, soil and space.
+59 Vocabulary @p_trees
+? The word 'adequate' most nearly means:
+- decorative
+- unequal
+- sufficient
+- temporary
+= adequate = enough / sufficient (पर्याप्त).
+60 Inference @p_trees
+? Which inference is strongest?
+- Poorly planned planting may fail despite good intentions.
+- Tree roots always damage cities.
+- Urban heat has no relation to shade.
+- Every planted tree will mature successfully.
+= Since planting needs planning and care, unplanned planting can fail.
+
+# SCIENCE
+61 गति
+? एक धावक वृत्ताकार पथ का एक पूरा चक्कर 40 s में लगाता है। 20 s के बाद दूरी और विस्थापन के बारे में क्या सही है?
+! A runner completes one circular lap in 40 s. After 20 s, which statement about distance and displacement is correct?
+- दूरी व्यास, विस्थापन आधी परिधि / Distance is the diameter; displacement is half the circumference
+- दूरी और विस्थापन बराबर तथा आधी परिधि / Both are equal to half the circumference
+- दूरी और विस्थापन दोनों शून्य / Both distance and displacement are zero
+- दूरी आधी परिधि, विस्थापन व्यास / Distance is half the circumference; displacement is the diameter
+= 20 s = आधा चक्कर ⇒ चली दूरी = πr (आधी परिधि), प्रारंभ और अंत व्यास के दो सिरे ⇒ विस्थापन = 2r।
+=* figures/sol_m04_q61_track.png
+62 कार्य
+? 10 N का बल किसी वस्तु को बल की दिशा में 5 m विस्थापित करता है। कार्य कितना है?
+! A force of 10 N displaces an object 5 m in the direction of the force. What work is done?
+- 50 J
+- 2 J
+- 500 J
+- 15 J
+= $W = Fs\cos0^\circ = 10\times5 = 50\text{ J}$।
+63 प्रकाश
+? निकटदृष्टि दोष के सुधार में कौन-सा लेंस प्रयुक्त होता है?
+! Which lens is used to correct myopia?
+- उत्तल लेंस / Convex lens
+- बेलनाकार लेंस ही / Cylindrical lens only
+- अवतल लेंस / Concave lens
+- समतल काँच / Plane glass
+= निकटदृष्टि में दूर की किरणें रेटिना से पहले फोकस ⇒ अवतल (अपसारी) लेंस। दूरदृष्टि — उत्तल।
+64 ध्वनि
+? ध्वनि की तारता या पिच मुख्यतः किससे निर्धारित होती है?
+! Pitch of a sound is determined mainly by what?
+- माध्यम का आयतन / Volume of the medium
+- आयाम / Amplitude
+- तीव्रता मात्र / Intensity only
+- आवृत्ति / Frequency
+= पिच ∝ आवृत्ति (अधिक आवृत्ति = तीखी ध्वनि); प्रबलता आयाम से।
+65 परमाणु
+? एक उदासीन परमाणु में 17 प्रोटॉन हैं। उसमें इलेक्ट्रॉन कितने होंगे?
+! A neutral atom has 17 protons. How many electrons does it have?
+- 17
+- 18
+- 16
+- 34
+= उदासीन परमाणु: इलेक्ट्रॉन = प्रोटॉन = 17 (क्लोरीन)।
+66 प्रतिरक्षा
+? टीकाकरण मुख्यतः किस प्रकार की प्रतिरक्षा विकसित करता है?
+! Vaccination mainly develops which type of immunity?
+- कोई प्रतिरक्षा नहीं / No immunity
+- कृत्रिम सक्रिय प्रतिरक्षा / Artificial active immunity
+- कृत्रिम निष्क्रिय प्रतिरक्षा ही / Artificial passive immunity only
+- प्राकृतिक निष्क्रिय प्रतिरक्षा / Natural passive immunity
+= टीका प्रतिजन देता है, शरीर स्वयं एंटीबॉडी व स्मृति कोशिकाएँ बनाता है ⇒ कृत्रिम सक्रिय। तैयार एंटीबॉडी देना — निष्क्रिय।
+67 कोशिका
+? परासरण में जल किस दिशा में चलता है?
+! In osmosis, water moves in which direction?
+- केवल सक्रिय परिवहन से / Only by active transport
+- अर्धपारगम्य झिल्ली से उच्च जल-विभव से निम्न जल-विभव की ओर / Across a semipermeable membrane from higher to lower water potential
+- केवल उच्च विलेय से निम्न विलेय बिना झिल्ली / Only from high solute to low solute without a membrane
+- सदैव गुरुत्व के विपरीत / Always against gravity
+= परासरण — अर्धपारगम्य झिल्ली से जल का निष्क्रिय गमन: तनु विलयन (अधिक जल-विभव) → सांद्र विलयन।
+68 पर्यावरण
+? जीवाश्म ईंधन के दहन से कौन-सी प्रमुख ग्रीनहाउस गैस बढ़ती है?
+! Which major greenhouse gas increases through fossil-fuel combustion?
+- हीलियम / Helium
+- आर्गन / Argon
+- कार्बन डाइऑक्साइड / Carbon dioxide
+- निऑन / Neon
+= कोयला/पेट्रोल का कार्बन जलकर $CO_2$ बनाता है; He, Ar, Ne अक्रिय गैसें हैं, ग्रीनहाउस नहीं।
+
+# MATHS
+69 विभाज्यता
+? संख्या 6x51 को 11 से पूर्णतः विभाज्य बनाने के लिए x का मान क्या होगा?
+! What should be the value of x so that the number 6x51 is exactly divisible by 11?
+- 2
+- कोई अंक नहीं (0–9) / No digit (0–9)
+- 7
+- 4
+= (6 + 5) − (x + 1) = 10 − x, जो 0 या 11 का गुणज हो ⇒ x = 10 (एक अंक नहीं) या −1 ⇒ कोई अंक संभव नहीं।
+70 भिन्न
+? किसी संख्या के 11/12 और 5/9 भाग का अंतर 39 है। वह संख्या क्या है?
+! The difference between 11/12 and 5/9 of a number is 39. What is the number?
+- 108
+- 88
+- 148
+- 128
+= $\left(\frac{11}{12}-\frac{5}{9}\right)N=\frac{33-20}{36}N=\frac{13}{36}N=39$ ⇒ N = 108।
+71 स्थानीय मान
+? संख्या 9.0063 में अंक 6 के स्थानीय मान और अंक 3 के स्थानीय मान का अनुपात क्या है?
+! In the number 9.0063, what is the ratio of the place value of digit 6 to that of digit 3?
+- 6:3
+- 1:20
+- 20:1
+- 200:1
+= 6 का मान 6/1000 = 0.006, 3 का मान 3/10000 = 0.0003 ⇒ 0.006 : 0.0003 = 20 : 1।
+72 चक्रवृद्धि ब्याज
+? ₹40,000 पर 5% वार्षिक दर से 2 वर्षों के चक्रवृद्धि ब्याज और साधारण ब्याज का अंतर कितना होगा?
+! What is the difference between compound and simple interest on ₹40,000 for 2 years at 5% per annum?
+- 300
+- 100
+- 1
+- 200
+= $P\left(\frac{r}{100}\right)^2 = 40000\times\frac{1}{400} = ₹100$।
+73 छूट
+? एक वस्तु का अंकित मूल्य क्रय मूल्य से 60% अधिक है। उस पर क्रमशः 25% और 10% की छूट दी जाती है। लाभ/हानि प्रतिशत क्या है?
+! An article is marked 60% above cost price and successive discounts of 25% and 10% are given. What is the profit/loss percentage?
+- 6%
+- 10%
+- 13%
+- 8%
+= 1.6 × 0.75 × 0.9 = 1.08 ⇒ 8% लाभ।
+74 प्रतिशत
+? एक राशि को पहले 15% बढ़ाया और फिर 20% घटाया गया। प्राप्त राशि को मूल राशि तक पहुँचाने के लिए कितने प्रतिशत वृद्धि की आवश्यकता है?
+! A quantity is first increased by 15% and then decreased by 20%. What percentage increase is required to restore the original value?
+- 10.7%
+- 6.7%
+- 5%
+- 8.7%
+= 1.15 × 0.8 = 0.92 ⇒ आवश्यक वृद्धि = $\frac{0.08}{0.92}\times100 \approx 8.7\%$।
+75 LCM-HCF
+? दो संख्याओं का HCF 24 और LCM 1440 है। यदि एक संख्या 288 है, तो दूसरी संख्या क्या है?
+! The HCF and LCM of two numbers are 24 and 1440. If one number is 288, what is the other?
+- 120
+- 240
+- 144
+- 96
+= दूसरी = 24 × 1440 ÷ 288 = 120।
+76 कार्य-समय
+? 15 पुरुष अथवा 25 महिलाएँ किसी कार्य को 20 दिनों में पूरा करती हैं। 9 पुरुष और 10 महिलाएँ मिलकर वही कार्य कितने दिनों में करेंगे?
+! 15 men or 25 women complete a work in 20 days. In how many days will 9 men and 10 women complete it together?
+- 22 दिन / days
+- 19 दिन / days
+- 20 दिन / days
+- 21 दिन / days
+= 15 पु = 25 म ⇒ 9 पु = 15 म ⇒ 9 पु + 10 म = 25 म ⇒ वही 20 दिन।
+77 बीजगणित
+? यदि x + 1/x = 6, तो x³ + 1/x³ का मान क्या है?
+! If x + 1/x = 6, what is the value of x³ + 1/x³?
+- 198
+- 204
+- 186
+- 192
+= $6^3 - 3\times6 = 216 - 18 = 198$।
+78 क्षेत्रमिति
+? एक आयत का परिमाप 100 cm और विकर्ण 40 cm है। उसका क्षेत्रफल कितना है?
+! A rectangle has perimeter 100 cm and diagonal 40 cm. What is its area?
+- 450 cm²
+- 470 cm²
+- 430 cm²
+- 490 cm²
+= l + b = 50, l² + b² = 1600 ⇒ 2lb = 2500 − 1600 = 900 ⇒ lb = 450 cm²।
+79 औसत
+? 15 संख्याओं का औसत 64 निकाला गया। बाद में पता चला कि 39 को गलती से 93 पढ़ा गया था। सही औसत क्या है?
+! The average of 15 numbers was calculated as 64. It was later found that 39 had been read as 93. What is the correct average?
+- 64
+- 307/5
+- 302/5
+- 297/5
+= सही योग = 15 × 64 − 93 + 39 = 906 ⇒ 906/15 = 302/5 (= 60.4)।
+80 क्षेत्रमिति
+? 10 cm त्रिज्या और 16 cm ऊँचाई वाले ठोस बेलन को पिघलाकर 2 cm त्रिज्या के ठोस गोलों में ढाला जाता है। कितने पूर्ण गोले बनेंगे?
+! A solid cylinder of radius 10 cm and height 16 cm is melted and recast into solid spheres of radius 2 cm. How many complete spheres are formed?
+- 153
+- 147
+- 150
+- 156
+= $\frac{\pi\cdot10^2\cdot16}{\frac{4}{3}\pi\cdot2^3}=\frac{1600\times3}{32}=150$।
+81 अनुपात
+? A और B की आय का अनुपात 8:7 तथा व्यय का अनुपात 5:4 है। यदि दोनों ₹3,600 की समान बचत करते हैं, तो A की आय कितनी है?
+! A and B have income ratio 8:7 and expenditure ratio 5:4. If each saves ₹3,600, what is A's income?
+- 6000
+- 9600
+- 13200
+- 16800
+= 8k − 5l = 3600, 7k − 4l = 3600। पहली × 4 और दूसरी × 5 घटाने पर 3k = 3600 ⇒ k = 1200 ⇒ A = 8k = ₹9,600।
+82 बीजगणित
+? यदि a + b = 14 तथा ab = 45, तो a³ + b³ का मान क्या है?
+! If a + b = 14 and ab = 45, what is a³ + b³?
+- 719
+- 868
+- 989
+- 854
+= $14^3 - 3\times45\times14 = 2744 - 1890 = 854$।
+83 त्रिभुज
+? एक समकोण त्रिभुज में समकोण से कर्ण पर खींचा लम्ब कर्ण को 25 cm और 36 cm के भागों में विभाजित करता है। लम्ब की लंबाई क्या है?
+! In a right triangle, the altitude from the right angle divides the hypotenuse into segments of 25 cm and 36 cm. What is the altitude length?
+- 34 cm
+- 32 cm
+- 30 cm
+- 28 cm
+= $h^2 = pq = 25\times36 = 900$ ⇒ h = 30 cm।
+=* figures/sol_altitude_25_36.png
+84 सांख्यिकी
+? निम्न आवृत्ति-वितरण का माध्य ज्ञात कीजिए: x = 1, f = 4; x = 3, f = 2; x = 5, f = 3; x = 7, f = 1
+! Find the mean of the frequency distribution: x = 1, f = 4; x = 3, f = 2; x = 5, f = 3; x = 7, f = 1
+- 16/5
+- 4
+- 21/5
+- 11/5
+= Σfx = 4 + 6 + 15 + 7 = 32, Σf = 10 ⇒ 32/10 = 16/5।
+
+# पर्यावरण एवं सामाजिक अध्ययन
+85 भूगोल
+? नदी के मध्य और निचले मार्ग में विसर्प मुख्यतः किस कारण से बनते हैं?
+! What mainly causes meanders in the middle and lower course of a river?
+- हिमानी जमाव / Glacial deposition
+- समुद्री ज्वार का पूर्ण अभाव / Complete absence of tides
+- केवल ऊर्ध्वाधर अपरदन / Vertical erosion only
+- बाहरी तट पर अपरदन और भीतरी तट पर निक्षेपण / Erosion on the outer bank and deposition on the inner bank
+= मोड़ के बाहरी तट पर तेज़ धारा से अपरदन, भीतरी तट पर धीमी धारा से निक्षेपण ⇒ घुमाव बढ़ता है (विसर्प)।
+86 भूगोल
+? 21 जून के आसपास सूर्य की लंबवत किरणें किस अक्षांश पर पड़ती हैं?
+! Around 21 June, the Sun's vertical rays fall over which latitude?
+- मकर रेखा / Tropic of Capricorn
+- आर्कटिक वृत्त / Arctic Circle
+- कर्क रेखा / Tropic of Cancer
+- भूमध्य रेखा / Equator
+= 21 जून — ग्रीष्म अयनांत, कर्क रेखा (23½° उ.) पर लंबवत किरणें; 22 दिसंबर — मकर रेखा।
+87 भारत का भूगोल
+? गंगा-ब्रह्मपुत्र डेल्टा का प्रमुख भाग किस नाम से जाना जाता है?
+! What is the major deltaic region of the Ganga-Brahmaputra known as?
+- मालवा / Malwa
+- सुन्दरबन / Sundarbans
+- दून घाटी / Doon Valley
+- बुन्देलखण्ड / Bundelkhand
+= सुंदरबन — विश्व का सबसे बड़ा डेल्टा, मैंग्रोव वन और रॉयल बंगाल टाइगर।
+88 आधुनिक इतिहास
+? दांडी यात्रा किस कानून की अवज्ञा का प्रतीक बनी?
+! The Dandi March symbolised defiance of which law?
+- वन कानून मात्र / Forest law only
+- रॉलेट एक्ट / Rowlatt Act
+- वर्नाक्युलर प्रेस एक्ट / Vernacular Press Act
+- नमक कानून / Salt law
+= 12 मार्च–6 अप्रैल 1930, साबरमती से दांडी; समुद्र से नमक बनाकर नमक कानून तोड़ा (सविनय अवज्ञा आरंभ)।
+89 समाज सुधारक
+? विधवा पुनर्विवाह के समर्थन और बंगाल में स्त्री शिक्षा से कौन प्रमुखतः जुड़ा था?
+! Who was prominently associated with widow remarriage and women's education in Bengal?
+- बाल गंगाधर तिलक / Bal Gangadhar Tilak
+- लॉर्ड कर्जन / Lord Curzon
+- बंकिमचन्द्र चट्टोपाध्याय / Bankim Chandra Chattopadhyay
+- ईश्वरचन्द्र विद्यासागर / Ishwar Chandra Vidyasagar
+= विद्यासागर के प्रयासों से हिंदू विधवा पुनर्विवाह अधिनियम 1856।
+90 संविधान
+? संविधान संशोधन की सामान्य शक्ति किस अनुच्छेद में निहित है?
+! The general power and procedure to amend the Constitution is contained in which Article?
+- अनुच्छेद 123 / Article 123
+- अनुच्छेद 368 / Article 368
+- अनुच्छेद 324 / Article 324
+- अनुच्छेद 356 / Article 356
+= अनु. 368 (भाग XX)। 123 — अध्यादेश, 324 — निर्वाचन आयोग, 356 — राष्ट्रपति शासन।
+91 अर्थशास्त्र
+? मुद्रास्फीति में निश्चित आय वाले व्यक्ति पर सामान्य प्रभाव क्या होता है?
+! What is a common effect of inflation on a person with fixed nominal income?
+- नाममात्र आय का अर्थ समाप्त होता है / Nominal income ceases to exist
+- क्रय-शक्ति स्वतः बढ़ती है / Purchasing power automatically rises
+- सभी कीमतें घटती हैं / All prices fall
+- वास्तविक क्रय-शक्ति घटती है / Real purchasing power falls
+= कीमतें बढ़ें और आय स्थिर रहे तो उतने पैसे से कम सामान ⇒ वास्तविक आय/क्रय-शक्ति घटती है।
+92 आपदा प्रबंधन
+? जंगल की आग के जोखिम को कम करने में फायर लाइन का क्या मकसद है?
+! What is the purpose of a fire line in reducing wildfire risk?
+- ज्वलनशील वनस्पति का अवरोध बनाकर आग के फैलाव को धीमा करना / Creating a break in combustible vegetation to slow fire spread
+- वन में हवा रोकना / Stopping all wind in a forest
+- वर्षा उत्पन्न करना / Creating rainfall
+- अधिक सूखी घास जोड़ना / Adding more dry grass
+= फायर लाइन — वनस्पति साफ की गई पट्टी; ईंधन की निरंतरता टूटने से आग आगे नहीं बढ़ पाती।
+
+# शिक्षण कौशल (Teaching Skills)
+93 शिक्षण विधियाँ
+? परियोजना विधि का सर्वोत्तम उदाहरण कौन-सा है?
+! Which is the best example of the project method?
+- शिक्षक पूरे समय परिभाषाएँ पढ़ता है / The teacher reads definitions throughout
+- बच्चे विद्यालय के कचरे का लेखा-परीक्षण करते हैं, योजना बनाते हैं, उसे लागू करते हैं और परिणाम प्रस्तुत करते हैं / Learners audit school waste, plan an intervention, implement it and present results
+- बच्चे एक ही उत्तर दस बार लिखते हैं / Learners copy one answer ten times
+- केवल वस्तुनिष्ठ परीक्षण लिया जाता है / Only an objective test is administered
+= किलपैट्रिक की परियोजना विधि — वास्तविक समस्या, योजना, क्रियान्वयन, मूल्यांकन (करके सीखना)।
+94 पाठ्यचर्या
+? ब्रूनर के सर्पिल पाठ्यचर्या का आशय क्या है?
+! What is meant by Bruner's spiral curriculum?
+- किसी अवधारणा को केवल एक बार पढ़ाना / Teaching a concept only once
+- विषयों को वृत्ताकार कमरे में पढ़ाना / Teaching in a circular room
+- प्रमुख अवधारणाओं पर बढ़ती हुई जटिलता और परिष्कार के साथ बार-बार लौटना / Revisiting key ideas repeatedly with increasing complexity and sophistication
+- कक्षाओं के क्रम को उलटना / Reversing grade order
+= सर्पिल पाठ्यक्रम — वही अवधारणा हर स्तर पर अधिक गहराई से दोहराई जाती है।
+95 RTE
+? शिक्षा के अधिकार के सामाजिक उद्देश्य से कौन-सा कक्षा-अभ्यास अधिक संगत है?
+! Which classroom practice is more consistent with the social purpose of the Right to Education?
+- भेदभाव-रहित सहभागिता, गरिमा और सार्थक अधिगम सहायता / Non-discriminatory participation, dignity and meaningful learning support
+- सार्वजनिक रूप से अपमानित करना / Public shaming
+- आर्थिक पृष्ठभूमि के आधार पर अलग-अलग समूह बनाना / Separate groups by economic background
+- प्रवेश के लिए बुद्धि के आधार पर ठप्पा लगाना / Intelligence labelling for admission screening
+= RTE 2009: प्रवेश में स्क्रीनिंग वर्जित (धारा 13), शारीरिक दंड/मानसिक उत्पीड़न वर्जित (धारा 17), भेदभाव-रहित शिक्षा।
+96 समावेशी शिक्षा
+? डिस्लेक्सिया वाले बच्चे के लिए कौन-सा हस्तक्षेप साक्ष्य-आधारित है?
+! Which intervention is evidence-informed for a child with dyslexia?
+- उसकी बुद्धि कम मान लेना / Assuming low intelligence
+- केवल रंगीन कागज के प्रयोग से ठीक होने का दावा करना / Claiming a cure through coloured paper alone
+- दण्ड के रूप में अधिक सार्वजनिक पठन कराना / More public reading as punishment
+- संचयी अभ्यास के साथ स्पष्ट एवं व्यवस्थित ध्वन्यात्मक जागरूकता तथा ध्वनि-अक्षर संबंध का शिक्षण / Explicit systematic phonological awareness and phonics with cumulative practice
+= डिस्लेक्सिया = पठन (डिकोडिंग) की कठिनाई; व्यवस्थित ध्वनि-जागरूकता व फ़ोनिक्स प्रभावी।
+97 आकलन
+? एक शिक्षक दैनिक निर्गमन-पर्ची से प्राप्त साक्ष्यों के आधार पर अगले दिन विद्यार्थियों के समूह बदलता है। यह क्या दर्शाता है?
+! A teacher changes next-day grouping using daily exit-ticket evidence. What does this demonstrate?
+- क्षमता के आधार पर स्थायी वर्गीकरण / Fixed ability tracking
+- आवश्यकतानुसार अनुकूलित निर्माणात्मक शिक्षण / Responsive formative teaching
+- यादृच्छिक योजना / Random planning
+- केवल योगात्मक श्रेणीकरण / Summative grading only
+= आकलन की जानकारी से तुरंत शिक्षण बदलना = निर्माणात्मक (सीखने के लिए) आकलन।
+98 आकलन
+? मूल्यांकन रूपरेखा (रूब्रिक) में विश्लेषणात्मक और समग्र अंकन में क्या अंतर है?
+! What is the difference between analytic and holistic scoring in a rubric?
+- विश्लेषणात्मक अंकन केवल बहुविकल्पीय प्रश्नों के लिए है / Analytic is only for MCQs
+- दोनों में कोई मानदंड नहीं होते / Neither has criteria
+- समग्र अंकन सदैव अधिक वस्तुनिष्ठ होता है / Holistic is always more objective
+- विश्लेषणात्मक अंकन मानदंडों को अलग-अलग करता है; समग्र अंकन एक एकीकृत समग्र निर्णय देता है / Analytic scores separate criteria; holistic gives one overall judgement
+= विश्लेषणात्मक — हर मानदंड पर अलग अंक (निदानात्मक); समग्र — पूरे कार्य पर एक अंक।
+99 भाषा शिक्षण
+? ध्वनि-अक्षर संबंध के अनुसार पठनीय पाठ (decodable text) का उचित उपयोग क्या है?
+! What is an appropriate use of decodable text?
+- अर्थ पर चर्चा रोक देना / Stop discussion of meaning
+- सभी साहित्यिक पाठों को स्थायी रूप से बदल देना / Permanently replace all literature
+- उसे अभी तक न सिखाए गए ध्वनि-अक्षर प्रतिरूपों से भर देना / Fill it with untaught patterns
+- समृद्ध साहित्य के साथ-साथ सिखाए गए ध्वनि-अक्षर प्रतिरूपों का सतत पठन में अभ्यास कराना / Practise taught sound-symbol patterns in connected reading alongside rich literature
+= पठनीय पाठ में केवल सिखाए गए अक्षर-ध्वनि; साथ में कहानियाँ/साहित्य भी चलते रहें।
+100 विद्यालय प्रबंधन
+? समय-सारणी बनाते समय कौन-सा सिद्धांत महत्त्वपूर्ण है?
+! Which principle is important in timetable construction?
+- एक शिक्षक को एक ही समय पर अनेक कक्षाएँ देना / Assign one teacher to simultaneous classes
+- कठिन विषयों को सदैव दिन के अंत में रखना / Always place difficult subjects at day's end
+- शिक्षार्थियों के ध्यान, विषय की आवश्यकताओं, शिक्षक एवं संसाधन संबंधी सीमाओं तथा न्यायसंगत पहुँच में संतुलन रखना / Balance learner attention, subject demands, teacher and resource constraints and equitable access
+- पुस्तकालय और प्रयोगशाला तक पहुँच की उपेक्षा करना / Ignore library and lab access
+= कठिन विषय पहले घंटों में (ताज़गी), थकान-विराम, संसाधनों और शिक्षकों का संतुलन।
+
+# बाल विकास (बाल मनोविज्ञान)
+101 बुद्धि
+? एक बच्चा गणित में उच्च स्तर की तर्क क्षमता दिखाता है, पर लिखित भाषा में कठिनाई अनुभव करता है। उचित निष्कर्ष क्या है?
+! A child shows strong mathematical reasoning but difficulty in written language. What is the appropriate conclusion?
+- क्षमताएँ क्षेत्र-विशिष्ट स्वरूप की हो सकती हैं; किसी एक कमजोरी के आधार पर समग्र क्षमता का आकलन नहीं करना चाहिए / Abilities can form a domain-specific profile; do not infer overall ability from one weakness
+- बच्चा सभी विषयों में कमजोर है / The child is weak in all subjects
+- तर्क क्षमता का अंक अमान्य है / The reasoning score is invalid
+- लेखन ही बुद्धि का एकमात्र माप है / Writing is the sole measure of intelligence
+= गार्डनर की बहुबुद्धि — क्षमताएँ अलग-अलग क्षेत्रों में असमान हो सकती हैं।
+102 विकास
+? अपर्याप्त पोषण का अधिगम पर संभावित प्रभाव क्या है?
+! What is a possible effect of inadequate nutrition on learning?
+- कुपोषित सभी बच्चों में समान परिणाम दिखाई देते हैं / All malnourished children show identical outcomes
+- ऊर्जा, ध्यान, मस्तिष्क विकास और उपस्थिति प्रभावित हो सकते हैं / Energy, attention, brain development and attendance may be affected
+- इसका विकास पर कोई प्रभाव नहीं पड़ता / There is no developmental effect
+- केवल हस्तलेखन बदलता है / Only handwriting changes
+= कुपोषण से थकान, ध्यान की कमी, मस्तिष्क विकास पर असर और अनुपस्थिति (मध्याह्न भोजन का उद्देश्य)।
+103 आकलन
+? गतिशील आकलन किसकी जाँच करता है?
+! What does dynamic assessment examine?
+- केवल स्वतंत्र अंतिम अंक / Only an independent final score
+- मध्यस्थता या प्रतिपुष्टि के प्रति शिक्षार्थी की प्रतिक्रिया और उसकी अधिगम क्षमता / The learner's responsiveness to mediation or feedback and learning potential
+- शारीरिक वृद्धि / Physical growth
+- उपस्थिति / Attendance
+= वाइगोत्स्की की ZPD पर आधारित — सहायता मिलने पर बच्चा कितना आगे बढ़ता है।
+104 अधिगम
+? शिक्षक द्वारा उत्तर देने के लिए प्रतीक्षा-समय बढ़ाने से क्या लाभ हो सकता है?
+! What benefit can result from increasing teacher wait time?
+- सोचने का समय घट जाता है / Thinking time decreases
+- अनुशासन स्वतः बिगड़ जाता है / Discipline automatically worsens
+- केवल तेज गति से सीखने वाले शिक्षार्थियों को लाभ मिलता है / Only fast learners benefit
+- अधिक शिक्षार्थी सहभागिता करते हैं और उत्तर अधिक विचारपूर्ण होते हैं / More learners participate and responses become more thoughtful
+= प्रश्न के बाद 3-5 सेकंड रुकने से धीमे शिक्षार्थी भी उत्तर देते हैं, उत्तर गहरे होते हैं।
+105 मनोसामाजिक विकास
+? एरिक्सन के विद्यालयी आयु चरण में प्रमुख मनोसामाजिक संघर्ष क्या है?
+! What is the major psychosocial conflict in Erikson's school-age stage?
+- पहचान बनाम भूमिका भ्रम / Identity versus role confusion
+- उद्योगशीलता बनाम हीनभावना / Industry versus inferiority
+- विश्वास बनाम अविश्वास / Trust versus mistrust
+- घनिष्ठता बनाम अलगाव / Intimacy versus isolation
+= 6-12 वर्ष: परिश्रम बनाम हीनता। किशोर — पहचान बनाम भूमिका भ्रम; शैशव — विश्वास बनाम अविश्वास।
+106 अभिप्रेरणा
+? अर्जित असहायता का संकेत क्या है?
+! What is a sign of learned helplessness?
+- प्रगति का अनुश्रवण करना / Monitoring progress
+- सहायता माँगना / Seeking help
+- बार-बार अनियंत्रित असफलता के बाद प्रयास करने से पहले ही यह मान लेना कि प्रयास से परिणाम नहीं बदलेगा / After repeated uncontrollable failure, believing effort cannot change the outcome
+- चुनौती आने पर रणनीति बदलना / Changing strategy after a challenge
+= सेलिगमैन — बार-बार असफलता से "कोशिश बेकार है" की धारणा।
+107 भाषा विकास
+? संयुक्त ध्यान भाषा विकास में क्यों महत्त्वपूर्ण है?
+! Why is joint attention important for language development?
+- यह नेत्र-संपर्क को अनिवार्य बनाता है / It makes eye contact compulsory
+- बच्चा और वयस्क किसी वस्तु या घटना पर साझा ध्यान और संप्रेषणात्मक संदर्भ स्थापित करते हैं / Child and adult share focus and communicative reference to an object or event
+- यह शब्दावली घटाता है / It reduces vocabulary
+- यह केवल गत्यात्मक कौशल है / It is only a motor skill
+= बच्चा और बड़ा एक ही वस्तु देखें और बड़ा उसका नाम बोले ⇒ शब्द-अर्थ जुड़ता है।
+108 समावेशी शिक्षा
+? बौद्धिक अक्षमता में सहायता-योजना किस आधार पर बनाई जानी चाहिए?
+! On what should support planning for intellectual disability be based?
+- केवल आयु / Age alone
+- एक स्थायी ठप्पा / A fixed label
+- परिवार को अलग रखना / Excluding the family
+- अनुकूली कार्यक्षमता तथा व्यक्ति की विशिष्ट क्षमताओं और आवश्यकताओं पर, केवल बुद्धिलब्धि अंक पर नहीं / Adaptive functioning and individual strengths and needs, not IQ score alone
+= बौद्धिक अक्षमता की पहचान IQ और अनुकूली व्यवहार दोनों से; सहायता व्यक्तिगत आवश्यकता अनुसार (IEP)।
+
+# सूचना तकनीक
+109 डेटाबेस
+? कौन-सी डेटाबेस अवधारणा यह सुनिश्चित करती है कि प्रत्येक अभिलेख की विशिष्ट रूप से पहचान की जा सके?
+! Which database concept ensures that every record can be uniquely identified?
+- पृष्ठ विराम / Page break
+- पिक्सेल घनत्व / Pixel density
+- प्राथमिक कुंजी / Primary key
+- कार्यपत्रक टैब / Worksheet tab
+= Primary key — हर पंक्ति के लिए अद्वितीय और खाली नहीं (जैसे रोल नंबर)।
+110 साइबर सुरक्षा
+? ब्राउज़र में ताले का चिह्न क्या सिद्ध करता है और क्या सिद्ध नहीं करता?
+! What does a browser padlock icon establish, and what does it not establish?
+- संपर्क कूटबद्ध है, पर वेबसाइट की सामग्री या विश्वसनीयता स्वतः सिद्ध नहीं होती / The connection is encrypted, but the content or trustworthiness of the site is not automatically guaranteed
+- वेबसाइट निश्चित रूप से दुर्भावनापूर्ण सॉफ्टवेयर से मुक्त है / The site is necessarily malware-free
+- उपयोगकर्ता गुमनाम हो गया है / The user has become anonymous
+- वेबसाइट पर दी गई प्रत्येक जानकारी सत्य है / Every statement on the site is true
+= ताला = HTTPS (TLS) एन्क्रिप्शन। फ़िशिंग साइट भी HTTPS हो सकती है।
+111 डिजिटल सुलभता
+? उपशीर्षक और प्रतिलेख में क्या अंतर है?
+! What is the difference between captions and a transcript?
+- दोनों केवल चित्र होते हैं / Both are only images
+- प्रतिलेख में बोले गए विषय का विवरण नहीं होता / A transcript contains no spoken content
+- उपशीर्षक समय के साथ समन्वित होकर वीडियो के साथ दिखाई देते हैं; प्रतिलेख एक अलग लिखित अभिलेख होता है / Captions are time-synchronised with video; a transcript is a separate textual record
+- उपशीर्षक केवल संगीत संचिकाओं के लिए होते हैं / Captions are only for music files
+= कैप्शन वीडियो पर समय के साथ; ट्रांसक्रिप्ट पूरा लिखित पाठ अलग से।
+112 डेटा
+? विद्यालय के आँकड़ा-पटल पर उपस्थिति प्रतिशत प्रदर्शित करते समय हर का प्रतिनिधित्व किससे होना चाहिए?
+! When displaying attendance percentage on a school data dashboard, what should the denominator represent?
+- शिक्षकों की कुल संख्या / The total number of teachers
+- केवल उपस्थित विद्यार्थियों की संख्या / Only the number present
+- विद्यालय भवन की क्षमता / The capacity of the school building
+- उसी अवधि में विद्यार्थियों की उपस्थिति के कुल संभावित अवसर / The total possible student-attendance opportunities in the same period
+= उपस्थिति % = वास्तविक उपस्थिति ÷ (नामांकित विद्यार्थी × कार्य दिवस) × 100, एक ही अवधि के लिए।
+
+# जीवन कौशल, प्रबंधन एवं अभिवृत्ति
+113 व्यावसायिक नैतिकता
+? उत्तर-पुस्तिका जाँचते समय शिक्षक अपने प्रिय विद्यार्थी के अस्पष्ट उत्तर को लाभ देता है, लेकिन अन्य विद्यार्थियों को नहीं। किस सिद्धांत का उल्लंघन हुआ है?
+! While marking, a teacher gives a favoured student the benefit of an ambiguous response but not others. Which principle is violated?
+- संगति और निष्पक्षता / Consistency and impartiality
+- गोपनीयता / Confidentiality
+- स्वायत्तता / Autonomy
+- रचनात्मकता / Creativity
+= सभी पर एक ही मानदंड लागू होना चाहिए; पक्षपात निष्पक्षता का उल्लंघन है।
+114 अभिप्रेरणा
+? बार-बार असफलता के बाद विद्यार्थी प्रयास करना बंद कर देता है क्योंकि उसे लगता है कि परिणाम उसके नियंत्रण में नहीं हैं। यह किससे मिलता-जुलता है?
+! After repeated failure, a student stops trying because outcomes seem uncontrollable. What does this resemble?
+- सकारात्मक अंतरण / Positive transfer
+- अर्जित असहायता / Learned helplessness
+- अतिअधिगम / Overlearning
+- आत्म-साक्षात्कार / Self-actualisation
+= यही अर्जित (सीखी हुई) असहायता है; छोटी सफलताएँ और रणनीति-आधारित प्रतिपुष्टि इसे घटाती हैं।
+115 सुगमकर्ता
+? सुगमकर्ता का कौन-सा प्रश्न गहन चिंतन को सबसे अधिक बढ़ावा देगा?
+! Which facilitator question is most likely to deepen thinking?
+- 'तुमने इसे बस याद क्यों नहीं किया?' / 'Why did you not simply memorise it?'
+- 'तुम्हारे साक्ष्य इस निष्कर्ष का समर्थन कैसे करते हैं?' / 'How does your evidence support that conclusion?'
+- 'सबसे तेज कौन है?' / 'Who is the fastest?'
+- 'क्या उत्तर ए है?' / 'Is the answer A?'
+= खुला, तर्क माँगने वाला प्रश्न उच्च-स्तरीय चिंतन (विश्लेषण/मूल्यांकन) बढ़ाता है।
+116 आकलन
+? प्रगति-अनुश्रवण माप की आवश्यक विशेषता क्या है?
+! What is an essential quality of a progress-monitoring measure?
+- अंकन का कोई नियम न होना / No scoring rule
+- वर्ष में केवल एक बार प्रयोग किया जाना / Only one annual administration
+- परिवर्तन के प्रति संवेदनशील, संक्षिप्त, दोहराने योग्य और लक्षित कौशल के अनुरूप होना / Sensitive to change, brief, repeatable and aligned with the target skill
+- प्रत्येक बार असंबंधित विषयवस्तु होना / Unrelated content each time
+= बार-बार छोटे, तुलनीय माप से समय के साथ प्रगति दिखती है।
+117 नेतृत्व
+? किसी परिवर्तनकारी पहल के प्रति कर्मचारियों में विरोध है। प्रभावी नेतृत्वकर्ता को क्या करना चाहिए?
+! Staff resist a change initiative. What should an effective leader do?
+- प्रशिक्षण उपलब्ध न कराना / Provide no training
+- परिवर्तन को गुप्त रखना / Keep the change secret
+- चिंताओं को सुनना, कारण और साक्ष्य स्पष्ट करना तथा सहभागिता, सहायता और प्रतिपुष्टि की व्यवस्था प्रदान करना / Listen to concerns, explain rationale and evidence, and provide participation, support and feedback loops
+- विरोध को निष्ठाहीनता का ठप्पा देना / Label resistance as disloyalty
+= परिवर्तन प्रबंधन: संवाद, कारण बताना, सहभागिता और प्रशिक्षण।
+118 संकट प्रबंधन
+? यदि परामर्शदाता या शिक्षक को किसी विद्यार्थी में आसन्न आत्म-हानि के जोखिम का संकेत मिले, तो प्राथमिकता क्या होनी चाहिए?
+! What is the priority when a counsellor or teacher identifies a possible imminent risk of self-harm?
+- पूर्ण गोपनीयता का वचन देना / Promise absolute secrecy
+- अगले महीने अनुवर्ती कार्रवाई करना / Follow up next month
+- इसे ध्यान आकर्षित करने का प्रयास मानकर उपेक्षा करना / Dismiss it as attention-seeking
+- विद्यार्थी को अकेला न छोड़ना, आपातकालीन या सुरक्षा-संरक्षण प्रक्रिया सक्रिय करना और उसे योग्य सहायता से जोड़ना / Do not leave the student alone; activate emergency or safeguarding protocols and connect to qualified help
+= तत्काल सुरक्षा सर्वोपरि; ऐसे मामले में गोपनीयता का पूरा वचन नहीं दिया जाता।
+119 मूल्य
+? विद्यालय स्तर पर बंधुत्व का क्या अर्थ है?
+! What does fraternity mean at the school level?
+- सभी के समान विचार / Uniform opinions
+- पारस्परिक सम्मान, अपनत्व और समान नागरिकता की भावना / A sense of mutual respect, belonging and common citizenship
+- सामाजिक बहिष्करण / Social exclusion
+- केवल प्रतिस्पर्धा / Only competition
+= प्रस्तावना का बंधुत्व — व्यक्ति की गरिमा और राष्ट्र की एकता; कक्षा में आपसी सम्मान और अपनापन।
+120 व्यवहार प्रबंधन
+? प्रतीक-पुरस्कार व्यवस्था (टोकन इकॉनमी) का प्रमुख जोखिम क्या है?
+! What is a major risk of a token economy?
+- प्रत्येक बच्चे पर इसका समान प्रभाव पड़ता है / It has an identical effect on every child
+- यदि इसे ठीक प्रकार से न बनाया जाए, तो यह निर्भरता, असमानता और आंतरिक अभिप्रेरणा में कमी उत्पन्न कर सकती है / If poorly designed, it may create dependency, inequity and reduced intrinsic motivation
+- यह स्वतः गहन अधिगम उत्पन्न करती है / It automatically creates deep learning
+- इसमें अनुश्रवण की आवश्यकता नहीं होती / It needs no monitoring
+= स्पष्ट लक्ष्य-व्यवहार, धीरे-धीरे टोकन हटाना और निष्पक्षता ज़रूरी; वरना बच्चे सिर्फ़ इनाम के लिए काम करते हैं।

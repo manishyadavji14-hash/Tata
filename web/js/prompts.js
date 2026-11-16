@@ -141,3 +141,74 @@ Correct answer: ${q.correct_option || 'unknown'}
 Student's answer: ${ctx.userAnswer || 'not attempted'}
 Given solution: ${q.solution_hi || q.solution_en || '(none)'}`;
 }
+
+// ---------- Custom question generation (book / notes / any document → new questions) ----------
+export const GEN_SYSTEM_PROMPT = `You are an expert paper-setter for Indian competitive and teacher-eligibility exams (SUPER TET, UP Assistant Teacher, UPTET, CTET, SSC, etc.).
+You receive SOURCE material (book pages as images and/or text, notes, documents) and the teacher's REQUIREMENTS. Write NEW, original, exam-quality multiple-choice questions that test the source content, exactly as the requirements ask.
+
+QUALITY RULES:
+- Every question must have exactly ONE correct option, plausible distractors and no "all of the above" unless asked.
+- Base facts on the source. If the requirements allow general knowledge, it must be accurate and standard; never invent facts, dates or numbers.
+- Vary the options' position of the correct answer (A/B/C/D balanced).
+- Follow the requested question TYPES, counts, language, difficulty and any custom instruction literally; custom instructions have the highest priority.
+- Give a clear step-by-step solution ("solution_hi" and/or "solution_en"), a one-line "key_concept", precise "topic", "section" (subject) and "difficulty".
+
+RICH CONTENT — use whatever explains or asks best:
+- Maths/science notation: KaTeX inside $...$ (escape backslashes in JSON: "$\\\\frac{1}{2}$").
+- Tables (match the column, data interpretation, comparison): simple HTML in question_media.table_html, e.g. "<table><tr><th>सूची-I</th><th>सूची-II</th></tr><tr><td>A. ...</td><td>1. ...</td></tr></table>". Tables may also appear inside solutions.
+- Diagrams, figures, graphs, geometry, Venn diagrams, flow charts, maps, circuits, number/figure series: draw them as a complete standalone SVG string in "question_media.svg" (or "options[i].svg" when the options themselves are figures, or "solution_svg" for a picture that explains the solution). SVG rules: include xmlns and a viewBox, width ≤ 900, white background rect, stroke/fill colours, readable font-size ≥ 16, plain <text> labels (Devanagari allowed), no scripts, no external images, no foreignObject.
+- If a picture/figure printed in an attached PAGE IMAGE should be reused, set "source_figure": { "page": <page number as labelled>, "bbox": [x0, y0, x1, y1] } (fractions 0..1 of that page image, origin top-left) on question_media or on the option. The app crops it.
+- Passages / case studies: put the text once in "passages" (id like "g1") and set "passage_id" on each question.
+- Bilingual: Hindi in *_hi fields, English in *_en fields of the SAME question.
+
+Return ONLY JSON:
+{
+  "passages": { "g1": { "text_hi": "", "text_en": "" } },
+  "questions": [
+    {
+      "q_no": 1, "section": "", "topic": "", "syllabus_tag": "", "difficulty": "Medium", "passage_id": null, "type": "mcq",
+      "question_hi": "", "question_en": "",
+      "question_media": { "table_html": null, "svg": null, "source_figure": null },
+      "options": [ { "id": "A", "text_hi": "", "text_en": "", "svg": null, "source_figure": null } ],
+      "correct_option": "A",
+      "solution_hi": "", "solution_en": "", "solution_svg": null, "key_concept": ""
+    }
+  ]
+}`;
+
+export const QTYPES = [
+  ['mcq', 'सामान्य MCQ (एक सही उत्तर)', 'standard single-correct MCQ'],
+  ['statement', 'कथन आधारित (कथन 1, 2, 3…)', 'multi-statement question: "Consider the statements 1, 2, 3 … Which are correct?" with combination options'],
+  ['assertion', 'अभिकथन (A) – कारण (R)', 'Assertion (A) – Reason (R) with the four standard options'],
+  ['match', 'सुमेलित करें (सूची-I/II तालिका)', 'match the following: List-I / List-II as an HTML table, options are code combinations'],
+  ['sequence', 'सही क्रम / कालक्रम', 'arrange in correct order / chronology, options are sequences like 2-1-3-4'],
+  ['fill', 'रिक्त स्थान', 'fill in the blank'],
+  ['negative', 'कौन-सा सही नहीं है', 'negative framing: which is NOT correct / incorrect pair'],
+  ['oddone', 'असंगत / बेमेल', 'odd one out'],
+  ['numerical', 'गणना / संख्यात्मक', 'numerical / calculation based (show full working in solution)'],
+  ['table', 'तालिका / डेटा व्याख्या', 'data interpretation from an HTML table given in the question'],
+  ['diagram', 'चित्र / आरेख / ग्राफ', 'figure, diagram or graph based (draw it as SVG in question_media.svg, or reuse a source figure)'],
+  ['figoptions', 'चित्र वाले विकल्प', 'options are figures (draw each option as SVG in options[i].svg)'],
+  ['passage', 'गद्यांश / केस आधारित', 'passage or case based set of questions sharing one passage'],
+  ['application', 'कक्षा-स्थिति / अनुप्रयोग', 'classroom situation / application / higher-order thinking'],
+  ['definition', 'परिभाषा / तथ्य', 'direct fact / definition recall'],
+];
+
+export function genUserPrompt({ count, typeCounts, lang, difficulty, section, fidelity, five, custom, avoid, sourceNote }) {
+  const L = { hi: 'Hindi only (question_hi, text_hi, solution_hi; leave *_en empty)', en: 'English only (*_en fields; leave *_hi empty)', both: 'Bilingual: Hindi in *_hi and the same in English in *_en' }[lang] || 'Hindi';
+  const types = Object.entries(typeCounts).filter(([, n]) => n > 0)
+    .map(([k, n]) => `- ${n} × ${(QTYPES.find((t) => t[0] === k) || [k, k, k])[2]}`).join('\n');
+  return [
+    `Write exactly ${count} new question(s).`,
+    types ? `Question types for this batch:\n${types}` : 'Question types: choose the best mix for the source.',
+    `Language: ${L}.`,
+    `Difficulty: ${difficulty === 'mix' ? 'mixed (about 30% Easy, 50% Medium, 20% Hard)' : difficulty}.`,
+    section ? `Use "section": "${section}" for every question.` : 'Set "section" to the subject of the source.',
+    `Options per question: ${five ? '5 (A–E)' : '4 (A–D)'}.`,
+    fidelity === 'source' ? 'Use ONLY facts present in the source.' : 'Mainly use the source; you may add closely related standard syllabus facts.',
+    custom ? `CUSTOM INSTRUCTIONS FROM THE TEACHER (highest priority, follow exactly):\n"""${custom}"""` : '',
+    sourceNote || '',
+    avoid && avoid.length ? `Already created — do NOT repeat or paraphrase these:\n${avoid.map((a) => `- ${a}`).join('\n')}` : '',
+    'Return the JSON object now.',
+  ].filter(Boolean).join('\n\n');
+}

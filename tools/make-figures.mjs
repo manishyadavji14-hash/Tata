@@ -317,6 +317,59 @@ Object.assign(figures, {
   },
 });
 
+// ---- UP AT 2026 Mock Test-4 / 5 / 6 ----
+Object.assign(figures, {
+  'sol_altitude_25_36.png': altitude(25, 36, 30, 8),
+  'sol_altitude_36_49.png': altitude(36, 49, 42, 6),
+  'sol_altitude_1_4.png': altitude(1, 4, 2, 90),
+  'sol_m04_q61_track.png': {
+    w: 560, h: 330,
+    svg: arrowDefs + `<circle cx='200' cy='160' r='120' fill='none' stroke='#cbd5e1' stroke-width='10'/>`
+      + `<path d='M80,160 A120,120 0 0 1 320,160' fill='none' stroke='#2563eb' stroke-width='6' marker-end='url(#ah)'/>`
+      + L(80, 160, 320, 160, "stroke='#dc2626' stroke-width='4' stroke-dasharray='10 6'")
+      + `<circle cx='80' cy='160' r='8' fill='#16a34a'/><circle cx='320' cy='160' r='8' fill='#dc2626'/>`
+      + T(30, 190, 18, 'Start (0 s)', "fill='#16a34a' font-weight='700'") + T(290, 190, 18, '20 s', "fill='#dc2626' font-weight='700'")
+      + T(150, 30, 18, 'half lap', "fill='#2563eb' font-weight='700'") + T(170, 150, 18, '2r', "fill='#dc2626' font-weight='700'")
+      + T(350, 120, 18, 'distance = pi r', "fill='#2563eb' font-weight='700'") + T(350, 160, 18, '(half circumference)', "fill='#2563eb'")
+      + T(350, 210, 18, 'displacement = 2r', "fill='#dc2626' font-weight='700'") + T(350, 250, 18, '(diameter)', "fill='#dc2626'"),
+  },
+  'sol_m05_q30_die.png': {
+    w: 620, h: 330,
+    svg: die(40, 30, 110, 3, 1, 5, 'view 1') + die(330, 30, 110, 3, 2, 6, 'view 2')
+      + T(40, 315, 20, 'adjacent to 3: 1, 5, 2, 6  =>  opposite of 3 = 4', "font-weight='700' fill='#dc2626'"),
+  },
+  'sol_m05_q61_line.png': {
+    w: 620, h: 260,
+    svg: arrowDefs + L(30, 200, 590, 200, "stroke='#94a3b8' stroke-width='2'")
+      + [0, 4, 10, 12].map((v) => L(50 + v * 40, 192, 50 + v * 40, 208, "stroke='#0f172a' stroke-width='2'") + T(42 + v * 40, 232, 16, `${v} m`)).join('')
+      + seg(50, 60, 450, 60) + T(200, 50, 18, '10 m E') + seg(450, 100, 210, 100) + T(300, 92, 18, '6 m W') + seg(210, 140, 530, 140) + T(330, 132, 18, '8 m E')
+      + L(50, 180, 530, 180, "stroke='#dc2626' stroke-width='4'") + T(150, 175, 17, 'displacement 12 m E', "fill='#dc2626' font-weight='700'")
+      + T(380, 252, 17, 'distance = 10+6+8 = 24 m', "fill='#2563eb' font-weight='700'"),
+  },
+  'sol_m05_q64_echo.png': {
+    w: 600, h: 260,
+    svg: arrowDefs + `<circle cx='70' cy='90' r='16' fill='#0f172a'/>` + L(70, 106, 70, 160, "stroke='#0f172a' stroke-width='5'")
+      + `<rect x='480' y='30' width='24' height='170' fill='#a8a29e'/>` + T(470, 225, 18, 'wall')
+      + seg(100, 100, 470, 100) + T(230, 90, 18, 'go: d', "fill='#2563eb'")
+      + L(470, 140, 100, 140, "stroke='#16a34a' stroke-width='4' marker-end='url(#ah)'") + T(220, 165, 18, 'return: d', "fill='#16a34a'")
+      + T(60, 220, 20, '2d = v x t = 340 x 0.1 = 34 m', "font-weight='700'") + T(60, 250, 20, 'd = 17 m', "fill='#dc2626' font-weight='700'"),
+  },
+  'sol_m06_q28_clock.png': { w: 560, h: 320, svg: clock(3, 40, 'Angle = 130°') },
+  'sol_m06_q30_books.png': {
+    w: 600, h: 230,
+    svg: ['P', 'Q', 'R', 'S', 'T'].map((b, i) => `<rect x='${40 + i * 108}' y='40' width='90' height='110' rx='8' fill='${['#bfdbfe', '#fde68a', '#e2e8f0', '#bbf7d0', '#fecaca'][i]}' stroke='#0f172a' stroke-width='3'/>`
+      + T(72 + i * 108, 108, 34, b, "font-weight='700'") + T(78 + i * 108, 180, 18, `${i + 1}`, "fill='#475569'")).join('')
+      + T(40, 215, 17, 'R = 3rd, T = 5th; PQ together only in 1-2 => Q is 2nd', "fill='#dc2626' font-weight='700'"),
+  },
+  'sol_m06_q61_vt.png': {
+    w: 560, h: 320,
+    svg: L(60, 260, 520, 260) + L(60, 260, 60, 30)
+      + `<polygon points='60,260 60,120 260,120 420,260' fill='#93c5fd' fill-opacity='0.6' stroke='#2563eb' stroke-width='4'/>`
+      + T(20, 40, 18, 'v') + T(510, 290, 18, 't') + T(170, 210, 22, 'area = displacement', "fill='#1e3a8a' font-weight='700'")
+      + T(300, 60, 17, 'slope = acceleration', "fill='#475569'"),
+  },
+});
+
 for (const [name, f] of Object.entries(figures)) {
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${f.w}' height='${f.h}' viewBox='0 0 ${f.w} ${f.h}'><rect width='100%' height='100%' fill='#fff'/>${f.svg}</svg>`;
   await sharp(Buffer.from(svg)).png({ palette: true }).toFile(OUT + name);

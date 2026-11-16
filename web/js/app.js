@@ -5,7 +5,7 @@ import { DEMO_SET } from './demo-set.js';
 import { icon, toast } from './ui.js';
 import { $, esc } from './util.js';
 
-export const APP_VERSION = '1.4.0';
+export const APP_VERSION = '1.5.0';
 
 const routes = {
   home: () => import('./views/home.js'),
@@ -20,6 +20,7 @@ const routes = {
   practice: () => import('./views/practice.js'),
   analytics: () => import('./views/analytics.js'),
   settings: () => import('./views/settings.js'),
+  share: () => import('./views/share.js'),
 };
 
 const NAV = [
@@ -141,6 +142,15 @@ window.__abhyasBack = () => {
   return true;
 };
 
+// ---------- Files shared into the app (Android: Telegram/WhatsApp/file manager → Abhyas CBT) ----------
+window.__abhyasTakeIncoming = () => {
+  try { return JSON.parse((window.AndroidBridge && window.AndroidBridge.takeIncoming && window.AndroidBridge.takeIncoming()) || '[]'); } catch { return []; }
+};
+window.__abhyasIncomingReady = () => {
+  if (window.__abhyasOnIncoming) window.__abhyasOnIncoming();
+  else navigate('import?tab=json&incoming=1');
+};
+
 // ---------- Demo set ----------
 export async function seedDemo(force = false) {
   const s = await getSettings();
@@ -164,6 +174,7 @@ async function boot() {
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   window.addEventListener('hashchange', route);
   await route();
+  try { if (window.AndroidBridge?.hasIncoming && window.AndroidBridge.hasIncoming()) window.__abhyasIncomingReady(); } catch { /* ignore */ }
   if ('serviceWorker' in navigator && !window.AndroidBridge && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     navigator.serviceWorker.register('./sw.js').then((reg) => {
       reg.addEventListener('updatefound', () => {

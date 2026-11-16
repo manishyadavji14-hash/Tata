@@ -2,6 +2,7 @@ import { listSets, inProgressAttempts, attemptsForSet } from '../store.js';
 import { EXTERNAL_EXTRACTION_PROMPT } from '../prompts.js';
 import { icon, toast, emptyState } from '../ui.js';
 import { esc, copyText, fmtDate, fmtClock } from '../util.js';
+import { openTelegram } from '../share.js';
 
 export async function copyPrompt() {
   const ok = await copyText(EXTERNAL_EXTRACTION_PROMPT);
@@ -29,6 +30,21 @@ export async function render({ root, setHeader }) {
         <span class="text-sm font-bold leading-tight">PDF अपलोड (AI)</span>
         <span class="text-[11px] text-slate-500">API Key से सीधे टेस्ट बनाएँ</span>
       </a>
+      <a href="#/import?tab=ai" class="card col-span-2 flex items-center gap-3 !p-3 active:scale-[.99]">
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-fuchsia-100 text-xl dark:bg-fuchsia-900/40">✨</span>
+        <span class="min-w-0 flex-1"><span class="block text-sm font-bold">AI से प्रश्न बनाएँ (Custom)</span>
+        <span class="block text-[11px] text-slate-500">बुक/नोट्स/PDF/फ़ोटो दें → मनचाहे प्रकार के प्रश्न: टेबल, चित्र, कथन, मिलान…</span></span>
+      </a>
+      <a href="#/share" class="card flex flex-col gap-2 !p-3 active:scale-[.98]">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-xl dark:bg-emerald-900/40">📤</span>
+        <span class="text-sm font-bold leading-tight">टेस्ट शेयर करें</span>
+        <span class="text-[11px] text-slate-500">पेपर, विषय या टॉपिक — किसी भी ऐप से</span>
+      </a>
+      <button data-telegram class="card flex flex-col gap-2 !p-3 text-left active:scale-[.98]">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-xl dark:bg-sky-900/40">✈️</span>
+        <span class="text-sm font-bold leading-tight">Telegram ग्रुप</span>
+        <span class="text-[11px] text-slate-500">साथियों के टेस्ट लें / अपने भेजें</span>
+      </button>
       <button data-copy-prompt class="card col-span-2 flex items-center gap-3 !p-3 text-left active:scale-[.99]">
         <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">${icon.copy()}</span>
         <span class="min-w-0 flex-1"><span class="block text-sm font-bold">Copy AI Extraction Prompt</span>
@@ -80,4 +96,5 @@ export async function render({ root, setHeader }) {
     </section>`;
 
   root.querySelector('[data-copy-prompt]').onclick = copyPrompt;
+  root.querySelector('[data-telegram]').onclick = openTelegram;
 }

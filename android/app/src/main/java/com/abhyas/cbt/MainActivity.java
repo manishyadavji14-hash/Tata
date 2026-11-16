@@ -29,7 +29,12 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+import android.database.Cursor;
+import android.provider.OpenableColumns;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -64,6 +69,8 @@ public class MainActivity extends Activity {
     private final ExecutorService pool = Executors.newFixedThreadPool(4);
     private final Map<String, String> responses = new ConcurrentHashMap<>();
     private final Map<String, HttpURLConnection> running = new ConcurrentHashMap<>();
+    private final List<JSONObject> incoming = new ArrayList<>();
+    private volatile boolean pageReady = false;
 
     private static final Map<String, String> MIME = new HashMap<>();
     static {
@@ -118,6 +125,12 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public void onPageFinished(WebView view, String url) {
+                pageReady = true;
+                notifyIncoming();
+            }
+
+            @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest req) {
                 Uri u = req.getUrl();
                 if (HOST.equals(u.getHost())) return false;
@@ -150,6 +163,70 @@ public class MainActivity extends Activity {
         });
         if (savedInstanceState != null) web.restoreState(savedInstanceState);
         else web.loadUrl(START_URL);
+        handleIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleIntent(intent);
+    }
+
+    /** A test file opened or shared into the app → read it and hand it to the web app. */
+    private void handleIntent(Intent intent) {
+        if (intent == null) return;
+        String action = intent.getAction();
+        List<Uri> uris = new ArrayList<>();
+        String text = null;
+        if (Intent.ACTION_VIEW.equals(action) && intent.getData() != null) uris.add(intent.getData());
+        else if (Intent.ACTION_SEND.equals(action)) {
+            Uri u = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+            if (u != null) uris.add(u); else text = intent.getStringExtra(Intent.EXTRA_TEXT);
+        } else if (Intent.ACTION_SEND_MULTIPLE.equals(action)) {
+            ArrayList<Uri> list = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+            if (list != null) uris.addAll(list);
+        } else return;
+        final String sharedText = text;
+        intent.setAction(Intent.ACTION_MAIN); // do not import again after rotation
+        pool.execute(() -> {
+            int added = 0;
+            for (Uri u : uris) {
+                try (InputStream in = getContentResolver().openInputStream(u)) {
+                    if (in == null) continue;
+                    String body = readAll(in);
+                    JSONObject o = new JSONObject();
+                    o.put("name", displayName(u));
+                    o.put("text", body);
+                    synchronized (incoming) { incoming.add(o); }
+                    added++;
+                } catch (Exception e) { toast("फ़ाइल नहीं पढ़ सके: " + e.getMessage()); }
+            }
+            if (sharedText != null && sharedText.trim().startsWith("{")) {
+                try {
+                    JSONObject o = new JSONObject();
+                    o.put("name", "Shared text");
+                    o.put("text", sharedText);
+                    synchronized (incoming) { incoming.add(o); }
+                    added++;
+                } catch (Exception ignored) { }
+            }
+            if (added > 0) runOnUiThread(this::notifyIncoming);
+        });
+    }
+
+    private String displayName(Uri u) {
+        try (Cursor c = getContentResolver().query(u, new String[]{OpenableColumns.DISPLAY_NAME}, null, null, null)) {
+            if (c != null && c.moveToFirst()) { String n = c.getString(0); if (n != null) return n; }
+        } catch (Exception ignored) { }
+        String seg = u.getLastPathSegment();
+        return seg == null ? "shared.json" : seg;
+    }
+
+    private void notifyIncoming() {
+        boolean has;
+        synchronized (incoming) { has = !incoming.isEmpty(); }
+        if (has && pageReady && web != null) web.evaluateJavascript("window.__abhyasIncomingReady && window.__abhyasIncomingReady()", null);
     }
 
     private static WebResourceResponse notFound() {
@@ -240,6 +317,51 @@ public class MainActivity extends Activity {
                 toast("सेव नहीं हुआ: " + e.getMessage());
                 return "";
             }
+        }
+
+        @JavascriptInterface
+        public boolean hasIncoming() {
+            synchronized (incoming) { return !incoming.isEmpty(); }
+        }
+
+        @JavascriptInterface
+        public String takeIncoming() {
+            JSONArray a = new JSONArray();
+            synchronized (incoming) { for (JSONObject o : incoming) a.put(o); incoming.clear(); }
+            return a.toString();
+        }
+
+        /** Share a test file through the Android share sheet (Telegram, WhatsApp, Drive, Bluetooth…). */
+        @JavascriptInterface
+        public void shareFile(String name, String content, String mime, String message) {
+            String safe = name.replaceAll("[^\\p{L}\\p{N}._-]", "_");
+            if (!safe.toLowerCase().endsWith(".json")) safe += ".json";
+            try {
+                File f = new File(ShareProvider.dir(MainActivity.this), safe);
+                try (FileOutputStream os = new FileOutputStream(f)) { os.write(content.getBytes(StandardCharsets.UTF_8)); }
+                Uri uri = Uri.parse("content://" + ShareProvider.AUTHORITY + "/" + Uri.encode(safe));
+                Intent send = new Intent(Intent.ACTION_SEND);
+                send.setType(mime == null || mime.isEmpty() ? "application/json" : mime);
+                send.putExtra(Intent.EXTRA_STREAM, uri);
+                if (message != null && !message.isEmpty()) send.putExtra(Intent.EXTRA_TEXT, message);
+                send.putExtra(Intent.EXTRA_SUBJECT, safe);
+                send.setClipData(ClipData.newRawUri(safe, uri));
+                send.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                Intent chooser = Intent.createChooser(send, "टेस्ट शेयर करें");
+                chooser.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                runOnUiThread(() -> startActivity(chooser));
+            } catch (Exception e) {
+                toast("शेयर नहीं हुआ: " + e.getMessage());
+            }
+        }
+
+        @JavascriptInterface
+        public void openUrl(String url) {
+            if (url == null || !(url.startsWith("https://") || url.startsWith("http://") || url.startsWith("tg://"))) return;
+            runOnUiThread(() -> {
+                try { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url))); }
+                catch (Exception e) { toast("लिंक नहीं खुला: " + url); }
+            });
         }
 
         @JavascriptInterface

@@ -5,13 +5,16 @@ import { EXTERNAL_EXTRACTION_PROMPT } from '../prompts.js';
 import { isConfigured, PROVIDERS } from '../ai.js';
 import { copyPrompt } from './home.js';
 import { icon, toast, modal } from '../ui.js';
-import { esc, readFile, downloadText, extractJson } from '../util.js';
+import { esc, readFile, downloadText, extractJson, copyText } from '../util.js';
+import { QTYPES } from '../prompts.js';
+import { expandImport, telegramCard, openTelegram } from '../share.js';
 
-const TABS = [['json', '📄 JSON Import'], ['prompt', '🤖 AI Prompt'], ['pdf', '📑 PDF → AI']];
+const TABS = [['json', '📄 JSON'], ['ai', '🤖 AI से बनाएँ'], ['prompt', '📋 AI Prompt']];
 
 export async function render({ root, query, settings, navigate, setHeader }) {
   setHeader({ title: 'इम्पोर्ट / Import', sub: 'JSON, AI प्रॉम्प्ट या PDF से प्रैक्टिस सेट' });
-  let tab = TABS.some(([t]) => t === query.tab) ? query.tab : 'json';
+  let tab = query.tab === 'pdf' ? 'ai' : TABS.some(([t]) => t === query.tab) ? query.tab : 'json';
+  let aiMode = query.tab === 'pdf' || query.mode === 'fixed' ? 'fixed' : (query.mode === 'custom' || query.tab === 'ai' ? (query.mode || 'custom') : 'custom');
   let job = null; // running PDF import { controller }
 
   root.innerHTML = `
@@ -63,7 +66,33 @@ export async function render({ root, query, settings, navigate, setHeader }) {
     try { data = JSON.parse(text); } catch {
       try { data = extractJson(text); } catch (e) { throw new Error(`${label}: मान्य JSON नहीं है — ${e.message}`); }
     }
-    return normalizeSet(data, { source: 'json' });
+    return expandImport(data);
+  }
+
+  // Several texts (files / shared from other apps) → previews. Bundles may hold many tests.
+  async function handleTexts(items) {
+    const parts = [];
+    for (const it of items) {
+      let data;
+      try { data = JSON.parse(it.text); } catch {
+        try { data = extractJson(it.text); } catch (e) { throw new Error(`${it.name}: मान्य JSON नहीं है — ${e.message}`); }
+      }
+      if (/"svg"\s*:\s*"/.test(it.text) || /solution_svg/.test(it.text)) {
+        const { resolveRawFigures } = await import('../generate.js');
+        await resolveRawFigures(data);
+      }
+      parts.push(...expandImport(data));
+    }
+    // Only parts with the same exam_id are Parts of one paper → combine those; different papers stay separate.
+    const groups = new Map();
+    for (const p of parts) {
+      const id = p.set.meta.exam_id;
+      if (!groups.has(id)) groups.set(id, []);
+      groups.get(id).push(p);
+    }
+    const combined = [...groups.values()].map(combineParts);
+    if (combined.length === 1) { preview(combined[0].set, combined[0].warnings); return; }
+    batchPreview(combined, items.length);
   }
 
   // ---------------- JSON tab ----------------
@@ -71,9 +100,10 @@ export async function render({ root, query, settings, navigate, setHeader }) {
     body.innerHTML = `
       <div class="card mb-3">
         <div class="mb-1 font-bold">Import JSON Practice Set</div>
-        <div class="mb-3 text-sm text-slate-500">ऑफ़लाइन काम करता है। एक साथ कई .json फ़ाइलें चुन सकते हैं। अलग-अलग पेपर अलग सेट बनेंगे; एक ही exam_id वाले हिस्से (Part 1, 2, 3…) अपने-आप जुड़ जाएँगे।</div>
+        <div class="mb-3 text-sm text-slate-500">ऑफ़लाइन काम करता है। एक साथ कई .json फ़ाइलें चुन सकते हैं — साथियों की शेयर की हुई फ़ाइलें (एक में कई टेस्ट) भी। अलग-अलग पेपर अलग सेट बनेंगे; एक ही exam_id वाले हिस्से (Part 1, 2, 3…) अपने-आप जुड़ जाएँगे।</div>
         <label class="btn-primary w-full cursor-pointer">${icon.upload('h-5 w-5')} .json फ़ाइल चुनें<input type="file" accept=".json,application/json,text/plain" multiple class="hidden" data-files></label>
       </div>
+      ${telegramCard(true)}
       <div class="card mb-3">
         <div class="mb-1 font-bold">या JSON पेस्ट करें / Paste JSON</div>
         <div class="mb-2 text-xs text-slate-500">AI का पूरा जवाब यहाँ पेस्ट करें (\`\`\`json वाले हिस्से भी चलेंगे)।</div>
@@ -90,18 +120,9 @@ export async function render({ root, query, settings, navigate, setHeader }) {
       e.target.value = '';
       if (!files.length) return;
       try {
-        const parts = [];
-        for (const f of files) parts.push(importJsonText(await readFile(f), f.name));
-        // Only files with the same exam_id are Parts of one paper → combine those; different papers stay separate.
-        const groups = new Map();
-        for (const p of parts) {
-          const id = p.set.meta.exam_id;
-          if (!groups.has(id)) groups.set(id, []);
-          groups.get(id).push(p);
-        }
-        const combined = [...groups.values()].map(combineParts);
-        if (combined.length === 1) { preview(combined[0].set, combined[0].warnings); return; }
-        batchPreview(combined, files.length);
+        const items = [];
+        for (const f of files) items.push({ name: f.name, text: await readFile(f) });
+        await handleTexts(items);
       } catch (err) { toast(err.message, 'error', 5000); }
     };
   }
@@ -179,9 +200,9 @@ export async function render({ root, query, settings, navigate, setHeader }) {
   }
 
   // ---------------- PDF tab ----------------
-  function drawPdf() {
+  function drawPdf(el = body) {
     const cfgOk = isConfigured(settings);
-    body.innerHTML = `
+    el.innerHTML = `
       <div class="card mb-3">
         <div class="flex items-start gap-3">
           <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${cfgOk ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">${cfgOk ? icon.check() : icon.info()}</span>
@@ -220,26 +241,26 @@ export async function render({ root, query, settings, navigate, setHeader }) {
         <div class="mt-1 text-center text-[11px] text-slate-400">बीच में रुकने पर भी प्रगति सेव रहती है — वही PDF दोबारा चुनें, वहीं से शुरू होगा।</div>
       </div>`;
     let file = null;
-    const startBtn = body.querySelector('[data-act=start]');
-    body.querySelector('[data-pdf]').onchange = async (e) => {
+    const startBtn = el.querySelector('[data-act=start]');
+    el.querySelector('[data-pdf]').onchange = async (e) => {
       file = e.target.files && e.target.files[0];
       e.target.value = '';
       if (!file) return;
-      const box = body.querySelector('[data-file]');
+      const box = el.querySelector('[data-file]');
       box.classList.remove('hidden');
       const drafts = await db.all('importDrafts');
       const d = drafts.find((x) => x.key.startsWith(`${file.name}|${file.size}|`));
       box.innerHTML = `<div class="font-semibold">📑 ${esc(file.name)}</div><div class="text-xs text-slate-500">${(file.size / 1048576).toFixed(2)} MB${d ? ` • <span class="text-emerald-600">पिछला अधूरा इम्पोर्ट मिला (${d.done.length} पेज पूरे) — वहीं से जारी होगा</span>` : ''}</div>`;
       startBtn.disabled = false;
     };
-    body.querySelector('[data-mode]').onchange = async (e) => { settings.pdfMode = e.target.value; await saveSettings({ pdfMode: e.target.value }); };
-    body.querySelector('[data-solve]').onchange = async (e) => { settings.autoSolve = e.target.value === '1'; await saveSettings({ autoSolve: settings.autoSolve }); };
+    el.querySelector('[data-mode]').onchange = async (e) => { settings.pdfMode = e.target.value; await saveSettings({ pdfMode: e.target.value }); };
+    el.querySelector('[data-solve]').onchange = async (e) => { settings.autoSolve = e.target.value === '1'; await saveSettings({ autoSolve: settings.autoSolve }); };
 
     startBtn.onclick = async () => {
       if (!file || job) return;
-      const useAI = body.querySelector('[data-useai]').checked && cfgOk;
-      const prog = body.querySelector('[data-progress]');
-      const log = body.querySelector('[data-log]');
+      const useAI = el.querySelector('[data-useai]').checked && cfgOk;
+      const prog = el.querySelector('[data-progress]');
+      const log = el.querySelector('[data-log]');
       prog.classList.remove('hidden');
       log.innerHTML = '';
       startBtn.disabled = true;
@@ -249,9 +270,9 @@ export async function render({ root, query, settings, navigate, setHeader }) {
         log.scrollTop = log.scrollHeight;
       };
       const onProgress = ({ pct, msg }) => {
-        body.querySelector('[data-pmsg]').textContent = msg;
-        body.querySelector('[data-ppct]').textContent = `${pct}%`;
-        body.querySelector('[data-pbar]').style.width = `${pct}%`;
+        el.querySelector('[data-pmsg]').textContent = msg;
+        el.querySelector('[data-ppct]').textContent = `${pct}%`;
+        el.querySelector('[data-pbar]').style.width = `${pct}%`;
       };
       const controller = new AbortController();
       job = { controller };
@@ -272,22 +293,165 @@ export async function render({ root, query, settings, navigate, setHeader }) {
     };
   }
 
-  const draw = () => { drawTabs(); ({ json: drawJson, prompt: drawPrompt, pdf: drawPdf })[tab](); };
+  function drawAi() {
+    body.innerHTML = `
+      <div class="mb-3 grid grid-cols-2 gap-2">
+        <button class="card !p-3 text-left ${aiMode === 'fixed' ? 'ring-2 ring-brand-500' : ''}" data-aimode="fixed">
+          <div class="text-sm font-bold">1️⃣ Fixed — प्रैक्टिस सेट डिजिटाइज़</div>
+          <div class="mt-0.5 text-[11px] text-slate-500">छपा हुआ पेपर/प्रैक्टिस सेट PDF जैसा है वैसा ऐप के टेस्ट में</div></button>
+        <button class="card !p-3 text-left ${aiMode === 'custom' ? 'ring-2 ring-fuchsia-500' : ''}" data-aimode="custom">
+          <div class="text-sm font-bold">2️⃣ Custom — नए प्रश्न बनवाएँ</div>
+          <div class="mt-0.5 text-[11px] text-slate-500">बुक/नोट्स/डॉक्यूमेंट से मनचाहे प्रकार, संख्या और निर्देश</div></button>
+      </div>
+      <div data-aibody></div>`;
+    const el = body.querySelector('[data-aibody]');
+    if (aiMode === 'fixed') drawPdf(el); else drawCustom(el);
+  }
+
+  // ---------------- Custom generation ----------------
+  function drawCustom(el) {
+    const cfgOk = isConfigured(settings);
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem('abhyas-gen') || '{}'); } catch { /* ignore */ }
+    const g = { count: 20, perCall: 8, lang: 'hi', difficulty: 'mix', fidelity: 'source', types: ['mcq'], withImages: true, section: '', custom: '', title: '', pos: 1, neg: 0, minutes: '', ...saved };
+    const files = [];
+    el.innerHTML = `
+      <div class="card mb-3 text-sm">
+        <div class="font-bold">✨ अपने स्रोत से नए प्रश्न</div>
+        <div class="mt-1 text-xs text-slate-500">कोई भी बुक, नोट्स, NCERT/सरकारी PDF, फ़ोटो या टेक्स्ट दें। प्रश्न का प्रकार चुनें या नीचे अपने शब्दों में कोई भी नया तरीका लिखें — AI उसी तरह टेक्स्ट, तालिका, चित्र/आरेख (SVG) या स्रोत की फ़ोटो से कटे चित्र वाले प्रश्न बनाएगा।</div>
+        ${cfgOk ? `<div class="mt-2 text-[11px] text-emerald-700">AI जुड़ा है ✓ ${esc(settings.model)}</div>` : '<div class="mt-2 text-[11px] text-amber-700">API Key नहीं है — Settings में जोड़ें, या नीचे "बाहरी AI के लिए प्रॉम्प्ट" कॉपी करके ChatGPT/Gemini में डॉक्यूमेंट के साथ दें।</div>'}
+      </div>
+      <div class="card mb-3 space-y-2">
+        <div class="font-bold">1️⃣ स्रोत / Source</div>
+        <label class="btn-primary w-full cursor-pointer">${icon.upload('h-5 w-5')} फ़ाइल चुनें (PDF, फ़ोटो, .txt — कई एक साथ)<input type="file" multiple accept="application/pdf,.pdf,image/*,.txt,.md,.csv,.html,.htm,text/plain" class="hidden" data-gfiles></label>
+        <div data-glist class="space-y-1"></div>
+        <textarea class="input h-28 text-sm" placeholder="या यहाँ अध्याय/नोट्स का टेक्स्ट पेस्ट करें…" data-g="pasted"></textarea>
+        <label class="flex items-center gap-3 text-sm"><input type="checkbox" class="h-5 w-5 accent-brand-600" data-g="withImages" ${g.withImages ? 'checked' : ''}> पेज की फ़ोटो भी भेजें (चित्र, तालिका, स्कैन/हस्तलिखित के लिए — विज़न मॉडल चाहिए)</label>
+      </div>
+      <div class="card mb-3">
+        <div class="mb-2 font-bold">2️⃣ प्रश्न का प्रकार (एक या अधिक)</div>
+        <div class="flex flex-wrap gap-1.5" data-types>${[...QTYPES, ['five', '5 विकल्प (A–E)']].map(([k, l]) => `<button class="chip !py-1.5 ${g.types.includes(k) ? 'bg-fuchsia-600 text-white' : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200'}" data-type="${k}">${esc(l)}</button>`).join('')}</div>
+        <label class="label mt-3">✍️ अपना तरीका / Custom निर्देश (जो विकल्प ऊपर नहीं है)</label>
+        <textarea class="input h-28 text-sm" data-g="custom" placeholder="जैसे: हर प्रश्न में एक छोटी तालिका दें और उसी से पूछें • मानचित्र का चित्र बनाकर राज्य पहचानने वाले प्रश्न • 'कथन 1 और 2' वाले UPSC-शैली प्रश्न • हर हल में चित्र से समझाएँ • केवल पाठ 5 के उदाहरणों जैसे संख्यात्मक प्रश्न">${esc(g.custom)}</textarea>
+      </div>
+      <div class="card mb-3 grid grid-cols-2 gap-2">
+        <div class="col-span-2 font-bold">3️⃣ टेस्ट सेटिंग</div>
+        <div><label class="label">कुल प्रश्न</label><input type="number" min="1" max="300" class="input" data-g="count" value="${g.count}"></div>
+        <div><label class="label">प्रति AI कॉल</label><input type="number" min="3" max="20" class="input" data-g="perCall" value="${g.perCall}"></div>
+        <div><label class="label">भाषा</label><select class="input" data-g="lang">
+          <option value="hi" ${g.lang === 'hi' ? 'selected' : ''}>हिंदी</option><option value="en" ${g.lang === 'en' ? 'selected' : ''}>English</option><option value="both" ${g.lang === 'both' ? 'selected' : ''}>द्विभाषी (हिंदी + English)</option></select></div>
+        <div><label class="label">कठिनाई</label><select class="input" data-g="difficulty">
+          ${[['mix', 'मिश्रित'], ['Easy', 'आसान'], ['Medium', 'मध्यम'], ['Hard', 'कठिन']].map(([v, l]) => `<option value="${v}" ${g.difficulty === v ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+        <div class="col-span-2"><label class="label">स्रोत से बाहर</label><select class="input" data-g="fidelity">
+          <option value="source" ${g.fidelity === 'source' ? 'selected' : ''}>सिर्फ़ दिए गए स्रोत के तथ्य</option><option value="related" ${g.fidelity === 'related' ? 'selected' : ''}>स्रोत + उससे जुड़े मानक सिलेबस तथ्य</option></select></div>
+        <div><label class="label">विषय/सेक्शन (खाली = स्वतः)</label><input class="input" data-g="section" value="${esc(g.section)}" placeholder="जैसे: बाल विकास"></div>
+        <div><label class="label">टेस्ट का नाम</label><input class="input" data-g="title" value="${esc(g.title)}" placeholder="स्वतः"></div>
+        <div><label class="label">सही पर अंक</label><input type="number" step="0.25" class="input" data-g="pos" value="${g.pos}"></div>
+        <div><label class="label">गलत पर कटौती</label><input type="number" step="0.25" class="input" data-g="neg" value="${g.neg}"></div>
+      </div>
+      <div class="card mb-3 space-y-2">
+        <button class="btn-success w-full" data-gen ${cfgOk ? '' : 'disabled'}>✨ प्रश्न बनाएँ / Generate</button>
+        <button class="btn-outline w-full" data-genprompt>${icon.copy('h-4 w-4')} बाहरी AI के लिए प्रॉम्प्ट कॉपी करें</button>
+        <div class="text-[11px] text-slate-500">हर बैच = 1 AI कॉल। बड़ी बुक के लिए PDF के पेज चुनें (जैसे 10-25)। बने प्रश्नों को सेव करने से पहले देख सकते हैं; बाद में हर प्रश्न का हल/चित्र बदल सकते हैं।</div>
+      </div>
+      <div class="card hidden" data-progress>
+        <div class="mb-2 flex items-center justify-between text-sm"><span class="font-bold" data-pmsg>…</span><span class="font-mono text-xs" data-ppct>0%</span></div>
+        <div class="bar"><span class="bg-fuchsia-600 transition-all" data-pbar style="width:0%"></span></div>
+        <div class="mt-3 max-h-64 space-y-1 overflow-y-auto rounded-lg bg-slate-100 p-2 font-mono text-[11px] dark:bg-slate-800" data-log></div>
+        <button class="btn-outline mt-3 w-full" data-act="cancel">रोकें / Cancel</button>
+      </div>`;
+    const remember = () => { const { pasted, ...rest } = g; try { localStorage.setItem('abhyas-gen', JSON.stringify(rest)); } catch { /* ignore */ } };
+    const drawList = () => {
+      el.querySelector('[data-glist]').innerHTML = files.map((f, i) => `
+        <div class="flex items-center gap-2 rounded-lg bg-slate-100 p-2 text-xs dark:bg-slate-800">
+          <span class="min-w-0 flex-1 truncate font-semibold">${/pdf/i.test(f.file.type) || /\.pdf$/i.test(f.file.name) ? '📑' : /^image/.test(f.file.type) ? '🖼️' : '📄'} ${esc(f.file.name)}</span>
+          ${/pdf/i.test(f.file.type) || /\.pdf$/i.test(f.file.name) ? `<input class="input !w-28 !py-1 text-xs" placeholder="पेज: 1-20" value="${esc(f.pages)}" data-fpages="${i}">` : ''}
+          <button class="text-rose-600" data-frm="${i}">✕</button>
+        </div>`).join('');
+    };
+    el.querySelector('[data-gfiles]').onchange = (e) => { for (const f of e.target.files || []) files.push({ file: f, pages: '' }); e.target.value = ''; drawList(); };
+    el.addEventListener('input', (e) => {
+      const k = e.target.dataset.g;
+      if (k) g[k] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+      if (e.target.dataset.fpages) files[Number(e.target.dataset.fpages)].pages = e.target.value;
+      if (k) remember();
+    });
+    el.addEventListener('change', (e) => { const k = e.target.dataset.g; if (k) { g[k] = e.target.type === 'checkbox' ? e.target.checked : e.target.value; remember(); } });
+    el.addEventListener('click', async (e) => {
+      const ty = e.target.closest('[data-type]');
+      if (ty) {
+        const k = ty.dataset.type;
+        g.types = g.types.includes(k) ? g.types.filter((x) => x !== k) : [...g.types, k];
+        ty.className = `chip !py-1.5 ${g.types.includes(k) ? 'bg-fuchsia-600 text-white' : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200'}`;
+        remember();
+        return;
+      }
+      const rm = e.target.closest('[data-frm]');
+      if (rm) { files.splice(Number(rm.dataset.frm), 1); drawList(); return; }
+      const opts = () => ({ ...g, count: Math.max(1, Math.min(300, parseInt(g.count, 10) || 20)), perCall: parseInt(g.perCall, 10) || 8 });
+      if (e.target.closest('[data-genprompt]')) {
+        const { externalGenPrompt } = await import('../generate.js');
+        const ok = await copyText(externalGenPrompt(opts()));
+        toast(ok ? 'प्रॉम्प्ट कॉपी हुआ ✓ ChatGPT/Gemini में अपनी बुक/PDF के साथ पेस्ट करें, फिर मिला JSON यहाँ JSON टैब में डालें' : 'कॉपी नहीं हो सका', ok ? 'success' : 'error', 5000);
+        return;
+      }
+      if (!e.target.closest('[data-gen]') || job) return;
+      const o = opts();
+      if (!files.length && !String(g.pasted || '').trim() && !String(g.custom || '').trim()) { toast('कोई फ़ाइल/टेक्स्ट दें या Custom निर्देश लिखें', 'warn'); return; }
+      const prog = el.querySelector('[data-progress]');
+      const log = el.querySelector('[data-log]');
+      prog.classList.remove('hidden'); log.innerHTML = '';
+      const btn = el.querySelector('[data-gen]'); btn.disabled = true;
+      const color = { info: '', warn: 'text-amber-600', error: 'text-rose-600', success: 'text-emerald-600' };
+      const onLog = (msg, level = 'info') => { log.insertAdjacentHTML('beforeend', `<div class="${color[level] || ''}">• ${esc(msg)}</div>`); log.scrollTop = log.scrollHeight; };
+      const onProgress = ({ pct, msg }) => { el.querySelector('[data-pmsg]').textContent = msg; el.querySelector('[data-ppct]').textContent = `${pct}%`; el.querySelector('[data-pbar]').style.width = `${pct}%`; };
+      const controller = new AbortController();
+      job = { controller };
+      if (window.AndroidBridge?.keepScreenOn) window.AndroidBridge.keepScreenOn(true);
+      try {
+        const gen = await import('../generate.js');
+        onProgress({ pct: 0, msg: 'स्रोत पढ़ रहे हैं…' });
+        const units = await gen.buildSources({ files, pasted: g.pasted, withImages: !!g.withImages, onLog, signal: controller.signal });
+        const { set, warnings } = await gen.generateQuestions({ ...o, units, onLog, onProgress, signal: controller.signal });
+        preview(set, warnings);
+      } catch (err) {
+        if (err.name === 'AbortError') onLog('रोका गया', 'warn');
+        else { onLog(err.message, 'error'); toast(err.message, 'error', 6000); }
+      } finally {
+        job = null; btn.disabled = false;
+        if (window.AndroidBridge?.keepScreenOn) window.AndroidBridge.keepScreenOn(false);
+      }
+    });
+  }
+
+  const draw = () => { drawTabs(); ({ json: drawJson, prompt: drawPrompt, ai: drawAi })[tab](); };
   draw();
 
+  // Files opened/shared into the app from Telegram, WhatsApp, file manager… (Android)
+  const takeIncoming = async () => {
+    const list = window.__abhyasTakeIncoming ? window.__abhyasTakeIncoming() : [];
+    if (!list.length) return;
+    try { await handleTexts(list); } catch (err) { toast(err.message, 'error', 6000); }
+  };
+  window.__abhyasOnIncoming = takeIncoming;
+  if (query.incoming) setTimeout(takeIncoming, 50);
+
   root.addEventListener('click', async (e) => {
+    if (e.target.closest('[data-telegram]')) { openTelegram(); return; }
     const t = e.target.closest('[data-tab]');
     if (t && !job) { tab = t.dataset.tab; history.replaceState(null, '', `#/import?tab=${tab}`); draw(); return; }
+    const am = e.target.closest('[data-aimode]');
+    if (am && !job) { aiMode = am.dataset.aimode; history.replaceState(null, '', `#/import?tab=ai&mode=${aiMode}`); drawAi(); return; }
     const act = e.target.closest('[data-act]')?.dataset.act;
     if (act === 'copy') copyPrompt();
     if (act === 'sample') { const w = downloadText('abhyas_sample_practice_set.json', JSON.stringify(SCHEMA_EXAMPLE, null, 2)); toast(`सेव हुआ → ${w}`, 'success'); }
     if (act === 'paste') {
       const text = body.querySelector('[data-paste]').value.trim();
       if (!text) { toast('पहले JSON पेस्ट करें', 'warn'); return; }
-      try { const { set, warnings } = importJsonText(text, 'Pasted text'); preview(set, warnings); } catch (err) { toast(err.message, 'error', 5000); }
+      try { await handleTexts([{ name: 'Pasted text', text }]); } catch (err) { toast(err.message, 'error', 5000); }
     }
     if (act === 'cancel' && job) job.controller.abort();
   });
 
-  return () => { if (job) job.controller.abort(); };
+  return () => { if (job) job.controller.abort(); if (window.__abhyasOnIncoming === takeIncoming) window.__abhyasOnIncoming = null; };
 }
