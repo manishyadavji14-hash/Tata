@@ -3,7 +3,7 @@
 import { chat } from './ai.js';
 import { GEN_SYSTEM_PROMPT, genUserPrompt, QTYPES } from './prompts.js';
 import { normalizeSet } from './schema.js';
-import { extractJson, readFile, imageFileToDataUrl, slug, uid } from './util.js';
+import { extractJson, readFile, imageFileToDataUrl, slug } from './util.js';
 
 export { QTYPES };
 
@@ -181,29 +181,34 @@ function typePlan(total, types) {
 const stemOf = (q) => String(q.question_hi || q.question_en || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 
 /**
- * opts: { units, count, perCall, types:[key], five, lang, difficulty, section, fidelity, custom,
- *         title, pos, neg, minutes, onLog, onProgress, signal }
- * Returns { set, warnings, made }
+ * Resumable generation used by background jobs. job.params = { count, perCall, types, lang, difficulty,
+ * section, fidelity, custom, title, pos, neg, minutes, withImages }. Progress lives in job.state and is
+ * saved after every batch, so a paused / interrupted job continues where it stopped.
+ * ctx: { files:[{file,pages}], signal, log(msg, level), progress({pct,msg}), saveState() }
  */
-export async function generateQuestions(opts) {
-  const { units, count, onLog = () => {}, onProgress = () => {}, signal } = opts;
-  if (!units.length && !opts.custom) throw new Error('कोई स्रोत नहीं — फ़ाइल चुनें, टेक्स्ट पेस्ट करें या निर्देश लिखें');
-  const perCall = Math.max(3, Math.min(20, Number(opts.perCall) || 8));
+export async function runGeneration(job, { files, signal, log = () => {}, progress = () => {}, saveState = async () => {} }) {
+  const p = job.params;
+  const count = Math.max(1, Number(p.count) || 20);
+  const perCall = Math.max(3, Math.min(20, Number(p.perCall) || 8));
+  const types = p.types || [];
+  progress({ pct: 1, msg: 'स्रोत पढ़ रहे हैं…' });
+  const units = await buildSources({ files, pasted: job.pasted, withImages: !!p.withImages, onLog: log, signal });
+  if (!units.length && !p.custom) throw new Error('कोई स्रोत नहीं — फ़ाइल, टेक्स्ट या निर्देश दें');
   const groups = units.length ? groupUnits(units) : [[]];
   const nBatches = Math.max(Math.ceil(count / perCall), Math.min(groups.length, count));
-  const plan = typePlan(count, opts.types.filter((t) => t !== 'five'));
+  const plan = typePlan(count, types.filter((t) => t !== 'five'));
   const pageImages = new Map(units.filter((u) => u.page && u.image).map((u) => [u.page, u.image]));
-  const all = [];
-  const passages = {};
-  const warnings = [];
-  const seen = new Set();
-  let cursor = 0;
-  for (let b = 0; b < nBatches; b++) {
+  const st = job.state || (job.state = { batchesDone: 0, extra: 0, questions: [], passages: {} });
+  const seen = new Set([...(job.avoid || []), ...st.questions.map(stemOf)].map((x) => String(x).toLowerCase()));
+  if (st.batchesDone) log(`पिछली प्रगति: ${st.questions.length} प्रश्न तैयार — आगे जारी`, 'success');
+  for (let b = st.batchesDone; ; b++) {
+    const planned = b < nBatches;
+    if (!planned && (st.questions.length >= count || st.extra >= 3)) break;
     if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
-    const want = Math.round(((b + 1) * count) / nBatches) - Math.round((b * count) / nBatches);
-    if (want <= 0) continue;
-    const slice = plan.slice(cursor, cursor + want);
-    cursor += want;
+    const from = Math.round((b * count) / nBatches);
+    const want = planned ? Math.round(((b + 1) * count) / nBatches) - from : Math.min(perCall, count - st.questions.length);
+    if (want <= 0) { st.batchesDone = b + 1; continue; }
+    const slice = planned ? plan.slice(from, from + want) : plan.slice(0, want);
     const typeCounts = {};
     for (const t of slice) if (t) typeCounts[t] = (typeCounts[t] || 0) + 1;
     const group = groups[b % groups.length];
@@ -214,59 +219,73 @@ export async function generateQuestions(opts) {
       imgs.length ? `Attached page images in order: ${imgs.map((u) => `page ${u.page}`).join(', ')}. Use "source_figure" with these page numbers to reuse their figures.` : '',
       textPart,
     ].filter(Boolean).join('\n');
+    const avoid = [...(job.avoid || []).slice(-25), ...st.questions.slice(-30).map(stemOf)].map((x) => String(x).slice(0, 90));
     const user = genUserPrompt({
-      count: want, typeCounts, lang: opts.lang, difficulty: opts.difficulty, section: opts.section, fidelity: opts.fidelity,
-      five: opts.types.includes('five'), custom: opts.custom, avoid: all.slice(-40).map((q) => stemOf(q).slice(0, 90)), sourceNote,
+      count: want, typeCounts, lang: p.lang, difficulty: p.difficulty, section: p.section, fidelity: p.fidelity,
+      five: types.includes('five'), custom: p.custom, avoid, sourceNote,
     });
-    onProgress({ pct: Math.round((b / nBatches) * 100), msg: `बैच ${b + 1}/${nBatches}: ${want} प्रश्न बन रहे हैं…` });
-    let data;
+    const label = planned ? `बैच ${b + 1}/${nBatches}` : `अतिरिक्त बैच ${st.extra + 1}`;
+    progress({ pct: Math.min(97, Math.round((st.questions.length / count) * 100)), msg: `${label}: ${want} प्रश्न बन रहे हैं… (अब तक ${st.questions.length}/${count})` });
+    let data = null;
     try {
       const r = await chat({ system: GEN_SYSTEM_PROMPT, messages: [{ role: 'user', text: user, images: imgs.map((u) => u.image) }], json: true, maxTokens: 16000, temperature: 0.6, signal });
       data = extractJson(r.text);
-      if (r.truncated) onLog(`बैच ${b + 1}: जवाब लंबा होकर कट गया — जितने पूरे प्रश्न मिले वे रखे`, 'warn');
+      if (r.truncated) log(`${label}: जवाब लंबा होकर कट गया — जितने पूरे प्रश्न मिले वे रखे`, 'warn');
     } catch (e) {
       if (e.name === 'AbortError') throw e;
-      onLog(`बैच ${b + 1}: ${e.message}`, 'error');
-      if (e.fatal) { if (!all.length) throw e; break; }
-      continue;
+      log(`${label}: ${e.message}`, 'error');
+      if (e.fatal) throw e;
     }
-    const qs = Array.isArray(data?.questions) ? data.questions : Array.isArray(data) ? data : [];
-    const pmap = {};
-    for (const [k, v] of Object.entries(data?.passages || {})) { const id = `g${b + 1}_${k}`; pmap[k] = id; passages[id] = v; }
     let got = 0;
-    for (const q of qs) {
-      if (!q || typeof q !== 'object') continue;
-      const st = stemOf(q).toLowerCase();
-      if (!st && !q.question_media) continue;
-      if (st && seen.has(st)) continue;
-      seen.add(st);
-      if (q.passage_id) q.passage_id = pmap[q.passage_id] || null;
-      await resolveFigures(q, pageImages);
-      q.answer_source = 'ai-generated';
-      all.push(q);
-      got++;
+    if (data) {
+      const qs = Array.isArray(data.questions) ? data.questions : Array.isArray(data) ? data : [];
+      const pmap = {};
+      for (const [k, v] of Object.entries(data.passages || {})) { const id = `g${b + 1}_${st.extra}_${k}`; pmap[k] = id; st.passages[id] = v; }
+      for (const q of qs) {
+        if (!q || typeof q !== 'object' || st.questions.length >= count) continue;
+        const sm = stemOf(q).toLowerCase();
+        if (!sm && !q.question_media) continue;
+        if (sm && seen.has(sm)) continue;
+        seen.add(sm);
+        if (q.passage_id) q.passage_id = pmap[q.passage_id] || null;
+        await resolveFigures(q, pageImages);
+        st.questions.push(q);
+        got++;
+      }
     }
-    onLog(`बैच ${b + 1}: ${got} प्रश्न ✓`, got ? 'success' : 'warn');
+    log(`${label}: ${got} प्रश्न ✓ (कुल ${st.questions.length}/${count})`, got ? 'success' : 'warn');
+    st.batchesDone = b + 1;
+    if (!planned) st.extra++;
+    await saveState();
   }
-  if (!all.length) throw new Error('AI ने कोई प्रश्न नहीं बनाया — निर्देश/स्रोत जाँचें या दूसरा मॉडल आज़माएँ');
-  all.forEach((q, i) => { q.q_no = i + 1; });
-  const pos = Number(opts.pos) || 1;
-  const title = String(opts.title || '').trim() || `AI प्रश्न — ${opts.section || units[0]?.label || 'कस्टम'} (${all.length})`;
-  const raw = {
+  if (!st.questions.length) throw new Error('AI ने कोई प्रश्न नहीं बनाया — निर्देश/स्रोत जाँचें या दूसरा मॉडल आज़माएँ');
+  progress({ pct: 100, msg: `पूरा हुआ ✓ ${st.questions.length} प्रश्न` });
+}
+
+/** Normalised practice set from a generation job's (possibly partial) state.
+ *  Returns { set, warnings, rawIndex } where rawIndex[i] = index in job.state.questions. */
+export function buildGenSet(job) {
+  const p = job.params;
+  const raw = (job.state?.questions || []).map((q, i) => ({ ...q, q_no: i + 1 }));
+  if (!raw.length) return null;
+  const pos = Number(p.pos) || 1;
+  const title = job.title;
+  const { set, warnings } = normalizeSet({
     exam_meta: {
-      exam_id: `ai_${slug(title).slice(0, 40) || 'gen'}_${uid('').slice(-5)}`, title,
-      duration_minutes: Number(opts.minutes) || Math.max(5, Math.round(all.length * 1.2)),
-      max_marks: all.length * pos, positive_marks: pos, negative_marks: Number(opts.neg) || 0,
-      instructions_hi: `ये प्रश्न AI द्वारा आपके दिए स्रोत से बनाए गए हैं। उत्तर और व्याख्या एक बार जाँच लें।${opts.custom ? `\nनिर्देश: ${opts.custom.slice(0, 300)}` : ''}`,
+      exam_id: `ai_${slug(title).slice(0, 40) || 'gen'}_${job.id.slice(-6)}`, title,
+      duration_minutes: Number(p.minutes) || Math.max(5, Math.round(raw.length * 1.2)),
+      max_marks: raw.length * pos, positive_marks: pos, negative_marks: Number(p.neg) || 0,
+      instructions_hi: `ये प्रश्न AI द्वारा आपके दिए स्रोत से बनाए गए हैं। उत्तर और व्याख्या एक बार जाँच लें।${p.custom ? `\nनिर्देश: ${String(p.custom).slice(0, 300)}` : ''}`,
       instructions_en: '',
     },
-    passages, questions: all,
-  };
-  const { set, warnings: w2 } = normalizeSet(raw, { source: 'ai-generated' });
-  set.questions.forEach((q) => { q.answer_source = 'ai'; });
-  onProgress({ pct: 100, msg: `पूरा हुआ ✓ ${set.questions.length} प्रश्न` });
-  return { set, warnings: [...warnings, ...w2] };
+    passages: job.state.passages || {}, questions: raw,
+  }, { source: 'ai-generated' });
+  const rawIndex = set.questions.map((q) => q.q_no - 1);
+  set.questions.forEach((q, i) => { q.q_no = i + 1; q.answer_source = 'ai'; });
+  return { set, warnings, rawIndex };
 }
+
+export { stemOf };
 
 /** Prompt to paste into ChatGPT/Gemini/Claude together with the document (no API key needed). */
 export function externalGenPrompt(o) {

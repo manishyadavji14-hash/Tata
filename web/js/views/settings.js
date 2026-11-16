@@ -1,6 +1,8 @@
 import { db, saveSettings, exportAll, importAll } from '../db.js';
 import { PROVIDERS, testConnection, listModels, detectProvider, baseUrlProblem, modelProblem } from '../ai.js';
-import { applyTheme, seedDemo, APP_VERSION } from '../app.js';
+import { applyTheme, seedDemo, APP_VERSION, refresh } from '../app.js';
+import { pinCardHtml, wirePinCard, requirePin } from '../pin.js';
+import { TELEGRAM_URL, openTelegram } from '../share.js';
 import { toast, confirmDialog, icon } from '../ui.js';
 import { esc, downloadText, readFile } from '../util.js';
 
@@ -8,6 +10,7 @@ export async function render({ root, settings: s, setHeader }) {
   setHeader({ title: 'सेटिंग्स / Settings' });
   const est = navigator.storage?.estimate ? await navigator.storage.estimate().catch(() => null) : null;
   const persisted = navigator.storage?.persisted ? await navigator.storage.persisted().catch(() => false) : false;
+  const pinCard = await pinCardHtml();
 
   root.innerHTML = `
     <form class="card mb-3 space-y-3" data-ai autocomplete="off">
@@ -69,6 +72,8 @@ export async function render({ root, settings: s, setHeader }) {
         ${[['hi', 'हिंदी'], ['en', 'English'], ['both', 'दोनों']].map(([v, l]) => `<button class="tab !py-2 ${s.lang === v ? 'tab-on' : 'tab-off'}" data-lang="${v}">${l}</button>`).join('')}</div></div>
     </div>
 
+    ${pinCard}
+
     <div class="card mb-3 space-y-2">
       <div class="font-bold">💾 डेटा / Data</div>
       <div class="text-xs text-slate-500">स्टोरेज: ${est ? `${(est.usage / 1048576).toFixed(1)} MB उपयोग${est.quota ? ` / ${(est.quota / 1073741824).toFixed(1)} GB` : ''}` : '—'} • ${persisted ? '🔒 Persistent storage चालू' : 'ब्राउज़र जगह कम होने पर डेटा हटा सकता है — बैकअप लेते रहें'}</div>
@@ -77,7 +82,19 @@ export async function render({ root, settings: s, setHeader }) {
       <button class="btn-outline w-full" data-act="demo">डेमो प्रैक्टिस सेट दोबारा जोड़ें</button>
       <button class="btn-outline w-full text-rose-600" data-act="wipe">${icon.trash('h-4 w-4')} सारा डेटा मिटाएँ</button>
     </div>
-    <div class="pb-4 text-center text-[11px] text-slate-400">Abhyas CBT v${APP_VERSION} • Offline-first • PDF.js + KaTeX + IndexedDB</div>`;
+    <div class="card mb-3 text-center" data-about>
+      <div class="font-bold">ℹ️ ऐप के बारे में / About</div>
+      <div class="mt-2 text-lg font-bold text-brand-600">Abhyas CBT</div>
+      <div class="text-xs text-slate-500">संस्करण / Version ${APP_VERSION}</div>
+      <div class="mt-3 text-base font-semibold">Created by Maneesh</div>
+      <div class="text-sm text-slate-600 dark:text-slate-300">निर्माता: मनीष</div>
+      <div class="mt-2 text-xs text-slate-500">SUPER TET / UP सहायक अध्यापक की ऑफ़लाइन CBT तैयारी — PDF/JSON से मॉक टेस्ट, AI प्रश्न, विषयवार अभ्यास और टेस्ट शेयरिंग।</div>
+      <button class="btn-outline btn-sm mt-3" data-tg>✈️ Telegram ग्रुप</button>
+      <div class="mt-1 break-all text-[10px] text-slate-400">${TELEGRAM_URL}</div>
+    </div>
+    <div class="pb-4 text-center text-[11px] text-slate-400">Abhyas CBT v${APP_VERSION} • Created by Maneesh • Offline-first</div>`;
+  wirePinCard(root, refresh);
+  root.querySelector('[data-tg]').onclick = openTelegram;
 
   const form = root.querySelector('[data-ai]');
   const f = (n) => root.querySelector(`[name=${n}]`);
@@ -204,8 +221,9 @@ export async function render({ root, settings: s, setHeader }) {
     }
     if (act === 'demo') { await seedDemo(true); toast('डेमो सेट जोड़ा गया', 'success'); }
     if (act === 'wipe') {
+      if (!(await requirePin('सारा डेटा मिटाने के लिए'))) return;
       if (await confirmDialog('सभी प्रैक्टिस सेट, प्रयास, बुकमार्क, एनालिटिक्स और API सेटिंग स्थायी रूप से मिट जाएँगे। पहले बैकअप ले लें।', { ok: 'सब मिटाएँ', danger: true })) {
-        for (const st of ['sets', 'attempts', 'bookmarks', 'topicStats', 'chats', 'importDrafts', 'settings', 'mistakes']) await db.clear(st);
+        for (const st of ['sets', 'attempts', 'bookmarks', 'topicStats', 'chats', 'importDrafts', 'settings', 'mistakes', 'jobs', 'jobFiles']) await db.clear(st);
         toast('सारा डेटा मिटा दिया', 'success');
         setTimeout(() => location.reload(), 600);
       }

@@ -38,6 +38,26 @@ export async function mergeIntoSet(existing, incoming) {
   return { row, added, replaced };
 }
 
+// Add new questions after the existing ones (numbers continue, nothing is replaced).
+export async function appendToSet(existing, incoming) {
+  const start = Math.max(0, ...existing.questions.map((q) => q.q_no));
+  const tag = Date.now().toString(36);
+  const pmap = {};
+  const passages = { ...existing.passages };
+  for (const [k, v] of Object.entries(incoming.passages || {})) { pmap[k] = `${k}_${tag}`; passages[pmap[k]] = v; }
+  const added = incoming.questions.map((q, i) => ({ ...q, q_no: start + i + 1, passage_id: q.passage_id ? pmap[q.passage_id] || null : null }));
+  const questions = [...existing.questions, ...added];
+  const sections = [...existing.sections];
+  for (const s of incoming.sections) if (!sections.includes(s)) sections.push(s);
+  const meta = { ...existing.meta };
+  const per = (Number(existing.meta.duration_minutes) || questions.length) / Math.max(1, existing.questions.length);
+  meta.max_marks = questions.length * (Number(meta.positive_marks) || 1);
+  meta.duration_minutes = Math.max(meta.duration_minutes, Math.round(per * questions.length));
+  const row = { ...existing, meta, sections, passages, questions, updatedAt: Date.now() };
+  await db.put('sets', row);
+  return { row, added: added.length };
+}
+
 export async function deleteSet(id) {
   for (const a of await db.byIndex('attempts', 'setId', id)) await db.delete('attempts', a.id);
   for (const b of await db.byIndex('bookmarks', 'setId', id)) await db.delete('bookmarks', b.key);

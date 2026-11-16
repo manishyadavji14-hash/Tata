@@ -5,7 +5,7 @@ import { DEMO_SET } from './demo-set.js';
 import { icon, toast } from './ui.js';
 import { $, esc } from './util.js';
 
-export const APP_VERSION = '1.5.0';
+export const APP_VERSION = '1.6.0';
 
 const routes = {
   home: () => import('./views/home.js'),
@@ -21,6 +21,8 @@ const routes = {
   analytics: () => import('./views/analytics.js'),
   settings: () => import('./views/settings.js'),
   share: () => import('./views/share.js'),
+  jobs: () => import('./views/jobs.js'),
+  job: () => import('./views/job.js'),
 };
 
 const NAV = [
@@ -105,7 +107,7 @@ async function route() {
   document.getElementById('modal-root').innerHTML = '';
   const full = name === 'exam';
   setChrome(full);
-  if (!full) renderNav(['home', 'import', 'practice', 'history', 'settings'].includes(name) ? name : name === 'analytics' ? 'history' : name === 'bookmarks' ? 'practice' : 'home');
+  if (!full) renderNav(['home', 'import', 'practice', 'history', 'settings'].includes(name) ? name : name === 'analytics' ? 'history' : name === 'bookmarks' ? 'practice' : name === 'jobs' || name === 'job' ? 'import' : 'home');
   setHeader({});
   // Fresh <main> per route so event listeners of the previous view are dropped.
   const old = $('#view');
@@ -171,6 +173,15 @@ async function boot() {
     applyTheme(theme);
   };
   try { await seedDemo(); } catch (e) { console.error('demo seed failed', e); }
+  // Background AI jobs: header indicator + resume jobs that were running when the app closed.
+  import('./jobs.js').then(async (J) => {
+    const chip = $('#hdr-jobs');
+    const upd = () => { const n = J.activeJobs().length; chip.classList.toggle('hidden', !n); chip.classList.toggle('flex', !!n); chip.querySelector('[data-n]').textContent = n; };
+    J.onJobsChange(upd);
+    await J.initJobs();
+    upd();
+  }).catch((e) => console.error('jobs init failed', e));
+  window.__abhyasOpenJobs = () => navigate('jobs');
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   window.addEventListener('hashchange', route);
   await route();

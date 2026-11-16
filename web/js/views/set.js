@@ -4,6 +4,7 @@ import { toStandardJson } from '../schema.js';
 import { icon, toast, confirmDialog, modal } from '../ui.js';
 import { esc, downloadText, fmtDate, fmtDur, slug } from '../util.js';
 import { refresh } from '../app.js';
+import { requirePin } from '../pin.js';
 
 export async function render({ root, params, navigate, setHeader }) {
   const set = await getSet(params[0]);
@@ -70,6 +71,7 @@ export async function render({ root, params, navigate, setHeader }) {
       toast(`JSON सेव हुआ → ${where}`, 'success');
     }
     if (act === 'delete') {
+      if (!(await requirePin(`"${esc(set.meta.title)}" हटाने के लिए`))) return;
       if (await confirmDialog(`"${esc(set.meta.title)}" और इसके सभी प्रयास, बुकमार्क व चैट डिलीट होंगे।`, { ok: 'Delete', danger: true })) {
         await deleteSet(set.id);
         toast('सेट डिलीट हुआ', 'success');

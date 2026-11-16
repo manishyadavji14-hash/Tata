@@ -35,6 +35,12 @@ export async function render({ root, setHeader }) {
         <span class="min-w-0 flex-1"><span class="block text-sm font-bold">AI से प्रश्न बनाएँ (Custom)</span>
         <span class="block text-[11px] text-slate-500">बुक/नोट्स/PDF/फ़ोटो दें → मनचाहे प्रकार के प्रश्न: टेबल, चित्र, कथन, मिलान…</span></span>
       </a>
+      <a href="#/jobs" class="card col-span-2 flex items-center gap-3 !p-3 active:scale-[.99]" data-jobscard>
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-xl dark:bg-brand-900/40">🗂️</span>
+        <span class="min-w-0 flex-1"><span class="block text-sm font-bold">AI काम / Jobs</span>
+        <span class="block text-[11px] text-slate-500" data-jobsinfo>बैकग्राउंड में चल रहे काम, स्थिति और इतिहास</span></span>
+        <span class="text-slate-400">›</span>
+      </a>
       <a href="#/share" class="card flex flex-col gap-2 !p-3 active:scale-[.98]">
         <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-xl dark:bg-emerald-900/40">📤</span>
         <span class="text-sm font-bold leading-tight">टेस्ट शेयर करें</span>
@@ -97,4 +103,10 @@ export async function render({ root, setHeader }) {
 
   root.querySelector('[data-copy-prompt]').onclick = copyPrompt;
   root.querySelector('[data-telegram]').onclick = openTelegram;
+  import('../jobs.js').then(async (J) => {
+    const all = await J.listJobs();
+    const act = all.filter(J.isActive).length, done = all.filter((j) => j.status === 'done').length, other = all.length - act - done;
+    const el = root.querySelector('[data-jobsinfo]');
+    if (el && all.length) el.textContent = `${act ? `⚙️ ${act} चल रहे • ` : ''}${other ? `⏸ ${other} रुके • ` : ''}📜 ${done} पूरे`;
+  });
 }

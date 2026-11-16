@@ -71,6 +71,8 @@ public class MainActivity extends Activity {
     private final Map<String, HttpURLConnection> running = new ConcurrentHashMap<>();
     private final List<JSONObject> incoming = new ArrayList<>();
     private volatile boolean pageReady = false;
+    private boolean openJobsOnLoad = false;
+    private boolean askedNotif = false;
 
     private static final Map<String, String> MIME = new HashMap<>();
     static {
@@ -128,6 +130,10 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 pageReady = true;
                 notifyIncoming();
+                if (openJobsOnLoad) {
+                    openJobsOnLoad = false;
+                    view.postDelayed(() -> web.evaluateJavascript("window.__abhyasOpenJobs && window.__abhyasOpenJobs()", null), 800);
+                }
             }
 
             @Override
@@ -176,6 +182,12 @@ public class MainActivity extends Activity {
     /** A test file opened or shared into the app → read it and hand it to the web app. */
     private void handleIntent(Intent intent) {
         if (intent == null) return;
+        if ("jobs".equals(intent.getStringExtra("abhyas_open"))) {
+            intent.removeExtra("abhyas_open");
+            if (pageReady) web.evaluateJavascript("window.__abhyasOpenJobs && window.__abhyasOpenJobs()", null);
+            else openJobsOnLoad = true;
+            return;
+        }
         String action = intent.getAction();
         List<Uri> uris = new ArrayList<>();
         String text = null;
@@ -284,6 +296,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        try { stopService(new Intent(this, KeepAliveService.class)); } catch (Exception ignored) { }
         pool.shutdownNow();
         if (web != null) web.destroy();
         super.onDestroy();
@@ -317,6 +330,36 @@ public class MainActivity extends Activity {
                 toast("सेव नहीं हुआ: " + e.getMessage());
                 return "";
             }
+        }
+
+        /** count > 0: keep the app alive with an ongoing notification; 0: stop. */
+        @JavascriptInterface
+        public void setBackgroundWork(int count, String text) {
+            runOnUiThread(() -> {
+                try {
+                    if (count <= 0) {
+                        if (KeepAliveService.running) stopService(new Intent(MainActivity.this, KeepAliveService.class));
+                        return;
+                    }
+                    if (Build.VERSION.SDK_INT >= 33 && !askedNotif
+                            && checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                        askedNotif = true;
+                        requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, 77);
+                    }
+                    if (KeepAliveService.running) { KeepAliveService.update(MainActivity.this, count, text); return; }
+                    Intent i = new Intent(MainActivity.this, KeepAliveService.class);
+                    i.putExtra("count", count);
+                    i.putExtra("text", text);
+                    if (Build.VERSION.SDK_INT >= 26) startForegroundService(i); else startService(i);
+                } catch (Exception e) {
+                    // Android may refuse to start a service from the background; jobs still run while the app lives.
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public void notifyDone(String title, String text) {
+            try { KeepAliveService.notifyDone(MainActivity.this, title, text); } catch (Exception ignored) { }
         }
 
         @JavascriptInterface

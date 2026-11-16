@@ -1,6 +1,6 @@
 // IndexedDB storage layer. Every piece of app data lives here so the app works fully offline.
 const DB_NAME = 'abhyas-cbt';
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 
 const STORES = {
   sets: { keyPath: 'id' },
@@ -11,6 +11,8 @@ const STORES = {
   chats: { keyPath: 'key' },
   importDrafts: { keyPath: 'key' },
   mistakes: { keyPath: 'key' }, // wrong-answers bank: `${setId}|${q_no}` -> { correct, wrong, ... }
+  jobs: { keyPath: 'id' },      // background AI work (PDF digitising, question generation) with progress + log
+  jobFiles: { keyPath: 'id' },  // source documents of jobs (Blob) so a job can resume or "make more" later
 };
 
 let dbPromise = null;
@@ -99,7 +101,7 @@ export async function saveSettings(patch) {
 export async function exportAll() {
   const out = { app: 'abhyas-cbt', version: DB_VERSION, exportedAt: new Date().toISOString(), stores: {} };
   for (const name of Object.keys(STORES)) {
-    if (name === 'importDrafts') continue;
+    if (name === 'importDrafts' || name === 'jobFiles' || name === 'jobs') continue; // large / device-only
     let rows = await db.all(name);
     if (name === 'settings') rows = rows.filter((r) => r.key !== 'apiKey'); // never export secrets
     out.stores[name] = rows;

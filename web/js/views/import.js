@@ -233,12 +233,7 @@ export async function render({ root, query, settings, navigate, setHeader }) {
         <div class="text-[11px] text-slate-500">Hybrid/Vision मोड के लिए विज़न-सपोर्ट वाला मॉडल चाहिए (जैसे Gemini Flash, GPT-4.1/5, Claude Sonnet)। प्रोसेस शुरू होते ही AI कनेक्शन जाँचा जाता है; गड़बड़ हो तो ऑफ़लाइन पार्सर से प्रश्न निकलते हैं। स्कैन की गई या Kruti Dev फ़ॉन्ट वाली PDF के लिए Vision/Hybrid चुनें। हर पेज = लगभग 1 API कॉल।</div>
         <button class="btn-success w-full" data-act="start" disabled>▶ प्रोसेस शुरू करें / Start</button>
       </div>
-      <div class="card hidden" data-progress>
-        <div class="mb-2 flex items-center justify-between text-sm"><span class="font-bold" data-pmsg>…</span><span class="font-mono text-xs" data-ppct>0%</span></div>
-        <div class="bar"><span class="bg-brand-600 transition-all" data-pbar style="width:0%"></span></div>
-        <div class="mt-3 max-h-64 space-y-1 overflow-y-auto rounded-lg bg-slate-100 p-2 font-mono text-[11px] dark:bg-slate-800" data-log></div>
-        <button class="btn-outline mt-3 w-full" data-act="cancel">रोकें / Cancel</button>
-        <div class="mt-1 text-center text-[11px] text-slate-400">बीच में रुकने पर भी प्रगति सेव रहती है — वही PDF दोबारा चुनें, वहीं से शुरू होगा।</div>
+      <div class="card text-[11px] text-slate-500">▶ दबाते ही काम <b>बैकग्राउंड</b> में चलेगा — आप ऐप में कहीं भी जा सकते हैं या दूसरा ऐप खोल सकते हैं। स्थिति <a href="#/jobs" class="font-semibold text-brand-600 underline">AI काम</a> में दिखेगी, वहीं से रोकें/जारी रखें/सेव करें।
       </div>`;
     let file = null;
     const startBtn = el.querySelector('[data-act=start]');
@@ -257,39 +252,15 @@ export async function render({ root, query, settings, navigate, setHeader }) {
     el.querySelector('[data-solve]').onchange = async (e) => { settings.autoSolve = e.target.value === '1'; await saveSettings({ autoSolve: settings.autoSolve }); };
 
     startBtn.onclick = async () => {
-      if (!file || job) return;
-      const useAI = el.querySelector('[data-useai]').checked && cfgOk;
-      const prog = el.querySelector('[data-progress]');
-      const log = el.querySelector('[data-log]');
-      prog.classList.remove('hidden');
-      log.innerHTML = '';
+      if (!file) return;
       startBtn.disabled = true;
-      const color = { info: '', warn: 'text-amber-600', error: 'text-rose-600', success: 'text-emerald-600' };
-      const onLog = (msg, level = 'info') => {
-        log.insertAdjacentHTML('beforeend', `<div class="${color[level] || ''}">• ${esc(msg)}</div>`);
-        log.scrollTop = log.scrollHeight;
-      };
-      const onProgress = ({ pct, msg }) => {
-        el.querySelector('[data-pmsg]').textContent = msg;
-        el.querySelector('[data-ppct]').textContent = `${pct}%`;
-        el.querySelector('[data-pbar]').style.width = `${pct}%`;
-      };
-      const controller = new AbortController();
-      job = { controller };
-      if (window.AndroidBridge?.keepScreenOn) window.AndroidBridge.keepScreenOn(true);
-      try {
-        const { importPdf } = await import('../pdf-import.js');
-        const { set, warnings, stats } = await importPdf(file, { settings, useAI, onProgress, onLog, signal: controller.signal });
-        onProgress({ pct: 100, msg: 'पूरा हुआ ✓' });
-        preview(set, warnings, { draftKey: stats.draftKey, stats });
-      } catch (e) {
-        if (e.name === 'AbortError') onLog('रोका गया — प्रगति सेव है', 'warn');
-        else { onLog(e.message, 'error'); toast(e.message, 'error', 6000); }
-      } finally {
-        job = null;
-        startBtn.disabled = false;
-        if (window.AndroidBridge?.keepScreenOn) window.AndroidBridge.keepScreenOn(false);
-      }
+      const useAI = el.querySelector('[data-useai]').checked && cfgOk;
+      const pdf = { pdfMode: settings.pdfMode, autoSolve: settings.autoSolve };
+      const draftKey = `${file.name}|${file.size}|${file.lastModified}|${useAI ? settings.pdfMode : 'local'}`;
+      const { createJob } = await import('../jobs.js');
+      const j = await createJob({ kind: 'pdf', title: file.name.replace(/\.pdf$/i, ''), sources: [{ file }], params: { useAI, pdf, draftKey } });
+      toast('काम बैकग्राउंड में शुरू हुआ ✓', 'success');
+      navigate(`job/${j.id}`);
     };
   }
 
@@ -354,12 +325,7 @@ export async function render({ root, query, settings, navigate, setHeader }) {
         <button class="btn-outline w-full" data-genprompt>${icon.copy('h-4 w-4')} बाहरी AI के लिए प्रॉम्प्ट कॉपी करें</button>
         <div class="text-[11px] text-slate-500">हर बैच = 1 AI कॉल। बड़ी बुक के लिए PDF के पेज चुनें (जैसे 10-25)। बने प्रश्नों को सेव करने से पहले देख सकते हैं; बाद में हर प्रश्न का हल/चित्र बदल सकते हैं।</div>
       </div>
-      <div class="card hidden" data-progress>
-        <div class="mb-2 flex items-center justify-between text-sm"><span class="font-bold" data-pmsg>…</span><span class="font-mono text-xs" data-ppct>0%</span></div>
-        <div class="bar"><span class="bg-fuchsia-600 transition-all" data-pbar style="width:0%"></span></div>
-        <div class="mt-3 max-h-64 space-y-1 overflow-y-auto rounded-lg bg-slate-100 p-2 font-mono text-[11px] dark:bg-slate-800" data-log></div>
-        <button class="btn-outline mt-3 w-full" data-act="cancel">रोकें / Cancel</button>
-      </div>`;
+`;
     const remember = () => { const { pasted, ...rest } = g; try { localStorage.setItem('abhyas-gen', JSON.stringify(rest)); } catch { /* ignore */ } };
     const drawList = () => {
       el.querySelector('[data-glist]').innerHTML = files.map((f, i) => `
@@ -395,32 +361,16 @@ export async function render({ root, query, settings, navigate, setHeader }) {
         toast(ok ? 'प्रॉम्प्ट कॉपी हुआ ✓ ChatGPT/Gemini में अपनी बुक/PDF के साथ पेस्ट करें, फिर मिला JSON यहाँ JSON टैब में डालें' : 'कॉपी नहीं हो सका', ok ? 'success' : 'error', 5000);
         return;
       }
-      if (!e.target.closest('[data-gen]') || job) return;
+      if (!e.target.closest('[data-gen]')) return;
       const o = opts();
       if (!files.length && !String(g.pasted || '').trim() && !String(g.custom || '').trim()) { toast('कोई फ़ाइल/टेक्स्ट दें या Custom निर्देश लिखें', 'warn'); return; }
-      const prog = el.querySelector('[data-progress]');
-      const log = el.querySelector('[data-log]');
-      prog.classList.remove('hidden'); log.innerHTML = '';
       const btn = el.querySelector('[data-gen]'); btn.disabled = true;
-      const color = { info: '', warn: 'text-amber-600', error: 'text-rose-600', success: 'text-emerald-600' };
-      const onLog = (msg, level = 'info') => { log.insertAdjacentHTML('beforeend', `<div class="${color[level] || ''}">• ${esc(msg)}</div>`); log.scrollTop = log.scrollHeight; };
-      const onProgress = ({ pct, msg }) => { el.querySelector('[data-pmsg]').textContent = msg; el.querySelector('[data-ppct]').textContent = `${pct}%`; el.querySelector('[data-pbar]').style.width = `${pct}%`; };
-      const controller = new AbortController();
-      job = { controller };
-      if (window.AndroidBridge?.keepScreenOn) window.AndroidBridge.keepScreenOn(true);
-      try {
-        const gen = await import('../generate.js');
-        onProgress({ pct: 0, msg: 'स्रोत पढ़ रहे हैं…' });
-        const units = await gen.buildSources({ files, pasted: g.pasted, withImages: !!g.withImages, onLog, signal: controller.signal });
-        const { set, warnings } = await gen.generateQuestions({ ...o, units, onLog, onProgress, signal: controller.signal });
-        preview(set, warnings);
-      } catch (err) {
-        if (err.name === 'AbortError') onLog('रोका गया', 'warn');
-        else { onLog(err.message, 'error'); toast(err.message, 'error', 6000); }
-      } finally {
-        job = null; btn.disabled = false;
-        if (window.AndroidBridge?.keepScreenOn) window.AndroidBridge.keepScreenOn(false);
-      }
+      const { createJob } = await import('../jobs.js');
+      const title = String(g.title || '').trim() || `AI प्रश्न — ${g.section || files[0]?.file.name.replace(/\.[^.]+$/, '') || 'कस्टम'}`;
+      const { pasted, ...params } = o;
+      const j = await createJob({ kind: 'generate', title, sources: files.map((f) => ({ file: f.file, pages: f.pages })), pasted: String(g.pasted || ''), params });
+      toast('काम बैकग्राउंड में शुरू हुआ ✓ — कहीं भी जाएँ, चलता रहेगा', 'success', 3500);
+      navigate(`job/${j.id}`);
     });
   }
 
@@ -450,7 +400,6 @@ export async function render({ root, query, settings, navigate, setHeader }) {
       if (!text) { toast('पहले JSON पेस्ट करें', 'warn'); return; }
       try { await handleTexts([{ name: 'Pasted text', text }]); } catch (err) { toast(err.message, 'error', 5000); }
     }
-    if (act === 'cancel' && job) job.controller.abort();
   });
 
   return () => { if (job) job.controller.abort(); if (window.__abhyasOnIncoming === takeIncoming) window.__abhyasOnIncoming = null; };
