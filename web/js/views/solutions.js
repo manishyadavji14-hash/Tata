@@ -3,8 +3,8 @@ import { getSet, bookmarkSet, toggleBookmark } from '../store.js';
 import { evaluate } from '../analytics.js';
 import { solutionCard } from '../components.js';
 import { openDoubtChat } from '../chat.js';
-import { icon, toast } from '../ui.js';
-import { esc } from '../util.js';
+import { icon, toast, modal, pickFile } from '../ui.js';
+import { esc, imageFileToDataUrl } from '../util.js';
 
 const FILTERS = [['all', 'All'], ['correct', 'Correct'], ['wrong', 'Incorrect'], ['skipped', 'Unattempted'], ['bookmarked', 'Bookmarked']];
 const CHUNK = 12;
@@ -65,7 +65,7 @@ export async function render({ root, params, query, settings, setHeader }) {
   };
   const more = () => {
     const next = filtered.slice(shown, shown + CHUNK);
-    list.insertAdjacentHTML('beforeend', next.map((q) => solutionCard(set, q, lang, items.get(q.q_no) || null, { bookmarked: bookmarks.has(q.q_no) })).join(''));
+    list.insertAdjacentHTML('beforeend', next.map((q) => solutionCard(set, q, lang, items.get(q.q_no) || null, { bookmarked: bookmarks.has(q.q_no), editable: true })).join(''));
     shown += next.length;
   };
   const redraw = () => {
@@ -91,6 +91,33 @@ export async function render({ root, params, query, settings, setHeader }) {
   io.observe(root.querySelector('[data-sentinel]'));
   if (query.q) setTimeout(() => jumpTo(Number(query.q)), 50);
 
+  // Attach / replace / remove the figure of a question (stored inside the set, works offline).
+  async function editFigure(qn) {
+    const q = qmap.get(qn);
+    const has = !!q.question_media?.image_base64;
+    const choice = await new Promise((resolve) => {
+      const md = modal({
+        title: `🖼️ Q.${qn} का चित्र`, size: 'sm',
+        body: `<div class="text-sm text-slate-600 dark:text-slate-300">मूल PDF में उस प्रश्न के चित्र का स्क्रीनशॉट लें, गैलरी में उसे काट (crop) लें, फिर यहाँ चुनें। चित्र इसी सेट में सेव रहेगा और टेस्ट में भी दिखेगा।</div>`,
+        footer: `${has ? '<button class="btn-outline text-rose-600" data-c="remove">हटाएँ</button>' : ''}<button class="btn-primary" data-c="pick">गैलरी से चुनें</button>`,
+        onClose: (v) => resolve(v || null),
+      });
+      md.el.querySelectorAll('[data-c]').forEach((b) => { b.onclick = () => md.close(b.dataset.c); });
+    });
+    if (!choice) return;
+    let data = null;
+    if (choice === 'pick') {
+      const file = await pickFile('image/*');
+      if (!file) return;
+      try { data = await imageFileToDataUrl(file); } catch (err) { toast(`चित्र नहीं खुला: ${err.message}`, 'error', 4000); return; }
+    }
+    q.question_media = { ...(q.question_media || {}), image_base64: data };
+    await db.put('sets', set);
+    const card = list.querySelector(`[data-q="${qn}"]`);
+    if (card) card.outerHTML = solutionCard(set, q, lang, items.get(qn) || null, { bookmarked: bookmarks.has(qn), editable: true });
+    toast(data ? 'चित्र सेव हुआ' : 'चित्र हटाया', 'success', 1500);
+  }
+
   root.addEventListener('click', async (e) => {
     const f = e.target.closest('[data-f]');
     if (f) { filter = f.dataset.f; redraw(); return; }
@@ -105,6 +132,8 @@ export async function render({ root, params, query, settings, setHeader }) {
       toast(on ? 'बुकमार्क किया' : 'बुकमार्क हटाया', 'info', 1200);
       return;
     }
+    const fig = e.target.closest('[data-fig]');
+    if (fig) { editFigure(Number(fig.dataset.fig)); return; }
     const ask = e.target.closest('[data-ask]');
     if (ask) {
       const qn = Number(ask.dataset.ask);

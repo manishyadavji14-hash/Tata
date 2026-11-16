@@ -10,13 +10,13 @@ const str = (v) => (v == null ? '' : typeof v === 'string' ? v : typeof v === 'n
 const num = (v, d) => (Number.isFinite(Number(v)) && v !== '' && v !== null ? Number(v) : d);
 
 // "A" | "a" | "(B)" | "1" | 2 | "option c" -> "A".."E" or null
-export function normalizeOptionId(v, count = 4) {
+export function normalizeOptionId(v, count = 5) {
   if (v == null || v === '') return null;
   if (typeof v === 'number') return v >= 1 && v <= count ? OPTION_IDS[v - 1] : v === 0 ? 'A' : null;
   const s = String(v).trim().toUpperCase().replace(/^OPTION\s*/, '').replace(/[()[\].\s]/g, '');
   if (/^[A-E]$/.test(s)) return s;
   if (/^[1-5]$/.test(s)) return OPTION_IDS[Number(s) - 1];
-  const hi = { 'अ': 'A', 'ब': 'B', 'स': 'C', 'द': 'D', 'क': 'A', 'ख': 'B', 'ग': 'C', 'घ': 'D' }[s];
+  const hi = { 'अ': 'A', 'ब': 'B', 'स': 'C', 'द': 'D', 'य': 'E', 'क': 'A', 'ख': 'B', 'ग': 'C', 'घ': 'D', 'ङ': 'E' }[s];
   return hi || null;
 }
 

@@ -296,3 +296,26 @@ export function extractJson(text) {
   }
   throw new Error('Incomplete JSON in response (response may have been cut off)');
 }
+
+// Image file (gallery / camera) -> compact JPEG data URL, longest side <= maxSide px.
+export function imageFileToDataUrl(file, maxSide = 1200, quality = 0.85) {
+  return new Promise((resolve, reject) => {
+    if (!/^image\//.test(file.type || 'image/')) { reject(new Error('यह चित्र फ़ाइल नहीं है')); return; }
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const k = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+      const c = document.createElement('canvas');
+      c.width = Math.max(1, Math.round(img.naturalWidth * k));
+      c.height = Math.max(1, Math.round(img.naturalHeight * k));
+      const g = c.getContext('2d');
+      g.fillStyle = '#fff';
+      g.fillRect(0, 0, c.width, c.height);
+      g.drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL('image/jpeg', quality));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('फ़ाइल पढ़ी नहीं जा सकी')); };
+    img.src = url;
+  });
+}

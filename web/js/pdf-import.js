@@ -159,7 +159,7 @@ function removeRepeatedLines(pages) {
 // ---------------------------------------------------------------------------
 // Answer key + page classification
 // ---------------------------------------------------------------------------
-const KEY_TOKEN = '([A-Da-d1-4]|[अबसद])';
+const KEY_TOKEN = '([A-Ea-e1-5]|[अबसदय])';
 
 export function parseAnswerKey(lines) {
   const text = lines.join('\n');
@@ -197,7 +197,7 @@ function classifyLocal(p) {
   const text = p.lines.join('\n');
   const lower = text.toLowerCase();
   const qSignals = (text.match(/(^|\n)\s*(?:Q\.?\s*|प्रश्न\s*)?\d{1,3}\s*[.)।]\s*\S/g) || []).length;
-  const optSignals = (text.match(/\(\s*(?:[A-Da-d]|[1-4]|[अबसद])\s*\)/g) || []).length;
+  const optSignals = (text.match(/\(\s*(?:[A-Ea-e]|[1-5]|[अबसदय])\s*\)/g) || []).length;
   const adScore = AD_WORDS.reduce((n, w) => n + (lower.includes(w) ? 1 : 0), 0) + ((text.match(/\b[6-9]\d{9}\b/g) || []).length ? 2 : 0);
   const keyHint = /answer\s*key|उत्तर\s*(?:कुंजी|माला|तालिका)|ans\.?\s*key|q\.?\s*no\.?\s*ans/i.test(text);
   const key = parseAnswerKey(p.lines);
@@ -321,7 +321,7 @@ function detectSection(line) {
 }
 
 // Option markers: (A) (a) (1) (अ)  — or —  A. a. A) a)  (the bare forms need a space before them).
-const OPT_MARK = /\(\s*([A-Ea-e]|[1-5]|[अबसद])\s*\)|(?<=^|\s)([A-Ea-e])[.)](?=\s)/g;
+const OPT_MARK = /\(\s*([A-Ea-e]|[1-5]|[अबसदय])\s*\)|(?<=^|\s)([A-Ea-e])[.)](?=\s)/g;
 const DEV = /[\u0900-\u097F]/;
 const GAP = '\u2003'; // inserted by itemsToLines for wide horizontal gaps (two-column option grids)
 

@@ -882,8 +882,9 @@ P p_edu Part 2: Reading Comprehension
 
 # REASONING
 112 पासा
-? नीचे एक पासे के दो प्रारूपों को दर्शाया गया है — [चित्र: पासा I में ऊपर 1, सामने 2, दाएँ 3; पासा II में ऊपर 4, सामने 5, दाएँ 6]। इस पासे में अंक 1 के विपरीत फलक पर कौन-सा अंक होगा?
+? नीचे एक पासे के दो प्रारूपों को दर्शाया गया है। इस पासे में अंक 1 के विपरीत फलक पर कौन-सा अंक होगा?
 ! Two positions of a dice are shown (I: 1 top, 2 front, 3 right; II: 4 top, 5 front, 6 right). Which number will be opposite to 1?
+* figures/p07_q112_dice.png
 - 4
 - 5
 - 6

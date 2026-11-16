@@ -19,7 +19,7 @@ CLEANING RULES:
 - Pages are often printed in TWO COLUMNS. Read the left column top-to-bottom first, then the right column. Output questions strictly in question-number order (Q.1, Q.2 ... Q.120/150).
 - Remove watermarks, coaching/institute names, page headers/footers, page numbers, phone numbers, website/YouTube/Telegram handles, "Join our batch" lines and any text that is not part of a question.
 - Skip pages that only contain advertisements: batch/course posters, fees, admission offers, app download banners, teacher photos, contact details.
-- If an ANSWER KEY table (Q. No. / Ans.) is present (usually on the last pages), use it to fill "correct_option" for every question. Answer key values may be printed as A/B/C/D, a/b/c/d, 1/2/3/4 or (अ)/(ब)/(स)/(द); always output "A","B","C" or "D".
+- If an ANSWER KEY table (Q. No. / Ans.) is present (usually on the last pages), use it to fill "correct_option" for every question. Answer key values may be printed as A/B/C/D, a/b/c/d, 1/2/3/4 or (अ)/(ब)/(स)/(द); always output "A","B","C","D" (or "E" when the question has a 5th option).
 - If the PDF contains written explanations (व्याख्या / Solutions), copy them into solution_hi / solution_en.
 - If NO explanation is given, WRITE a short, simple, step-by-step solution yourself (in Hindi, plus English if the question is in English) and a one-line "key_concept".
 - If no answer key is given for a question, solve it yourself, set correct_option and add "answer_source": "ai".
@@ -77,7 +77,7 @@ ${FORMAT_RULES}
 
 OUTPUT RULES:
 - Include EVERY question of the paper. Do not summarise, skip or merge questions.
-- "id" of options must be "A","B","C","D" (map (1)(2)(3)(4) or (a)(b)(c)(d) or (अ)(ब)(स)(द) to A,B,C,D in order).
+- "id" of options must be "A","B","C","D" (map (1)(2)(3)(4) or (a)(b)(c)(d) or (अ)(ब)(स)(द) to A,B,C,D in order). If a question really has a 5th option ((e)/(5)/(य)), keep it as "E" — never drop it.
 - Return ONLY valid JSON (no markdown fences, no comments, no trailing commas).
 - If your reply would be too long, split it: output Part 1 with questions 1-40 as a complete valid JSON object (same exam_meta, sections, passages), then stop and write nothing else. When I reply "continue", output the next part (e.g. 41-80) as another complete JSON object with the SAME exam_meta.exam_id. My app merges parts that share an exam_id.`;
 
@@ -125,7 +125,7 @@ export const ENRICH_SYSTEM_PROMPT = `You are an expert teacher for Indian compet
 - "topic": precise sub-topic (e.g. "संधि", "अलंकार", "द्विघात समीकरण", "प्रतिशत", "पियाजे", "वाइगोत्स्की", "RTE Act 2009"),
 - "syllabus_tag": "Subject - chapter",
 - "difficulty": "Easy" | "Medium" | "Hard",
-- "correct_option": ONLY when the input has "correct_option": null — solve it and give "A".."D"; otherwise repeat the given value. NEVER change a given correct_option.
+- "correct_option": ONLY when the input has "correct_option": null — solve it and give "A".."D" (or "E" if that option exists); otherwise repeat the given value. NEVER change a given correct_option.
 Return ONLY JSON: { "items": [ { "q_no": 1, "correct_option": "D", "solution_hi": "...", "solution_en": "", "key_concept": "...", "topic": "...", "syllabus_tag": "...", "difficulty": "Easy" } ] }
 Escape backslashes in JSON strings ("$\\\\frac{1}{2}$").`;
 

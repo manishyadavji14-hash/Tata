@@ -34,7 +34,7 @@ const STATUS_CHIP = {
 };
 
 // Full solution card. `item` = evaluation item ({ sel, status, time }) or null (bookmark view).
-export function solutionCard(set, q, lang, item, { bookmarked = false, showPassage = true } = {}) {
+export function solutionCard(set, q, lang, item, { bookmarked = false, showPassage = true, editable = false } = {}) {
   const sel = item?.sel || null;
   const opts = q.options.map((o) => {
     const isCorrect = o.id === q.correct_option;
@@ -70,6 +70,7 @@ export function solutionCard(set, q, lang, item, { bookmarked = false, showPassa
     </div>
     <div class="mt-3 flex flex-wrap items-center gap-2">
       <button class="btn-purple btn-sm" data-ask="${q.q_no}">${icon.spark('h-4 w-4')} Ask AI / डाउट पूछें</button>
+      ${editable ? `<button class="btn-outline btn-sm" data-fig="${q.q_no}">🖼️ ${q.question_media?.image_base64 ? 'चित्र बदलें' : 'चित्र जोड़ें'}</button>` : ''}
       <span class="text-[11px] text-slate-400">${esc(q.syllabus_tag || '')}${q.difficulty ? ` • ${esc(q.difficulty)}` : ''}</span>
     </div>
   </article>`;

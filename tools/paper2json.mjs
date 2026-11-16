@@ -7,10 +7,12 @@
 //   P <passage_id> [title]  starts a passage; following "> text" lines are its text
 //   <q_no> <topic> [@passage_id]   starts a question
 //   ? <Hindi stem line>     ! <English stem line>   (several lines allowed; HTML and $KaTeX$ allowed)
-//   - <option>              exactly 4 per question; "हिंदी / English" is split into both languages
+//   - <option>              4 or 5 per question; "हिंदी / English" is split into both languages
+//   -* <image> | <option>   option with a picture (path relative to the paper file); text after | is optional
+//   * <image>               picture for the question (png/jpg/webp, embedded as base64)
 //   = <solution (Hindi)>    ~ <key concept>
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { basename, join } from 'node:path';
+import { basename, join, dirname, resolve, extname } from 'node:path';
 
 const DEV = /[\u0900-\u097F]/;
 const splitOpt = (t) => {
@@ -19,7 +21,15 @@ const splitOpt = (t) => {
   return DEV.test(t) ? [t, ''] : ['', t];
 };
 
-export function convert(src, file = 'paper') {
+const MIME = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.gif': 'image/gif' };
+const embed = (baseDir, rel) => {
+  const f = resolve(baseDir, rel.trim());
+  const mime = MIME[extname(f).toLowerCase()];
+  if (!mime) throw new Error(`unsupported image type: ${rel}`);
+  return `data:${mime};base64,${readFileSync(f).toString('base64')}`;
+};
+
+export function convert(src, file = 'paper', baseDir = '.') {
   const meta = { duration_minutes: 150, positive_marks: 1, negative_marks: 0 };
   const sections = [];
   const passages = {};
@@ -33,7 +43,7 @@ export function convert(src, file = 'paper') {
     if (!line || line.startsWith('//')) return;
     let m;
     if ((m = line.match(/^@(\w+)\s+(.*)$/))) {
-      if (m[1] === 'key') key += m[2].replace(/[^A-Da-d]/g, '').toUpperCase();
+      if (m[1] === 'key') key += m[2].replace(/[^A-Ea-e]/g, '').toUpperCase();
       else if (m[1] === 'id') meta.exam_id = m[2];
       else if (m[1] === 'title') meta.title = m[2];
       else if (m[1] === 'duration') meta.duration_minutes = Number(m[2]);
@@ -51,14 +61,20 @@ export function convert(src, file = 'paper') {
     if ((m = line.match(/^(\d{1,3})\s+(.+?)(?:\s+@(\S+))?$/))) {
       if (!section) errors.push(`${at}: question before any section`);
       p = null;
-      q = { q_no: Number(m[1]), section, topic: m[2].trim(), passage_id: m[3] || null, hi: [], en: [], options: [], sol: [], kc: '' };
+      q = { q_no: Number(m[1]), section, topic: m[2].trim(), passage_id: m[3] || null, hi: [], en: [], options: [], sol: [], kc: '', img: null };
       qs.push(q);
       return;
     }
     if (!q) { errors.push(`${at}: unexpected line "${line.slice(0, 40)}"`); return; }
     if (line.startsWith('? ')) q.hi.push(line.slice(2));
     else if (line.startsWith('! ')) q.en.push(line.slice(2));
-    else if (line.startsWith('- ')) q.options.push(line.slice(2).trim());
+    else if (line.startsWith('-* ')) {
+      const [path, ...rest] = line.slice(3).split('|');
+      try { q.options.push({ text: rest.join('|').trim(), img: embed(baseDir, path) }); } catch (e) { errors.push(`${at}: ${e.message}`); }
+    } else if (line.startsWith('- ')) q.options.push({ text: line.slice(2).trim(), img: null });
+    else if (line.startsWith('* ')) {
+      try { q.img = embed(baseDir, line.slice(2)); } catch (e) { errors.push(`${at}: ${e.message}`); }
+    }
     else if (line.startsWith('= ')) q.sol.push(line.slice(2));
     else if (line.startsWith('~ ')) q.kc = line.slice(2);
     else errors.push(`${at}: unknown line "${line.slice(0, 40)}"`);
@@ -67,10 +83,11 @@ export function convert(src, file = 'paper') {
   if (!meta.exam_id || !meta.title) errors.push(`${file}: @id and @title are required`);
   qs.forEach((x, idx) => {
     if (x.q_no !== idx + 1) errors.push(`${file}: expected Q${idx + 1}, found Q${x.q_no}`);
-    if (x.options.length !== 4) errors.push(`${file}: Q${x.q_no} has ${x.options.length} options`);
+    if (x.options.length < 4 || x.options.length > 5) errors.push(`${file}: Q${x.q_no} has ${x.options.length} options`);
     if (!x.hi.length && !x.en.length) errors.push(`${file}: Q${x.q_no} has no question text`);
     if (x.passage_id && !passages[x.passage_id]) errors.push(`${file}: Q${x.q_no} unknown passage ${x.passage_id}`);
   });
+  qs.forEach((x, i) => { if (key[i] && 'ABCDE'.indexOf(key[i]) >= x.options.length) errors.push(`${file}: Q${x.q_no} key ${key[i]} but only ${x.options.length} options`); });
   if (key.length !== qs.length) errors.push(`${file}: answer key has ${key.length} letters for ${qs.length} questions`);
   if (errors.length) throw new Error(errors.join('\n'));
 
@@ -83,8 +100,8 @@ export function convert(src, file = 'paper') {
     passage_id: x.passage_id,
     question_hi: x.hi.join('<br>'),
     question_en: x.en.join('<br>'),
-    question_media: { image_base64: null, table_html: null },
-    options: x.options.map((o, k) => { const [hi, en] = splitOpt(o); return { id: 'ABCD'[k], text_hi: hi, text_en: en, image_base64: null }; }),
+    question_media: { image_base64: x.img, table_html: null },
+    options: x.options.map((o, k) => { const [hi, en] = splitOpt(o.text); return { id: 'ABCDE'[k], text_hi: hi, text_en: en, image_base64: o.img }; }),
     correct_option: key[i],
     solution_hi: x.sol.join('<br>'),
     solution_en: '',
@@ -103,7 +120,7 @@ export function convert(src, file = 'paper') {
 
 if (process.argv[2]) {
   const [, , input, outDir = 'dist/papers/'] = process.argv;
-  const data = convert(readFileSync(input, 'utf8'), basename(input));
+  const data = convert(readFileSync(input, 'utf8'), basename(input), dirname(input));
   mkdirSync(outDir, { recursive: true });
   const out = join(outDir, `${data.exam_meta.exam_id}.json`);
   writeFileSync(out, `${JSON.stringify(data, null, 1)}\n`);
