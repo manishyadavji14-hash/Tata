@@ -1,0 +1,17 @@
+{
+  "name": "Abhyas CBT — मॉक टेस्ट",
+  "short_name": "Abhyas CBT",
+  "description": "PDF/JSON प्रश्न-पत्र से Testbook जैसा ऑफ़लाइन मॉक टेस्ट, सॉल्यूशन और वीकनेस एनालिसिस",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#1b5ef5",
+  "lang": "hi",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "abhyas-cbt",
+  "version": "1.0.0",
+  "description": "Offline-first CBT practice app: PDF/JSON to Testbook-style mock tests",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.cjs -i styles/tailwind.css -o web/css/app.css --minify",
+    "build:icons": "node tools/make-icons.mjs",
+    "build": "npm run build:css && node tools/build-precache.mjs",
+    "check": "node tools/check.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "katex": "^0.16.22",
+    "pdfjs-dist": "^4.10.38",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^3.4.17"
+  },
+  "private": true
+}

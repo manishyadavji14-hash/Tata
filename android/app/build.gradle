@@ -1,0 +1,47 @@
+plugins { id 'com.android.application' }
+
+// The web app (../../web) is packaged as-is into the APK assets.
+def webDir = file('../../web')
+
+android {
+    namespace 'com.abhyas.cbt'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.abhyas.cbt'
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    signingConfigs {
+        // A fixed keystore is committed so every build (any machine) can update an installed APK.
+        // It is NOT a secret: this app is side-loaded, not published to Play Store.
+        shared {
+            storeFile file('../keystore/abhyas-shared.jks')
+            storePassword 'abhyas-cbt'
+            keyAlias 'abhyas'
+            keyPassword 'abhyas-cbt'
+        }
+    }
+
+    buildTypes {
+        debug { signingConfig signingConfigs.shared }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.shared
+        }
+    }
+
+    sourceSets {
+        main { assets.srcDirs = [webDir] }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint { abortOnError false }
+}
