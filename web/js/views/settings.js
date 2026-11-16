@@ -1,5 +1,5 @@
 import { db, saveSettings, exportAll, importAll } from '../db.js';
-import { PROVIDERS, testConnection } from '../ai.js';
+import { PROVIDERS, testConnection, listModels, detectProvider, baseUrlProblem, modelProblem } from '../ai.js';
 import { applyTheme, seedDemo, APP_VERSION } from '../app.js';
 import { toast, confirmDialog, icon } from '../ui.js';
 import { esc, downloadText, readFile } from '../util.js';
@@ -12,23 +12,37 @@ export async function render({ root, settings: s, setHeader }) {
   root.innerHTML = `
     <form class="card mb-3 space-y-3" data-ai autocomplete="off">
       <div class="flex items-center gap-2 font-bold">${icon.spark('h-5 w-5 text-violet-600')} AI / API सेटिंग</div>
+      <div class="rounded-xl bg-brand-50 p-3 text-xs leading-relaxed text-brand-900 dark:bg-brand-950/40 dark:text-brand-200">
+        <b>सबसे आसान:</b> सिर्फ़ API Key पेस्ट करें → <b>Models लाएँ</b> → सूची से मॉडल चुनें → <b>Save</b>। Provider और Base URL Key देखकर अपने-आप भर जाते हैं।<br>
+        मुफ़्त Key: <b>aistudio.google.com</b> → "Get API key" (Google Gemini, <code>AIza…</code> से शुरू)।<br>
+        ⚠️ Kiro की API Key इस ऐप में नहीं चलती (वह सिर्फ़ Kiro CLI के लिए है)।
+      </div>
+      <div><label class="label">API Key</label>
+        <div class="flex gap-2"><input class="input font-mono text-sm" name="apiKey" type="password" value="${esc(s.apiKey)}" spellcheck="false" autocapitalize="off" placeholder="AIza… / sk-… / sk-ant-… / sk-or-…">
+        <button type="button" class="btn-outline !px-3" data-act="show">👁</button></div>
+        <div class="mt-1 text-[11px] text-slate-500" data-keyinfo>Key सिर्फ़ इसी डिवाइस के IndexedDB में रहती है, बैकअप फ़ाइल में शामिल नहीं होती।</div></div>
       <div><label class="label">Provider / API प्रकार</label>
         <select class="input" name="provider">${Object.entries(PROVIDERS).map(([k, p]) => `<option value="${k}" ${s.provider === k ? 'selected' : ''}>${esc(p.label)}</option>`).join('')}</select></div>
-      <div><label class="label">API Base URL</label><input class="input font-mono text-sm" name="apiBase" value="${esc(s.apiBase)}" inputmode="url" spellcheck="false"></div>
-      <div><label class="label">API Key</label>
-        <div class="flex gap-2"><input class="input font-mono text-sm" name="apiKey" type="password" value="${esc(s.apiKey)}" spellcheck="false" placeholder="sk-… / AIza… / sk-ant-…">
-        <button type="button" class="btn-outline !px-3" data-act="show">👁</button></div>
-        <div class="mt-1 text-[11px] text-slate-500">Key सिर्फ़ इसी डिवाइस के IndexedDB में रहती है, बैकअप फ़ाइल में शामिल नहीं होती।</div></div>
+      <div><label class="label">API Base URL <span class="normal-case text-slate-400">(खाली छोड़ें = अपने-आप)</span></label>
+        <input class="input font-mono text-sm" name="apiBase" value="${esc(s.apiBase)}" inputmode="url" spellcheck="false" autocapitalize="off" placeholder="${esc(PROVIDERS[s.provider]?.base || '')}">
+        <div class="mt-1 text-[11px] text-rose-600" data-basewarn></div></div>
+      <div><label class="label">Model</label>
+        <div class="flex gap-2">
+          <input class="input font-mono text-sm" name="model" value="${esc(s.model)}" spellcheck="false" autocapitalize="off" list="model-list" placeholder="Models लाएँ दबाएँ">
+          <button type="button" class="btn-outline shrink-0 !px-3 text-xs" data-act="models">📋 Models लाएँ</button>
+        </div>
+        <datalist id="model-list"></datalist>
+        <select class="input mt-2 hidden text-sm" data-modelpick></select>
+        <div class="mt-1 text-[11px] text-rose-600" data-modelwarn></div></div>
       <div class="grid grid-cols-3 gap-2">
-        <div class="col-span-2"><label class="label">Model Name</label><input class="input font-mono text-sm" name="model" value="${esc(s.model)}" spellcheck="false"></div>
         <div><label class="label">Temperature</label><input class="input" name="temperature" type="number" min="0" max="1.5" step="0.1" value="${s.temperature}"></div>
+        <div class="col-span-2 self-end text-[11px] text-slate-500">PDF के लिए विज़न मॉडल चुनें (नाम में flash, pro, gpt-4o/4.1/5, claude-sonnet/opus आदि)।</div>
       </div>
-      <div class="text-[11px] text-slate-500">उदाहरण: OpenAI <code>https://api.openai.com/v1</code> + <code>gpt-4o-mini</code> • OpenRouter <code>https://openrouter.ai/api/v1</code> • Gemini <code>gemini-2.5-flash</code> • Claude <code>claude-sonnet-4-5</code> • कोई भी OpenAI-संगत एंडपॉइंट (Kiro/लोकल) — "OpenAI-compatible" चुनें।</div>
       <div class="grid grid-cols-2 gap-2">
         <button type="button" class="btn-outline" data-act="test">🔌 Test Connection</button>
         <button class="btn-primary" type="submit">Save</button>
       </div>
-      <div data-test class="hidden rounded-lg p-2 text-xs"></div>
+      <div data-test class="hidden whitespace-pre-line rounded-lg p-2 text-xs"></div>
     </form>
 
     <div class="card mb-3 space-y-3">
@@ -74,21 +88,51 @@ export async function render({ root, settings: s, setHeader }) {
     model: f('model').value.trim(),
     temperature: Math.min(1.5, Math.max(0, Number(f('temperature').value) || 0)),
   });
+  const knownBases = () => Object.values(PROVIDERS).map((x) => x.base).concat(['https://openrouter.ai/api/v1', 'https://api.groq.com/openai/v1', 'https://api.x.ai/v1']);
+
+  const validate = () => {
+    root.querySelector('[data-basewarn]').textContent = baseUrlProblem(f('apiBase').value);
+    const m = f('model').value.trim();
+    root.querySelector('[data-modelwarn]').textContent = m ? modelProblem(m) : '';
+  };
+
+  const onKey = () => {
+    const det = detectProvider(f('apiKey').value);
+    const info = root.querySelector('[data-keyinfo]');
+    if (!det) { info.textContent = f('apiKey').value.trim() ? 'Key का प्रकार नहीं पहचाना — Provider और Base URL खुद चुनें।' : 'Key सिर्फ़ इसी डिवाइस के IndexedDB में रहती है, बैकअप फ़ाइल में शामिल नहीं होती।'; return; }
+    info.innerHTML = `✓ पहचानी गई: <b>${esc(det.name)}</b> — Provider और Base URL भर दिए गए। अब <b>Models लाएँ</b> दबाएँ।`;
+    const changed = f('provider').value !== det.provider;
+    f('provider').value = det.provider;
+    const base = f('apiBase').value.trim();
+    if (!base || knownBases().includes(base) || baseUrlProblem(base)) f('apiBase').value = det.apiBase;
+    if (changed) f('model').value = PROVIDERS[det.provider].model || '';
+    validate();
+  };
+  f('apiKey').addEventListener('input', onKey);
+  f('apiBase').addEventListener('input', validate);
+  f('model').addEventListener('input', validate);
+  validate();
 
   f('provider').onchange = () => {
     const p = PROVIDERS[f('provider').value];
-    const known = Object.values(PROVIDERS).map((x) => x.base);
-    if (!f('apiBase').value || known.includes(f('apiBase').value.trim())) f('apiBase').value = p.base;
-    if (!f('model').value || Object.values(PROVIDERS).some((x) => x.model === f('model').value.trim())) f('model').value = p.model;
+    const base = f('apiBase').value.trim();
+    if (!base || knownBases().includes(base) || baseUrlProblem(base)) f('apiBase').value = p.base;
+    f('apiBase').placeholder = p.base;
+    f('model').value = p.model || '';
+    validate();
   };
+
+  const pick = root.querySelector('[data-modelpick]');
+  pick.onchange = () => { if (pick.value) { f('model').value = pick.value; validate(); } };
 
   form.onsubmit = async (e) => {
     e.preventDefault();
     const v = readAi();
-    if (v.apiBase && !/^https?:\/\//i.test(v.apiBase)) { toast('Base URL http:// या https:// से शुरू होना चाहिए', 'error'); return; }
+    const problem = baseUrlProblem(v.apiBase) || (v.apiKey ? modelProblem(v.model) : '');
+    if (problem) { toast(problem, 'error', 6000); return; }
     await saveSettings(v);
     Object.assign(s, v);
-    toast('API सेटिंग सेव हुई ✓', 'success');
+    toast('API सेटिंग सेव हुई ✓ — एक बार Test Connection ज़रूर दबाएँ', 'success');
   };
 
   root.addEventListener('click', async (e) => {
@@ -108,16 +152,44 @@ export async function render({ root, settings: s, setHeader }) {
     }
     const act = e.target.closest('[data-act]')?.dataset.act;
     if (act === 'show') { const k = f('apiKey'); k.type = k.type === 'password' ? 'text' : 'password'; }
+    if (act === 'models') {
+      const btn = e.target.closest('[data-act]');
+      btn.disabled = true;
+      btn.textContent = '…';
+      try {
+        const { ids, cfg } = await listModels(readAi());
+        if (!f('apiBase').value.trim()) f('apiBase').value = cfg.apiBase;
+        if (!ids.length) throw new Error('इस Key से कोई chat मॉडल नहीं मिला');
+        root.querySelector('#model-list').innerHTML = ids.map((id) => `<option value="${esc(id)}"></option>`).join('');
+        const cur = f('model').value.trim();
+        pick.innerHTML = `<option value="">— ${ids.length} मॉडल मिले, एक चुनें —</option>${ids.map((id) => `<option value="${esc(id)}" ${id === cur ? 'selected' : ''}>${esc(id)}</option>`).join('')}`;
+        pick.classList.remove('hidden');
+        if (!cur || !ids.includes(cur)) {
+          const pref = ids.find((id) => /flash$|flash-\d|^gpt-4\.1-mini|^gpt-4o-mini|sonnet|gpt-5-mini/i.test(id) && !/lite|preview|exp/i.test(id)) || ids[0];
+          f('model').value = pref;
+          pick.value = pref;
+        }
+        validate();
+        toast(`✓ Key सही है — ${ids.length} मॉडल मिले। मॉडल चुनकर Save करें।`, 'success', 4000);
+      } catch (err) {
+        const box = root.querySelector('[data-test]');
+        box.className = 'whitespace-pre-line rounded-lg bg-rose-100 p-2 text-xs text-rose-800 dark:bg-rose-900/40 dark:text-rose-200';
+        box.textContent = `✗ ${err.message}`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '📋 Models लाएँ';
+      }
+    }
     if (act === 'test') {
       const box = root.querySelector('[data-test]');
-      box.className = 'rounded-lg bg-slate-100 p-2 text-xs dark:bg-slate-800';
+      box.className = 'whitespace-pre-line rounded-lg bg-slate-100 p-2 text-xs dark:bg-slate-800';
       box.textContent = 'जाँच रहे हैं… / Testing…';
       try {
         const reply = await testConnection(readAi());
-        box.className = 'rounded-lg bg-emerald-100 p-2 text-xs text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200';
+        box.className = 'whitespace-pre-line rounded-lg bg-emerald-100 p-2 text-xs text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200';
         box.textContent = `✓ कनेक्शन सफल! मॉडल का जवाब: "${reply.slice(0, 80)}" — Save दबाना न भूलें।`;
       } catch (err) {
-        box.className = 'rounded-lg bg-rose-100 p-2 text-xs text-rose-800 dark:bg-rose-900/40 dark:text-rose-200';
+        box.className = 'whitespace-pre-line rounded-lg bg-rose-100 p-2 text-xs text-rose-800 dark:bg-rose-900/40 dark:text-rose-200';
         box.textContent = `✗ ${err.message}`;
       }
     }

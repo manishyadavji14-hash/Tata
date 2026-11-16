@@ -71,10 +71,10 @@ export const db = {
 export const DEFAULT_SETTINGS = {
   theme: 'system',            // system | light | dark
   lang: 'both',               // hi | en | both
-  provider: 'openai',         // openai | anthropic | gemini
-  apiBase: 'https://api.openai.com/v1',
+  provider: 'gemini',         // openai | anthropic | gemini
+  apiBase: '',                // empty = provider default
   apiKey: '',
-  model: 'gpt-4o-mini',
+  model: '',
   pdfMode: 'hybrid',          // hybrid | vision | text
   renderScale: 1.6,
   watermarks: '',             // extra watermark words, one per line

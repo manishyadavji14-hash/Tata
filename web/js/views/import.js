@@ -160,7 +160,7 @@ export async function render({ root, query, settings, navigate, setHeader }) {
               <option value="0" ${!settings.autoSolve ? 'selected' : ''}>नहीं</option>
             </select></div>
         </div>
-        <div class="text-[11px] text-slate-500">Hybrid/Vision मोड के लिए विज़न-सपोर्ट वाला मॉडल चाहिए (gpt-4o, gpt-4.1, Claude Sonnet, Gemini 2.5)। स्कैन की गई या Kruti Dev फ़ॉन्ट वाली PDF के लिए Vision/Hybrid चुनें। हर पेज = लगभग 1 API कॉल।</div>
+        <div class="text-[11px] text-slate-500">Hybrid/Vision मोड के लिए विज़न-सपोर्ट वाला मॉडल चाहिए (जैसे Gemini Flash, GPT-4.1/5, Claude Sonnet)। प्रोसेस शुरू होते ही AI कनेक्शन जाँचा जाता है; गड़बड़ हो तो ऑफ़लाइन पार्सर से प्रश्न निकलते हैं। स्कैन की गई या Kruti Dev फ़ॉन्ट वाली PDF के लिए Vision/Hybrid चुनें। हर पेज = लगभग 1 API कॉल।</div>
         <button class="btn-success w-full" data-act="start" disabled>▶ प्रोसेस शुरू करें / Start</button>
       </div>
       <div class="card hidden" data-progress>

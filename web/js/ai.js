@@ -4,11 +4,44 @@
 import { getSettings } from './db.js';
 import { sleep } from './util.js';
 
+// Default model IDs change often: the Settings screen can fetch the live list ("Models लाएँ").
 export const PROVIDERS = {
-  openai: { label: 'OpenAI-compatible (OpenAI, Kiro, OpenRouter, Groq, DeepSeek, Ollama…)', base: 'https://api.openai.com/v1', model: 'gpt-4o-mini' },
-  anthropic: { label: 'Anthropic Claude', base: 'https://api.anthropic.com/v1', model: 'claude-sonnet-4-5' },
-  gemini: { label: 'Google Gemini', base: 'https://generativelanguage.googleapis.com/v1beta', model: 'gemini-2.5-flash' },
+  openai: { label: 'OpenAI-compatible (OpenAI, OpenRouter, Groq, DeepSeek, Ollama…)', base: 'https://api.openai.com/v1', model: '' },
+  anthropic: { label: 'Anthropic Claude', base: 'https://api.anthropic.com/v1', model: '' },
+  gemini: { label: 'Google Gemini (AI Studio — फ़्री टियर उपलब्ध)', base: 'https://generativelanguage.googleapis.com/v1beta', model: 'gemini-3.8-flash' },
 };
+
+// Recognise the provider from the key itself so a user can paste only the key.
+const KEY_PATTERNS = [
+  [/^AIza[\w-]{30,}$/, { provider: 'gemini', apiBase: PROVIDERS.gemini.base, name: 'Google Gemini' }],
+  [/^sk-ant-/, { provider: 'anthropic', apiBase: PROVIDERS.anthropic.base, name: 'Anthropic Claude' }],
+  [/^sk-or-/, { provider: 'openai', apiBase: 'https://openrouter.ai/api/v1', name: 'OpenRouter' }],
+  [/^gsk_/, { provider: 'openai', apiBase: 'https://api.groq.com/openai/v1', name: 'Groq' }],
+  [/^xai-/, { provider: 'openai', apiBase: 'https://api.x.ai/v1', name: 'xAI Grok' }],
+  [/^sk-/, { provider: 'openai', apiBase: PROVIDERS.openai.base, name: 'OpenAI (या DeepSeek — Base URL बदलें)' }],
+];
+
+export function detectProvider(key) {
+  const k = String(key || '').trim();
+  for (const [re, info] of KEY_PATTERNS) if (re.test(k)) return info;
+  return null;
+}
+
+// Hosts that are known NOT to be usable as a chat API from this app.
+export function baseUrlProblem(base) {
+  const b = String(base || '').trim();
+  if (!b) return '';
+  if (!/^https?:\/\/[^/\s]+/i.test(b)) return 'Base URL http:// या https:// से शुरू होना चाहिए।';
+  if (/kiro\.dev/i.test(b)) return 'Kiro का कोई सार्वजनिक Chat API नहीं है — Kiro की API Key सिर्फ़ Kiro CLI के लिए होती है, इस ऐप में काम नहीं करेगी। Gemini/OpenAI/Claude/OpenRouter की Key इस्तेमाल करें।';
+  return '';
+}
+
+export function modelProblem(model) {
+  const m = String(model || '').trim();
+  if (!m) return 'Model Name खाली है — "Models लाएँ" बटन से चुनें।';
+  if (/\s/.test(m)) return `Model Name में स्पेस नहीं होता ("${m}" गलत है)। सही ID जैसे gemini-3.8-flash — "Models लाएँ" बटन से चुनें।`;
+  return '';
+}
 
 // ---------- Transport ----------
 let nativeSeq = 0;
@@ -49,9 +82,28 @@ async function httpRequest(url, opts) {
     res = await fetch(url, { method: opts.method, headers: opts.headers, body: opts.body, signal: opts.signal });
   } catch (e) {
     if (e.name === 'AbortError') throw e;
-    throw new Error(`नेटवर्क त्रुटि / Network error: ${e.message}. इंटरनेट, Base URL या CORS जाँचें (Android APK में CORS की समस्या नहीं होती).`);
+    throw fatal(`नेटवर्क त्रुटि / Network error: ${e.message}. इंटरनेट, Base URL या CORS जाँचें (Android APK में CORS की समस्या नहीं होती).`);
   }
   return { status: res.status, text: await res.text() };
+}
+
+// A "fatal" error means every further request will fail the same way (wrong URL, key, model,
+// no internet). Long jobs such as PDF import stop immediately instead of repeating it per page.
+function fatal(message) { return Object.assign(new Error(message), { fatal: true }); }
+
+function explainNetwork(msg) {
+  if (/resolve host|ENOTFOUND|UnknownHost|No address associated/i.test(msg)) {
+    return fatal(`${msg}\n➜ यह Base URL इंटरनेट पर मौजूद ही नहीं है (host नहीं मिला)। Base URL गलत है — Settings में सही Provider चुनें या Base URL खाली छोड़ दें।`);
+  }
+  if (/timeout|timed out/i.test(msg)) return new Error(`${msg}\n➜ सर्वर ने समय पर जवाब नहीं दिया। इंटरनेट जाँचें या Render Scale घटाएँ।`);
+  return fatal(`${msg}\n➜ इंटरनेट कनेक्शन या Base URL जाँचें।`);
+}
+
+async function request(url, opts) {
+  try { return await httpRequest(url, opts); } catch (e) {
+    if (e.name === 'AbortError' || e.fatal) throw e;
+    throw explainNetwork(e.message);
+  }
 }
 
 // ---------- Request builders ----------
@@ -145,13 +197,52 @@ function errorMessage(status, text) {
   return `API ${status}${hint ? ` (${hint})` : ''}: ${detail}`;
 }
 
+// Fill gaps: empty Base URL → provider default; provider guessed from the key if it clearly belongs elsewhere.
+export function resolveConfig(cfg) {
+  const c = { ...cfg, apiKey: String(cfg.apiKey || '').trim(), model: String(cfg.model || '').trim() };
+  const det = detectProvider(c.apiKey);
+  if (det && (det.provider === 'gemini' || det.provider === 'anthropic') && c.provider !== det.provider) {
+    c.provider = det.provider;
+    if (!c.apiBase || Object.values(PROVIDERS).some((p) => p.base === c.apiBase)) c.apiBase = det.apiBase;
+  }
+  if (!String(c.apiBase || '').trim()) c.apiBase = det?.apiBase || PROVIDERS[c.provider]?.base || PROVIDERS.openai.base;
+  if (!c.model && c.provider === 'gemini') c.model = PROVIDERS.gemini.model;
+  return c;
+}
+
 export async function aiConfig() {
   const s = await getSettings();
-  return { provider: s.provider, apiBase: s.apiBase, apiKey: s.apiKey, model: s.model, temperature: Number(s.temperature) || 0.2 };
+  return resolveConfig({ provider: s.provider, apiBase: s.apiBase, apiKey: s.apiKey, model: s.model, temperature: Number(s.temperature) || 0.2 });
 }
 
 export function isConfigured(cfg) {
-  return !!(cfg && cfg.apiKey && cfg.apiBase && cfg.model);
+  return !!(cfg && cfg.apiKey && cfg.model);
+}
+
+function authHeaders(cfg) {
+  if (cfg.provider === 'anthropic') return { 'x-api-key': cfg.apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' };
+  if (cfg.provider === 'gemini') return { 'x-goog-api-key': cfg.apiKey };
+  return { Authorization: `Bearer ${cfg.apiKey}` };
+}
+
+// Lists model IDs the key can use (so the user never has to type a model name).
+export async function listModels(cfgIn) {
+  const cfg = resolveConfig(cfgIn);
+  if (!cfg.apiKey) throw new Error('पहले API Key डालें');
+  const p = baseUrlProblem(cfg.apiBase);
+  if (p) throw fatal(p);
+  const url = cfg.provider === 'gemini' ? `${trimSlash(cfg.apiBase)}/models?pageSize=1000` : `${trimSlash(cfg.apiBase)}/models`;
+  const res = await request(url, { method: 'GET', headers: authHeaders(cfg) });
+  if (res.status < 200 || res.status >= 300) throw fatal(errorMessage(res.status, res.text));
+  let d;
+  try { d = JSON.parse(res.text); } catch { throw fatal(`यह Base URL कोई AI API नहीं लगता (JSON नहीं मिला): ${res.text.slice(0, 120)}`); }
+  let ids;
+  if (cfg.provider === 'gemini') {
+    ids = (d.models || []).filter((m) => (m.supportedGenerationMethods || []).includes('generateContent')).map((m) => m.name.replace(/^models\//, ''));
+  } else ids = (d.data || d.models || []).map((m) => m.id || m.name).filter(Boolean);
+  // Hide models that cannot chat (embeddings, speech, image generation).
+  ids = ids.filter((id) => !/embed|tts|whisper|audio|transcribe|dall-e|image-|imagen|moderation|live|veo|omni|banana|aqa|rerank/i.test(id));
+  return { ids: [...new Set(ids)].sort(), cfg };
 }
 
 /**
@@ -159,19 +250,30 @@ export function isConfigured(cfg) {
  * Returns { text, truncated }.
  */
 export async function chat(req, cfgOverride) {
-  const cfg = cfgOverride || (await aiConfig());
-  if (!isConfigured(cfg)) throw new Error('पहले Settings में API Key, Base URL और Model सेव करें / Configure the API in Settings first.');
+  const cfg = resolveConfig(cfgOverride || (await aiConfig()));
+  if (!cfg.apiKey) throw fatal('पहले Settings में API Key सेव करें / Configure the API in Settings first.');
+  const problem = baseUrlProblem(cfg.apiBase) || modelProblem(cfg.model);
+  if (problem) throw fatal(problem);
   const build = BUILDERS[cfg.provider] || buildOpenAI;
   const spec = build(cfg, { temperature: req.temperature ?? cfg.temperature, ...req });
   let lastErr;
   for (let attempt = 0; attempt < 5; attempt++) {
-    const res = await httpRequest(spec.url, { method: 'POST', headers: spec.headers, body: JSON.stringify(spec.body), signal: req.signal });
+    const res = await request(spec.url, { method: 'POST', headers: spec.headers, body: JSON.stringify(spec.body), signal: req.signal });
     if (res.status >= 200 && res.status < 300) {
       let data;
-      try { data = JSON.parse(res.text); } catch { throw new Error(`API ने JSON नहीं लौटाया / Non-JSON response: ${res.text.slice(0, 200)}`); }
-      return spec.parse(data);
+      try { data = JSON.parse(res.text); } catch { throw fatal(`API ने JSON नहीं लौटाया — Base URL किसी AI API का नहीं लगता। जवाब: ${res.text.slice(0, 160)}`); }
+      const out = spec.parse(data);
+      if (!out.text.trim()) {
+        const reason = data?.candidates?.[0]?.finishReason || data?.choices?.[0]?.finish_reason || data?.stop_reason || data?.promptFeedback?.blockReason || '';
+        if (/MAX_TOKENS|length|max_tokens/i.test(reason) && spec.body) {
+          // Reasoning models can spend the whole budget "thinking"; retry once with a larger budget.
+          if (!spec.__grown) { spec.__grown = true; growTokens(spec.body); continue; }
+        }
+        throw fatal(`API ने खाली जवाब दिया${reason ? ` (कारण: ${reason})` : ''}। Model Name / Base URL जाँचें। सर्वर का जवाब: ${res.text.slice(0, 160)}`);
+      }
+      return out;
     }
-    lastErr = Object.assign(new Error(errorMessage(res.status, res.text)), { status: res.status });
+    lastErr = Object.assign(new Error(errorMessage(res.status, res.text)), { status: res.status, fatal: [400, 401, 403, 404].includes(res.status) });
     if (res.status === 400 && adaptOpenAIBody(spec.body, res.text)) continue; // parameter not supported → retry adapted
     if (!(res.status === 429 || res.status >= 500)) throw lastErr;
     await sleep(res.status === 429 ? 4000 * (attempt + 1) : 1500 * (attempt + 1));
@@ -179,7 +281,14 @@ export async function chat(req, cfgOverride) {
   throw lastErr;
 }
 
+function growTokens(body) {
+  if (body.max_tokens) body.max_tokens = Math.max(body.max_tokens * 4, 4096);
+  if (body.max_completion_tokens) body.max_completion_tokens = Math.max(body.max_completion_tokens * 4, 4096);
+  if (body.generationConfig?.maxOutputTokens) body.generationConfig.maxOutputTokens = Math.max(body.generationConfig.maxOutputTokens * 4, 4096);
+}
+
 export async function testConnection(cfg) {
-  const r = await chat({ messages: [{ role: 'user', text: 'Reply with exactly: OK' }], maxTokens: 20 }, cfg);
+  // No small token limit here: "thinking" models would spend it all and return an empty reply.
+  const r = await chat({ messages: [{ role: 'user', text: 'Reply with exactly: OK' }] }, cfg);
   return r.text.trim();
 }

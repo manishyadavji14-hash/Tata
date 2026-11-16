@@ -58,11 +58,13 @@ function itemsToLines(items) {
     let text = '';
     let lastEnd = null;
     for (const it of l.items) {
-      if (lastEnd !== null && it.x - lastEnd > it.h * 0.22 && !text.endsWith(' ')) text += ' ';
+      const gap = lastEnd === null ? 0 : it.x - lastEnd;
+      if (gap > it.h * 2.5) text = `${text.trimEnd()}\u2003`; // wide gap: separate cells of an option grid
+      else if (gap > it.h * 0.22 && !/\s$/.test(text)) text += ' ';
       text += it.str;
       lastEnd = it.x + it.w;
     }
-    return { y: l.y, x: l.items[0].x, text: text.replace(/\s+/g, ' ').trim() };
+    return { y: l.y, x: l.items[0].x, text: text.replace(/[ \t\r\n\f\v\u00a0]+/g, ' ').trim() };
   }).filter((l) => l.text);
 }
 
@@ -128,7 +130,7 @@ async function extractPage(page, userMarks) {
     texts = texts.map((t) => {
       let s = t;
       for (const w of userMarks) s = s.split(w).join(' ');
-      return s.replace(/\s+/g, ' ').trim();
+      return s.replace(/[ \t]+/g, ' ').trim();
     }).filter(Boolean);
   }
   return { lines: texts, gutterFrac: gutter ? gutter / vp.width : null, rotated, width: vp.width, height: vp.height, chars: texts.join('').length };
@@ -296,85 +298,195 @@ function attachFigure(store, fig, dataUrl) {
 // ---------------------------------------------------------------------------
 // Offline heuristic parser (no AI)
 // ---------------------------------------------------------------------------
+// Section headings, in Unicode and in the legacy Kruti Dev encoding many coaching PDFs use for headings
+// (e.g. "i;kZoj.k ,oa lkkekftd v/;;u" = पर्यावरण एवं सामाजिक अध्ययन).
 const SECTION_ALIASES = [
-  ['HINDI', /^(?:भाग\s*[-–:]?\s*\S+\s*)?(?:hindi|हिन्दी|हिंदी)(?:\s*भाषा)?\s*$/i],
-  ['ENGLISH', /^(?:english|अंग्रेजी|अंग्रेज़ी)(?:\s*language)?\s*$/i],
-  ['SANSKRIT', /^(?:sanskrit|संस्कृत)\s*$/i],
-  ['SCIENCE', /^(?:science|विज्ञान)\s*$/i],
-  ['MATHS', /^(?:maths?|mathematics|गणित)\s*$/i],
-  ['पर्यावरण एवं सामाजिक अध्ययन', /^(?:evs|पर्यावरण|पर्यावरण\s*(?:एवं|व|और)\s*सामाजिक\s*अध्ययन|सामाजिक\s*अध्ययन|social\s*studies)\s*$/i],
-  ['बाल विकास (CDP)', /^(?:cdp|बाल\s*विकास.*|child\s*development.*|शिक्षाशास्त्र.*)$/i],
-  ['सामान्य ज्ञान एवं समसायिक घटनाएं', /^(?:gk|general\s*knowledge|सामान्य\s*ज्ञान.*|समसामयिक.*)$/i],
-  ['REASONING', /^(?:reasoning|तर्कशक्ति|तार्किक\s*क्षमता|रीजनिंग)\s*$/i],
-  ['सूचना तकनीक', /^(?:सूचना\s*(?:तकनीक|प्रौद्योगिकी)|information\s*technology|computer|कम्प्यूटर|कंप्यूटर)\s*$/i],
+  ['HINDI', /^(?:भाग\s*[-–:]?\s*\S+\s*)?(?:hindi|हिन्दी|हिंदी|fgUnh)(?:\s*(?:भाषा|language))?$/i],
+  ['ENGLISH', /^(?:english|अंग्रेजी|अंग्रेज़ी|vaxzsth)(?:\s*language)?$/i],
+  ['SANSKRIT', /^(?:sanskrit|संस्कृत|laLd`r)$/i],
+  ['SCIENCE', /^(?:science|विज्ञान|foKku)$/i],
+  ['MATHS', /^(?:maths?|mathematics|गणित|xf.kr)$/i],
+  ['पर्यावरण एवं सामाजिक अध्ययन', /^(?:evs|पर्यावरण.*|सामाजिक\s*अध्ययन|social\s*studies|i;kZoj\.k.*)$/i],
+  ['बाल विकास (CDP)', /^(?:cdp|बाल\s*विकास.*|child\s*development.*|शिक्षाशास्त्र.*|ckky\s*fodkl.*|\S+\s*\S*\s*\(cdp\))$/i],
+  ['सामान्य ज्ञान एवं समसायिक घटनाएं', /^(?:gk|general\s*(?:knowledge|awareness|studies).*|सामान्य\s*ज्ञान.*|समसामयिक.*|lkekU;\s*Kku.*)$/i],
+  ['REASONING', /^(?:reasoning.*|तर्कशक्ति.*|तर्क\s*शक्ति.*|तार्किक\s*क्षमता|रीजनिंग)$/i],
+  ['सूचना तकनीक', /^(?:सूचना\s*(?:तकनीक|प्रौद्योगिकी).*|information\s*technology|computer|कम्प्यूटर|कंप्यूटर|lwpuk\s*rduhd.*)$/i],
 ];
 
 function detectSection(line) {
   const t = line.replace(/[*_:–\-|]+/g, ' ').replace(/\s+/g, ' ').trim();
-  if (t.length > 50) return null;
+  if (t.length > 45 || /^\d/.test(t)) return null;
   for (const [name, re] of SECTION_ALIASES) if (re.test(t)) return name;
   return null;
 }
 
-const OPT_SPLIT = /\(\s*([A-Da-d]|[1-4]|[अबसद])\s*\)/g;
+// Option markers: (A) (a) (1) (अ)  — or —  A. a. A) a)  (the bare forms need a space before them).
+const OPT_MARK = /\(\s*([A-Ea-e]|[1-5]|[अबसद])\s*\)|(?<=^|\s)([A-Ea-e])[.)](?=\s)/g;
+const DEV = /[\u0900-\u097F]/;
+const GAP = '\u2003'; // inserted by itemsToLines for wide horizontal gaps (two-column option grids)
 
 function splitBilingual(text) {
-  const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
-  const dev = /[\u0900-\u097F]/;
-  const hi = lines.filter((l) => dev.test(l)), en = lines.filter((l) => !dev.test(l) && /[a-z]{3,}/i.test(l));
-  if (hi.length && en.length && en.join(' ').split(/\s+/).length >= 4) return { hi: hi.join(' '), en: en.join(' ') };
+  const lines = text.split('\n').map((l) => l.replaceAll(GAP, ' ').replace(/\s+/g, ' ').trim()).filter(Boolean);
+  const hi = lines.filter((l) => DEV.test(l));
+  const en = lines.filter((l) => !DEV.test(l) && /[a-z]{3,}/i.test(l));
+  if (hi.length && en.length && en.join(' ').split(/\s+/).length >= 4) return { hi: hi.join(' '), en: lines.filter((l) => !hi.includes(l)).join(' ') };
   const all = lines.join(' ');
-  return dev.test(all) ? { hi: all, en: '' } : { hi: '', en: all };
+  return DEV.test(all) ? { hi: all, en: '' } : { hi: '', en: all };
+}
+
+// "भूमध्य रेखा पर / At the equator" → { hi, en }
+function splitOption(t) {
+  const s = t.replaceAll(GAP, ' ').replace(/\s+/g, ' ').trim();
+  const m = s.match(/^(.*\S)\s+\/\s+(.*)$/);
+  if (m && DEV.test(m[1]) !== DEV.test(m[2])) return DEV.test(m[1]) ? { hi: m[1], en: m[2] } : { hi: m[2], en: m[1] };
+  return DEV.test(s) ? { hi: s, en: '' } : { hi: '', en: s };
+}
+
+const opt = (id, t) => { const l = splitOption(t); return { id, text_hi: l.hi, text_en: l.en, image_base64: null }; };
+
+// Turns one question's raw text into { stem, options[] }.
+export function splitQuestion(raw) {
+  const MD = '[\\u{1D7CE}-\\u{1D7FF}]'; // "mathematical bold" digits used by Word equations
+  const body = raw
+    .replace(/[АВСЕ]/g, (c) => ({ А: 'A', В: 'B', С: 'C', Е: 'E' }[c])) // Cyrillic look-alikes
+    .replace(new RegExp(`(\\d+)\\s+(${MD}+)\\s+(${MD}+)`, 'gu'), '$1 $2/$3') // mixed fraction "49 𝟏 𝟏𝟏" → "49 1/11"
+    .replace(new RegExp(`(${MD}+)\\s*\\n\\s*(${MD}+)`, 'gu'), '$1/$2')
+    .replace(new RegExp(MD, 'gu'), (d) => String((d.codePointAt(0) - 0x1D7CE) % 10));
+  const marks = [...body.matchAll(OPT_MARK)].map((m) => ({ id: normalizeOptionId(m[1] || m[2], 5), start: m.index, end: m.index + m[0].length, paren: !!m[1] }));
+
+  // Error-spotting style: "text (a) / text (b) / text (c) / No error" — the option is the text BEFORE each marker.
+  if (/\(\s*a\s*\)\s*\//i.test(body)) {
+    const segs = body.split(/\(\s*[a-d]\s*\)\s*\/?/i).map((x) => x.replace(/^\s*\/\s*/, '').trim()).filter(Boolean);
+    if (segs.length >= 3) {
+      return { stem: 'Find the part of the sentence that has an error / वाक्य के जिस भाग में त्रुटि है उसे चुनें:\n' + segs.join(' / '), options: segs.slice(0, 4).map((s, i) => opt('ABCD'[i], s)) };
+    }
+  }
+
+  const pickRun = (from) => {
+    const used = new Set();
+    const run = [];
+    for (const m of marks.slice(from)) {
+      if (!m.id || used.has(m.id)) { if (m.id === 'A' && used.size >= 2) break; continue; }
+      used.add(m.id);
+      run.push(m);
+      if (used.size === 4 && !marks.some((x) => x.id === 'E' && x.start > m.start && x.start < (marks.find((y) => y.id === 'A' && y.start > m.start)?.start ?? Infinity))) break;
+      if (used.size === 5) break;
+    }
+    return run;
+  };
+  const firstA = marks.findIndex((m) => m.id === 'A');
+  if (firstA >= 0) {
+    const chosen = pickRun(firstA);
+    // Bilingual layout: Hindi stem, Hindi options, English stem, English options.
+    const last = chosen[chosen.length - 1];
+    const secondA = last ? marks.findIndex((m) => m.id === 'A' && m.start > last.start) : -1;
+    if (chosen.length >= 2 && secondA >= 0) {
+      const run2 = pickRun(secondA);
+      if (run2.length === chosen.length) {
+        const tail = body.slice(last.end, run2[0].start).split('\n');
+        const lastText = tail[0];
+        const enStem = tail.slice(1).join('\n');
+        const textOf = (run, i, end) => body.slice(run[i].end, i + 1 < run.length ? run[i + 1].start : end);
+        const opts = chosen.map((m, i) => {
+          const hi = splitOption(i === chosen.length - 1 ? lastText : textOf(chosen, i, last.end));
+          const en = splitOption(textOf(run2, i, body.length));
+          return { id: m.id, text_hi: hi.hi || hi.en, text_en: en.en || en.hi, image_base64: null };
+        }).sort((a, b) => a.id.localeCompare(b.id));
+        return { stem: `${body.slice(0, chosen[0].start)}\n${enStem}`, options: opts };
+      }
+    }
+    if (chosen.length >= 2) {
+      let options = chosen.map((m, i) => opt(m.id, body.slice(m.end, i + 1 < chosen.length ? chosen[i + 1].start : body.length)));
+      // 2×2 grid where only the left labels survived: "a. X <gap> Y / b. Z <gap> W" → A=X B=Z C=Y D=W
+      if (options.length === 2) {
+        const parts = chosen.map((m, i) => body.slice(m.end, i + 1 < chosen.length ? chosen[i + 1].start : body.length).trim().split(GAP).map((x) => x.trim()).filter(Boolean));
+        if (parts.every((p) => p.length === 2)) options = [opt('A', parts[0][0]), opt('B', parts[1][0]), opt('C', parts[0][1]), opt('D', parts[1][1])];
+      }
+      options.sort((a, b) => a.id.localeCompare(b.id));
+      return { stem: body.slice(0, chosen[0].start), options };
+    }
+  }
+
+  // No labels at all: the last four lines are the options.
+  const lines = body.split('\n').map((l) => l.trim()).filter(Boolean);
+  if (lines.length >= 5) {
+    const last = lines.slice(-4);
+    if (last.every((l) => l.length <= 80)) return { stem: lines.slice(0, -4).join('\n'), options: last.map((l, i) => opt('ABCD'[i], l)) };
+  }
+  return { stem: body, options: [] };
 }
 
 export function heuristicParse(pages) {
-  const qs = [];
+  let qs = new Map();
   let cur = null;
   let section = DEFAULT_SECTIONS[0];
   let expected = 1;
+  let lastValid = 0;
+  let afterHeading = false; // right after a section heading a bigger jump in numbering is plausible
+  let passage = null; // { id, lines, section } — an "Passage:" block applies to the following questions
+  const passages = {};
+  let pCount = 0;
   const startRe = /^\s*(?:Q\.?\s*|प्रश्न\s*)?(\d{1,3})\s*[.)।:]\s*(.*)$/;
+
+  const closePassage = () => {
+    if (passage && passage.lines.length) {
+      const text = passage.lines.join('\n').trim();
+      passages[passage.id] = DEV.test(text) ? { text_hi: text, text_en: '' } : { text_hi: '', text_en: text };
+    }
+  };
   const flush = () => {
     if (!cur) return;
-    const body = cur.lines.join('\n');
-    const firstOpt = body.search(OPT_SPLIT);
-    const stem = firstOpt >= 0 ? body.slice(0, firstOpt) : body;
-    const optText = firstOpt >= 0 ? body.slice(firstOpt) : '';
-    const parts = optText.split(OPT_SPLIT).slice(1); // [id, text, id, text...]
-    const options = [];
-    for (let i = 0; i < parts.length; i += 2) {
-      const id = normalizeOptionId(parts[i]);
-      const t = (parts[i + 1] || '').replace(/\s+/g, ' ').trim();
-      if (id && !options.some((o) => o.id === id)) {
-        const l = splitBilingual(t.replace(/\s\/\s/g, '\n'));
-        options.push({ id, text_hi: l.hi, text_en: l.en, image_base64: null });
-      }
-    }
+    const { stem, options } = splitQuestion(cur.lines.join('\n'));
     const l = splitBilingual(stem);
-    if (options.length >= 2) {
-      qs.push({ q_no: cur.n, section: cur.section, topic: '', question_hi: l.hi, question_en: l.en, options: options.slice(0, 5), correct_option: null, solution_hi: '', solution_en: '' });
+    if (options.length >= 2 && (l.hi || l.en)) {
+      qs.set(cur.n, {
+        q_no: cur.n, section: cur.section, topic: '', passage_id: cur.passage || null,
+        question_hi: l.hi, question_en: l.en, options: options.slice(0, 5), correct_option: null, solution_hi: '', solution_en: '',
+      });
+      lastValid = cur.n;
+    } else {
+      expected = lastValid + 1; // not a real question (e.g. numbered instructions): undo the count
     }
     cur = null;
   };
+
   for (const p of pages) {
     if (p.local.type !== 'questions' && p.local.type !== 'other') continue;
     for (const line of p.lines) {
       const sec = detectSection(line);
-      if (sec) { flush(); section = sec; continue; }
+      if (sec) { flush(); closePassage(); passage = null; section = sec; afterHeading = true; continue; }
+      const pm = line.match(/^\s*(?:passage|गद्यांश|अपठित\s*गद्यांश|अनुच्छेद)\s*[:\-–]?\s*(.*)$/i);
+      if (pm && !startRe.test(line)) {
+        flush(); closePassage();
+        passage = { id: `p_${++pCount}`, lines: [], section, collecting: true };
+        continue;
+      }
       const m = line.match(startRe);
       if (m) {
         const n = Number(m[1]);
-        if (n >= expected && n <= expected + 3) {
+        // A new "1." restarts numbering when what came before was only a handful of items (instructions).
+        if (n === 1 && qs.size > 0 && qs.size < 10) { qs = new Map(); lastValid = 0; expected = 1; }
+        // Allow small jumps (a question whose number line was garbled) but not stray numbers inside text.
+        const looksLikeQ = /[\p{L}]{2,}/u.test(m[2]) && m[2].length >= 8;
+        const jumpOk = n <= expected + 3 || (looksLikeQ && n <= expected + (afterHeading ? 40 : 12));
+        if (n >= expected && jumpOk) {
           flush();
-          cur = { n, section, lines: [m[2]] };
+          if (passage?.collecting) { passage.collecting = false; closePassage(); }
+          cur = { n, section, lines: [m[2]], passage: passage && passage.section === section ? passage.id : null };
           expected = n + 1;
+          afterHeading = false;
           continue;
         }
       }
-      if (cur) cur.lines.push(line);
+      if (passage?.collecting) passage.lines.push(line);
+      else if (cur) cur.lines.push(line);
     }
   }
   flush();
-  return qs;
+  closePassage();
+  const list = [...qs.values()].sort((a, b) => a.q_no - b.q_no);
+  for (const q of list) if (q.passage_id && !passages[q.passage_id]) q.passage_id = null;
+  return { questions: list, passages };
 }
 
 // ---------------------------------------------------------------------------
@@ -429,10 +541,13 @@ export async function importPdf(file, { settings, useAI, onProgress = () => {}, 
   let passages = {};
   let solutions = {};
   let metaGuess = {};
+  let aiDown = null;
 
   if (!useAI) {
     onProgress({ phase: 'parse', pct: 70, msg: 'ऑफ़लाइन पार्सर से प्रश्न निकाल रहे हैं…' });
-    for (const q of heuristicParse(pages)) questions[q.q_no] = q;
+    const local = heuristicParse(pages);
+    for (const q of local.questions) questions[q.q_no] = q;
+    passages = local.passages;
     onLog(`ऑफ़लाइन पार्सर: ${Object.keys(questions).length} प्रश्न मिले`);
   } else {
     // ---- Pass 2: AI per page (resumable)
@@ -440,7 +555,17 @@ export async function importPdf(file, { settings, useAI, onProgress = () => {}, 
     if (draft.done.length) onLog(`पिछला अधूरा इम्पोर्ट मिला — ${draft.done.length} पेज पहले से पूरे, वहीं से जारी`, 'success');
     for (const [q, a] of Object.entries(draft.answerKey)) answerKey.set(Number(q), a);
     let prevTail = '';
+    // One tiny request first: a wrong URL/key/model is reported in seconds instead of after 18 pages.
+    onProgress({ phase: 'ai', pct: 12, msg: 'AI कनेक्शन जाँच रहे हैं…' });
+    try {
+      await chat({ messages: [{ role: 'user', text: 'Reply with exactly: OK' }], signal });
+      onLog('AI कनेक्शन ठीक है ✓', 'success');
+    } catch (e) {
+      if (e.name === 'AbortError') throw e;
+      aiDown = e;
+    }
     for (const p of pages) {
+      if (aiDown) break;
       throwIfAborted();
       const pctBase = 12 + Math.round(((p.no - 1) / total) * 63);
       if (draft.done.includes(p.no)) { prevTail = p.lines.slice(-8).join('\n'); continue; }
@@ -487,7 +612,8 @@ export async function importPdf(file, { settings, useAI, onProgress = () => {}, 
         if (e.name === 'AbortError') throw e;
         stats.errors.push(`पेज ${p.no}: ${e.message}`);
         onLog(`पेज ${p.no}: त्रुटि — ${e.message}`, 'error');
-        if (/API 40[134]/.test(e.message)) throw e; // configuration errors: stop early
+        // Wrong URL / key / model or no internet: every page would fail the same way, so stop now.
+        if (e.fatal) { aiDown = e; break; }
       } finally {
         if (canvas) { canvas.width = 0; canvas.height = 0; }
         page.cleanup();
@@ -499,17 +625,24 @@ export async function importPdf(file, { settings, useAI, onProgress = () => {}, 
     solutions = draft.solutions;
     metaGuess = draft.metaGuess;
 
-    // Fallback: if AI produced nothing (e.g. vision unsupported) try the offline parser.
-    if (!Object.keys(questions).length) {
-      onLog('AI से कोई प्रश्न नहीं मिला — ऑफ़लाइन पार्सर आज़मा रहे हैं', 'warn');
-      for (const q of heuristicParse(pages)) questions[q.q_no] = q;
+    if (aiDown) {
+      stats.errors.push(aiDown.message);
+      onLog(`AI से कनेक्ट नहीं हो सका: ${aiDown.message}`, 'error');
+      onLog('AI के बिना ऑफ़लाइन पार्सर से प्रश्न निकाल रहे हैं (सॉल्यूशन नहीं बनेंगे)। Settings ठीक करके वही PDF दोबारा चुनें।', 'warn');
     }
+    // Fill every question number the AI did not return (or all of them if AI failed) from the offline parser.
+    const before = Object.keys(questions).length;
+    const local = heuristicParse(pages);
+    for (const q of local.questions) if (!questions[q.q_no]) questions[q.q_no] = q;
+    for (const [id, v] of Object.entries(local.passages)) if (!passages[id]) passages[id] = v;
+    const added = Object.keys(questions).length - before;
+    if (added) onLog(`ऑफ़लाइन पार्सर से ${added} प्रश्न जोड़े`, before ? 'warn' : 'info');
 
     // ---- Answer key + solutions
     applyKeyAndSolutions(questions, answerKey, solutions);
 
     // ---- Pass 3: enrichment
-    if (settings.autoSolve) {
+    if (settings.autoSolve && !aiDown) {
       const need = Object.values(questions).filter((q) => !draft.enriched.includes(q.q_no) && (!q.correct_option || !(q.solution_hi || q.solution_en) || !q.topic || !q.key_concept));
       const BATCH = 8;
       for (let i = 0; i < need.length; i += BATCH) {
@@ -526,6 +659,7 @@ export async function importPdf(file, { settings, useAI, onProgress = () => {}, 
           if (e.name === 'AbortError') throw e;
           stats.errors.push(`Enrich Q${batch[0].q_no}-${batch[batch.length - 1].q_no}: ${e.message}`);
           onLog(`सॉल्यूशन बैच Q${batch[0].q_no}–${batch[batch.length - 1].q_no}: ${e.message}`, 'error');
+          if (e.fatal) { onLog('AI उपलब्ध नहीं — बाकी सॉल्यूशन छोड़े गए (बाद में Ask AI से पूछ सकते हैं)', 'warn'); break; }
         }
       }
       if (need.length) onLog(`${stats.enriched} प्रश्नों के सॉल्यूशन/टॉपिक AI से बने`, 'success');
@@ -591,7 +725,8 @@ async function extractPageWithAI({ canvas, text, p, total, prevTail, draft, mode
   if (!first.truncated && !first.json.__error) return first.json;
 
   // Response cut off or invalid → split the page (columns if detected, else top/bottom halves) and retry.
-  onLog(`पेज ${p.no}: जवाब अधूरा/अमान्य — पेज को दो हिस्सों में बाँटकर फिर पढ़ रहे हैं`, 'warn');
+  const why = first.truncated ? 'जवाब बीच में कट गया (token limit)' : `जवाब JSON नहीं था: "${String(first.text).replace(/\s+/g, ' ').slice(0, 90)}"`;
+  onLog(`पेज ${p.no}: ${why} — पेज को दो हिस्सों में बाँटकर फिर पढ़ रहे हैं`, 'warn');
   if (!canvas) {
     const lines = text.split('\n');
     const half = Math.ceil(lines.length / 2);

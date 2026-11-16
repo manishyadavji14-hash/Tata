@@ -13,7 +13,7 @@
 | JSON Import | एक या कई `.json` फ़ाइलें / पेस्ट किया हुआ AI जवाब। एक ही `exam_id` वाले हिस्से (Part 1, 2…) merge होते हैं। |
 | Copy AI Extraction Prompt | तैयार प्रॉम्प्ट क्लिपबोर्ड पर; PDF के साथ ChatGPT/Claude/Gemini को दें → App Standard Schema JSON। |
 | PDF → AI | PDF.js से पेज-दर-पेज: डबल-कॉलम क्रम, तिरछे/दोहराए गए वॉटरमार्क हटाना, विज्ञापन पेज छोड़ना, उत्तर कुंजी तालिका मिलाना, चित्रों को कैनवास से क्रॉप करना, AI से सॉल्यूशन + टॉपिक टैगिंग। बीच में रुकने पर वहीं से resume। API Key न हो तो ऑफ़लाइन regex पार्सर। |
-| AI Providers | OpenAI-compatible (OpenAI, Kiro/OpenRouter/Groq/लोकल), Anthropic Claude, Google Gemini। APK में कॉल नेटिव ब्रिज से जाती हैं (CORS की समस्या नहीं)। |
+| AI Providers | Google Gemini (फ़्री टियर), OpenAI-compatible (OpenAI, OpenRouter, Groq, DeepSeek, लोकल), Anthropic Claude। सिर्फ़ Key पेस्ट करें — Provider/Base URL अपने-आप, "Models लाएँ" से सही मॉडल ID। Kiro की API Key सिर्फ़ Kiro CLI के लिए है, यहाँ नहीं चलती। APK में कॉल नेटिव ब्रिज से जाती हैं (CORS की समस्या नहीं)। |
 | Rich content | KaTeX सूत्र (`$...$`, `$$...$$`), HTML टेबल, Base64 चित्र, इमोजी, द्विभाषी (हिंदी / English / दोनों), स्क्रॉल होने वाला गद्यांश बॉक्स। |
 | CBT Player | प्री-टेस्ट स्क्रीन (समय, अंक, कस्टम नेगेटिव मार्किंग, भाषा), काउंटडाउन + प्रति-प्रश्न टाइमर, पॉज़ (बैकग्राउंड में अपने-आप), सेक्शन टैब, रंगीन प्रश्न पैलेट, Mark for Review & Next / Clear Response / Save & Next / Submit, स्वाइप नेविगेशन, बीच में छोड़कर Resume। |
 | Analytics | स्कोरकार्ड, विषयवार टेबल (सबसे कमजोर विषय), टॉपिक: कमजोर (<50% या औसत से दोगुना समय) / मध्यम (50–75%) / मजबूत (>75%), Time Trap Detector, सभी टेस्ट का Overall Topic Analytics। |
