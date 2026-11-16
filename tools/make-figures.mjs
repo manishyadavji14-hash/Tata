@@ -236,6 +236,87 @@ Object.assign(figures, {
   },
 });
 
+// ---- UP AT 2026 Mock Test-2 / Mock Test-3 (अध्ययन मंत्र) ----
+const cubeFace = (n, kind) => {
+  const c = 50, ox = 40, oy = 40; let g = '';
+  for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) {
+    const inner = r > 0 && k > 0 && r < n - 1 && k < n - 1;
+    const fill = inner ? (kind === 'one' ? '#f59e0b' : '#e2e8f0') : '#bfdbfe';
+    g += `<rect x='${ox + k * c}' y='${oy + r * c}' width='${c}' height='${c}' fill='${fill}' stroke='#0f172a' stroke-width='2'/>`;
+  }
+  if (kind === 'none') g += `<rect x='${ox + c}' y='${oy + c}' width='${(n - 2) * c}' height='${(n - 2) * c}' fill='none' stroke='#dc2626' stroke-width='4' stroke-dasharray='10 6'/>`;
+  const tx = ox + n * c + 30;
+  return { w: tx + 330, h: Math.max(oy * 2 + n * c, 260), tx, g };
+};
+const altitude = (p, q, h, s) => {
+  const B = [40, 40 + h * s], D = [40 + p * s, 40 + h * s], C = [40 + (p + q) * s, 40 + h * s], A = [D[0], 40];
+  return {
+    w: C[0] + 300, h: B[1] + 60,
+    svg: `<polygon points='${A} ${B} ${C}' fill='#eff6ff' stroke='#0f172a' stroke-width='4'/>`
+      + L(...A, ...D, "stroke='#dc2626' stroke-width='4'") + `<path d='M${D[0]},${D[1] - 18} h18 v18' fill='none' stroke='#dc2626' stroke-width='3'/>`
+      + T(A[0] - 8, A[1] - 10, 22, 'A', "font-weight='700'") + T(B[0] - 26, B[1] + 8, 22, 'B', "font-weight='700'") + T(C[0] + 8, C[1] + 8, 22, 'C', "font-weight='700'") + T(D[0] - 8, D[1] + 30, 22, 'D', "font-weight='700'")
+      + T((B[0] + D[0]) / 2 - 20, B[1] + 30, 20, `p = ${p}`, "fill='#2563eb' font-weight='700'") + T((D[0] + C[0]) / 2 - 20, B[1] + 30, 20, `q = ${q}`, "fill='#2563eb' font-weight='700'")
+      + T(D[0] + 10, (A[1] + D[1]) / 2, 22, 'h', "fill='#dc2626' font-weight='700'")
+      + T(C[0] + 40, 80, 20, 'angle A = 90°', "fill='#334155'") + T(C[0] + 40, 120, 22, 'h² = p × q', "font-weight='700'")
+      + T(C[0] + 40, 160, 22, `h² = ${p} × ${q} = ${p * q}`, "fill='#334155'") + T(C[0] + 40, 200, 24, `h = ${h} cm`, "fill='#dc2626' font-weight='700'"),
+  };
+};
+const cube4 = cubeFace(4, 'one'), cube5 = cubeFace(5, 'none');
+Object.assign(figures, {
+  'sol_m02_q28_path.png': {
+    w: 520, h: 300,
+    svg: arrowDefs + seg(150, 50, 150, 230) + seg(150, 230, 258, 230) + seg(258, 230, 258, 158) + seg(258, 158, 155, 158)
+      + L(150, 50, 150, 158, "stroke='#dc2626' stroke-width='3' stroke-dasharray='8 6'")
+      + `<circle cx='150' cy='50' r='8' fill='#16a34a'/>` + T(80, 46, 18, 'Start', "fill='#16a34a' font-weight='700'")
+      + `<circle cx='150' cy='158' r='8' fill='#dc2626'/>` + T(92, 164, 18, 'End', "fill='#dc2626' font-weight='700'")
+      + T(78, 205, 18, '10 m S') + T(178, 256, 18, '6 m E') + T(268, 200, 18, '4 m N') + T(180, 150, 18, '6 m W')
+      + T(160, 108, 18, '10 − 4 = 6 m South', "fill='#dc2626' font-weight='700'") + compass(440, 70),
+  },
+  'sol_m02_q29_venn.png': {
+    w: 600, h: 300,
+    svg: `<circle cx='170' cy='150' r='95' fill='#bfdbfe' fill-opacity='0.6' stroke='#2563eb' stroke-width='3'/>`
+      + `<circle cx='290' cy='150' r='80' fill='#fde68a' fill-opacity='0.55' stroke='#d97706' stroke-width='3'/>`
+      + `<circle cx='480' cy='150' r='80' fill='#bbf7d0' fill-opacity='0.6' stroke='#16a34a' stroke-width='3'/>`
+      + T(90, 45, 20, 'Poets', "fill='#2563eb' font-weight='700'") + T(270, 60, 20, 'Teachers', "fill='#d97706' font-weight='700'") + T(430, 60, 20, 'Scientists', "fill='#16a34a' font-weight='700'")
+      + T(214, 158, 15, 'T+P', "fill='#0f172a' font-weight='700'") + T(20, 270, 17, 'Teachers who are poets can never be scientists => I follows', "fill='#334155'")
+      + T(20, 293, 17, 'Scientists-teachers relation unknown => II does not follow', "fill='#334155'"),
+  },
+  'sol_cube_n4.png': {
+    w: cube4.w, h: cube4.h,
+    svg: cube4.g + T(cube4.tx, 70, 20, 'one face, n = 4', "fill='#334155'") + T(cube4.tx, 110, 20, 'orange = exactly 1 face painted', "fill='#d97706' font-weight='700'")
+      + T(cube4.tx, 150, 20, 'per face: (n − 2)² = 2² = 4') + T(cube4.tx, 190, 22, '6 faces × 4 = 24', "font-weight='700'"),
+  },
+  'sol_cube_n5.png': {
+    w: cube5.w, h: cube5.h,
+    svg: cube5.g + T(cube5.tx, 70, 20, '125 = 5³  =>  n = 5', "fill='#334155'") + T(cube5.tx, 110, 20, 'red box: hidden inner core', "fill='#dc2626' font-weight='700'")
+      + T(cube5.tx, 150, 20, 'core edge = n − 2 = 3') + T(cube5.tx, 190, 22, 'no paint: 3 × 3 × 3 = 27', "font-weight='700'"),
+  },
+  'sol_m02_q63_mirror.png': {
+    w: 620, h: 300,
+    svg: (() => {
+      const row = (y, mx, ix, lab, col) => `<circle cx='60' cy='${y}' r='10' fill='#0f172a'/>` + T(50, y - 18, 18, 'O', "font-weight='700'")
+        + L(mx, y - 40, mx, y + 40, `stroke='${col}' stroke-width='6'`) + T(mx - 14, y - 48, 18, lab, `fill='${col}' font-weight='700'`)
+        + `<circle cx='${ix}' cy='${y}' r='10' fill='none' stroke='${col}' stroke-width='3' stroke-dasharray='4 3'/>` + T(ix - 8, y - 18, 18, 'I', `fill='${col}' font-weight='700'`)
+        + L(60, y + 52, mx, y + 52, "stroke='#94a3b8' stroke-width='2'") + L(mx, y + 52, ix, y + 52, "stroke='#94a3b8' stroke-width='2'");
+      return row(80, 200, 340, 'M1', '#2563eb') + T(110, 150, 16, 'd') + T(260, 150, 16, 'd')
+        + row(220, 260, 460, 'M2', '#dc2626') + T(140, 290, 16, 'd + x') + T(340, 290, 16, 'd + x')
+        + T(370, 70, 18, 'mirror moves x = 2 cm', "fill='#334155'") + T(370, 100, 18, 'image moves 2x = 4 cm', "fill='#dc2626' font-weight='700'");
+    })(),
+  },
+  'sol_altitude_4_9.png': altitude(4, 9, 6, 26),
+  'sol_altitude_16_25.png': altitude(16, 25, 20, 9),
+  'sol_m03_q28_compass.png': {
+    w: 460, h: 340,
+    svg: arrowDefs + L(200, 40, 200, 280, "stroke='#94a3b8' stroke-width='2'") + L(80, 160, 320, 160, "stroke='#94a3b8' stroke-width='2'")
+      + T(193, 32, 18, 'N', "font-weight='700' fill='#475569'") + T(193, 304, 18, 'S', "font-weight='700' fill='#475569'") + T(326, 166, 18, 'E', "font-weight='700' fill='#475569'") + T(56, 166, 18, 'W', "font-weight='700' fill='#475569'")
+      + L(200, 160, 310, 160, "stroke='#0f172a' stroke-width='5'") + T(250, 150, 16, 'start E', "fill='#0f172a'")
+      + seg(200, 160, 125, 235) + T(70, 262, 18, 'SW', "fill='#2563eb' font-weight='700'")
+      + L(200, 160, 275, 235, "stroke='#dc2626' stroke-width='5'") + T(280, 262, 20, 'SE (final)', "fill='#dc2626' font-weight='700'")
+      + arc(200, 160, 45, 225, 360, '#2563eb') + T(300, 205, 16, '135° clockwise', "fill='#2563eb' font-weight='700'")
+      + arc(200, 160, 70, 225, 315, '#dc2626') + T(150, 320, 16, 'then 90° anticlockwise: SW -> SE', "fill='#dc2626'"),
+  },
+});
+
 for (const [name, f] of Object.entries(figures)) {
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${f.w}' height='${f.h}' viewBox='0 0 ${f.w} ${f.h}'><rect width='100%' height='100%' fill='#fff'/>${f.svg}</svg>`;
   await sharp(Buffer.from(svg)).png({ palette: true }).toFile(OUT + name);

@@ -1,0 +1,5325 @@
+{
+ "exam_meta": {
+  "exam_id": "adhyayan_up_at_2026_mock_03",
+  "title": "UP ASSISTANT TEACHER 2026 MOCK TEST-3 (अध्ययन मंत्र)",
+  "duration_minutes": 120,
+  "max_marks": 360,
+  "positive_marks": 3,
+  "negative_marks": 1,
+  "instructions_hi": "120 प्रश्न, प्रत्येक 3 अंक (कुल 360)। प्रत्येक गलत उत्तर पर उस प्रश्न के अंकों का एक-तिहाई (1 अंक) काटा जाएगा; छोड़े गए प्रश्न पर कोई दंड नहीं। उत्तर कुंजी मूल प्रश्न-पत्र (अध्ययन मंत्र) के अनुसार है।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "सामान्य ज्ञान एवं समसामयिकी",
+  "REASONING",
+  "HINDI",
+  "SANSKRIT",
+  "ENGLISH",
+  "SCIENCE",
+  "MATHS",
+  "पर्यावरण एवं सामाजिक अध्ययन",
+  "शिक्षण कौशल (Teaching Skills)",
+  "बाल विकास (बाल मनोविज्ञान)",
+  "सूचना तकनीक",
+  "जीवन कौशल, प्रबंधन एवं अभिवृत्ति"
+ ],
+ "passages": {
+  "p_divivek": {
+   "title": "अपठित गद्यांश: डिजिटल विवेक",
+   "text_hi": "डिजिटल माध्यम ज्ञान तक तेज पहुँच देते हैं, पर हर उपलब्ध सूचना विश्वसनीय नहीं होती। किसी संदेश को साझा करने से पहले स्रोत, तिथि और प्रमाण की जाँच आवश्यक है। केवल अपने विचार से मेल खाने वाली सामग्री स्वीकार करना भी भ्रम बढ़ा सकता है। डिजिटल विवेक का अर्थ तकनीक से दूरी नहीं, बल्कि उसका प्रश्नशील और जिम्मेदार उपयोग है।",
+   "text_en": ""
+  },
+  "p_shiksha": {
+   "title": "गद्यांशः शिक्षा",
+   "text_hi": "शिक्षा मनुष्यस्य अन्तर्निहितशक्तीनां विकासं करोति। सा केवलं पुस्तकज्ञानं न ददाति, अपितु विवेकं, अनुशासनं, सहकार्यभावं च वर्धयति। सुशिक्षितः नागरिकः समाजस्य उन्नतौ योगदानं करोति।",
+   "text_en": ""
+  },
+  "p_multi": {
+   "title": "Passage: Multilingual Classroom",
+   "text_hi": "",
+   "text_en": "A multilingual classroom is not a problem to be corrected; it is a resource to be organised. When learners can discuss a new idea in a familiar language, they activate prior knowledge and participate more confidently. The teacher can then build bridges to the school language through comparison, translation and purposeful use, without treating the home language as inferior."
+  }
+ },
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "संविधान",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारतीय संविधान का अनुच्छेद 21 मुख्यतः किससे संबंधित है?",
+   "question_en": "What does Article 21 of the Constitution of India primarily deal with?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जीवन और व्यक्तिगत स्वतंत्रता का संरक्षण",
+     "text_en": "protection of life and personal liberty",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मौलिक अधिकारों के प्रवर्तन हेतु संवैधानिक उपचार",
+     "text_en": "constitutional remedies for enforcement of Fundamental Rights",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "6 से 14 वर्ष के बच्चों के लिए निःशुल्क और अनिवार्य शिक्षा",
+     "text_en": "free and compulsory education for children aged 6 to 14 years",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राज्य द्वारा समान नागरिक संहिता के प्रयास",
+     "text_en": "the State's endeavour to secure a Uniform Civil Code",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "अनु. 21 — विधि द्वारा स्थापित प्रक्रिया के बिना किसी को जीवन या व्यक्तिगत स्वतंत्रता से वंचित नहीं किया जाएगा। (b) अनु. 32, (c) अनु. 21A, (d) अनु. 44।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 2,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "संविधान",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किस संविधान संशोधन ने संसद की संविधान संशोधन शक्ति को स्पष्ट किया?",
+   "question_en": "Which Constitutional Amendment clarified Parliament's power to amend the Constitution?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तिहत्तरवाँ संशोधन, 1992",
+     "text_en": "Seventy-third Amendment, 1992",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इकसठवाँ संशोधन, 1988",
+     "text_en": "Sixty-first Amendment, 1988",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "चौबीसवाँ संशोधन, 1971",
+     "text_en": "Twenty-fourth Amendment, 1971",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चवालीसवाँ संशोधन, 1978",
+     "text_en": "Forty-fourth Amendment, 1978",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "24वाँ संशोधन 1971 (गोलकनाथ निर्णय के बाद) — अनु. 368 में संसद की संशोधन शक्ति स्पष्ट की। 73वाँ — पंचायत, 61वाँ — मताधिकार आयु 18, 44वाँ — संपत्ति का अधिकार हटाया।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 3,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "संविधान",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारतीय संविधान में 'संवैधानिक पदों के लिए शपथ और प्रतिज्ञान के प्रारूप' कहाँ वर्णित हैं?",
+   "question_en": "Where in the Constitution of India are forms of oaths and affirmations for constitutional offices provided?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "द्वादश अनुसूची",
+     "text_en": "Twelfth Schedule",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "तृतीय अनुसूची",
+     "text_en": "Third Schedule",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नवम अनुसूची",
+     "text_en": "Ninth Schedule",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "षष्ठम अनुसूची",
+     "text_en": "Sixth Schedule",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "तीसरी अनुसूची — शपथ/प्रतिज्ञान। बारहवीं — नगरपालिका, नौवीं — भूमि सुधार कानून, छठी — पूर्वोत्तर के जनजातीय क्षेत्र।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 4,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "संविधान",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?",
+   "question_en": "Which of the following pairs is correctly matched?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "संसदीय गणपूर्ति — अनुच्छेद 263",
+     "text_en": "Parliamentary quorum — Article 263",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नीति आयोग — कुल सदस्य संख्या का दसवाँ भाग",
+     "text_en": "NITI Aayog — one-tenth of the total membership",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अंतरराज्यीय परिषद — कार्यकारी निकाय",
+     "text_en": "Inter-State Council — executive body",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "निर्वाचन आयोग — अनुच्छेद 324",
+     "text_en": "Election Commission — Article 324",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "निर्वाचन आयोग — अनु. 324 (चुनावों का अधीक्षण, निर्देशन, नियंत्रण)। गणपूर्ति = कुल सदस्यों का दसवाँ भाग (अनु. 100); अनु. 263 — अंतरराज्यीय परिषद; नीति आयोग — कार्यकारी निकाय।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 5,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "प्राचीन इतिहास",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - प्राचीन इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्राचीन भारतीय इतिहास के संदर्भ में कौन-सा युग्म सही सुमेलित है?",
+   "question_en": "Which pair is correctly matched in the context of ancient Indian history?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मोहनजोदड़ो — मौर्यकालीन अशोक स्तंभ और भारत का राजचिह्न",
+     "text_en": "Mohenjo-daro — an Ashokan pillar capital adopted as India's State Emblem",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कालीबंगा — जुते हुए खेत के साक्ष्य",
+     "text_en": "Kalibangan — evidence of a ploughed field",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सारनाथ सिंह-शीर्ष — अशोक के शासन और पाटलिपुत्र से संबद्ध",
+     "text_en": "Sarnath Lion Capital — associated with Ashoka's reign and Pataliputra",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "तृतीय बौद्ध संगीति — महान स्नानागार",
+     "text_en": "Third Buddhist Council — the Great Bath",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "कालीबंगा (राजस्थान) — जुते हुए खेत के प्रमाण। मोहनजोदड़ो — महान स्नानागार; सारनाथ — राजचिह्न; तृतीय संगीति — अशोक, पाटलिपुत्र।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 6,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "मध्यकालीन इतिहास",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - मध्यकालीन इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'आइने-अकबरी' के बारे में कौन-सा कथन सही है?",
+   "question_en": "Which statement about Ain-i-Akbari is correct?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "टोडरमल से संबद्ध भूमि-राजस्व निर्धारण",
+     "text_en": "land-revenue assessment associated with Todar Mal",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "निर्माण आरम्भ कुतुबुद्दीन ऐबक और प्रमुख पूर्णता इल्तुतमिश",
+     "text_en": "begun by Qutb-ud-din Aibak and substantially completed by Iltutmish",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अबुल फ़ज़ल द्वारा मुगल प्रशासन का विवरण",
+     "text_en": "Abul Fazl's detailed account of Mughal administration",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रकृति, पक्षियों और व्यक्तिचित्रों के सूक्ष्म यथार्थवाद के लिए प्रसिद्ध",
+     "text_en": "noted for refined naturalism in flora, fauna and portraiture",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "आइने-अकबरी — अबुल फ़ज़ल (अकबरनामा का तीसरा भाग); प्रशासन, राजस्व, सेना और समाज का विवरण। (a) ज़ब्ती/दहसाला, (b) कुतुब मीनार, (d) जहाँगीरकालीन चित्रकला।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 7,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "आधुनिक इतिहास",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - आधुनिक इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "लखनऊ समझौता के संबंध में सही विवरण चुनिए।",
+   "question_en": "Choose the correct description of the Lucknow Pact.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "1932 में गांधी और डॉ. आंबेडकर के बीच प्रतिनिधित्व संबंधी समझौता",
+     "text_en": "the 1932 agreement between Gandhi and Dr Ambedkar on representation",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "1920 में खिलाफत प्रश्न और पंजाब अत्याचारों की पृष्ठभूमि में आरम्भ",
+     "text_en": "launched in 1920 against the backdrop of the Khilafat issue and Punjab wrongs",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "1917 में नील कृषकों से संबंधित गांधी का भारत में पहला सत्याग्रह",
+     "text_en": "Gandhi's first satyagraha in India in 1917 concerning indigo cultivators",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "1916 में कांग्रेस और मुस्लिम लीग के बीच समझौता",
+     "text_en": "the 1916 agreement between the Congress and the Muslim League",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "लखनऊ समझौता 1916 — कांग्रेस-लीग सहयोग। (a) पूना पैक्ट, (b) असहयोग आंदोलन, (c) चंपारण।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 8,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "आधुनिक इतिहास",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - आधुनिक इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "चार्टर एक्ट, 1813 का प्रमुख प्रभाव क्या था?",
+   "question_en": "What was a major effect of the Charter Act, 1813?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मुसलमानों के लिए पृथक निर्वाचक मंडल",
+     "text_en": "introduced separate electorates for Muslims",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "चाय और चीन व्यापार को छोड़कर कंपनी के भारतीय व्यापार एकाधिकार का अंत",
+     "text_en": "ended the Company's Indian trade monopoly except in tea and trade with China",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भारत और पाकिस्तान को दो डोमिनियन के रूप में स्थापित",
+     "text_en": "created India and Pakistan as two Dominions",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ईस्ट इंडिया कंपनी से ब्रिटिश क्राउन को शासन हस्तांतरित",
+     "text_en": "transferred governance from the East India Company to the British Crown",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "1813 — चाय व चीन व्यापार छोड़कर एकाधिकार समाप्त; शिक्षा हेतु ₹1 लाख। (a) 1909, (c) 1947, (d) 1858।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 9,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "आधुनिक इतिहास",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - आधुनिक इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न घटनाओं को प्राचीन से नवीन क्रम में व्यवस्थित कीजिए: 1. वेल्लोर विद्रोह; 2. संथाल विद्रोह; 3. 1857 का विद्रोह; 4. नील विद्रोह",
+   "question_en": "Arrange from earliest to latest: 1. Vellore Mutiny; 2. Santhal Rebellion; 3. Revolt of 1857; 4. Indigo Revolt",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2-1-3-4",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2-3-1-4",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1-3-2-4",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1-2-3-4",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "वेल्लोर 1806 → संथाल 1855 → 1857 का विद्रोह → नील विद्रोह 1859 ⇒ 1-2-3-4।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 10,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "भूगोल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ताप्ती के संबंध में सही कथन चुनिए।",
+   "question_en": "Choose the correct statement about the Tapi.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "छत्तीसगढ़ के सिहावा क्षेत्र से निकलती है",
+     "text_en": "rises in the Sihawa region of Chhattisgarh",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सतपुड़ा के दक्षिण में भ्रंश घाटी से पश्चिम की ओर बहती है",
+     "text_en": "flows west through a rift valley south of the Satpuras",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "महाबलेश्वर के निकट पश्चिमी घाट से निकलती है",
+     "text_en": "rises near Mahabaleshwar in the Western Ghats",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "यमुनोत्री हिमनद क्षेत्र से उद्गमित गंगा की प्रमुख सहायक नदी",
+     "text_en": "is a major tributary of the Ganga rising near the Yamunotri glacier",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "ताप्ती — मुलताई (बैतूल) से निकलकर सतपुड़ा के दक्षिण भ्रंश घाटी से पश्चिम बहकर अरब सागर में। (a) महानदी, (c) कृष्णा, (d) यमुना।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 11,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "भूगोल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'समतापमंडल' का सही अर्थ/लक्षण कौन-सा है?",
+   "question_en": "Which option correctly defines or characterises stratosphere?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "समान ऊँचाई वाले बिंदुओं को जोड़ती हैं",
+     "text_en": "join points of equal elevation",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भूपर्पटी के खिंचाव और भ्रंशों के बीच भाग के धँसने से निर्मित",
+     "text_en": "formed when a crustal block subsides between faults under tensional forces",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मध्य और पूर्वी विषुवतीय प्रशांत का असामान्य ऊष्मीकरण",
+     "text_en": "abnormal warming of the central and eastern equatorial Pacific",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ओज़ोन की अधिकतम सांद्रता वाला वायुमंडलीय क्षेत्र",
+     "text_en": "the atmospheric layer containing the main ozone concentration",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "समतापमंडल में ओज़ोन परत है, जो पराबैंगनी किरणें सोखती है। (a) समोच्च रेखाएँ, (b) भ्रंश घाटी/ग्रैबेन, (c) एल-नीनो।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 12,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "विश्व भूगोल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - विश्व भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विश्व भूगोल के संदर्भ में कौन-सा युग्म सही सुमेलित है?",
+   "question_en": "Which pair is correctly matched in world geography?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अमेज़न — अटलांटिक महासागर",
+     "text_en": "Amazon — Atlantic Ocean",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "आल्प्स — अटलांटिक और प्रशांत महासागरों को जोड़ती है",
+     "text_en": "Alps — connects the Atlantic and Pacific Oceans",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पनामा नहर — कैस्पियन सागर",
+     "text_en": "Panama Canal — Caspian Sea",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वोल्गा — मध्य यूरोप",
+     "text_en": "Volga — central Europe",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "अमेज़न (द. अमेरिका) अटलांटिक में गिरती है। आल्प्स — मध्य यूरोप; पनामा नहर — अटलांटिक-प्रशांत; वोल्गा — कैस्पियन सागर।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 13,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'सुपोषण' का सर्वाधिक उपयुक्त अर्थ क्या है?",
+   "question_en": "What is the most appropriate meaning of eutrophication?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ओज़ोन-क्षयकारी पदार्थों को चरणबद्ध समाप्त करने से संबंधित",
+     "text_en": "concerns phasing out ozone-depleting substances",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्राकृतिक आवास से बाहर चिड़ियाघर, वनस्पति उद्यान या जीन बैंक में संरक्षण",
+     "text_en": "conservation outside natural habitats in zoos, botanical gardens or gene banks",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जलाशय में पोषक तत्वों की अधिकता से शैवाल-वृद्धि और ऑक्सीजन की कमी",
+     "text_en": "nutrient enrichment of water causing algal growth and oxygen depletion",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "किसी सीमित भौगोलिक क्षेत्र में प्राकृतिक रूप से पाई जाने वाली प्रजाति",
+     "text_en": "a species naturally restricted to a particular geographic region",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "नाइट्रोजन-फॉस्फोरस बढ़ने से शैवाल प्रस्फुटन, फिर घुलित ऑक्सीजन की कमी। (a) मॉन्ट्रियल प्रोटोकॉल, (b) बाह्य-स्थाने (ex-situ) संरक्षण, (d) स्थानिक प्रजाति।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 14,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "अर्थशास्त्र",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - अर्थशास्त्र",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'प्रति व्यक्ति आय' की सही परिभाषा कौन-सी है?",
+   "question_en": "Which option correctly defines per capita income?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सरकार के कुल व्यय और उधार को छोड़कर कुल प्राप्तियों के बीच अंतर",
+     "text_en": "difference between total government expenditure and total receipts excluding borrowings",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कुल राष्ट्रीय आय को जनसंख्या से विभाजित करने पर प्राप्त औसत",
+     "text_en": "average obtained by dividing national income by population",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "स्वास्थ्य, शिक्षा और आय के आयामों का संयुक्त माप",
+     "text_en": "a composite measure of health, education and income dimensions",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जिसका विधिक और वास्तविक भार सामान्यतः उसी व्यक्ति पर रहता है",
+     "text_en": "a tax whose legal and effective burden generally falls on the same person",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "प्रति व्यक्ति आय = राष्ट्रीय आय ÷ जनसंख्या। (a) राजकोषीय घाटा, (c) HDI, (d) प्रत्यक्ष कर।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 15,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "अर्थशास्त्र",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - अर्थशास्त्र",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'सीमांत स्थायी सुविधा' के बारे में सही कथन चुनिए।",
+   "question_en": "Choose the correct statement about Marginal Standing Facility.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बैंकों के लिए निर्धारित सीमा में रातोंरात आपात उधारी की सुविधा",
+     "text_en": "an overnight emergency borrowing window for banks within prescribed limits",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एकाधिक बैंक खातों को एक मोबाइल अनुप्रयोग के माध्यम से तत्काल भुगतान से जोड़ने वाला ढाँचा",
+     "text_en": "a framework enabling instant payments across multiple bank accounts through a mobile application",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "RBI द्वारा सरकारी प्रतिभूतियों की खरीद-बिक्री से तरलता प्रबंधन",
+     "text_en": "liquidity management through RBI's purchase and sale of government securities",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "देशव्यापी इलेक्ट्रॉनिक निधि अंतरण प्रणाली जो बैच-आधारित निपटान का उपयोग करती है",
+     "text_en": "a nationwide electronic funds-transfer system using batch-based settlement",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "MSF — बैंक RBI से रातोंरात आपात ऋण लेते हैं (रेपो से ऊँची दर)। (b) UPI, (c) खुले बाज़ार की क्रियाएँ (OMO), (d) NEFT।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 16,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "कला-संस्कृति",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - कला-संस्कृति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारतीय कला परंपराओं के संदर्भ में कौन-सा युग्म सही सुमेलित है?",
+   "question_en": "Which pair is correctly matched in the context of Indian performing arts?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मणिपुरी — पंजाब की ऊँट-चाल प्रेरित तीव्र अलंकरणयुक्त गायकी",
+     "text_en": "Manipuri — a highly ornamented fast vocal style with roots in Punjab",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "टप्पा — ओडिशा, झारखंड और पश्चिम बंगाल की मुखौटा/युद्ध-कला प्रभावित नृत्य परंपरा",
+     "text_en": "Tappa — a martial and often masked dance tradition of Odisha, Jharkhand and West Bengal",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "छऊ — मणिपुर",
+     "text_en": "Chhau — Manipur",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कथकली — केरल का नृत्य-नाट्य",
+     "text_en": "Kathakali — dance-drama of Kerala",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "कथकली — केरल। टप्पा — पंजाब मूल की गायकी; छऊ — ओडिशा/झारखंड/प. बंगाल; मणिपुरी — मणिपुर।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 17,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "कला-संस्कृति",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - कला-संस्कृति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'वेसर शैली' का सही परिचय चुनिए।",
+   "question_en": "Choose the correct description of Vesara style.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पूर्वी गंग शासक नरसिंहदेव प्रथम से संबद्ध",
+     "text_en": "associated with Eastern Ganga ruler Narasimhadeva I",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बीजापुर में विशाल एकल गुम्बद और फुसफुसाहट दीर्घा",
+     "text_en": "a massive dome and whispering gallery at Bijapur",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नागर और द्रविड़ तत्वों का दक्कनी समन्वय",
+     "text_en": "a Deccan synthesis of Nagara and Dravida elements",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजराज प्रथम के चोल स्थापत्य का उत्कृष्ट उदाहरण",
+     "text_en": "a masterpiece of Chola architecture under Rajaraja I",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "वेसर = नागर (उत्तर) + द्रविड़ (दक्षिण) का मिश्रण, दक्कन में। (a) कोणार्क, (b) गोल गुम्बद, (d) बृहदेश्वर मंदिर।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 18,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "साहित्य",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - साहित्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'राजतरंगिणी' के रचनाकार कौन हैं?",
+   "question_en": "Who is the author of Rajatarangini?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कल्हण",
+     "text_en": "Kalhana",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बंकिमचन्द्र चट्टोपाध्याय",
+     "text_en": "Bankim Chandra Chattopadhyay",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "दादाभाई नौरोजी",
+     "text_en": "Dadabhai Naoroji",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बाणभट्ट",
+     "text_en": "Banabhatta",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "कल्हण — कश्मीर के राजाओं का संस्कृत इतिहास। बंकिम — आनंदमठ, नौरोजी — Poverty and Un-British Rule in India, बाणभट्ट — हर्षचरित।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 19,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "समसामयिकी",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - समसामयिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "साहित्य का नोबेल पुरस्कार 2025 के संबंध में सही उत्तर चुनिए।",
+   "question_en": "Choose the correct answer regarding the Nobel Prize in Literature 2025.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कुल 139 पुरस्कार",
+     "text_en": "a total of 139 awards",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लास्लो क्रास्नाहोरकाई",
+     "text_en": "László Krasznahorkai",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "2025 में भारत की 44वीं विश्व धरोहर संपत्ति",
+     "text_en": "became India's 44th World Heritage property in 2025",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अंतरराष्ट्रीय क्वांटम विज्ञान एवं प्रौद्योगिकी वर्ष",
+     "text_en": "International Year of Quantum Science and Technology",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "साहित्य नोबेल 2025 — हंगरी के लेखक लास्लो क्रास्नाहोरकाई।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 20,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "खेल",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "38वें राष्ट्रीय खेल 2025 के बारे में सही तथ्य कौन-सा है?",
+   "question_en": "Which is the correct fact about the 38th National Games 2025?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "श्रीनगर की डल झील में आयोजित",
+     "text_en": "held at Dal Lake in Srinagar",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "उत्तराखंड ने मेजबानी की",
+     "text_en": "hosted by Uttarakhand",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बर्फ के खेल लद्दाख और हिम-खेल जम्मू-कश्मीर में",
+     "text_en": "ice events in Ladakh and snow events in Jammu and Kashmir",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सेनेगल; अफ्रीकी धरती पर पहला ओलंपिक खेल आयोजन",
+     "text_en": "Senegal; the first Olympic sports event on African soil",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "38वें राष्ट्रीय खेल (जनवरी-फरवरी 2025) — मेजबान उत्तराखंड।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 21,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "विज्ञान-प्रौद्योगिकी",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - विज्ञान-प्रौद्योगिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'SpaDeX power transfer' के संबंध में सही कथन चुनिए।",
+   "question_en": "Choose the correct statement regarding SpaDeX power transfer.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भारत अंतरिक्ष docking प्रदर्शित करने वाला चौथा देश बना",
+     "text_en": "India became the fourth nation to demonstrate space docking",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लक्षित जीन-संपादन की तकनीक",
+     "text_en": "a technology for targeted gene editing",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अप्रैल 2025 में दोनों उपग्रहों के बीच द्विदिश शक्ति अंतरण का प्रदर्शन",
+     "text_en": "bidirectional power transfer between the satellites demonstrated in April 2025",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भूमध्य रेखा के ऊपर लगभग 35,786 km पर पृथ्वी के घूर्णन काल के बराबर अवधि",
+     "text_en": "orbits above the equator at about 35,786 km with a period equal to Earth's rotation",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "प्रश्न 'पावर ट्रांसफर' का है — अप्रैल 2025 में SpaDeX उपग्रहों के बीच द्विदिश विद्युत अंतरण। (a) docking (जनवरी 2025) का तथ्य है, (b) CRISPR, (d) भूस्थिर कक्षा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 22,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "समसामयिकी",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - समसामयिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्नलिखित में से कौन-सा युग्म सही सुमेलित है?",
+   "question_en": "Which of the following pairs is correctly matched?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "यूनेस्को — जकार्ता",
+     "text_en": "UNESCO — Jakarta",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "COP30 — बेलेम, ब्राज़ील, नवम्बर 2025",
+     "text_en": "COP30 — Belém, Brazil, November 2025",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आसियान सचिवालय — बीजिंग",
+     "text_en": "ASEAN Secretariat — Beijing",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "शंघाई सहयोग संगठन सचिवालय — पेरिस",
+     "text_en": "SCO Secretariat — Paris",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "COP30 — बेलेम (ब्राज़ील), नवम्बर 2025। यूनेस्को — पेरिस, आसियान — जकार्ता, SCO — बीजिंग।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 23,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "उत्तर प्रदेश",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - उत्तर प्रदेश",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'दुधवा राष्ट्रीय उद्यान' के बारे में सही कथन चुनिए।",
+   "question_en": "Choose the correct statement regarding the Dudhwa National Park.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बुलंदशहर जिले में गंगा के निकट",
+     "text_en": "near the Ganga in Bulandshahr district",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भदोही",
+     "text_en": "Bhadohi",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लखनऊ की सूक्ष्म कढ़ाई परंपरा",
+     "text_en": "the fine embroidery tradition of Lucknow",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "लखीमपुर खीरी",
+     "text_en": "Lakhimpur Kheri",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "दुधवा — लखीमपुर खीरी (तराई), बाघ व बारहसिंगा के लिए प्रसिद्ध।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 24,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "समाज सुधारक",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - समाज सुधारक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ज्योतिराव फुले का सर्वाधिक उपयुक्त योगदान कौन-सा है?",
+   "question_en": "Which contribution is most appropriately associated with Jyotirao Phule?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सत्याग्रह और अहिंसक जन-आन्दोलन",
+     "text_en": "satyagraha and non-violent mass mobilisation",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रामकृष्ण मिशन और व्यावहारिक वेदान्त",
+     "text_en": "Ramakrishna Mission and practical Vedanta",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केरल में सामाजिक समानता और जाति-सुधार",
+     "text_en": "social equality and anti-caste reform in Kerala",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सत्यशोधक समाज और जाति-विरोधी सामाजिक सुधार",
+     "text_en": "Satyashodhak Samaj and anti-caste social reform",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "फुले — सत्यशोधक समाज (1873), बालिका व दलित शिक्षा। (a) गांधी, (b) विवेकानंद, (c) श्री नारायण गुरु।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 25,
+   "section": "सामान्य ज्ञान एवं समसामयिकी",
+   "topic": "संविधान",
+   "syllabus_tag": "सामान्य ज्ञान एवं समसामयिकी - संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अभिकथन (A): मौलिक अधिकार न्यायालय द्वारा प्रवर्तनीय हैं। कारण (R): नीति-निदेशक तत्व भी समान रूप से न्यायालय द्वारा प्रवर्तनीय हैं।",
+   "question_en": "Assertion (A): Fundamental Rights are enforceable by courts. Reason (R): Directive Principles are equally enforceable by courts.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है।",
+     "text_en": "Both A and R are true, and R correctly explains A.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "A असत्य है, पर R सत्य है।",
+     "text_en": "A is false, but R is true.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "A सत्य है, पर R असत्य है।",
+     "text_en": "A is true, but R is false.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "A और R दोनों सत्य हैं, पर R, A की सही व्याख्या नहीं है।",
+     "text_en": "Both A and R are true, but R does not correctly explain A.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "मौलिक अधिकार न्यायालय में प्रवर्तनीय (A सत्य); नीति-निदेशक तत्व अनु. 37 के अनुसार प्रवर्तनीय नहीं (R असत्य)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 26,
+   "section": "REASONING",
+   "topic": "संख्या श्रृंखला",
+   "syllabus_tag": "REASONING - संख्या श्रृंखला",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "श्रृंखला में अगली संख्या ज्ञात कीजिए: 1, 2, 6, 24, 120, ?",
+   "question_en": "Find the next number in the series: 1, 2, 6, 24, 120, ?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "722",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "726",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "720",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "718",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "×2, ×3, ×4, ×5 ⇒ अगला ×6: 120 × 6 = 720 (= 6!)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 27,
+   "section": "REASONING",
+   "topic": "कूटलेखन",
+   "syllabus_tag": "REASONING - कूटलेखन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक कूट में BOOK को CNPJ लिखा जाता है। उसी नियम से PAPER का कूट क्या होगा?",
+   "question_en": "In a code, BOOK is written as CNPJ. How will PAPER be coded by the same rule?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "QZQDR",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "QZQDS",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "OZODQ",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "QAPDS",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "विषम स्थान +1, सम स्थान −1: B+1=C, O−1=N, O+1=P, K−1=J। PAPER → P+1=Q, A−1=Z, P+1=Q, E−1=D, R+1=S ⇒ QZQDS।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 28,
+   "section": "REASONING",
+   "topic": "दिशा",
+   "syllabus_tag": "REASONING - दिशा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक व्यक्ति पूर्व की ओर मुख किए है। वह 135° दक्षिणावर्त और फिर 90° वामावर्त घूमता है। अब वह किस दिशा में मुख किए है?",
+   "question_en": "A person faces east, turns 135° clockwise and then 90° anticlockwise. Which direction does the person face now?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "दक्षिण-पश्चिम",
+     "text_en": "south-west",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "उत्तर-पश्चिम",
+     "text_en": "north-west",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "दक्षिण-पूर्व",
+     "text_en": "south-east",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उत्तर-पूर्व",
+     "text_en": "north-east",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "कुल घुमाव = 135° दक्षिणावर्त − 90° = 45° दक्षिणावर्त। पूर्व से 45° दक्षिणावर्त ⇒ दक्षिण-पूर्व।<br><img src=\"data:image/png;base64,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\" alt=\"हल का चित्र\">",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 29,
+   "section": "REASONING",
+   "topic": "न्याय निगमन",
+   "syllabus_tag": "REASONING - न्याय निगमन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कथन: सभी A, B हैं। सभी B, C हैं। निष्कर्ष: I. सभी A, C हैं। II. कोई C, A नहीं है।",
+   "question_en": "Statements: All A are B. All B are C. Conclusions: I. All A are C. II. No C is A.",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केवल निष्कर्ष II अनुसरण करता है।",
+     "text_en": "Only conclusion II follows.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "I और II दोनों अनुसरण करते हैं।",
+     "text_en": "Both I and II follow.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केवल निष्कर्ष I अनुसरण करता है।",
+     "text_en": "Only conclusion I follows.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "न I न II अनुसरण करता है।",
+     "text_en": "Neither I nor II follows.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "A ⊂ B ⊂ C ⇒ सभी A, C हैं (I सही)। तब कुछ C, A अवश्य हैं, इसलिए II गलत।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 30,
+   "section": "REASONING",
+   "topic": "घन",
+   "syllabus_tag": "REASONING - घन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक रंगे हुए घन को 125 समान छोटे घनों में काटा गया। कितने छोटे घनों की किसी भी सतह पर रंग नहीं है?",
+   "question_en": "A painted cube is cut into 125 equal small cubes. How many small cubes have no painted face?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "8",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "64",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "36",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "27",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "125 = 5³ ⇒ n = 5। बिना रंग वाले भीतरी घन = (n − 2)³ = 3³ = 27।<br><img src=\"data:image/png;base64,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\" alt=\"हल का चित्र\">",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 31,
+   "section": "HINDI",
+   "topic": "वर्तनी",
+   "syllabus_tag": "HINDI - वर्तनी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में शुद्ध शब्द कौन-सा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "स्वास्थ्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "स्वास्थ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "स्वास्थ्या",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "स्वाथ्य",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "मानक वर्तनी 'स्वास्थ्य' (स्वस्थ + य)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 32,
+   "section": "HINDI",
+   "topic": "समास",
+   "syllabus_tag": "HINDI - समास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'राजपुत्र' में कौन-सा समास है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बहुव्रीहि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "षष्ठी तत्पुरुष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कर्मधारय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "द्विगु",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "राजपुत्र = राजा का पुत्र — 'का' (सम्बन्ध/षष्ठी) विभक्ति लुप्त ⇒ षष्ठी तत्पुरुष।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 33,
+   "section": "HINDI",
+   "topic": "मुहावरा",
+   "syllabus_tag": "HINDI - मुहावरा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'दाँत खट्टे करना' का अर्थ है—",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनावश्यक हँसना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कठोर भोजन करना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डरकर भागना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बुरी तरह पराजित करना",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "दाँत खट्टे करना — शत्रु को बुरी तरह हराना।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 34,
+   "section": "HINDI",
+   "topic": "कारक",
+   "syllabus_tag": "HINDI - कारक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'मोहन ने बहन को पुस्तक दी।' में 'बहन को' कौन-सा कारक है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सम्प्रदान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अधिकरण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कर्म",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "करण",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "जिसे कुछ दिया जाए वह सम्प्रदान ('को/के लिए')। यहाँ 'पुस्तक' कर्म है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 35,
+   "section": "HINDI",
+   "topic": "अलंकार",
+   "syllabus_tag": "HINDI - अलंकार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'चरण-कमल' में कौन-सा अलंकार है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "रूपक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यमक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उपमा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुप्रास",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उपमेय (चरण) पर उपमान (कमल) का अभेद आरोप, वाचक शब्द नहीं ⇒ रूपक। ('कमल के समान चरण' होता तो उपमा।)",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 36,
+   "section": "HINDI",
+   "topic": "अपठित गद्यांश",
+   "syllabus_tag": "HINDI - अपठित गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_divivek",
+   "question_hi": "डिजिटल विवेक का अर्थ है—",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केवल मनपसंद सूचना पढ़ना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "तकनीक का प्रश्नशील और जिम्मेदार उपयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तकनीक का पूर्ण त्याग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हर संदेश तुरंत साझा करना",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "अंतिम वाक्य: \"डिजिटल विवेक का अर्थ तकनीक से दूरी नहीं, बल्कि उसका प्रश्नशील और जिम्मेदार उपयोग है।\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 37,
+   "section": "HINDI",
+   "topic": "अपठित गद्यांश",
+   "syllabus_tag": "HINDI - अपठित गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_divivek",
+   "question_hi": "संदेश साझा करने से पहले क्या जाँचना चाहिए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "स्रोत, तिथि और प्रमाण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केवल चित्र का रंग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "संदेश की लंबाई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भेजने वाले की लोकप्रियता",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "गद्यांश: \"स्रोत, तिथि और प्रमाण की जाँच आवश्यक है।\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 38,
+   "section": "HINDI",
+   "topic": "अपठित गद्यांश",
+   "syllabus_tag": "HINDI - अपठित गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_divivek",
+   "question_hi": "लेखक किस प्रवृत्ति से सावधान करता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्रमाण माँगना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "विभिन्न स्रोत पढ़ना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तिथि देखना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केवल अपने विचार से मेल खाने वाली सामग्री स्वीकार करना",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "ऐसी सामग्री स्वीकार करना 'भ्रम बढ़ा सकता है' — बाकी तीनों अच्छी आदतें हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 39,
+   "section": "HINDI",
+   "topic": "विलोम",
+   "syllabus_tag": "HINDI - विलोम",
+   "difficulty": "Medium",
+   "passage_id": "p_divivek",
+   "question_hi": "'विश्वसनीय' का विलोम है—",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अविश्वसनीय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भरोसेमंद",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "प्रमाणित",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रामाणिक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "विश्वसनीय (भरोसे योग्य) ↔ अविश्वसनीय। बाकी समानार्थी हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 40,
+   "section": "HINDI",
+   "topic": "शीर्षक",
+   "syllabus_tag": "HINDI - शीर्षक",
+   "difficulty": "Medium",
+   "passage_id": "p_divivek",
+   "question_hi": "उपयुक्त शीर्षक है—",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तकनीक से दूरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लोकप्रियता का महत्व",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "संदेशों की गति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "डिजिटल विवेक की आवश्यकता",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "पूरा गद्यांश डिजिटल माध्यम के सोच-समझकर उपयोग पर केंद्रित है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 41,
+   "section": "SANSKRIT",
+   "topic": "विभक्ति",
+   "syllabus_tag": "SANSKRIT - विभक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'वृक्षात् पत्रं पतति।' अत्र 'वृक्षात्' पदे का विभक्तिः?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तृतीया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पञ्चमी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सप्तमी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "द्वितीया",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "अलग होने (अपादान) में पञ्चमी — 'ध्रुवमपायेऽपादानम्'। वृक्षात् = पेड़ से।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 42,
+   "section": "SANSKRIT",
+   "topic": "सन्धि",
+   "syllabus_tag": "SANSKRIT - सन्धि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'सदैव' इत्यस्य सन्धिविच्छेदः कः?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सदा + इव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सद + एव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सत् + एव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सदा + एव",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "आ + ए = ऐ (वृद्धि सन्धि) ⇒ सदा + एव = सदैव।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 43,
+   "section": "SANSKRIT",
+   "topic": "समास",
+   "syllabus_tag": "SANSKRIT - समास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'मातापितरौ' इत्यस्य समासभेदः कः?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बहुव्रीहिः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अव्ययीभावः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "द्वन्द्वः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "तत्पुरुषः",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "माता च पिता च ⇒ दोनों पद प्रधान ⇒ द्वन्द्व।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 44,
+   "section": "SANSKRIT",
+   "topic": "पुरुष",
+   "syllabus_tag": "SANSKRIT - पुरुष",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'त्वं गच्छसि।' अत्र क्रियापदं कस्य पुरुषस्य?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "उत्तमपुरुषस्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नपुंसकस्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "प्रथमपुरुषस्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मध्यमपुरुषस्य",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "त्वम् — मध्यम पुरुष; गच्छसि — लट् लकार मध्यम पुरुष एकवचन। (उत्तम — गच्छामि, प्रथम — गच्छति)",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 45,
+   "section": "SANSKRIT",
+   "topic": "शब्दरूप",
+   "syllabus_tag": "SANSKRIT - शब्दरूप",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'गुरु' शब्दस्य षष्ठी-एकवचनरूपं किम्?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गुरुणा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गुरोः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "गुरौ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "गुरवे",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "गुरु (उकारान्त पुंलिङ्ग): गुरुणा — तृतीया, गुरवे — चतुर्थी, गुरोः — पञ्चमी/षष्ठी, गुरौ — सप्तमी।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 46,
+   "section": "SANSKRIT",
+   "topic": "गद्यांश",
+   "syllabus_tag": "SANSKRIT - गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_shiksha",
+   "question_hi": "शिक्षा कासां विकासं करोति?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केवलं क्रीडायाः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केवलं शरीरस्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अन्तर्निहितशक्तीनाम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केवलं धनस्य",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "प्रथम वाक्य: \"शिक्षा मनुष्यस्य अन्तर्निहितशक्तीनां विकासं करोति।\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 47,
+   "section": "SANSKRIT",
+   "topic": "गद्यांश",
+   "syllabus_tag": "SANSKRIT - गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_shiksha",
+   "question_hi": "शिक्षा केवलं किं न ददाति?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सहकार्यभावम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुशासनम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "विवेकम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पुस्तकज्ञानम्",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "\"सा केवलं पुस्तकज्ञानं न ददाति\" — बाकी तीनों वह बढ़ाती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 48,
+   "section": "SANSKRIT",
+   "topic": "गद्यांश",
+   "syllabus_tag": "SANSKRIT - गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_shiksha",
+   "question_hi": "शिक्षा किं वर्धयति?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भयम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "विवेकम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "द्वेषम्",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "आलस्यम्",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "\"विवेकं, अनुशासनं, सहकार्यभावं च वर्धयति।\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 49,
+   "section": "SANSKRIT",
+   "topic": "गद्यांश",
+   "syllabus_tag": "SANSKRIT - गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_shiksha",
+   "question_hi": "कः समाजस्य उन्नतौ योगदानं करोति?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सुशिक्षितः नागरिकः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "आलसी जनः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अज्ञानी जनः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "स्वार्थी जनः",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "अंतिम वाक्य: \"सुशिक्षितः नागरिकः समाजस्य उन्नतौ योगदानं करोति।\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 50,
+   "section": "SANSKRIT",
+   "topic": "गद्यांश",
+   "syllabus_tag": "SANSKRIT - गद्यांश",
+   "difficulty": "Medium",
+   "passage_id": "p_shiksha",
+   "question_hi": "उचितं शीर्षकं किम्?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "क्रीडायाः लाभः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "धनस्य सञ्चयः",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पुस्तकस्य मूल्यं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "शिक्षायाः व्यापकं स्वरूपम्",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "गद्यांश बताता है कि शिक्षा पुस्तक-ज्ञान से आगे विवेक, अनुशासन और सहयोग भी देती है ⇒ शिक्षा का व्यापक स्वरूप।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 51,
+   "section": "ENGLISH",
+   "topic": "Subject-Verb Agreement",
+   "syllabus_tag": "ENGLISH - Subject-Verb Agreement",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "Choose the correct sentence.",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "The quality of these worksheets are satisfactory.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "The qualities of these worksheet is satisfactory.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "The quality of these worksheets is satisfactory.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "The quality of this worksheets is satisfactory.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "Head noun 'quality' is singular → 'is'. 'these' must go with plural 'worksheets'.",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 52,
+   "section": "ENGLISH",
+   "topic": "Conditionals",
+   "syllabus_tag": "ENGLISH - Conditionals",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "Choose the correct conditional sentence.",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "If I had known, I would have helped.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "If I would have known, I had helped.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "If I had knew, I would help.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "If I knew, I would have helped yesterday.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "Third conditional (past unreal): If + had + V3, would have + V3.",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 53,
+   "section": "ENGLISH",
+   "topic": "Antonym",
+   "syllabus_tag": "ENGLISH - Antonym",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "Choose the antonym of 'scarce'.",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "limited",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "insufficient",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "rare",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "abundant",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "scarce = कम/दुर्लभ; antonym abundant = प्रचुर। बाकी तीनों synonyms हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 54,
+   "section": "ENGLISH",
+   "topic": "Prepositions",
+   "syllabus_tag": "ENGLISH - Prepositions",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "Choose the correct preposition: He is responsible ______ maintaining the records.",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "with",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "for",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "to",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "of",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "Fixed collocation: responsible for (something); responsible to (a person/authority).",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 55,
+   "section": "ENGLISH",
+   "topic": "Conciseness",
+   "syllabus_tag": "ENGLISH - Conciseness",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "Choose the most concise sentence.",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "The committee met to discuss the proposal.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "For the purpose of discussion, a meeting was held by the committee about the proposal.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "The committee held a meeting for the purpose of discussing the proposal.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "The proposal was in discussion by a meeting of the committee.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "(a) uses active voice and 'to discuss' instead of wordy 'for the purpose of'.",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 56,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_multi",
+   "question_hi": "What is the author's view of multilingualism?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "It must be eliminated.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "It matters only in language classes.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "It prevents all participation.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "It is a resource for learning.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "First line: \"not a problem to be corrected; it is a resource to be organised.\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 57,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_multi",
+   "question_hi": "Why may a familiar language help?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "It removes the need to learn the school language.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "It activates prior knowledge and confidence.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "It guarantees correct answers.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "It reduces all tasks to memorisation.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "\"they activate prior knowledge and participate more confidently.\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 58,
+   "section": "ENGLISH",
+   "topic": "Reading Comprehension",
+   "syllabus_tag": "ENGLISH - Reading Comprehension",
+   "difficulty": "Medium",
+   "passage_id": "p_multi",
+   "question_hi": "How should the school language be developed?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "By building bridges from familiar languages.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "By separating learners permanently.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "By ignoring meaning.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "By punishing home-language use.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "\"build bridges to the school language through comparison, translation and purposeful use.\"",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 59,
+   "section": "ENGLISH",
+   "topic": "Vocabulary",
+   "syllabus_tag": "ENGLISH - Vocabulary",
+   "difficulty": "Medium",
+   "passage_id": "p_multi",
+   "question_hi": "The word 'inferior' means:",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "grammatically complete",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "widely spoken",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "lower in value or status",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "more familiar",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "inferior = निम्न/कमतर (lower in value, quality or status).",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 60,
+   "section": "ENGLISH",
+   "topic": "Inference",
+   "syllabus_tag": "ENGLISH - Inference",
+   "difficulty": "Medium",
+   "passage_id": "p_multi",
+   "question_hi": "Which practice best matches the passage?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Assess intelligence through accent.",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Allow group discussion in home languages before a bilingual class report.",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Seat multilingual learners separately.",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Ban all home-language words.",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "Home language is used first as a support, then a bridge to the shared (school) language.",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 61,
+   "section": "SCIENCE",
+   "topic": "गति",
+   "syllabus_tag": "SCIENCE - गति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "20 m/s से चलती कार 4 m/s² के समान मंदन से रुकती है। रुकने की दूरी कितनी है?",
+   "question_en": "A car moving at 20 m/s stops with uniform retardation 4 m/s². What is the stopping distance?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "80 m",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "100 m",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "50 m",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "40 m",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "$v^2=u^2-2as$ ⇒ $0=400-8s$ ⇒ s = 50 m।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 62,
+   "section": "SCIENCE",
+   "topic": "ऊर्जा",
+   "syllabus_tag": "SCIENCE - ऊर्जा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि किसी वस्तु का संवेग दोगुना हो और द्रव्यमान अपरिवर्तित रहे, तो गतिज ऊर्जा कितनी गुनी होगी?",
+   "question_en": "If an object's momentum doubles while mass remains unchanged, how does its kinetic energy change?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "आठ गुनी",
+     "text_en": "Eight times",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अपरिवर्तित",
+     "text_en": "Unchanged",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "चार गुनी",
+     "text_en": "Four times",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "दो गुनी",
+     "text_en": "Two times",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "$K=\\frac{p^2}{2m}$ ⇒ p दोगुना ⇒ K = 2² = 4 गुनी।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 63,
+   "section": "SCIENCE",
+   "topic": "प्रकाश",
+   "syllabus_tag": "SCIENCE - प्रकाश",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किस कारण से आकाश नीला दिखाई देता है?",
+   "question_en": "Why does the sky appear blue?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वायुमंडल द्वारा सभी रंगों का समान परावर्तन",
+     "text_en": "Equal reflection of all colours by the atmosphere",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "छोटी तरंगदैर्ध्य के प्रकाश का अधिक प्रकीर्णन",
+     "text_en": "Greater scattering of shorter-wavelength light",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नीले प्रकाश का पूर्ण अवशोषण",
+     "text_en": "Complete absorption of blue light",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "समुद्र के रंग का प्रतिबिम्ब",
+     "text_en": "Reflection of the ocean's colour",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "रैले प्रकीर्णन $\\propto \\frac{1}{\\lambda^4}$ — नीला (छोटी λ) लाल से कहीं अधिक बिखरता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 64,
+   "section": "SCIENCE",
+   "topic": "ध्वनि",
+   "syllabus_tag": "SCIENCE - ध्वनि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ध्वनि की प्रबलता मुख्यतः किस पर निर्भर करती है?",
+   "question_en": "Loudness of sound depends mainly on what?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तरंग के आयाम पर",
+     "text_en": "Amplitude of the wave",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "तरंगदैर्ध्य के वर्ग पर ही",
+     "text_en": "Only the square of wavelength",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केवल आवृत्ति पर",
+     "text_en": "Frequency only",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केवल चाल पर",
+     "text_en": "Speed only",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "तीव्रता ∝ आयाम²; अधिक आयाम = अधिक प्रबल ध्वनि। आवृत्ति से तारत्व (pitch) तय होता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 65,
+   "section": "SCIENCE",
+   "topic": "पदार्थ की अवस्थाएँ",
+   "syllabus_tag": "SCIENCE - पदार्थ की अवस्थाएँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कपूर का ठोस से सीधे वाष्प में बदलना क्या कहलाता है?",
+   "question_en": "What is the direct change of camphor from solid to vapour called?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जमना",
+     "text_en": "Freezing",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "संघनन",
+     "text_en": "Condensation",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ऊर्ध्वपातन",
+     "text_en": "Sublimation",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "गलन",
+     "text_en": "Melting",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "ठोस → गैस (द्रव बने बिना) = ऊर्ध्वपातन; जैसे कपूर, नेफ्थलीन, शुष्क बर्फ।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 66,
+   "section": "SCIENCE",
+   "topic": "मानव शरीर",
+   "syllabus_tag": "SCIENCE - मानव शरीर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "रक्त में ऑक्सीजन का अधिकांश परिवहन किसके द्वारा होता है?",
+   "question_en": "Most oxygen in blood is transported by what?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्लेटलेट्स",
+     "text_en": "Platelets",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्लाज्मा प्रोटीन एल्ब्यूमिन",
+     "text_en": "Plasma protein albumin",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "श्वेत रक्त कोशिकाएँ",
+     "text_en": "White blood cells",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हीमोग्लोबिन",
+     "text_en": "Haemoglobin",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "लगभग 97% ऑक्सीजन लाल रक्त कणिकाओं के हीमोग्लोबिन से जुड़कर (ऑक्सीहीमोग्लोबिन) जाती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 67,
+   "section": "SCIENCE",
+   "topic": "पादप",
+   "syllabus_tag": "SCIENCE - पादप",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जाइलम का प्रमुख कार्य क्या है?",
+   "question_en": "What is the main function of xylem?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केवल गैस विनिमय",
+     "text_en": "Gas exchange only",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पत्तियों से शर्करा का परिवहन",
+     "text_en": "Transport of sugars from leaves",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जड़ों से जल और खनिजों का ऊपर परिवहन",
+     "text_en": "Transport of water and minerals upward from roots",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बीज निर्माण",
+     "text_en": "Seed formation",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "जाइलम — जल व खनिज (जड़ → ऊपर); फ्लोएम — भोजन/शर्करा (पत्तियों से)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 68,
+   "section": "SCIENCE",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "SCIENCE - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ओज़ोन परत का प्रमुख पर्यावरणीय महत्व क्या है?",
+   "question_en": "What is the major environmental importance of the ozone layer?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हानिकारक UV-B विकिरण का बड़ा भाग अवशोषित करना",
+     "text_en": "Absorbing much harmful UV-B radiation",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पृथ्वी का गुरुत्व बनाना",
+     "text_en": "Creating Earth's gravity",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सभी दृश्य प्रकाश रोकना",
+     "text_en": "Blocking all visible light",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "समुद्र का नमक घटाना",
+     "text_en": "Reducing ocean salinity",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "समतापमंडलीय ओज़ोन UV-B सोखकर त्वचा कैंसर, मोतियाबिंद आदि से बचाती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 69,
+   "section": "MATHS",
+   "topic": "विभाज्यता",
+   "syllabus_tag": "MATHS - विभाज्यता",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संख्या 9x64 को 11 से पूर्णतः विभाज्य बनाने के लिए x का मान क्या होगा?",
+   "question_en": "What should be the value of x so that the number 9x64 is exactly divisible by 11?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "8",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "0",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "विषम स्थानों का योग (9 + 6) − सम स्थानों का योग (x + 4) = 11 − x। यह 0 या 11 का गुणज ⇒ x = 0 (9064 = 11 × 824)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 70,
+   "section": "MATHS",
+   "topic": "भिन्न",
+   "syllabus_tag": "MATHS - भिन्न",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किसी संख्या के 7/10 और 1/4 भाग का अंतर 36 है। वह संख्या क्या है?",
+   "question_en": "The difference between 7/10 and 1/4 of a number is 36. What is the number?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "120",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "80",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "100",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "60",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$\\left(\\frac{7}{10}-\\frac{1}{4}\\right)N=\\frac{9}{20}N=36$ ⇒ N = 80।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 71,
+   "section": "MATHS",
+   "topic": "स्थानीय मान",
+   "syllabus_tag": "MATHS - स्थानीय मान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संख्या 12.0408 में अंक 4 के स्थानीय मान और अंक 8 के स्थानीय मान का अनुपात क्या है?",
+   "question_en": "In the number 12.0408, what is the ratio of the place value of digit 4 to that of digit 8?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "50:1",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "500:1",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1:50",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "4:8",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "4 का मान 4/100 = 0.04, 8 का मान 8/10000 = 0.0008 ⇒ $\\frac{0.04}{0.0008}=50$ ⇒ 50 : 1।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 72,
+   "section": "MATHS",
+   "topic": "चक्रवृद्धि ब्याज",
+   "syllabus_tag": "MATHS - चक्रवृद्धि ब्याज",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "₹25,000 पर 12% वार्षिक दर से 2 वर्षों के चक्रवृद्धि ब्याज और साधारण ब्याज का अंतर कितना होगा?",
+   "question_en": "What is the difference between compound and simple interest on ₹25,000 for 2 years at 12% per annum?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "485",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "720",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "360",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "298",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "2 वर्ष: CI − SI = $P\\left(\\frac{r}{100}\\right)^2=25000\\times0.0144=₹360$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 73,
+   "section": "MATHS",
+   "topic": "छूट",
+   "syllabus_tag": "MATHS - छूट",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक वस्तु का अंकित मूल्य क्रय मूल्य से 35% अधिक है। उस पर क्रमशः 10% और 10% की छूट दी जाती है। लाभ/हानि प्रतिशत क्या है?",
+   "question_en": "An article is marked 35% above cost price and successive discounts of 10% and 10% are given. What is the profit/loss percentage?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "14.35%",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "11.35%",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "7.35%",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "9.35%",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "1.35 × 0.9 × 0.9 = 1.0935 ⇒ 9.35% लाभ।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 74,
+   "section": "MATHS",
+   "topic": "प्रतिशत",
+   "syllabus_tag": "MATHS - प्रतिशत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक राशि को पहले 30% बढ़ाया और फिर 10% घटाया गया। प्राप्त राशि को मूल राशि तक पहुँचाने के लिए कितने प्रतिशत परिवर्तन की आवश्यकता है?",
+   "question_en": "A quantity is first increased by 30% and then decreased by 10%. What percentage change is required to restore the original value?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "20%",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "−14.53%",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "−12.53%",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "−16.53%",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "1.3 × 0.9 = 1.17 ⇒ आवश्यक परिवर्तन $\\left(\\frac{1}{1.17}-1\\right)\\times100\\approx-14.53\\%$ (लगभग 14.53% घटाना)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 75,
+   "section": "MATHS",
+   "topic": "LCM-HCF",
+   "syllabus_tag": "MATHS - LCM-HCF",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दो संख्याओं का HCF 15 और LCM 900 है। यदि एक संख्या 225 है, तो दूसरी संख्या क्या है?",
+   "question_en": "The HCF and LCM of two numbers are 15 and 900. If one number is 225, what is the other?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "60",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "45",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "120",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "75",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "दूसरी = HCF × LCM ÷ पहली = 15 × 900 / 225 = 60।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 76,
+   "section": "MATHS",
+   "topic": "कार्य-समय",
+   "syllabus_tag": "MATHS - कार्य-समय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "8 पुरुष अथवा 12 महिलाएँ किसी कार्य को 30 दिनों में पूरा करती हैं। 4 पुरुष और 6 महिलाएँ मिलकर वही कार्य कितने दिनों में करेंगे?",
+   "question_en": "8 men or 12 women complete a work in 30 days. In how many days will 4 men and 6 women complete it together?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "31 दिन",
+     "text_en": "days",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "29 दिन",
+     "text_en": "days",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "32 दिन",
+     "text_en": "days",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "30 दिन",
+     "text_en": "days",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "4 पुरुष = 8 पुरुष का आधा, 6 महिलाएँ = 12 का आधा ⇒ कुल = ½ + ½ = पूरी टीम के बराबर ⇒ 30 दिन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 77,
+   "section": "MATHS",
+   "topic": "बीजगणित",
+   "syllabus_tag": "MATHS - बीजगणित",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि x + 1/x = 5, तो x³ + 1/x³ का मान क्या है?",
+   "question_en": "If x + 1/x = 5, what is the value of x³ + 1/x³?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "105",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "110",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "100",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "115",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$x^3+\\frac{1}{x^3}=\\left(x+\\frac{1}{x}\\right)^3-3\\left(x+\\frac{1}{x}\\right)=125-15=110$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 78,
+   "section": "MATHS",
+   "topic": "क्षेत्रमिति",
+   "syllabus_tag": "MATHS - क्षेत्रमिति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक आयत का परिमाप 64 cm और विकर्ण 20 cm है। उसका क्षेत्रफल कितना है?",
+   "question_en": "A rectangle has perimeter 64 cm and diagonal 20 cm. What is its area?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "292 cm²",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "352 cm²",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "312 cm²",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "332 cm²",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "l + b = 32, l² + b² = 400 ⇒ 2lb = 1024 − 400 = 624 ⇒ lb = 312 cm²।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 79,
+   "section": "MATHS",
+   "topic": "औसत",
+   "syllabus_tag": "MATHS - औसत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "30 संख्याओं का औसत 28 निकाला गया। बाद में पता चला कि 57 को गलती से 27 पढ़ा गया था। सही औसत क्या है?",
+   "question_en": "The average of 30 numbers was calculated as 28. It was later found that 57 had been read as 27. What is the correct average?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "30",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "28",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "31",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "29",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "सही योग = 30 × 28 − 27 + 57 = 870 ⇒ औसत 870/30 = 29।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 80,
+   "section": "MATHS",
+   "topic": "क्षेत्रमिति",
+   "syllabus_tag": "MATHS - क्षेत्रमिति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "8 cm त्रिज्या और 9 cm ऊँचाई वाले ठोस बेलन को पिघलाकर 2 cm त्रिज्या के ठोस गोलों में ढाला जाता है। कितने पूर्ण गोले बनेंगे?",
+   "question_en": "A solid cylinder of radius 8 cm and height 9 cm is melted and recast into solid spheres of radius 2 cm. How many complete spheres are formed?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "54",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "51",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "57",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "60",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "$\\frac{\\pi\\cdot8^2\\cdot9}{\\frac{4}{3}\\pi\\cdot2^3}=\\frac{576}{32/3}=54$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 81,
+   "section": "MATHS",
+   "topic": "अनुपात",
+   "syllabus_tag": "MATHS - अनुपात",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "A और B की आय का अनुपात 6:5 तथा व्यय का अनुपात 4:3 है। यदि दोनों ₹2,400 की समान बचत करते हैं, तो A की आय कितनी है?",
+   "question_en": "A and B have income ratio 6:5 and expenditure ratio 4:3. If each saves ₹2,400, what is A's income?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "7200",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "4800",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "9600",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "12000",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "6k − 4l = 2400, 5k − 3l = 2400। पहली × 3 − दूसरी × 4: 18k − 20k = −2400 ⇒ k = 1200 ⇒ A की आय = 6k = ₹7,200।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 82,
+   "section": "MATHS",
+   "topic": "बीजगणित",
+   "syllabus_tag": "MATHS - बीजगणित",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यदि a + b = 15 तथा ab = 44, तो a³ + b³ का मान क्या है?",
+   "question_en": "If a + b = 15 and ab = 44, what is a³ + b³?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1410",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1527",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1395",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1263",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "$(a+b)^3-3ab(a+b)=3375-1980=1395$।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 83,
+   "section": "MATHS",
+   "topic": "त्रिभुज",
+   "syllabus_tag": "MATHS - त्रिभुज",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक समकोण त्रिभुज में समकोण से कर्ण पर खींचा लम्ब कर्ण को 16 cm और 25 cm के भागों में विभाजित करता है। लम्ब की लंबाई क्या है?",
+   "question_en": "In a right triangle, the altitude from the right angle divides the hypotenuse into segments of 16 cm and 25 cm. What is the altitude length?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "22 cm",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "20 cm",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "18 cm",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "24 cm",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "$h^2=pq=16\\times25=400$ ⇒ h = 20 cm।<br><img src=\"data:image/png;base64,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\" alt=\"हल का चित्र\">",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 84,
+   "section": "MATHS",
+   "topic": "सांख्यिकी",
+   "syllabus_tag": "MATHS - सांख्यिकी",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न आवृत्ति-वितरण का माध्य ज्ञात कीजिए: x = 5, f = 1; x = 10, f = 3; x = 15, f = 5; x = 20, f = 1",
+   "question_en": "Find the mean of the frequency distribution: x = 5, f = 1; x = 10, f = 3; x = 15, f = 5; x = 20, f = 1",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "12",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "14",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "25/2",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "13",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "Σfx = 5 + 30 + 75 + 20 = 130, Σf = 10 ⇒ माध्य 13।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 85,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "भारत का भूगोल",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - भारत का भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कौन-सी हिमालयी नदियाँ पर्वतोत्थान से पहले स्थापित मार्गों को बनाए रखते हुए पूर्ववर्ती अपवाह का उदाहरण प्रस्तुत करती हैं?",
+   "question_en": "Which Himalayan rivers exemplify antecedent drainage by maintaining courses established before mountain uplift?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कावेरी और वैगई",
+     "text_en": "Kaveri and Vaigai",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नर्मदा और ताप्ती",
+     "text_en": "Narmada and Tapi",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सिंधु और सतलुज",
+     "text_en": "Indus and Sutlej",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "गोदावरी और कृष्णा",
+     "text_en": "Godavari and Krishna",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "सिंधु, सतलुज, ब्रह्मपुत्र हिमालय से पुरानी हैं; पर्वत उठते रहे और ये गहरे गॉर्ज काटती रहीं। बाकी प्रायद्वीपीय नदियाँ हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 86,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "भूगोल",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अंतरराष्ट्रीय तिथि रेखा लगभग 180° देशांतर के आसपास zigzag क्यों करती है?",
+   "question_en": "Why does the International Date Line zigzag around 180° longitude?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पृथ्वी का घूर्णन वहाँ रुकता है",
+     "text_en": "Earth's rotation stops there",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "देशों और द्वीप-समूहों को अनावश्यक रूप से दो तिथियों में बाँटने से बचाने के लिए",
+     "text_en": "To avoid unnecessarily splitting countries and island groups between dates",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वहाँ सभी देशांतर मिलते हैं",
+     "text_en": "All longitudes meet there",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वहाँ सूर्य उदय नहीं होता",
+     "text_en": "The Sun never rises there",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "एक ही देश/द्वीप-समूह में दो अलग तारीखें न हों, इसलिए रेखा स्थल भागों से बचकर मुड़ती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 87,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "जलवायु",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - जलवायु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पश्चिमी विक्षोभ उत्तर-पश्चिम भारत में किस मौसम की वर्षा से संबंधित हैं?",
+   "question_en": "Western Disturbances are associated with rainfall in north-western India during which season?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पूरे वर्ष समान",
+     "text_en": "Equally throughout the year",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ग्रीष्म मानसून का मध्य मात्र",
+     "text_en": "Only mid-summer monsoon",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "शीत ऋतु",
+     "text_en": "Winter",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वसंत का अंत मात्र",
+     "text_en": "Only late spring",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "भूमध्यसागर से आने वाले शीतोष्ण चक्रवात — जाड़े में पंजाब-हरियाणा में वर्षा (रबी के लिए लाभकारी) और हिमालय में हिमपात।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 88,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "आधुनिक इतिहास",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - आधुनिक इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारतीय राष्ट्रीय कांग्रेस के लाहौर अधिवेशन 1929 का प्रमुख निर्णय क्या था?",
+   "question_en": "What was a major decision of the 1929 Lahore Session of the Indian National Congress?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अलग निर्वाचन का समर्थन",
+     "text_en": "Supporting separate electorates",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बंगाल विभाजन स्वीकार करना",
+     "text_en": "Accepting the partition of Bengal",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पूर्ण स्वराज को लक्ष्य घोषित करना",
+     "text_en": "Declaring Purna Swaraj as the objective",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भारत छोड़ो प्रस्ताव पारित करना",
+     "text_en": "Passing the Quit India resolution",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "लाहौर 1929 (अध्यक्ष नेहरू) — पूर्ण स्वराज; 26 जनवरी 1930 को स्वतंत्रता दिवस। भारत छोड़ो — 1942, बम्बई।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 89,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "समाज सुधारक",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - समाज सुधारक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "आर्य समाज का मूल नारा 'वेदों की ओर लौटो' किस सुधारक से जुड़ा है?",
+   "question_en": "The Arya Samaj call 'Back to the Vedas' is associated with which reformer?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पेरियार",
+     "text_en": "Periyar",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ईश्वरचन्द्र विद्यासागर",
+     "text_en": "Ishwar Chandra Vidyasagar",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पंडिता रमाबाई",
+     "text_en": "Pandita Ramabai",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "स्वामी दयानन्द सरस्वती",
+     "text_en": "Swami Dayanand Saraswati",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "स्वामी दयानन्द — आर्य समाज (1875, बम्बई), 'सत्यार्थ प्रकाश'।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 90,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "संविधान",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राज्य के नीति-निदेशक तत्वों की न्यायिक स्थिति क्या है?",
+   "question_en": "What is the judicial status of the Directive Principles of State Policy?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वे मौलिक अधिकारों की तरह पूर्णतः प्रवर्तनीय हैं",
+     "text_en": "They are fully enforceable like Fundamental Rights",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वे संविधान का भाग नहीं हैं",
+     "text_en": "They are not part of the Constitution",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वे केवल स्थानीय निकायों पर लागू हैं",
+     "text_en": "They apply only to local bodies",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वे न्यायालय में सीधे प्रवर्तनीय नहीं, पर शासन के लिए मूलभूत हैं",
+     "text_en": "They are not directly enforceable by courts but are fundamental in governance",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "अनु. 37 — नीति-निदेशक तत्व न्यायालय द्वारा प्रवर्तनीय नहीं, फिर भी देश के शासन में मूलभूत हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 91,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "अर्थशास्त्र",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - अर्थशास्त्र",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय आय के आकलन में दोहरी गणना से बचने का सबसे उपयुक्त तरीका क्या है?",
+   "question_en": "What is the most appropriate way to avoid double counting in national income estimation?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केवल नकद लेन-देन की गणना करना",
+     "text_en": "Count cash transactions only",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केवल अंतिम वस्तुओं एवं सेवाओं की गणना करना या प्रत्येक चरण में जोड़े गए मूल्य को जोड़ना",
+     "text_en": "Count final goods and services or sum value added at each stage",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "प्रत्येक मध्यवर्ती लेन-देन को जोड़ना",
+     "text_en": "Add every intermediate transaction",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "आयात को घरेलू उत्पादन मानना",
+     "text_en": "Treat imports as domestic output",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "अंतिम उत्पाद विधि या मूल्य-वर्धित विधि; मध्यवर्ती वस्तुएँ जोड़ने से एक ही उत्पादन बार-बार गिना जाता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 92,
+   "section": "पर्यावरण एवं सामाजिक अध्ययन",
+   "topic": "आपदा प्रबंधन",
+   "syllabus_tag": "पर्यावरण एवं सामाजिक अध्ययन - आपदा प्रबंधन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बाढ़ के पानी में वाहन चलाना जोखिमपूर्ण क्यों है?",
+   "question_en": "Why is driving through floodwater dangerous?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पानी की गहराई और धारा छिपी हो सकती है तथा अपेक्षाकृत कम पानी भी वाहन को बहा सकता है",
+     "text_en": "Depth and current may be hidden, and relatively shallow water can move a vehicle",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बाढ़ का पानी सदैव स्थिर होता है",
+     "text_en": "Floodwater is always still",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सड़क की सतह अधिक स्पष्ट दिखाई देती है",
+     "text_en": "The road surface becomes clearer",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वाहन का इंजन अधिक शक्तिशाली हो जाता है",
+     "text_en": "The engine becomes more powerful",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "बहते पानी में गहराई, टूटी सड़क, मलबा और बिजली के खतरे छिपे रहते हैं; थोड़ा बहता पानी भी कार को बहा सकता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 93,
+   "section": "शिक्षण कौशल (Teaching Skills)",
+   "topic": "शिक्षण प्रतिमान",
+   "syllabus_tag": "शिक्षण कौशल (Teaching Skills) - शिक्षण प्रतिमान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अवधारणा प्राप्ति में शिक्षक सकारात्मक और नकारात्मक उदाहरण देता है ताकि विद्यार्थी विशेषताओं की पहचान कर सकें। इसका प्रमुख उद्देश्य क्या है?",
+   "question_en": "In concept attainment, a teacher gives positive and negative examples so learners identify attributes. What is the main purpose?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सभी उदाहरणों को समान मानना",
+     "text_en": "Treating all examples as identical",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केवल चित्र बनाना",
+     "text_en": "Drawing pictures only",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "परिभाषा को शब्दशः रटना",
+     "text_en": "Memorising a definition verbatim",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अवधारणा की परिभाषित विशेषताओं का निष्कर्ष निकालना",
+     "text_en": "Inferring the defining attributes of a concept",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "ब्रूनर का अवधारणा-प्राप्ति प्रतिमान — 'हाँ' और 'नहीं' उदाहरणों की तुलना से विद्यार्थी स्वयं आवश्यक गुण खोजते हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 94,
+   "section": "शिक्षण कौशल (Teaching Skills)",
+   "topic": "शिक्षण प्रतिमान",
+   "syllabus_tag": "शिक्षण कौशल (Teaching Skills) - शिक्षण प्रतिमान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ऑसुबेल का अग्रिम संगठक क्या करता है?",
+   "question_en": "What does an Ausubelian advance organiser do?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सभी उदाहरणों को हटा देता है",
+     "text_en": "Removes all examples",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रटने पर आधारित अधिगम को अनिवार्य करता है",
+     "text_en": "Makes rote learning compulsory",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नई और जटिल विषयवस्तु से पहले एक व्यापक वैचारिक ढाँचा प्रदान करता है",
+     "text_en": "Provides an overarching conceptual framework before complex new content",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पाठ के बाद केवल अंक प्रदान करता है",
+     "text_en": "Only gives marks after the lesson",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "अग्रिम संगठक पूर्वज्ञान और नई सामग्री के बीच पुल बनाता है ⇒ सार्थक (अर्थपूर्ण) अधिगम।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 95,
+   "section": "शिक्षण कौशल (Teaching Skills)",
+   "topic": "समावेशी शिक्षा",
+   "syllabus_tag": "शिक्षण कौशल (Teaching Skills) - समावेशी शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विद्यालय में लिंग-संवेदी शिक्षणशास्त्र का उदाहरण क्या है?",
+   "question_en": "Which is an example of gender-sensitive pedagogy?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "लिंग के आधार पर बैठने की व्यवस्था को स्थायी बनाना",
+     "text_en": "Permanently segregate seating by gender",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लड़कों को विज्ञान और लड़कियों को सजावट से संबंधित कार्य देना",
+     "text_en": "Assign science to boys and decoration to girls",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पाठ्यपुस्तक में उपस्थित रूढ़िबद्ध धारणाओं पर कभी चर्चा न करना",
+     "text_en": "Never discuss textbook stereotypes",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भूमिकाओं, उदाहरणों और सहभागिता में रूढ़िबद्ध धारणाओं को चुनौती देना तथा न्यायसंगत अवसर प्रदान करना",
+     "text_en": "Challenge stereotypes in roles, examples and participation and provide equitable opportunities",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "लिंग-संवेदी शिक्षण रूढ़ियों को तोड़ता है और सभी को समान अवसर देता है; बाकी विकल्प रूढ़ियाँ मजबूत करते हैं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 96,
+   "section": "शिक्षण कौशल (Teaching Skills)",
+   "topic": "समावेशी शिक्षा",
+   "syllabus_tag": "शिक्षण कौशल (Teaching Skills) - समावेशी शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "श्रवणबाधित शिक्षार्थी वाली कक्षा में शिक्षक को कौन-सा अभ्यास अपनाना चाहिए?",
+   "question_en": "Which practice should a teacher adopt in a class with a learner who has hearing impairment?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सहपाठियों के साथ अंतःक्रिया रोकना",
+     "text_en": "Prevent peer interaction",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पीठ करके बोलना",
+     "text_en": "Speak with the back turned",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अपना चेहरा स्पष्ट दिखाई देने देना, दृश्य संकेत एवं उपशीर्षक प्रदान करना और शिक्षार्थी की संचार वरीयता के अनुसार सहायता देना",
+     "text_en": "Keep the face visible, provide visual cues and captions, and support the learner's communication preference",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केवल दूर से निर्देश देना",
+     "text_en": "Give instructions only from a distance",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "चेहरा दिखने से होंठ पढ़ना (lip-reading) संभव; दृश्य संकेत, कैप्शन, शोर कम और सांकेतिक भाषा/संचार वरीयता का सम्मान।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 97,
+   "section": "शिक्षण कौशल (Teaching Skills)",
+   "topic": "FLN",
+   "syllabus_tag": "शिक्षण कौशल (Teaching Skills) - FLN",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मूलभूत साक्षरता एवं संख्याज्ञान में मौखिक भाषा क्यों महत्वपूर्ण है?",
+   "question_en": "Why is oral language important in FLN?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "यह शब्दावली, वाक्य-विन्यास, कथन क्षमता और बोध की आधारशिला बनाती है",
+     "text_en": "It builds vocabulary, syntax, narrative and comprehension foundations",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यह केवल उच्चारण का परीक्षण है",
+     "text_en": "It is only a pronunciation test",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लिखना सीखने के बाद यह अनावश्यक हो जाती है",
+     "text_en": "It becomes unnecessary after writing begins",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इसका पठन से कोई संबंध नहीं है",
+     "text_en": "It has no relation to reading",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "सुनना-बोलना आगे पढ़ने की समझ और अभिव्यक्ति की नींव है (NIPUN भारत में मौखिक भाषा विकास पहला घटक)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 98,
+   "section": "शिक्षण कौशल (Teaching Skills)",
+   "topic": "मूल्यांकन",
+   "syllabus_tag": "शिक्षण कौशल (Teaching Skills) - मूल्यांकन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मानदंड-संदर्भित व्याख्या क्या बताती है?",
+   "question_en": "What does criterion-referenced interpretation indicate?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "शिक्षार्थी दूसरों की तुलना में किस प्रतिशतक पर है",
+     "text_en": "The learner's percentile relative to others",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "परीक्षण में कितने पृष्ठ हैं",
+     "text_en": "How many pages the test has",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "शिक्षक की लोकप्रियता",
+     "text_en": "Teacher popularity",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "शिक्षार्थी ने पूर्वनिर्धारित मानकों या कौशलों के संबंध में कितनी निपुणता प्राप्त की है",
+     "text_en": "What the learner has mastered relative to predefined standards or skills",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "मानदंड-संदर्भित = तय मानक से तुलना; मानक-संदर्भित (norm-referenced) = दूसरों से तुलना (प्रतिशतक)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 99,
+   "section": "शिक्षण कौशल (Teaching Skills)",
+   "topic": "भाषा शिक्षण",
+   "syllabus_tag": "शिक्षण कौशल (Teaching Skills) - भाषा शिक्षण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ध्वन्यात्मक जागरूकता और ध्वनि-अक्षर संबंध शिक्षण में क्या अंतर है?",
+   "question_en": "What is the difference between phonological awareness and phonics?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पहला बोली गई भाषा की ध्वनि-संरचना की जागरूकता है; दूसरा ध्वनियों को लिखित प्रतीकों से जोड़ता है",
+     "text_en": "The first is awareness of spoken sound structure; the second links sounds with written symbols",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "दोनों केवल हस्तलेखन से संबंधित हैं",
+     "text_en": "Both are handwriting only",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ध्वन्यात्मक जागरूकता मुद्रित पाठ के बिना सम्भव नहीं है",
+     "text_en": "Phonological awareness cannot exist without print",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ध्वनि-अक्षर संबंध शिक्षण केवल अर्थ से संबंधित है",
+     "text_en": "Phonics is meaning only",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "ध्वन्यात्मक जागरूकता मौखिक है (तुक, अक्षर-खंड पहचानना); फ़ोनिक्स ध्वनि ↔ अक्षर का संबंध सिखाता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 100,
+   "section": "शिक्षण कौशल (Teaching Skills)",
+   "topic": "शिक्षक विकास",
+   "syllabus_tag": "शिक्षण कौशल (Teaching Skills) - शिक्षक विकास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "शिक्षक का अवलोकन विकासोन्मुख कब होता है?",
+   "question_en": "When is teacher observation developmental?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जब कोई प्रतिपुष्टि न दी जाए",
+     "text_en": "There is no feedback",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जब पूर्व-सहमति से केंद्रबिंदु तय हो, साक्ष्य-आधारित अवलोकन किया जाए, संवादात्मक प्रतिपुष्टि दी जाए और अनुवर्ती सहायता उपलब्ध हो",
+     "text_en": "It has an agreed focus, evidence-based observation, dialogic feedback and follow-up support",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जब एक घटना के आधार पर स्थायी ठप्पा लगा दिया जाए",
+     "text_en": "It gives a permanent label from one incident",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जब अचानक निरीक्षण करके सार्वजनिक वरीयता क्रम बनाया जाए",
+     "text_en": "It is a surprise inspection with public ranking",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "विकासोन्मुख अवलोकन का उद्देश्य सुधार है: तय फोकस, प्रमाण, संवाद और आगे सहायता।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 101,
+   "section": "बाल विकास (बाल मनोविज्ञान)",
+   "topic": "अधिगम शैली",
+   "syllabus_tag": "बाल विकास (बाल मनोविज्ञान) - अधिगम शैली",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अधिगम शैली के लेबल को स्थायी निदान की तरह उपयोग करना समस्याजनक क्यों है?",
+   "question_en": "Why is using a 'learning style' label as a permanent diagnosis problematic?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्रत्येक अधिगम शैली एक जैविक नियम है",
+     "text_en": "Every style is a biological law",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ऐसा ठप्पा आकलन को सदैव अधिक सटीक बनाता है",
+     "text_en": "The label always makes assessment more precise",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सभी अवधारणाएँ एक ही माध्यम से सर्वोत्तम रूप से सीखी जाती हैं",
+     "text_en": "All concepts are learned best in one modality",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "यह शिक्षार्थी को सीमित कर सकता है और साक्ष्य-आधारित बहु-माध्यमीय शिक्षण के स्थान पर एक स्थायी मेल की धारणा बना लेता है",
+     "text_en": "It may limit learners and assumes a fixed match instead of evidence-based multimodal teaching",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "स्थायी लेबल अपेक्षाएँ सीमित करता है; विषयवस्तु के अनुसार कई माध्यमों से पढ़ाना बेहतर है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 102,
+   "section": "बाल विकास (बाल मनोविज्ञान)",
+   "topic": "विकास",
+   "syllabus_tag": "बाल विकास (बाल मनोविज्ञान) - विकास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दीर्घकालिक तनाव बाल विकास को कैसे प्रभावित कर सकता है?",
+   "question_en": "How can chronic stress affect child development?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "यह ध्यान, भावनात्मक नियमन, स्वास्थ्य और अधिगम प्रणालियों पर दीर्घकालिक प्रभाव डाल सकता है",
+     "text_en": "It can have long-term effects on attention, emotion regulation, health and learning systems",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यह सदैव प्रदर्शन को बढ़ाता है",
+     "text_en": "It always improves performance",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "यह केवल ऊँचाई को प्रभावित करता है",
+     "text_en": "It only changes height",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इसका मस्तिष्क के विकास से कोई संबंध नहीं है",
+     "text_en": "It has no relation to brain development",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "लगातार 'विषाक्त तनाव' मस्तिष्क विकास, ध्यान, भावना-नियमन व स्वास्थ्य को प्रभावित करता है, खासकर सहायक संबंध न हों तो।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 103,
+   "section": "बाल विकास (बाल मनोविज्ञान)",
+   "topic": "अधिगम",
+   "syllabus_tag": "बाल विकास (बाल मनोविज्ञान) - अधिगम",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "गणित में त्रुटि विश्लेषण क्यों उपयोगी है?",
+   "question_en": "Why is error analysis useful in mathematics?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "इसका शिक्षण योजना से कोई संबंध नहीं है",
+     "text_en": "It has no relation to teaching",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यह केवल गलत अंकों की गणना करता है",
+     "text_en": "It only counts wrong marks",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "यह त्रुटि के पीछे की भ्रांति या रणनीति के स्वरूप की पहचान करता है",
+     "text_en": "It identifies the underlying misconception or strategy pattern",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रत्येक त्रुटि लापरवाही का परिणाम होती है",
+     "text_en": "Every error is carelessness",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "बार-बार की एक जैसी गलती किसी भ्रांति का संकेत देती है ⇒ उसी पर लक्षित पुनः-शिक्षण (निदानात्मक शिक्षण)।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 104,
+   "section": "बाल विकास (बाल मनोविज्ञान)",
+   "topic": "कक्षा प्रबंधन",
+   "syllabus_tag": "बाल विकास (बाल मनोविज्ञान) - कक्षा प्रबंधन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कक्षा के नियम को प्रभावी बनाने का सर्वोत्तम तरीका क्या है?",
+   "question_en": "What is the best way to make a classroom rule effective?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नियमों को प्रतिदिन बदलना",
+     "text_en": "Change rules daily",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केवल दण्डों की सूची का उपयोग करना",
+     "text_en": "Use only a punishment list",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बहुत अधिक अस्पष्ट नियम बनाना",
+     "text_en": "Use many vague rules",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कुछ स्पष्ट और सकारात्मक रूप से व्यक्त नियम बनाना, उनका प्रदर्शन एवं अभ्यास कराना और निरंतर पुनर्बलन देना",
+     "text_en": "Use a few clear positively stated rules, model them, practise them and reinforce consistently",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "कम, स्पष्ट, सकारात्मक नियम + प्रदर्शन + अभ्यास + लगातार पुनर्बलन ⇒ अनुमानित वातावरण और आत्म-नियमन।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 105,
+   "section": "बाल विकास (बाल मनोविज्ञान)",
+   "topic": "नैतिक विकास",
+   "syllabus_tag": "बाल विकास (बाल मनोविज्ञान) - नैतिक विकास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कोहलबर्ग के नैतिक तर्क के परंपरागत स्तर का मुख्य केंद्र क्या है?",
+   "question_en": "What is the focus at Kohlberg's conventional level of moral reasoning?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सामाजिक स्वीकृति, नियम और सामाजिक व्यवस्था",
+     "text_en": "Social approval, rules and social order",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केवल कानून से परे सार्वभौमिक सिद्धांत",
+     "text_en": "Universal principles beyond law only",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "संवेदी-गामक अन्वेषण",
+     "text_en": "Sensorimotor exploration",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केवल दण्ड से बचना",
+     "text_en": "Punishment avoidance only",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "परंपरागत स्तर: 'अच्छा लड़का/लड़की' (स्वीकृति) और 'कानून-व्यवस्था'। (b) उत्तर-परंपरागत, (d) पूर्व-परंपरागत, (c) पियाजे।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 106,
+   "section": "बाल विकास (बाल मनोविज्ञान)",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "बाल विकास (बाल मनोविज्ञान) - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अतिन्यायोचितकरण प्रभाव क्या है?",
+   "question_en": "What is the overjustification effect?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "दण्ड आंतरिक अभिप्रेरणा उत्पन्न करता है",
+     "text_en": "Punishment creates intrinsic motivation",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पुरस्कार सदैव रुचि बढ़ाता है",
+     "text_en": "Rewards always increase interest",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पहले से आनंददायक गतिविधि के लिए नियंत्रक बाहरी पुरस्कार देने से आंतरिक रुचि कम हो सकती है",
+     "text_en": "A controlling external reward for an already enjoyable activity can reduce intrinsic interest",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रुचि का पुरस्कार से कोई संबंध नहीं है",
+     "text_en": "Interest is unrelated to reward",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "जो काम बच्चा मज़े से करता था, उस पर इनाम बाँधने से वह 'इनाम के लिए' करने लगता है और आंतरिक रुचि घटती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 107,
+   "section": "बाल विकास (बाल मनोविज्ञान)",
+   "topic": "संज्ञानात्मक विकास",
+   "syllabus_tag": "बाल विकास (बाल मनोविज्ञान) - संज्ञानात्मक विकास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "औपचारिक-संक्रियात्मक चिंतन का संकेत क्या है?",
+   "question_en": "What indicates formal operational thought?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "काल्पनिक संभावनाओं पर तर्क करना और चरों का व्यवस्थित परीक्षण करना",
+     "text_en": "Reasoning about hypothetical possibilities and systematically testing variables",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बिना योजना के केवल प्रयास करना",
+     "text_en": "Unplanned trial only",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केवल संवेदी अन्वेषण",
+     "text_en": "Sensory exploration only",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केवल प्रतीकात्मक खेल",
+     "text_en": "Symbolic play only",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "पियाजे की चौथी अवस्था (11+ वर्ष): अमूर्त, परिकल्पनात्मक-निगमनात्मक तर्क। (c) संवेदी-गामक, (d) पूर्व-संक्रियात्मक।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 108,
+   "section": "बाल विकास (बाल मनोविज्ञान)",
+   "topic": "समावेशी शिक्षा",
+   "syllabus_tag": "बाल विकास (बाल मनोविज्ञान) - समावेशी शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मस्तिष्कीय पक्षाघात वाले बच्चे की बुद्धि के बारे में क्या मानना चाहिए?",
+   "question_en": "What should be assumed about intelligence in a child with cerebral palsy?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "शैक्षणिक अधिगम असम्भव है",
+     "text_en": "Academic learning is impossible",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बुद्धि अनिवार्य रूप से कम होती है",
+     "text_en": "Intelligence is necessarily low",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वाक् कठिनाई संज्ञान का सटीक माप है",
+     "text_en": "Speech difficulty exactly measures cognition",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पेशीय गति संबंधी बाधा से बुद्धि का निष्कर्ष नहीं निकालना चाहिए; सुलभ आकलन आवश्यक है",
+     "text_en": "Do not infer intelligence from motor impairment; accessible assessment is necessary",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "गति/वाणी की बाधा वास्तविक क्षमता छिपा सकती है; वैकल्पिक उत्तर-माध्यम और सुलभ मूल्यांकन ज़रूरी।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 109,
+   "section": "सूचना तकनीक",
+   "topic": "कंप्यूटर",
+   "syllabus_tag": "सूचना तकनीक - कंप्यूटर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सीपीयू कैश का प्रमुख उद्देश्य क्या है?",
+   "question_en": "What is the principal purpose of CPU cache?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "इंटरनेट की गति निर्धारित करना",
+     "text_en": "Determine internet speed",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "स्थायी प्रतिलिपि बनाना",
+     "text_en": "Create a permanent backup",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बार-बार प्रयुक्त आँकड़ों और निर्देशों को संसाधक के निकट रखकर अभिगम समय कम करना",
+     "text_en": "Reduce access time by storing frequently used data and instructions close to the processor",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रदर्शक का विभेदन बढ़ाना",
+     "text_en": "Increase monitor resolution",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "कैश छोटी, बहुत तेज़ मेमोरी है (L1/L2/L3); धीमी RAM तक बार-बार जाने का समय बचाती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 110,
+   "section": "सूचना तकनीक",
+   "topic": "साइबर सुरक्षा",
+   "syllabus_tag": "सूचना तकनीक - साइबर सुरक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विद्यालय के सार्वजनिक बेतार जाल पर गोपनीय विद्यार्थी अभिलेख खोलने से पहले सर्वोत्तम सावधानी क्या है?",
+   "question_en": "What is the best precaution before accessing confidential student records on public Wi-Fi?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अभिलेख को सार्वजनिक संचिका में रखना",
+     "text_en": "Place the file in a public folder",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "विश्वसनीय कूटबद्ध संपर्क या वीपीएन तथा एचटीटीपीएस का उपयोग करना",
+     "text_en": "Use a trusted encrypted connection or VPN and HTTPS",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कूटशब्द को स्क्रीन पर लिख देना",
+     "text_en": "Write the password on the screen",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ब्राउज़र की चेतावनियों की उपेक्षा करना",
+     "text_en": "Ignore browser warnings",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "सार्वजनिक Wi-Fi पर डेटा बीच में पकड़ा जा सकता है; VPN और HTTPS एन्क्रिप्शन से यह जोखिम घटता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 111,
+   "section": "सूचना तकनीक",
+   "topic": "डिजिटल सुलभता",
+   "syllabus_tag": "सूचना तकनीक - डिजिटल सुलभता",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "स्क्रीन-पाठक का उपयोग करने वाले व्यक्तियों के लिए डिजिटल दस्तावेज़ को अधिक सुलभ बनाने का सर्वोत्तम उपाय क्या है?",
+   "question_en": "What best improves a digital document for screen-reader users?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अर्थपूर्ण शीर्षकों की संरचना और सार्थक वैकल्पिक पाठ देना",
+     "text_en": "Use semantic headings and meaningful alt text",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "शीर्षक दिखाने के लिए केवल अक्षर आकार बदलना",
+     "text_en": "Use only font size to indicate headings",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जानकारी केवल रंग के माध्यम से प्रदर्शित करना",
+     "text_en": "Convey information by colour alone",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सभी पाठ को चित्रों में बदल देना",
+     "text_en": "Convert all text into images",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "स्क्रीन-रीडर Heading 1/2 जैसे शीर्षक-स्टाइल से नेविगेट करता है और चित्रों का alt text पढ़कर सुनाता है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 112,
+   "section": "सूचना तकनीक",
+   "topic": "डिजिटल मूल्यांकन",
+   "syllabus_tag": "सूचना तकनीक - डिजिटल मूल्यांकन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "डिजिटल प्रश्नोत्तरी के प्रश्न-विश्लेषण में किसी प्रश्न का विभेदीकरण सूचकांक ऋणात्मक है। इसका सम्भावित संकेत क्या है?",
+   "question_en": "In item analysis of a digital quiz, an item has a negative discrimination index. What may this indicate?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्रश्न निश्चित रूप से उत्कृष्ट है",
+     "text_en": "The item is certainly excellent",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्रश्न की उत्तर-कुंजी गलत हो सकती है, प्रश्न अस्पष्ट हो सकता है या कम प्रदर्शन करने वाले शिक्षार्थियों ने उसे अपेक्षाकृत अधिक सही किया हो सकता है",
+     "text_en": "The item may be mis-keyed, ambiguous, or answered correctly more often by lower-performing learners",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "इंटरनेट की गति अधिक थी",
+     "text_en": "Internet speed was high",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रत्येक शिक्षार्थी ने उसे छोड़ दिया",
+     "text_en": "Every learner skipped it",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "DI = (उच्च समूह सही − निम्न समूह सही) ÷ समूह आकार। ऋणात्मक ⇒ कमज़ोर समूह ने ज़्यादा सही किया ⇒ प्रश्न की समीक्षा करें।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 113,
+   "section": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति",
+   "topic": "व्यावसायिक नैतिकता",
+   "syllabus_tag": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति - व्यावसायिक नैतिकता",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एक शिक्षक द्वारा अपने ही विद्यालय के विद्यार्थियों को बेहतर अंक मिलने का संकेत देकर निजी शिक्षण के लिए बुलाना किस समस्या का उदाहरण है?",
+   "question_en": "A teacher attracts students to private coaching by hinting at better school marks. What problem does this illustrate?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "निर्माणात्मक मूल्यांकन",
+     "text_en": "Formative assessment",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सहपाठी मार्गदर्शन",
+     "text_en": "Peer mentoring",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "स्वस्थ प्रतिस्पर्धा",
+     "text_en": "Healthy competition",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हितों का टकराव और व्यावसायिक पद का दुरुपयोग",
+     "text_en": "Conflict of interest and abuse of professional position",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "अंकों पर अपने अधिकार का उपयोग निजी लाभ के लिए = हित-संघर्ष। RTE अधिनियम की धारा 28 भी शिक्षकों के निजी ट्यूशन पर रोक लगाती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 114,
+   "section": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निपुणता लक्ष्य और प्रदर्शन लक्ष्य में मुख्य अंतर क्या है?",
+   "question_en": "What is the main difference between a mastery goal and a performance goal?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "निपुणता लक्ष्य समझ और सुधार पर केंद्रित होता है; प्रदर्शन लक्ष्य दूसरों से बेहतर दिखाई देने पर केंद्रित हो सकता है",
+     "text_en": "Mastery focuses on understanding and improvement; performance may focus on appearing better than others",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "दोनों समान हैं",
+     "text_en": "They are identical",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "प्रदर्शन लक्ष्य में कोई मूल्यांकन नहीं होता",
+     "text_en": "Performance involves no evaluation",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "निपुणता लक्ष्य केवल अंकों से संबंधित है",
+     "text_en": "Mastery is only marks",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "निपुणता लक्ष्य: 'मैं सीखूँ और बेहतर बनूँ'; प्रदर्शन लक्ष्य: 'मैं दूसरों से अच्छा दिखूँ'।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 115,
+   "section": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति",
+   "topic": "सहारा-प्रदान",
+   "syllabus_tag": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति - सहारा-प्रदान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सहारा-प्रदान को कब धीरे-धीरे हटाना चाहिए?",
+   "question_en": "When should scaffolding be faded?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केवल परीक्षा के बाद",
+     "text_en": "Only after the examination",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जब शिक्षार्थी बढ़ती हुई स्वतंत्रता और कार्य पर नियंत्रण प्रदर्शित करे",
+     "text_en": "When the learner shows increasing independence and control of the task",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कभी नहीं",
+     "text_en": "Never",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कार्य शुरू होने से पहले",
+     "text_en": "Before the task begins",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "वाइगोत्स्की/ब्रूनर — सहायता ZPD में दी जाती है और जैसे-जैसे बच्चा स्वयं करने लगे, कम की जाती है।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 116,
+   "section": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति",
+   "topic": "अवलोकन",
+   "syllabus_tag": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति - अवलोकन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कक्षा अवलोकन टिप्पणियों को वस्तुनिष्ठ बनाने का अच्छा तरीका क्या है?",
+   "question_en": "What is a good way to make classroom observation notes objective?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "उद्देश्यों के बारे में अनुमान लगाना",
+     "text_en": "Assume motives",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केवल स्मृति पर निर्भर रहना",
+     "text_en": "Rely only on memory",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "'आलसी' जैसे ठप्पे लिखना",
+     "text_en": "Write labels such as 'lazy'",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रत्यक्ष रूप से देखे जा सकने वाले व्यवहार, संदर्भ, आवृत्ति और प्रत्यक्ष साक्ष्य लिखना",
+     "text_en": "Record observable behaviour, context, frequency and direct evidence",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "वस्तुनिष्ठ = जो दिखा वही लिखना ('10 मिनट में 3 बार सीट छोड़ी'), न कि राय या ठप्पा।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 117,
+   "section": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति",
+   "topic": "नेतृत्व",
+   "syllabus_tag": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति - नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संकट की स्थिति में नेतृत्वकर्ता की पहली जिम्मेदारी क्या है?",
+   "question_en": "What is a leader's first responsibility in a crisis?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जिम्मेदारी से इनकार करना",
+     "text_en": "Deny responsibility",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सुरक्षा का आकलन करना तथा सत्यापित जानकारी के आधार पर स्पष्ट भूमिकाएँ और संचार व्यवस्था स्थापित करना",
+     "text_en": "Assess safety and establish clear roles and communication using verified information",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "असंबंधित बैठक आयोजित करना",
+     "text_en": "Hold an unrelated meeting",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अफवाह फैलाना",
+     "text_en": "Spread rumours",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "पहले सुरक्षा, फिर स्पष्ट भूमिकाएँ और सत्यापित सूचना पर आधारित संचार।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 118,
+   "section": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति",
+   "topic": "संचार कौशल",
+   "syllabus_tag": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति - संचार कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सक्रिय श्रवण को कौन-सा व्यवहार दर्शाता है?",
+   "question_en": "Which behaviour demonstrates active listening?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "खुले प्रश्न, पुनर्कथन, स्पष्टीकरण और निर्णय-रहित ध्यान",
+     "text_en": "Open prompts, paraphrasing, clarification and non-judgmental attention",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बीच में टोकना",
+     "text_en": "Interrupting",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तुरंत व्याख्यान देना",
+     "text_en": "Immediately lecturing",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फोन देखते रहना",
+     "text_en": "Looking at the phone",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "सक्रिय श्रवण: पूरा ध्यान, अपने शब्दों में दोहराना, स्पष्ट करने वाले प्रश्न, बिना जजमेंट।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 119,
+   "section": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति",
+   "topic": "मूल्य एवं अधिकार",
+   "syllabus_tag": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति - मूल्य एवं अधिकार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कक्षा में अभिव्यक्ति की स्वतंत्रता किसकी अनुमति नहीं देती है?",
+   "question_en": "What does freedom of expression not permit in a classroom?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अल्पसंख्यक दृष्टिकोण",
+     "text_en": "A minority viewpoint",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "साक्ष्य-आधारित प्रश्न",
+     "text_en": "An evidence-based question",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "धमकी, लक्षित उत्पीड़न या गरिमा एवं अधिकारों का उल्लंघन",
+     "text_en": "Threats, targeted harassment or violation of dignity and rights",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सम्मानजनक असहमति",
+     "text_en": "Respectful disagreement",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "अभिव्यक्ति की स्वतंत्रता पर उचित प्रतिबंध (अनु. 19(2)) — धमकी, उत्पीड़न और दूसरों की गरिमा का हनन इसमें शामिल नहीं।",
+   "solution_en": "",
+   "key_concept": ""
+  },
+  {
+   "q_no": 120,
+   "section": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति",
+   "topic": "व्यवहार प्रबंधन",
+   "syllabus_tag": "जीवन कौशल, प्रबंधन एवं अभिवृत्ति - व्यवहार प्रबंधन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "समय-पृथक्करण (time-out) का प्रयोग नैतिक रूप से संदिग्ध कब हो जाता है?",
+   "question_en": "When is time-out ethically questionable?",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जब इसका उपयोग सुरक्षा हेतु तनाव कम करने के लिए किया जाए",
+     "text_en": "When used for safe de-escalation",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जब शिक्षार्थी को आत्मचिंतन में सहायता मिले",
+     "text_en": "When reflection is supported",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जब यह संक्षिप्त, पर्यवेक्षित और योजना का अनुपातिक भाग हो",
+     "text_en": "When it is brief, supervised and proportionate within a plan",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जब यह लंबे समय के अलगाव, अपमान या आवश्यक अधिगम एवं सहायता से वंचित करने का रूप ले ले",
+     "text_en": "When it becomes prolonged isolation, humiliation or deprivation of essential learning or support",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "संक्षिप्त, निगरानी में और सुरक्षा हेतु time-out ठीक है; लंबा अलगाव या अपमान बच्चे के अधिकारों का उल्लंघन है।",
+   "solution_en": "",
+   "key_concept": ""
+  }
+ ]
+}

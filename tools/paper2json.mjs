@@ -3,6 +3,7 @@
 //
 // Format (one item per line):
 //   @id <exam_id>           @title <title>          @duration <min>      @key <answer letters, spaces allowed>
+//   @pos <marks per correct> @neg <marks per wrong>  @instr <Hindi instructions>
 //   # <SECTION>             starts a section
 //   P <passage_id> [title]  starts a passage; following "> text" lines are its text
 //   <q_no> <topic> [@passage_id]   starts a question
@@ -48,6 +49,9 @@ export function convert(src, file = 'paper', baseDir = '.') {
       else if (m[1] === 'id') meta.exam_id = m[2];
       else if (m[1] === 'title') meta.title = m[2];
       else if (m[1] === 'duration') meta.duration_minutes = Number(m[2]);
+      else if (m[1] === 'pos') meta.positive_marks = Number(m[2]);
+      else if (m[1] === 'neg') meta.negative_marks = Number(m[2]);
+      else if (m[1] === 'instr') meta.instr = m[2];
       return;
     }
     if (line.startsWith('# ')) { section = line.slice(2).trim(); if (!sections.includes(section)) sections.push(section); q = null; p = null; return; }
@@ -113,8 +117,8 @@ export function convert(src, file = 'paper', baseDir = '.') {
   return {
     exam_meta: {
       exam_id: meta.exam_id, title: meta.title, duration_minutes: meta.duration_minutes,
-      max_marks: questions.length, positive_marks: meta.positive_marks, negative_marks: meta.negative_marks,
-      instructions_hi: 'सभी प्रश्नों के अंक समान हैं। उत्तर कुंजी मूल प्रश्न-पत्र (चन्द्रा इंस्टीट्यूट) के अनुसार है।',
+      max_marks: questions.length * meta.positive_marks, positive_marks: meta.positive_marks, negative_marks: meta.negative_marks,
+      instructions_hi: meta.instr || 'सभी प्रश्नों के अंक समान हैं। उत्तर कुंजी मूल प्रश्न-पत्र (चन्द्रा इंस्टीट्यूट) के अनुसार है।',
       instructions_en: 'All questions carry equal marks. Answer key as printed in the original paper.',
     },
     sections, passages, questions,
