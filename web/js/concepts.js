@@ -4,6 +4,7 @@
 import { db } from './db.js';
 import { subjectKey } from './practice.js';
 import { uid, slug, extractJson } from './util.js';
+import { DIAGRAM_TYPES, cleanDiagram, diagramText } from './diagram-spec.js';
 
 export const QSRC = '__questions__'; // id of the virtual "from question papers" source
 
@@ -35,6 +36,7 @@ function itemsOf(c) {
     for (const it of c.items) {
       if (!it) continue;
       if (typeof it === 'string') { push('point', it); continue; }
+      if (DIAGRAM_TYPES.includes(it.type)) { const d = cleanDiagram(it); if (d) items.push(d); continue; }
       if (it.type === 'table' && Array.isArray(it.rows)) { const rows = it.rows.filter(Array.isArray).map((r) => r.map(str)); if (rows.length) items.push({ type: 'table', rows }); continue; }
       const type = ['point', 'tip', 'trick', 'html'].includes(it.type) ? it.type : 'point';
       push(type, it.text);
@@ -45,6 +47,7 @@ function itemsOf(c) {
   if (c.example) push('point', `उदाहरण: ${str(c.example)}`);
   for (const t of [].concat(c.tips || [], c.tip || [], c.trap || [])) push('tip', t);
   for (const t of [].concat(c.tricks || [], c.trick || [], c.mnemonic || [], c.formula || [])) push('trick', t);
+  for (const d of Array.isArray(c.diagrams) ? c.diagrams : c.diagram ? [c.diagram] : []) { const x = cleanDiagram(d); if (x) items.push(x); }
   const tables = Array.isArray(c.tables) ? c.tables : c.table ? [c.table] : [];
   for (const t of tables) {
     const rows = Array.isArray(t) ? t : Array.isArray(t?.rows) ? t.rows : null;
@@ -69,6 +72,7 @@ export function normalizeConceptSet(d, { origin = 'import' } = {}) {
     id: str(d.id) || `${slug(d.title || 'concepts').slice(0, 40) || 'concepts'}_${uid('c').slice(-6)}`,
     title: str(d.title) || 'कॉन्सेप्ट नोट्स',
     source: str(d.source),
+    version: str(d.version),
     origin,
     subjects: [],
   };
@@ -114,6 +118,24 @@ export async function saveConceptSet(set) {
   const row = { ...set, createdAt: old?.createdAt || Date.now(), updatedAt: Date.now() };
   await db.put('concepts', row);
   return { row, replaced: !!old };
+}
+/** Replace a stored set with a newer version; learned/star marks follow concepts with the same title. */
+export async function replaceConceptSet(set) {
+  const old = await db.get('concepts', set.id);
+  if (old) {
+    const byTitle = new Map();
+    for (const s of set.subjects) for (const t of s.topics) for (const c of t.concepts) if (!byTitle.has(`${t.topic}|${c.title}`)) byTitle.set(`${t.topic}|${c.title}`, c.id);
+    const moves = [];
+    for (const s of old.subjects) for (const t of s.topics) for (const c of t.concepts) {
+      const p = await db.get('conceptProgress', c.id);
+      if (!p) continue;
+      await db.delete('conceptProgress', c.id); // ids may be renumbered: clear first, then re-attach by title
+      const to = byTitle.get(`${t.topic}|${c.title}`);
+      if (to) moves.push({ ...p, key: to });
+    }
+    for (const m of moves) await db.put('conceptProgress', m);
+  }
+  return saveConceptSet(set);
 }
 export async function deleteConceptSet(id) {
   const set = await db.get('concepts', id);
@@ -217,6 +239,7 @@ export function conceptPlainText(c) {
   const parts = [c.title];
   for (const it of c.items || []) {
     if (it.type === 'table') parts.push(it.rows.map((r) => r.join(' ')).join(' '));
+    else if (DIAGRAM_TYPES.includes(it.type)) parts.push(diagramText(it));
     else parts.push(plain(it.text));
   }
   return parts.join(' ');
@@ -230,7 +253,7 @@ export function conceptBundle(sets) {
 
 // ---------- AI: concepts from documents / question papers ----------
 export const CONCEPT_SYSTEM_PROMPT = `You are an expert teacher and note-maker for Indian teacher-recruitment exams (UP SUPER TET, UP Assistant Teacher, CTET, UPTET).
-Your job: read the SOURCE and turn it into complete, exam-oriented revision notes organised SUBJECT → TOPIC → CONCEPT, so a student can revise the whole source in the minimum time.
+Your job: read the SOURCE and turn it into complete, exam-oriented revision notes organised SUBJECT → TOPIC → CONCEPT, so a student understands and can revise the WHOLE source smartly without feeling anything was missed.
 
 Output ONLY one JSON object, no prose, in exactly this shape:
 {"subjects":[{"subject":"<subject name>","topics":[{"topic":"<topic name>","concepts":[
@@ -238,12 +261,24 @@ Output ONLY one JSON object, no prose, in exactly this shape:
    "points":["<one fact per point>", "..."],
    "tip":"<exam trap / most-asked fact, optional>",
    "trick":"<mnemonic or formula, optional>",
-   "table":[["<header 1>","<header 2>"],["<cell>","<cell>"]]}
+   "table":[["<header 1>","<header 2>"],["<cell>","<cell>"]],
+   "diagrams":[ <optional visuals, any of:>
+     {"type":"flow","title":"..","steps":["step 1","step 2"]},
+     {"type":"cycle","title":"..","steps":["stage 1","stage 2","stage 3"]},
+     {"type":"timeline","title":"..","rows":[["1857","event"],["1885","event"]]},
+     {"type":"tree","title":"..","node":{"text":"root","children":[{"text":"branch","children":[{"text":"leaf"}]}]}},
+     {"type":"pyramid","title":"..","levels":["top","middle","bottom"]},
+     {"type":"layers","title":"..","rows":[["top layer","detail"],["next layer","detail"]]},
+     {"type":"rings","title":"..","rows":[["outer","detail"],["inner","detail"]]},
+     {"type":"venn","title":"..","rel":[["A","<","B"],["B","&","C"]]},
+     {"type":"map","region":"india|up|world","title":"..","groups":[{"kind":"state|country|continent|river","names":["केरल"],"label":"legend"}],"points":[{"name":"दिल्ली","lat":28.61,"lon":77.21}]}
+   ]}
 ]}]}]}
 
 Rules:
 1. Cover EVERY exam-relevant fact in the source: definitions, names of thinkers/commissions, years, article/section numbers, numbers, lists, classifications, examples. Do not skip small facts — they are asked in MCQs.
-2. Be concise: one fact per point, 4–20 words, no filler. Merge repeated facts. 2–10 points per concept.
+2. Completeness over brevity: nothing in the source may be left out, and explain the "why/how" briefly where the source does. Keep each point short (one fact or one explanation step, no filler); merge only true repetition. A concept may have as many points as it needs.
+2b. Visuals help memory: add "diagrams" wherever they fit — timeline for chronology, flow for processes/steps, cycle for cycles, tree for classifications/mind maps, map for place-based facts (states, rivers, parks, countries; points need accurate lat/lon), layers/rings for structures, pyramid for hierarchies, venn for syllogisms. Start every topic with a concept "🧠 एक नज़र में" holding a tree mind map of the topic.
 3. Use a "table" when the source compares things or lists pairs (name–work, year–event, term–meaning). Omit "table", "tip" and "trick" when not useful.
 4. Never invent facts that are not in the source (you may fix obvious typos and garbled legacy-font Hindi such as "तशक्षक"→"शिक्षक").
 5. Language: write in clear Hindi (Devanagari) with key English terms in brackets, except English-grammar content, which stays in English. Follow the language setting if given.

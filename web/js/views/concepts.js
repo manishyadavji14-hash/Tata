@@ -1,12 +1,14 @@
 // "कॉन्सेप्ट" tab: subject → topic → concept cards, search, import, AI concept notes, focus mode entry.
 import { db } from '../db.js';
 import {
-  QSRC, sourceSets, buildTree, listConceptSets, saveConceptSet, deleteConceptSet, progressMap, setProgress,
+  QSRC, sourceSets, buildTree, listConceptSets, saveConceptSet, replaceConceptSet, deleteConceptSet, progressMap, setProgress,
   isConceptData, expandConcepts, conceptPlainText, conceptBundle, countConcepts, externalConceptPrompt, conceptSubjectKey, subjectIcon,
 } from '../concepts.js';
 import { isConfigured } from '../ai.js';
 import { icon, toast, modal, confirmDialog, emptyState } from '../ui.js';
 import { esc, renderRich, imgTag, readFile, extractJson, copyText, downloadText, debounce } from '../util.js';
+import { diagramHtml } from '../diagrams.js';
+import { DIAGRAM_TYPES } from '../diagram-spec.js';
 
 // ---------- card rendering (shared with the focus view) ----------
 function tableHtml(rows) {
@@ -28,6 +30,7 @@ export function conceptBody(c) {
     else if (it.type === 'q') html += `<div class="cbox cbox-q"><b>❓ प्रश्न:</b> <div class="rich">${renderRich(it.text)}</div>${it.table ? `<div class="rich mt-1 overflow-x-auto">${renderRich(it.table)}</div>` : ''}${imgTag(it.image)}</div>`;
     else if (it.type === 'ans') html += `<div class="cbox cbox-ans"><b>✅ उत्तर:</b> ${renderRich(it.text)}${imgTag(it.image)}</div>`;
     else if (it.type === 'html') html += `<div class="rich mt-2"><b class="text-brand-700 dark:text-brand-300">📝 हल / व्याख्या:</b><br>${renderRich(it.text)}</div>`;
+    else if (DIAGRAM_TYPES.includes(it.type)) html += diagramHtml(it);
   }
   flush();
   return html;
@@ -109,7 +112,7 @@ async function addBuiltIn(file) {
   if (!res.ok) throw new Error(`फ़ाइल नहीं मिली (${res.status})`);
   const data = await res.json();
   let n = 0;
-  for (const { set, count } of expandConcepts(data)) { await saveConceptSet({ ...set, origin: 'builtin' }); n += count; }
+  for (const { set, count } of expandConcepts(data)) { await replaceConceptSet({ ...set, origin: 'builtin' }); n += count; }
   return n;
 }
 
@@ -218,6 +221,9 @@ export async function render({ root, params, query, settings, navigate, setHeade
   let builtIn = [];
   try { builtIn = await (await fetch('./concepts/index.json')).json(); } catch { /* offline file missing */ }
   const have = new Set(files.map((f) => f.id));
+  const stored = new Map(files.map((f) => [f.id, f]));
+  const outdated = (b) => have.has(b.id) && b.version && stored.get(b.id)?.version !== b.version;
+  const needs = (b) => !have.has(b.id) || outdated(b);
   const qset = sets.find((s) => s.id === QSRC);
   const qCount = qset ? countConcepts(qset) : 0;
 
@@ -255,8 +261,8 @@ export async function render({ root, params, query, settings, navigate, setHeade
       ${builtIn.length ? `<div class="mb-2 text-xs text-slate-500">ऐप के साथ आए नोट्स (एक टैप में जोड़ें, ऑफ़लाइन):</div>
       <div class="mb-3 space-y-2">${builtIn.map((b) => `<div class="flex items-center gap-2 rounded-xl border border-slate-200 p-2 dark:border-slate-700">
         <span class="text-xl">📗</span><span class="min-w-0 flex-1"><span class="block text-sm font-semibold leading-tight">${esc(b.title)}</span><span class="block text-[11px] text-slate-500">${b.topics} टॉपिक • ${b.concepts} कॉन्सेप्ट</span></span>
-        ${have.has(b.id) ? '<span class="chip bg-emerald-100 text-emerald-700">✓ जुड़ा</span>' : `<button class="btn-primary btn-sm" data-builtin="${esc(b.file)}">जोड़ें</button>`}</div>`).join('')}
-        ${builtIn.some((b) => !have.has(b.id)) ? '<button class="btn-outline btn-sm w-full" data-builtin-all>सभी जोड़ें</button>' : ''}</div>` : ''}
+        ${outdated(b) ? `<button class="btn-success btn-sm" data-builtin="${esc(b.file)}">🔄 नया संस्करण</button>` : have.has(b.id) ? '<span class="chip bg-emerald-100 text-emerald-700">✓ जुड़ा</span>' : `<button class="btn-primary btn-sm" data-builtin="${esc(b.file)}">जोड़ें</button>`}</div>`).join('')}
+        ${builtIn.some(needs) ? `<button class="btn-outline btn-sm w-full" data-builtin-all>${builtIn.some(outdated) ? 'सभी जोड़ें / अपडेट करें' : 'सभी जोड़ें'}</button>` : ''}</div>` : ''}
       <div class="grid grid-cols-2 gap-2">
         <label class="btn-outline cursor-pointer">${icon.upload('h-4 w-4')} फ़ाइल इम्पोर्ट<input type="file" accept=".json,application/json,text/plain" multiple class="hidden" data-cfiles></label>
         <button class="btn-outline" data-cpaste>📋 JSON पेस्ट</button>
@@ -310,7 +316,7 @@ export async function render({ root, params, query, settings, navigate, setHeade
     if ((b = t('[data-builtin-all]'))) {
       b.disabled = true;
       let n = 0;
-      try { for (const x of builtIn) if (!have.has(x.id)) n += await addBuiltIn(x.file); toast(`${n} कॉन्सेप्ट जुड़े`, 'success'); reload(); } catch (err) { b.disabled = false; toast(err.message, 'error', 5000); }
+      try { for (const x of builtIn) if (needs(x)) n += await addBuiltIn(x.file); toast(`${n} कॉन्सेप्ट जुड़े`, 'success'); reload(); } catch (err) { b.disabled = false; toast(err.message, 'error', 5000); }
       return;
     }
     if (t('[data-cpaste]')) {

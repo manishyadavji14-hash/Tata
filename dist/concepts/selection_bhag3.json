@@ -3,7 +3,7 @@
  "id": "selection_bhag3",
  "title": "UP SUPER TET सेलेक्शन बुक भाग-3: हिन्दी, संस्कृत तथा अंग्रेज़ी",
  "source": "UP SUPER TET संपूर्ण गाइड (Selection Book) – भाग-III (S. Chand, 2026)",
- "created_at": "2026-11-16",
+ "created_at": "2026-11-17",
  "subjects": [
   {
    "subject": "हिन्दी",
@@ -8069,5 +8069,6 @@
     }
    ]
   }
- ]
+ ],
+ "version": "69238ba3e0"
 }

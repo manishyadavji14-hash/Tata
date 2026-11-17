@@ -13,34 +13,182 @@
      "concepts": [
       {
        "id": "selection_bhag7-0001",
-       "title": "कम्प्यूटर क्या है",
+       "title": "🧠 एक नज़र में",
        "items": [
         {
-         "type": "point",
-         "text": "इलेक्ट्रॉनिक मशीन: डेटा इनपुट लेती है → प्रोसेस करती है → परिणाम (आउटपुट) देती है।"
-        },
-        {
-         "type": "point",
-         "text": "क्रम: इनपुट → प्रोसेस → आउटपुट।"
-        },
-        {
-         "type": "point",
-         "text": "हिंदी नाम: संगणक; 'Compute' शब्द से बना, अर्थ = गणना करना।"
-        },
-        {
-         "type": "tip",
-         "text": "पुस्तक में 'Compute' को ग्रीक शब्द लिखा है; प्रचलित मत: लैटिन 'Computare' से।"
-        },
-        {
-         "type": "point",
-         "text": "कम्प्यूटर का मस्तिष्क: CPU।"
+         "type": "tree",
+         "title": "कम्प्यूटर – परिचय",
+         "node": {
+          "text": "कम्प्यूटर (संगणक)",
+          "children": [
+           {
+            "text": "परिभाषा: इनपुट → प्रोसेस → आउटपुट",
+            "children": []
+           },
+           {
+            "text": "शब्द-उत्पत्ति: Compute = गणना करना",
+            "children": []
+           },
+           {
+            "text": "3 घटक",
+            "children": [
+             {
+              "text": "हार्डवेयर: छू व देख सकते हैं",
+              "children": []
+             },
+             {
+              "text": "सॉफ्टवेयर: अनुदेश व प्रोग्राम",
+              "children": []
+             },
+             {
+              "text": "डेटा: कच्चे तथ्य → सूचना",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "4 विशेषताएँ",
+            "children": [
+             {
+              "text": "तेज गति (GHz)",
+              "children": []
+             },
+             {
+              "text": "त्रुटि रहित कार्य",
+              "children": []
+             },
+             {
+              "text": "स्थायी भंडारण क्षमता",
+              "children": []
+             },
+             {
+              "text": "गोपनीयता (पासवर्ड)",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "कृपया ध्यान दें",
+            "children": [
+             {
+              "text": "2 दिसंबर: विश्व कम्प्यूटर साक्षरता दिवस",
+              "children": []
+             },
+             {
+              "text": "जनक: चार्ल्स बैबेज",
+              "children": []
+             },
+             {
+              "text": "आधुनिक कम्प्यूटर के जनक: एलन ट्यूरिंग",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
         }
        ]
       },
       {
        "id": "selection_bhag7-0002",
+       "title": "कम्प्यूटर क्या है?",
+       "items": [
+        {
+         "type": "point",
+         "text": "कम्प्यूटर एक इलेक्ट्रॉनिक मशीन है जो डेटा को इनपुट के रूप में लेता है, उसे प्रोसेस करता है और परिणाम (आउटपुट) प्रदान करता है।"
+        },
+        {
+         "type": "flow",
+         "title": "कम्प्यूटर की कार्य-प्रणाली",
+         "steps": [
+          "इनपुट: कीबोर्ड, माउस आदि से डेटा/निर्देश देना",
+          "प्रोसेस: CPU (कम्प्यूटर का मस्तिष्क) डेटा पर कार्य करता है – ALU गणना व तर्क, CU नियंत्रण, मेमोरी भंडारण",
+          "आउटपुट: मॉनिटर, प्रिंटर, स्पीकर आदि से परिणाम"
+         ]
+        },
+        {
+         "type": "point",
+         "text": "कम्प्यूटर शब्द 'Compute' शब्द से बना है, जिसका अर्थ है गणना करना।"
+        },
+        {
+         "type": "tip",
+         "text": "पुस्तक में 'Compute' को ग्रीक भाषा का शब्द लिखा है; प्रचलित मत में यह लैटिन 'Computare' से आया है।"
+        },
+        {
+         "type": "point",
+         "text": "कम्प्यूटर को हिंदी में संगणक कहते हैं।"
+        },
+        {
+         "type": "point",
+         "text": "कम्प्यूटर का मस्तिष्क (Brain of Computer): CPU (Central Processing Unit)।"
+        },
+        {
+         "type": "point",
+         "text": "CPU के भाग: ALU (Arithmetic Logic Unit) और CU (Control Unit)।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0003",
        "title": "कम्प्यूटर के घटक",
        "items": [
+        {
+         "type": "tree",
+         "title": "कम्प्यूटर के घटक",
+         "node": {
+          "text": "कम्प्यूटर",
+          "children": [
+           {
+            "text": "हार्डवेयर (Hardware)",
+            "children": [
+             {
+              "text": "सभी भौतिक भाग – छू (Touch) सकते हैं, देख सकते हैं",
+              "children": []
+             },
+             {
+              "text": "मॉनिटर, कीबोर्ड, माउस, मदरबोर्ड",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "सॉफ्टवेयर (Software)",
+            "children": [
+             {
+              "text": "अनुदेशों और प्रोग्रामों का समूह",
+              "children": []
+             },
+             {
+              "text": "बताता है क्या करना है और कैसे करना है",
+              "children": []
+             },
+             {
+              "text": "न छू सकते, न भौतिक रूप में देख सकते",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "डेटा (Data)",
+            "children": [
+             {
+              "text": "कच्चे तथ्य और आँकड़े, विशेष अर्थ नहीं",
+              "children": []
+             },
+             {
+              "text": "प्रोसेस होने पर → सूचना (Information)",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        },
+        {
+         "type": "image",
+         "title": "डेस्कटॉप कम्प्यूटर के भाग: मॉनिटर, CPU, UPS, कीबोर्ड, माउस, माउस पैड, स्पीकर, सप्लाई",
+         "src": "data:image/webp;base64,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"
+        },
         {
          "type": "table",
          "rows": [
@@ -51,80 +199,131 @@
           ],
           [
            "हार्डवेयर",
-           "सभी भौतिक भाग, जिन्हें छू व देख सकते हैं",
+           "कम्प्यूटर के सभी भौतिक भाग, जिन्हें छू और देख सकते हैं",
            "मॉनिटर, कीबोर्ड, माउस, मदरबोर्ड"
           ],
           [
            "सॉफ्टवेयर",
-           "अनुदेशों व प्रोग्रामों का समूह; बताता है क्या व कैसे करना है",
-           "OS, MS Word"
+           "अनुदेशों और प्रोग्रामों का समूह; कम्प्यूटर को बताता है कि क्या और कैसे करना है",
+           "ऑपरेटिंग सिस्टम, MS Word"
           ],
           [
            "डेटा",
-           "कच्चे तथ्य व आँकड़े, जिनका विशेष अर्थ नहीं",
-           "अंक, नाम"
+           "कच्चे तथ्य और आँकड़े, जिनका कोई विशेष अर्थ नहीं होता",
+           "अंक, नाम, अंक-सूची के आँकड़े"
           ]
          ]
         },
         {
          "type": "tip",
-         "text": "सॉफ्टवेयर को छू या भौतिक रूप में देख नहीं सकते।"
+         "text": "सॉफ्टवेयर को न छू सकते हैं, न भौतिक रूप में देख सकते हैं; हार्डवेयर को छू सकते हैं।"
         },
         {
-         "type": "tip",
-         "text": "डेटा प्रोसेस होकर सूचना (Information) बनता है।"
-        }
-       ]
-      },
-      {
-       "id": "selection_bhag7-0003",
-       "title": "विशेषताएँ",
-       "items": [
-        {
-         "type": "point",
-         "text": "तेज गति: प्रोसेसर की स्पीड गीगाहर्ट्ज़ (GHz) में मापी जाती है।"
-        },
-        {
-         "type": "point",
-         "text": "त्रुटि रहित: इनपुट सही तो आउटपुट सही; वायरस से कभी-कभी त्रुटियाँ।"
-        },
-        {
-         "type": "point",
-         "text": "स्थायी भंडारण: डेटा/फाइलें लंबे समय तक सुरक्षित।"
-        },
-        {
-         "type": "point",
-         "text": "गोपनीयता: पासवर्ड व अन्य सुरक्षा फीचर्स से।"
-        },
-        {
-         "type": "trick",
-         "text": "GIGO: Garbage In, Garbage Out – गलत इनपुट तो गलत आउटपुट।"
+         "type": "flow",
+         "title": "डेटा से सूचना",
+         "steps": [
+          "डेटा: कच्चे तथ्य व आँकड़े (अर्थहीन)",
+          "प्रोसेसिंग: कम्प्यूटर द्वारा",
+          "सूचना: अर्थपूर्ण परिणाम"
+         ]
         }
        ]
       },
       {
        "id": "selection_bhag7-0004",
-       "title": "जनक व महत्वपूर्ण दिवस",
+       "title": "कम्प्यूटर की विशेषताएँ",
        "items": [
         {
-         "type": "point",
-         "text": "कम्प्यूटर के जनक: चार्ल्स बैबेज।"
+         "type": "tree",
+         "title": "कम्प्यूटर की 4 विशेषताएँ",
+         "node": {
+          "text": "विशेषताएँ",
+          "children": [
+           {
+            "text": "तेज गति: प्रोसेसर की स्पीड गीगाहर्ट्ज़ (GHz) में",
+            "children": []
+           },
+           {
+            "text": "त्रुटि रहित कार्य: सही इनपुट → सही आउटपुट",
+            "children": []
+           },
+           {
+            "text": "स्थायी भंडारण क्षमता: डेटा/फाइलें लंबे समय तक सुरक्षित",
+            "children": []
+           },
+           {
+            "text": "गोपनीयता: पासवर्ड व सुरक्षा फीचर्स",
+            "children": []
+           }
+          ]
+         }
         },
         {
          "type": "point",
-         "text": "आधुनिक कम्प्यूटर के जनक: एलन ट्यूरिंग।"
+         "text": "तेज गति: कम्प्यूटर बहुत तेज गति से काम करते हैं; प्रोसेसर की स्पीड गीगाहर्ट्ज़ (GHz) में मापते हैं।"
         },
         {
          "type": "point",
-         "text": "विश्व कम्प्यूटर साक्षरता दिवस: 2 दिसंबर।"
+         "text": "त्रुटि रहित कार्य: सही जानकारी और निर्देश दिए जाएँ तो कम्प्यूटर बिना गलती के सटीक परिणाम देता है; इनपुट सही होगा तो आउटपुट हमेशा बिल्कुल सही होगा।"
         },
         {
          "type": "point",
-         "text": "प्रथम प्रोग्रामर: ऑगस्टा एडा बायरन (लवलेस)।"
+         "text": "कम्प्यूटर में वायरस (Virus) के कारण कभी-कभी त्रुटियाँ आ जाती हैं।"
+        },
+        {
+         "type": "point",
+         "text": "स्थायी भंडारण क्षमता: कम्प्यूटर में डेटा या फाइलों को लंबे समय तक सुरक्षित रख सकते हैं।"
+        },
+        {
+         "type": "point",
+         "text": "गोपनीयता: जानकारी सुरक्षित रहे और सिर्फ आप या जिन्हें आप चाहें वही देख सकें; इसके लिए पासवर्ड व अन्य सुरक्षा फीचर्स।"
+        },
+        {
+         "type": "trick",
+         "text": "GIGO: Garbage In, Garbage Out – गलत इनपुट तो गलत आउटपुट।"
         },
         {
          "type": "tip",
-         "text": "\"जनक\" = बैबेज; \"आधुनिक जनक\" = ट्यूरिंग; दोनों में भ्रम न करें।"
+         "text": "कम्प्यूटर की गति सामान्यतः हर्ट्ज़ (Hz) या गीगाहर्ट्ज़ (GHz) में; सुपरकम्प्यूटर की FLOPS में।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0005",
+       "title": "कृपया ध्यान दें – जनक व दिवस",
+       "items": [
+        {
+         "type": "table",
+         "rows": [
+          [
+           "तथ्य",
+           "उत्तर"
+          ],
+          [
+           "विश्व कम्प्यूटर साक्षरता दिवस",
+           "2 दिसंबर (प्रतिवर्ष)"
+          ],
+          [
+           "कम्प्यूटर का जनक (Father of Computer)",
+           "चार्ल्स बैबेज"
+          ],
+          [
+           "आधुनिक कम्प्यूटर के जनक",
+           "एलन ट्यूरिंग"
+          ],
+          [
+           "विश्व की प्रथम प्रोग्रामर",
+           "ऑगस्टा एडा बायरन (लवलेस)"
+          ],
+          [
+           "भारत में सुपरकम्प्यूटिंग के जनक",
+           "डॉ. विजय पांडुरंग भटकर"
+          ]
+         ]
+        },
+        {
+         "type": "tip",
+         "text": "\"जनक\" = बैबेज; \"आधुनिक कम्प्यूटर के जनक\" = ट्यूरिंग; जॉन वॉन न्यूमैन (EDVAC) या ब्लेज पास्कल नहीं।"
         }
        ]
       }
@@ -134,9 +333,92 @@
      "topic": "कम्प्यूटर का इतिहास",
      "concepts": [
       {
-       "id": "selection_bhag7-0005",
+       "id": "selection_bhag7-0006",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "कम्प्यूटर का इतिहास",
+         "node": {
+          "text": "गणना यंत्र से इलेक्ट्रॉनिक कम्प्यूटर",
+          "children": [
+           {
+            "text": "यांत्रिक युग",
+            "children": [
+             {
+              "text": "अबेकस – बेबीलोनिया, 2400 ई.पू.",
+              "children": []
+             },
+             {
+              "text": "पास्कलाइन – ब्लेज पास्कल, 1642",
+              "children": []
+             },
+             {
+              "text": "डिफरेंस इंजन – चार्ल्स बैबेज, 1822",
+              "children": []
+             },
+             {
+              "text": "एनालिटिकल इंजन – चार्ल्स बैबेज, 1834",
+              "children": []
+             },
+             {
+              "text": "पहला प्रोग्राम – ऑगस्टा एडा बायरन",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "इलेक्ट्रॉनिक युग",
+            "children": [
+             {
+              "text": "ENIAC – प्रथम पूर्ण इलेक्ट्रॉनिक डिजिटल (सामान्य कार्य)",
+              "children": []
+             },
+             {
+              "text": "UNIVAC 1 – प्रथम व्यापारिक",
+              "children": []
+             },
+             {
+              "text": "EDVAC – प्रथम संग्रहित प्रोग्राम",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0007",
        "title": "प्रारंभिक गणना यंत्र",
        "items": [
+        {
+         "type": "timeline",
+         "title": "गणना यंत्रों का विकास",
+         "rows": [
+          [
+           "2400 ई.पू.",
+           "अबेकस – बेबीलोनिया में, प्राचीन गणना यंत्र"
+          ],
+          [
+           "1642",
+           "पास्कलाइन – ब्लेज पास्कल (फ्रांस), केवल जोड़ व घटाना"
+          ],
+          [
+           "1822",
+           "डिफरेंस इंजन – चार्ल्स बैबेज (ब्रिटेन)"
+          ],
+          [
+           "1834",
+           "एनालिटिकल इंजन – चार्ल्स बैबेज; एडा बायरन ने पहला प्रोग्राम डाला"
+          ],
+          [
+           "1952",
+           "EDVAC – जॉन वॉन न्यूमैन (पुस्तक के अनुसार)"
+          ]
+         ]
+        },
         {
          "type": "table",
          "rows": [
@@ -147,43 +429,110 @@
            "विशेष"
           ],
           [
-           "अबेकस",
+           "अबेकस (Abacus)",
            "बेबीलोनिया",
            "2400 ई.पू.",
            "प्राचीन गणना यंत्र"
           ],
           [
-           "पास्कलाइन",
-           "ब्लेज पास्कल (फ्रांस)",
+           "पास्कलाइन (Pascaline)",
+           "ब्लेज पास्कल (फ्रांस के गणितज्ञ)",
            "1642",
-           "केवल जोड़ व घटाना"
+           "केवल जोड़ व घटा सकती थी"
           ],
           [
            "डिफरेंस इंजन",
-           "चार्ल्स बैबेज (ब्रिटेन)",
+           "चार्ल्स बैबेज (ब्रिटिश गणितज्ञ)",
            "1822",
-           "यांत्रिक गणना"
+           "यांत्रिक गणना मशीन"
           ],
           [
            "एनालिटिकल इंजन",
            "चार्ल्स बैबेज",
            "1834",
-           "आधुनिक कम्प्यूटर का आधार"
+           "इसी में पहला प्रोग्राम डाला गया"
           ]
          ]
         },
         {
          "type": "point",
-         "text": "एडा बायरन ने एनालिटिकल इंजन में पहला प्रोग्राम डाला → विश्व की प्रथम प्रोग्रामर।"
+         "text": "ऑगस्टा एडा बायरन ने चार्ल्स बैबेज के एनालिटिकल इंजन में पहला प्रोग्राम डाला, इसलिए उन्हें दुनिया का प्रथम प्रोग्रामर कहा जाता है।"
+        },
+        {
+         "type": "point",
+         "text": "पुस्तक के अनुसार ऑगस्टा एडा बायरन ने बाइनरी सिस्टम (0, 1) का आविष्कार किया।"
         },
         {
          "type": "tip",
-         "text": "पुस्तक में एडा बायरन को बाइनरी पद्धति (0, 1) का आविष्कारक बताया है; प्रचलित मत में बाइनरी पद्धति लाइबनिट्ज़ की देन है।"
+         "text": "प्रचलित मत में बाइनरी पद्धति का विकास गॉटफ्रीड लाइबनिट्ज़ ने किया; परीक्षा में विकल्प देखकर उत्तर दें।"
+        },
+        {
+         "type": "trick",
+         "text": "पास्कलाइन = \"प्लस-माइनस\" (केवल जोड़-घटाना)।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0006",
+       "id": "selection_bhag7-0008",
+       "title": "आविष्कारकों के देश",
+       "items": [
+        {
+         "type": "map",
+         "region": "world",
+         "title": "कम्प्यूटर इतिहास से जुड़े देश",
+         "groups": [
+          {
+           "kind": "country",
+           "names": [
+            "Iraq"
+           ],
+           "label": "बेबीलोनिया (अबेकस, 2400 ई.पू.)"
+          },
+          {
+           "kind": "country",
+           "names": [
+            "France"
+           ],
+           "label": "ब्लेज पास्कल (पास्कलाइन, 1642)"
+          },
+          {
+           "kind": "country",
+           "names": [
+            "United Kingdom"
+           ],
+           "label": "चार्ल्स बैबेज, एडा बायरन, एलन ट्यूरिंग, टिम बर्नर्स-ली"
+          },
+          {
+           "kind": "country",
+           "names": [
+            "USA"
+           ],
+           "label": "ENIAC, UNIVAC, EDVAC, ARPANET, माउस (एंगेलबर्ट)"
+          },
+          {
+           "kind": "country",
+           "names": [
+            "India"
+           ],
+           "label": "PARAM 8000 (C-DAC पुणे)"
+          }
+         ],
+         "points": [
+          {
+           "name": "पुणे (C-DAC)",
+           "lat": 18.52,
+           "lon": 73.86
+          }
+         ]
+        },
+        {
+         "type": "point",
+         "text": "टिम बर्नर्स-ली ब्रिटिश वैज्ञानिक हैं (WWW, 1989); ARPANET (1969) अमेरिका का नेटवर्क था।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0009",
        "title": "प्रारंभिक इलेक्ट्रॉनिक कम्प्यूटर",
        "items": [
         {
@@ -198,26 +547,42 @@
           [
            "ENIAC",
            "Electronic Numerical Integrator and Computer",
-           "सामान्य कार्यों का प्रथम पूर्ण इलेक्ट्रॉनिक डिजिटल कम्प्यूटर",
-           "जे. पी. एकर्ट व जॉन मॉकली"
+           "सामान्य कार्यों के लिए प्रथम पूर्ण इलेक्ट्रॉनिक डिजिटल कम्प्यूटर",
+           "जे. पी. एकर्ट और जॉन मॉकली"
           ],
           [
            "UNIVAC 1",
            "Universal Automatic Computer 1",
-           "प्रथम व्यापारिक कम्प्यूटर",
-           "एकर्ट व मॉकली"
+           "प्रथम व्यापारिक (Commercial) कम्प्यूटर",
+           "जे. पी. एकर्ट और जॉन मॉकली"
           ],
           [
            "EDVAC",
            "Electronic Discrete Variable Automatic Computer",
-           "प्रथम संग्रहित प्रोग्राम कम्प्यूटर (1952)",
-           "जॉन वॉन न्यूमैन"
+           "प्रथम संग्रहित प्रोग्राम (Stored Program) कम्प्यूटर",
+           "जॉन वॉन न्यूमैन (1952)"
           ]
          ]
         },
         {
          "type": "tip",
-         "text": "व्यापारिक = UNIVAC; संग्रहित प्रोग्राम (Stored Program) = EDVAC।"
+         "text": "व्यापारिक = UNIVAC 1; संग्रहित प्रोग्राम = EDVAC; प्रथम पूर्ण इलेक्ट्रॉनिक डिजिटल = ENIAC।"
+        },
+        {
+         "type": "tip",
+         "text": "EDVAC का वर्ष पुस्तक में 1952 है; कई स्रोतों में 1949 (निर्माण पूर्ण) दिया जाता है।"
+        },
+        {
+         "type": "tip",
+         "text": "शब्द-संक्षेप सूची में पुस्तक ने ENIAC = \"Electronic Numerical Integrated and Computer\" लिखा है; सही: Integrator।"
+        },
+        {
+         "type": "point",
+         "text": "ENIAC और UNIVAC 1 दोनों प्रथम पीढ़ी (वैक्यूम ट्यूब) के उदाहरण हैं।"
+        },
+        {
+         "type": "trick",
+         "text": "E-N-I-A-C = \"एकर्ट-मॉकली\" की जोड़ी ने ENIAC और UNIVAC दोनों बनाए।"
         }
        ]
       }
@@ -227,116 +592,272 @@
      "topic": "कम्प्यूटर की पीढ़ियाँ",
      "concepts": [
       {
-       "id": "selection_bhag7-0007",
-       "title": "पाँच पीढ़ियाँ – तकनीक",
+       "id": "selection_bhag7-0010",
+       "title": "🧠 एक नज़र में",
        "items": [
         {
-         "type": "table",
+         "type": "tree",
+         "title": "कम्प्यूटर की 5 पीढ़ियाँ",
+         "node": {
+          "text": "पीढ़ियाँ (मुख्य इलेक्ट्रॉनिक घटक)",
+          "children": [
+           {
+            "text": "प्रथम (1946–1958): वैक्यूम ट्यूब",
+            "children": []
+           },
+           {
+            "text": "द्वितीय (1959–1964): ट्रांजिस्टर",
+            "children": []
+           },
+           {
+            "text": "तृतीय (1965–1970): IC",
+            "children": []
+           },
+           {
+            "text": "चतुर्थ (1971–आज तक): VLSI व माइक्रोप्रोसेसर",
+            "children": []
+           },
+           {
+            "text": "पंचम (आज से भविष्य): ULSI",
+            "children": []
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0011",
+       "title": "पीढ़ियों की समय-रेखा",
+       "items": [
+        {
+         "type": "timeline",
+         "title": "कम्प्यूटर की पीढ़ियाँ",
          "rows": [
           [
-           "पीढ़ी",
-           "काल",
-           "मुख्य घटक",
-           "भाषा"
-          ],
-          [
-           "प्रथम",
            "1946–1958",
-           "वैक्यूम ट्यूब",
-           "मशीन भाषा"
+           "प्रथम पीढ़ी – वैक्यूम ट्यूब; मशीन भाषा; बहुत धीमी, बहुत बड़ी"
           ],
           [
-           "द्वितीय",
            "1959–1964",
-           "ट्रांजिस्टर",
-           "मशीन व असेंबली भाषा"
+           "द्वितीय पीढ़ी – ट्रांजिस्टर; मशीन व असेंबली भाषा; छोटी, कम बिजली, कम गर्मी"
           ],
           [
-           "तृतीय",
            "1965–1970",
-           "IC (Integrated Circuit)",
-           "उच्च स्तरीय भाषा"
+           "तृतीय पीढ़ी – IC (Integrated Circuit); उच्च स्तरीय भाषा"
           ],
           [
-           "चतुर्थ",
            "1971–आज तक",
-           "VLSI व माइक्रोप्रोसेसर",
-           "उच्च स्तरीय भाषा"
+           "चतुर्थ पीढ़ी – VLSI व माइक्रोप्रोसेसर; सेमीकंडक्टर मेमोरी (RAM, ROM)"
           ],
           [
-           "पंचम",
            "आज से भविष्य",
-           "ULSI",
-           "–"
+           "पंचम पीढ़ी – ULSI; छोटे व पोर्टेबल"
           ]
          ]
         },
         {
          "type": "trick",
-         "text": "क्रम याद रखें: \"वै-ट्रां-IC-V-U\" = वैक्यूम ट्यूब → ट्रांजिस्टर → IC → VLSI → ULSI।"
+         "text": "क्रम: \"वै-ट्रां-IC-V-U\" = वैक्यूम ट्यूब → ट्रांजिस्टर → IC → VLSI → ULSI।"
         },
         {
          "type": "tip",
-         "text": "IC चिप्स सामान्यतः सिलिकॉन से बनती हैं।"
+         "text": "प्रथम पीढ़ी = वैक्यूम ट्यूब (निर्वात ट्यूब); ट्रांजिस्टर द्वितीय पीढ़ी है।"
+        },
+        {
+         "type": "tip",
+         "text": "IC चिप्स सामान्यतः सिलिकॉन (Silicon) से बनती हैं।"
+        },
+        {
+         "type": "point",
+         "text": "LSI = Large Scale Integration, VLSI = Very Large Scale Integration, ULSI = Ultra Large Scale Integration।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0008",
-       "title": "पीढ़ियाँ – मेमोरी, I/O व उदाहरण",
+       "id": "selection_bhag7-0012",
+       "title": "प्रथम पीढ़ी (1946–1958)",
+       "items": [
+        {
+         "type": "point",
+         "text": "मुख्य इलेक्ट्रॉनिक घटक: वैक्यूम ट्यूब।"
+        },
+        {
+         "type": "point",
+         "text": "मेमोरी डिवाइस: चुंबकीय टेप और चुंबकीय ड्रम।"
+        },
+        {
+         "type": "point",
+         "text": "प्रोग्रामिंग भाषा: मशीन भाषा।"
+        },
+        {
+         "type": "point",
+         "text": "इनपुट/आउटपुट डिवाइस: पेपर टेप और पंचकार्ड।"
+        },
+        {
+         "type": "point",
+         "text": "गति: बहुत धीमी; आकार: बहुत बड़ा।"
+        },
+        {
+         "type": "point",
+         "text": "उदाहरण: IBM 650, IBM 701, UNIVAC 1, ENIAC।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0013",
+       "title": "द्वितीय पीढ़ी (1959–1964)",
+       "items": [
+        {
+         "type": "point",
+         "text": "मुख्य इलेक्ट्रॉनिक घटक: ट्रांजिस्टर।"
+        },
+        {
+         "type": "point",
+         "text": "मेमोरी डिवाइस: चुंबकीय कोर और चुंबकीय टेप/डिस्क।"
+        },
+        {
+         "type": "point",
+         "text": "प्रोग्रामिंग भाषा: मशीन भाषा और असेंबली भाषा।"
+        },
+        {
+         "type": "point",
+         "text": "इनपुट/आउटपुट डिवाइस: चुंबकीय टेप और पंचकार्ड।"
+        },
+        {
+         "type": "point",
+         "text": "मुख्य विशेषताएँ (प्रथम पीढ़ी की तुलना में): आकार में छोटा, कम बिजली की खपत, कम गर्मी उत्पन्न करना।"
+        },
+        {
+         "type": "point",
+         "text": "उदाहरण: UNIVAC 1107, PDP 8, IBM 1400 Series, IBM 7090, IBM 7094, CDC 3600।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0014",
+       "title": "तृतीय पीढ़ी (1965–1970)",
+       "items": [
+        {
+         "type": "point",
+         "text": "मुख्य इलेक्ट्रॉनिक घटक: IC (Integrated Circuit)।"
+        },
+        {
+         "type": "point",
+         "text": "मेमोरी डिवाइस: बड़े चुंबकीय कोर, चुंबकीय टेप/डिस्क।"
+        },
+        {
+         "type": "point",
+         "text": "प्रोग्रामिंग भाषा: उच्च स्तरीय भाषा।"
+        },
+        {
+         "type": "point",
+         "text": "इनपुट/आउटपुट डिवाइस: मॉनिटर, कीबोर्ड, प्रिंटर आदि।"
+        },
+        {
+         "type": "point",
+         "text": "उदाहरण: UNIVAC-1108, IBM 360, IBM 370, PDP-11, NCR 395।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0015",
+       "title": "चतुर्थ व पंचम पीढ़ी",
+       "items": [
+        {
+         "type": "point",
+         "text": "चतुर्थ (1971 से आज तक) – मुख्य घटक: VLSI और माइक्रोप्रोसेसर।"
+        },
+        {
+         "type": "point",
+         "text": "चतुर्थ – मेमोरी डिवाइस: सेमीकंडक्टर मेमोरी जैसे RAM, ROM आदि।"
+        },
+        {
+         "type": "point",
+         "text": "चतुर्थ – उदाहरण: Apple Macintosh, Apple II, STAR 1000, IBM PC।"
+        },
+        {
+         "type": "point",
+         "text": "पंचम (आज से भविष्य) – मुख्य घटक: ULSI।"
+        },
+        {
+         "type": "point",
+         "text": "पंचम – आकार: छोटा और पोर्टेबल।"
+        },
+        {
+         "type": "point",
+         "text": "पंचम – इनपुट/आउटपुट: टचपैड, टचस्क्रीन, पेन, स्पीच इनपुट, लाइट स्कैनर, प्रिंटर, मॉनिटर, कीबोर्ड, माउस आदि।"
+        },
+        {
+         "type": "point",
+         "text": "पंचम – उदाहरण: Desktops, Laptops, Tablets।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0016",
+       "title": "पीढ़ियाँ – तुलना तालिका",
        "items": [
         {
          "type": "table",
          "rows": [
           [
            "पीढ़ी",
+           "घटक",
            "मेमोरी",
-           "इनपुट/आउटपुट",
+           "भाषा",
+           "I/O",
            "उदाहरण"
           ],
           [
            "प्रथम",
-           "चुंबकीय टेप व चुंबकीय ड्रम",
+           "वैक्यूम ट्यूब",
+           "चुंबकीय टेप व ड्रम",
+           "मशीन",
            "पेपर टेप, पंचकार्ड",
-           "ENIAC, UNIVAC 1, IBM 650, IBM 701"
+           "ENIAC, UNIVAC 1, IBM 650/701"
           ],
           [
            "द्वितीय",
+           "ट्रांजिस्टर",
            "चुंबकीय कोर, टेप/डिस्क",
+           "मशीन व असेंबली",
            "चुंबकीय टेप, पंचकार्ड",
            "UNIVAC 1107, PDP 8, IBM 1400, IBM 7090/7094, CDC 3600"
           ],
           [
            "तृतीय",
+           "IC",
            "बड़े चुंबकीय कोर, टेप/डिस्क",
+           "उच्च स्तरीय",
            "मॉनिटर, कीबोर्ड, प्रिंटर",
-           "UNIVAC 1108, IBM 360, IBM 370, PDP-11, NCR 395"
+           "UNIVAC-1108, IBM 360/370, PDP-11, NCR 395"
           ],
           [
            "चतुर्थ",
+           "VLSI, माइक्रोप्रोसेसर",
            "सेमीकंडक्टर (RAM, ROM)",
+           "–",
            "–",
            "Apple II, Apple Macintosh, STAR 1000, IBM PC"
           ],
           [
            "पंचम",
+           "ULSI",
            "–",
-           "टचपैड, टचस्क्रीन, पेन, स्पीच इनपुट",
-           "डेस्कटॉप, लैपटॉप, टैबलेट"
+           "–",
+           "टचस्क्रीन, पेन, स्पीच इनपुट आदि",
+           "Desktop, Laptop, Tablet"
           ]
          ]
         },
         {
-         "type": "point",
-         "text": "प्रथम पीढ़ी: बहुत धीमे व बहुत बड़े आकार के।"
+         "type": "tip",
+         "text": "UNIVAC 1 = प्रथम पीढ़ी; UNIVAC 1107 = द्वितीय; UNIVAC-1108 = तृतीय।"
         },
         {
-         "type": "point",
-         "text": "द्वितीय पीढ़ी: प्रथम की तुलना में छोटे, कम बिजली खपत व कम गर्मी।"
-        },
-        {
-         "type": "point",
-         "text": "पंचम पीढ़ी: छोटे व पोर्टेबल।"
+         "type": "tip",
+         "text": "PDP 8 = द्वितीय; PDP-11 = तृतीय।"
         }
        ]
       }
@@ -346,9 +867,158 @@
      "topic": "कम्प्यूटर के प्रकार",
      "concepts": [
       {
-       "id": "selection_bhag7-0009",
-       "title": "आकार व क्षमता के आधार पर",
+       "id": "selection_bhag7-0017",
+       "title": "🧠 एक नज़र में",
        "items": [
+        {
+         "type": "tree",
+         "title": "कम्प्यूटर के प्रकार (आकार, गति व क्षमता के आधार पर)",
+         "node": {
+          "text": "कम्प्यूटर के प्रकार",
+          "children": [
+           {
+            "text": "माइक्रो कम्प्यूटर (PC)",
+            "children": [
+             {
+              "text": "Single-user; सबसे छोटे, सस्ते",
+              "children": []
+             },
+             {
+              "text": "डेस्कटॉप, लैपटॉप, टैबलेट, स्मार्टफोन",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "मिनी कम्प्यूटर",
+            "children": [
+             {
+              "text": "Multi-user (4–200)",
+              "children": []
+             },
+             {
+              "text": "बैंक, कॉलेज, मध्यम कंपनियाँ",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "मेनफ्रेम कम्प्यूटर",
+            "children": [
+             {
+              "text": "Multi-user (हजारों); केंद्रीय सर्वर",
+              "children": []
+             },
+             {
+              "text": "रेलवे आरक्षण, बड़े बैंक, LIC",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "सुपर कम्प्यूटर",
+            "children": [
+             {
+              "text": "सबसे तेज़, शक्तिशाली, महंगे; FLOPS",
+              "children": []
+             },
+             {
+              "text": "मौसम, ISRO/NASA, परमाणु ऊर्जा",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0018",
+       "title": "आकार व क्षमता का क्रम",
+       "items": [
+        {
+         "type": "pyramid",
+         "title": "आकार, गति व क्षमता (ऊपर = सबसे अधिक)",
+         "levels": [
+          "सुपर कम्प्यूटर",
+          "मेनफ्रेम कम्प्यूटर",
+          "मिनी कम्प्यूटर",
+          "माइक्रो कम्प्यूटर"
+         ]
+        },
+        {
+         "type": "point",
+         "text": "कम्प्यूटरों को आकार, गति और काम करने की क्षमता के आधार पर 4 श्रेणियों में बाँटा गया है।"
+        },
+        {
+         "type": "trick",
+         "text": "बढ़ता क्रम: \"मा-मि-मे-सु\" = माइक्रो < मिनी < मेनफ्रेम < सुपर।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0019",
+       "title": "माइक्रो व मिनी कम्प्यूटर",
+       "items": [
+        {
+         "type": "point",
+         "text": "माइक्रोकम्प्यूटर: आकार में सबसे छोटे, सस्ते और व्यक्तिगत उपयोग के लिए बने।"
+        },
+        {
+         "type": "point",
+         "text": "माइक्रोकम्प्यूटर – यूज़र क्षमता: Single-user (एक समय में एक ही व्यक्ति काम कर सकता है)।"
+        },
+        {
+         "type": "point",
+         "text": "माइक्रोकम्प्यूटर – अन्य नाम: Personal Computer (PC)।"
+        },
+        {
+         "type": "point",
+         "text": "माइक्रोकम्प्यूटर – उदाहरण: डेस्कटॉप, लैपटॉप, टैबलेट, स्मार्टफोन।"
+        },
+        {
+         "type": "point",
+         "text": "मिनीकम्प्यूटर: माइक्रोकम्प्यूटर से अधिक शक्तिशाली और तेज़।"
+        },
+        {
+         "type": "point",
+         "text": "मिनीकम्प्यूटर – यूज़र क्षमता: Multi-user (एक समय में 4 से 200 यूज़र्स)।"
+        },
+        {
+         "type": "point",
+         "text": "मिनीकम्प्यूटर – उपयोग: बैंक, कॉलेज और मध्यम आकार की कंपनियों में डेटाबेस संभालने हेतु।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0020",
+       "title": "मेनफ्रेम व सुपर कम्प्यूटर",
+       "items": [
+        {
+         "type": "point",
+         "text": "मेनफ्रेम: बहुत बड़े आकार, विशाल स्टोरेज और उच्च गति वाले कम्प्यूटर।"
+        },
+        {
+         "type": "point",
+         "text": "मेनफ्रेम – यूज़र क्षमता: Multi-user (एक साथ हजारों यूज़र्स को सपोर्ट)।"
+        },
+        {
+         "type": "point",
+         "text": "मेनफ्रेम – उपयोग: बड़ी संस्थाओं के केंद्रीय सर्वर (Central Server) के रूप में – रेलवे आरक्षण प्रणाली, बड़े केंद्रीय बैंक व बीमा कंपनियाँ (LIC)।"
+        },
+        {
+         "type": "point",
+         "text": "सुपरकम्प्यूटर: दुनिया के सबसे तेज़, सबसे शक्तिशाली और सबसे महंगे कम्प्यूटर।"
+        },
+        {
+         "type": "point",
+         "text": "सुपरकम्प्यूटर – गति मापन: FLOPS (Floating Point Operations Per Second)।"
+        },
+        {
+         "type": "point",
+         "text": "सुपरकम्प्यूटर – मुख्य उपयोग: मौसम का अनुमान (Weather Forecasting), अंतरिक्ष अनुसंधान (ISRO/NASA), परमाणु ऊर्जा।"
+        },
         {
          "type": "table",
          "rows": [
@@ -356,12 +1026,12 @@
            "प्रकार",
            "यूज़र",
            "विशेषता",
-           "उदाहरण/उपयोग"
+           "उपयोग/उदाहरण"
           ],
           [
            "माइक्रो",
            "Single-user",
-           "सबसे छोटे, सस्ते, व्यक्तिगत उपयोग; PC भी कहते हैं",
+           "सबसे छोटे, सस्ते; PC",
            "डेस्कटॉप, लैपटॉप, टैबलेट, स्मार्टफोन"
           ],
           [
@@ -373,34 +1043,30 @@
           [
            "मेनफ्रेम",
            "Multi-user (हजारों)",
-           "बड़ा आकार, विशाल स्टोरेज; केंद्रीय सर्वर",
+           "विशाल स्टोरेज, केंद्रीय सर्वर",
            "रेलवे आरक्षण, बड़े बैंक, LIC"
           ],
           [
            "सुपर",
            "–",
-           "सबसे तेज़, शक्तिशाली व महंगे",
-           "मौसम पूर्वानुमान, ISRO/NASA, परमाणु ऊर्जा"
+           "सबसे तेज़, महंगे; FLOPS",
+           "मौसम, ISRO/NASA, परमाणु ऊर्जा"
           ]
          ]
         },
         {
-         "type": "trick",
-         "text": "बढ़ता क्रम: \"मा-मि-मे-सु\" = माइक्रो < मिनी < मेनफ्रेम < सुपर।"
+         "type": "tip",
+         "text": "रेलवे आरक्षण = मेनफ्रेम; मौसम पूर्वानुमान = सुपरकम्प्यूटर।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0010",
-       "title": "सुपरकम्प्यूटर – भारत",
+       "id": "selection_bhag7-0021",
+       "title": "भारत में सुपरकम्प्यूटर",
        "items": [
         {
          "type": "point",
-         "text": "गति मापन: FLOPS (Floating Point Operations Per Second)।"
-        },
-        {
-         "type": "point",
-         "text": "भारत का पहला सुपरकम्प्यूटर: PARAM 8000 (C-DAC, पुणे)।"
+         "text": "भारत का पहला सुपरकम्प्यूटर: PARAM 8000 (C-DAC, पुणे द्वारा निर्मित)।"
         },
         {
          "type": "point",
@@ -408,27 +1074,138 @@
         },
         {
          "type": "point",
-         "text": "राष्ट्रीय सुपरकम्प्यूटर मिशन (NSM): C-DAC व IISc/IITs द्वारा कार्यान्वित।"
+         "text": "राष्ट्रीय सुपरकम्प्यूटर मिशन (NSM): C-DAC और IISc/IITs द्वारा कार्यान्वित।"
+        },
+        {
+         "type": "point",
+         "text": "C-DAC = Centre for Development of Advanced Computing।"
         },
         {
          "type": "tip",
-         "text": "सामान्य कम्प्यूटर की गति Hz/GHz में, सुपरकम्प्यूटर की FLOPS में।"
+         "text": "पहला सुपरकम्प्यूटर PARAM 8000 है; प्रत्यूष, मिहिर, अनुपम बाद के/अन्य सुपरकम्प्यूटर हैं।"
         }
        ]
       }
      ]
     },
     {
-     "topic": "इनपुट-आउटपुट डिवाइस",
+     "topic": "इनपुट/आउटपुट डिवाइस",
      "concepts": [
       {
-       "id": "selection_bhag7-0011",
-       "title": "इनपुट डिवाइस – सामान्य",
+       "id": "selection_bhag7-0022",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "इनपुट/आउटपुट डिवाइस",
+         "node": {
+          "text": "I/O डिवाइस",
+          "children": [
+           {
+            "text": "इनपुट डिवाइस (डेटा/निर्देश भेजना)",
+            "children": [
+             {
+              "text": "कीबोर्ड, माउस, स्कैनर",
+              "children": []
+             },
+             {
+              "text": "माइक्रोफोन, वेबकैम, जॉयस्टिक",
+              "children": []
+             },
+             {
+              "text": "टचस्क्रीन (इनपुट + आउटपुट)",
+              "children": []
+             },
+             {
+              "text": "रीडर: BCR, OMR, OCR, MICR",
+              "children": []
+             },
+             {
+              "text": "लाइट पेन, ट्रैकबॉल",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "आउटपुट डिवाइस (मानव-योग्य रूप)",
+            "children": [
+             {
+              "text": "मॉनिटर (VDU): LCD, LED, OLED, CRT",
+              "children": []
+             },
+             {
+              "text": "प्रिंटर",
+              "children": [
+               {
+                "text": "इम्पैक्ट: डॉट मैट्रिक्स, डेज़ी व्हील",
+                "children": []
+               },
+               {
+                "text": "नॉन-इम्पैक्ट: इंकजेट, लेज़र, थर्मल",
+                "children": []
+               }
+              ]
+             },
+             {
+              "text": "स्पीकर व हेडफोन",
+              "children": []
+             },
+             {
+              "text": "प्रोजेक्टर",
+              "children": []
+             },
+             {
+              "text": "प्लॉटर",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "आउटपुट के प्रकार",
+            "children": [
+             {
+              "text": "सॉफ्ट कॉपी",
+              "children": []
+             },
+             {
+              "text": "हार्ड कॉपी",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0023",
+       "title": "इनपुट डिवाइस – परिभाषा",
        "items": [
         {
          "type": "point",
-         "text": "इनपुट डिवाइस: हार्डवेयर, जिससे उपयोगकर्ता कम्प्यूटर को डेटा/निर्देश भेजता है; CPU प्रोसेस करता है।"
+         "text": "इनपुट डिवाइस वे हार्डवेयर उपकरण (Hardware Devices) हैं, जिनके द्वारा उपयोगकर्ता कम्प्यूटर को डेटा, निर्देश या कमांड भेजता है।"
         },
+        {
+         "type": "point",
+         "text": "कम्प्यूटर का CPU इन निर्देशों को प्रोसेस करके आउटपुट देता है।"
+        },
+        {
+         "type": "flow",
+         "title": "I/O का मार्ग",
+         "steps": [
+          "उपयोगकर्ता: डेटा/कमांड देता है",
+          "इनपुट डिवाइस: कीबोर्ड, माउस, स्कैनर…",
+          "CPU: निर्देशों को प्रोसेस करता है (बाइनरी कोड)",
+          "आउटपुट डिवाइस: टेक्स्ट, चित्र, ऑडियो, वीडियो में बदलकर दिखाता/देता है"
+         ]
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0024",
+       "title": "मुख्य इनपुट डिवाइस",
+       "items": [
         {
          "type": "table",
          "rows": [
@@ -437,28 +1214,32 @@
            "काम"
           ],
           [
-           "कीबोर्ड",
-           "मुख्य टेक्स्ट इनपुट; अक्षर A-Z, अंक 0-9, फंक्शन कुंजी F1-F12"
+           "कीबोर्ड (Keyboard)",
+           "सबसे मुख्य व व्यापक टेक्स्ट-इनपुट डिवाइस; अक्षर A-Z, संख्याएँ 0-9, फंक्शन कुंजियाँ F1-F12"
           ],
           [
-           "माउस",
-           "पॉइंटिंग डिवाइस; कर्सर नियंत्रण, चयन, क्लिक"
+           "माउस (Mouse)",
+           "पॉइंटिंग डिवाइस; स्क्रीन पर कर्सर नियंत्रित करना, फाइलें चुनना, क्लिक करना"
           ],
           [
-           "स्कैनर",
-           "कागज़ के दस्तावेज़/चित्र को डिजिटल (Image/PDF) में"
+           "स्कैनर (Scanner)",
+           "कागज़ पर छपे दस्तावेज़/तस्वीरों को डिजिटल प्रारूप (Image/PDF) में बदलकर सेव करना"
           ],
           [
-           "माइक्रोफोन",
-           "ध्वनि तरंगों को डिजिटल सिग्नल में"
+           "माइक्रोफोन (Mic)",
+           "ऑडियो इनपुट; आवाज़/ध्वनि तरंगों को डिजिटल सिग्नल में बदलना"
           ],
           [
-           "वेबकैम",
-           "वीडियो कॉलिंग, लाइव स्ट्रीमिंग, फोटो"
+           "वेबकैम (Webcam)",
+           "डिजिटल वीडियो इनपुट; वीडियो कॉलिंग, लाइव स्ट्रीमिंग, फोटो खींचना"
           ],
           [
-           "जॉयस्टिक",
-           "गेमिंग में कर्सर/पात्र नियंत्रण"
+           "टचस्क्रीन (Touchscreen)",
+           "इनपुट और आउटपुट दोनों; उंगली या स्टाइलस से स्क्रीन पर सीधे टच करके कमांड"
+          ],
+          [
+           "जॉयस्टिक (Joystick)",
+           "कम्प्यूटर गेमिंग में कर्सर या पात्रों को नियंत्रित करना"
           ]
          ]
         },
@@ -467,13 +1248,25 @@
          "text": "माउस का आविष्कार: डगलस एंगेलबर्ट, 1968।"
         },
         {
+         "type": "point",
+         "text": "स्क्रीन पर कर्सर/तीर के निशान को माउस नियंत्रित करता है।"
+        },
+        {
+         "type": "point",
+         "text": "लाइट पेन और ट्रैकबॉल भी इनपुट डिवाइस हैं।"
+        },
+        {
          "type": "tip",
-         "text": "टचस्क्रीन इनपुट व आउटपुट दोनों है।"
+         "text": "टचस्क्रीन इनपुट और आउटपुट दोनों है।"
+        },
+        {
+         "type": "tip",
+         "text": "जॉयस्टिक, MICR, वेबकैम इनपुट हैं; स्पीकर आउटपुट है।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0012",
+       "id": "selection_bhag7-0025",
        "title": "इनपुट डिवाइस – रीडर",
        "items": [
         {
@@ -487,42 +1280,46 @@
           [
            "BCR",
            "Barcode Reader",
-           "मॉल/स्टोर में उत्पादों के बारकोड पढ़ना"
+           "स्टोर/मॉल में उत्पादों पर बने बारकोड को स्कैन कर डेटा पढ़ना"
           ],
           [
            "OMR",
            "Optical Mark Reader",
-           "परीक्षा की OMR शीट पर पेन/पेंसिल के निशान जाँचना"
+           "प्रतियोगी परीक्षाओं की उत्तर पुस्तिकाओं (OMR Sheets) पर पेंसिल/पेन के निशान जाँचना"
           ],
           [
            "OCR",
            "Optical Character Recognition",
-           "छपे/हस्तलिखित टेक्स्ट को डिजिटल टेक्स्ट में बदलना"
+           "छपे या हस्तलिखित टेक्स्ट को कम्प्यूटर द्वारा पढ़ने योग्य डिजिटल टेक्स्ट में बदलना"
           ],
           [
            "MICR",
            "Magnetic Ink Character Recognition",
-           "बैंक में चेक के नंबर प्रोसेस करना"
+           "मुख्यतः बैंकों द्वारा चेक पर लिखे नंबरों को प्रोसेस करना"
           ]
          ]
         },
         {
+         "type": "trick",
+         "text": "चेक = MICR (M = Magnetic स्याही); उत्तर-पत्रक = OMR (M = Mark); अक्षर पहचान = OCR (C = Character)।"
+        },
+        {
          "type": "tip",
-         "text": "चेक = MICR; उत्तर-पत्रक = OMR; टेक्स्ट पहचान = OCR।"
+         "text": "बारकोड रीडर इनपुट डिवाइस है।"
         },
         {
          "type": "point",
-         "text": "लाइट पेन व ट्रैकबॉल भी इनपुट डिवाइस हैं।"
+         "text": "शब्द-संक्षेप सूची में OCR = Optical Character Reader और MICR = Magnetic Ink Character Reader भी लिखा जाता है।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0013",
+       "id": "selection_bhag7-0026",
        "title": "आउटपुट डिवाइस",
        "items": [
         {
          "type": "point",
-         "text": "आउटपुट डिवाइस: प्रोसेस्ड डेटा (बाइनरी) को मानव-योग्य रूप (टेक्स्ट, चित्र, ऑडियो, वीडियो) में देते हैं।"
+         "text": "आउटपुट डिवाइस वे हार्डवेयर उपकरण हैं, जो कम्प्यूटर द्वारा प्रोसेस किए गए डेटा (बाइनरी कोड) को मानव द्वारा समझे जाने योग्य रूप (टेक्स्ट, चित्र, ऑडियो या वीडियो) में बदलकर उपयोगकर्ता को प्रदर्शित या प्रदान करते हैं।"
         },
         {
          "type": "table",
@@ -532,41 +1329,80 @@
            "काम"
           ],
           [
-           "मॉनिटर (VDU)",
-           "मुख्य आउटपुट; सॉफ्ट कॉपी; प्रकार LCD, LED, OLED, CRT"
+           "मॉनिटर (Monitor)",
+           "सबसे प्राथमिक व मुख्य आउटपुट; VDU (Visual Display Unit); टेक्स्ट, इमेज, वीडियो सॉफ्ट कॉपी के रूप में; प्रकार LCD, LED, OLED, CRT"
           ],
           [
-           "प्रिंटर",
-           "कागज़ पर हार्ड कॉपी"
+           "प्रिंटर (Printer)",
+           "डिजिटल डेटा को कागज़ पर प्रिंट करके हार्ड कॉपी"
           ],
           [
-           "स्पीकर/हेडफोन",
-           "डिजिटल ऑडियो को ध्वनि तरंगों में"
+           "स्पीकर व हेडफोन",
+           "डिजिटल ऑडियो सिग्नल को आवाज़ (ध्वनि तरंगों) में बदलकर ऑडियो आउटपुट"
           ],
           [
-           "प्रोजेक्टर",
-           "स्क्रीन को दीवार/बड़ी सतह पर; प्रेज़ेंटेशन, सिनेमा"
+           "प्रोजेक्टर (Projector)",
+           "प्रकाश किरणों से स्क्रीन के डिस्प्ले को बड़ी सतह/दीवार पर प्रदर्शित करना; प्रेज़ेंटेशन व सिनेमा"
           ],
           [
-           "प्लॉटर",
-           "बड़े बैनर, पोस्टर, इंजीनियरिंग नक्शे, CAD ड्राइंग"
+           "प्लॉटर (Plotter)",
+           "प्रिंटर जैसा; उच्च गुणवत्ता के बड़े बैनर, पोस्टर, इंजीनियरिंग नक्शे (Architectural Blueprints), CAD ड्राइंग"
           ]
          ]
         },
         {
          "type": "tip",
-         "text": "VDU = Visual Display Unit = मॉनिटर।"
+         "text": "VDU का दूसरा नाम = मॉनिटर।"
         },
         {
          "type": "tip",
-         "text": "प्लॉटर आउटपुट है, इनपुट नहीं।"
+         "text": "प्लॉटर आउटपुट डिवाइस है, इनपुट नहीं।"
+        },
+        {
+         "type": "point",
+         "text": "CRT = Cathode Ray Tube; LCD = Liquid Crystal Display।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0014",
-       "title": "सॉफ्ट कॉपी बनाम हार्ड कॉपी",
+       "id": "selection_bhag7-0027",
+       "title": "आउटपुट के प्रकार – सॉफ्ट व हार्ड कॉपी",
        "items": [
+        {
+         "type": "tree",
+         "title": "आउटपुट के प्रकार",
+         "node": {
+          "text": "आउटपुट",
+          "children": [
+           {
+            "text": "सॉफ्ट कॉपी (Soft Copy)",
+            "children": [
+             {
+              "text": "अस्थायी, डिजिटल; स्क्रीन पर देखा/सुना जाए",
+              "children": []
+             },
+             {
+              "text": "मॉनिटर, स्पीकर, प्रोजेक्टर",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "हार्ड कॉपी (Hard Copy)",
+            "children": [
+             {
+              "text": "भौतिक रूप; स्पर्श कर सकते, सहेज सकते",
+              "children": []
+             },
+             {
+              "text": "प्रिंटर, प्लॉटर",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        },
         {
          "type": "table",
          "rows": [
@@ -577,12 +1413,12 @@
           ],
           [
            "सॉफ्ट कॉपी",
-           "अस्थायी, डिजिटल; स्क्रीन पर देखी/सुनी जाती है",
+           "अस्थायी और डिजिटल प्रारूप, जिसे स्क्रीन पर देखा या सुना जा सकता है",
            "मॉनिटर, स्पीकर, प्रोजेक्टर"
           ],
           [
            "हार्ड कॉपी",
-           "भौतिक रूप; छू व सहेज सकते हैं",
+           "भौतिक प्रारूप (Physical Form), जिसे स्पर्श किया और सहेजा जा सकता है",
            "प्रिंटर, प्लॉटर"
           ]
          ]
@@ -590,119 +1426,315 @@
        ]
       },
       {
-       "id": "selection_bhag7-0015",
-       "title": "प्रिंटर के प्रकार",
+       "id": "selection_bhag7-0028",
+       "title": "प्रिंटर का वर्गीकरण",
        "items": [
         {
-         "type": "table",
-         "rows": [
-          [
-           "प्रकार",
-           "तरीका",
-           "विशेषता",
-           "उदाहरण"
-          ],
-          [
-           "इम्पैक्ट",
-           "रिबन व हैमर की चोट से",
-           "धीमे, शोर वाले",
-           "डॉट मैट्रिक्स, डेज़ी व्हील"
-          ],
-          [
-           "नॉन-इम्पैक्ट",
-           "लेज़र, स्याही या ताप; बिना संपर्क",
-           "शांत, उच्च गुणवत्ता",
-           "इंकजेट, लेज़र, थर्मल"
+         "type": "tree",
+         "title": "प्रिंटर के प्रकार",
+         "node": {
+          "text": "प्रिंटर",
+          "children": [
+           {
+            "text": "इम्पैक्ट (Impact)",
+            "children": [
+             {
+              "text": "रिबन व हैमर (हथौड़े) की मार से",
+              "children": []
+             },
+             {
+              "text": "धीमे, शोर वाले",
+              "children": []
+             },
+             {
+              "text": "डॉट मैट्रिक्स, डेज़ी व्हील",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "नॉन-इम्पैक्ट (Non-Impact)",
+            "children": [
+             {
+              "text": "बिना भौतिक संपर्क – लेज़र, स्याही या ताप (Heat)",
+              "children": []
+             },
+             {
+              "text": "शांत, उच्च गुणवत्ता",
+              "children": []
+             },
+             {
+              "text": "इंकजेट, लेज़र, थर्मल",
+              "children": []
+             }
+            ]
+           }
           ]
-         ]
+         }
+        },
+        {
+         "type": "point",
+         "text": "इम्पैक्ट प्रिंटर कागज़ पर रिबन और हैमर (हथौड़े) की मार से अक्षर छापते हैं; ये धीमे और शोर करने वाले होते हैं।"
+        },
+        {
+         "type": "point",
+         "text": "नॉन-इम्पैक्ट प्रिंटर बिना किसी भौतिक संपर्क के लेज़र, स्याही या ताप से प्रिंट करते हैं; ये शांत और उच्च गुणवत्ता वाले होते हैं।"
         },
         {
          "type": "trick",
-         "text": "इम्पैक्ट = \"चोट\" वाले = डॉट मैट्रिक्स व डेज़ी व्हील (D-D)।"
+         "text": "इम्पैक्ट = \"चोट\" वाले = डॉट मैट्रिक्स व डेज़ी व्हील (D-D); बाकी (इंकजेट, लेज़र, थर्मल) नॉन-इम्पैक्ट।"
+        },
+        {
+         "type": "point",
+         "text": "DPI = Dots Per Inch (प्रिंट/स्कैन की गुणवत्ता की इकाई)।"
         }
        ]
       }
      ]
     },
     {
-     "topic": "मेमोरी",
+     "topic": "कम्प्यूटर मेमोरी",
      "concepts": [
       {
-       "id": "selection_bhag7-0016",
+       "id": "selection_bhag7-0029",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "कम्प्यूटर मेमोरी का वर्गीकरण",
+         "node": {
+          "text": "कम्प्यूटर मेमोरी",
+          "children": [
+           {
+            "text": "प्राथमिक (Primary/Main) – CPU से सीधे जुड़ी",
+            "children": [
+             {
+              "text": "RAM – अस्थायी (Volatile)",
+              "children": [
+               {
+                "text": "SRAM: तेज़, महंगी (कैश में)",
+                "children": []
+               },
+               {
+                "text": "DRAM: धीमी, सस्ती, बार-बार रिफ्रेश",
+                "children": []
+               }
+              ]
+             },
+             {
+              "text": "ROM – स्थायी (Non-Volatile)",
+              "children": [
+               {
+                "text": "PROM",
+                "children": []
+               },
+               {
+                "text": "EPROM",
+                "children": []
+               },
+               {
+                "text": "EEPROM",
+                "children": []
+               }
+              ]
+             },
+             {
+              "text": "कैश मेमोरी – CPU व RAM के बीच, बेहद तेज़",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "द्वितीयक (Secondary/Auxiliary) – स्थायी",
+            "children": [
+             {
+              "text": "HDD: मैग्नेटिक डिस्क",
+              "children": []
+             },
+             {
+              "text": "SSD: फ्लैश मेमोरी",
+              "children": []
+             },
+             {
+              "text": "Optical: CD, DVD, Blu-ray",
+              "children": []
+             },
+             {
+              "text": "Flash Drives: पेन ड्राइव, SD कार्ड",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0030",
+       "title": "मेमोरी पदानुक्रम (गति व लागत)",
+       "items": [
+        {
+         "type": "pyramid",
+         "title": "मेमोरी पदानुक्रम – ऊपर तेज़ व महंगी, नीचे धीमी, सस्ती व बड़ी",
+         "levels": [
+          "रजिस्टर (CPU के अंदर)",
+          "कैश मेमोरी (SRAM)",
+          "प्राथमिक मेमोरी (RAM/ROM)",
+          "द्वितीयक मेमोरी (SSD, HDD, CD/DVD, पेन ड्राइव)"
+         ]
+        },
+        {
+         "type": "point",
+         "text": "ऊपर जाने पर गति व प्रति-बाइट लागत बढ़ती है, क्षमता घटती है।"
+        },
+        {
+         "type": "tip",
+         "text": "सबसे तेज़ मेमोरी (विकल्पों में): कैश मेमोरी; हार्ड डिस्क व CD-ROM धीमी हैं।"
+        },
+        {
+         "type": "tip",
+         "text": "मुख्य मेमोरी = RAM और ROM; CD, DVD, हार्ड डिस्क, पेन ड्राइव द्वितीयक हैं।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0031",
        "title": "प्राथमिक मेमोरी – RAM",
        "items": [
         {
          "type": "point",
-         "text": "प्राथमिक (मुख्य) मेमोरी CPU से सीधे जुड़ी; चल रहे डेटा व निर्देश रखती है।"
+         "text": "प्राथमिक मेमोरी (Primary/Main Memory) CPU से सीधे जुड़ी होती है और वर्तमान में चल रहे डेटा और निर्देशों को स्टोर करती है।"
         },
         {
          "type": "point",
-         "text": "मुख्य मेमोरी = RAM व ROM।"
+         "text": "RAM = Random Access Memory।"
         },
         {
          "type": "point",
-         "text": "RAM: Random Access Memory; अस्थायी (Volatile), बिजली बंद होते ही डेटा मिट जाता है।"
+         "text": "प्रकार: अस्थायी (Volatile) – बिजली बंद होते ही इसका डेटा मिट जाता है।"
+        },
+        {
+         "type": "point",
+         "text": "कार्य: चल रहे ऐप्स और प्रोसेस के डेटा को अस्थायी रूप से होल्ड करना।"
         },
         {
          "type": "table",
          "rows": [
           [
-           "प्रकार",
+           "उप-प्रकार",
            "विशेषता"
           ],
           [
-           "SRAM (Static)",
-           "तेज़, महंगी; कैश मेमोरी में"
+           "SRAM (Static RAM)",
+           "तेज़ और महंगी; कैश मेमोरी में इस्तेमाल"
           ],
           [
-           "DRAM (Dynamic)",
-           "धीमी, सस्ती; बार-बार रिफ्रेश करनी पड़ती है"
+           "DRAM (Dynamic RAM)",
+           "धीमी और सस्ती; इसे बार-बार रिफ्रेश करना पड़ता है"
           ]
          ]
         },
         {
+         "type": "trick",
+         "text": "DRAM में D = \"Dobara refresh\" (बार-बार रिफ्रेश); SRAM में S = Speed।"
+        },
+        {
          "type": "tip",
-         "text": "ROM नहीं, RAM volatile है।"
+         "text": "RAM volatile है, ROM नहीं।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0017",
-       "title": "ROM व कैश मेमोरी",
+       "id": "selection_bhag7-0032",
+       "title": "प्राथमिक मेमोरी – ROM व कैश",
        "items": [
         {
          "type": "point",
-         "text": "ROM: Read Only Memory; स्थायी (Non-Volatile), बिजली जाने पर भी डेटा सुरक्षित।"
+         "text": "ROM = Read Only Memory।"
         },
         {
          "type": "point",
-         "text": "ROM में कम्प्यूटर स्टार्ट करने वाले निर्देश (BIOS/Firmware)।"
+         "text": "प्रकार: स्थायी (Non-Volatile) – बिजली जाने पर भी डेटा सुरक्षित रहता है।"
         },
         {
          "type": "point",
-         "text": "ROM के उप-प्रकार: PROM, EPROM, EEPROM।"
+         "text": "कार्य: कम्प्यूटर को स्टार्ट करने वाले निर्देश (जैसे BIOS/Firmware) को सेव रखना।"
         },
         {
          "type": "point",
-         "text": "कैश मेमोरी: CPU और RAM के बीच अत्यंत तेज़ मेमोरी; बार-बार उपयोग होने वाला डेटा रखती है।"
+         "text": "उप-प्रकार: PROM, EPROM और EEPROM।"
+        },
+        {
+         "type": "table",
+         "rows": [
+          [
+           "ROM प्रकार",
+           "पूर्ण रूप"
+          ],
+          [
+           "PROM",
+           "Programmable Read Only Memory"
+          ],
+          [
+           "EPROM",
+           "Erasable Programmable Read Only Memory"
+          ],
+          [
+           "EEPROM",
+           "Electrically Erasable Programmable Read Only Memory"
+          ]
+         ]
+        },
+        {
+         "type": "point",
+         "text": "कैश मेमोरी: CPU और RAM के बीच की बेहद तेज़ मेमोरी।"
+        },
+        {
+         "type": "point",
+         "text": "कैश मेमोरी बार-बार इस्तेमाल होने वाले डेटा को स्टोर करती है, ताकि CPU की स्पीड बढ़े।"
         },
         {
          "type": "tip",
-         "text": "सबसे तेज़ मेमोरी: कैश (रजिस्टर्स को छोड़कर); हार्ड डिस्क धीमी।"
+         "text": "नॉन-वोलाटाइल मेमोरी = ROM; RAM, कैश और रजिस्टर वोलाटाइल हैं।"
         },
         {
          "type": "point",
-         "text": "बूटिंग: कम्प्यूटर चालू/रीस्टार्ट होकर OS लोड होना।"
+         "text": "BIOS = Basic Input Output System।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0018",
+       "id": "selection_bhag7-0033",
+       "title": "बूटिंग (Booting)",
+       "items": [
+        {
+         "type": "point",
+         "text": "बूटिंग: कम्प्यूटर को चालू या रीस्टार्ट करना, जिसमें ऑपरेटिंग सिस्टम लोड होता है।"
+        },
+        {
+         "type": "flow",
+         "title": "बूटिंग की प्रक्रिया",
+         "steps": [
+          "पावर ऑन: कम्प्यूटर चालू/रीस्टार्ट",
+          "ROM: BIOS/Firmware के निर्देश चलते हैं",
+          "OS लोड: ऑपरेटिंग सिस्टम द्वितीयक मेमोरी से RAM में आता है",
+          "तैयार: कम्प्यूटर उपयोग के लिए तैयार"
+         ]
+        },
+        {
+         "type": "tip",
+         "text": "बूटिंग का अर्थ कम्प्यूटर बंद करना या वायरस स्कैन नहीं है।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0034",
        "title": "द्वितीयक मेमोरी",
        "items": [
         {
          "type": "point",
-         "text": "डेटा लंबे समय तक रखती है; Non-Volatile (स्थायी)।"
+         "text": "द्वितीयक मेमोरी (Secondary Memory/Auxiliary Storage) डेटा को लंबे समय तक सुरक्षित रखने के लिए; यह Non-Volatile (स्थायी) होती है।"
         },
         {
          "type": "table",
@@ -712,51 +1744,61 @@
            "विशेषता"
           ],
           [
-           "HDD",
-           "मैग्नेटिक डिस्क; अधिक स्टोरेज, धीमी"
+           "HDD (Hard Disk Drive)",
+           "मैग्नेटिक डिस्क आधारित; ज़्यादा स्टोरेज क्षमता लेकिन धीमी"
           ],
           [
-           "SSD",
-           "फ्लैश मेमोरी; अत्यंत तेज़, HDD से टिकाऊ"
+           "SSD (Solid State Drive)",
+           "फ्लैश मेमोरी आधारित; अत्यंत तेज़ और HDD की तुलना में टिकाऊ"
           ],
           [
-           "CD",
-           "700 MB"
+           "Optical Disks",
+           "CD (700 MB), DVD (4.7 GB), Blu-ray Disc (25 GB+)"
           ],
           [
-           "DVD",
-           "4.7 GB"
-          ],
-          [
-           "Blu-ray",
-           "25 GB+"
-          ],
-          [
-           "फ्लैश ड्राइव",
+           "Flash Drives",
            "पेन ड्राइव, मेमोरी कार्ड (SD Card)"
           ]
          ]
         },
         {
+         "type": "pyramid",
+         "title": "ऑप्टिकल डिस्क की क्षमता (ऊपर = सबसे अधिक)",
+         "levels": [
+          "Blu-ray: 25 GB+",
+          "DVD: 4.7 GB",
+          "CD: 700 MB"
+         ]
+        },
+        {
          "type": "point",
-         "text": "पेन ड्राइव USB पोर्ट से जुड़ती है।"
+         "text": "पेन ड्राइव कम्प्यूटर के USB पोर्ट (Universal Serial Bus) से जोड़ी जाती है।"
+        },
+        {
+         "type": "point",
+         "text": "CD = Compact Disc; DVD = Digital Versatile Disc/Digital Video Disc; CD-ROM = Compact Disc Read Only Memory; CD-RW = Compact Disc Read and Write; WORM = Write Once Read Many।"
+        },
+        {
+         "type": "tip",
+         "text": "HDD = मैग्नेटिक (धीमी, सस्ती, बड़ी); SSD = फ्लैश (तेज़, टिकाऊ)।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0019",
+       "id": "selection_bhag7-0035",
        "title": "मेमोरी इकाइयाँ",
        "items": [
         {
-         "type": "table",
+         "type": "point",
+         "text": "कम्प्यूटर डेटा को बिट्स (Bits) में मापता है; मेमोरी इकाइयाँ 0 और 1 के आधार पर बनती हैं।"
+        },
+        {
+         "type": "layers",
+         "title": "मेमोरी इकाइयाँ (छोटी → बड़ी)",
          "rows": [
           [
-           "इकाई",
-           "के बराबर"
-          ],
-          [
            "Bit (Binary Digit)",
-           "0 या 1"
+           "0 या 1 – सबसे छोटी इकाई"
           ],
           [
            "Nibble",
@@ -767,87 +1809,290 @@
            "8 Bits"
           ],
           [
+           "Kilobyte (KB)",
+           "1,024 Bytes"
+          ],
+          [
+           "Megabyte (MB)",
+           "1,024 KB"
+          ],
+          [
+           "Gigabyte (GB)",
+           "1,024 MB"
+          ],
+          [
+           "Terabyte (TB)",
+           "1,024 GB"
+          ],
+          [
+           "Petabyte (PB)",
+           "1,024 TB"
+          ],
+          [
+           "Exabyte (EB)",
+           "1,024 PB"
+          ],
+          [
+           "Zettabyte (ZB)",
+           "1,024 EB"
+          ],
+          [
+           "Yottabyte (YB)",
+           "1,024 ZB"
+          ]
+         ]
+        },
+        {
+         "type": "table",
+         "rows": [
+          [
+           "इकाई",
+           "संक्षिप्त नाम",
+           "के बराबर"
+          ],
+          [
+           "Bit",
+           "Binary Digit",
+           "0 या 1"
+          ],
+          [
+           "Nibble",
+           "–",
+           "4 Bits"
+          ],
+          [
+           "Byte",
+           "B",
+           "8 Bits"
+          ],
+          [
+           "Kilobyte",
            "KB",
-           "1024 Bytes"
+           "1,024 Bytes"
           ],
           [
+           "Megabyte",
            "MB",
-           "1024 KB"
+           "1,024 KB"
           ],
           [
+           "Gigabyte",
            "GB",
-           "1024 MB"
+           "1,024 MB"
           ],
           [
+           "Terabyte",
            "TB",
-           "1024 GB"
+           "1,024 GB"
           ],
           [
+           "Petabyte",
            "PB",
-           "1024 TB"
+           "1,024 TB"
           ],
           [
+           "Exabyte",
            "EB",
-           "1024 PB"
+           "1,024 PB"
           ],
           [
+           "Zettabyte",
            "ZB",
-           "1024 EB"
+           "1,024 EB"
           ],
           [
+           "Yottabyte",
            "YB",
-           "1024 ZB"
+           "1,024 ZB"
           ]
          ]
         },
         {
          "type": "point",
-         "text": "सबसे छोटी इकाई: बिट; बाइनरी पद्धति में केवल 0 व 1।"
+         "text": "सबसे छोटी इकाई: बिट (Bit)।"
+        },
+        {
+         "type": "point",
+         "text": "बाइनरी नंबर सिस्टम में केवल 0 और 1 अंक होते हैं।"
+        },
+        {
+         "type": "point",
+         "text": "उदाहरण: 1 GB = 1024 MB; 1 Byte = 8 Bits = 2 Nibble।"
+        },
+        {
+         "type": "point",
+         "text": "सूत्र: 1 KB = $2^{10}$ = 1024 Bytes।"
         },
         {
          "type": "trick",
-         "text": "क्रम: \"B K M G T P E Z Y\" – \"बड़े कमरे में गए तो पापा एकदम ज़ोरदार यार\" (हर कदम ×1024)।"
+         "text": "क्रम \"B K M G T P E Z Y\": \"बड़े कमरे में गए तो पापा एकदम ज़ोरदार यार\" (Byte से आगे हर कदम ×1024)।"
+        },
+        {
+         "type": "tip",
+         "text": "1 Byte = 8 Bits (4 नहीं; 4 Bits = Nibble)।"
         }
        ]
       }
      ]
     },
     {
-     "topic": "इंटरनेट व नेटवर्क",
+     "topic": "इंटरनेट",
      "concepts": [
       {
-       "id": "selection_bhag7-0020",
-       "title": "इंटरनेट – मूल तथ्य",
+       "id": "selection_bhag7-0036",
+       "title": "🧠 एक नज़र में",
        "items": [
         {
-         "type": "point",
-         "text": "इंटरनेट: आपस में जुड़े कम्प्यूटर नेटवर्कों का वैश्विक नेटवर्क; TCP/IP से डेटा आदान-प्रदान।"
-        },
-        {
-         "type": "point",
-         "text": "मानक प्रोटोकॉल: TCP/IP (Transmission Control Protocol/Internet Protocol)।"
-        },
-        {
-         "type": "point",
-         "text": "ARPANET (1969): दुनिया का पहला नेटवर्क, इंटरनेट की नींव।"
-        },
-        {
-         "type": "point",
-         "text": "WWW का आविष्कार: टिम बर्नर्स-ली, 1989।"
-        },
-        {
-         "type": "point",
-         "text": "ई-मेल के जनक: रे टॉमलिंसन।"
-        },
-        {
-         "type": "tip",
-         "text": "WWW (टिम बर्नर्स-ली) और इंटरनेट एक नहीं; WWW इंटरनेट पर चलने वाली सेवा है।"
+         "type": "tree",
+         "title": "इंटरनेट",
+         "node": {
+          "text": "इंटरनेट (TCP/IP)",
+          "children": [
+           {
+            "text": "इतिहास",
+            "children": [
+             {
+              "text": "ARPANET 1969 – पहला नेटवर्क",
+              "children": []
+             },
+             {
+              "text": "WWW 1989 – टिम बर्नर्स-ली",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "मुख्य घटक",
+            "children": [
+             {
+              "text": "IP Address",
+              "children": []
+             },
+             {
+              "text": "DNS",
+              "children": []
+             },
+             {
+              "text": "Web Browser",
+              "children": []
+             },
+             {
+              "text": "ISP",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "प्रोटोकॉल",
+            "children": [
+             {
+              "text": "HTTP/HTTPS – वेब पेज",
+              "children": []
+             },
+             {
+              "text": "FTP – फाइल",
+              "children": []
+             },
+             {
+              "text": "SMTP – ई-मेल भेजना",
+              "children": []
+             },
+             {
+              "text": "POP3/IMAP – ई-मेल प्राप्त करना",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "कनेक्टिविटी",
+            "children": [
+             {
+              "text": "ब्रॉडबैंड/फाइबर ऑप्टिक",
+              "children": []
+             },
+             {
+              "text": "सेलुलर डेटा (4G, 5G)",
+              "children": []
+             },
+             {
+              "text": "Wi-Fi",
+              "children": []
+             },
+             {
+              "text": "सैटेलाइट इंटरनेट",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "लाभ",
+            "children": [
+             {
+              "text": "संचार",
+              "children": []
+             },
+             {
+              "text": "शिक्षा व जानकारी",
+              "children": []
+             },
+             {
+              "text": "ई-कॉमर्स",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
         }
        ]
       },
       {
-       "id": "selection_bhag7-0021",
-       "title": "इंटरनेट के घटक",
+       "id": "selection_bhag7-0037",
+       "title": "इंटरनेट – परिभाषा व इतिहास",
+       "items": [
+        {
+         "type": "point",
+         "text": "इंटरनेट (Internet): आपस में जुड़े कई कम्प्यूटर नेटवर्कों का एक वैश्विक नेटवर्क, जो TCP/IP (Transmission Control Protocol/Internet Protocol) का उपयोग करके डेटा का आदान-प्रदान करता है।"
+        },
+        {
+         "type": "point",
+         "text": "इंटरनेट का मानक प्रोटोकॉल (Standard Protocol): TCP/IP।"
+        },
+        {
+         "type": "timeline",
+         "title": "इंटरनेट की समय-रेखा",
+         "rows": [
+          [
+           "1969",
+           "ARPANET – दुनिया का पहला नेटवर्क, जिसने इंटरनेट की नींव रखी"
+          ],
+          [
+           "1989",
+           "टिम बर्नर्स-ली ने WWW (World Wide Web) का आविष्कार किया"
+          ],
+          [
+           "1 जुलाई 2015",
+           "भारत में डिजिटल इंडिया पहल शुरू"
+          ]
+         ]
+        },
+        {
+         "type": "point",
+         "text": "ई-मेल (E-mail) के जन्मदाता: रे टॉमलिंसन।"
+        },
+        {
+         "type": "tip",
+         "text": "WWW के आविष्कारक टिम बर्नर्स-ली हैं, ई-मेल के रे टॉमलिंसन; बिल गेट्स/स्टीव जॉब्स/मार्क ज़ुकरबर्ग नहीं।"
+        },
+        {
+         "type": "tip",
+         "text": "इंटरनेट नेटवर्कों का नेटवर्क है; WWW इंटरनेट पर चलने वाली एक सेवा है।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0038",
+       "title": "इंटरनेट के मुख्य घटक",
        "items": [
         {
          "type": "table",
@@ -858,44 +2103,62 @@
            "उदाहरण"
           ],
           [
-           "IP Address",
-           "हर जुड़े डिवाइस का अनूठा डिजिटल पता",
+           "IP Address (Internet Protocol)",
+           "इंटरनेट से जुड़े प्रत्येक डिवाइस का अनूठा डिजिटल पता",
            "192.168.1.1"
           ],
           [
-           "DNS",
-           "डोमेन नाम को IP एड्रेस में बदलना",
+           "DNS (Domain Name System)",
+           "डोमेन नामों को IP एड्रेस में बदलने वाला सिस्टम",
            "google.com"
           ],
           [
            "Web Browser",
-           "वेबसाइट खोलने का सॉफ्टवेयर",
+           "वेबसाइट्स को खोलने का सॉफ्टवेयर",
            "Chrome, Firefox, Edge"
           ],
           [
-           "ISP",
-           "इंटरनेट सेवा देने वाली कंपनी",
+           "ISP (Internet Service Provider)",
+           "इंटरनेट सेवा प्रदान करने वाली कंपनियाँ",
            "Jio, Airtel"
           ]
          ]
         },
         {
-         "type": "point",
-         "text": "IPv4 एड्रेस: 32 बिट।"
+         "type": "flow",
+         "title": "वेबसाइट कैसे खुलती है",
+         "steps": [
+          "ब्राउज़र: उपयोगकर्ता URL/डोमेन (google.com) लिखता है",
+          "ISP: इंटरनेट से जोड़ता है",
+          "DNS: डोमेन नाम को IP एड्रेस में बदलता है",
+          "सर्वर: HTTP/HTTPS से वेब पेज भेजता है"
+         ]
         },
         {
          "type": "point",
-         "text": "वेबसाइट का मुख्य पृष्ठ: होम पेज।"
+         "text": "IPv4 के तहत IP एड्रेस 32 बिट का होता है।"
+        },
+        {
+         "type": "point",
+         "text": "URL = Uniform Resource Locator (वेब पता)।"
+        },
+        {
+         "type": "point",
+         "text": "वेबसाइट का मुख्य पृष्ठ (Main Page): होम पेज (Home Page)।"
+        },
+        {
+         "type": "point",
+         "text": "सर्च इंजन: Google, Yahoo, Bing।"
         },
         {
          "type": "tip",
-         "text": "Chrome वेब ब्राउज़र है; Google, Yahoo, Bing सर्च इंजन हैं; Windows सर्च इंजन नहीं।"
+         "text": "Windows सर्च इंजन नहीं (ऑपरेटिंग सिस्टम है); Google Chrome वेब ब्राउज़र है, सर्च इंजन नहीं।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0022",
-       "title": "प्रमुख प्रोटोकॉल",
+       "id": "selection_bhag7-0039",
+       "title": "इंटरनेट के प्रमुख प्रोटोकॉल",
        "items": [
         {
          "type": "table",
@@ -908,12 +2171,12 @@
           [
            "HTTP/HTTPS",
            "Hypertext Transfer Protocol (Secure)",
-           "वेब पेज ट्रांसफर, सुरक्षित कनेक्शन"
+           "वेब पेज ट्रांसफर और सुरक्षित कनेक्शन"
           ],
           [
            "FTP",
            "File Transfer Protocol",
-           "फाइल अपलोड/डाउनलोड"
+           "फाइलें अपलोड और डाउनलोड करना"
           ],
           [
            "SMTP",
@@ -923,100 +2186,291 @@
           [
            "POP3/IMAP",
            "Post Office Protocol/Internet Message Access Protocol",
-           "ई-मेल प्राप्त करना"
+           "ई-मेल प्राप्त (Receive) करना"
           ]
          ]
         },
         {
          "type": "trick",
-         "text": "SMTP में S = Send (भेजना); POP = Pick (प्राप्त करना)।"
+         "text": "SMTP में S = Send (भेजना); POP = Pick up (प्राप्त करना)।"
+        },
+        {
+         "type": "point",
+         "text": "HTML = Hyper Text Markup Language (वेब पेज बनाने की भाषा)।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0023",
-       "title": "कनेक्टिविटी व उपयोग",
+       "id": "selection_bhag7-0040",
+       "title": "कनेक्टिविटी के प्रकार",
        "items": [
         {
-         "type": "table",
-         "rows": [
-          [
-           "कनेक्शन",
-           "विशेषता"
-          ],
-          [
-           "ब्रॉडबैंड/फाइबर ऑप्टिक",
-           "उच्च गति डेटा ट्रांसमिशन"
-          ],
-          [
-           "सेलुलर डेटा",
-           "4G, 5G मोबाइल नेटवर्क"
-          ],
-          [
-           "Wi-Fi (Wireless Fidelity)",
-           "रेडियो तरंगों से बिना तार का लोकल नेटवर्क"
-          ],
-          [
-           "सैटेलाइट इंटरनेट",
-           "सुदूर क्षेत्रों के लिए उपग्रह आधारित"
+         "type": "tree",
+         "title": "इंटरनेट कनेक्शन के प्रकार",
+         "node": {
+          "text": "कनेक्टिविटी",
+          "children": [
+           {
+            "text": "Broadband/Fiber Optic: उच्च गति डेटा ट्रांसमिशन",
+            "children": []
+           },
+           {
+            "text": "Cellular Data: 4G, 5G मोबाइल नेटवर्क",
+            "children": []
+           },
+           {
+            "text": "Wi-Fi (Wireless Fidelity): रेडियो तरंगों से बिना तार का लोकल नेटवर्क",
+            "children": []
+           },
+           {
+            "text": "Satellite Internet: सुदूर क्षेत्रों के लिए उपग्रह आधारित",
+            "children": []
+           }
           ]
-         ]
+         }
         },
         {
          "type": "point",
-         "text": "ब्लूटूथ: कम दूरी पर वायरलेस डेटा ट्रांसफर।"
+         "text": "ब्लूटूथ (Bluetooth): कम दूरी पर वायरलेस डेटा ट्रांसफर।"
         },
         {
          "type": "point",
-         "text": "लाभ: संचार (ईमेल, सोशल मीडिया), शिक्षा, ई-कॉमर्स (ऑनलाइन खरीद-बिक्री, UPI, नेट बैंकिंग)।"
+         "text": "MODEM = Modulator–Demodulator।"
         },
         {
          "type": "point",
-         "text": "नेटवर्क प्रकार: LAN (Local), MAN (Metropolitan), WAN (Wide Area Network)।"
+         "text": "ISDN = Integrated Services Digital Network; PSTN = Public Switched Telephone Network।"
+        },
+        {
+         "type": "tip",
+         "text": "Wi-Fi = Wireless Fidelity।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0041",
+       "title": "इंटरनेट – लाभ एवं उपयोग",
+       "items": [
+        {
+         "type": "point",
+         "text": "संचार (Communication): ईमेल, सोशल मीडिया, मैसेजिंग।"
+        },
+        {
+         "type": "point",
+         "text": "शिक्षा व जानकारी (Education): ऑनलाइन लर्निंग प्लेटफॉर्म और सूचना खोज।"
+        },
+        {
+         "type": "point",
+         "text": "ई-कॉमर्स (E-Commerce): इंटरनेट के माध्यम से व्यापार/खरीद-बिक्री – ऑनलाइन शॉपिंग, डिजिटल भुगतान (UPI, नेट बैंकिंग)।"
         },
         {
          "type": "point",
          "text": "ईमेल में CC = Carbon Copy।"
+        },
+        {
+         "type": "point",
+         "text": "ई-गवर्नेंस का मुख्य उद्देश्य: सरकारी सेवाओं को नागरिकों तक पारदर्शी और सुलभ बनाना।"
+        },
+        {
+         "type": "point",
+         "text": "डिजिटल इंडिया पहल: 1 जुलाई 2015 को शुरू।"
         }
        ]
       }
      ]
     },
     {
-     "topic": "सॉफ्टवेयर व साइबर सुरक्षा",
+     "topic": "सॉफ्टवेयर, नेटवर्क व साइबर सुरक्षा (अभ्यास प्रश्नों के तथ्य)",
      "concepts": [
       {
-       "id": "selection_bhag7-0024",
-       "title": "सॉफ्टवेयर व फाइलें",
+       "id": "selection_bhag7-0042",
+       "title": "🧠 एक नज़र में",
        "items": [
         {
-         "type": "point",
-         "text": "ऑपरेटिंग सिस्टम = सिस्टम सॉफ्टवेयर; उदाहरण Windows, Linux, Android, iOS।"
-        },
-        {
-         "type": "point",
-         "text": "MS Word = एप्लीकेशन सॉफ्टवेयर।"
-        },
-        {
-         "type": "tip",
-         "text": "MS Office ऑपरेटिंग सिस्टम नहीं है।"
-        },
-        {
-         "type": "point",
-         "text": "ओपन सोर्स: LibreOffice, Linux; MS Windows, MS Office, Photoshop ओपन सोर्स नहीं।"
-        },
-        {
-         "type": "point",
-         "text": ".docx = MS Word फाइल; PDF = Portable Document Format।"
-        },
-        {
-         "type": "point",
-         "text": "MS Excel: स्प्रेडशीट व गणना; MS PowerPoint: स्लाइड शो/प्रेज़ेंटेशन।"
+         "type": "tree",
+         "title": "सॉफ्टवेयर, नेटवर्क, सुरक्षा",
+         "node": {
+          "text": "अभ्यास प्रश्नों के तथ्य",
+          "children": [
+           {
+            "text": "सॉफ्टवेयर",
+            "children": [
+             {
+              "text": "सिस्टम सॉफ्टवेयर: OS – Windows, Linux, Android",
+              "children": []
+             },
+             {
+              "text": "एप्लीकेशन सॉफ्टवेयर: MS Word, Excel, PowerPoint",
+              "children": []
+             },
+             {
+              "text": "ओपन सोर्स: LibreOffice, Linux",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "नेटवर्क",
+            "children": [
+             {
+              "text": "LAN",
+              "children": []
+             },
+             {
+              "text": "MAN",
+              "children": []
+             },
+             {
+              "text": "WAN",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "साइबर सुरक्षा",
+            "children": [
+             {
+              "text": "वायरस, एंटीवायरस",
+              "children": []
+             },
+             {
+              "text": "फिशिंग, स्पैम",
+              "children": []
+             },
+             {
+              "text": "फायरवॉल, पासवर्ड",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
         }
        ]
       },
       {
-       "id": "selection_bhag7-0025",
+       "id": "selection_bhag7-0043",
+       "title": "सॉफ्टवेयर के प्रकार",
+       "items": [
+        {
+         "type": "tree",
+         "title": "सॉफ्टवेयर का वर्गीकरण",
+         "node": {
+          "text": "सॉफ्टवेयर",
+          "children": [
+           {
+            "text": "सिस्टम सॉफ्टवेयर",
+            "children": [
+             {
+              "text": "ऑपरेटिंग सिस्टम (OS): Windows, Linux, Android, iOS, MS-DOS",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "एप्लीकेशन सॉफ्टवेयर",
+            "children": [
+             {
+              "text": "MS-Word: दस्तावेज़ (.docx)",
+              "children": []
+             },
+             {
+              "text": "MS-Excel: स्प्रेडशीट व गणना",
+              "children": []
+             },
+             {
+              "text": "MS-PowerPoint: स्लाइड शो/प्रेज़ेंटेशन",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "ओपन सोर्स सॉफ्टवेयर",
+            "children": [
+             {
+              "text": "LibreOffice, Linux",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        },
+        {
+         "type": "point",
+         "text": "ऑपरेटिंग सिस्टम (OS) सिस्टम सॉफ्टवेयर है।"
+        },
+        {
+         "type": "point",
+         "text": "MS-Word एप्लीकेशन सॉफ्टवेयर है।"
+        },
+        {
+         "type": "point",
+         "text": "MS-Excel: स्प्रेडशीट और डेटा गणना (Calculation) के लिए।"
+        },
+        {
+         "type": "point",
+         "text": "MS-PowerPoint: स्लाइड शो/प्रेज़ेंटेशन (Presentation) तैयार करने में।"
+        },
+        {
+         "type": "point",
+         "text": ".docx एक्सटेंशन = MS-Word फाइल।"
+        },
+        {
+         "type": "point",
+         "text": "PDF = Portable Document Format।"
+        },
+        {
+         "type": "point",
+         "text": "MS-DOS = Microsoft Disk Operating System; GUI = Graphical User Interface।"
+        },
+        {
+         "type": "tip",
+         "text": "MS-Office ऑपरेटिंग सिस्टम नहीं है (Windows, Linux, Android OS हैं)।"
+        },
+        {
+         "type": "tip",
+         "text": "ओपन सोर्स = LibreOffice/Linux; Microsoft Windows, MS Office, Adobe Photoshop ओपन सोर्स नहीं।"
+        },
+        {
+         "type": "tip",
+         "text": "पुस्तक की सूची में MS-DOS को \"Disc\" लिखा है; मानक वर्तनी Disk।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0044",
+       "title": "कम्प्यूटर नेटवर्क के प्रकार",
+       "items": [
+        {
+         "type": "pyramid",
+         "title": "नेटवर्क का क्षेत्र (ऊपर = सबसे बड़ा)",
+         "levels": [
+          "WAN – Wide Area Network (देश/विश्व)",
+          "MAN – Metropolitan Area Network (शहर)",
+          "LAN – Local Area Network (भवन/कार्यालय)"
+         ]
+        },
+        {
+         "type": "point",
+         "text": "LAN = Local Area Network; MAN = Metropolitan Area Network; WAN = Wide Area Network।"
+        },
+        {
+         "type": "point",
+         "text": "NIC = Network Interface Card (कम्प्यूटर को नेटवर्क से जोड़ने वाला कार्ड)।"
+        },
+        {
+         "type": "point",
+         "text": "इंटरनेट विश्व का सबसे बड़ा WAN है।"
+        },
+        {
+         "type": "tip",
+         "text": "WAN में W = Wide, Wireless नहीं।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0045",
        "title": "साइबर सुरक्षा शब्द",
        "items": [
         {
@@ -1027,295 +2481,1011 @@
            "अर्थ"
           ],
           [
-           "वायरस",
-           "दुर्भावनापूर्ण (Malicious) प्रोग्राम/कोड"
+           "कम्प्यूटर वायरस",
+           "एक प्रकार का दुर्भावनापूर्ण कोड या प्रोग्राम (Malicious Program)"
           ],
           [
            "एंटीवायरस",
-           "वायरस पहचानना व हटाना"
+           "वायरस की पहचान करना और उन्हें हटाना"
           ],
           [
-           "फिशिंग",
-           "धोखे से पासवर्ड/बैंक विवरण चुराना"
+           "फिशिंग (Phishing)",
+           "धोखाधड़ी से गोपनीय जानकारी (पासवर्ड, बैंक विवरण) चुराना"
           ],
           [
-           "फायरवॉल",
-           "अनधिकृत नेटवर्क एक्सेस से सुरक्षा"
+           "फायरवॉल (Firewall)",
+           "अनधिकृत (Unauthorized) नेटवर्क एक्सेस से सुरक्षा"
           ],
           [
-           "स्पैम",
-           "अवांछित व कमर्शियल ईमेल"
+           "स्पैम (Spam)",
+           "अवांछित (Unwanted) और कमर्शियल ईमेल संदेश"
           ],
           [
            "पासवर्ड",
-           "अनधिकृत पहुँच रोकना"
+           "अनधिकृत पहुँच (Unauthorized access) को रोकना"
           ]
          ]
         },
         {
-         "type": "point",
-         "text": "डिजिटल इंडिया पहल: 1 जुलाई 2015।"
-        },
-        {
-         "type": "point",
-         "text": "ई-गवर्नेंस: सरकारी सेवाओं को नागरिकों तक पारदर्शी व सुलभ बनाना।"
+         "type": "tip",
+         "text": "फायरवॉल का संबंध आग से नहीं, नेटवर्क सुरक्षा से है; फिशिंग मछली पकड़ना नहीं।"
         }
        ]
       }
      ]
     },
     {
-     "topic": "शिक्षण में ICT",
+     "topic": "शिक्षण कौशल विकास में ICT",
      "concepts": [
       {
-       "id": "selection_bhag7-0026",
-       "title": "ICT व शिक्षण कौशल",
+       "id": "selection_bhag7-0046",
+       "title": "🧠 एक नज़र में",
        "items": [
+        {
+         "type": "tree",
+         "title": "शिक्षण कौशल विकास – ICT",
+         "node": {
+          "text": "ICT (Information and Communication Technology)",
+          "children": [
+           {
+            "text": "ICT का योगदान",
+            "children": [
+             {
+              "text": "इंटरएक्टिव शिक्षण",
+              "children": []
+             },
+             {
+              "text": "व्यक्तिगत शिक्षण (Self-paced)",
+              "children": []
+             },
+             {
+              "text": "समय व संसाधन की बचत",
+              "children": []
+             },
+             {
+              "text": "मूल्यांकन व फीडबैक",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "डिजिटल उपकरण",
+            "children": [
+             {
+              "text": "LMS: Google Classroom, Moodle",
+              "children": []
+             },
+             {
+              "text": "Smart Classroom",
+              "children": []
+             },
+             {
+              "text": "Online Meeting: Zoom, Meet, Teams",
+              "children": []
+             },
+             {
+              "text": "Digital Repositories: SWAYAM, e-PG Pathshala",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "शिक्षकों के IT कौशल",
+            "children": [
+             {
+              "text": "बेसिक कम्प्यूटर (MS Office)",
+              "children": []
+             },
+             {
+              "text": "इंटरनेट व सर्च (OER)",
+              "children": []
+             },
+             {
+              "text": "डिजिटल सामग्री निर्माण",
+              "children": []
+             },
+             {
+              "text": "साइबर सुरक्षा व डिजिटल नैतिकता",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0047",
+       "title": "IT व ICT – अर्थ",
+       "items": [
+        {
+         "type": "point",
+         "text": "सूचना तकनीक (Information Technology – IT) का शिक्षा के क्षेत्र में प्रयोग शिक्षण-अधिगम प्रक्रिया (Teaching-Learning Process) को प्रभावी, रोचक और आधुनिक बनाता है।"
+        },
         {
          "type": "point",
          "text": "ICT = Information and Communication Technology (सूचना एवं संचार प्रौद्योगिकी)।"
         },
         {
          "type": "point",
-         "text": "IT का शिक्षा में प्रयोग शिक्षण-अधिगम प्रक्रिया को प्रभावी, रोचक व आधुनिक बनाता है।"
+         "text": "ICT का उद्देश्य: सूचना एवं संचार प्रौद्योगिकी से शिक्षकों के शिक्षण कौशल का विकास और छात्रों की सीखने की क्षमता बढ़ाना।"
         },
         {
          "type": "point",
-         "text": "इंटरएक्टिव शिक्षण: स्मार्ट क्लासरूम, ऑडियो-विज़ुअल एड्स, 3D एनिमेशन।"
-        },
-        {
-         "type": "point",
-         "text": "व्यक्तिगत अधिगम: छात्र अपनी गति से (Self-paced) सीखते हैं।"
-        },
-        {
-         "type": "point",
-         "text": "समय व संसाधन की बचत; ऑनलाइन क्विज़ से तुरंत मूल्यांकन व फीडबैक।"
+         "text": "विद्यालयों में ICT पाठ्यक्रम का मुख्य लाभ: छात्रों में तकनीकी कौशल और डिजिटल साक्षरता का विकास।"
         },
         {
          "type": "tip",
-         "text": "ICT में C = Communication, Computer नहीं।"
+         "text": "ICT में C = Communication (Computer नहीं); T = Technology।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0027",
-       "title": "डिजिटल शिक्षण उपकरण",
+       "id": "selection_bhag7-0048",
+       "title": "शिक्षण कौशल में ICT का योगदान",
+       "items": [
+        {
+         "type": "tree",
+         "title": "ICT के 4 योगदान",
+         "node": {
+          "text": "शिक्षण कौशल में ICT",
+          "children": [
+           {
+            "text": "इंटरएक्टिव शिक्षण: स्मार्ट क्लासरूम, ऑडियो-विज़ुअल एड्स, 3D एनिमेशन से कठिन विषय आसान",
+            "children": []
+           },
+           {
+            "text": "व्यक्तिगत शिक्षण: छात्र अपनी गति (Self-paced learning) से सीखें",
+            "children": []
+           },
+           {
+            "text": "समय व संसाधन की बचत: डिजिटल टूल से सामग्री आसानी से तैयार व शेयर",
+            "children": []
+           },
+           {
+            "text": "मूल्यांकन व फीडबैक: ऑनलाइन क्विज़, असाइनमेंट, सॉफ्टवेयर से तुरंत परिणाम व ग्रेडिंग",
+            "children": []
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0049",
+       "title": "प्रमुख डिजिटल शिक्षण उपकरण",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "टूल",
-           "उदाहरण/उपयोग"
+           "टूल/माध्यम",
+           "उपयोग/उदाहरण"
           ],
           [
            "LMS (Learning Management System)",
-           "Google Classroom, Moodle; पाठ्यक्रम प्रबंधन"
+           "Google Classroom, Moodle – पाठ्यक्रम प्रबंधन और सामग्री साझा करना"
           ],
           [
            "Smart Classroom",
-           "इंटरैक्टिव व्हाइटबोर्ड, प्रोजेक्टर"
+           "Interactive Whiteboard, प्रोजेक्टर्स"
           ],
           [
-           "Online Meeting",
-           "Zoom, Google Meet, MS Teams; लाइव क्लास"
+           "Online Meeting Tools",
+           "Zoom, Google Meet, MS Teams – लाइव क्लास"
           ],
           [
            "Digital Repositories",
-           "SWAYAM, e-PG Pathshala, Guruji World Exam Study App"
+           "Guruji World Exam Study App, SWAYAM, e-PG Pathshala (सरकारी शैक्षणिक पोर्टल)"
           ]
          ]
-        },
-        {
-         "type": "point",
-         "text": "शिक्षकों के IT कौशल: MS Office, इंटरनेट सर्च (OER), e-Content निर्माण, साइबर सुरक्षा व डिजिटल नैतिकता (कॉपीराइट)।"
-        }
-       ]
-      },
-      {
-       "id": "selection_bhag7-0028",
-       "title": "कक्षा शिक्षण में IT",
-       "items": [
-        {
-         "type": "point",
-         "text": "IT ने शिक्षण को संवादात्मक, रोचक व छात्र-केंद्रित बनाया।"
-        },
-        {
-         "type": "point",
-         "text": "स्मार्ट क्लासरूम: डिजिटल बोर्ड, इंटरैक्टिव पैनल, प्रोजेक्टर से दृश्यात्मक प्रस्तुति।"
-        },
-        {
-         "type": "point",
-         "text": "ई-लर्निंग: एनिमेशन, 3D वीडियो, सिमुलेशन, ई-पुस्तकें।"
-        },
-        {
-         "type": "point",
-         "text": "ऑनलाइन मूल्यांकन: ऑनलाइन क्विज़, Google Forms, डिजिटल टेस्ट।"
-        },
-        {
-         "type": "point",
-         "text": "दूरस्थ/हाइब्रिड मॉडल: Google Meet, Zoom, MS Teams।"
         },
         {
          "type": "tip",
-         "text": "स्मार्ट क्लास का मुख्य आधार: डिजिटल प्रोजेक्टर, इंटरनेट व इंटरैक्टिव व्हाइटबोर्ड, चाक-ब्लैकबोर्ड नहीं।"
+         "text": "LMS का उदाहरण = Google Classroom/Moodle; Zoom मीटिंग टूल है।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0029",
-       "title": "विद्यालय प्रबंधन में IT",
+       "id": "selection_bhag7-0050",
+       "title": "शिक्षकों के लिए आवश्यक IT कौशल",
        "items": [
         {
-         "type": "table",
-         "rows": [
-          [
-           "क्षेत्र",
-           "उपयोग"
-          ],
-          [
-           "School Management Software (SIS)",
-           "प्रवेश, उपस्थिति, शुल्क, परिणाम, TC एक स्थान पर"
-          ],
-          [
-           "डिजिटल उपस्थिति",
-           "बायोमेट्रिक/मोबाइल ऐप; समय बचत, पारदर्शिता"
-          ],
-          [
-           "अभिभावक-शिक्षक संचार",
-           "SMS, व्हाट्सएप, स्कूल ऐप"
-          ],
-          [
-           "पुस्तकालय प्रबंधन",
-           "बारकोड/RFID से खोज, इश्यू, रिकॉर्ड"
-          ],
-          [
-           "डेटा सुरक्षा",
-           "क्लाउड स्टोरेज, डेटा एनालिटिक्स"
-          ]
+         "type": "flow",
+         "title": "शिक्षक के IT कौशल (आधार → उन्नत)",
+         "steps": [
+          "बेसिक कम्प्यूटर ऑपरेशन्स: MS Office (Word, PowerPoint, Excel) का सही उपयोग",
+          "इंटरनेट और सर्च स्किल्स: प्रामाणिक शैक्षणिक सामग्री (Open Educational Resources) खोजना व उपयोग",
+          "डिजिटल सामग्री निर्माण: e-Content, वीडियो लेक्चर, डिजिटल प्रेज़ेंटेशन तैयार करना",
+          "साइबर सुरक्षा व डिजिटल नैतिकता: कॉपीराइट नियमों (Copyright laws) का पालन, छात्रों को ऑनलाइन सुरक्षा के प्रति जागरूक करना"
          ]
-        },
-        {
-         "type": "point",
-         "text": "ICT विद्यालय प्रबंधन को सुगम, पारदर्शी व त्वरित बनाता है।"
-        }
-       ]
-      },
-      {
-       "id": "selection_bhag7-0030",
-       "title": "स्मार्टफोन शिक्षण में",
-       "items": [
-        {
-         "type": "point",
-         "text": "पोर्टेबल कम्प्यूटिंग डिवाइस; OS: Android, iOS।"
-        },
-        {
-         "type": "point",
-         "text": "दृश्य-श्रव्य सामग्री व M-Learning (मोबाइल लर्निंग) का मुख्य साधन।"
-        },
-        {
-         "type": "table",
-         "rows": [
-          [
-           "क्षेत्र",
-           "प्लेटफॉर्म",
-           "उपयोग"
-          ],
-          [
-           "डिजिटल पोर्टल",
-           "Guruji World Exam Study",
-           "QR कोड से पाठ्यसामग्री"
-          ],
-          [
-           "भाषा विकास",
-           "Read Along (Bolo App, Google)",
-           "प्राथमिक स्तर पर पठन कौशल"
-          ],
-          [
-           "लाइव लर्निंग",
-           "Google Meet, Zoom, YouTube",
-           "हाइब्रिड व दूरस्थ शिक्षा"
-          ],
-          [
-           "मूल्यांकन",
-           "Google Forms, Kahoot",
-           "ऑनलाइन क्विज़, त्वरित फीडबैक"
-          ]
-         ]
-        },
-        {
-         "type": "point",
-         "text": "लाभ: Anytime-Anywhere अध्ययन, व्यक्तिगत अधिगम, मल्टीमीडिया।"
-        },
-        {
-         "type": "point",
-         "text": "चुनौतियाँ: डिजिटल डिवाइड, ध्यान भटकना, साइबर सुरक्षा।"
-        },
-        {
-         "type": "tip",
-         "text": "डिजिटल डिवाइड = तकनीक तक पहुँच वालों और वंचितों के बीच की दूरी।"
         }
        ]
       }
      ]
     },
     {
-     "topic": "OER व डिजिटल पहलें",
+     "topic": "कक्षा शिक्षण तथा विद्यालय प्रबंधन में सूचना तकनीक",
      "concepts": [
       {
-       "id": "selection_bhag7-0031",
-       "title": "मुक्त शैक्षिक संसाधन (OER)",
+       "id": "selection_bhag7-0051",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "कक्षा व विद्यालय में IT",
+         "node": {
+          "text": "सूचना तकनीक",
+          "children": [
+           {
+            "text": "कक्षा शिक्षण",
+            "children": [
+             {
+              "text": "स्मार्ट क्लासरूम",
+              "children": []
+             },
+             {
+              "text": "ई-लर्निंग व डिजिटल सामग्री",
+              "children": []
+             },
+             {
+              "text": "व्यक्तिगत अनुभव (Personalized Learning)",
+              "children": []
+             },
+             {
+              "text": "ऑनलाइन मूल्यांकन व प्रतिपुष्टि",
+              "children": []
+             },
+             {
+              "text": "दूरस्थ शिक्षा व हाइब्रिड मॉडल",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "विद्यालय प्रबंधन",
+            "children": [
+             {
+              "text": "स्कूल प्रबंधन प्रणाली (SIS)",
+              "children": []
+             },
+             {
+              "text": "डिजिटल उपस्थिति व बायोमेट्रिक",
+              "children": []
+             },
+             {
+              "text": "अभिभावक-शिक्षक संचार",
+              "children": []
+             },
+             {
+              "text": "पुस्तकालय प्रबंधन (बारकोड/RFID)",
+              "children": []
+             },
+             {
+              "text": "डेटा सुरक्षा व रिकॉर्ड रखरखाव",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0052",
+       "title": "कक्षा शिक्षण में सूचना तकनीक",
        "items": [
         {
          "type": "point",
-         "text": "OER = Open Educational Resources; सार्वजनिक डोमेन या ओपन लाइसेंस (Creative Commons) में मुफ्त सामग्री।"
-        },
-        {
-         "type": "point",
-         "text": "उद्देश्य: शिक्षा का सर्वव्यापीकरण, पाठ्यपुस्तकों का वित्तीय बोझ कम।"
-        },
-        {
-         "type": "point",
-         "text": "5R ढाँचा: डेविड वाइली (David Wiley)।"
+         "text": "सूचना तकनीक ने पारंपरिक शिक्षण पद्धतियों को अधिक संवादात्मक (interactive), रोचक और छात्र-केंद्रित (student-centric) बना दिया है।"
         },
         {
          "type": "table",
          "rows": [
           [
-           "R",
-           "अर्थ"
+           "क्षेत्र",
+           "कैसे"
           ],
           [
-           "Retain",
-           "डाउनलोड/सेव करके रखना"
+           "स्मार्ट क्लासरूम",
+           "डिजिटल बोर्ड, इंटरैक्टिव पैनल और प्रोजेक्टर से पाठ्यसामग्री दृश्यात्मक (visual) रूप में; कठिन अवधारणाएँ आसानी से समझ आती हैं"
           ],
           [
-           "Reuse",
-           "पुनः उपयोग"
+           "ई-लर्निंग एवं डिजिटल सामग्री",
+           "एनिमेशन, 3D वीडियो, डिजिटल सिमुलेशन और ई-पुस्तकों से पठन-पाठन प्रभावी"
           ],
           [
-           "Revise",
-           "संशोधन, अनुवाद"
+           "व्यक्तिगत अनुभव (Personalized Learning)",
+           "छात्र अपनी गति (speed) से ऑनलाइन प्लेटफॉर्म्स व एजुकेशनल ऐप्स (जैसे Guruji World Exam Study) से सीखते हैं"
           ],
           [
-           "Remix",
-           "सामग्रियों को मिलाकर नया बनाना"
+           "ऑनलाइन मूल्यांकन व प्रतिपुष्टि",
+           "ऑनलाइन क्विज़, Google Forms, डिजिटल टेस्ट से त्वरित मूल्यांकन व तुरंत फीडबैक"
           ],
           [
-           "Redistribute",
-           "दूसरों से साझा करना"
+           "दूरस्थ शिक्षा एवं हाइब्रिड मॉडल",
+           "Google Meet, Zoom, Microsoft Teams से घर बैठे लाइव कक्षाएँ"
+          ]
+         ]
+        },
+        {
+         "type": "tip",
+         "text": "स्मार्ट क्लास में मुख्य भूमिका: डिजिटल प्रोजेक्टर, इंटरनेट व इंटरैक्टिव व्हाइटबोर्ड की; चाक-ब्लैकबोर्ड, केवल रेडियो या केवल पाठ्यपुस्तकें नहीं।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0053",
+       "title": "विद्यालय प्रबंधन में सूचना तकनीक",
+       "items": [
+        {
+         "type": "point",
+         "text": "विद्यालय प्रबंधन में ICT प्रक्रियाओं को सुगम, पारदर्शी और त्वरित बनाने में मदद करता है।"
+        },
+        {
+         "type": "table",
+         "rows": [
+          [
+           "क्षेत्र",
+           "उपयोग"
+          ],
+          [
+           "स्कूल प्रबंधन प्रणाली (School Management Software/SIS)",
+           "प्रवेश (admission), उपस्थिति, शुल्क भुगतान, परिणाम और स्थानांतरण प्रमाणपत्र (TC) – एक ही स्थान पर प्रबंधन"
+          ],
+          [
+           "डिजिटल उपस्थिति एवं बायोमेट्रिक",
+           "शिक्षकों व छात्रों की उपस्थिति बायोमेट्रिक सिस्टम या मोबाइल ऐप्स से; समय की बचत, पारदर्शिता"
+          ],
+          [
+           "अभिभावक-शिक्षक संचार",
+           "SMS, व्हाट्सएप ग्रुप या स्कूल ऐप्स से प्रगति, उपस्थिति, गृहकार्य, नोटिस की तुरंत जानकारी"
+          ],
+          [
+           "पुस्तकालय प्रबंधन (Library Management System)",
+           "बारकोड/RFID से पुस्तकें खोजना, इश्यू करना, रिकॉर्ड रखना आसान"
+          ],
+          [
+           "डेटा सुरक्षा एवं रिकॉर्ड रखरखाव (Data Security & Analytics)",
+           "वर्षों पुराने रिकॉर्ड क्लाउड स्टोरेज पर सुरक्षित; डेटा एनालिटिक्स से स्कूल प्रदर्शन का विश्लेषण कर बेहतर नीतियाँ"
           ]
          ]
         },
         {
          "type": "trick",
-         "text": "5R क्रम: \"Ret-Reu-Rev-Rem-Red\" – रखो, उपयोग करो, बदलो, मिलाओ, बाँटो।"
+         "text": "विद्यालय में ICT = \"सुगम, पारदर्शी, त्वरित\" (सु-पा-त्व)।"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "topic": "स्मार्टफोन (शिक्षण में)",
+     "concepts": [
+      {
+       "id": "selection_bhag7-0054",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "स्मार्टफोन शिक्षण में",
+         "node": {
+          "text": "स्मार्टफोन",
+          "children": [
+           {
+            "text": "अवधारणा",
+            "children": [
+             {
+              "text": "पोर्टेबल कम्प्यूटिंग डिवाइस (Android, iOS)",
+              "children": []
+             },
+             {
+              "text": "ICT वर्ग: दृश्य-श्रव्य सामग्री, M-Learning",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "शैक्षणिक उपयोग",
+            "children": [
+             {
+              "text": "डिजिटल पोर्टल",
+              "children": []
+             },
+             {
+              "text": "भाषा विकास (Read Along)",
+              "children": []
+             },
+             {
+              "text": "लाइव लर्निंग",
+              "children": []
+             },
+             {
+              "text": "मूल्यांकन",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "लाभ",
+            "children": [
+             {
+              "text": "समय व स्थान की स्वतंत्रता",
+              "children": []
+             },
+             {
+              "text": "व्यक्तिगत अधिगम",
+              "children": []
+             },
+             {
+              "text": "मल्टीमीडिया",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "चुनौतियाँ",
+            "children": [
+             {
+              "text": "डिजिटल डिवाइड",
+              "children": []
+             },
+             {
+              "text": "ध्यान भटकना",
+              "children": []
+             },
+             {
+              "text": "साइबर सुरक्षा",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
         }
        ]
       },
       {
-       "id": "selection_bhag7-0032",
-       "title": "सरकारी डिजिटल पहलें",
+       "id": "selection_bhag7-0055",
+       "title": "अवधारणा एवं परिचय",
+       "items": [
+        {
+         "type": "point",
+         "text": "स्मार्टफोन एक पोर्टेबल कम्प्यूटिंग डिवाइस है जो ऑपरेटिंग सिस्टम (Android, iOS) और इंटरनेट तकनीक पर कार्य करता है।"
+        },
+        {
+         "type": "point",
+         "text": "ICT वर्ग: शिक्षण में इसे दृश्य-श्रव्य सामग्री (Audio-Visual Aid) तथा M-Learning (मोबाइल लर्निंग) का मुख्य साधन माना जाता है।"
+        },
+        {
+         "type": "point",
+         "text": "मुख्य उद्देश्य: शिक्षण-अधिगम प्रक्रिया को सुगम, समावेशी और छात्र-केंद्रित (Student-Centric) बनाना।"
+        },
+        {
+         "type": "tip",
+         "text": "M-Learning = Mobile Learning।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0056",
+       "title": "मुख्य शैक्षणिक उपयोग",
+       "items": [
+        {
+         "type": "table",
+         "rows": [
+          [
+           "क्षेत्र",
+           "प्रमुख प्लेटफॉर्म",
+           "Super TET के लिए मुख्य बिंदु"
+          ],
+          [
+           "डिजिटल पोर्टल्स",
+           "Guruji World Exam Study",
+           "QR Code स्कैन करके पाठ्यसामग्री प्राप्त करना"
+          ],
+          [
+           "भाषा विकास",
+           "Read Along (Bolo App by Google)",
+           "प्राथमिक स्तर पर बच्चों का पठन कौशल सुधारना"
+          ],
+          [
+           "लाइव लर्निंग",
+           "Google Meet, Zoom, YouTube",
+           "हाइब्रिड और दूरस्थ शिक्षा (Distance Education)"
+          ],
+          [
+           "मूल्यांकन",
+           "Google Forms, Kahoot",
+           "ऑनलाइन क्विज़ और त्वरित रिस्पॉन्स (Instant Feedback)"
+          ]
+         ]
+        },
+        {
+         "type": "tip",
+         "text": "Read Along (पहले Bolo App) Google का ऐप है – पठन कौशल के लिए।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0057",
+       "title": "लाभ एवं चुनौतियाँ",
+       "items": [
+        {
+         "type": "tree",
+         "title": "स्मार्टफोन – लाभ बनाम चुनौतियाँ",
+         "node": {
+          "text": "शिक्षण में स्मार्टफोन",
+          "children": [
+           {
+            "text": "लाभ",
+            "children": [
+             {
+              "text": "समय व स्थान की स्वतंत्रता: कभी भी, कहीं भी (Anytime, Anywhere)",
+              "children": []
+             },
+             {
+              "text": "व्यक्तिगत अधिगम: अपनी गति से (Self-Paced Learning)",
+              "children": []
+             },
+             {
+              "text": "मल्टीमीडिया: 3D एनिमेशन, ऑडियो, वीडियो से कठिन अवधारणाएँ सरल",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "चुनौतियाँ",
+            "children": [
+             {
+              "text": "डिजिटल डिवाइड: ग्रामीण व आर्थिक रूप से कमजोर वर्गों तक डिवाइस/इंटरनेट की पहुँच न होना",
+              "children": []
+             },
+             {
+              "text": "ध्यान भटकना: सोशल मीडिया और गेम्स",
+              "children": []
+             },
+             {
+              "text": "साइबर सुरक्षा: अवांछित सामग्री और डेटा सुरक्षा का जोखिम",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "topic": "मुक्त शैक्षिक संसाधन (OER)",
+     "concepts": [
+      {
+       "id": "selection_bhag7-0058",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "मुक्त शैक्षिक संसाधन",
+         "node": {
+          "text": "OER (Open Educational Resources)",
+          "children": [
+           {
+            "text": "परिभाषा: सार्वजनिक डोमेन/ओपन लाइसेंस में मुफ्त सामग्री",
+            "children": []
+           },
+           {
+            "text": "उद्देश्य: शिक्षा का सर्वव्यापीकरण, पाठ्यपुस्तक का वित्तीय बोझ कम",
+            "children": []
+           },
+           {
+            "text": "5R ढाँचा (डेविड वाइली)",
+            "children": [
+             {
+              "text": "Retain, Reuse, Revise, Remix, Redistribute",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "भारत की OER पहलें",
+            "children": [
+             {
+              "text": "SWAYAM",
+              "children": []
+             },
+             {
+              "text": "DIKSHA",
+              "children": []
+             },
+             {
+              "text": "NPTEL",
+              "children": []
+             },
+             {
+              "text": "e-PG Pathshala",
+              "children": []
+             },
+             {
+              "text": "NDLI",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0059",
+       "title": "OER क्या है?",
+       "items": [
+        {
+         "type": "point",
+         "text": "OER (मुक्त शैक्षिक संसाधन): शिक्षण, अधिगम (Learning) और शोध सामग्री जो सार्वजनिक डोमेन (Public Domain) या ओपन लाइसेंस (Creative Commons) के तहत मुफ्त उपलब्ध होती है।"
+        },
+        {
+         "type": "point",
+         "text": "उद्देश्य: शिक्षा का सर्वव्यापीकरण और छात्रों पर पाठ्यपुस्तकों का वित्तीय बोझ कम करना।"
+        },
+        {
+         "type": "tip",
+         "text": "OER = मुफ्त और खुले लाइसेंस वाली अध्ययन सामग्री; Creative Commons एक ओपन लाइसेंस है।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0060",
+       "title": "OER के 5R सिद्धांत",
+       "items": [
+        {
+         "type": "point",
+         "text": "5R ढाँचा (Framework) डेविड वाइली (David Wiley) द्वारा दिया गया; यह OER के 5 अधिकारों को दर्शाता है।"
+        },
+        {
+         "type": "flow",
+         "title": "5R ढाँचा",
+         "steps": [
+          "Retain (रखना): सामग्री को डाउनलोड और सेव करने का अधिकार",
+          "Reuse (पुनः उपयोग): कक्षा, प्रेज़ेंटेशन या वीडियो में इस्तेमाल करने की छूट",
+          "Revise (संशोधन): भाषा बदलना, अनुवाद करना या संपादित करना",
+          "Remix (मिश्रण): अलग-अलग सामग्रियों को मिलाकर नया कंटेंट बनाना",
+          "Redistribute (पुनर्वितरण): संशोधित या मूल सामग्री दूसरों के साथ शेयर करना"
+         ]
+        },
+        {
+         "type": "trick",
+         "text": "5R: \"रखो, फिर उपयोग करो, बदलो, मिलाओ, बाँटो\"।"
+        },
+        {
+         "type": "tip",
+         "text": "5R ढाँचा = डेविड वाइली।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0061",
+       "title": "भारत में प्रमुख OER डिजिटल पहलें",
+       "items": [
+        {
+         "type": "table",
+         "rows": [
+          [
+           "पहल",
+           "संचालक",
+           "विशेष"
+          ],
+          [
+           "SWAYAM",
+           "भारत सरकार",
+           "मुफ्त ऑनलाइन कोर्स प्लेटफॉर्म (School to PG level)"
+          ],
+          [
+           "DIKSHA",
+           "NCERT",
+           "स्कूली शिक्षा और शिक्षकों के प्रशिक्षण के लिए पोर्टल"
+          ],
+          [
+           "NPTEL",
+           "IITs और IISc",
+           "तकनीकी एवं इंजीनियरिंग विषयों की अध्ययन सामग्री"
+          ],
+          [
+           "e-PG Pathshala",
+           "–",
+           "स्नातकोत्तर (PG) छात्रों के लिए ई-कंटेंट"
+          ],
+          [
+           "NDLI (National Digital Library of India)",
+           "IIT खड़गपुर",
+           "विशाल डिजिटल पुस्तकालय"
+          ]
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "topic": "शिक्षण में उपयोगी Apps",
+     "concepts": [
+      {
+       "id": "selection_bhag7-0062",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "शिक्षण ऐप्स का वर्गीकरण",
+         "node": {
+          "text": "शिक्षण ऐप्स",
+          "children": [
+           {
+            "text": "A. वर्चुअल क्लासरूम एवं प्रबंधन",
+            "children": [
+             {
+              "text": "Google Classroom",
+              "children": []
+             },
+             {
+              "text": "Teachmint / ClassDojo",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "B. भारत सरकार की ऐप्स",
+            "children": [
+             {
+              "text": "DIKSHA App (NCERT)",
+              "children": []
+             },
+             {
+              "text": "SWAYAM App (MHRD)",
+              "children": []
+             },
+             {
+              "text": "TheTeacherApp",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "C. इंटरैक्टिव शिक्षण व मूल्यांकन",
+            "children": [
+             {
+              "text": "Kahoot! / Quizizz",
+              "children": []
+             },
+             {
+              "text": "Padlet / Google Jamboard",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "D. डिजिटल कंटेंट व लाइव क्लासेस",
+            "children": [
+             {
+              "text": "Guruji World Exam Study",
+              "children": []
+             },
+             {
+              "text": "YouTube / Zoom / MS Teams",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0063",
+       "title": "शिक्षण में ऐप्स की भूमिका",
+       "items": [
+        {
+         "type": "point",
+         "text": "ऐप्स ICT (सूचना एवं संचार प्रौद्योगिकी) का हिस्सा हैं, जो शिक्षण-अधिगम प्रक्रिया को सुगम और प्रभावी बनाते हैं।"
+        },
+        {
+         "type": "point",
+         "text": "लचीलापन (Flexibility): छात्र अपनी गति से (Self-paced) कभी भी सीख सकते हैं।"
+        },
+        {
+         "type": "point",
+         "text": "कागजरहित शिक्षा (Paperless Learning): डिजिटल नोट्स, असाइनमेंट और ऑटोमैटिक मूल्यांकन की सुविधा।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0064",
+       "title": "ऐप्स – उपयोग तालिका",
+       "items": [
+        {
+         "type": "table",
+         "rows": [
+          [
+           "वर्ग",
+           "ऐप",
+           "उपयोग"
+          ],
+          [
+           "A. क्लासरूम प्रबंधन",
+           "Google Classroom",
+           "डिजिटल कक्षा बनाना, असाइनमेंट देना, नोट्स साझा करना, ग्रेडिंग"
+          ],
+          [
+           "A. क्लासरूम प्रबंधन",
+           "Teachmint/ClassDojo",
+           "ऑनलाइन कोचिंग, उपस्थिति (Attendance) दर्ज करना, छात्र-अभिभावक संवाद"
+          ],
+          [
+           "B. सरकारी",
+           "DIKSHA App",
+           "NCERT द्वारा विकसित; QR कोड से ई-बुक्स, वीडियो और शिक्षण योजनाएँ (Lesson Plans)"
+          ],
+          [
+           "B. सरकारी",
+           "SWAYAM App",
+           "MHRD (शिक्षा मंत्रालय) द्वारा संचालित मुफ्त MOOCs पाठ्यक्रम प्लेटफॉर्म"
+          ],
+          [
+           "B. सरकारी",
+           "TheTeacherApp",
+           "शिक्षकों का पेशेवर विकास (Professional Development) और प्रशिक्षण"
+          ],
+          [
+           "C. इंटरैक्टिव व मूल्यांकन",
+           "Kahoot!/Quizizz",
+           "गेम (Gamification) से क्विज़ और वास्तविक समय (Real-time) मूल्यांकन"
+          ],
+          [
+           "C. इंटरैक्टिव व मूल्यांकन",
+           "Padlet/Google Jamboard",
+           "डिजिटल व्हाइटबोर्ड; शिक्षक-छात्र साथ में विचार (Brainstorming) लिखें"
+          ],
+          [
+           "D. कंटेंट व लाइव",
+           "Guruji World Exam Study",
+           "गणित व विज्ञान की अवधारणात्मक स्पष्टता (Concept Clarity) के लिए मुफ्त वीडियो"
+          ],
+          [
+           "D. कंटेंट व लाइव",
+           "YouTube/Zoom/MS Teams",
+           "लाइव ऑनलाइन क्लास और वीडियो लेक्चर प्रसारण"
+          ]
+         ]
+        },
+        {
+         "type": "tip",
+         "text": "गेम से क्विज़ (Gamification) = Kahoot!/Quizizz; डिजिटल व्हाइटबोर्ड = Padlet/Jamboard।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0065",
+       "title": "ऐप्स – लाभ एवं चुनौतियाँ",
+       "items": [
+        {
+         "type": "tree",
+         "title": "ऐप्स के लाभ व चुनौतियाँ",
+         "node": {
+          "text": "शिक्षण ऐप्स",
+          "children": [
+           {
+            "text": "लाभ",
+            "children": [
+             {
+              "text": "दृश्य-श्रव्य सामग्री (Audio-Visual Aids) से अधिगम स्थायी",
+              "children": []
+             },
+             {
+              "text": "समावेशी शिक्षा (Inclusive Education) में सहायक",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "चुनौतियाँ",
+            "children": [
+             {
+              "text": "डिजिटल डिवाइड: ग्रामीण क्षेत्रों में इंटरनेट व स्मार्टफोन की सीमित पहुँच",
+              "children": []
+             },
+             {
+              "text": "अधिक स्क्रीन टाइम",
+              "children": []
+             },
+             {
+              "text": "तकनीकी कौशल की कमी",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "topic": "डिजिटल पहलें व शब्दावली",
+     "concepts": [
+      {
+       "id": "selection_bhag7-0066",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "डिजिटल शिक्षा",
+         "node": {
+          "text": "डिजिटल",
+          "children": [
+           {
+            "text": "सरकारी पहलें",
+            "children": [
+             {
+              "text": "DIKSHA (NCERT) – NISHTHA",
+              "children": []
+             },
+             {
+              "text": "SWAYAM – स्वदेशी MOOC",
+              "children": []
+             },
+             {
+              "text": "SWAYAM Prabha – DTH चैनल",
+              "children": []
+             },
+             {
+              "text": "NDLI – IIT खड़गपुर",
+              "children": []
+             },
+             {
+              "text": "e-Pathshala – NCERT",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "महत्वपूर्ण तथ्य",
+            "children": [
+             {
+              "text": "SWAYAM के 3 सिद्धांत",
+              "children": []
+             },
+             {
+              "text": "MOOC, QR Code",
+              "children": []
+             },
+             {
+              "text": "Kahoot!, Quizizz",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "शब्दावली",
+            "children": [
+             {
+              "text": "ICT, OER, LMS, डिजिटल डिवाइड",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0067",
+       "title": "प्रमुख सरकारी डिजिटल पहलें",
        "items": [
         {
          "type": "table",
@@ -1328,129 +3498,127 @@
           [
            "DIKSHA",
            "NCERT",
-           "कक्षा 1-12 की QR कोड वाली ई-बुक्स, लेसन प्लान; शिक्षक प्रशिक्षण (NISHTHA)"
+           "ऐप; कक्षा 1-12 की QR कोड वाली ई-बुक्स; शिक्षक प्रशिक्षण (NISHTHA)"
           ],
           [
            "SWAYAM",
            "MHRD (शिक्षा मंत्रालय)",
-           "स्वदेशी MOOC; कक्षा 9 से PG तक मुफ्त कोर्स"
+           "भारत का स्वदेशी MOOC (ऑनलाइन कोर्स) प्लेटफॉर्म; कक्षा 9 से PG तक मुफ्त शिक्षा"
           ],
           [
            "SWAYAM Prabha",
            "–",
-           "24×7 शैक्षिक DTH टीवी चैनल"
+           "24×7 शैक्षणिक प्रसारण के लिए DTH टीवी चैनलों का समूह"
           ],
           [
-           "NPTEL",
-           "IITs व IISc",
-           "तकनीकी व इंजीनियरिंग सामग्री"
-          ],
-          [
-           "e-PG Pathshala",
-           "–",
-           "स्नातकोत्तर (PG) छात्रों हेतु ई-कंटेंट"
-          ],
-          [
-           "NDLI",
+           "NDLI (डिजिटल लाइब्रेरी)",
            "IIT खड़गपुर",
-           "राष्ट्रीय डिजिटल पुस्तकालय"
+           "ई-पुस्तकों का विशाल भंडार"
           ],
           [
            "e-Pathshala",
            "NCERT",
-           "NCERT पाठ्यपुस्तकें, ऑडियो, वीडियो"
+           "NCERT की सभी पाठ्यपुस्तकें, ऑडियो और वीडियो मुफ्त"
           ]
          ]
         },
         {
-         "type": "tip",
-         "text": "SWAYAM के 3 सिद्धांत: पहुँच (Access), समानता (Equity), गुणवत्ता (Quality)।"
+         "type": "point",
+         "text": "DIKSHA पोर्टल का संबंध: स्कूली शिक्षा और शिक्षकों के डिजिटल प्रशिक्षण से।"
+        },
+        {
+         "type": "point",
+         "text": "SWAYAM का मुख्य उद्देश्य: मुफ्त ऑनलाइन शिक्षा प्रदान करना।"
         },
         {
          "type": "tip",
-         "text": "NDLI = IIT खड़गपुर; NPTEL = IITs व IISc; DIKSHA व e-Pathshala = NCERT।"
+         "text": "पुस्तक में SWAYAM का स्तर एक जगह \"School to PG\", दूसरी जगह \"कक्षा 9 से PG\" दिया है; दोनों का अर्थ स्कूल (कक्षा 9) से स्नातकोत्तर तक।"
+        },
+        {
+         "type": "tip",
+         "text": "NDLI = IIT खड़गपुर; NPTEL = IITs व IISc; DIKSHA व e-Pathshala = NCERT; SWAYAM = MHRD।"
+        },
+        {
+         "type": "tip",
+         "text": "e-Pathshala (NCERT, स्कूल) और e-PG Pathshala (PG छात्र) अलग हैं।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0033",
-       "title": "शिक्षण ऐप्स",
+       "id": "selection_bhag7-0068",
+       "title": "SWAYAM के 3 सिद्धांत व महत्वपूर्ण तथ्य",
        "items": [
         {
-         "type": "table",
-         "rows": [
-          [
-           "ऐप",
-           "उपयोग"
-          ],
-          [
-           "Google Classroom",
-           "डिजिटल कक्षा, असाइनमेंट, नोट्स, ग्रेडिंग"
-          ],
-          [
-           "Teachmint/ClassDojo",
-           "ऑनलाइन कोचिंग, उपस्थिति, छात्र-अभिभावक संवाद"
-          ],
-          [
-           "TheTeacherApp",
-           "शिक्षकों का पेशेवर विकास व प्रशिक्षण"
-          ],
-          [
-           "Kahoot!/Quizizz",
-           "गेम द्वारा क्विज़ (Gamification), रियल-टाइम मूल्यांकन"
-          ],
-          [
-           "Padlet/Google Jamboard",
-           "डिजिटल व्हाइटबोर्ड, ब्रेनस्टॉर्मिंग"
-          ],
-          [
-           "YouTube/Zoom/MS Teams",
-           "लाइव क्लास, वीडियो लेक्चर"
+         "type": "tree",
+         "title": "SWAYAM के 3 सिद्धांत",
+         "node": {
+          "text": "SWAYAM",
+          "children": [
+           {
+            "text": "पहुँच (Access)",
+            "children": []
+           },
+           {
+            "text": "समानता (Equity)",
+            "children": []
+           },
+           {
+            "text": "गुणवत्ता (Quality)",
+            "children": []
+           }
           ]
-         ]
+         }
+        },
+        {
+         "type": "trick",
+         "text": "SWAYAM सिद्धांत \"AEQ\" = Access, Equity, Quality (पहुँच-समानता-गुणवत्ता)।"
         },
         {
          "type": "point",
-         "text": "ऐप्स के लाभ: लचीलापन, पेपरलेस शिक्षा, समावेशी शिक्षा, स्थायी अधिगम।"
+         "text": "MOOC का फुल फॉर्म: Massive Open Online Course।"
         },
         {
          "type": "point",
-         "text": "चुनौतियाँ: डिजिटल डिवाइड, अधिक स्क्रीन टाइम, तकनीकी कौशल की कमी।"
+         "text": "QR Code का फुल फॉर्म: Quick Response Code।"
+        },
+        {
+         "type": "point",
+         "text": "मूल्यांकन टूल्स: Kahoot! और Quizizz (गेम के ज़रिए क्विज़)।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0034",
-       "title": "डिजिटल शब्दावली",
+       "id": "selection_bhag7-0069",
+       "title": "मुख्य शब्दावली",
        "items": [
         {
          "type": "table",
          "rows": [
           [
            "शब्द",
-           "अर्थ"
-          ],
-          [
-           "MOOC",
-           "Massive Open Online Course"
-          ],
-          [
-           "QR Code",
-           "Quick Response Code"
-          ],
-          [
-           "LMS",
-           "ऑनलाइन क्लास व असाइनमेंट मैनेज करने वाला सॉफ्टवेयर (Google Classroom)"
-          ],
-          [
-           "OER",
-           "मुफ्त व खुले लाइसेंस वाली अध्ययन सामग्री"
+           "अर्थ/कार्य"
           ],
           [
            "ICT",
-           "शिक्षा में कम्प्यूटर व इंटरनेट का उपयोग"
+           "शिक्षा में कम्प्यूटर और इंटरनेट का उपयोग"
+          ],
+          [
+           "OER",
+           "मुफ्त और खुले लाइसेंस वाली अध्ययन सामग्री"
+          ],
+          [
+           "LMS",
+           "ऑनलाइन क्लास और असाइनमेंट मैनेज करने वाला सॉफ्टवेयर (उदाहरण: Google Classroom)"
+          ],
+          [
+           "डिजिटल डिवाइड",
+           "इंटरनेट/टेक्नोलॉजी तक पहुँच रखने वाले और वंचित लोगों के बीच की दूरी"
           ]
          ]
+        },
+        {
+         "type": "tip",
+         "text": "डिजिटल डिवाइड = तकनीक तक पहुँच की असमानता, डिवाइस का विभाजन नहीं।"
         }
        ]
       }
@@ -1460,31 +3628,167 @@
      "topic": "शिक्षण सामग्री (TLM)",
      "concepts": [
       {
-       "id": "selection_bhag7-0035",
-       "title": "TLM उद्देश्य व नियम",
+       "id": "selection_bhag7-0070",
+       "title": "🧠 एक नज़र में",
        "items": [
         {
-         "type": "point",
-         "text": "उद्देश्य: पढ़ाई को आसान, रोचक व स्थायी (याद रहने वाली) बनाना।"
-        },
-        {
-         "type": "point",
-         "text": "सिद्धांत: कठिन/अमूर्त बातों को चित्र या वस्तु (मूर्त) से समझाना।"
-        },
-        {
-         "type": "point",
-         "text": "अच्छा TLM: सस्ता या मुफ्त (Low-Cost/No-Cost), बच्चे के स्तर का, सुरक्षित (नुकीला/खतरनाक न हो)।"
-        },
-        {
-         "type": "point",
-         "text": "NCF 2005: TLM को बच्चे के वास्तविक जीवन व बाहरी दुनिया से जोड़ना चाहिए।"
+         "type": "tree",
+         "title": "शिक्षण सामग्री (TLM)",
+         "node": {
+          "text": "TLM (Teaching Learning Material)",
+          "children": [
+           {
+            "text": "उद्देश्य: पढ़ाई आसान, रोचक, स्थायी",
+            "children": []
+           },
+           {
+            "text": "सिद्धांत: अमूर्त → मूर्त",
+            "children": []
+           },
+           {
+            "text": "अच्छे TLM के नियम",
+            "children": [
+             {
+              "text": "सस्ता/मुफ्त (Low-Cost/No-Cost)",
+              "children": []
+             },
+             {
+              "text": "बच्चे के स्तर का",
+              "children": []
+             },
+             {
+              "text": "सुरक्षित",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "प्रकार",
+            "children": [
+             {
+              "text": "दृश्य",
+              "children": []
+             },
+             {
+              "text": "श्रव्य",
+              "children": []
+             },
+             {
+              "text": "दृश्य-श्रव्य (सबसे बेस्ट)",
+              "children": []
+             },
+             {
+              "text": "क्रियात्मक",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "तथ्य",
+            "children": [
+             {
+              "text": "एडगर डेल का अनुभव शंकु",
+              "children": []
+             },
+             {
+              "text": "NCF 2005",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
         }
        ]
       },
       {
-       "id": "selection_bhag7-0036",
+       "id": "selection_bhag7-0071",
+       "title": "TLM का उद्देश्य व नियम",
+       "items": [
+        {
+         "type": "point",
+         "text": "सरल शब्दों में उद्देश्य: पढ़ाई को आसान, रोचक और हमेशा याद रहने वाली बनाना।"
+        },
+        {
+         "type": "point",
+         "text": "सिद्धांत: कठिन/अमूर्त बातों को चित्र या वस्तु (मूर्त) के माध्यम से समझाना।"
+        },
+        {
+         "type": "flow",
+         "title": "TLM का सिद्धांत",
+         "steps": [
+          "अमूर्त/कठिन बात: जैसे संख्या, अवधारणा",
+          "TLM: चित्र या वस्तु (मूर्त)",
+          "समझ: आसान, रोचक व स्थायी अधिगम"
+         ]
+        },
+        {
+         "type": "point",
+         "text": "अच्छे TLM के नियम (Low-Cost/No-Cost):"
+        },
+        {
+         "type": "point",
+         "text": "सस्ता या मुफ्त: बेकार या आस-पास की चीजों से बना हो।"
+        },
+        {
+         "type": "point",
+         "text": "बच्चे के स्तर का: छात्र की उम्र और समझ के अनुसार हो।"
+        },
+        {
+         "type": "point",
+         "text": "सुरक्षित: नुकीला या खतरनाक न हो।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0072",
        "title": "शिक्षण सामग्री के प्रकार",
        "items": [
+        {
+         "type": "tree",
+         "title": "शिक्षण सामग्री के प्रकार",
+         "node": {
+          "text": "शिक्षण सामग्री",
+          "children": [
+           {
+            "text": "दृश्य (Visual) – सिर्फ देखना",
+            "children": [
+             {
+              "text": "चार्ट, नक्शा, श्यामपट्ट (ब्लैकबोर्ड), फ्लैश कार्ड",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "श्रव्य (Audio) – सिर्फ सुनना",
+            "children": [
+             {
+              "text": "रेडियो, टेप रिकॉर्डर",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "दृश्य-श्रव्य (Audio-Visual) – देखना + सुनना (सबसे बेस्ट)",
+            "children": [
+             {
+              "text": "टीवी, कम्प्यूटर, स्मार्ट क्लास, मोबाइल",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "क्रियात्मक (Activity) – स्वयं करके देखना",
+            "children": [
+             {
+              "text": "शैक्षिक भ्रमण (Tour), विज्ञान प्रयोग",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        },
         {
          "type": "table",
          "rows": [
@@ -1495,17 +3799,17 @@
           ],
           [
            "दृश्य (Visual)",
-           "केवल देखना",
+           "सिर्फ देखना",
            "चार्ट, नक्शा, श्यामपट्ट, फ्लैश कार्ड"
           ],
           [
            "श्रव्य (Audio)",
-           "केवल सुनना",
+           "सिर्फ सुनना",
            "रेडियो, टेप रिकॉर्डर"
           ],
           [
-           "दृश्य-श्रव्य",
-           "देखना + सुनना",
+           "दृश्य-श्रव्य (Audio-Visual)",
+           "देखना + सुनना (सबसे बेस्ट)",
            "टीवी, कम्प्यूटर, स्मार्ट क्लास, मोबाइल"
           ],
           [
@@ -1516,58 +3820,139 @@
          ]
         },
         {
+         "type": "tip",
+         "text": "रेडियो श्रव्य है, दृश्य-श्रव्य नहीं; श्यामपट्ट दृश्य है।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0073",
+       "title": "महत्वपूर्ण तथ्य (Direct Q&A)",
+       "items": [
+        {
          "type": "point",
-         "text": "सबसे प्रभावी सामग्री: दृश्य-श्रव्य।"
+         "text": "एडगर डेल का अनुभव शंकु (Cone of Experience): बच्चा सबसे ज़्यादा \"प्रत्यक्ष अनुभव\" (खुद करके) से सीखता है।"
+        },
+        {
+         "type": "pyramid",
+         "title": "एडगर डेल का अनुभव शंकु (सरल रूप – ऊपर अमूर्त, नीचे प्रत्यक्ष)",
+         "levels": [
+          "शब्द/मौखिक प्रतीक (सबसे अमूर्त)",
+          "दृश्य प्रतीक (चित्र, चार्ट)",
+          "दृश्य-श्रव्य (टीवी, फिल्म)",
+          "प्रत्यक्ष अनुभव – स्वयं करके (सबसे प्रभावी)"
+         ]
         },
         {
          "type": "point",
-         "text": "एडगर डेल का अनुभव शंकु (Cone of Experience): बच्चा सबसे अधिक प्रत्यक्ष अनुभव (स्वयं करके) से सीखता है।"
+         "text": "सबसे प्रभावी सामग्री (पुस्तक के अनुसार): दृश्य-श्रव्य (Audio-Visual) सामग्री।"
+        },
+        {
+         "type": "point",
+         "text": "NCF 2005 का नियम: TLM को बच्चे के वास्तविक जीवन और बाहरी दुनिया से जोड़ना चाहिए।"
         },
         {
          "type": "tip",
-         "text": "रेडियो श्रव्य है, दृश्य-श्रव्य नहीं; श्यामपट्ट दृश्य है।"
+         "text": "शंकु में सबसे प्रभावी = प्रत्यक्ष अनुभव; सामग्रियों में सबसे प्रभावी = दृश्य-श्रव्य।"
         }
        ]
       }
      ]
     },
     {
-     "topic": "शॉर्टकट कुंजियाँ",
+     "topic": "कीबोर्ड शॉर्टकट कीज़",
      "concepts": [
       {
-       "id": "selection_bhag7-0037",
-       "title": "MS Office शॉर्टकट – संपादन",
+       "id": "selection_bhag7-0074",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "शॉर्टकट कुंजियाँ",
+         "node": {
+          "text": "शॉर्टकट",
+          "children": [
+           {
+            "text": "MS Office",
+            "children": [
+             {
+              "text": "संपादन: Ctrl + X, C, V, Z, Y, A",
+              "children": []
+             },
+             {
+              "text": "फाइल: Ctrl + N, O, S, W, P",
+              "children": []
+             },
+             {
+              "text": "खोज/फॉन्ट: Ctrl + F, D",
+              "children": []
+             },
+             {
+              "text": "पेज: Page Up, Page Down, Ctrl + Enter",
+              "children": []
+             }
+            ]
+           },
+           {
+            "text": "Windows",
+            "children": [
+             {
+              "text": "फंक्शन कुंजियाँ: F1–F12",
+              "children": []
+             },
+             {
+              "text": "Alt + F4, Alt + Tab, Alt + Enter",
+              "children": []
+             },
+             {
+              "text": "Del, Shift + Del, Esc",
+              "children": []
+             },
+             {
+              "text": "नेविगेशन: Home, End, Ctrl + Home/End",
+              "children": []
+             }
+            ]
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0075",
+       "title": "MS Office – संपादन शॉर्टकट",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Shortcut",
-           "काम"
+           "शॉर्टकट",
+           "कार्य"
           ],
           [
            "Ctrl + X",
-           "Cut"
+           "चयनित वस्तु को Cut करना"
           ],
           [
            "Ctrl + C",
-           "Copy"
+           "चयनित वस्तु को Copy करना"
           ],
           [
            "Ctrl + V",
-           "Paste"
+           "Cut या Copy की गई वस्तु को Paste करना"
           ],
           [
            "Ctrl + Z",
-           "Undo (किया कार्य पहले जैसा)"
+           "Undo – किए गए कार्य को पहले जैसा करना"
           ],
           [
            "Ctrl + Y",
-           "Redo (कार्य फिर से करना)"
+           "Redo – समाप्त किए गए कार्य को फिर से करना"
           ],
           [
            "Ctrl + A",
-           "सब Select करना"
+           "खुले डॉक्यूमेंट में सबको Select करना"
           ],
           [
            "Ctrl + F",
@@ -1575,132 +3960,159 @@
           ],
           [
            "Ctrl + D",
-           "Font विंडो खोलना"
+           "Font Window खोलना"
           ]
+         ]
+        },
+        {
+         "type": "flow",
+         "title": "Cut/Copy-Paste",
+         "steps": [
+          "चयन: टेक्स्ट Select करें (Ctrl + A = सब)",
+          "Cut या Copy: Ctrl + X या Ctrl + C",
+          "Paste: Ctrl + V",
+          "गलती हुई?: Ctrl + Z (Undo), फिर से करना: Ctrl + Y (Redo)"
          ]
         },
         {
          "type": "tip",
          "text": "Undo = Ctrl + Z, Redo = Ctrl + Y; उलटें नहीं।"
+        },
+        {
+         "type": "trick",
+         "text": "X, C, V कीबोर्ड पर साथ-साथ हैं: X = कैंची (Cut), C = Copy, V = Paste।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0038",
-       "title": "MS Office शॉर्टकट – फाइल व पेज",
+       "id": "selection_bhag7-0076",
+       "title": "MS Office – फाइल व पेज शॉर्टकट",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Shortcut",
-           "काम"
+           "शॉर्टकट",
+           "कार्य"
           ],
           [
            "Ctrl + N",
-           "नया डॉक्यूमेंट (New)"
+           "नया डॉक्यूमेंट खोलना (New)"
           ],
           [
            "Ctrl + O",
            "पुराना डॉक्यूमेंट खोलना (Open)"
           ],
           [
-           "Ctrl + S",
-           "Save"
-          ],
-          [
            "Ctrl + W",
            "डॉक्यूमेंट बंद करना (Close)"
           ],
           [
+           "Ctrl + S",
+           "डॉक्यूमेंट सेव (Save) करना"
+          ],
+          [
            "Ctrl + P",
-           "Print डायलॉग बॉक्स"
+           "Print डायलॉग बॉक्स खोलना"
           ],
           [
-           "Ctrl + Enter (Return)",
-           "Page Break"
+           "Ctrl + Return (Enter)",
+           "Page Break देना"
           ],
           [
-           "Page Up/Page Down",
-           "एक स्क्रीन/पेज ऊपर/नीचे जाना"
+           "Page Up",
+           "एक स्क्रीन/पेज ऊपर (पीछे) जाना"
+          ],
+          [
+           "Page Down",
+           "एक स्क्रीन/पेज नीचे (आगे) जाना"
           ]
          ]
         },
         {
          "type": "trick",
-         "text": "अधिकतर Ctrl शॉर्टकट अंग्रेज़ी शब्द के पहले अक्षर पर: N-New, O-Open, S-Save, P-Print, F-Find, W-Window close।"
+         "text": "Ctrl शॉर्टकट अंग्रेज़ी शब्द के पहले अक्षर पर: N-New, O-Open, S-Save, P-Print, F-Find, W-Window close।"
+        },
+        {
+         "type": "tip",
+         "text": "पुस्तक में Page Up = \"एक पेज आगे\" और Page Down = \"एक पेज पीछे\" लिखा है; वास्तव में Page Up ऊपर (पिछले भाग) और Page Down नीचे (अगले भाग) ले जाता है।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0039",
+       "id": "selection_bhag7-0077",
        "title": "फंक्शन कुंजियाँ",
        "items": [
         {
-         "type": "table",
+         "type": "layers",
+         "title": "फंक्शन कुंजियाँ (F1 → F12)",
          "rows": [
           [
-           "कुंजी",
-           "काम"
-          ],
-          [
            "F1",
-           "हेल्प विंडो"
+           "हेल्प विंडो खोलना"
           ],
           [
            "F2",
-           "चयनित वस्तु का Rename"
+           "चयनित वस्तु का नाम बदलना (Rename)"
           ],
           [
            "F3",
-           "फाइल/फोल्डर Search"
+           "फाइल या फोल्डर खोजना (Search)"
           ],
           [
            "F4",
-           "सक्रिय सूची (एड्रेस बार ड्रॉप-डाउन) दिखाना"
+           "सक्रिय लिस्ट की सूची प्रदर्शित करना"
           ],
           [
            "F5",
-           "Refresh"
+           "सक्रिय विंडो को रिफ्रेश करना (Refresh)"
           ],
           [
            "F7",
-           "Spelling and Grammar जाँच"
+           "Spelling and Grammar की जाँच"
           ],
           [
            "F12",
-           "Save As डायलॉग बॉक्स"
-          ],
-          [
-           "Shift + F3",
-           "Capital/Small अक्षरों में बदलना"
+           "Save As डायलॉग बॉक्स खोलना"
           ]
          ]
         },
         {
+         "type": "point",
+         "text": "Shift + F3: Capital या Small Letters में बदलना।"
+        },
+        {
+         "type": "point",
+         "text": "Ctrl + F2: Print Preview देखना।"
+        },
+        {
          "type": "tip",
-         "text": "F12 = Save As, Ctrl + S = Save।"
+         "text": "F12 = Save As; Ctrl + S = Save।"
+        },
+        {
+         "type": "trick",
+         "text": "F5 = \"Fresh\" (Refresh); F2 = \"नाम 2 बार सोचो\" (Rename); F1 = पहली मदद (Help)।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0040",
+       "id": "selection_bhag7-0078",
        "title": "Windows शॉर्टकट",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Shortcut",
-           "काम"
+           "शॉर्टकट",
+           "कार्य"
           ],
           [
            "Alt + F4",
-           "सक्रिय प्रोग्राम बंद करना"
+           "सक्रिय प्रोग्राम को बंद करना"
           ],
           [
            "Ctrl + F4",
-           "सक्रिय विंडो/डॉक्यूमेंट बंद करना"
+           "सक्रिय प्रोग्राम (विंडो/डॉक्यूमेंट) को बंद करना"
           ],
           [
            "Alt + Tab",
@@ -1708,90 +4120,137 @@
           ],
           [
            "Alt + Enter",
-           "चयनित वस्तु की Properties"
+           "चयनित विषय की प्रॉपर्टी खोलना"
           ],
           [
            "Ctrl + Esc",
            "स्टार्ट मेनू खोलना"
           ],
           [
-           "Shift + Del",
-           "रीसाइकिल बिन में भेजे बिना स्थायी Delete"
+           "Esc",
+           "वर्तमान कार्य को समाप्त करना (Cancel)"
           ],
           [
            "Del",
-           "चयनित वस्तु Delete (रीसाइकिल बिन में)"
+           "चयनित वस्तु को नष्ट करना (Delete)"
           ],
           [
-           "Esc",
-           "वर्तमान कार्य Cancel"
+           "Shift + Del",
+           "रीसाइकिल बिन में भेजे बिना Delete करना"
           ]
          ]
         },
         {
+         "type": "flow",
+         "title": "Delete के दो रास्ते",
+         "steps": [
+          "Del: फाइल → रीसाइकिल बिन (वापस ला सकते हैं)",
+          "Shift + Del: फाइल सीधे स्थायी रूप से हटती है (रीसाइकिल बिन में नहीं)"
+         ]
+        },
+        {
          "type": "tip",
-         "text": "Del से फाइल रीसाइकिल बिन में जाती है; Shift + Del से सीधे स्थायी रूप से हटती है।"
+         "text": "Alt + F4 पूरा सक्रिय प्रोग्राम बंद करता है; Ctrl + F4 सामान्यतः प्रोग्राम के अंदर सक्रिय डॉक्यूमेंट/टैब बंद करता है।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0041",
+       "id": "selection_bhag7-0079",
        "title": "नेविगेशन कुंजियाँ",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Shortcut",
-           "काम"
+           "कुंजी",
+           "कार्य"
           ],
           [
            "Home",
-           "लाइन/विंडो के प्रारंभ में"
+           "सक्रिय विंडो या लाइन के प्रारंभ में पहुँचना"
           ],
           [
            "End",
-           "लाइन/विंडो के अंत में"
+           "सक्रिय विंडो या लाइन के अंत में पहुँचना"
           ],
           [
            "Ctrl + Home",
-           "डॉक्यूमेंट के प्रारंभ में"
+           "डॉक्यूमेंट के प्रारंभ में जाना"
           ],
           [
            "Ctrl + End",
-           "डॉक्यूमेंट के अंत में"
-          ],
-          [
-           "Ctrl + F2",
-           "Print Preview"
+           "डॉक्यूमेंट के अंत में जाना"
           ],
           [
            "Enter",
-           "निर्देश पूरा करना; Word में नया पैराग्राफ"
+           "निर्देश संपादित करने का आदेश; वर्ड प्रोग्राम में पैराग्राफ बदलना"
           ],
           [
            "Tab",
-           "विकल्पों/टेबल के अगले खाने में जाना"
+           "विकल्पों में आगे बढ़ना; टेबल में अगले खाने में जाना"
           ]
          ]
+        },
+        {
+         "type": "trick",
+         "text": "Home/End = लाइन; Ctrl + Home/End = पूरा डॉक्यूमेंट।"
         }
        ]
       }
      ]
     },
     {
-     "topic": "संक्षिप्त रूप",
+     "topic": "कम्प्यूटर से संबंधित शब्द-संक्षेप (Full Forms)",
      "concepts": [
       {
-       "id": "selection_bhag7-0042",
+       "id": "selection_bhag7-0080",
+       "title": "🧠 एक नज़र में",
+       "items": [
+        {
+         "type": "tree",
+         "title": "शब्द-संक्षेप – समूह",
+         "node": {
+          "text": "Full Forms (72)",
+          "children": [
+           {
+            "text": "हार्डवेयर व प्रोसेसिंग: CPU, ALU, CU, BIOS, UPS, USB…",
+            "children": []
+           },
+           {
+            "text": "मेमोरी व स्टोरेज: RAM, ROM, PROM, CD, DVD, WORM…",
+            "children": []
+           },
+           {
+            "text": "डिस्प्ले, इनपुट व चिप: CRT, LCD, VDU, OCR, VLSI…",
+            "children": []
+           },
+           {
+            "text": "प्रोग्रामिंग व सॉफ्टवेयर: AI, BASIC, COBOL, HTML, DBMS…",
+            "children": []
+           },
+           {
+            "text": "नेटवर्क व इंटरनेट: LAN, WAN, WWW, URL, TCP/IP…",
+            "children": []
+           },
+           {
+            "text": "संस्थाएँ: BARC, DRDO, NAL, BSNL, MTNL, VSNL",
+            "children": []
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0081",
        "title": "हार्डवेयर व प्रोसेसिंग",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Abbreviation",
-           "Full form"
+           "संक्षेप",
+           "पूर्ण रूप"
           ],
           [
            "CPU",
@@ -1818,8 +4277,8 @@
            "Universal Serial Bus"
           ],
           [
-           "SCSI",
-           "Small Computer System Interface"
+           "SCSI Port",
+           "Small Computer System Interface Port"
           ],
           [
            "NIC",
@@ -1827,7 +4286,7 @@
           ],
           [
            "MODEM",
-           "Modulator–Demodulator"
+           "Modulator – Demodulator"
           ],
           [
            "PC",
@@ -1840,21 +4299,25 @@
           [
            "ATM",
            "Automatic Teller Machine"
+          ],
+          [
+           "EDP",
+           "Electronic Data Processing"
           ]
          ]
         }
        ]
       },
       {
-       "id": "selection_bhag7-0043",
+       "id": "selection_bhag7-0082",
        "title": "मेमोरी व स्टोरेज",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Abbreviation",
-           "Full form"
+           "संक्षेप",
+           "पूर्ण रूप"
           ],
           [
            "RAM",
@@ -1865,19 +4328,23 @@
            "Read Only Memory"
           ],
           [
-           "SRAM/DRAM",
-           "Static RAM/Dynamic RAM"
+           "S RAM",
+           "Static RAM"
+          ],
+          [
+           "D RAM",
+           "Dynamic RAM"
           ],
           [
            "PROM",
            "Programmable Read Only Memory"
           ],
           [
-           "EPROM",
+           "E-PROM",
            "Erasable Programmable Read Only Memory"
           ],
           [
-           "EEPROM",
+           "EE-PROM",
            "Electrically Erasable Programmable Read Only Memory"
           ],
           [
@@ -1885,16 +4352,16 @@
            "Compact Disc"
           ],
           [
-           "CD-ROM",
+           "CD ROM",
            "Compact Disc Read Only Memory"
           ],
           [
-           "CD-RW",
+           "CD RW",
            "Compact Disc Read and Write"
           ],
           [
            "DVD",
-           "Digital Versatile Disc/Digital Video Disc"
+           "Digital Versatile Disc या Digital Video Disc"
           ],
           [
            "WORM",
@@ -1905,15 +4372,15 @@
        ]
       },
       {
-       "id": "selection_bhag7-0044",
+       "id": "selection_bhag7-0083",
        "title": "डिस्प्ले, इनपुट व चिप",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Abbreviation",
-           "Full form"
+           "संक्षेप",
+           "पूर्ण रूप"
           ],
           [
            "CRT",
@@ -1937,7 +4404,7 @@
           ],
           [
            "OCR",
-           "Optical Character Reader/Recognition"
+           "Optical Character Reader"
           ],
           [
            "OMR",
@@ -1945,7 +4412,7 @@
           ],
           [
            "MICR",
-           "Magnetic Ink Character Reader/Recognition"
+           "Magnetic Ink Character Reader"
           ],
           [
            "LSI",
@@ -1960,19 +4427,29 @@
            "Ultra Large Scale Integration"
           ]
          ]
+        },
+        {
+         "type": "pyramid",
+         "title": "चिप एकीकरण का स्तर (ऊपर = सबसे अधिक)",
+         "levels": [
+          "ULSI – Ultra (पंचम पीढ़ी)",
+          "VLSI – Very (चतुर्थ पीढ़ी)",
+          "LSI – Large",
+          "IC (तृतीय पीढ़ी)"
+         ]
         }
        ]
       },
       {
-       "id": "selection_bhag7-0045",
-       "title": "प्रोग्रामिंग व सॉफ्टवेयर",
+       "id": "selection_bhag7-0084",
+       "title": "प्रोग्रामिंग, सॉफ्टवेयर व IT",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Abbreviation",
-           "Full form"
+           "संक्षेप",
+           "पूर्ण रूप"
           ],
           [
            "AI",
@@ -2011,27 +4488,39 @@
            "Microsoft Disk Operating System"
           ],
           [
-           "EDP",
-           "Electronic Data Processing"
+           "MS-EXCEL",
+           "Microsoft Excel"
+          ],
+          [
+           "MS-WINDOWS",
+           "Microsoft Windows"
+          ],
+          [
+           "MS-WORD",
+           "Microsoft Word"
           ],
           [
            "IT",
            "Information Technology"
           ]
          ]
+        },
+        {
+         "type": "trick",
+         "text": "COBOL में B = Business (व्यापार); FORTRAN = FORmula TRANslation (गणित/विज्ञान)।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0046",
+       "id": "selection_bhag7-0085",
        "title": "नेटवर्क व इंटरनेट",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Abbreviation",
-           "Full form"
+           "संक्षेप",
+           "पूर्ण रूप"
           ],
           [
            "LAN",
@@ -2063,7 +4552,7 @@
           ],
           [
            "TCP/IP",
-           "Transmission Control Protocol/Internet Protocol"
+           "Transmission Control Protocol / Internet Protocol"
           ],
           [
            "DNS",
@@ -2078,11 +4567,11 @@
            "Public Switched Telephone Network"
           ],
           [
-           "Kbps",
-           "Kilobits Per Second"
+           "KBPS",
+           "Kilobits Per Second (पुस्तक: Kilo Byte Per Second)"
           ],
           [
-           "E-mail",
+           "E Mail",
            "Electronic Mail"
           ],
           [
@@ -2093,20 +4582,20 @@
         },
         {
          "type": "tip",
-         "text": "पुस्तक में KBPS = Kilo Byte Per Second दिया है; मानक रूप Kbps = Kilobits Per Second।"
+         "text": "पुस्तक में KBPS = Kilo Byte Per Second दिया है; मानक रूप Kbps = Kilobits Per Second (KBps = Kilobytes)।"
         }
        ]
       },
       {
-       "id": "selection_bhag7-0047",
+       "id": "selection_bhag7-0086",
        "title": "संस्थाएँ व कम्प्यूटर नाम",
        "items": [
         {
          "type": "table",
          "rows": [
           [
-           "Abbreviation",
-           "Full form"
+           "संक्षेप",
+           "पूर्ण रूप"
           ],
           [
            "IBM",
@@ -2143,12 +4632,74 @@
           [
            "VSNL",
            "Videsh Sanchar Nigam Limited"
-          ],
-          [
-           "C-DAC",
-           "Centre for Development of Advanced Computing"
           ]
          ]
+        },
+        {
+         "type": "tip",
+         "text": "पुस्तक में IBM = \"International Business Machine\" है; सही: Machines।"
+        }
+       ]
+      },
+      {
+       "id": "selection_bhag7-0087",
+       "title": "⚡ फटाफट रिवीज़न",
+       "items": [
+        {
+         "type": "point",
+         "text": "कम्प्यूटर का जनक: चार्ल्स बैबेज; आधुनिक कम्प्यूटर के जनक: एलन ट्यूरिंग।"
+        },
+        {
+         "type": "point",
+         "text": "भारत का पहला सुपरकम्प्यूटर: PARAM 8000 (C-DAC, पुणे)।"
+        },
+        {
+         "type": "point",
+         "text": "प्रथम पीढ़ी: वैक्यूम ट्यूब।"
+        },
+        {
+         "type": "point",
+         "text": "स्कैनर, कीबोर्ड, बारकोड रीडर: इनपुट; स्पीकर, प्लॉटर: आउटपुट।"
+        },
+        {
+         "type": "point",
+         "text": "VDU = मॉनिटर; कम्प्यूटर का मस्तिष्क = CPU; ALU = Arithmetic Logic Unit।"
+        },
+        {
+         "type": "point",
+         "text": "मुख्य मेमोरी = RAM व ROM; नॉन-वोलाटाइल = ROM; सबसे तेज़ = कैश।"
+        },
+        {
+         "type": "point",
+         "text": "1 Byte = 8 Bits; 1 GB = 1024 MB।"
+        },
+        {
+         "type": "point",
+         "text": "OS = सिस्टम सॉफ्टवेयर; MS-Word = एप्लीकेशन सॉफ्टवेयर; MS-Office OS नहीं।"
+        },
+        {
+         "type": "point",
+         "text": "WWW: टिम बर्नर्स-ली; ई-मेल: रे टॉमलिंसन; मानक प्रोटोकॉल: TCP/IP।"
+        },
+        {
+         "type": "point",
+         "text": "MODEM = Modulator Demodulator; URL = Uniform Resource Locator; PDF = Portable Document Format।"
+        },
+        {
+         "type": "point",
+         "text": "IPv4 = 32 बिट; Wi-Fi = Wireless Fidelity; CC = Carbon Copy।"
+        },
+        {
+         "type": "point",
+         "text": "डिजिटल इंडिया: 1 जुलाई 2015; NSM: C-DAC व IISc/IITs।"
+        },
+        {
+         "type": "point",
+         "text": "पेन ड्राइव: USB पोर्ट; IC चिप: सिलिकॉन।"
+        },
+        {
+         "type": "point",
+         "text": "ICT = Information and Communication Technology।"
         }
        ]
       }
@@ -2156,5 +4707,6 @@
     }
    ]
   }
- ]
+ ],
+ "version": "a8f297c376"
 }

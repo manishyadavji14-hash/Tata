@@ -122,3 +122,72 @@
 .cyl-big .cyl-label { font-size: 1.05rem; }
 summary.nomark { list-style: none; }
 summary.nomark::-webkit-details-marker { display: none; }
+
+/* ---------- concept diagrams (web/js/diagrams.js) ---------- */
+.dg { margin: .6rem 0; padding: .55rem; border-radius: .75rem; border: 1px solid rgb(148 163 184 / .35); background: rgb(248 250 252); }
+.dark .dg { background: rgb(2 6 23 / .55); border-color: rgb(51 65 85); }
+.dg-title { font-weight: 700; font-size: .9em; margin-bottom: .4rem; color: rgb(20 73 225); }
+.dark .dg-title { color: rgb(142 195 255); }
+.dg-cap { font-size: .75em; color: rgb(100 116 139); text-align: center; margin-top: .25rem; }
+.dg-svg { width: 100%; height: auto; max-height: 26rem; display: block; margin: 0 auto; }
+.dg-venn { max-height: 13rem; }
+.dg-svgtext { fill: rgb(15 23 42); font-family: inherit; }
+.dg-svgtext-dark { fill: rgb(15 23 42); font-family: inherit; }
+.dark .dg-svgtext { fill: rgb(241 245 249); }
+.dark .dg-box { fill-opacity: .3; }
+.dg-flow { display: flex; flex-direction: column; align-items: stretch; }
+.dg-step { display: flex; gap: .5rem; align-items: flex-start; padding: .4rem .55rem; border-radius: .6rem; background: #fff; border: 1.5px solid rgb(27 94 245 / .45); box-shadow: 0 1px 2px rgb(0 0 0 / .05); }
+.dark .dg-step { background: rgb(15 23 42); border-color: rgb(89 161 255 / .5); }
+.dg-num { flex: none; width: 1.4rem; height: 1.4rem; border-radius: 999px; background: rgb(27 94 245); color: #fff; font-size: .75em; font-weight: 700; display: grid; place-items: center; margin-top: .05rem; }
+.dg-arrow { text-align: center; color: rgb(27 94 245); font-weight: 700; line-height: 1.1; }
+.dg-tl { position: relative; margin-left: .45rem; border-left: 2.5px solid rgb(27 94 245 / .5); padding-left: .85rem; }
+.dg-tl-row { position: relative; padding: .25rem 0; }
+.dg-tl-row::before { content: ''; position: absolute; left: -1.27rem; top: .55rem; width: .7rem; height: .7rem; border-radius: 999px; background: rgb(27 94 245); border: 2px solid #fff; }
+.dark .dg-tl-row::before { border-color: rgb(15 23 42); }
+.dg-tl-when { font-weight: 700; color: rgb(194 65 12); font-size: .9em; }
+.dark .dg-tl-when { color: rgb(253 186 116); }
+.dg-layers { display: flex; flex-direction: column; gap: 2px; border-radius: .6rem; overflow: hidden; }
+.dg-layer { padding: .4rem .6rem; color: rgb(15 23 42); background: color-mix(in srgb, rgb(125 211 252) calc((1 - var(--t)) * 100%), rgb(251 146 60)); }
+.dg-layer b { margin-right: .4rem; }
+.dg-layer span { font-size: .88em; }
+.dg-rings { display: flex; gap: .6rem; align-items: center; flex-wrap: wrap; }
+.dg-rings svg { flex: none; }
+.dg-legend { font-size: .85em; display: flex; flex-direction: column; gap: .2rem; flex: 1; min-width: 10rem; }
+.dg-legend-row { flex-direction: row; flex-wrap: wrap; gap: .25rem .8rem; margin-top: .35rem; }
+.dg-sw { display: inline-block; width: .8rem; height: .8rem; border-radius: .2rem; margin-right: .35rem; vertical-align: -.1rem; }
+.dg-sw-line { height: .25rem; vertical-align: .15rem; }
+.dg-tree, .dg-tree ul { list-style: none; margin: 0; padding: 0; }
+.dg-tree ul { margin-left: .7rem; padding-left: .8rem; border-left: 2px solid rgb(148 163 184 / .6); }
+.dg-tree li { position: relative; margin: .3rem 0; }
+.dg-tree ul > li::before { content: ''; position: absolute; left: -.8rem; top: .85rem; width: .7rem; border-top: 2px solid rgb(148 163 184 / .6); }
+.dg-node { display: inline-block; padding: .25rem .55rem; border-radius: .55rem; font-size: .92em; }
+.dg-d0 { background: rgb(27 94 245); color: #fff; font-weight: 700; }
+.dg-d1 { background: rgb(254 215 170); color: rgb(124 45 18); font-weight: 600; }
+.dg-d2 { background: rgb(220 252 231); color: rgb(20 83 45); }
+.dg-d3 { background: rgb(241 245 249); color: rgb(30 41 59); }
+.dark .dg-d1 { background: rgb(124 45 18 / .6); color: rgb(254 215 170); }
+.dark .dg-d2 { background: rgb(20 83 45 / .6); color: rgb(220 252 231); }
+.dark .dg-d3 { background: rgb(30 41 59); color: rgb(226 232 240); }
+.dg-img { max-width: 100%; height: auto; border-radius: .5rem; background: #fff; display: block; margin: 0 auto; }
+.dg-map { width: 100%; height: auto; max-height: 30rem; display: block; border-radius: .5rem; }
+.map-sea { fill: rgb(219 234 254); }
+.map-nb { fill: rgb(226 232 240); stroke: rgb(148 163 184); stroke-width: .5; vector-effect: non-scaling-stroke; }
+.map-land { fill: rgb(255 251 235); }
+.map-st { fill: transparent; stroke: rgb(148 163 184); stroke-width: .6; vector-effect: non-scaling-stroke; }
+.map-border { fill: none; stroke: rgb(71 85 105); stroke-width: 1.1; vector-effect: non-scaling-stroke; }
+.map-ct { fill: rgb(255 251 235); stroke: rgb(148 163 184); stroke-width: .5; vector-effect: non-scaling-stroke; }
+.map-river { fill: none; stroke-width: 1.6; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+.map-pt { fill: rgb(220 38 38); stroke: #fff; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.map-label { fill: rgb(15 23 42); stroke: rgb(255 255 255 / .85); font-family: inherit; stroke-linejoin: round; }
+.dark .map-sea { fill: rgb(12 74 110 / .55); }
+.dark .map-land, .dark .map-ct { fill: rgb(51 65 85); }
+.dark .map-nb { fill: rgb(30 41 59); }
+.dark .map-label { fill: rgb(248 250 252); stroke: rgb(15 23 42 / .85); }
+.map-up { fill: rgb(254 243 199 / .55); stroke: rgb(194 65 12); stroke-width: 2.2; vector-effect: non-scaling-stroke; }
+.dark .map-up { fill: rgb(120 53 15 / .35); stroke: rgb(253 186 116); }
+.dg-arrow { display: flex; justify-content: center; padding: .15rem 0; }
+.map-num { fill: rgb(220 38 38); stroke: #fff; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.map-numtext { fill: #fff; font-family: inherit; }
+.dg-ptlist { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: .2rem .6rem; font-size: .85em; }
+.dg-ptlist li { display: flex; gap: .35rem; align-items: flex-start; line-height: 1.3; }
+.dg-ptn { flex: none; min-width: 1.15rem; height: 1.15rem; border-radius: 999px; background: rgb(220 38 38); color: #fff; font-size: .72em; font-weight: 700; display: grid; place-items: center; margin-top: .05rem; }
