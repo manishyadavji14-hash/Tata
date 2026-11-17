@@ -98,3 +98,27 @@
 .ctable th { background: rgb(27 94 245 / .1); font-weight: 700; }
 .focus-body { font-size: 1em; }
 .focus-body .cpoints li { margin: .45rem 0; }
+
+/* ---------- Horizontal cylinder gauge (questions solved correctly 3+ times) ---------- */
+.cyl { --h: 46px; --cap: 14px; padding-right: var(--cap); }
+.cyl-big { --h: 62px; --cap: 18px; }
+.cyl-body { position: relative; height: var(--h); border-radius: var(--cap) / 50%;
+  background: linear-gradient(180deg, #e2e8f0 0%, #f8fafc 22%, #cbd5e1 62%, #94a3b8 100%);
+  box-shadow: inset 0 -3px 6px rgb(15 23 42 / .18), 0 2px 6px rgb(15 23 42 / .12); }
+.dark .cyl-body { background: linear-gradient(180deg, #334155 0%, #475569 22%, #1e293b 62%, #0f172a 100%); }
+.cyl-cap { position: absolute; top: 0; right: calc(var(--cap) * -1); width: calc(var(--cap) * 2); height: 100%; border-radius: 50%;
+  background: radial-gradient(ellipse at 40% 40%, #f1f5f9, #94a3b8); border: 1px solid rgb(100 116 139 / .45); }
+.dark .cyl-cap { background: radial-gradient(ellipse at 40% 40%, #475569, #0f172a); border-color: #334155; }
+.cyl-fill { position: absolute; inset: 0 auto 0 0; border-radius: var(--cap) / 50%; transition: width .8s ease;
+  background: linear-gradient(180deg, #6ee7b7 0%, #d1fae5 20%, #10b981 60%, #047857 100%); }
+.cyl-fill::after { content: ''; position: absolute; top: 0; right: calc(var(--cap) * -1); width: calc(var(--cap) * 2); height: 100%; border-radius: 50%;
+  background: radial-gradient(ellipse at 40% 40%, #a7f3d0, #059669); }
+.cyl-fill[style*="width:0%"]::after { display: none; }
+.cyl-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: .3rem; font-size: .9rem; color: #0f172a;
+  text-shadow: 0 1px 0 rgb(255 255 255 / .7); z-index: 1; }
+.cyl-label b { font-size: 1.15em; }
+.cyl-label span { font-size: .8em; opacity: .75; }
+.dark .cyl-label { color: #f8fafc; text-shadow: 0 1px 2px rgb(0 0 0 / .6); }
+.cyl-big .cyl-label { font-size: 1.05rem; }
+summary.nomark { list-style: none; }
+summary.nomark::-webkit-details-marker { display: none; }

@@ -43,11 +43,12 @@ export function subjectsOf(sets) {
   return [...map.values()].map((e) => ({ key: e.key, count: e.count, label: [...e.names.entries()].sort((a, b) => b[1] - a[1])[0][0] }));
 }
 
-const shuffle = (arr) => { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
+export const shuffle = (arr) => { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
 const shortTitle = (t) => String(t || '').replace(/SUPER TET प्राथमिक\s*/i, '').replace(/\(चन्द्रा इंस्टीट्यूट\)/, '').trim();
 
-// picks: [{ set, q }] in the order they should appear
-async function buildPracticeSet(picks, { title, minutesPerQ = 1.25 }) {
+// picks: [{ set, q }] in the order they should appear.
+// kind 'practice' = temporary test (hidden from the home list); kind null = a permanent practice set.
+export async function buildPracticeSet(picks, { title, minutesPerQ = 1.25, kind = 'practice', extra = {}, instructions = null, neg = 0 }) {
   const passages = {};
   const sections = [];
   const questions = picks.map(({ set, q }, i) => {
@@ -60,25 +61,25 @@ async function buildPracticeSet(picks, { title, minutesPerQ = 1.25 }) {
       syllabus_tag: `${shortTitle(set.meta.title)} • Q${q.origin?.q_no ?? q.q_no}`,
     };
   });
-  const id = uid('prac');
+  const id = uid(kind === 'practice' ? 'prac' : 'myset');
   const row = {
-    id, kind: 'practice', createdAt: Date.now(),
+    id, createdAt: Date.now(), ...(kind ? { kind } : { source: 'builder' }), ...extra,
     meta: {
       exam_id: id, title, duration_minutes: Math.max(1, Math.round(questions.length * minutesPerQ)),
-      max_marks: questions.length, positive_marks: 1, negative_marks: 0,
-      instructions_hi: 'यह अभ्यास टेस्ट आपके सभी प्रैक्टिस सेट से चुने गए प्रश्नों से बना है। हर प्रश्न के हल में उसका मूल पेपर और प्रश्न संख्या लिखी है।',
-      instructions_en: 'Practice test built from questions across your practice sets.',
+      max_marks: questions.length, positive_marks: 1, negative_marks: neg,
+      instructions_hi: instructions?.hi ?? 'यह अभ्यास टेस्ट आपके सभी प्रैक्टिस सेट से चुने गए प्रश्नों से बना है। हर प्रश्न के हल में उसका मूल पेपर और प्रश्न संख्या लिखी है।',
+      instructions_en: instructions?.en ?? 'Practice test built from questions across your practice sets.',
     },
     sections, passages, questions,
   };
-  await cleanupPractice();
+  if (kind === 'practice') await cleanupPractice();
   await db.put('sets', row);
   return row;
 }
 
-// Remove old practice sets that were never attempted (keeps the database small).
+// Remove old practice sets that were never attempted (keeps the database small). Daily sets have their own expiry.
 async function cleanupPractice() {
-  const sets = (await db.all('sets')).filter((s) => s.kind === 'practice');
+  const sets = (await db.all('sets')).filter((s) => s.kind === 'practice' && !s.daily);
   for (const s of sets) {
     const atts = await db.byIndex('attempts', 'setId', s.id);
     if (!atts.length && Date.now() - (s.createdAt || 0) > 10 * 60000) await db.delete('sets', s.id);

@@ -1,7 +1,8 @@
 import { getSet, deleteSet, attemptsForSet } from '../store.js';
 import { db } from '../db.js';
 import { toStandardJson } from '../schema.js';
-import { icon, toast, confirmDialog, modal } from '../ui.js';
+import { icon, toast, confirmDialog, modal, promptDialog } from '../ui.js';
+import { renameSet, renameSection, renameTopicInSet } from '../bank.js';
 import { esc, downloadText, fmtDate, fmtDur, slug } from '../util.js';
 import { refresh } from '../app.js';
 import { requirePin } from '../pin.js';
@@ -15,7 +16,8 @@ export async function render({ root, params, navigate, setHeader }) {
   const bySection = set.sections.map((s) => {
     const qs = set.questions.filter((q) => q.section === s);
     const topics = [...new Set(qs.map((q) => q.topic))];
-    return { s, n: qs.length, topics, from: qs[0]?.q_no, to: qs[qs.length - 1]?.q_no };
+    const counts = topics.map((t) => qs.filter((q) => q.topic === t).length);
+    return { s, n: qs.length, topics, counts };
   });
   const noKey = set.questions.filter((q) => !q.correct_option).map((q) => q.q_no);
   const noSol = set.questions.filter((q) => !q.solution_hi && !q.solution_en).length;
@@ -38,18 +40,22 @@ export async function render({ root, params, navigate, setHeader }) {
       <div class="mt-4 grid grid-cols-2 gap-2">
         <a href="#/pretest/${encodeURIComponent(set.id)}" class="btn-primary col-span-2">${icon.play('h-4 w-4')} टेस्ट शुरू करें / Start Test</a>
         <a href="#/solutions/study?set=${encodeURIComponent(set.id)}" class="btn-outline">📚 प्रश्न + हल देखें</a>
-        <button class="btn-outline" data-act="edit">✏️ सेटिंग बदलें</button>
+        <button class="btn-outline" data-act="rename">✏️ नाम बदलें</button>
+        <button class="btn-outline" data-act="edit">⚙️ सेटिंग बदलें</button>
+        <a href="#/bank?target=${encodeURIComponent(set.id)}" class="btn-outline">➕ प्रश्न जोड़ें</a>
         <a href="#/share?set=${encodeURIComponent(set.id)}" class="btn-outline">📤 शेयर करें</a>
         <button class="btn-outline" data-act="export">${icon.download('h-4 w-4')} JSON Export</button>
         <button class="btn-outline text-rose-600" data-act="delete">${icon.trash('h-4 w-4')} डिलीट</button>
       </div>
     </div>
 
-    <h2 class="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">सेक्शन और टॉपिक</h2>
-    <div class="mb-4 space-y-2">${bySection.map((b) => `
+    <h2 class="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">विषय और टॉपिक <span class="font-normal normal-case">(✏️ से नाम बदलें, टॉपिक पर टैप करके उसका नाम बदलें)</span></h2>
+    <div class="mb-4 space-y-2">${bySection.map((b, i) => `
       <details class="card !p-3">
-        <summary class="flex cursor-pointer items-center justify-between text-sm font-semibold"><span>${esc(b.s)}</span><span class="text-xs text-slate-500">Q.${b.from}–${b.to} • ${b.n} प्रश्न</span></summary>
-        <div class="mt-2 flex flex-wrap gap-1">${b.topics.map((t) => `<span class="chip bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">${esc(t)}</span>`).join('')}</div>
+        <summary class="flex cursor-pointer items-center gap-2 text-sm font-semibold"><span class="min-w-0 flex-1">${esc(b.s)}</span><span class="text-xs font-normal text-slate-500">${b.n} प्रश्न</span>
+          <button class="btn-ghost btn-sm !px-2" data-rsec="${i}" aria-label="विषय का नाम बदलें">✏️</button></summary>
+        <div class="mt-2 flex flex-wrap gap-1">${b.topics.map((t, j) => `<button class="chip bg-slate-100 text-slate-600 active:scale-95 dark:bg-slate-800 dark:text-slate-300" data-rtop="${i}|${j}">${esc(t)} <span class="opacity-60">${b.counts[j]}</span> ✏️</button>`).join('')}</div>
+        <a class="btn-outline btn-sm mt-3" href="#/bank?target=${encodeURIComponent(set.id)}&tsec=${encodeURIComponent(b.s)}">➕ इस विषय में दूसरे सेट से प्रश्न जोड़ें</a>
       </details>`).join('')}</div>
 
     <h2 class="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">पिछले प्रयास / Attempts (${attempts.length})</h2>
@@ -65,7 +71,35 @@ export async function render({ root, params, navigate, setHeader }) {
       </a>`).join('') : '<div class="text-sm text-slate-500">अभी तक कोई प्रयास नहीं।</div>'}</div>`;
 
   root.addEventListener('click', async (e) => {
+    const rs = e.target.closest('[data-rsec]');
+    if (rs) {
+      e.preventDefault();
+      const from = bySection[Number(rs.dataset.rsec)].s;
+      const to = await promptDialog({ title: 'विषय का नाम बदलें', label: `"${from}" का नया नाम`, value: from, suggest: set.sections.filter((s) => s !== from), hint: 'किसी दूसरे विषय का नाम लिखेंगे तो दोनों विषय एक हो जाएँगे।' });
+      if (!to || to === from) return;
+      const n = await renameSection(set, from, to);
+      toast(`${n} प्रश्नों का विषय "${to}" हुआ`, 'success');
+      refresh();
+      return;
+    }
+    const rt = e.target.closest('[data-rtop]');
+    if (rt) {
+      const [i, j] = rt.dataset.rtop.split('|').map(Number);
+      const b = bySection[i];
+      const from = b.topics[j];
+      const to = await promptDialog({ title: 'टॉपिक का नाम बदलें', label: `${b.s} › "${from}" का नया नाम`, value: from, suggest: b.topics.filter((t) => t !== from), hint: 'किसी दूसरे टॉपिक का नाम लिखेंगे तो दोनों टॉपिक एक हो जाएँगे।' });
+      if (!to || to === from) return;
+      const n = await renameTopicInSet(set, b.s, from, to);
+      toast(`${n} प्रश्नों का टॉपिक "${to}" हुआ`, 'success');
+      refresh();
+      return;
+    }
     const act = e.target.closest('[data-act]')?.dataset.act;
+    if (act === 'rename') {
+      const t = await promptDialog({ title: 'सेट का नाम बदलें', label: 'नया नाम', value: set.meta.title });
+      if (t && t !== set.meta.title) { await renameSet(set, t); toast('नाम बदला ✓', 'success'); refresh(); }
+      return;
+    }
     if (act === 'export') {
       const where = downloadText(`${slug(set.meta.title)}.json`, JSON.stringify(toStandardJson(set), null, 2));
       toast(`JSON सेव हुआ → ${where}`, 'success');

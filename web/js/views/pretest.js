@@ -3,6 +3,7 @@ import { db, saveSettings } from '../db.js';
 import { pickQuestions } from '../analytics.js';
 import { esc, renderRich } from '../util.js';
 import { toast } from '../ui.js';
+import { dayKey } from '../qstats.js';
 
 export const MODE_LABEL = {
   full: 'पूरा टेस्ट / Full Test',
@@ -24,7 +25,11 @@ export async function render({ root, params, query, settings, navigate, setHeade
     if (!parent?.result) { root.innerHTML = '<div class="card">पिछला प्रयास नहीं मिला</div>'; return; }
     qNos = pickQuestions(parent.result, mode);
   }
-  setHeader({ title: 'टेस्ट निर्देश / Instructions', sub: set.meta.title, back: parent ? `result/${parent.id}` : set.kind === 'practice' ? 'practice' : `set/${set.id}` });
+  setHeader({ title: 'टेस्ट निर्देश / Instructions', sub: set.meta.title, back: parent ? `result/${parent.id}` : set.daily ? 'home' : set.kind === 'practice' ? 'practice' : `set/${set.id}` });
+  if (set.daily && set.daily !== dayKey()) {
+    root.innerHTML = '<div class="card text-center"><div class="text-3xl">⌛</div><div class="mt-2 font-semibold">यह दैनिक सेट एक्सपायर हो चुका है</div><div class="mt-1 text-sm text-slate-500">आज का नया सेट होम पेज पर है।</div><a href="#/home" class="btn-primary mt-3">होम</a></div>';
+    return;
+  }
   if (!qNos.length) {
     root.innerHTML = `<div class="card text-center"><div class="text-3xl">🎉</div><div class="mt-2 font-semibold">इस श्रेणी में कोई प्रश्न नहीं है!</div><a href="#/result/${parent.id}" class="btn-primary mt-3">वापस</a></div>`;
     return;

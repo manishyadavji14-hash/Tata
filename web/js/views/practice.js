@@ -23,6 +23,10 @@ export async function render({ root, settings, navigate, setHeader }) {
   };
 
   root.innerHTML = `
+    <div class="mb-3 grid grid-cols-2 gap-2">
+      <a href="#/builder" class="card flex items-center gap-2 !p-3 text-sm font-bold active:scale-[.98]">🧩 टॉपिक-वार नया सेट</a>
+      <a href="#/bank" class="card flex items-center gap-2 !p-3 text-sm font-bold active:scale-[.98]">🗃️ प्रश्न बैंक</a>
+    </div>
     <section class="card mb-3" data-sub>
       <div class="mb-1 flex items-center gap-2 font-bold">${icon.target('h-5 w-5')} विषयवार अभ्यास</div>
       <div class="mb-3 text-xs text-slate-500">एक या अधिक विषय चुनें। प्रश्न आपके चुने हुए सभी प्रैक्टिस सेट से लिए जाएँगे।</div>

@@ -5,7 +5,7 @@ import { DEMO_SET } from './demo-set.js';
 import { icon, toast } from './ui.js';
 import { $, esc } from './util.js';
 
-export const APP_VERSION = '1.7.0';
+export const APP_VERSION = '1.8.0';
 
 const routes = {
   home: () => import('./views/home.js'),
@@ -25,6 +25,9 @@ const routes = {
   job: () => import('./views/job.js'),
   concepts: () => import('./views/concepts.js'),
   focus: () => import('./views/focus.js'),
+  bank: () => import('./views/bank.js'),
+  builder: () => import('./views/builder.js'),
+  mastery: () => import('./views/mastery.js'),
 };
 
 const NAV = [

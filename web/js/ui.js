@@ -100,6 +100,26 @@ export function alertDialog(message, title = 'सूचना / Notice') {
   });
 }
 
+/** Ask for one line of text. `suggest` fills a pick-list under the input. Resolves to the text or null. */
+export function promptDialog({ title = '', label = '', value = '', ok = 'Save', hint = '', suggest = [] } = {}) {
+  return new Promise((resolve) => {
+    const lid = `dl${Math.random().toString(36).slice(2, 8)}`;
+    const m = modal({
+      title: esc(title), size: 'sm',
+      body: `<label class="label">${esc(label)}</label><input class="input" data-v value="${esc(value)}" ${suggest.length ? `list="${lid}"` : ''} autocomplete="off">
+        ${suggest.length ? `<datalist id="${lid}">${suggest.map((s) => `<option value="${esc(s)}"></option>`).join('')}</datalist>` : ''}
+        ${hint ? `<div class="mt-2 text-xs text-slate-500">${hint}</div>` : ''}`,
+      footer: `<button class="btn-outline" data-close>Cancel</button><button class="btn-primary" data-ok>${esc(ok)}</button>`,
+      onClose: (v) => resolve(typeof v === 'string' ? v : null),
+    });
+    const inp = m.el.querySelector('[data-v]');
+    setTimeout(() => { inp.focus(); inp.select(); }, 50);
+    const done = () => { const v = inp.value.trim(); if (v) m.close(v); };
+    m.el.querySelector('[data-ok]').onclick = done;
+    inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') done(); });
+  });
+}
+
 export function pickFile(accept) {
   return new Promise((resolve) => {
     const inp = document.createElement('input');

@@ -1,6 +1,6 @@
 // IndexedDB storage layer. Every piece of app data lives here so the app works fully offline.
 const DB_NAME = 'abhyas-cbt';
-const DB_VERSION = 4;
+const DB_VERSION = 5;
 
 const STORES = {
   sets: { keyPath: 'id' },
@@ -15,6 +15,7 @@ const STORES = {
   jobFiles: { keyPath: 'id' },  // source documents of jobs (Blob) so a job can resume or "make more" later
   concepts: { keyPath: 'id' },  // concept / revision note sets (subject → topic → concept cards)
   conceptProgress: { keyPath: 'key' }, // concept id -> { learned, star, views }
+  qstats: { keyPath: 'key' },   // lifetime record of every question: `${setId}|${q_no}` -> { correct, wrong, skipped, time, log }
 };
 
 let dbPromise = null;
@@ -86,6 +87,10 @@ export const DEFAULT_SETTINGS = {
   autoSolve: true,
   temperature: 0.2,
   demoSeeded: false,
+  dailyOn: true,              // build "today's practice" sets from earlier mistakes
+  dailySize: 20,              // questions per daily set
+  dailyCount: 1,              // daily sets per day
+  dailySubjects: [],          // subject keys to limit daily sets to (empty = all)
 };
 
 export async function getSettings() {
