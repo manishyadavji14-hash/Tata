@@ -1,0 +1,1338 @@
+{
+ "exam_meta": {
+  "exam_id": "ca_2026_feb2026",
+  "title": "करेंट अफेयर्स फरवरी 2026 – मासिक मॉक टेस्ट (30 प्रश्न, रट-लो वार्षिकांक 2026)",
+  "duration_minutes": 30,
+  "max_marks": 30,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "30 प्रश्न, प्रत्येक 1 अंक; नकारात्मक अंकन नहीं। प्रश्न व उत्तर रट-लो करेंट अफेयर्स वार्षिकांक 2026 के फरवरी 2026 अध्याय से; प्रत्येक उत्तर के साथ व्याख्या दी गई है।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "करेंट अफेयर्स फरवरी 2026"
+ ],
+ "passages": {},
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "फरवरी 2026 में किन दो आर्द्रभूमियों को नए रामसर स्थल की मान्यता मिली?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चिल्का और लोकटक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पटना पक्षी अभयारण्य (एटा) और छारी-ढांड (कच्छ)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केवलादेव और सांभर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वूलर और अष्टमुडी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) पटना पक्षी अभयारण्य (एटा) और छारी-ढांड (कच्छ)। भारत में रामसर स्थल 96 से बढ़कर 98।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – पर्यावरण"
+  },
+  {
+   "q_no": 2,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "सूचकांक",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - सूचकांक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भ्रष्टाचार धारणा सूचकांक (CPI) 2025 में भारत को कौन-सी रैंक मिली?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "90वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "91वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "96वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "100वीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 91वीं। ट्रांसपेरेंसी इंटरनेशनल (1993, बर्लिन) के 182 देशों में भारत 39 अंकों के साथ 91वाँ (2024 में 96वाँ)। शीर्ष: डेनमार्क, फिनलैंड, सिंगापुर।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – सूचकांक"
+  },
+  {
+   "q_no": 3,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "राज्य एवं शहर",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - राज्य एवं शहर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रधानमंत्री ने पंजाब के आदमपुर हवाई अड्डे का नाम किस महापुरुष के नाम पर रखने की घोषणा की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गुरु गोबिंद सिंह",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "श्री गुरु रविदास जी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "शहीद भगत सिंह",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "महाराजा रणजीत सिंह",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) श्री गुरु रविदास जी। गुरु रविदास की 649वीं जयंती पर।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – राज्य एवं शहर"
+  },
+  {
+   "q_no": 4,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "अर्थव्यवस्था",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - अर्थव्यवस्था",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "फरवरी 2026 में रिपोर्ट जारी करने वाले 16वें वित्त आयोग के अध्यक्ष कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एन. के. सिंह",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रघुराम राजन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डॉ. अरविंद पनगढ़िया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बिबेक देबरॉय",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) डॉ. अरविंद पनगढ़िया। अनुच्छेद 280; 31 दिसंबर 2023 को गठित, अवधि 2026–31। 15वाँ आयोग: एन. के. सिंह; पहला: के. सी. नियोगी (1951)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – अर्थव्यवस्था"
+  },
+  {
+   "q_no": 5,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ICC अंडर-19 पुरुष क्रिकेट विश्व कप 2026 किस देश ने जीता?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "इंग्लैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ऑस्ट्रेलिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भारत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "श्रीलंका",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) भारत। हरारे में इंग्लैंड को हराकर रिकॉर्ड छठा खिताब (2000, 2008, 2012, 2018, 2022, 2026); वैभव सूर्यवंशी ने 80 गेंदों में 175 रन।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – खेल"
+  },
+  {
+   "q_no": 6,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "संविधान",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "लोकसभा अध्यक्ष को पद से हटाने की व्यवस्था संविधान के किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 75",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 93",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 94(c)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 124",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) अनुच्छेद 94(c)। 14 दिन के पूर्व नोटिस के बाद लोकसभा के तत्कालीन समस्त सदस्यों के बहुमत से।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – संविधान"
+  },
+  {
+   "q_no": 7,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "कृषि",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - कृषि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय दलहन आत्मनिर्भरता मिशन की शुरुआत किस राज्य से हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "उत्तर प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मध्य प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हरियाणा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) मध्य प्रदेश। सीहोर के अमलाहा से; 1,000 नई दाल मिलें, किसानों को ₹10,000/हेक्टेयर।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – कृषि"
+  },
+  {
+   "q_no": 8,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "कला एवं संस्कृति",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - कला एवं संस्कृति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दिल्ली में शताब्दी समारोह के कारण चर्चा में आई ओल चिकी लिपि किस भाषा की है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सिंधी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "डोगरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नेपाली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "संथाली",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) संथाली। पं. रघुनाथ मुर्मू द्वारा 1925 में विकसित 30 अक्षरों की लिपि; ₹100 का स्मारक सिक्का जारी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – कला एवं संस्कृति"
+  },
+  {
+   "q_no": 9,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "राज्य एवं शहर",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - राज्य एवं शहर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ज्वारीय बाढ़ को राज्य-विशिष्ट आपदा घोषित करने वाला देश का पहला राज्य कौन है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तमिलनाडु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ओडिशा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केरल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) केरल। आपदा प्रबंधन अधिनियम की धारा 2(d) के तहत।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – राज्य एवं शहर"
+  },
+  {
+   "q_no": 10,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "भूगोल",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हॉर्मुज जलडमरूमध्य किन दो जल क्षेत्रों को जोड़ता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कैस्पियन सागर और काला सागर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अरब सागर और बंगाल की खाड़ी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लाल सागर और भूमध्य सागर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फारस की खाड़ी और ओमान की खाड़ी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) फारस की खाड़ी और ओमान की खाड़ी। विश्व के 20–30% कच्चे तेल का परिवहन इसी मार्ग से।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – भूगोल"
+  },
+  {
+   "q_no": 11,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "शीतकालीन ओलंपिक 2026 की पदक तालिका में कौन-सा देश पहले स्थान पर रहा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नॉर्वे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इटली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अमेरिका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जर्मनी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) नॉर्वे। मिलानो-कॉर्टिना: नॉर्वे 18 स्वर्ण, 41 पदक; अगला 2030 फ्रेंच आल्प्स में।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – खेल"
+  },
+  {
+   "q_no": 12,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वज्र प्रहार सैन्य अभ्यास का 16वाँ संस्करण कहाँ आयोजित हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "उमरोई, मेघालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इडाहो, अमेरिका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जैसलमेर, राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बकलोह, हिमाचल प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) बकलोह, हिमाचल प्रदेश। भारत-अमेरिका विशेष बल अभ्यास, 23 फरवरी – 15 मार्च 2026 (शुरुआत 2010)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – रक्षा"
+  },
+  {
+   "q_no": 13,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "बजट",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - बजट",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वित्त वर्ष 2026-27 में सरकार का अनुमानित कुल खर्च कितना है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "₹48.2 लाख करोड़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "₹50.1 लाख करोड़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "₹53.5 लाख करोड़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "₹56.8 लाख करोड़",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) ₹53.5 लाख करोड़। निर्मला सीतारमण का लगातार 9वाँ बजट; राजकोषीय घाटा 4.3%, पूँजीगत व्यय ₹12.2 लाख करोड़, रक्षा ₹7.85 लाख करोड़।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – बजट"
+  },
+  {
+   "q_no": 14,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "ऊर्जा",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - ऊर्जा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत में नवीकरणीय ऊर्जा में सबसे अधिक योगदान देने वाला राज्य कौन बन गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "तमिलनाडु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "महाराष्ट्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) गुजरात। गुजरात 42.583 GW (देश का 16.5%)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – ऊर्जा"
+  },
+  {
+   "q_no": 15,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "महत्वपूर्ण दिवस",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - महत्वपूर्ण दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विश्व कैंसर दिवस हर साल कब मनाया जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "2 फरवरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "4 फरवरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "7 अप्रैल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "1 दिसंबर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 4 फरवरी। 2025–2027 की थीम: United by Unique।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – महत्वपूर्ण दिवस"
+  },
+  {
+   "q_no": 16,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "भूगोल",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पेन्नैयार नदी का जल विवाद किन दो राज्यों के बीच है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कर्नाटक और आंध्र प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केरल और तमिलनाडु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आंध्र प्रदेश और तेलंगाना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "तमिलनाडु और कर्नाटक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) तमिलनाडु और कर्नाटक। कर्नाटक की नंदी हिल्स से निकलने वाली ~497 किमी नदी, तमिलनाडु की दूसरी सबसे लंबी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – भूगोल"
+  },
+  {
+   "q_no": 17,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "अंतरराष्ट्रीय",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - अंतरराष्ट्रीय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "फरवरी 2026 में किस देश ने 16 साल से कम उम्र के बच्चों के सोशल मीडिया उपयोग पर राष्ट्रीय रोक की घोषणा की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भारत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ऑस्ट्रेलिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "स्पेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जर्मनी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) स्पेन। ऑस्ट्रेलिया (दिसंबर 2025) के बाद स्पेन दूसरा देश बना।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – अंतरराष्ट्रीय"
+  },
+  {
+   "q_no": 18,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "सूचकांक",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - सूचकांक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पंचायत एडवांसमेंट इंडेक्स (PAI) 2.0 में कौन-सा राज्य शीर्ष पर रहा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केरल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "त्रिपुरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ओडिशा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) त्रिपुरा। त्रिपुरा ने सभी 1,176 पंचायतों का शत-प्रतिशत सत्यापन किया।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – सूचकांक"
+  },
+  {
+   "q_no": 19,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "अंतरराष्ट्रीय",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - अंतरराष्ट्रीय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "आम चुनाव में बहुमत पाकर दोबारा सत्ता में लौटी जापान की पहली महिला प्रधानमंत्री कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "युरिको कोइके",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सानाए ताकाइची",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सेइको नोदा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "माकिको तनाका",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) सानाए ताकाइची। LDP ने 8 फरवरी 2026 के चुनाव में 465 में से 316 सीटें जीतीं।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – अंतरराष्ट्रीय"
+  },
+  {
+   "q_no": 20,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "महत्वपूर्ण दिवस",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - महत्वपूर्ण दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत का राष्ट्रीय महिला दिवस हर वर्ष कब मनाया जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "10 फरवरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "11 फरवरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "12 फरवरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "13 फरवरी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 13 फरवरी। सरोजिनी नायडू (जन्म 13 फरवरी 1879) की जयंती पर, 2014 से।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – महत्वपूर्ण दिवस"
+  },
+  {
+   "q_no": 21,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "अंतरराष्ट्रीय सम्मेलन",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - अंतरराष्ट्रीय सम्मेलन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत की अध्यक्षता वाली पहली ब्रिक्स शेरपा बैठक कहाँ हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नई दिल्ली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मुंबई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बेंगलुरु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हैदराबाद",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) नई दिल्ली। भारत के ब्रिक्स शेरपा सुधाकर दलेला की अध्यक्षता में, 18वें शिखर सम्मेलन की तैयारी हेतु।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – अंतरराष्ट्रीय सम्मेलन"
+  },
+  {
+   "q_no": 22,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "अर्थव्यवस्था",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - अर्थव्यवस्था",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत की GDP और IIP के लिए प्रस्तावित नया आधार वर्ष क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2022-23",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2021-22",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2020-21",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "2023-24",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 2022-23। GDP, IIP, WPI का आधार 2011-12 से 2022-23; CPI का आधार 2012 से 2024।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – अर्थव्यवस्था"
+  },
+  {
+   "q_no": 23,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "शासन",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - शासन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रधानमंत्री कार्यालय को साउथ ब्लॉक से किस नए परिसर में ले जाया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कर्तव्य भवन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सेवा तीर्थ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "युगे युगीन भारत संग्रहालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राष्ट्रीय सचिवालय भवन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) सेवा तीर्थ। 1947 के बाद पहली बार; यहाँ PMO, NSC सचिवालय और कैबिनेट सचिवालय होंगे।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – शासन"
+  },
+  {
+   "q_no": 24,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "भूगोल",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत का एकमात्र मड ज्वालामुखी किस द्वीप पर है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नारकोंडम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मिनिकॉय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बाराटांग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बैरन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) बाराटांग। अंडमान-निकोबार का बाराटांग; बैरन द्वीप भारत का एकमात्र सक्रिय ज्वालामुखी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – भूगोल"
+  },
+  {
+   "q_no": 25,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "विज्ञान एवं तकनीक",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - विज्ञान एवं तकनीक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "इंडिया AI इम्पैक्ट समिट 2026 कहाँ हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मुंबई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कोलकाता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नई दिल्ली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बेंगलुरु",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) नई दिल्ली। MeitY द्वारा 16–20 फरवरी, नई दिल्ली; ग्लोबल साउथ का पहला वैश्विक AI शिखर।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – विज्ञान एवं तकनीक"
+  },
+  {
+   "q_no": 26,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "स्वास्थ्य",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - स्वास्थ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "WHO से मंजूरी पाने वाली nOPV2 पोलियो वैक्सीन किस भारतीय कंपनी ने बनाई है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सीरम इंस्टीट्यूट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भारत बायोटेक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जायडस कैडिला",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बायोलॉजिकल ई लिमिटेड",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) बायोलॉजिकल ई लिमिटेड। हैदराबाद की बायोलॉजिकल ई; भारत 27 मार्च 2014 को पोलियो मुक्त प्रमाणित।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – स्वास्थ्य"
+  },
+  {
+   "q_no": 27,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "योजनाएँ",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - योजनाएँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पीएम राहत (PM RAHAT) योजना में सड़क दुर्घटना पीड़ित को कितनी राशि तक कैशलेस इलाज मिलेगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "₹50,000",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "₹1,00,000",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "₹1,50,000",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "₹2,00,000",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) ₹1,50,000। दुर्घटना की तारीख से 7 दिन तक ₹1.5 लाख का मुफ्त कैशलेस इलाज।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – योजनाएँ"
+  },
+  {
+   "q_no": 28,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "भूगोल",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "गलाथिया बे भारत के किस द्वीप समूह में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "लक्षद्वीप",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अंडमान और निकोबार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "दीव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "माजुली",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) अंडमान और निकोबार। ग्रेट निकोबार द्वीप; ₹90,000 करोड़+ की ग्रेट निकोबार परियोजना (ट्रांसशिपमेंट टर्मिनल, हवाई अड्डा)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – भूगोल"
+  },
+  {
+   "q_no": 29,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "अवसंरचना",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - अवसंरचना",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत की पहली पानी के नीचे सड़क और रेल की संयुक्त सुरंग किस नदी के नीचे बनेगी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गंगा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गोदावरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नर्मदा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ब्रह्मपुत्र",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) ब्रह्मपुत्र। गोहपुर–नुमालीगढ़ (असम): ₹18,662 करोड़, 33.7 किमी परियोजना में 15.79 किमी ट्विन-ट्यूब सुरंग।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – अवसंरचना"
+  },
+  {
+   "q_no": 30,
+   "section": "करेंट अफेयर्स फरवरी 2026",
+   "topic": "ऊर्जा",
+   "syllabus_tag": "करेंट अफेयर्स फरवरी 2026 - ऊर्जा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "शाहपुर कंडी बाँध किस नदी पर है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चिनाब",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "झेलम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रावी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सतलज",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) रावी। पठानकोट (पंजाब) में; 206 MW जलविद्युत, जम्मू-कश्मीर व पंजाब को सिंचाई।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स फरवरी 2026 – ऊर्जा"
+  }
+ ]
+}

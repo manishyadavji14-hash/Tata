@@ -1,0 +1,1338 @@
+{
+ "exam_meta": {
+  "exam_id": "ca_2026_nov2025",
+  "title": "करेंट अफेयर्स नवंबर 2025 – मासिक मॉक टेस्ट (30 प्रश्न, रट-लो वार्षिकांक 2026)",
+  "duration_minutes": 30,
+  "max_marks": 30,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "30 प्रश्न, प्रत्येक 1 अंक; नकारात्मक अंकन नहीं। प्रश्न व उत्तर रट-लो करेंट अफेयर्स वार्षिकांक 2026 के नवंबर 2025 अध्याय से; प्रत्येक उत्तर के साथ व्याख्या दी गई है।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "करेंट अफेयर्स नवंबर 2025"
+ ],
+ "passages": {},
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "नवंबर 2025 में COP30 शिखर सम्मेलन किस स्थान पर हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नई दिल्ली, भारत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पेरिस, फ्रांस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बेलेम, ब्राजील",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जकार्ता, इंडोनेशिया",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) बेलेम, ब्राजील। COP30 का आयोजन 10–21 नवंबर 2025 को बेलेम (पारा, ब्राजील) में UNFCCC द्वारा हुआ। पहला COP 1995 में बर्लिन में और COP29 2024 में बाकू (अजरबैजान) में हुआ था।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – पर्यावरण"
+  },
+  {
+   "q_no": 2,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "राज्य एवं शहर",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - राज्य एवं शहर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत का दूसरा यूनेस्को सिटी ऑफ गैस्ट्रोनॉमी किस शहर को घोषित किया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "लखनऊ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हैदराबाद",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मुंबई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चेन्नई",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) लखनऊ। यूनेस्को क्रिएटिव सिटीज नेटवर्क (UCCN, 2004) के तहत हैदराबाद के बाद लखनऊ को यह दर्जा मिला।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – राज्य एवं शहर"
+  },
+  {
+   "q_no": 3,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "अंतरराष्ट्रीय संबंध",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - अंतरराष्ट्रीय संबंध",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "चक्रवात दित्वाह से प्रभावित श्रीलंका की सहायता के लिए भारत ने कौन-सा ऑपरेशन शुरू किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ऑपरेशन सागर मित्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ऑपरेशन सागर बंधु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ऑपरेशन समुद्र सेतु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ऑपरेशन सुरक्षा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) ऑपरेशन सागर बंधु। बंगाल की खाड़ी में बने चक्रवात दित्वाह (नाम यमन ने दिया) के बाद भारत ने श्रीलंका को मानवीय सहायता हेतु ऑपरेशन सागर बंधु चलाया।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – अंतरराष्ट्रीय संबंध"
+  },
+  {
+   "q_no": 4,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बुकर पुरस्कार 2025 किस लेखक ने जीता?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "किरण देसाई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एंड्रयू मिलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डेविड सज़ाले",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सुसान चोई",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) डेविड सज़ाले। हंगेरियन-ब्रिटिश लेखक डेविड सज़ाले को छठे उपन्यास Flesh के लिए बुकर 2025 मिला। 2024 का पुरस्कार सामंथा हार्वे (Orbital) को मिला था।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – पुरस्कार"
+  },
+  {
+   "q_no": 5,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "इंदिरा गांधी शांति, निरस्त्रीकरण एवं विकास पुरस्कार 2025-26 से किसे सम्मानित किया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ग्रासा माचेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जेसिंडा आर्डर्न",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एंजेला मर्केल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एलेन जॉनसन सरलीफ",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) ग्रासा माचेल। इंदिरा गांधी मेमोरियल ट्रस्ट (1986) का पुरस्कार (₹25 लाख) मोजाम्बिक की पहली महिला राष्ट्रपति रहीं ग्रासा माचेल को मिला। (स्रोत में मिशेल बैचलेट का नाम भी उल्लिखित है।)",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – पुरस्कार"
+  },
+  {
+   "q_no": 6,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "अंतरराष्ट्रीय सम्मेलन",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - अंतरराष्ट्रीय सम्मेलन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "नवंबर 2025 में 20वाँ G20 शिखर सम्मेलन कहाँ हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नई दिल्ली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जोहान्सबर्ग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "टोक्यो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पेरिस",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) जोहान्सबर्ग। 22–23 नवंबर 2025 को जोहान्सबर्ग (दक्षिण अफ्रीका) में सिरिल रामाफोसा की अध्यक्षता में। G20 में 19 देश, EU और अफ्रीकी संघ सहित 21 सदस्य हैं; 21वाँ सम्मेलन 2026 में मियामी (अमेरिका) में प्रस्तावित।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – अंतरराष्ट्रीय सम्मेलन"
+  },
+  {
+   "q_no": 7,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "सूचकांक",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - सूचकांक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जलवायु परिवर्तन प्रदर्शन सूचकांक (CCPI) 2026 में भारत का स्थान क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "10वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "15वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "30वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "23वाँ",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 23वाँ। भारत 61.31 स्कोर के साथ 23वें स्थान पर (2025 में 10वाँ)। शीर्ष तीन स्थान खाली; चौथा डेनमार्क, अंतिम 67वाँ सऊदी अरब।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – सूचकांक"
+  },
+  {
+   "q_no": 8,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत ने पहला दृष्टिबाधित महिला T20 विश्व कप किस टीम को हराकर जीता?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "श्रीलंका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नेपाल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बांग्लादेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पाकिस्तान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) नेपाल। 11–23 नवंबर तक भारत-श्रीलंका की संयुक्त मेजबानी में; भारत ने फाइनल में नेपाल को 7 विकेट से हराया (कप्तान दीपिका टी. सी.)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – खेल"
+  },
+  {
+   "q_no": 9,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रमंडल खेल 2030 की मेजबानी किस शहर को मिली है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अहमदाबाद",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नई दिल्ली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मुंबई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चंडीगढ़",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) अहमदाबाद। 26 नवंबर को ग्लासगो में कॉमनवेल्थ स्पोर्ट महासभा ने 24वें राष्ट्रमंडल खेल 2030 अहमदाबाद को दिए। 23वाँ संस्करण 2026 में ग्लासगो में।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – खेल"
+  },
+  {
+   "q_no": 10,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रो कबड्डी लीग (PKL) के 12वें सत्र का विजेता कौन रहा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पुनेरी पलटन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यू मुंबा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "दबंग दिल्ली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पटना पाइरेट्स",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) दबंग दिल्ली। दबंग दिल्ली ने पुनेरी पलटन को 31-28 से हराकर दूसरा PKL खिताब जीता। PKL की शुरुआत 2014 में हुई।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – खेल"
+  },
+  {
+   "q_no": 11,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "अंतरराष्ट्रीय संबंध",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - अंतरराष्ट्रीय संबंध",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रपति द्रौपदी मुर्मू नवंबर 2025 में किस देश के 50वें स्वतंत्रता दिवस समारोह में शामिल हुईं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अंगोला",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पुर्तगाल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "दक्षिण अफ्रीका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मोजाम्बिक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) अंगोला। किसी भारतीय राष्ट्राध्यक्ष की अंगोला की पहली यात्रा। अंगोला 11 नवंबर 1975 को पुर्तगाल से स्वतंत्र हुआ (राजधानी लुआंडा)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – अंतरराष्ट्रीय संबंध"
+  },
+  {
+   "q_no": 12,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मित्र शक्ति 2025 संयुक्त सैन्य अभ्यास भारत और किस देश के बीच हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नेपाल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "श्रीलंका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भूटान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बांग्लादेश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) श्रीलंका। 11वाँ संस्करण 10–23 नवंबर 2025 को बेलगावी (कर्नाटक) में।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 13,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "न्योमा एयर बेस भारत के किस क्षेत्र में स्थित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अरुणाचल प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सिक्किम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लद्दाख",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उत्तराखंड",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) लद्दाख। लद्दाख के न्योमा में 13,000 फुट पर, LAC से 25 किमी दूर; BRO ने ₹218 करोड़ में विकसित किया।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 14,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "IUCN की 'Good' रेटिंग पाने वाला भारत का एकमात्र प्राकृतिक विश्व धरोहर स्थल कौन है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सुंदरबन राष्ट्रीय उद्यान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "काजीरंगा राष्ट्रीय उद्यान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कंचनजंगा राष्ट्रीय उद्यान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "नंदा देवी राष्ट्रीय उद्यान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) कंचनजंगा राष्ट्रीय उद्यान। IUCN वर्ल्ड हेरिटेज आउटलुक 2025 में सिक्किम के कंचनजंगा (1977, 1,784 वर्ग किमी; 2016 में भारत का पहला मिश्रित धरोहर स्थल) को Good रेटिंग मिली।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – पर्यावरण"
+  },
+  {
+   "q_no": 15,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "डेटन शांति पुरस्कार 2025 का लाइफटाइम अचीवमेंट सम्मान किसे मिला?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अरुंधति रॉय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सलमान रुश्दी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "विक्रम सेठ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अमिताव घोष",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) सलमान रुश्दी। कथा में कावेह अकबर (Martyr!), गैर-कथा में सुनील अमृत (The Burning Earth) और आजीवन उपलब्धि सलमान रुश्दी को।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – पुरस्कार"
+  },
+  {
+   "q_no": 16,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पहले वैश्विक बिग कैट्स शिखर सम्मेलन 2026 की मेजबानी कौन करेगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अमेरिका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ब्रिटेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ऑस्ट्रेलिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भारत",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) भारत। IBCA (मुख्यालय नई दिल्ली, अप्रैल 2023) के तहत नई दिल्ली में; 7 बड़ी बिल्लियों (बाघ, शेर, तेंदुआ, हिम तेंदुआ, प्यूमा, जगुआर, चीता) के संरक्षण हेतु।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – पर्यावरण"
+  },
+  {
+   "q_no": 17,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "56वें IFFI में गोल्डन पीकॉक पुरस्कार किस फिल्म ने जीता?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "The River of Time",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Echoes of Silence",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Skin of Youth",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Waves of Tomorrow",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) Skin of Youth। वियतनाम की Skin of Youth; सर्वश्रेष्ठ निर्देशक संतोष दावखर (Gondhal); रजनीकांत को सत्यजीत रे लाइफटाइम अचीवमेंट।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – पुरस्कार"
+  },
+  {
+   "q_no": 18,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एशियाई युवा खेल 2025 की पदक तालिका में भारत किस स्थान पर रहा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तीसरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पाँचवाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "छठा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "नौवाँ",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) छठा। बहरीन में तीसरे एशियाई युवा खेलों में भारत 13 स्वर्ण, 18 रजत, 17 कांस्य (48 पदक) के साथ छठा। शीर्ष: चीन, उज्बेकिस्तान, कजाखस्तान।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – खेल"
+  },
+  {
+   "q_no": 19,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "नियुक्ति",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - नियुक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारतीय मानक ब्यूरो (BIS) के नए महानिदेशक किसे नियुक्त किया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्रमोद कुमार तिवारी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "राजेश कुमार सिंह",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "संजय गर्ग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "आलोक कुमार गुप्ता",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) संजय गर्ग। 1994 बैच के केरल कैडर के IAS संजय गर्ग ने प्रमोद कुमार तिवारी का स्थान लिया। BIS (23 दिसंबर 1986) उपभोक्ता मामले विभाग के अधीन वैधानिक निकाय है।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – नियुक्ति"
+  },
+  {
+   "q_no": 20,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पूर्वी प्रचंड प्रहार सैन्य अभ्यास किस राज्य में हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अरुणाचल प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नागालैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "असम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मेघालय",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) अरुणाचल प्रदेश। 11–15 नवंबर को अरुणाचल के मेचुका में LAC के पास तीनों सेनाओं का अभ्यास।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 21,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "अंतरराष्ट्रीय सम्मेलन",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - अंतरराष्ट्रीय सम्मेलन",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "BIMSTEC इंडिया मरीन रिसर्च नेटवर्क (BIMREN) के पहले द्विवार्षिक सम्मेलन का आयोजन कहाँ हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मुंबई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कोच्चि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "चेन्नई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विशाखापत्तनम",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) कोच्चि। 4–6 नवंबर को कोच्चि में। BIMSTEC (6 जून 1997, मुख्यालय ढाका) के 7 सदस्य हैं।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – अंतरराष्ट्रीय सम्मेलन"
+  },
+  {
+   "q_no": 22,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "सूचकांक",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - सूचकांक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जर्मनवॉच के ग्लोबल क्लाइमेट रिस्क इंडेक्स 2026 की दीर्घकालिक रैंकिंग में भारत किस स्थान पर है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "7वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "8वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "9वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "10वाँ",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 9वाँ। 1995–2024 के 30 वर्षों में भारत 9वें स्थान पर (शीर्ष: डोमिनिका, म्यांमार, होंडुरास); वार्षिक सूचकांक 2024 में 15वाँ।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – सूचकांक"
+  },
+  {
+   "q_no": 23,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मालाबार सैन्य अभ्यास 2025 कहाँ हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गुआम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ऑस्ट्रेलिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भारत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जापान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) गुआम। 10–18 नवंबर को पश्चिमी प्रशांत के गुआम में क्वाड देशों का नौसैनिक अभ्यास; भारत की ओर से INS सह्याद्रि।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 24,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "व्यक्तित्व",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - व्यक्तित्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "92 वर्ष की आयु में दिवंगत वैद्येश्वरन राजारमन किस क्षेत्र से जुड़े थे?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अंतरिक्ष विज्ञान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कंप्यूटर विज्ञान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "परमाणु भौतिकी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जैव प्रौद्योगिकी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) कंप्यूटर विज्ञान। भारत में कंप्यूटर विज्ञान शिक्षा के अग्रदूत; 1976 में शांति स्वरूप भटनागर पुरस्कार और 1998 में पद्म भूषण।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – व्यक्तित्व"
+  },
+  {
+   "q_no": 25,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "VINBAX सैन्य अभ्यास का छठा संस्करण भारत और किस देश के बीच हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वियतनाम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "थाईलैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सिंगापुर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जापान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) वियतनाम। भारत-वियतनाम का छठा VINBAX हनोई में हुआ।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 26,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अजेय वारियर 2025 किन दो देशों का द्विपक्षीय सैन्य अभ्यास है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भारत और अमेरिका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भारत और ब्रिटेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भारत और फ्रांस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भारत और जापान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) भारत और ब्रिटेन। आठवाँ संस्करण 17–30 नवंबर 2025 को राजस्थान की महाजन फील्ड फायरिंग रेंज में।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 27,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "नियुक्ति",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - नियुक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत व्यापार संवर्धन संगठन (ITPO) का नया अध्यक्ष किसे बनाया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "टी. वी. नरेंद्रन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जावेद अशरफ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अजय भट्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अरविंद पनगढ़िया",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) जावेद अशरफ। जावेद अशरफ ने प्रदीप सिंह खरोला का स्थान लिया। ITPO की स्थापना 1 अप्रैल 1977, मुख्यालय नई दिल्ली।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – नियुक्ति"
+  },
+  {
+   "q_no": 28,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "सूचकांक",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - सूचकांक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ग्लोबल कमिटमेंट टू डेवलपमेंट इंडेक्स 2025 में भारत की रैंक क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "36वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "32वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "28वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "41वीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 36वीं। CGD के 40 देशों में भारत 36वाँ (2024 में 38वाँ); शीर्ष: स्वीडन, जर्मनी, नॉर्वे।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – सूचकांक"
+  },
+  {
+   "q_no": 29,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत ने महिला कबड्डी विश्व कप 2025 का खिताब किसे हराकर जीता?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जापान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ईरान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "दक्षिण कोरिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चीनी ताइपे",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) चीनी ताइपे। 17–24 नवंबर को ढाका में दूसरे महिला कबड्डी विश्व कप के फाइनल में भारत ने चीनी ताइपे को 35-28 से हराकर दूसरी बार खिताब जीता।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – खेल"
+  },
+  {
+   "q_no": 30,
+   "section": "करेंट अफेयर्स नवंबर 2025",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स नवंबर 2025 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मध्य प्रदेश में चीतों के पुनर्वास की तीसरी जगह किस अभयारण्य को चुना गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कूनो राष्ट्रीय उद्यान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गांधी सागर वन्यजीव अभयारण्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नौरादेही वन्यजीव अभयारण्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पेंच टाइगर रिज़र्व",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) नौरादेही वन्यजीव अभयारण्य। कूनो और गांधी सागर के बाद नौरादेही (1975, 1,197 वर्ग किमी, म.प्र. का सबसे बड़ा वन्यजीव अभयारण्य)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स नवंबर 2025 – पर्यावरण"
+  }
+ ]
+}

@@ -1,0 +1,1382 @@
+{
+ "exam_meta": {
+  "exam_id": "ca_2026_dec2025",
+  "title": "करेंट अफेयर्स दिसंबर 2025 – मासिक मॉक टेस्ट (31 प्रश्न, रट-लो वार्षिकांक 2026)",
+  "duration_minutes": 31,
+  "max_marks": 31,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "31 प्रश्न, प्रत्येक 1 अंक; नकारात्मक अंकन नहीं। प्रश्न व उत्तर रट-लो करेंट अफेयर्स वार्षिकांक 2026 के दिसंबर 2025 अध्याय से; प्रत्येक उत्तर के साथ व्याख्या दी गई है।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "करेंट अफेयर्स दिसंबर 2025"
+ ],
+ "passages": {},
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "संविधान",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रपति द्रौपदी मुर्मू ने 25 दिसंबर 2025 को भारतीय संविधान का संस्करण किस भाषा में जारी किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "डोगरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मैथिली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बंगाली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "संथाली",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) संथाली। संथाली की ओल चिकी लिपि (पं. रघुनाथ मुर्मू, 1925) में। संथाली 92वें संशोधन 2003 से आठवीं अनुसूची में।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – संविधान"
+  },
+  {
+   "q_no": 2,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "अंतरराष्ट्रीय संबंध",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - अंतरराष्ट्रीय संबंध",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दित्वाह चक्रवात से प्रभावित क्षेत्रों को फिर से बनाने के लिए भारत ने किस देश को 450 मिलियन डॉलर की मदद की घोषणा की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बांग्लादेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "श्रीलंका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "म्यांमार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मालदीव",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) श्रीलंका। ऑपरेशन सागर बंधु के तहत 350 मिलियन डॉलर लाइन ऑफ क्रेडिट और 100 मिलियन डॉलर अनुदान।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – अंतरराष्ट्रीय संबंध"
+  },
+  {
+   "q_no": 3,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "नियुक्ति",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - नियुक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रेस क्लब ऑफ इंडिया (PCI) की पहली महिला अध्यक्ष कौन बनी हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बरखा दत्त",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "संगीता बरुआ पिशारोटी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "निधि राजदान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "शोभा डे",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) संगीता बरुआ पिशारोटी। असम की पत्रकार संगीता बरुआ पिशारोटी PCI (20 दिसंबर 1957, नई दिल्ली) की पहली महिला अध्यक्ष बनीं।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – नियुक्ति"
+  },
+  {
+   "q_no": 4,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "फीफा पुरुष प्लेयर ऑफ द ईयर 2025 का पुरस्कार किस खिलाड़ी को मिला?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "किलियन एम्बाप्पे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लियोनेल मेसी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एरलिंग हालांड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उस्मान डेम्बेले",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) उस्मान डेम्बेले। दोहा में द बेस्ट फीफा अवॉर्ड्स: पुरुष – उस्मान डेम्बेले (फ्रांस), महिला – ऐताना बोनमती (स्पेन)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – पुरस्कार"
+  },
+  {
+   "q_no": 5,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ओमान का सर्वोच्च नागरिक सम्मान मिलने के बाद प्रधानमंत्री मोदी के अंतरराष्ट्रीय पुरस्कारों की कुल संख्या कितनी हो गई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "29",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "27",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "28",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "25",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 29। ऑर्डर ऑफ ओमान फर्स्ट क्लास के साथ संख्या 29 हो गई।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – पुरस्कार"
+  },
+  {
+   "q_no": 6,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "FIDE विश्व रैपिड चैंपियनशिप 2025 किसने जीती?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हिकारू नाकामुरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "डिंग लिरेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आर. प्रज्ञानानंद",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मैग्नस कार्लसन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) मैग्नस कार्लसन। कतर में मैग्नस कार्लसन ने छठा विश्व रैपिड खिताब जीता; अर्जुन एरिगैसी कांस्य। महिला वर्ग में कोनेरू हम्पी कांस्य।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – खेल"
+  },
+  {
+   "q_no": 7,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "नियुक्ति",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - नियुक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वर्ष 2026 से 2029 के लिए BWF एथलीट आयोग की अध्यक्ष किस भारतीय खिलाड़ी को बनाया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "साइना नेहवाल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पी. वी. सिंधु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मैरी कॉम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मिताली राज",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) पी. वी. सिंधु। पी. वी. सिंधु (अर्जुन 2013, पद्म श्री 2015, खेल रत्न 2016, पद्म भूषण 2020)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – नियुक्ति"
+  },
+  {
+   "q_no": 8,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "पुस्तक",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - पुस्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "द इलेवंथ ऑवर (The Eleventh Hour) पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अरुंधति रॉय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "विक्रम सेठ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सलमान रुश्दी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अमिताभ घोष",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) सलमान रुश्दी। जीवन, मृत्यु, विरासत और पहचान पर पाँच छोटी कहानियाँ।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – पुस्तक"
+  },
+  {
+   "q_no": 9,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "खेलो इंडिया यूनिवर्सिटी गेम्स 2025 की पदक तालिका में कौन-सा विश्वविद्यालय पहले स्थान पर रहा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चंडीगढ़ विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मुंबई विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "दिल्ली विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बैंगलोर विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) चंडीगढ़ विश्वविद्यालय। राजस्थान में पाँचवें संस्करण में चंडीगढ़ विश्वविद्यालय (42 स्वर्ण) प्रथम, LPU द्वितीय, GNDU अमृतसर तृतीय।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – खेल"
+  },
+  {
+   "q_no": 10,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "विज्ञान एवं तकनीक",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - विज्ञान एवं तकनीक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "'वन नेशन वन लाइसेंस वन पेमेंट' का संबंध किस विषय से है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बैंकिंग सुधार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "आर्टिफिशियल इंटेलिजेंस (AI) और कॉपीराइट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जीएसटी नीति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "डिजिटल हेल्थ रिकॉर्ड्स",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) आर्टिफिशियल इंटेलिजेंस (AI) और कॉपीराइट। केंद्रीय लाइसेंसिंग संस्था के माध्यम से AI कंपनियों द्वारा कॉपीराइट सामग्री के उपयोग को नियंत्रित करना और मालिकों को रॉयल्टी देना।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – विज्ञान एवं तकनीक"
+  },
+  {
+   "q_no": 11,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जलवायु नेतृत्व के लिए UNEP चैंपियंस ऑफ द अर्थ 2025 सम्मान किस भारतीय को मिला?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सुनीता नारायण",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वंदना शिवा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सुप्रिया साहू",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मेधा पाटकर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) सुप्रिया साहू। सुप्रिया साहू को प्रेरणा और कार्रवाई श्रेणी में; यंग चैंपियंस में भारत की जिनाली मोदी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – पुरस्कार"
+  },
+  {
+   "q_no": 12,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "अर्थव्यवस्था",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - अर्थव्यवस्था",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दिसंबर 2025 में RBI ने रेपो दर 25 बेसिस पॉइंट घटाई; इसके बाद नई दर कितनी हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5.00%",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "5.25%",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "5.10%",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "5.50%",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 5.25%। खुदरा महँगाई में नरमी के बाद रेपो दर 5.25% की गई।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – अर्थव्यवस्था"
+  },
+  {
+   "q_no": 13,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "संसद एवं कानून",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - संसद एवं कानून",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संसद में पारित शांति (SHANTI) विधेयक का मुख्य उद्देश्य क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "परमाणु ऊर्जा क्षेत्र में निजी भागीदारी की अनुमति देना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केवल नवीकरणीय ऊर्जा को बढ़ावा देना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "परमाणु क्षेत्र में निजी कंपनियों को प्रतिबंधित करना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "परमाणु ऊर्जा क्षमता कम करना",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) परमाणु ऊर्जा क्षेत्र में निजी भागीदारी की अनुमति देना। SHANTI परमाणु ऊर्जा अधिनियम 1962 का स्थान लेगा; स्वतंत्र परमाणु सुरक्षा प्राधिकरण, परमाणु न्यायाधिकरण और SMR को बढ़ावा।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – संसद एवं कानून"
+  },
+  {
+   "q_no": 14,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "नियुक्ति",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - नियुक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत का नया मुख्य सूचना आयुक्त किसे बनाया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "आलोक कुमार वर्मा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "राज कुमार गोयल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अशोक लवासा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सुनील अरोड़ा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) राज कुमार गोयल। 1990 बैच के सेवानिवृत्त IAS राज कुमार गोयल हीरालाल सामरिया के स्थान पर 13वें मुख्य सूचना आयुक्त बने।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – नियुक्ति"
+  },
+  {
+   "q_no": 15,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एकता (Ekatha) अभ्यास किन दो देशों के बीच होता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भारत और श्रीलंका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भारत और मालदीव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भारत और सेशेल्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मालदीव और बांग्लादेश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) भारत और मालदीव। आठवाँ संस्करण दिसंबर 2025 में मालदीव में (शुरुआत 2017)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 16,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "ऊर्जा",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - ऊर्जा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत का पहला मेगावाट स्तर का हाइड्रोकाइनेटिक पावर प्रोजेक्ट कहाँ बनाया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हिमाचल प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पंजाब",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उत्तराखंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) पंजाब। पंजाब की नांगल हाइडल नहर में BBMB का 1 MW प्रोजेक्ट – बिना बाँध के बहते पानी से बिजली।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – ऊर्जा"
+  },
+  {
+   "q_no": 17,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "DRDO द्वारा परीक्षित आकाश-एनजी (Akash-NG) किस प्रकार की मिसाइल है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सतह से हवा में मार करने वाली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हवा से सतह पर मार करने वाली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हवा से हवा में मार करने वाली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सतह से सतह पर मार करने वाली",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) सतह से हवा में मार करने वाली। चांदीपुर से परीक्षित; मारक दूरी 70–80 किमी, गति ध्वनि से 2.5 गुना (निर्माता BDL)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 18,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "कला एवं संस्कृति",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - कला एवं संस्कृति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "डाक विभाग द्वारा बेंगलुरु से अयोध्या लाई गई राम की 800 किग्रा वजनी पेंटिंग किस शैली की है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मराठा शैली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मधुबनी शैली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तंजावुर शैली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मुगल शैली",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) तंजावुर शैली। 12 × 8 फीट; तमिलनाडु की तंजावुर चित्रकला (GI टैग 2007-08)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – कला एवं संस्कृति"
+  },
+  {
+   "q_no": 19,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत और मालदीव के एकुवेरिन सैन्य अभ्यास का 14वाँ संस्करण कहाँ हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तमिलनाडु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कर्नाटक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केरल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "लक्षद्वीप",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) केरल। 2–15 दिसंबर 2025 को तिरुवनंतपुरम (केरल) में (शुरुआत 2009)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 20,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "कला एवं संस्कृति",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - कला एवं संस्कृति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भगवान राम की दुनिया की सबसे बड़ी प्रतिमा कहाँ बनाई गई है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अयोध्या",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वाराणसी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "गोवा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उज्जैन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) गोवा। गोवा के श्री संस्थान गोकर्ण पर्तगाली जीवोत्तम मठ में राम सुतार निर्मित 77 फीट प्रतिमा।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – कला एवं संस्कृति"
+  },
+  {
+   "q_no": 21,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "SIPRI की 2024 की शीर्ष 100 हथियार निर्माता कंपनियों की सूची में भारत की कौन-सी कंपनी सबसे ऊपर रही?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "BEL",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "HAL",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "DRDO",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "L&T",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) HAL। HAL 44वें, BEL 58वें और मझगांव डॉक 91वें स्थान पर। शीर्ष: लॉकहीड मार्टिन, RTX, नॉर्थरोप ग्रम्मन।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 22,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "महत्वपूर्ण दिवस",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - महत्वपूर्ण दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विश्व मृदा दिवस 2025 की थीम क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Healthy Soils for Healthy Cities",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Soil and Urban Life",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Save Our Ground",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Sustainable Future Soil",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) Healthy Soils for Healthy Cities। प्रतिवर्ष 5 दिसंबर को (पहली बार 2014)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – महत्वपूर्ण दिवस"
+  },
+  {
+   "q_no": 23,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "अर्थव्यवस्था",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - अर्थव्यवस्था",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "UPI को दुनिया का सबसे बड़ा खुदरा तेज भुगतान तंत्र किस संस्था ने बताया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "विश्व बैंक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अंतरराष्ट्रीय मुद्रा कोष (IMF)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "UNDP",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एशियाई विकास बैंक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) अंतरराष्ट्रीय मुद्रा कोष (IMF)। IMF की रिपोर्ट के अनुसार विश्व के लगभग 49% रियल-टाइम भुगतान UPI (NPCI, अप्रैल 2016) से होते हैं।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – अर्थव्यवस्था"
+  },
+  {
+   "q_no": 24,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "राज्य एवं शहर",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - राज्य एवं शहर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "नीति आयोग ने किस राज्य को भारत की अदरक राजधानी घोषित किया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मिजोरम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "असम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मेघालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "नागालैंड",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) मिजोरम। कुल अदरक उत्पादन में शीर्ष राज्य: मध्य प्रदेश (22.4%), कर्नाटक, ओडिशा।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – राज्य एवं शहर"
+  },
+  {
+   "q_no": 25,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "महत्वपूर्ण दिवस",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - महत्वपूर्ण दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अंतरराष्ट्रीय मानवाधिकार दिवस 2025 (10 दिसंबर) की थीम क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "Dignity and Freedom for All",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "Stand Up for Human Rights",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "Human Rights, Our Everyday Essentials",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "Equality: Reducing Inequalities in the World",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) Human Rights, Our Everyday Essentials। थीम: Human Rights, Our Everyday Essentials।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – महत्वपूर्ण दिवस"
+  },
+  {
+   "q_no": 26,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "स्क्वैश विश्व कप 2025 किस देश ने जीता?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भारत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इंग्लैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मिस्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पाकिस्तान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) भारत। चेन्नई में पाँचवें संस्करण के फाइनल में भारत ने हांगकांग को 3-0 से हराया – पहला एशियाई विजेता।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – खेल"
+  },
+  {
+   "q_no": 27,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "शिक्षा",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - शिक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ISO प्रमाणन पाने वाला भारत का पहला राज्य शिक्षा बोर्ड कौन है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बिहार विद्यालय परीक्षा समिति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "UP माध्यमिक शिक्षा परिषद",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "CBSE",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजस्थान माध्यमिक शिक्षा बोर्ड",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) बिहार विद्यालय परीक्षा समिति। BSEB को कक्षा 10 व 12 के परिणाम प्रभावी ढंग से घोषित करने हेतु। ISO: 23 फरवरी 1947, जिनेवा।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – शिक्षा"
+  },
+  {
+   "q_no": 28,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत और UAE का डेजर्ट साइक्लोन-2 अभ्यास कहाँ हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अबू धाबी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नई दिल्ली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "दुबई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "शारजाह",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) अबू धाबी। दूसरा संस्करण 18–30 दिसंबर अबू धाबी में; पहला 2024 में महाजन (राजस्थान)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – रक्षा"
+  },
+  {
+   "q_no": 29,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "झारखंड ने किस टीम को हराकर सैयद मुश्ताक अली ट्रॉफी 2025 जीती?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "महाराष्ट्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हरियाणा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तमिलनाडु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कर्नाटक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) हरियाणा। घरेलू T20 टूर्नामेंट में झारखंड का पहला खिताब।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – खेल"
+  },
+  {
+   "q_no": 30,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एशियन यूथ पैरा गेम्स 2025 की अंतिम पदक तालिका में भारत किस स्थान पर रहा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पाँचवाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "छठा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आठवाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सातवाँ",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) सातवाँ। दुबई में भारत 36 स्वर्ण, 28 रजत, 38 कांस्य (102 पदक) के साथ सातवाँ; उज्बेकिस्तान प्रथम।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – खेल"
+  },
+  {
+   "q_no": 31,
+   "section": "करेंट अफेयर्स दिसंबर 2025",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स दिसंबर 2025 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पहले खेलो इंडिया ट्राइबल गेम्स के शुभंकर का नाम क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मोरवीर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "आदिवीर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वीरांगना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वनराज",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) मोरवीर। बिलासपुर (छत्तीसगढ़) में; 'मोर' = मेरा, 'वीर' = साहस। 7 खेल शामिल।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स दिसंबर 2025 – खेल"
+  }
+ ]
+}

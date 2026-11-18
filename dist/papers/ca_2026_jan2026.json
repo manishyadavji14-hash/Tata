@@ -1,0 +1,1338 @@
+{
+ "exam_meta": {
+  "exam_id": "ca_2026_jan2026",
+  "title": "करेंट अफेयर्स जनवरी 2026 – मासिक मॉक टेस्ट (30 प्रश्न, रट-लो वार्षिकांक 2026)",
+  "duration_minutes": 30,
+  "max_marks": 30,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "30 प्रश्न, प्रत्येक 1 अंक; नकारात्मक अंकन नहीं। प्रश्न व उत्तर रट-लो करेंट अफेयर्स वार्षिकांक 2026 के जनवरी 2026 अध्याय से; प्रत्येक उत्तर के साथ व्याख्या दी गई है।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "करेंट अफेयर्स जनवरी 2026"
+ ],
+ "passages": {},
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "गणतंत्र दिवस",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - गणतंत्र दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत के 77वें गणतंत्र दिवस समारोह के मुख्य अतिथि कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जो बाइडेन और एमानुएल मैक्रों",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "उर्सुला वॉन डेर लेयेन और एंटोनियो कोस्टा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ऋषि सुनक और ओलाफ शोल्ज़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "शी जिनपिंग और व्लादिमीर पुतिन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) उर्सुला वॉन डेर लेयेन और एंटोनियो कोस्टा। यूरोपीय आयोग की अध्यक्ष उर्सुला वॉन डेर लेयेन और यूरोपीय परिषद के अध्यक्ष एंटोनियो कोस्टा। पहले गणतंत्र दिवस (1950) के अतिथि सुकर्णो, 76वें के प्रबोवो सुबियांतो।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – गणतंत्र दिवस"
+  },
+  {
+   "q_no": 2,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वर्ष 2026 में कितने लोगों को पद्म भूषण दिया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "13",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "113",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "25",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 13। 2026 में 5 पद्म विभूषण, 13 पद्म भूषण और 113 पद्म श्री।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – पुरस्कार"
+  },
+  {
+   "q_no": 3,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "गणतंत्र दिवस 2026 पर किस अंतरिक्ष यात्री को सर्वोच्च शांतिकालीन वीरता पुरस्कार अशोक चक्र मिला?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "राकेश शर्मा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "शुभांशु शुक्ला",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "गगनयान पायलट प्रभाकर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विंग कमांडर प्रशांत नायर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) शुभांशु शुक्ला। ग्रुप कैप्टन शुभांशु शुक्ला (लखनऊ) – Axiom-4 मिशन के पायलट, ISS जाने वाले पहले भारतीय; राकेश शर्मा (1984) के बाद अशोक चक्र पाने वाले दूसरे अंतरिक्ष यात्री।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – पुरस्कार"
+  },
+  {
+   "q_no": 4,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "व्यक्तित्व",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - व्यक्तित्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विमान दुर्घटना में निधन होने वाले अजीत पवार किस राज्य के उपमुख्यमंत्री थे?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "महाराष्ट्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कर्नाटक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) महाराष्ट्र। 28 जनवरी 2026 को बारामती हवाई अड्डे पर लियरजेट 45 दुर्घटना; रिकॉर्ड छह बार उपमुख्यमंत्री।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – व्यक्तित्व"
+  },
+  {
+   "q_no": 5,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "सूचकांक",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - सूचकांक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ब्रांड फाइनेंस ग्लोबल सॉफ्ट पावर इंडेक्स 2026 में भारत का स्थान क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "24",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "28",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "32",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "35",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 32। 193 देशों में भारत 48.0 स्कोर के साथ 32वाँ; शीर्ष: अमेरिका, चीन, जापान।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – सूचकांक"
+  },
+  {
+   "q_no": 6,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "संविधान",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - संविधान",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रपति को संसद की संयुक्त बैठक में विशेष अभिभाषण देने का अधिकार किस अनुच्छेद से मिलता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 72",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 76",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 82",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 87",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अनुच्छेद 87। प्रत्येक आम चुनाव के बाद और हर वर्ष के पहले सत्र की शुरुआत में।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – संविधान"
+  },
+  {
+   "q_no": 7,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "अंतरराष्ट्रीय",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - अंतरराष्ट्रीय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संयुक्त राष्ट्र ने वर्ष 2026 को किस अंतरराष्ट्रीय वर्ष के रूप में घोषित किया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अंतरराष्ट्रीय क्वांटम विज्ञान वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अंतरराष्ट्रीय ग्लेशियर संरक्षण वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अंतरराष्ट्रीय सहकारिता वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अंतरराष्ट्रीय चारागाह और पशुपालक वर्ष",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अंतरराष्ट्रीय चारागाह और पशुपालक वर्ष। 2026 = अंतरराष्ट्रीय चारागाह एवं पशुपालक वर्ष तथा अंतरराष्ट्रीय महिला किसान वर्ष।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – अंतरराष्ट्रीय"
+  },
+  {
+   "q_no": 8,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किन दो आर्द्रभूमियों को नई रामसर साइट के रूप में मान्यता मिली है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चिल्का और लोकटक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पटना पक्षी अभयारण्य (एटा) और छारी-ढांड (कच्छ)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केवलादेव और सांभर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वूलर और अष्टमुडी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) पटना पक्षी अभयारण्य (एटा) और छारी-ढांड (कच्छ)। पटना पक्षी अभयारण्य UP का 11वाँ रामसर स्थल; संख्या 96 से 98। भारत ने 1 फरवरी 1982 को रामसर पर हस्ताक्षर किए।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – पर्यावरण"
+  },
+  {
+   "q_no": 9,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "व्यक्तित्व",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - व्यक्तित्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "महाराष्ट्र की पहली महिला उपमुख्यमंत्री कौन बनी हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सुप्रिया सुले",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पंकजा मुंडे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सुनेत्रा पवार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रश्मि ठाकरे",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) सुनेत्रा पवार। NCP नेता और राज्यसभा सांसद सुनेत्रा पवार।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – व्यक्तित्व"
+  },
+  {
+   "q_no": 10,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ऑस्ट्रेलियन ओपन 2026 का पुरुष एकल खिताब किसने जीता?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नोवाक जोकोविच",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जानिक सिनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अलेक्जेंडर ज्वेरेव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कार्लोस अल्कराज",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) कार्लोस अल्कराज। अल्कराज ने जोकोविच को हराकर पहला ऑस्ट्रेलियन ओपन जीता और सबसे कम उम्र में करियर ग्रैंड स्लैम पूरा किया; महिला एकल एलेना रयबाकिना।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – खेल"
+  },
+  {
+   "q_no": 11,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "अंतरराष्ट्रीय",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - अंतरराष्ट्रीय",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "1 जनवरी 2026 को कौन-सा देश यूरोजोन का 21वाँ सदस्य बना?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "रोमानिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हंगरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पोलैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बुल्गारिया",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) बुल्गारिया। यूरोजोन (1 जनवरी 1999) में EU के 27 में से 21 देश।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – अंतरराष्ट्रीय"
+  },
+  {
+   "q_no": 12,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "कृषि",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - कृषि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मछली उत्पादन के मामले में भारत का विश्व में कौन-सा स्थान है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पहला",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "दूसरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तीसरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चौथा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) दूसरा। 2024-25 में 195 मिलियन टन (~8%) के साथ चीन (~30%) के बाद दूसरा।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – कृषि"
+  },
+  {
+   "q_no": 13,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "सूचकांक",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - सूचकांक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हेनले पासपोर्ट इंडेक्स 2026 (जनवरी) में भारत की रैंक क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "75वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "80वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "85वीं",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "90वीं",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 80वीं। 55 देशों में बिना वीजा यात्रा; 2025 में रैंक 85। शीर्ष: सिंगापुर।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – सूचकांक"
+  },
+  {
+   "q_no": 14,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "भूगोल",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "शक्सगाम घाटी भारत के किस राज्य या केंद्रशासित प्रदेश में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हिमाचल प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जम्मू और कश्मीर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लद्दाख",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "उत्तराखंड",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) लद्दाख। ट्रांस-काराकोरम ट्रैक्ट; पाकिस्तान ने 1963 में अवैध रूप से (5,180 वर्ग किमी) चीन को सौंपा।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – भूगोल"
+  },
+  {
+   "q_no": 15,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "गणतंत्र दिवस",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - गणतंत्र दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "गणतंत्र दिवस परेड 2026 में राज्यों/UT की श्रेणी में किसकी झाँकी पहले स्थान पर रही?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मध्य प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "महाराष्ट्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उत्तर प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) महाराष्ट्र। महाराष्ट्र (गणेशोत्सव), जम्मू-कश्मीर, केरल; मंत्रालयों में संस्कृति मंत्रालय।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – गणतंत्र दिवस"
+  },
+  {
+   "q_no": 16,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "विरासत",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - विरासत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत ने 2026-27 की यूनेस्को विश्व धरोहर सूची के लिए किस स्थल का नामांकन भेजा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "काजीरंगा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मेघालय के लिविंग रूट ब्रिज",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अजंता की गुफाएँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "नालंदा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) मेघालय के लिविंग रूट ब्रिज। खासी और जयंतिया जनजातियों के जिंगकिएंग जेरी; भारत में 44 विश्व धरोहर (36 सांस्कृतिक, 7 प्राकृतिक, 1 मिश्रित)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – विरासत"
+  },
+  {
+   "q_no": 17,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रधानमंत्री राष्ट्रीय बाल पुरस्कार 2025 कितने बच्चों को दिया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "15",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "18",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "25",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "20",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 20। दो मरणोपरांत सहित 20 बच्चों को छह श्रेणियों में।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – पुरस्कार"
+  },
+  {
+   "q_no": 18,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "FIDE विश्व रैपिड चैंपियनशिप 2025 किसने जीती?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हिकारू नाकामुरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "डिंग लिरेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आर. प्रज्ञानानंद",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मैग्नस कार्लसन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) मैग्नस कार्लसन। पुरुष: कार्लसन स्वर्ण, आर्टेमिएव रजत, अर्जुन एरिगैसी कांस्य। FIDE: 20 जुलाई 1924, लुसाने।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – खेल"
+  },
+  {
+   "q_no": 19,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "इको सेंसिटिव जोन घोषित किया गया पार्वती-अरगा पक्षी अभयारण्य किस राज्य में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बिहार",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मध्य प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उत्तर प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) उत्तर प्रदेश। गोंडा जिला, 1,084 हेक्टेयर (2019 में रामसर); पर्यावरण संरक्षण अधिनियम 1986 के तहत ESZ।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – पर्यावरण"
+  },
+  {
+   "q_no": 20,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रपति ने जिस INS वाग्शीर में समुद्री यात्रा की, वह किस श्रेणी की पनडुब्बी है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कलवरी श्रेणी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "विंध्य श्रेणी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "नीलगिरि श्रेणी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हिमालय श्रेणी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) कलवरी श्रेणी। प्रोजेक्ट-75 (स्कॉर्पीन) की छठी व अंतिम पनडुब्बी; करवार से यात्रा। इससे पहले डॉ. कलाम ने 2006 में INS सिंधुरक्षक में यात्रा की थी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – रक्षा"
+  },
+  {
+   "q_no": 21,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "1 जनवरी 2026 को DRDO ने कौन-सा स्थापना दिवस मनाया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "68वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "65वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "69वाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "71वाँ",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 68वाँ। DRDO (1958, नई दिल्ली; अध्यक्ष डॉ. समीर वी. कामत) का 68वाँ स्थापना दिवस।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – रक्षा"
+  },
+  {
+   "q_no": 22,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "टाइगर रिज़र्व बनाने के प्रस्ताव को मंजूरी पाने वाला कैमूर वन्यजीव अभयारण्य किस राज्य में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "झारखंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "उत्तर प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मध्य प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बिहार",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) बिहार। कैमूर-रोहतास में 1,505 वर्ग किमी (1979); वाल्मीकि के बाद बिहार का दूसरा टाइगर रिज़र्व।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – पर्यावरण"
+  },
+  {
+   "q_no": 23,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "भूगोल",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "चर्चा में रहा ग्रीनलैंड किस देश का हिस्सा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "डेनमार्क",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ब्रिटेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कनाडा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वेनेजुएला",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) डेनमार्क। विश्व का सबसे बड़ा द्वीप (21 लाख वर्ग किमी), डेनमार्क का स्वायत्त क्षेत्र।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – भूगोल"
+  },
+  {
+   "q_no": 24,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "महत्वपूर्ण दिवस",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - महत्वपूर्ण दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हर साल 9 जनवरी को मनाए जाने वाले प्रवासी भारतीय दिवस की शुरुआत कब हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2003",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2001",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2000",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "2005",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 2003। 9 जनवरी 1915 को गांधीजी की दक्षिण अफ्रीका से वापसी की स्मृति में, 2003 से।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – महत्वपूर्ण दिवस"
+  },
+  {
+   "q_no": 25,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "कृषि",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - कृषि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "GI टैग पाने वाली नागौरी अश्वगंधा किस राज्य का उत्पाद है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मध्य प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "महाराष्ट्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) राजस्थान। सोजत मेहंदी के बाद राजस्थान का दूसरा GI कृषि उत्पाद। देश का पहला GI: दार्जिलिंग चाय (2004-05)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – कृषि"
+  },
+  {
+   "q_no": 26,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "चुनाव",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - चुनाव",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ECINET डिजिटल प्लेटफॉर्म किस संस्था ने शुरू किया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भारत निर्वाचन आयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "NHRC",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "परमाणु ऊर्जा आयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "RBI",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) भारत निर्वाचन आयोग। IICDEM 2026 (21–23 जनवरी, नई दिल्ली) में; 40 ऐप व वेब सेवाओं को जोड़ता है, 22 भाषाओं में।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – चुनाव"
+  },
+  {
+   "q_no": 27,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "भूगोल",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "चर्चा में रही तमसा नदी किस राज्य से निकलती है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मध्य प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "उत्तर प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केरल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) मध्य प्रदेश। सतना (मैहर) की कैमूर पर्वतमाला के तमसा कुंड से; ~264 किमी; प्रयागराज के पास सिरसा में गंगा से मिलती है।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – भूगोल"
+  },
+  {
+   "q_no": 28,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "योजनाएँ",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - योजनाएँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रधानमंत्री मोदी ने किस राज्य से पीएम स्वनिधि क्रेडिट कार्ड शुरू किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "महाराष्ट्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केरल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "तमिलनाडु",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) केरल। तिरुवनंतपुरम से UPI-लिंक्ड RuPay क्रेडिट कार्ड; योजना 31 मार्च 2030 तक।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – योजनाएँ"
+  },
+  {
+   "q_no": 29,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "विरासत",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - विरासत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यूनेस्को की अस्थायी सूची में शामिल बौद्ध डायमंड ट्रायंगल में कौन-सा स्थान नहीं आता?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "साँची",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रत्नगिरि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "उदयगिरि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ललितगिरि",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) साँची। ओडिशा के जाजपुर-कटक के ललितगिरि, उदयगिरि, रत्नगिरि; साँची मध्य प्रदेश में है।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – विरासत"
+  },
+  {
+   "q_no": 30,
+   "section": "करेंट अफेयर्स जनवरी 2026",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स जनवरी 2026 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पाँच सौ एकल मुकाबले जीतने वाली पहली भारतीय शटलर कौन बनी हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अंकिता रैना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "करमन कौर थांडी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पी. वी. सिंधु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ऋतुजा भोसले",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) पी. वी. सिंधु। इंडोनेशिया मास्टर्स सुपर 500 में; विश्व की छठी महिला शटलर।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स जनवरी 2026 – खेल"
+  }
+ ]
+}

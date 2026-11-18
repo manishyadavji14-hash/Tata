@@ -1,0 +1,1338 @@
+{
+ "exam_meta": {
+  "exam_id": "ca_2026_may2026",
+  "title": "करेंट अफेयर्स मई 2026 – मासिक मॉक टेस्ट (30 प्रश्न, रट-लो वार्षिकांक 2026)",
+  "duration_minutes": 30,
+  "max_marks": 30,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "30 प्रश्न, प्रत्येक 1 अंक; नकारात्मक अंकन नहीं। प्रश्न व उत्तर रट-लो करेंट अफेयर्स वार्षिकांक 2026 के मई 2026 अध्याय से; प्रत्येक उत्तर के साथ व्याख्या दी गई है।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "करेंट अफेयर्स मई 2026"
+ ],
+ "passages": {},
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "सूचकांक",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - सूचकांक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वर्ल्ड प्रेस फ्रीडम इंडेक्स 2026 में भारत की रैंक क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "151",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "155",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "157",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "159",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 157। RSF के 180 देशों में 157 (2025 में 151); नॉर्वे 10वीं बार प्रथम, इरिट्रिया 180वाँ।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – सूचकांक"
+  },
+  {
+   "q_no": 2,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "इतिहास",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "लगभग 1034 ईस्वी में भोजशाला का निर्माण किस शासक ने करवाया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पृथ्वीराज चौहान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अहिल्याबाई होल्कर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जीवाजीराव सिंधिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजा भोज",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) राजा भोज। परमार वंश; MP हाईकोर्ट (इंदौर पीठ) ने धार की भोजशाला को वाग्देवी सरस्वती मंदिर माना।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – इतिहास"
+  },
+  {
+   "q_no": 3,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "इतिहास",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - इतिहास",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "लाइडेन विश्वविद्यालय से लौटे 11वीं सदी के अनैमंगलम ताम्रपत्र किस राजवंश के हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मौर्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गुप्त",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "चोल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पल्लव",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) चोल। ~30 किग्रा, 21 बड़े व 3 छोटे ताम्रपत्र; राजेंद्र चोल प्रथम की मुहर।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – इतिहास"
+  },
+  {
+   "q_no": 4,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारत का पहला AI आधारित मानव-हाथी संघर्ष अनुसंधान केंद्र कहाँ बनेगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वाल्मीकि टाइगर रिज़र्व",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सिमलीपाल टाइगर रिज़र्व",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पलामू टाइगर रिज़र्व",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बांधवगढ़ टाइगर रिज़र्व",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) पलामू टाइगर रिज़र्व। झारखंड, ~20 एकड़।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – पर्यावरण"
+  },
+  {
+   "q_no": 5,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "खेल",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - खेल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "32वीं बार एवरेस्ट चढ़कर रिकॉर्ड बनाने वाले 'एवरेस्ट मैन' कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तेनजिंग नोर्गे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एडमंड हिलेरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कामी रीता शेरपा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ल्हाक्पा शेरपा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) कामी रीता शेरपा। 17 मई 2026; पहली बार 1994 में। ल्हाक्पा शेरपा 11वीं बार (महिला रिकॉर्ड)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – खेल"
+  },
+  {
+   "q_no": 6,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "भूगोल",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - भूगोल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सिलीगुड़ी कॉरिडोर भारत के किस राज्य में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "असम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सिक्किम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पश्चिम बंगाल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बिहार",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) पश्चिम बंगाल। 'चिकन नेक' (~22 किमी चौड़ा); राज्य ने ~120 एकड़ जमीन केंद्र/BSF को सौंपी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – भूगोल"
+  },
+  {
+   "q_no": 7,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "राज्य एवं शहर",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - राज्य एवं शहर",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अलग AI मंत्रालय बनाने वाला भारत का पहला राज्य कौन है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कर्नाटक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केरल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तेलंगाना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "तमिलनाडु",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) केरल। पहले AI मंत्री पी. के. कुन्हालीकुट्टी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – राज्य एवं शहर"
+  },
+  {
+   "q_no": 8,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "विरासत",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - विरासत",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "चीन की महान दीवार के बाद किस किले की दीवार को दुनिया की दूसरी सबसे लंबी दीवार की मान्यता मिली?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चित्तौड़गढ़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मेहरानगढ़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जैसलमेर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कुंभलगढ़",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) कुंभलगढ़। राजसमंद, ~36 किमी, राणा कुंभा (15वीं सदी); 2013 में UNESCO धरोहर।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – विरासत"
+  },
+  {
+   "q_no": 9,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "न्यायपालिका",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - न्यायपालिका",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "केंद्र ने सुप्रीम कोर्ट के न्यायाधीशों की संख्या बढ़ाकर कितनी करने की मंजूरी दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "34",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "35",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "37",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "38",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 38। अनुच्छेद 124(1): 34 (33+1) से 38 (37+1)।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – न्यायपालिका"
+  },
+  {
+   "q_no": 10,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मई 2026 में जारी SIPRI की सैन्य खर्च रिपोर्ट में वर्ष 2025 के लिए भारत का स्थान क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तीसरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "चौथा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पाँचवाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "छठा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) पाँचवाँ। $92.1 बिलियन; आगे अमेरिका, चीन, रूस, जर्मनी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – रक्षा"
+  },
+  {
+   "q_no": 11,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "INS महेंद्रगिरि किस प्रोजेक्ट की स्टील्थ फ्रिगेट है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्रोजेक्ट 17A",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्रोजेक्ट 17",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "प्रोजेक्ट 15B",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रोजेक्ट 18",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) प्रोजेक्ट 17A। MDL निर्मित नीलगिरि श्रेणी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – रक्षा"
+  },
+  {
+   "q_no": 12,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "नियुक्ति",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - नियुक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अगले CDS और नौसेना प्रमुख के रूप में किसे नियुक्त किया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "उपेंद्र द्विवेदी और संजय जसजीत सिंह",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एन. एस. राजा सुब्रमणि और कृष्णा स्वामीनाथन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मनोज पांडे और दिनेश के. त्रिपाठी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एम. वी. सुचिंद्र कुमार और अजेंद्र बहादुर सिंह",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) एन. एस. राजा सुब्रमणि और कृष्णा स्वामीनाथन। राजा सुब्रमणि ने अनिल चौहान और स्वामीनाथन ने 31 मई 2026 को दिनेश के. त्रिपाठी का स्थान लिया।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – नियुक्ति"
+  },
+  {
+   "q_no": 13,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "महत्वपूर्ण दिवस",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - महत्वपूर्ण दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय प्रौद्योगिकी दिवस 2026 कब मनाया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "10 मई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "11 मई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "12 मई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "13 मई",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 11 मई। 11 व 13 मई 1998 के पोखरण-II (ऑपरेशन शक्ति) की स्मृति में; पोखरण-I 18 मई 1974।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – महत्वपूर्ण दिवस"
+  },
+  {
+   "q_no": 14,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "DRDO और वायु सेना की परीक्षित TARA प्रणाली क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सतह से हवा मिसाइल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हाइपरसोनिक ड्रोन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "स्वदेशी ग्लाइड हथियार प्रणाली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बैलिस्टिक मिसाइल रक्षा प्रणाली",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) स्वदेशी ग्लाइड हथियार प्रणाली। Tactical Advanced Range Augmentation – RCI हैदराबाद व DRDO की भारत की पहली स्वदेशी ग्लाइड हथियार प्रणाली।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – रक्षा"
+  },
+  {
+   "q_no": 15,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "ऊर्जा",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - ऊर्जा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "तारापुर परमाणु ऊर्जा स्टेशन किस राज्य में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "महाराष्ट्र",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तमिलनाडु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कर्नाटक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) महाराष्ट्र। पालघर के बोइसर में; भारत का सबसे पुराना (1969); AERB ने यूनिट-2 को 10 साल चलाने की अनुमति दी।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – ऊर्जा"
+  },
+  {
+   "q_no": 16,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "अर्थव्यवस्था",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - अर्थव्यवस्था",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सोने और चाँदी का प्रभावी आयात शुल्क बढ़ाकर कितना किया गया है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "6 प्रतिशत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "10 प्रतिशत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "12 प्रतिशत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "15 प्रतिशत",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 15 प्रतिशत। 13 मई 2026 को 6% से 15% (IGST सहित ~9.2% से ~18.4%); बेसिक कस्टम ड्यूटी 5% से 10%, AIDC 1% से 5%।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – अर्थव्यवस्था"
+  },
+  {
+   "q_no": 17,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "नियुक्ति",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - नियुक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मई 2026 में किस CBI निदेशक को एक वर्ष का सेवा विस्तार मिला?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सूर्य कांत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्रशांत सूद",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जी. पी. सिंह",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रवीण सूद",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) प्रवीण सूद। 1986 बैच कर्नाटक कैडर IPS; CBI 1963।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – नियुक्ति"
+  },
+  {
+   "q_no": 18,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "उद्योग",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - उद्योग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "देश के पहले चालू पीएम मित्र (PM MITRA) पार्क का उद्घाटन कहाँ हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वारंगल, तेलंगाना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कोयंबटूर, तमिलनाडु",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सूरत, गुजरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कानपुर, उत्तर प्रदेश",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) वारंगल, तेलंगाना। ~₹1,695 करोड़, 1,327 एकड़; योजना के तहत 7 राज्यों (UP सहित) में पार्क।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – उद्योग"
+  },
+  {
+   "q_no": 19,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "पर्यावरण",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - पर्यावरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पहला सैटेलाइट टैग वाला गंगा सॉफ्ट-शेल कछुआ किस राष्ट्रीय उद्यान में छोड़ा गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जिम कॉर्बेट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "काजीरंगा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "गिर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "केवलादेव",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) काजीरंगा। लुप्तप्राय प्रजाति दिवस (15 मई 2026) पर; काजीरंगा ~1,302 वर्ग किमी, 1985 में UNESCO धरोहर।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – पर्यावरण"
+  },
+  {
+   "q_no": 20,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "अवसंरचना",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - अवसंरचना",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सबसे बड़ा मानव निर्मित मीठे पानी का जलाशय बनाने के लिए भारत-नीदरलैंड का समझौता किस परियोजना से जुड़ा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कल्पसर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पोलावरम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "केन-बेतवा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "टिहरी बाँध",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) कल्पसर। खंभात की खाड़ी में ~30 किमी बाँध; सौराष्ट्र के 9 जिलों की ~10 लाख हेक्टेयर सिंचाई।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – अवसंरचना"
+  },
+  {
+   "q_no": 21,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "पुरस्कार",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - पुरस्कार",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रधानमंत्री को एग्रीकोला (Agricola) मेडल संयुक्त राष्ट्र की किस संस्था ने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "WFP",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "FAO",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "IFAD",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "UNDP",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) FAO। 20 मई 2026, रोम (FAO 16 अक्टूबर 1945); पूर्व PM मनमोहन सिंह को 2008 में मिला था।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – पुरस्कार"
+  },
+  {
+   "q_no": 22,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "स्वास्थ्य",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - स्वास्थ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कांगो और युगांडा में इबोला के किस दुर्लभ स्ट्रेन के कारण WHO ने अंतरराष्ट्रीय स्वास्थ्य आपातकाल घोषित किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बुंडीबुग्यो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सूडान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जैरे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रेस्टन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) बुंडीबुग्यो। बुंडीबुग्यो इबोला वायरस (BDBV) – पहली बार 2007 में युगांडा में; मृत्यु दर 25–50%।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – स्वास्थ्य"
+  },
+  {
+   "q_no": 23,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "अंतरिक्ष",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - अंतरिक्ष",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "AIAA गोडार्ड एस्ट्रोनॉटिक्स अवॉर्ड 2026 इसरो के किस मिशन को मिला?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "चंद्रयान-2",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "आदित्य-L1",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "गगनयान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चंद्रयान-3",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) चंद्रयान-3। 23 अगस्त 2023 को दक्षिणी ध्रुव के पास सॉफ्ट लैंडिंग।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – अंतरिक्ष"
+  },
+  {
+   "q_no": 24,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "विज्ञान एवं तकनीक",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - विज्ञान एवं तकनीक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दुनिया का पहला AI आधारित प्लांट जीनोम एडिटिंग प्लेटफॉर्म किस देश ने बनाया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भारत",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अमेरिका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जापान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चीन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) भारत। ICAR-CRRI कटक ने Plant-OpenCRISPR1 (POC1) विकसित किया।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – विज्ञान एवं तकनीक"
+  },
+  {
+   "q_no": 25,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "ऊर्जा",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - ऊर्जा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "देश का पहला महिलाओं के नेतृत्व वाला सौर ऊर्जा संयंत्र किस राज्य में शुरू हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कर्नाटक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "तेलंगाना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राजस्थान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) तेलंगाना। खम्मम के वेंकटपुरम में 1 MW, ₹3 करोड़; महिला स्वयं सहायता समूह द्वारा संचालित।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – ऊर्जा"
+  },
+  {
+   "q_no": 26,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "न्यायपालिका",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - न्यायपालिका",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कागज रहित न्यायपालिका वाला देश का पहला राज्य कौन बना?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सिक्किम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "केरल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "गुजरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कर्नाटक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) सिक्किम। ई-फाइलिंग, डिजिटल मुकदमा प्रबंधन और ऑनलाइन पहुँच।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – न्यायपालिका"
+  },
+  {
+   "q_no": 27,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "रक्षा",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - रक्षा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "CINBAX द्वितीय 2026 सैन्य अभ्यास किन देशों के बीच हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "भारत और वियतनाम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भारत और कंबोडिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भारत और थाईलैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भारत और इंडोनेशिया",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) भारत और कंबोडिया। 4–17 मई 2026, कंबोडिया; पहला संस्करण 2023 में भारत में।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – रक्षा"
+  },
+  {
+   "q_no": 28,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "कृषि",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - कृषि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कपास उत्पादकता मिशन के लिए पाँच साल में कितनी राशि रखी गई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "₹5,659 करोड़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "₹5,000 करोड़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "₹6,460 करोड़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "₹8,800 करोड़",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) ₹5,659 करोड़। 2026-27 से 2030-31 तक ₹5,659.22 करोड़।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – कृषि"
+  },
+  {
+   "q_no": 29,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "नियुक्ति",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - नियुक्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "नीति आयोग के नए उपाध्यक्ष कौन नियुक्त हुए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सुमन के. बेरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अशोक कुमार लाहिड़ी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बी. वी. आर. सुब्रमण्यम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अरविंद पनगढ़िया",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) अशोक कुमार लाहिड़ी। सुमन बेरी के स्थान पर; नीति आयोग 1 जनवरी 2015, अध्यक्ष प्रधानमंत्री।",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – नियुक्ति"
+  },
+  {
+   "q_no": 30,
+   "section": "करेंट अफेयर्स मई 2026",
+   "topic": "उत्तर प्रदेश",
+   "syllabus_tag": "करेंट अफेयर्स मई 2026 - उत्तर प्रदेश",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रधानमंत्री ने 29 अप्रैल 2026 को गंगा एक्सप्रेसवे का उद्घाटन उत्तर प्रदेश के किस जिले में किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मेरठ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वाराणसी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "प्रयागराज",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हरदोई",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) हरदोई। 594 किमी, 6-लेन, ~₹36,230 करोड़; 12 जिलों से होकर मेरठ को प्रयागराज से जोड़ता है। (स्रोत के एक अन्य भाग में स्थान \"हापुड़\" भी लिखा है।)",
+   "solution_en": "",
+   "key_concept": "करेंट अफेयर्स मई 2026 – उत्तर प्रदेश"
+  }
+ ]
+}
