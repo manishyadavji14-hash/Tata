@@ -5,7 +5,7 @@ import { DEMO_SET } from './demo-set.js';
 import { icon, toast, confirmDialog } from './ui.js';
 import { $, esc } from './util.js';
 
-export const APP_VERSION = '1.9.5';
+export const APP_VERSION = '1.9.6';
 
 const routes = {
   home: () => import('./views/home.js'),
