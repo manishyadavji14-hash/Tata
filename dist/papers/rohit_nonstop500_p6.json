@@ -1,0 +1,5213 @@
+{
+ "exam_meta": {
+  "exam_id": "rohit_nonstop500_p6",
+  "title": "NONSTOP 500 प्रैक्टिस सेट 6/6 – जीवन कौशल, संविधान एवं प्रबंधन (118 प्रश्न, रोहित वैद्यवान सर)",
+  "duration_minutes": 118,
+  "max_marks": 118,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "118 प्रश्न, प्रत्येक 1 अंक; नकारात्मक अंकन नहीं। प्रश्न \"UP SUPERTET 2026 NONSTOP 500 Final Revision – रोहित वैद्यवान सर (YouTube: https://youtu.be/aTkCc1ZFtjc)\" वीडियो से लिए गए हैं; सभी उत्तर मानक स्रोतों से जाँचे गए हैं और वीडियो की त्रुटियाँ \"सुधार\" के साथ ठीक की गई हैं।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "जीवन कौशल",
+  "संविधान, RTE और बाल अधिकार",
+  "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+  "प्रबंधन और प्रमुख वर्ष"
+ ],
+ "passages": {},
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "WHO ने कितने मूल जीवन कौशल बताए हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "8",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "10",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "12",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 10। आत्म-जागरूकता, समानुभूति, आलोचनात्मक व सृजनात्मक चिंतन, निर्णय, समस्या-समाधान, प्रभावी संप्रेषण, अंतर्वैयक्तिक संबंध, तनाव व भावनाओं से निपटना।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 2,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निम्न में से कौन-सा WHO के 10 जीवन कौशलों में शामिल है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नेतृत्व क्षमता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "समय प्रबंधन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वित्तीय साक्षरता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "भावनाओं से निपटना (Coping with Emotions)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) भावनाओं से निपटना (Coping with Emotions)।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 3,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"जीवन कौशल अनुकूली और सकारात्मक व्यवहार की योग्यताएँ हैं…\" यह परिभाषा किस संस्था की है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "यूनेस्को",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "यूनिसेफ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "NCERT",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विश्व स्वास्थ्य संगठन (WHO)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) विश्व स्वास्थ्य संगठन (WHO)। WHO (1993/1997)।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 4,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "UNICEF की LSCE पहल में \"C\" का अर्थ क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "Cooperation (सहयोग)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "Communication (संप्रेषण)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "Creativity (सृजनात्मकता)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "Citizenship (नागरिकता)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) Citizenship (नागरिकता)। Life Skills and Citizenship Education।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 5,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "UNICEF के MENA जीवन कौशल ढाँचे में MENA का अर्थ क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मध्य पूर्व और उत्तरी एशिया",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मुख्य शिक्षा एवं राष्ट्रीय उपलब्धि",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मध्य यूरोप और उत्तरी अमेरिका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मध्य पूर्व और उत्तरी अफ्रीका",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) मध्य पूर्व और उत्तरी अफ्रीका। Middle East and North Africa।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 6,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "UNICEF MENA ढाँचे में कितने मूल जीवन कौशल हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "12",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "16",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "10",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "8",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 12।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 7,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "UNICEF MENA ढाँचे में अधिगम के कितने आयाम हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 4। संज्ञानात्मक, साधनात्मक, वैयक्तिक और सामाजिक।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 8,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "UNICEF MENA जीवन कौशल ढाँचा किस वर्ष जारी हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2019",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2012",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2021",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "2017",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 2017।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 9,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "MENA ढाँचे का संज्ञानात्मक (Cognitive) आयाम डेलर्स के किस स्तंभ से जुड़ा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "साथ रहने के लिए सीखना (Learning to Live Together)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "करने के लिए सीखना (Learning to Do)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जानने के लिए सीखना (Learning to Know)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "होने के लिए सीखना (Learning to Be)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) जानने के लिए सीखना (Learning to Know)।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 10,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "MENA ढाँचे का साधनात्मक (Instrumental) आयाम किस स्तंभ से जुड़ा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जानने के लिए सीखना (Learning to Know)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "होने के लिए सीखना (Learning to Be)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "करने के लिए सीखना (Learning to Do)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "साथ रहने के लिए सीखना (Learning to Live Together)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) करने के लिए सीखना (Learning to Do)।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 11,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "MENA ढाँचे का वैयक्तिक (Individual) आयाम किस स्तंभ से जुड़ा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "साथ रहने के लिए सीखना (Learning to Live Together)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "करने के लिए सीखना (Learning to Do)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जानने के लिए सीखना (Learning to Know)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "होने के लिए सीखना (Learning to Be)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) होने के लिए सीखना (Learning to Be)।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 12,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "MENA ढाँचे का सामाजिक (Social) आयाम किस स्तंभ से जुड़ा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "होने के लिए सीखना (Learning to Be)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "साथ रहने के लिए सीखना (Learning to Live Together)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "करने के लिए सीखना (Learning to Do)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जानने के लिए सीखना (Learning to Know)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) साथ रहने के लिए सीखना (Learning to Live Together)।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 13,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "MENA ढाँचे में सृजनात्मकता, आलोचनात्मक चिंतन और समस्या-समाधान किस आयाम के कौशल हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सामाजिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वैयक्तिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "साधनात्मक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "संज्ञानात्मक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) संज्ञानात्मक।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 14,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "MENA ढाँचे में सहयोग, मोल-भाव (Negotiation) और निर्णय-निर्माण किस आयाम के कौशल हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सामाजिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "संज्ञानात्मक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "साधनात्मक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वैयक्तिक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) साधनात्मक।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 15,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "MENA ढाँचे में आत्म-प्रबंधन, लचीलापन (Resilience) और संप्रेषण किस आयाम के कौशल हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "साधनात्मक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "संज्ञानात्मक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वैयक्तिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सामाजिक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) वैयक्तिक।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 16,
+   "section": "जीवन कौशल",
+   "topic": "WHO और UNICEF के जीवन कौशल",
+   "syllabus_tag": "जीवन कौशल - WHO और UNICEF के जीवन कौशल",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "MENA ढाँचे में विविधता का सम्मान, समानुभूति और सहभागिता किस आयाम के कौशल हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "साधनात्मक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सामाजिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "संज्ञानात्मक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वैयक्तिक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) सामाजिक।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – WHO और UNICEF के जीवन कौशल"
+  },
+  {
+   "q_no": 17,
+   "section": "जीवन कौशल",
+   "topic": "यूनेस्को रिपोर्टें",
+   "syllabus_tag": "जीवन कौशल - यूनेस्को रिपोर्टें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Learning: The Treasure Within\" (अधिगम: भीतर छिपा खज़ाना) रिपोर्ट किस आयोग की है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "राधाकृष्णन आयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एडगर फॉर आयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कोठारी आयोग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जैक्स डेलर्स आयोग",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) जैक्स डेलर्स आयोग। 1996, यूनेस्को।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – यूनेस्को रिपोर्टें"
+  },
+  {
+   "q_no": 18,
+   "section": "जीवन कौशल",
+   "topic": "यूनेस्को रिपोर्टें",
+   "syllabus_tag": "जीवन कौशल - यूनेस्को रिपोर्टें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Learning to Be\" रिपोर्ट (1972) किसकी अध्यक्षता में तैयार हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कोफी अन्नान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अमर्त्य सेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एडगर फॉर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जैक्स डेलर्स",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) एडगर फॉर। यूनेस्को की फॉर रिपोर्ट।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – यूनेस्को रिपोर्टें"
+  },
+  {
+   "q_no": 19,
+   "section": "जीवन कौशल",
+   "topic": "यूनेस्को रिपोर्टें",
+   "syllabus_tag": "जीवन कौशल - यूनेस्को रिपोर्टें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "डेलर्स रिपोर्ट में शिक्षा के कितने स्तंभ बताए गए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 4। जानने, करने, होने और साथ रहने के लिए सीखना।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – यूनेस्को रिपोर्टें"
+  },
+  {
+   "q_no": 20,
+   "section": "जीवन कौशल",
+   "topic": "शिक्षक के व्यावसायिक मानक (NPST)",
+   "syllabus_tag": "जीवन कौशल - शिक्षक के व्यावसायिक मानक (NPST)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "NPST का पूरा रूप क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "National Policy for School Teachers",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "National Programme for Skill Training",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "National Platform for Student Teaching",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "National Professional Standards for Teachers",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) National Professional Standards for Teachers।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – शिक्षक के व्यावसायिक मानक (NPST)"
+  },
+  {
+   "q_no": 21,
+   "section": "जीवन कौशल",
+   "topic": "शिक्षक के व्यावसायिक मानक (NPST)",
+   "syllabus_tag": "जीवन कौशल - शिक्षक के व्यावसायिक मानक (NPST)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "NEP 2020 के किस अनुच्छेद (पैरा) में NPST का उल्लेख है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5.20",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "5.15",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "4.31",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "15.11",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 5.20।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – शिक्षक के व्यावसायिक मानक (NPST)"
+  },
+  {
+   "q_no": 22,
+   "section": "जीवन कौशल",
+   "topic": "शिक्षक के व्यावसायिक मानक (NPST)",
+   "syllabus_tag": "जीवन कौशल - शिक्षक के व्यावसायिक मानक (NPST)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "NEP 2020 के अनुसार प्रत्येक शिक्षक को हर वर्ष सतत व्यावसायिक विकास (CPD) के कितने घंटे लेने चाहिए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "100 घंटे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "50 घंटे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "40 घंटे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "30 घंटे",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 50 घंटे। NEP पैरा 5.15।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – शिक्षक के व्यावसायिक मानक (NPST)"
+  },
+  {
+   "q_no": 23,
+   "section": "जीवन कौशल",
+   "topic": "शिक्षक के व्यावसायिक मानक (NPST)",
+   "syllabus_tag": "जीवन कौशल - शिक्षक के व्यावसायिक मानक (NPST)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "NMM का पूरा रूप क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "National Mission for Mentoring",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "National Mentor Management",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "National Mission for Monitoring",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "National Mission for Mathematics",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) National Mission for Mentoring। वरिष्ठ/सेवानिवृत्त शिक्षकों द्वारा शिक्षकों का मार्गदर्शन।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – शिक्षक के व्यावसायिक मानक (NPST)"
+  },
+  {
+   "q_no": 24,
+   "section": "जीवन कौशल",
+   "topic": "शिक्षक के व्यावसायिक मानक (NPST)",
+   "syllabus_tag": "जीवन कौशल - शिक्षक के व्यावसायिक मानक (NPST)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय मेंटरिंग मिशन (NMM) के मार्गदर्शक दस्तावेज़ को क्या कहा जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "व्हाइट पेपर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ग्रीन बुक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ब्लू बुक (Blue Book)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "येलो बुक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) ब्लू बुक (Blue Book)। NCTE द्वारा तैयार।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – शिक्षक के व्यावसायिक मानक (NPST)"
+  },
+  {
+   "q_no": 25,
+   "section": "जीवन कौशल",
+   "topic": "शिक्षक के व्यावसायिक मानक (NPST)",
+   "syllabus_tag": "जीवन कौशल - शिक्षक के व्यावसायिक मानक (NPST)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "NEP 2020 के किस अनुच्छेद (पैरा) में राष्ट्रीय मेंटरिंग मिशन का उल्लेख है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5.15",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "4.31",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "5.20",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "15.11",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 15.11।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – शिक्षक के व्यावसायिक मानक (NPST)"
+  },
+  {
+   "q_no": 26,
+   "section": "जीवन कौशल",
+   "topic": "शिक्षक के व्यावसायिक मानक (NPST)",
+   "syllabus_tag": "जीवन कौशल - शिक्षक के व्यावसायिक मानक (NPST)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "शिक्षकों के लिए आचार संहिता (Code of Professional Ethics) किस संस्था से जुड़ी है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "UGC",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "CBSE",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "NCERT",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "NCTE",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) NCTE।",
+   "solution_en": "",
+   "key_concept": "जीवन कौशल – शिक्षक के व्यावसायिक मानक (NPST)"
+  },
+  {
+   "q_no": 27,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE अधिनियम की किस धारा में शारीरिक दंड और मानसिक उत्पीड़न पर प्रतिबंध है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "धारा 21",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "धारा 29",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "धारा 24",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "धारा 17",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) धारा 17।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 28,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE अधिनियम की किस धारा में शिक्षकों के कर्तव्य बताए गए हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "धारा 24",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "धारा 17",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "धारा 23",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "धारा 27",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) धारा 24। नियमितता, समय पर पाठ्यक्रम पूरा करना, अभिभावकों से नियमित बैठक आदि।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 29,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE अधिनियम की किस धारा में शिक्षकों की न्यूनतम योग्यता का प्रावधान है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "धारा 25",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "धारा 23",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "धारा 29",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "धारा 24",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) धारा 23। न्यूनतम योग्यता NCTE (शैक्षिक प्राधिकरण) तय करती है।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 30,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE अधिनियम की किस धारा के अनुसार शिक्षकों को गैर-शैक्षणिक कार्यों में नहीं लगाया जा सकता?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "धारा 27",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "धारा 21",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "धारा 28",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "धारा 24",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) धारा 27। अपवाद: जनगणना, आपदा राहत और चुनाव।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 31,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE अधिनियम की किस धारा में पाठ्यक्रम और मूल्यांकन प्रक्रिया का प्रावधान है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "धारा 23",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "धारा 30",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "धारा 29",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "धारा 17",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) धारा 29। सतत एवं व्यापक मूल्यांकन, बाल-केंद्रित अधिगम।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 32,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE अधिनियम की किस धारा में विद्यालय प्रबंधन समिति (SMC) का प्रावधान है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "धारा 22",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "धारा 12",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "धारा 24",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "धारा 21",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) धारा 21। धारा 22 = विद्यालय विकास योजना।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 33,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE अधिनियम कब से लागू हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "1 अप्रैल 2009",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "1 अप्रैल 2010",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "26 अगस्त 2009",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "12 दिसंबर 2002",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 1 अप्रैल 2010।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 34,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE अधिनियम किस आयु वर्ग के बच्चों पर लागू होता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "3–14 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "6–18 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "0–6 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "6–14 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 6–14 वर्ष।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 35,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE धारा 24 के अनुसार शिक्षक बच्चे की प्रगति के बारे में किससे नियमित बैठक करेगा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्रधानाचार्य",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जिला शिक्षा अधिकारी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "माता-पिता/अभिभावक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ग्राम प्रधान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) माता-पिता/अभिभावक।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 36,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विद्यालय प्रबंधन समिति (SMC) में कम से कम कितने सदस्य अभिभावक होने चाहिए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तीन-चौथाई (3/4)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "दो-तिहाई (2/3)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एक-तिहाई (1/3)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "आधे (1/2)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) तीन-चौथाई (3/4)।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 37,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विद्यालय प्रबंधन समिति (SMC) में महिलाओं की न्यूनतम भागीदारी कितनी होनी चाहिए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "75%",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "33%",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "25%",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "50%",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 50%।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 38,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "RTE अधिनियम 2009",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - RTE अधिनियम 2009",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "RTE अनुसूची के अनुसार शिक्षक के प्रति सप्ताह न्यूनतम कार्य घंटे (तैयारी सहित) कितने हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "30 घंटे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "45 घंटे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "40 घंटे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "50 घंटे",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 45 घंटे। प्राथमिक के लिए 200 और उच्च प्राथमिक के लिए 220 कार्य दिवस।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – RTE अधिनियम 2009"
+  },
+  {
+   "q_no": 39,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "6–14 वर्ष के बच्चों को निःशुल्क व अनिवार्य शिक्षा का मौलिक अधिकार किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 45",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 46",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 51A",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 21A",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अनुच्छेद 21A। 86वें संशोधन (2002) से जोड़ा गया।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 40,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "6 वर्ष से कम आयु के बच्चों की प्रारंभिक देखभाल व शिक्षा किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 45",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 46",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 21A",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 39(f)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) अनुच्छेद 45। नीति-निदेशक तत्व; 86वें संशोधन से नया रूप।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 41,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अनुसूचित जाति, जनजाति और कमजोर वर्गों के शैक्षिक व आर्थिक हितों की अभिवृद्धि किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 45",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 15",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 30",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 46",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अनुच्छेद 46।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 42,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विधि के समक्ष समता (Equality before Law) किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 17",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 15",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 14",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 21",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) अनुच्छेद 14।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 43,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अस्पृश्यता का अंत किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 15",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 17",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 14",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 18",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) अनुच्छेद 17।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 44,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "धर्म, मूलवंश, जाति, लिंग या जन्मस्थान के आधार पर भेदभाव का निषेध किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 17",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 15",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 16",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 14",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) अनुच्छेद 15।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 45,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मौलिक कर्तव्य संविधान के किस अनुच्छेद में हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 51A",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 51",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 21A",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 45",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) अनुच्छेद 51A। भाग IV-A।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 46,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वैज्ञानिक दृष्टिकोण, मानववाद और ज्ञानार्जन की भावना का विकास किस मौलिक कर्तव्य में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 51A(g)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 51A(k)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 51A(i)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 51A(h)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अनुच्छेद 51A(h)।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 47,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संविधान में वर्तमान में कुल कितने मौलिक कर्तव्य हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "10",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "11",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "9",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "12",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 11। मूल रूप से 10 (1976); 11वाँ 2002 में जोड़ा गया।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 48,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अनुच्छेद 21A किस संविधान संशोधन से जोड़ा गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "44वाँ संशोधन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "73वाँ संशोधन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "42वाँ संशोधन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "86वाँ संशोधन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 86वाँ संशोधन। 2002।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 49,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मौलिक कर्तव्य किस संविधान संशोधन से जोड़े गए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "86वाँ संशोधन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "44वाँ संशोधन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "61वाँ संशोधन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "42वाँ संशोधन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 42वाँ संशोधन। 1976, स्वर्ण सिंह समिति की संस्तुति पर; इसी से शिक्षा समवर्ती सूची में गई।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 50,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "माता-पिता/अभिभावक द्वारा 6–14 वर्ष के बच्चे को शिक्षा का अवसर देना किस मौलिक कर्तव्य में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 51A(j)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 51A(k)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 51A(h)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 21A",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) अनुच्छेद 51A(k)।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 51,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सार्वजनिक संपत्ति की सुरक्षा और हिंसा से दूर रहना किस मौलिक कर्तव्य में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 51A(h)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 51A(f)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 51A(k)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 51A(i)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अनुच्छेद 51A(i)।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 52,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संविधान की प्रस्तावना में किस प्रकार के न्याय का उल्लेख है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सामाजिक, आर्थिक और राजनीतिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नैतिक, आर्थिक और राजनीतिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "धार्मिक, सांस्कृतिक और राजनीतिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सामाजिक, धार्मिक और आर्थिक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) सामाजिक, आर्थिक और राजनीतिक।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 53,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संविधान की प्रस्तावना में किस प्रकार की समता का उल्लेख है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "धर्म और जाति की समता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्रतिष्ठा और अवसर की समता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आय और संपत्ति की समता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "शिक्षा और रोजगार की समता",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) प्रतिष्ठा और अवसर की समता।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 54,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रस्तावना में \"व्यक्ति की गरिमा और राष्ट्र की एकता व अखंडता\" सुनिश्चित करने वाला आदर्श कौन-सा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "न्याय (Justice)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "समता (Equality)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "स्वतंत्रता (Liberty)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बंधुता (Fraternity)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) बंधुता (Fraternity)।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 55,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अल्पसंख्यकों को शिक्षण संस्थाएँ स्थापित करने और चलाने का अधिकार किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 25",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 29",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 30",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 28",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) अनुच्छेद 30।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 56,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पूर्णतः राज्य-निधि से चलने वाली शिक्षा संस्थाओं में धार्मिक शिक्षा का निषेध किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 30(1)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 29(2)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 25(1)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 28(1)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अनुच्छेद 28(1)।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 57,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्राथमिक स्तर पर मातृभाषा में शिक्षा की सुविधा किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 343",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 350B",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 351",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 350A",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अनुच्छेद 350A। 350B = भाषाई अल्पसंख्यकों के लिए विशेष अधिकारी।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 58,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बच्चों को स्वस्थ ढंग से और स्वतंत्रता व गरिमा की स्थिति में विकास के अवसर किस अनुच्छेद में हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 45",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 47",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 39(f)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 39(e)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) अनुच्छेद 39(f)।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 59,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "संविधान के अनुच्छेद",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - संविधान के अनुच्छेद",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अंतरराष्ट्रीय शांति और सुरक्षा की अभिवृद्धि किस अनुच्छेद में है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 51A",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 48A",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 50",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 51",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अनुच्छेद 51।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – संविधान के अनुच्छेद"
+  },
+  {
+   "q_no": 60,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "अंतरराष्ट्रीय घोषणाएँ",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - अंतरराष्ट्रीय घोषणाएँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मानवाधिकारों की सार्वभौमिक घोषणा (UDHR) के किस अनुच्छेद में शिक्षा का अधिकार है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 26",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 29",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 19",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 21",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) अनुच्छेद 26। सुधार: वीडियो में अनुच्छेद 29 कहा गया; शिक्षा का अधिकार UDHR अनुच्छेद 26 में है (अनुच्छेद 29 समुदाय के प्रति कर्तव्यों का है)।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – अंतरराष्ट्रीय घोषणाएँ"
+  },
+  {
+   "q_no": 61,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "अंतरराष्ट्रीय घोषणाएँ",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - अंतरराष्ट्रीय घोषणाएँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बाल अधिकार अभिसमय (UNCRC) का कौन-सा अनुच्छेद \"बच्चे के सर्वोत्तम हित\" (Best Interests) से संबंधित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 3",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 28",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 1",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 12",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) अनुच्छेद 3।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – अंतरराष्ट्रीय घोषणाएँ"
+  },
+  {
+   "q_no": 62,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "अंतरराष्ट्रीय घोषणाएँ",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - अंतरराष्ट्रीय घोषणाएँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "UNCRC का कौन-सा अनुच्छेद बच्चों के शिक्षा के अधिकार से संबंधित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 3",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 29",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 28",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 31",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) अनुच्छेद 28।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – अंतरराष्ट्रीय घोषणाएँ"
+  },
+  {
+   "q_no": 63,
+   "section": "संविधान, RTE और बाल अधिकार",
+   "topic": "अंतरराष्ट्रीय घोषणाएँ",
+   "syllabus_tag": "संविधान, RTE और बाल अधिकार - अंतरराष्ट्रीय घोषणाएँ",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "UNCRC का कौन-सा अनुच्छेद शिक्षा के उद्देश्यों (Aims of Education) से संबंधित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अनुच्छेद 12",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अनुच्छेद 26",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अनुच्छेद 28",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अनुच्छेद 29",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अनुच्छेद 29।",
+   "solution_en": "",
+   "key_concept": "संविधान, RTE और बाल अधिकार – अंतरराष्ट्रीय घोषणाएँ"
+  },
+  {
+   "q_no": 64,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "निर्देशन एवं परामर्श",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - निर्देशन एवं परामर्श",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निदेशात्मक (Directive) परामर्श के प्रवर्तक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फ्रैंक पार्सन्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन हॉलैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कार्ल रोजर्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ई. जी. विलियमसन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) ई. जी. विलियमसन। परामर्शदाता-केंद्रित; विलियमसन के 6 चरण।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – निर्देशन एवं परामर्श"
+  },
+  {
+   "q_no": 65,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "निर्देशन एवं परामर्श",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - निर्देशन एवं परामर्श",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अनिदेशात्मक (Non-directive) परामर्श के प्रवर्तक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कार्ल रोजर्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ई. जी. विलियमसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एफ. सी. थॉर्न",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रैंक पार्सन्स",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) कार्ल रोजर्स। सेवार्थी-केंद्रित परामर्श।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – निर्देशन एवं परामर्श"
+  },
+  {
+   "q_no": 66,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "निर्देशन एवं परामर्श",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - निर्देशन एवं परामर्श",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सेवार्थी-केंद्रित (Client-centred) चिकित्सा किसने विकसित की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सिगमंड फ्रायड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कार्ल रोजर्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ई. जी. विलियमसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अल्बर्ट एलिस",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) कार्ल रोजर्स।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – निर्देशन एवं परामर्श"
+  },
+  {
+   "q_no": 67,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "निर्देशन एवं परामर्श",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - निर्देशन एवं परामर्श",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "व्यावसायिक निर्देशन (Vocational Guidance) के जनक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "डोनाल्ड सुपर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "फ्रैंक पार्सन्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन हॉलैंड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ई. जी. विलियमसन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) फ्रैंक पार्सन्स। 1908 में बोस्टन में वोकेशन ब्यूरो; पुस्तक Choosing a Vocation (1909)।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – निर्देशन एवं परामर्श"
+  },
+  {
+   "q_no": 68,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "संवेगात्मक बुद्धि",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - संवेगात्मक बुद्धि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संवेगात्मक बुद्धि (Emotional Intelligence) शब्द का पहला व्यवस्थित प्रयोग किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सैलोवे और मेयर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "डेनियल गोलमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हावर्ड गार्डनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रॉबर्ट स्टर्नबर्ग",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) सैलोवे और मेयर। 1990 का शोधपत्र; गोलमैन ने 1995 में इसे लोकप्रिय बनाया।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – संवेगात्मक बुद्धि"
+  },
+  {
+   "q_no": 69,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "संवेगात्मक बुद्धि",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - संवेगात्मक बुद्धि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सैलोवे और मेयर का संवेगात्मक बुद्धि शोधपत्र किस वर्ष प्रकाशित हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2000",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1990",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1983",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1995",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 1990।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – संवेगात्मक बुद्धि"
+  },
+  {
+   "q_no": 70,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "संवेगात्मक बुद्धि",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - संवेगात्मक बुद्धि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मेयर-सैलोवे के संवेगात्मक बुद्धि मॉडल में कितनी शाखाएँ (Branches) हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 4। संवेगों का प्रत्यक्षीकरण, उपयोग, समझ और प्रबंधन।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – संवेगात्मक बुद्धि"
+  },
+  {
+   "q_no": 71,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "संवेगात्मक बुद्धि",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - संवेगात्मक बुद्धि",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "MSCEIT परीक्षण में \"C\" किस मनोवैज्ञानिक के नाम का प्रतीक है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "डेविड कारुसो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "आर. बी. कैटेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जेम्स कैटेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पॉल कोस्टा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) डेविड कारुसो। Mayer–Salovey–Caruso Emotional Intelligence Test।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – संवेगात्मक बुद्धि"
+  },
+  {
+   "q_no": 72,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिवृत्ति",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिवृत्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अभिवृत्ति के ABC मॉडल में कितने घटक हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 3। भावात्मक (Affective), व्यवहारात्मक (Behavioural), संज्ञानात्मक (Cognitive)।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिवृत्ति"
+  },
+  {
+   "q_no": 73,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिवृत्ति",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिवृत्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संज्ञानात्मक असंगति (Cognitive Dissonance) सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "रेंसिस लिकर्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इसेक आइज़ेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लियोन फेस्टिंगर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रिट्ज़ हाइडर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) लियोन फेस्टिंगर। 1957।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिवृत्ति"
+  },
+  {
+   "q_no": 74,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिवृत्ति",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिवृत्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संतुलन सिद्धांत (Balance Theory) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फ्रिट्ज़ हाइडर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इमोरी बोगार्डस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बर्नार्ड वाइनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "लियोन फेस्टिंगर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) फ्रिट्ज़ हाइडर। P-O-X त्रिकोण।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिवृत्ति"
+  },
+  {
+   "q_no": 75,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिवृत्ति",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिवृत्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Attitude: Concept, Formation and Change\" पुस्तक के भारतीय लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गिरीन्द्रशेखर बोस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जे. पी. दास",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एस. एम. मोहसिन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सी. एम. भाटिया",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) एस. एम. मोहसिन।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिवृत्ति"
+  },
+  {
+   "q_no": 76,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिवृत्ति",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिवृत्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "नियोजित व्यवहार सिद्धांत (Theory of Planned Behaviour) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "लियोन फेस्टिंगर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मार्टिन फिशबीन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "इसेक आइज़ेन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रिट्ज़ हाइडर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) इसेक आइज़ेन। 1991; अभिवृत्ति, व्यक्तिपरक मानक और अनुभूत व्यवहार-नियंत्रण।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिवृत्ति"
+  },
+  {
+   "q_no": 77,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिवृत्ति",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिवृत्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पाँच बिंदु वाली योगात्मक अभिवृत्ति मापनी किसने विकसित की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "इमोरी बोगार्डस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "चार्ल्स ऑसगुड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एल. एल. थर्स्टन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रेंसिस लिकर्ट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) रेंसिस लिकर्ट। 1932: पूर्णतः सहमत से पूर्णतः असहमत।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिवृत्ति"
+  },
+  {
+   "q_no": 78,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिवृत्ति",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिवृत्ति",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सामाजिक दूरी मापनी (Social Distance Scale) किसने विकसित की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "रेंसिस लिकर्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इमोरी बोगार्डस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एल. एल. थर्स्टन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "लियोन फेस्टिंगर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) इमोरी बोगार्डस।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिवृत्ति"
+  },
+  {
+   "q_no": 79,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "आत्म-निर्धारण सिद्धांत (Self-Determination Theory) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "लेपर और ग्रीन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सैलोवे और मेयर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एयलॉन और एज़रिन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "डेसी और रयान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) डेसी और रयान।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिप्रेरणा"
+  },
+  {
+   "q_no": 80,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "आत्म-निर्धारण सिद्धांत में कितनी मूल मनोवैज्ञानिक आवश्यकताएँ हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 3। स्वायत्तता, सक्षमता और संबद्धता।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिप्रेरणा"
+  },
+  {
+   "q_no": 81,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अति-औचित्य प्रभाव (Overjustification Effect) का प्रयोग किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सेलिगमैन और मायर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लेपर, ग्रीन और निस्बेट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डेसी और रयान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एयलॉन और एज़रिन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) लेपर, ग्रीन और निस्बेट। 1973: बाहरी पुरस्कार से आंतरिक रुचि घट सकती है।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिप्रेरणा"
+  },
+  {
+   "q_no": 82,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "टोकन अर्थव्यवस्था (Token Economy) का प्रयोग किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "लेपर और ग्रीन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वॉटसन और रेनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एयलॉन और एज़रिन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "डेसी और रयान",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) एयलॉन और एज़रिन। 1968, मनोरोग अस्पताल में।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिप्रेरणा"
+  },
+  {
+   "q_no": 83,
+   "section": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति",
+   "topic": "अभिप्रेरणा",
+   "syllabus_tag": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति - अभिप्रेरणा",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"अधिक संभावित व्यवहार को कम संभावित व्यवहार के पुनर्बलक के रूप में प्रयोग करना\" किसका सिद्धांत है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "डेविड प्रीमैक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एडवर्ड थॉर्नडाइक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "क्लार्क हल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) डेविड प्रीमैक। प्रीमैक सिद्धांत (\"दादी माँ का नियम\"): पहले होमवर्क, फिर खेल।",
+   "solution_en": "",
+   "key_concept": "परामर्श, संवेगात्मक बुद्धि और अभिवृत्ति – अभिप्रेरणा"
+  },
+  {
+   "q_no": 84,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "द्वि-कारक (Motivation-Hygiene) सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "विक्टर व्रूम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "फ्रेडरिक हर्ज़बर्ग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अब्राहम मैस्लो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "डगलस मैकग्रेगर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) फ्रेडरिक हर्ज़बर्ग। अभिप्रेरक कारक और स्वास्थ्य (hygiene) कारक।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 85,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रत्याशा सिद्धांत (Expectancy Theory) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन एटकिंसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "फ्रेडरिक हर्ज़बर्ग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डगलस मैकग्रेगर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विक्टर व्रूम",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) विक्टर व्रूम। 1964: प्रत्याशा × साधनता × संयोजकता (Valence)।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 86,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "X और Y सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फ्रेडरिक हर्ज़बर्ग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पीटर ड्रकर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डगलस मैकग्रेगर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हेनरी फेयोल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) डगलस मैकग्रेगर। X = कर्मचारी आलसी; Y = कर्मचारी स्वयं प्रेरित।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 87,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"The Human Side of Enterprise\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पीटर ड्रकर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "चेस्टर बर्नार्ड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डगलस मैकग्रेगर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हर्बर्ट साइमन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) डगलस मैकग्रेगर। 1960: X और Y सिद्धांत।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 88,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निरंकुश, लोकतांत्रिक और अहस्तक्षेप (Laissez-faire) नेतृत्व शैलियों का अध्ययन किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "डेसी और रयान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ब्लेक और माउटन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लिपिट और व्हाइट (कुर्ट लेविन के साथ)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हर्ज़बर्ग और व्रूम",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) लिपिट और व्हाइट (कुर्ट लेविन के साथ)। 1939: बच्चों के समूहों पर प्रयोग।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 89,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रबंधन के 14 सिद्धांत किसने दिए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पीटर ड्रकर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एफ. डब्ल्यू. टेलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हेनरी फेयोल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "लूथर गुलिक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) हेनरी फेयोल। फेयोल को आधुनिक प्रबंधन का जनक कहा जाता है।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 90,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हेनरी फेयोल ने प्रबंधन के कितने सिद्धांत दिए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "14",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "10",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "12",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "7",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 14।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 91,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वैज्ञानिक प्रबंधन (Scientific Management) के जनक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हेनरी फेयोल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पीटर ड्रकर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मैक्स वेबर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एफ. डब्ल्यू. टेलर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) एफ. डब्ल्यू. टेलर।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 92,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "उद्देश्यों द्वारा प्रबंधन (Management by Objectives – MBO) की अवधारणा किसने दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हेनरी फेयोल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पीटर ड्रकर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लूथर गुलिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "डगलस मैकग्रेगर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) पीटर ड्रकर। पुस्तक The Practice of Management (1954)।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 93,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "प्रबंधन और नेतृत्व",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - प्रबंधन और नेतृत्व",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "POSDCORB सूत्र किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हेनरी मिंट्ज़बर्ग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पीटर ड्रकर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लूथर गुलिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हेनरी फेयोल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) लूथर गुलिक। सुधार: वीडियो में पहले मिंट्ज़बर्ग कहा गया; सही उत्तर लूथर गुलिक (1937, उर्विक के साथ)। Planning, Organizing, Staffing, Directing, Co-ordinating, Reporting, Budgeting।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – प्रबंधन और नेतृत्व"
+  },
+  {
+   "q_no": 94,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "UNICEF का हस्तांतरणीय कौशल (Transferable Skills) ढाँचा किस वर्ष जारी हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2019",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2015",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2017",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "2021",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 2019।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 95,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "स्वास्थ्य संवर्धन पर ओटावा चार्टर किस वर्ष आया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1994",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1999",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1986",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1978",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 1986।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 96,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "WHO और यूनेस्को के स्वास्थ्य-संवर्धक विद्यालयों के वैश्विक मानक किस वर्ष जारी हुए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2023",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2021",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2018",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "2015",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 2021।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 97,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यूनेस्को का \"ESD for 2030\" रोडमैप किस वर्ष जारी हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2023",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2020",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2015",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "2017",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 2020।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 98,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "यूनेस्को की सहिष्णुता के सिद्धांतों की घोषणा किस वर्ष हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2000",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1995",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1990",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1989",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 1995। 16 नवंबर = अंतरराष्ट्रीय सहिष्णुता दिवस।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 99,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संयुक्त राष्ट्र बाल अधिकार अभिसमय (UNCRC) कब अपनाया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "14 नवंबर 1989",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "10 दिसंबर 1948",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "20 नवंबर 1959",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "20 नवंबर 1989",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 20 नवंबर 1989। 20 नवंबर = विश्व बाल दिवस; भारत ने 1992 में अनुमोदन किया।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 100,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "POCSO अधिनियम कब लागू हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "1 अप्रैल 2010",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "19 अप्रैल 2017",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "14 नवंबर 2012",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "20 नवंबर 2012",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 14 नवंबर 2012।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 101,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "राष्ट्रीय बाल अधिकार संरक्षण आयोग (NCPCR) का गठन किस वर्ष हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2012",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2010",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2007",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "2005",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 2007। CPCR अधिनियम 2005 के तहत मार्च 2007 में।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 102,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दिव्यांगजनों के अधिकारों पर संयुक्त राष्ट्र अभिसमय (CRPD) किस वर्ष अपनाया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2008",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2016",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2006",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1994",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 2006।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 103,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दिव्यांगजन अधिकार अधिनियम (RPwD) 2016 कब लागू हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "28 दिसंबर 2016",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "1 अप्रैल 2017",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "3 दिसंबर 2016",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "19 अप्रैल 2017",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 19 अप्रैल 2017। इसमें 21 प्रकार की दिव्यांगताएँ शामिल हैं।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 104,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भारतीय संविधान कब अंगीकृत किया गया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "9 दिसंबर 1946",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "15 अगस्त 1947",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "26 जनवरी 1950",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "26 नवंबर 1949",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 26 नवंबर 1949। 26 नवंबर = संविधान दिवस; लागू 26 जनवरी 1950।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 105,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मानवाधिकारों की सार्वभौमिक घोषणा (UDHR) कब अपनाई गई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "20 नवंबर 1989",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "10 दिसंबर 1950",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "24 अक्टूबर 1945",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "10 दिसंबर 1948",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 10 दिसंबर 1948। 10 दिसंबर = मानवाधिकार दिवस।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 106,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "आइज़ेन का नियोजित व्यवहार सिद्धांत (Theory of Planned Behaviour) किस वर्ष प्रकाशित हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1985",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1975",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2001",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1991",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 1991।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 107,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विश्व युवा कौशल दिवस कब मनाया जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "15 जुलाई",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "12 अगस्त",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "12 जनवरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "5 जून",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 15 जुलाई। 12 अगस्त = अंतरराष्ट्रीय युवा दिवस; 12 जनवरी = राष्ट्रीय युवा दिवस।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 108,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अंतरराष्ट्रीय सांकेतिक भाषा दिवस कब मनाया जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "21 फरवरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "4 जनवरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "23 सितंबर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "3 दिसंबर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 23 सितंबर। 3 दिसंबर = अंतरराष्ट्रीय दिव्यांग दिवस; 4 जनवरी = विश्व ब्रेल दिवस।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 109,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अंतरराष्ट्रीय अहिंसा दिवस कब मनाया जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "10 दिसंबर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "21 सितंबर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "30 जनवरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "2 अक्टूबर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 2 अक्टूबर। गांधी जयंती पर; 21 सितंबर = अंतरराष्ट्रीय शांति दिवस।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 110,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "फ्रैंक पार्सन्स की पुस्तक \"Choosing a Vocation\" किस वर्ष प्रकाशित हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1939",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1919",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1908",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1909",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 1909।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 111,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जॉन हॉलैंड का व्यावसायिक व्यक्तित्व सिद्धांत (RIASEC) पहली बार किस वर्ष प्रस्तुत हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1949",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1973",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1969",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1959",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 1959।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 112,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "लिकर्ट मापनी किस वर्ष प्रस्तुत हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1957",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1928",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1946",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1932",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 1932।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 113,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "फेस्टिंगर का संज्ञानात्मक असंगति सिद्धांत किस वर्ष प्रकाशित हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1957",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1972",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1962",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1946",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 1957।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 114,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "डेनियल गोलमैन की पुस्तक \"Emotional Intelligence\" किस वर्ष प्रकाशित हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1995",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2001",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1998",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1990",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 1995।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 115,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "लाज़रस और फोकमैन की \"Stress, Appraisal, and Coping\" किस वर्ष प्रकाशित हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1974",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1984",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1966",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1991",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 1984। तनाव का संज्ञानात्मक मूल्यांकन (प्राथमिक व द्वितीयक) मॉडल।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 116,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पीटर ड्रकर की \"The Practice of Management\" किस वर्ष प्रकाशित हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1954",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1964",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1946",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1960",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 1954।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 117,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "चेस्टर बर्नार्ड की \"The Functions of the Executive\" किस वर्ष प्रकाशित हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1938",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1954",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1928",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1948",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 1938।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  },
+  {
+   "q_no": 118,
+   "section": "प्रबंधन और प्रमुख वर्ष",
+   "topic": "जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "syllabus_tag": "प्रबंधन और प्रमुख वर्ष - जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हर्बर्ट साइमन की \"Administrative Behavior\" किस वर्ष प्रकाशित हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1957",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1947",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1960",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1938",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 1947।",
+   "solution_en": "",
+   "key_concept": "प्रबंधन और प्रमुख वर्ष – जीवन कौशल व प्रबंधन से जुड़े वर्ष और दिवस"
+  }
+ ]
+}

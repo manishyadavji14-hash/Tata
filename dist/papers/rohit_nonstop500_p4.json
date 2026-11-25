@@ -1,0 +1,3275 @@
+{
+ "exam_meta": {
+  "exam_id": "rohit_nonstop500_p4",
+  "title": "NONSTOP 500 प्रैक्टिस सेट 4/6 – शिक्षण विधियाँ एवं शिक्षाशास्त्री (74 प्रश्न, रोहित वैद्यवान सर)",
+  "duration_minutes": 74,
+  "max_marks": 74,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "74 प्रश्न, प्रत्येक 1 अंक; नकारात्मक अंकन नहीं। प्रश्न \"UP SUPERTET 2026 NONSTOP 500 Final Revision – रोहित वैद्यवान सर (YouTube: https://youtu.be/aTkCc1ZFtjc)\" वीडियो से लिए गए हैं; सभी उत्तर मानक स्रोतों से जाँचे गए हैं और वीडियो की त्रुटियाँ \"सुधार\" के साथ ठीक की गई हैं।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+  "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ"
+ ],
+ "passages": {},
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रोजेक्ट (परियोजना) विधि के प्रवर्तक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "विलियम किलपैट्रिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एच. ई. आर्मस्ट्रांग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हेलेन पार्कहर्स्ट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) विलियम किलपैट्रिक। किलपैट्रिक जॉन डीवी के शिष्य थे; प्रयोजनवाद पर आधारित।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 2,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अन्वेषण या ह्यूरिस्टिक (Heuristic) विधि के प्रवर्तक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कार्लटन वॉशबर्न",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एच. ई. आर्मस्ट्रांग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विलियम किलपैट्रिक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) एच. ई. आर्मस्ट्रांग। छात्र स्वयं खोजकर सीखता है; विज्ञान शिक्षण में उपयोगी।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 3,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "डाल्टन योजना (Dalton Plan) किसने दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हेलेन पार्कहर्स्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "फ्रेड केलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "कार्लटन वॉशबर्न",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) हेलेन पार्कहर्स्ट। 1920 में डाल्टन (मैसाचुसेट्स) में शुरू; अनुबंध (assignment) पर आधारित।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 4,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विनेटका योजना (Winnetka Plan) किसने दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "विलियम किलपैट्रिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कार्लटन वॉशबर्न",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हेलेन पार्कहर्स्ट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) कार्लटन वॉशबर्न। व्यक्तिगत गति से सीखना; इलिनॉय (अमेरिका)।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 5,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जिगसॉ (Jigsaw) सहकारी अधिगम विधि किसने विकसित की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "इलियट एरोनसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "फ्रैंक लाइमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "स्पेंसर केगन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रॉबर्ट स्लाविन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) इलियट एरोनसन। 1971, ऑस्टिन (टेक्सास)।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 6,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "थिंक-पेयर-शेयर (Think-Pair-Share) रणनीति किसने दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फ्रैंक लाइमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इलियट एरोनसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एलेक्स ऑस्बोर्न",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हिल्डा टाबा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) फ्रैंक लाइमैन। 1981, मैरीलैंड विश्वविद्यालय।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 7,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "व्यक्तिगत अनुदेशन प्रणाली (Personalized System of Instruction – PSI) को किस नाम से जाना जाता है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "केलर योजना (Keller Plan)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मॉरिसन योजना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डाल्टन योजना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विनेटका योजना",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) केलर योजना (Keller Plan)। फ्रेड केलर: स्व-गति, निपुणता और प्रॉक्टर पर आधारित।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 8,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पूछताछ प्रशिक्षण प्रतिमान (Inquiry Training Model) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हिल्डा टाबा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "विलियम गॉर्डन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जेरोम ब्रूनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रिचर्ड सचमैन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) रिचर्ड सचमैन। विद्यार्थी \"हाँ/नहीं\" प्रश्नों से कारण-संबंध खोजते हैं।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 9,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सिनेक्टिक्स (Synectics) प्रतिमान किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एलेक्स ऑस्बोर्न",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रिचर्ड सचमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "डेविड ऑसुबेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विलियम गॉर्डन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) विलियम गॉर्डन। उपमाओं (analogies) से सृजनात्मकता का विकास।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 10,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "आगमनात्मक चिंतन प्रतिमान (Inductive Thinking Model) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जोसेफ श्वाब",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रिचर्ड सचमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जेरोम ब्रूनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हिल्डा टाबा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) हिल्डा टाबा। अवधारणा निर्माण, आँकड़ों की व्याख्या और सिद्धांतों का अनुप्रयोग।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 11,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "भूमिका निर्वाह प्रतिमान (Role Playing Model) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एरोनसन और ब्रिजमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ओलिवर और शेवर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉयस और वील",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फैनी और जॉर्ज शैफ्टेल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) फैनी और जॉर्ज शैफ्टेल। सामाजिक मूल्यों और व्यवहार की समझ हेतु।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 12,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "न्यायशास्त्रीय पूछताछ प्रतिमान (Jurisprudential Inquiry Model) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ओलिवर और शेवर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "फैनी और जॉर्ज शैफ्टेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बिग्स और कोलिस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉयस और वील",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) ओलिवर और शेवर। सार्वजनिक/नैतिक मुद्दों पर तर्कपूर्ण निर्णय।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 13,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Models of Teaching\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ब्रूस जॉयस और मार्शा वील",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बिग्स और कोलिस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ओलिवर और शेवर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एंडरसन और क्रैथवोल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) ब्रूस जॉयस और मार्शा वील। शिक्षण प्रतिमानों के 4 परिवार: सूचना प्रक्रमण, सामाजिक, वैयक्तिक, व्यवहारात्मक।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 14,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "निपुणता अधिगम (Mastery Learning) की अवधारणा किसने दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फ्रेड केलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बेंजामिन ब्लूम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रॉबर्ट गेने",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राल्फ टायलर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) बेंजामिन ब्लूम। पर्याप्त समय और सुधारात्मक सहायता से लगभग सभी छात्र निपुणता पा सकते हैं।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 15,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मस्तिष्क उद्वेलन (Brainstorming) तकनीक किसने दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "विलियम गॉर्डन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एलेक्स ऑस्बोर्न",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ई. पी. टॉरेंस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एडवर्ड डी बोनो",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) एलेक्स ऑस्बोर्न। विचारों की आलोचना किए बिना अधिक से अधिक विचार उत्पन्न करना।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 16,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "शाखीय (Branching) अभिक्रमित अनुदेशन किसने विकसित किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नॉर्मन क्राउडर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सिडनी प्रेसी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "थॉमस गिल्बर्ट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) नॉर्मन क्राउडर। रेखीय अभिक्रम = स्किनर; अवरोही/मैथेटिक्स = गिल्बर्ट।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 17,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "शिक्षण का \"बोध स्तर\" (Understanding Level) किससे जुड़ा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हरबर्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मॉरिस बिग्गी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हंट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हेनरी मॉरिसन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) हेनरी मॉरिसन। स्मृति स्तर = हरबर्ट, बोध स्तर = मॉरिसन, चिंतन स्तर = हंट।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 18,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "5E शिक्षण प्रतिमान किस संस्था ने विकसित किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "NCERT",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "NCTE",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "CAST",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "BSCS",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) BSCS। Engage, Explore, Explain, Elaborate, Evaluate (रोजर बायबी के नेतृत्व में)।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 19,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "BSCS का 5E प्रतिमान किस वर्ष विकसित हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2001",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1996",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1987",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1977",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 1987।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 20,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "शिक्षण विधियाँ व प्रवर्तक",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - शिक्षण विधियाँ व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जैविक विज्ञान पूछताछ प्रतिमान (Biological Science Inquiry Model) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हिल्डा टाबा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रिचर्ड सचमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जोसेफ श्वाब",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विलियम गॉर्डन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) जोसेफ श्वाब। वैज्ञानिक शोध की प्रक्रिया से विद्यार्थियों को परिचित कराना।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – शिक्षण विधियाँ व प्रवर्तक"
+  },
+  {
+   "q_no": 21,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सूक्ष्म शिक्षण (Microteaching) के जनक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "ड्वाइट एलन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "नेड फ्लैंडर्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रॉबर्ट बुश",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) ड्वाइट एलन। एलन और उनके साथियों (बुश, रयान) ने विकसित किया।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 22,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सूक्ष्म शिक्षण का विकास किस विश्वविद्यालय में हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कोलंबिया विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "शिकागो विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हार्वर्ड विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "स्टैनफोर्ड विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) स्टैनफोर्ड विश्वविद्यालय।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 23,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सूक्ष्म शिक्षण का विकास किस वर्ष हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1975",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1963",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1956",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1949",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 1963। स्टैनफोर्ड में प्रयोग 1961 से शुरू हुए, \"Microteaching\" नाम 1963 में दिया गया। भारत में 1967 (डी. डी. तिवारी)।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 24,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कक्षा अंतःक्रिया विश्लेषण प्रणाली (FIAC) किसने विकसित की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "नेड फ्लैंडर्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ड्वाइट एलन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बेंजामिन ब्लूम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "डेविड क्रैथवोल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) नेड फ्लैंडर्स।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 25,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "फ्लैंडर्स अंतःक्रिया प्रणाली में कुल कितनी श्रेणियाँ हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "12",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "7",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "9",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "10",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 10। शिक्षक कथन 1–7, छात्र कथन 8–9, श्रेणी 10 = मौन/भ्रम।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 26,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "FIAC में शिक्षक कथन (Teacher Talk) की कितनी श्रेणियाँ हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "7",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "10",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 7।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 27,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "FIAC में छात्र कथन (Student Talk) की कितनी श्रेणियाँ हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "7",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 2। श्रेणी 8 = छात्र अनुक्रिया, श्रेणी 9 = छात्र पहल।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 28,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "FIAC की दसवीं श्रेणी क्या दर्शाती है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "छात्र पहल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्रश्न पूछना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आलोचना",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मौन या भ्रम (Silence/Confusion)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) मौन या भ्रम (Silence/Confusion)।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 29,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "FIAC में प्रत्यक्ष प्रभाव (Direct Influence) की कितनी श्रेणियाँ हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "7",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 3। श्रेणी 5 (व्याख्यान), 6 (निर्देश), 7 (आलोचना)।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 30,
+   "section": "शिक्षण विधियाँ और शिक्षण प्रतिमान",
+   "topic": "सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "syllabus_tag": "शिक्षण विधियाँ और शिक्षण प्रतिमान - सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "FIAC में अप्रत्यक्ष प्रभाव (Indirect Influence) की कितनी श्रेणियाँ हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 4। श्रेणी 1 (भावनाएँ स्वीकारना), 2 (प्रशंसा), 3 (विचार स्वीकारना), 4 (प्रश्न पूछना)।",
+   "solution_en": "",
+   "key_concept": "शिक्षण विधियाँ और शिक्षण प्रतिमान – सूक्ष्म शिक्षण और फ्लैंडर्स (FIAC)"
+  },
+  {
+   "q_no": 31,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Democracy and Education\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पाउलो फ्रेरे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "विलियम किलपैट्रिक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इवान इलिच",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) जॉन डीवी। 1916: शिक्षा जीवन की तैयारी नहीं, स्वयं जीवन है।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 32,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"The School and Society\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हर्बर्ट स्पेंसर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "फ्रेडरिक फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉन लॉक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) जॉन डीवी। 1899।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 33,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Experience and Education\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ए. एस. नील",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जीन-जैक्स रूसो",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) जॉन डीवी। 1938: अनुभव और निरंतरता का सिद्धांत।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 34,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"How We Think\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "डेनियल कानेमन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "विलियम जेम्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जेरोम ब्रूनर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) जॉन डीवी। 1910: चिंतनशील विचार (reflective thinking)।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 35,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"My Pedagogic Creed\" के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जोहान पेस्टालॉजी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जोहान हरबर्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रेडरिक फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) जॉन डीवी। 1897।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 36,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Emile\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जीन-जैक्स रूसो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन लॉक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन एमोस कॉमेनियस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जोहान पेस्टालॉजी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) जीन-जैक्स रूसो। 1762: प्रकृतिवादी शिक्षा; \"प्रकृति की ओर लौटो\"।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 37,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Orbis Pictus\" (पहली सचित्र बाल पुस्तक) के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन एमोस कॉमेनियस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जीन-जैक्स रूसो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "फ्रेडरिक फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जोहान हरबर्ट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) जॉन एमोस कॉमेनियस। 1658।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 38,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"The Great Didactic\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन एमोस कॉमेनियस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन लॉक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "प्लेटो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जोहान हरबर्ट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) जॉन एमोस कॉमेनियस। कॉमेनियस को आधुनिक शिक्षाशास्त्र का जनक कहा जाता है।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 39,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"The Education of Man\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हर्बर्ट स्पेंसर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जोहान पेस्टालॉजी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रेडरिक फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) फ्रेडरिक फ्रोबेल। 1826: किंडरगार्टन के जनक।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 40,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Leonard and Gertrude\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन एमोस कॉमेनियस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जीन-जैक्स रूसो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "फ्रेडरिक फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जोहान पेस्टालॉजी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) जोहान पेस्टालॉजी। 1781: शिक्षा के मनोवैज्ञानिकीकरण का उपन्यास।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 41,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"How Gertrude Teaches Her Children\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फ्रेडरिक फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जोहान पेस्टालॉजी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉन लॉक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) जोहान पेस्टालॉजी। 1801।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 42,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"The Montessori Method\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फ्रेडरिक फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हेलेन पार्कहर्स्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "गिजुभाई बधेका",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) मारिया मॉन्टेसरी। 1912 (अंग्रेज़ी)।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 43,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"The Absorbent Mind\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गिजुभाई बधेका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जीन पियाजे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जे. कृष्णमूर्ति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) मारिया मॉन्टेसरी। 0–6 वर्ष के बच्चे का \"शोषक मन\"।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 44,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"The Secret of Childhood\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जी. स्टैनली हॉल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ए. एस. नील",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "विलियम प्रेयर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) मारिया मॉन्टेसरी।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 45,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Some Thoughts Concerning Education\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जीन-जैक्स रूसो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन लॉक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हर्बर्ट स्पेंसर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) जॉन लॉक। 1693: बालक का मन कोरी स्लेट (Tabula Rasa)।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 46,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Education: Intellectual, Moral and Physical\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "प्लेटो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जोहान हरबर्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हर्बर्ट स्पेंसर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉन लॉक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) हर्बर्ट स्पेंसर। 1861: \"कौन-सा ज्ञान सबसे अधिक मूल्यवान है?\"",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 47,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"सामान्य शिक्षाशास्त्र\" (Allgemeine Pädagogik, 1806) के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन एमोस कॉमेनियस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जोहान पेस्टालॉजी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जोहान हरबर्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रेडरिक फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) जोहान हरबर्ट। हरबर्ट की पंचपदी: तैयारी, प्रस्तुतीकरण, तुलना, सामान्यीकरण, प्रयोग।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 48,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"द रिपब्लिक\" (The Republic) ग्रंथ किसकी रचना है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सुकरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अरस्तू",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रूसो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्लेटो",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) प्लेटो। आदर्श राज्य और उसकी शिक्षा व्यवस्था।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 49,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"पॉलिटिक्स\" (Politics) ग्रंथ किसकी रचना है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अरस्तू",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सुकरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन लॉक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्लेटो",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) अरस्तू।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 50,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Deschooling Society\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन होल्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इवान इलिच",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "ए. एस. नील",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पाउलो फ्रेरे",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) इवान इलिच। 1971: विद्यालय-मुक्त समाज।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 51,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Pedagogy of the Oppressed\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पाउलो फ्रेरे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जे. कृष्णमूर्ति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इवान इलिच",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) पाउलो फ्रेरे। बैंकिंग शिक्षा की आलोचना; संवाद आधारित आलोचनात्मक शिक्षाशास्त्र।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 52,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Summerhill\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पाउलो फ्रेरे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "इवान इलिच",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "ए. एस. नील",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) ए. एस. नील। 1960: स्वतंत्रता आधारित समरहिल विद्यालय (1921)।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 53,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"दिवास्वप्न\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गिजुभाई बधेका",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रवींद्रनाथ टैगोर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जे. कृष्णमूर्ति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "महात्मा गांधी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) गिजुभाई बधेका। गिजुभाई को \"मूँछों वाली माँ\" कहा जाता है।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 54,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"तोत्तो-चान\" (Totto-chan) पुस्तक की लेखिका कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हेलेन पार्कहर्स्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "तेत्सुको कुरोयानागी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हेलेन केलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) तेत्सुको कुरोयानागी। जापान के तोमोए गाकुएन विद्यालय की कहानी।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 55,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Education and the Significance of Life\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "श्री अरविंद",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रवींद्रनाथ टैगोर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जे. कृष्णमूर्ति",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "स्वामी विवेकानंद",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) जे. कृष्णमूर्ति। 1953।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 56,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Preparing Instructional Objectives\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बेंजामिन ब्लूम",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रॉबर्ट मेगर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "राल्फ टायलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "हिल्डा टाबा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) रॉबर्ट मेगर। व्यवहारगत उद्देश्य लेखन।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 57,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Basic Principles of Curriculum and Instruction\" पुस्तक के लेखक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "रॉबर्ट मेगर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हिल्डा टाबा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जेरोम ब्रूनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राल्फ टायलर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) राल्फ टायलर। 1949: टायलर रेशनल (4 मूल प्रश्न)।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 58,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Curriculum Development: Theory and Practice\" पुस्तक की लेखिका कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हेलेन पार्कहर्स्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हिल्डा टाबा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कैरोल गिलिगन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) हिल्डा टाबा। 1962: पाठ्यक्रम निर्माण के 7 चरण।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 59,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षा की प्रसिद्ध पुस्तकें",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षा की प्रसिद्ध पुस्तकें",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"Life in Classrooms\" पुस्तक और \"छिपा पाठ्यक्रम\" (Hidden Curriculum) शब्द किससे जुड़े हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "फिलिप जैक्सन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इवान इलिच",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "राल्फ टायलर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) फिलिप जैक्सन। 1968।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षा की प्रसिद्ध पुस्तकें"
+  },
+  {
+   "q_no": 60,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"अकादमी\" (Academy) की स्थापना किसने की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अरस्तू",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्लेटो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सुकरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पाइथागोरस",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) प्लेटो। लगभग 387 ई.पू., एथेंस।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 61,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"लाइसियम\" (Lyceum) की स्थापना किसने की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सुकरात",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "प्लेटो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एपिक्यूरस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अरस्तू",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अरस्तू। 335 ई.पू., एथेंस।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 62,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "किंडरगार्टन (बालोद्यान) पद्धति के जनक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जोहान पेस्टालॉजी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मारिया मॉन्टेसरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रेडरिक फ्रोबेल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) फ्रेडरिक फ्रोबेल। विद्यालय = बगीचा, शिक्षक = माली, बालक = पौधा।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 63,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "फ्रोबेल का पहला उपहार (First Gift) क्या था?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बेलन और घन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ऊन की मुलायम रंगीन गेंदें",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "रंगीन छड़ियाँ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "लकड़ी के घन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) ऊन की मुलायम रंगीन गेंदें। उपहार (Gifts) और कार्य (Occupations) फ्रोबेल की खेल सामग्री हैं।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 64,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मारिया मॉन्टेसरी ने \"कासा देई बाम्बिनी\" (बच्चों का घर) किस वर्ष शुरू किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1896",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1919",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1907",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1912",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 1907। 6 जनवरी 1907।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 65,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "\"कासा देई बाम्बिनी\" कहाँ स्थापित हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पेरिस (फ्रांस)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जिनेवा (स्विट्ज़रलैंड)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मिलान (इटली)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "रोम (इटली)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) रोम (इटली)। रोम के सान लोरेंज़ो क्षेत्र में।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 66,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एसोसिएशन मॉन्टेसरी इंटरनेशनेल (AMI) की स्थापना किस वर्ष हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1907",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1939",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1949",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1929",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 1929। सुधार: वीडियो में पहले 1939 कहा गया; सही वर्ष 1929 (डेनमार्क में, मॉन्टेसरी द्वारा)।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 67,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विश्व-भारती की स्थापना किस वर्ष हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1921",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1951",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1913",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1901",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 1921। रवींद्रनाथ टैगोर; 1951 में केंद्रीय विश्वविद्यालय बना।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 68,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "टैगोर ने शांतिनिकेतन में ब्रह्मचर्य आश्रम विद्यालय किस वर्ष शुरू किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1913",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1921",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1891",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1901",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 1901।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 69,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वर्धा शिक्षा योजना (बुनियादी शिक्षा / नई तालीम) किस वर्ष प्रस्तुत हुई?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1944",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1921",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1947",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1937",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 1937। महात्मा गांधी का वर्धा सम्मेलन, अक्टूबर 1937।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 70,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "वर्धा शिक्षा योजना की समिति के अध्यक्ष कौन थे?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "महात्मा गांधी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "डॉ. ज़ाकिर हुसैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "आचार्य नरेंद्र देव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मौलाना अबुल कलाम आज़ाद",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) डॉ. ज़ाकिर हुसैन। यह ज़ाकिर हुसैन समिति कहलाती है।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 71,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सावित्रीबाई और ज्योतिबा फुले ने 1848 में पुणे में बालिकाओं का पहला विद्यालय कहाँ खोला?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "आगा खाँ महल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "भिडे वाडा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "फर्ग्यूसन कॉलेज",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "शनिवार वाडा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) भिडे वाडा। सुधार: वीडियो में एक जगह वर्ष 1888 कहा गया; सही वर्ष 1848 (1 जनवरी 1848)।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 72,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "गिजुभाई बधेका ने बाल मंदिर कहाँ स्थापित किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अहमदाबाद (गुजरात)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पुणे (महाराष्ट्र)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "भावनगर (गुजरात)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वर्धा (महाराष्ट्र)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) भावनगर (गुजरात)। 1920 में दक्षिणामूर्ति बाल मंदिर।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 73,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "जॉन डीवी की प्रयोगशाला विद्यालय (Laboratory School) किस विश्वविद्यालय से जुड़ी थी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "स्टैनफोर्ड विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "शिकागो विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हार्वर्ड विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कोलंबिया विश्वविद्यालय",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) शिकागो विश्वविद्यालय। 1896 में स्थापित।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  },
+  {
+   "q_no": 74,
+   "section": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ",
+   "topic": "शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "syllabus_tag": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ - शिक्षण संस्थाएँ और शिक्षाशास्त्री",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पेस्टालॉजी का प्रसिद्ध शिक्षण संस्थान कहाँ स्थित था?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बर्लिन (जर्मनी)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रोम (इटली)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जिनेवा (स्विट्ज़रलैंड)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "यवरडॉन (स्विट्ज़रलैंड)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) यवरडॉन (स्विट्ज़रलैंड)। 1805–1825।",
+   "solution_en": "",
+   "key_concept": "शिक्षाशास्त्री, पुस्तकें और संस्थाएँ – शिक्षण संस्थाएँ और शिक्षाशास्त्री"
+  }
+ ]
+}

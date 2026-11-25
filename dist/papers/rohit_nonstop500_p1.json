@@ -1,0 +1,2703 @@
+{
+ "exam_meta": {
+  "exam_id": "rohit_nonstop500_p1",
+  "title": "NONSTOP 500 प्रैक्टिस सेट 1/6 – बाल विकास एवं अधिगम (61 प्रश्न, रोहित वैद्यवान सर)",
+  "duration_minutes": 61,
+  "max_marks": 61,
+  "positive_marks": 1,
+  "negative_marks": 0,
+  "instructions_hi": "61 प्रश्न, प्रत्येक 1 अंक; नकारात्मक अंकन नहीं। प्रश्न \"UP SUPERTET 2026 NONSTOP 500 Final Revision – रोहित वैद्यवान सर (YouTube: https://youtu.be/aTkCc1ZFtjc)\" वीडियो से लिए गए हैं; सभी उत्तर मानक स्रोतों से जाँचे गए हैं और वीडियो की त्रुटियाँ \"सुधार\" के साथ ठीक की गई हैं।",
+  "instructions_en": "All questions carry equal marks. Answer key as printed in the original paper."
+ },
+ "sections": [
+  "विकास के सिद्धांत",
+  "अधिगम के सिद्धांत"
+ ],
+ "passages": {},
+ "questions": [
+  {
+   "q_no": 1,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "परिपक्वता सिद्धांत (Maturation Theory) के प्रवर्तक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जीन पियाजे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लेव वायगोत्स्की",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अल्बर्ट बंडूरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अर्नोल्ड गेसेल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) अर्नोल्ड गेसेल। गेसेल के अनुसार विकास का क्रम मुख्यतः जैविक परिपक्वता से तय होता है।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 2,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पारिस्थितिक तंत्र सिद्धांत (Ecological Systems Theory) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एरिक एरिक्सन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सिगमंड फ्रायड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "यूरी ब्रॉन्फेनब्रेनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉन बॉल्बी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) यूरी ब्रॉन्फेनब्रेनर। 5 तंत्र: माइक्रो, मेसो, एक्सो, मैक्रो और क्रोनो सिस्टम।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 3,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "संज्ञानात्मक विकास का चार अवस्थाओं वाला सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जीन पियाजे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "लेव वायगोत्स्की",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जेरोम ब्रूनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "लॉरेंस कोहलबर्ग",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) जीन पियाजे। पियाजे: स्कीमा, आत्मसातीकरण, समायोजन और साम्यधारण।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 4,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सामाजिक-सांस्कृतिक सिद्धांत और समीपस्थ विकास क्षेत्र (ZPD) किसकी देन है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जीन पियाजे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लेव वायगोत्स्की",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एरिक एरिक्सन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) लेव वायगोत्स्की। वायगोत्स्की: भाषा व सामाजिक अंतःक्रिया से संज्ञान का विकास; MKO और पाड़ (scaffolding)।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 5,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "नैतिक विकास का तीन स्तरों वाला सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "लॉरेंस कोहलबर्ग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कैरोल गिलिगन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जीन पियाजे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "सिगमंड फ्रायड",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) लॉरेंस कोहलबर्ग। पूर्व-परंपरागत, परंपरागत और उत्तर-परंपरागत स्तर।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 6,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मनोसामाजिक विकास सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सिगमंड फ्रायड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अल्फ्रेड एडलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एरिक एरिक्सन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कार्ल युंग",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) एरिक एरिक्सन। 8 अवस्थाएँ, प्रत्येक में एक मनोसामाजिक संकट (जैसे विश्वास बनाम अविश्वास)।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 7,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "आसक्ति सिद्धांत (Attachment Theory) के प्रवर्तक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हैरी हार्लो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कोनराड लॉरेन्ज़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मैरी एन्सवर्थ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉन बॉल्बी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) जॉन बॉल्बी। बॉल्बी ने शिशु-माँ के भावनात्मक बंधन को जैविक आवश्यकता माना।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 8,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "स्ट्रेंज सिचुएशन (Strange Situation) प्रयोग किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हैरी हार्लो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मैरी एन्सवर्थ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन बॉल्बी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एलेनोर गिब्सन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) मैरी एन्सवर्थ। इस प्रयोग से शिशुओं के आसक्ति प्रारूप पहचाने गए।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 9,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बंदरों के बच्चों पर तार वाली और कपड़े वाली माँ का प्रयोग किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वोल्फगैंग कोहलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन बी. वॉटसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हैरी हार्लो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इवान पावलव",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) हैरी हार्लो। बच्चे कपड़े वाली माँ से चिपके रहे: स्नेह के लिए स्पर्श-सुख (contact comfort) भोजन से अधिक महत्वपूर्ण।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 10,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "छाप (Imprinting) की अवधारणा किससे जुड़ी है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हैरी हार्लो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "कोनराड लॉरेन्ज़",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अर्नोल्ड गेसेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉन बॉल्बी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) कोनराड लॉरेन्ज़। जन्म के तुरंत बाद के क्रांतिक काल में पक्षी पहली दिखी चलती वस्तु के पीछे चलने लगते हैं।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 11,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "लॉरेन्ज़ ने छाप (Imprinting) का अध्ययन मुख्य रूप से किस पक्षी पर किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "तोता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "ग्रेलैग हंस (कलहंस)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मुर्गी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कबूतर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) ग्रेलैग हंस (कलहंस)। सुधार: वीडियो में केवल \"हंस\" कहा गया; सटीक उत्तर ग्रेलैग गूज़ (कलहंस) है।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 12,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बाल अध्ययन आंदोलन और पुनरावृत्ति सिद्धांत (Recapitulation) के जनक कौन हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "विलियम जेम्स",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एडवर्ड थॉर्नडाइक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जी. स्टैनली हॉल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉन डीवी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) जी. स्टैनली हॉल। हॉल ने किशोरावस्था को \"तूफान और तनाव\" (Storm and Stress) की अवस्था कहा।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 13,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रमुख सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "विकास के सिद्धांत - प्रमुख सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विकासात्मक कार्य (Developmental Tasks) की अवधारणा किसने दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जी. स्टैनली हॉल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रॉबर्ट हैविगहर्स्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "अर्नोल्ड गेसेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एरिक एरिक्सन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) रॉबर्ट हैविगहर्स्ट। हर आयु पर समाज द्वारा अपेक्षित कार्य; सफलता से अगले कार्य आसान होते हैं।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रमुख सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 14,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पियाजे ने संज्ञानात्मक विकास की कितनी अवस्थाएँ बताईं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 4। संवेदी-गामक, पूर्व-संक्रियात्मक, मूर्त संक्रियात्मक, औपचारिक संक्रियात्मक।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 15,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "फ्रायड ने मनोलैंगिक विकास की कितनी अवस्थाएँ बताईं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "8",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 5। मौखिक, गुदा, लैंगिक (फैलिक), सुप्त, जननांग।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 16,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एरिक्सन ने मनोसामाजिक विकास की कितनी अवस्थाएँ बताईं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "8",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "7",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 8। जन्म से वृद्धावस्था तक पूरे जीवन काल की 8 अवस्थाएँ।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 17,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कोहलबर्ग ने नैतिक विकास के कितने स्तर बताए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 3। 3 स्तर × 2 अवस्थाएँ = कुल 6 अवस्थाएँ।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 18,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कोहलबर्ग के प्रत्येक नैतिक स्तर में कितनी अवस्थाएँ हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 2। 3 स्तर, प्रत्येक में 2 अवस्थाएँ, कुल 6।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 19,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पियाजे की संवेदी-गामक अवस्था की आयु क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "7–11 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "11 वर्ष से आगे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "2–7 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "0–2 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 0–2 वर्ष। इस अवस्था में वस्तु स्थायित्व (object permanence) विकसित होता है।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 20,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पियाजे की संवेदी-गामक अवस्था में कितनी उप-अवस्थाएँ हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "6",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 6। सहज क्रियाओं से लेकर मानसिक संयोजन तक 6 उप-अवस्थाएँ।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 21,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पियाजे की पूर्व-संक्रियात्मक अवस्था की आयु क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "11–15 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "2–7 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "7–11 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "0–2 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 2–7 वर्ष। आत्मकेंद्रितता, जीववाद और प्रतीकात्मक खेल इसकी विशेषताएँ हैं।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 22,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पियाजे की मूर्त संक्रियात्मक अवस्था की आयु क्या है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "7–11 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "0–2 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "11 वर्ष से आगे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "2–7 वर्ष",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 7–11 वर्ष। संरक्षण, वर्गीकरण और क्रमबद्धता की क्षमता आती है।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 23,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पियाजे की औपचारिक संक्रियात्मक अवस्था कब से शुरू होती है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "11 वर्ष से आगे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "7 वर्ष से",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "2 वर्ष से",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "5 वर्ष से",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) 11 वर्ष से आगे। अमूर्त और परिकल्पनात्मक-निगमनात्मक चिंतन।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 24,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ब्रूनर ने संज्ञानात्मक प्रतिनिधित्व की कितनी विधियाँ बताईं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 3। सक्रियता (Enactive), प्रतिमात्मक (Iconic), सांकेतिक (Symbolic)।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 25,
+   "section": "विकास के सिद्धांत",
+   "topic": "अवस्थाओं की संख्या और आयु",
+   "syllabus_tag": "विकास के सिद्धांत - अवस्थाओं की संख्या और आयु",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "ब्रूनर के अनुसार प्रतिनिधित्व की पहली विधि कौन-सी है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अमूर्त (Abstract)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "सांकेतिक (Symbolic)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सक्रियता (Enactive)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "प्रतिमात्मक (Iconic)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) सक्रियता (Enactive)। क्रम: करके सीखना → चित्र/प्रतिमा → प्रतीक/भाषा।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – अवस्थाओं की संख्या और आयु"
+  },
+  {
+   "q_no": 26,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग",
+   "syllabus_tag": "विकास के सिद्धांत - प्रसिद्ध प्रयोग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पियाजे के साथ किशोरों के औपचारिक चिंतन (जैसे पेंडुलम प्रयोग) पर काम करने वाली मनोवैज्ञानिक कौन थीं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "मेलानी क्लाइन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अन्ना फ्रायड",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मैरी एन्सवर्थ",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बारबेल इनहेल्डर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) बारबेल इनहेल्डर। इनहेल्डर व पियाजे की पुस्तक: The Growth of Logical Thinking (1955)।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रसिद्ध प्रयोग"
+  },
+  {
+   "q_no": 27,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग",
+   "syllabus_tag": "विकास के सिद्धांत - प्रसिद्ध प्रयोग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "दृश्य चट्टान (Visual Cliff) प्रयोग किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हैरी हार्लो और मार्गरेट हार्लो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन वॉटसन और रोज़ली रेनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मैरी एन्सवर्थ और जॉन बॉल्बी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एलेनोर गिब्सन और रिचर्ड वॉक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) एलेनोर गिब्सन और रिचर्ड वॉक। शिशुओं में गहराई प्रत्यक्षण (depth perception) का अध्ययन, 1960।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रसिद्ध प्रयोग"
+  },
+  {
+   "q_no": 28,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग",
+   "syllabus_tag": "विकास के सिद्धांत - प्रसिद्ध प्रयोग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "हार्लो ने मातृ-स्नेह का प्रयोग किस प्राणी पर किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "रीसस बंदर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "चिंपांज़ी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "चूहे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कबूतर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) रीसस बंदर। रीसस मकाक बंदर के बच्चों पर।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रसिद्ध प्रयोग"
+  },
+  {
+   "q_no": 29,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग",
+   "syllabus_tag": "विकास के सिद्धांत - प्रसिद्ध प्रयोग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "मैरी एन्सवर्थ ने मूल रूप से आसक्ति के कितने प्रारूप बताए?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "2",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "3",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "5",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "4",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) 3। सुरक्षित, असुरक्षित-परिहारी (avoidant) और असुरक्षित-द्विधापूर्ण (ambivalent/resistant)।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रसिद्ध प्रयोग"
+  },
+  {
+   "q_no": 30,
+   "section": "विकास के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग",
+   "syllabus_tag": "विकास के सिद्धांत - प्रसिद्ध प्रयोग",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "आसक्ति का चौथा प्रकार \"अव्यवस्थित\" (Disorganized) किसने जोड़ा?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हैज़न और शेवर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वॉटसन और रेनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "गिब्सन और वॉक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "मेन और सोलोमन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) मेन और सोलोमन। मैरी मेन और जूडिथ सोलोमन ने एन्सवर्थ के 3 प्रारूपों में चौथा जोड़ा।",
+   "solution_en": "",
+   "key_concept": "विकास के सिद्धांत – प्रसिद्ध प्रयोग"
+  },
+  {
+   "q_no": 31,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "शास्त्रीय अनुबंधन (Classical Conditioning) का सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एडवर्ड थॉर्नडाइक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "क्लार्क हल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "इवान पावलव",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) इवान पावलव। कुत्ते पर प्रयोग: घंटी (CS) + भोजन (UCS) → लार (CR)।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 32,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "क्रियाप्रसूत अनुबंधन (Operant Conditioning) का सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इवान पावलव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन बी. वॉटसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एडविन गुथरी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) बी. एफ. स्किनर। स्किनर बॉक्स में चूहे व कबूतर पर प्रयोग; पुनर्बलन पर बल।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 33,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रयास एवं त्रुटि (Trial and Error) सिद्धांत किसका है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एडवर्ड थॉर्नडाइक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एडवर्ड टॉलमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "इवान पावलव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वोल्फगैंग कोहलर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) एडवर्ड थॉर्नडाइक। संबंधवाद (Connectionism); तत्परता, अभ्यास और प्रभाव के नियम।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 34,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सूझ या अंतर्दृष्टि (Insight) द्वारा अधिगम का सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एडवर्ड थॉर्नडाइक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अल्बर्ट बंडूरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "वोल्फगैंग कोहलर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) वोल्फगैंग कोहलर। चिंपांज़ी पर प्रयोग; गेस्टाल्ट दृष्टिकोण।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 35,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अव्यक्त अधिगम (Latent Learning) की अवधारणा किसने दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "इवान पावलव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "क्लार्क हल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एडवर्ड टॉलमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एडविन गुथरी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) एडवर्ड टॉलमैन। चूहों पर भूलभुलैया प्रयोग; संज्ञानात्मक मानचित्र (cognitive map)।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 36,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सामाजिक अधिगम या अवलोकन द्वारा अधिगम का सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "अल्बर्ट बंडूरा",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "लेव वायगोत्स्की",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जेरोम ब्रूनर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) अल्बर्ट बंडूरा। 4 चरण: अवधान, धारण, पुनरुत्पादन, अभिप्रेरणा।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 37,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "सार्थक शाब्दिक अधिगम और अग्रिम संगठक (Advance Organizer) की अवधारणा किसकी है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जीन पियाजे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "रॉबर्ट गेने",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जेरोम ब्रूनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "डेविड ऑसुबेल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) डेविड ऑसुबेल। ऑसुबेल: नया ज्ञान पूर्व ज्ञान से जुड़कर सार्थक बनता है।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 38,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "समीपता (Contiguity) या एक-प्रयास अधिगम का सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एडवर्ड टॉलमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "क्लार्क हल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "इवान पावलव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एडविन गुथरी",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) एडविन गुथरी। गुथरी: उद्दीपक और अनुक्रिया साथ-साथ हों तो एक ही प्रयास में संबंध बन जाता है।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 39,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रणोद न्यूनता (Drive Reduction) सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "अब्राहम मैस्लो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "क्लार्क हल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एडवर्ड टॉलमैन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) क्लार्क हल। हल का व्यवस्थित व्यवहार सिद्धांत; आवश्यकता की पूर्ति से प्रणोद घटता है।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 40,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "उद्देश्यपूर्ण व्यवहारवाद (Purposive Behaviourism) किससे जुड़ा है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन बी. वॉटसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एडविन गुथरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एडवर्ड टॉलमैन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "क्लार्क हल",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) एडवर्ड टॉलमैन। टॉलमैन ने व्यवहार को लक्ष्य-निर्देशित माना; चिह्न अधिगम (sign learning)।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 41,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "गेस्टाल्ट मनोविज्ञान की स्थापना किसने की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एडवर्ड थॉर्नडाइक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉन बी. वॉटसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मैक्स वर्थाइमर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) मैक्स वर्थाइमर। वर्थाइमर ने कोफ्का और कोहलर के साथ इसे विकसित किया।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 42,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "गेस्टाल्ट मनोविज्ञान की शुरुआत किस वर्ष मानी जाती है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1913",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1920",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1912",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1879",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 1912। 1912 में वर्थाइमर का फाई-परिघटना (phi phenomenon) पर शोधपत्र।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 43,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "सिद्धांत व प्रवर्तक",
+   "syllabus_tag": "अधिगम के सिद्धांत - सिद्धांत व प्रवर्तक",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "क्षेत्र सिद्धांत (Field Theory) और जीवन-दायरा (Life Space) की अवधारणा किसने दी?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कुर्ट लेविन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "वोल्फगैंग कोहलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "मैक्स वर्थाइमर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "कर्ट कोफ्का",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) कुर्ट लेविन। लेविन: व्यवहार = f (व्यक्ति, वातावरण)।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – सिद्धांत व प्रवर्तक"
+  },
+  {
+   "q_no": 44,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "विस्मरण वक्र (Forgetting Curve) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हरमन एबिंगहॉस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एंडेल टुलविंग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉर्ज स्पर्लिंग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रेडरिक बार्टलेट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) हरमन एबिंगहॉस। निरर्थक शब्दों पर स्वयं पर प्रयोग; सीखने के तुरंत बाद विस्मरण सबसे तेज़।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 45,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "पुनर्रचनात्मक स्मृति (Reconstructive Memory) और \"War of the Ghosts\" प्रयोग किससे जुड़े हैं?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉर्ज मिलर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हरमन एबिंगहॉस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एलन पैवियो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फ्रेडरिक बार्टलेट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) फ्रेडरिक बार्टलेट। बार्टलेट: याद करते समय व्यक्ति अपने स्कीमा के अनुसार कहानी बदल देता है।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 46,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "द्वि-कूट सिद्धांत (Dual Coding Theory) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एलन पैवियो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एलन बैडले",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एंडेल टुलविंग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "फर्गस क्रेक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) एलन पैवियो। सूचना शाब्दिक और चित्रात्मक दो कूटों में संचित होती है।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 47,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बहु-भंडार स्मृति मॉडल (Multi-store Model) किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "वॉटसन और रेनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "क्रेक और लॉकहार्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बैडले और हिच",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एटकिंसन और शिफरिन",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) एटकिंसन और शिफरिन। 1968: संवेदी स्मृति → अल्पकालिक स्मृति → दीर्घकालिक स्मृति।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 48,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कार्यकारी स्मृति (Working Memory) मॉडल किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "गिब्सन और वॉक",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बैडले और हिच",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एटकिंसन और शिफरिन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "क्रेक और लॉकहार्ट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) बैडले और हिच। घटक: केंद्रीय कार्यपालक, ध्वनि-लूप, दृश्य-स्थानिक स्केचपैड (बाद में एपिसोडिक बफर)।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 49,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बैडले और हिच का कार्यकारी स्मृति मॉडल किस वर्ष आया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1968",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1972",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1974",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1960",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) 1974।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 50,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रक्रमण स्तर (Levels of Processing) सिद्धांत किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "क्रेक और लॉकहार्ट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "एटकिंसन और शिफरिन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "सैलोवे और मेयर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "बैडले और हिच",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) क्रेक और लॉकहार्ट। 1972: गहन (अर्थपूर्ण) प्रक्रमण से स्मृति अधिक टिकाऊ होती है।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 51,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "प्रासंगिक (Episodic) और अर्थगत (Semantic) स्मृति का भेद किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "हरमन एबिंगहॉस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉर्ज स्पर्लिंग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "फ्रेडरिक बार्टलेट",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एंडेल टुलविंग",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) एंडेल टुलविंग। सुधार: वीडियो में उत्तर छूट गया था; सही उत्तर एंडेल टुलविंग (1972)।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 52,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "आंशिक रिपोर्ट विधि से संवेदी (प्रतिमा) स्मृति का प्रयोग किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एलन बैडले",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "जॉर्ज स्पर्लिंग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एंडेल टुलविंग",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "एलन पैवियो",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) जॉर्ज स्पर्लिंग। 1960: प्रतिमा स्मृति (iconic memory) लगभग 1 सेकंड से कम रहती है।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 53,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "स्मृति और विस्मरण",
+   "syllabus_tag": "अधिगम के सिद्धांत - स्मृति और विस्मरण",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "एबिंगहॉस की बचत विधि (Savings Method) किस पर आधारित है?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "पुनः अधिगम (Relearning)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "पुनर्रचना (Reconstruction)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "पहचान (Recognition)",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "पुनःस्मरण (Recall)",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) पुनः अधिगम (Relearning)। दोबारा सीखने में जितना समय/प्रयास बचता है, वही धारण का माप है।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – स्मृति और विस्मरण"
+  },
+  {
+   "q_no": 54,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग और तथ्य",
+   "syllabus_tag": "अधिगम के सिद्धांत - प्रसिद्ध प्रयोग और तथ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "बंडूरा का बोबो डॉल (Bobo Doll) प्रयोग किस वर्ष हुआ?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1953",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1938",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1977",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1961",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 1961। बच्चों ने वयस्क मॉडल का आक्रामक व्यवहार देखकर उसकी नकल की।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – प्रसिद्ध प्रयोग और तथ्य"
+  },
+  {
+   "q_no": 55,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग और तथ्य",
+   "syllabus_tag": "अधिगम के सिद्धांत - प्रसिद्ध प्रयोग और तथ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "लिटिल अल्बर्ट (Little Albert) प्रयोग किसने किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "बी. एफ. स्किनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इवान पावलव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "हैरी हार्लो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉन बी. वॉटसन और रोज़ली रेनर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) जॉन बी. वॉटसन और रोज़ली रेनर। 11 माह के अल्बर्ट में सफ़ेद चूहे के प्रति भय का अनुबंधन (1920)।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – प्रसिद्ध प्रयोग और तथ्य"
+  },
+  {
+   "q_no": 56,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग और तथ्य",
+   "syllabus_tag": "अधिगम के सिद्धांत - प्रसिद्ध प्रयोग और तथ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "इवान पावलव को नोबेल पुरस्कार किस वर्ष मिला?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "",
+     "text_en": "1913",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "",
+     "text_en": "1901",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "",
+     "text_en": "1920",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "",
+     "text_en": "1904",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) 1904। पाचन-क्रिया (शरीर-विज्ञान/चिकित्सा) पर शोध के लिए।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – प्रसिद्ध प्रयोग और तथ्य"
+  },
+  {
+   "q_no": 57,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग और तथ्य",
+   "syllabus_tag": "अधिगम के सिद्धांत - प्रसिद्ध प्रयोग और तथ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "कोहलर के सूझ प्रयोग में प्रसिद्ध चिंपांज़ी का नाम क्या था?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "सुल्तान",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "हैंस",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "बोबो",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "अल्बर्ट",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "A",
+   "solution_hi": "उत्तर: (a) सुल्तान। सुल्तान ने छड़ियाँ जोड़कर और बक्से रखकर केला प्राप्त किया।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – प्रसिद्ध प्रयोग और तथ्य"
+  },
+  {
+   "q_no": 58,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग और तथ्य",
+   "syllabus_tag": "अधिगम के सिद्धांत - प्रसिद्ध प्रयोग और तथ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "थॉर्नडाइक ने प्रयास एवं त्रुटि का प्रयोग मुख्य रूप से किस प्राणी पर किया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "कुत्ता",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "बिल्ली",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "चिंपांज़ी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "चूहा",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) बिल्ली। भूखी बिल्ली को पहेली बक्से (puzzle box) में बंद कर बाहर रखी मछली का प्रयोग।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – प्रसिद्ध प्रयोग और तथ्य"
+  },
+  {
+   "q_no": 59,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग और तथ्य",
+   "syllabus_tag": "अधिगम के सिद्धांत - प्रसिद्ध प्रयोग और तथ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "स्वाद-विमुखता (Taste Aversion) अनुबंधन की खोज किसने की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जॉन बी. वॉटसन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "इवान पावलव",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "एडविन गुथरी",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जॉन गार्सिया",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "D",
+   "solution_hi": "उत्तर: (d) जॉन गार्सिया। गार्सिया प्रभाव: एक ही बार में स्वाद और बीमारी का संबंध बन जाता है।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – प्रसिद्ध प्रयोग और तथ्य"
+  },
+  {
+   "q_no": 60,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग और तथ्य",
+   "syllabus_tag": "अधिगम के सिद्धांत - प्रसिद्ध प्रयोग और तथ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अधिसंज्ञान (Metacognition) शब्द किसने दिया?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "जीन पियाजे",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "डेविड ऑसुबेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "जॉन फ्लेवेल",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "जेरोम ब्रूनर",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "C",
+   "solution_hi": "उत्तर: (c) जॉन फ्लेवेल। 1979: \"सोचने के बारे में सोचना\"।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – प्रसिद्ध प्रयोग और तथ्य"
+  },
+  {
+   "q_no": 61,
+   "section": "अधिगम के सिद्धांत",
+   "topic": "प्रसिद्ध प्रयोग और तथ्य",
+   "syllabus_tag": "अधिगम के सिद्धांत - प्रसिद्ध प्रयोग और तथ्य",
+   "difficulty": "Medium",
+   "passage_id": null,
+   "question_hi": "अधिगत असहायता (Learned Helplessness) की खोज किसने की?",
+   "question_en": "",
+   "question_media": {
+    "image_base64": null,
+    "table_html": null
+   },
+   "options": [
+    {
+     "id": "A",
+     "text_hi": "एटकिंसन और शिफरिन",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "B",
+     "text_hi": "मार्टिन सेलिगमैन और स्टीवन मायर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "C",
+     "text_hi": "वॉटसन और रेनर",
+     "text_en": "",
+     "image_base64": null
+    },
+    {
+     "id": "D",
+     "text_hi": "गिब्सन और वॉक",
+     "text_en": "",
+     "image_base64": null
+    }
+   ],
+   "correct_option": "B",
+   "solution_hi": "उत्तर: (b) मार्टिन सेलिगमैन और स्टीवन मायर। कुत्तों पर प्रयोग: बचाव संभव होने पर भी प्रयास न करना।",
+   "solution_en": "",
+   "key_concept": "अधिगम के सिद्धांत – प्रसिद्ध प्रयोग और तथ्य"
+  }
+ ]
+}
