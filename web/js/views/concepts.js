@@ -88,6 +88,7 @@ export function wireCards(root, findConcept, prog, onChange = () => {}) {
   });
 }
 
+const srcQ = (src) => (src === 'all' ? '' : `?src=${encodeURIComponent(src)}`);
 const learnedOf = (concepts, prog) => concepts.filter((c) => prog.get(c.id)?.learned).length;
 const bar = (done, total) => `<div class="bar mt-1"><span class="bg-emerald-500" style="width:${total ? Math.round((done / total) * 100) : 0}%"></span></div>`;
 
@@ -209,6 +210,8 @@ export async function render({ root, params, query, settings, navigate, setHeade
   const lang = settings.lang || 'both';
   const src = query.src || 'all';
   if (params[0] === 's' && params[1]) return renderSubject({ root, key: params[1], src, lang, navigate, setHeader });
+  if (params[0] === 'pick') return renderPick({ root, query, src, lang, navigate, setHeader });
+  if (params[0] === 'read') return renderRead({ root, query, src, lang, setHeader });
 
   setHeader({ title: 'कॉन्सेप्ट / Concepts', sub: 'विषयवार → टॉपिकवार → कॉन्सेप्टवार रिवीज़न' });
   const [files, prog] = await Promise.all([listConceptSets(), progressMap()]);
@@ -241,7 +244,8 @@ export async function render({ root, params, query, settings, navigate, setHeade
       ${bar(done, total)}
       ${total ? `<div class="mt-3 grid grid-cols-2 gap-2">
         <a class="btn-primary" href="#/focus?src=${encodeURIComponent(src)}&mode=unlearned">🎯 फोकस मोड</a>
-        <a class="btn-outline" href="#/focus?src=${encodeURIComponent(src)}&mode=star">⭐ स्टार वाले</a></div>` : ''}
+        <a class="btn-outline" href="#/focus?src=${encodeURIComponent(src)}&mode=star">⭐ स्टार वाले</a>
+        <a class="btn-success col-span-2" href="#/concepts/pick${srcQ(src)}">📚 नोट्स / टॉपिक चुनकर एक साथ पढ़ें</a></div>` : ''}
     </div>
     <div data-results></div>
 
@@ -375,6 +379,10 @@ async function renderSubject({ root, key, src, lang, navigate, setHeader }) {
           <a class="btn-outline btn-sm" href="${q('&mode=all')}">📖 सभी</a>
           <a class="btn-outline btn-sm" href="${q('&mode=star')}">⭐ स्टार</a>
         </div>
+        <div class="mt-2 grid grid-cols-2 gap-2">
+          <a class="btn-success btn-sm" href="#/concepts/read?${new URLSearchParams({ ...(src === 'all' ? {} : { src }), subj: key })}">📜 पूरा विषय एक साथ</a>
+          <a class="btn-outline btn-sm" href="#/concepts/pick?${new URLSearchParams({ ...(src === 'all' ? {} : { src }), subj: key })}">☑ चुनकर पढ़ें</a>
+        </div>
         <label class="mt-2 flex items-center gap-2 text-xs"><input type="checkbox" class="h-4 w-4" data-openall> सभी कॉन्सेप्ट खोलकर दिखाएँ</label>
       </div>
       <div class="space-y-2" data-topics>${subj.topics.map((t, i) => {
@@ -382,7 +390,7 @@ async function renderSubject({ root, key, src, lang, navigate, setHeader }) {
         return `<details class="card !p-3" data-topic="${i}">
           <summary class="flex cursor-pointer items-center gap-2"><span class="min-w-0 flex-1 font-bold">${esc(t.name)}</span><span class="shrink-0 text-xs text-slate-500">✅ ${td}/${t.concepts.length}</span></summary>
           ${bar(td, t.concepts.length)}
-          <div class="mt-2 flex gap-2"><a class="btn-outline btn-sm" href="${q(`&topic=${encodeURIComponent(t.name)}&mode=all`)}">🎯 इस टॉपिक का फोकस मोड</a></div>
+          <div class="mt-2 flex flex-wrap gap-2"><a class="btn-success btn-sm" href="#/concepts/read?${new URLSearchParams({ ...(src === 'all' ? {} : { src }), subj: key, topic: t.name })}">📜 पूरा टॉपिक एक साथ पढ़ें</a><a class="btn-outline btn-sm" href="${q(`&topic=${encodeURIComponent(t.name)}&mode=all`)}">🎯 फोकस मोड</a></div>
           <div class="mt-2 space-y-2" data-tlist></div>
         </details>`;
       }).join('')}</div>`;
@@ -403,6 +411,162 @@ async function renderSubject({ root, key, src, lang, navigate, setHeader }) {
     root.querySelectorAll('details[data-topic]').forEach((d) => { const box = d.querySelector('[data-tlist]'); box.dataset.filled = ''; d.open = on; if (on) fill(d, true); });
   });
   wireCards(root, (id) => byId.get(id), prog);
+}
+
+// ---------- choose notes / topics → read them together in one vertical page ----------
+const SEL_KEY = 'abhyas-read-sel';
+const loadSel = (src) => {
+  try { const v = JSON.parse(localStorage.getItem(SEL_KEY) || 'null'); return new Set(v && v.src === src ? v.ids : []); } catch { return new Set(); }
+};
+const saveSel = (src, sel) => { try { localStorage.setItem(SEL_KEY, JSON.stringify({ src, ids: [...sel] })); } catch { /* storage full */ } };
+
+async function renderPick({ root, query, src, lang, navigate, setHeader }) {
+  const sets = await sourceSets(src, lang);
+  let tree = buildTree(sets);
+  if (query.subj) tree = tree.filter((s) => s.key === query.subj);
+  const back = query.subj ? `concepts/s/${encodeURIComponent(query.subj)}${srcQ(src)}` : `concepts${srcQ(src)}`;
+  setHeader({ title: '☑ चुनकर पढ़ें', sub: 'एक या अधिक नोट्स / पूरे टॉपिक चुनें', back });
+  if (!tree.length) { root.innerHTML = emptyState('यहाँ कोई कॉन्सेप्ट नहीं', ''); return; }
+  const valid = new Set(tree.flatMap((s) => s.topics.flatMap((t) => t.concepts.map((c) => c.id))));
+  const sel = new Set([...loadSel(src)].filter((id) => valid.has(id)));
+  const topicOf = (k) => { const [i, j] = k.split(':').map(Number); return tree[i].topics[j]; };
+
+  root.innerHTML = `
+    <div class="sticky top-14 z-20 -mx-3 mb-3 border-b border-slate-200 bg-slate-50/95 px-3 py-2 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+      <div class="flex items-center gap-2">
+        <span class="min-w-0 flex-1 text-sm font-semibold" data-count></span>
+        <button class="btn-ghost btn-sm" data-clear>साफ़ करें</button>
+        <button class="btn-primary btn-sm" data-read>📖 एक साथ पढ़ें</button>
+      </div>
+    </div>
+    <div class="mb-3 text-xs text-slate-500">पूरा विषय या टॉपिक चुनने के लिए उसके ☐ पर टैप करें। अलग-अलग नोट्स चुनने हों तो टॉपिक के "▾ नोट्स" पर टैप करके केवल ज़रूरी नोट्स चुनें। चुने हुए नोट्स विषय → टॉपिक के क्रम में एक ही पेज पर नीचे-नीचे खुलेंगे।</div>
+    ${tree.map((s, i) => `<section class="card mb-2 !p-3">
+      <label class="flex items-center gap-2"><input type="checkbox" class="h-5 w-5 accent-brand-600" data-subj="${i}"><span class="text-xl">${s.icon}</span><span class="min-w-0 flex-1 font-bold leading-tight">${esc(s.label)}</span><span class="shrink-0 text-xs text-slate-500">${s.count}</span></label>
+      <div class="mt-2 space-y-1.5">${s.topics.map((t, j) => `<div class="rounded-xl border border-slate-200 p-2 dark:border-slate-700">
+        <div class="flex items-center gap-2">
+          <label class="flex min-w-0 flex-1 items-center gap-2"><input type="checkbox" class="h-5 w-5 shrink-0 accent-brand-600" data-topic="${i}:${j}"><span class="min-w-0 flex-1 text-sm font-semibold leading-tight">${esc(t.name)}</span></label>
+          <button class="btn-ghost btn-sm shrink-0 !px-2 text-xs" data-expand="${i}:${j}">▾ नोट्स <span data-tn="${i}:${j}"></span></button>
+        </div>
+        <div class="mt-1 hidden space-y-0.5 border-t border-slate-100 pt-1 dark:border-slate-800" data-clist="${i}:${j}"></div>
+      </div>`).join('')}</div>
+    </section>`).join('')}`;
+
+  const sync = () => {
+    tree.forEach((s, i) => {
+      let all = 0, some = 0;
+      s.topics.forEach((t, j) => {
+        const n = t.concepts.filter((c) => sel.has(c.id)).length;
+        const box = root.querySelector(`[data-topic="${i}:${j}"]`);
+        box.checked = n === t.concepts.length; box.indeterminate = n > 0 && n < t.concepts.length;
+        root.querySelector(`[data-tn="${i}:${j}"]`).textContent = n ? `${n}/${t.concepts.length}` : `(${t.concepts.length})`;
+        all += t.concepts.length; some += n;
+      });
+      const sb = root.querySelector(`[data-subj="${i}"]`);
+      sb.checked = some === all; sb.indeterminate = some > 0 && some < all;
+    });
+    root.querySelectorAll('[data-c]').forEach((c) => { c.checked = sel.has(c.dataset.c); });
+    root.querySelector('[data-count]').textContent = sel.size ? `${sel.size} नोट्स चुने` : 'कोई नोट्स नहीं चुने';
+    root.querySelector('[data-read]').disabled = !sel.size;
+    saveSel(src, sel);
+  };
+  sync();
+
+  root.addEventListener('change', (e) => {
+    const x = e.target;
+    const setAll = (cs, on) => cs.forEach((c) => (on ? sel.add(c.id) : sel.delete(c.id)));
+    if (x.dataset.subj) setAll(tree[Number(x.dataset.subj)].topics.flatMap((t) => t.concepts), x.checked);
+    else if (x.dataset.topic) setAll(topicOf(x.dataset.topic).concepts, x.checked);
+    else if (x.dataset.c) { if (x.checked) sel.add(x.dataset.c); else sel.delete(x.dataset.c); }
+    else return;
+    sync();
+  });
+  root.addEventListener('click', (e) => {
+    const ex = e.target.closest('[data-expand]');
+    if (ex) {
+      const box = root.querySelector(`[data-clist="${ex.dataset.expand}"]`);
+      if (!box.dataset.filled) {
+        box.innerHTML = topicOf(ex.dataset.expand).concepts.map((c) => `<label class="flex items-start gap-2 rounded-lg px-1 py-1 text-sm hover:bg-slate-50 dark:hover:bg-slate-800"><input type="checkbox" class="mt-0.5 h-4 w-4 shrink-0 accent-brand-600" data-c="${esc(c.id)}" ${sel.has(c.id) ? 'checked' : ''}><span class="min-w-0 flex-1 leading-snug">${esc(c.title)}</span></label>`).join('');
+        box.dataset.filled = '1';
+      }
+      box.classList.toggle('hidden');
+      ex.firstChild.textContent = box.classList.contains('hidden') ? '▾ नोट्स ' : '▴ नोट्स ';
+      return;
+    }
+    if (e.target.closest('[data-clear]')) { sel.clear(); sync(); return; }
+    if (e.target.closest('[data-read]') && sel.size) navigate(`concepts/read?${new URLSearchParams({ ...(src === 'all' ? {} : { src }), sel: '1', ...(query.subj ? { from: query.subj } : {}) })}`);
+  });
+}
+
+const READ_FS_KEY = 'abhyas-focus-font'; // same text size as the focus mode
+const READ_SIZES = [15, 17, 19, 21, 24, 27];
+const READ_CHUNK = 12;
+
+async function renderRead({ root, query, src, lang, setHeader }) {
+  const [sets, prog] = await Promise.all([sourceSets(src, lang), progressMap()]);
+  let tree = buildTree(sets);
+  const subj = query.sel ? null : query.subj;
+  if (subj) tree = tree.filter((s) => s.key === subj);
+  let list = tree.flatMap((s) => s.topics.filter((t) => !query.topic || t.name === query.topic).flatMap((t) => t.concepts.map((c) => ({ c, s, t }))));
+  if (query.sel) { const sel = loadSel(src); list = list.filter((x) => sel.has(x.c.id)); }
+  const back = query.sel
+    ? `concepts/pick?${new URLSearchParams({ ...(src === 'all' ? {} : { src }), ...(query.from ? { subj: query.from } : {}) })}`
+    : subj ? `concepts/s/${encodeURIComponent(subj)}${srcQ(src)}` : `concepts${srcQ(src)}`;
+  const title = query.topic || (subj && tree[0] ? `${tree[0].icon} ${tree[0].label}` : '📖 चुने हुए नोट्स');
+  setHeader({ title, sub: `${list.length} नोट्स • एक साथ पढ़ें`, back });
+  if (!list.length) { root.innerHTML = emptyState('पढ़ने के लिए कोई नोट्स नहीं चुने', 'पीछे जाकर नोट्स या टॉपिक चुनें।'); return; }
+
+  const byId = new Map(list.map((x) => [x.c.id, x.c]));
+  let fs = Math.min(READ_SIZES.length - 1, Math.max(0, Number(localStorage.getItem(READ_FS_KEY)) || 1));
+  const topics = new Set(list.map((x) => `${x.s.key}|${x.t.name}`)).size;
+  root.innerHTML = `
+    <div class="sticky top-14 z-20 -mx-3 mb-3 border-b border-slate-200 bg-slate-50/95 px-3 py-2 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+      <div class="flex items-center gap-2">
+        <span class="min-w-0 flex-1 text-xs text-slate-500"><b class="text-slate-700 dark:text-slate-200">${list.length}</b> नोट्स • ${topics} टॉपिक • ✅ <span data-done></span></span>
+        <button class="btn-ghost btn-sm !px-2" data-fs="-1" title="छोटा">A−</button>
+        <button class="btn-ghost btn-sm !px-2 font-bold" data-fs="1" title="बड़ा">A+</button>
+        <button class="btn-outline btn-sm" data-fold>सब समेटें</button>
+      </div>
+    </div>
+    <div class="space-y-2" data-list style="font-size:${READ_SIZES[fs]}px"></div>
+    <div class="h-10" data-sentinel></div>`;
+  const box = root.querySelector('[data-list]');
+  const done = () => { root.querySelector('[data-done]').textContent = `${list.filter((x) => prog.get(x.c.id)?.learned).length} याद`; };
+  done();
+  let shown = 0, lastTopic = '', folded = false;
+  const more = () => {
+    const next = list.slice(shown, shown + READ_CHUNK);
+    let html = '';
+    for (const { c, s, t } of next) {
+      const tk = `${s.key}|${t.name}`;
+      if (tk !== lastTopic) { html += `<h3 class="!mt-5 mb-1 border-l-4 border-brand-500 pl-2 text-[0.9em] font-bold text-brand-700 dark:text-brand-300">${s.icon} ${esc(s.label)} › ${esc(t.name)}</h3>`; lastTopic = tk; }
+      html += conceptCard(c, prog, { open: !folded });
+    }
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    tmp.querySelectorAll('details[data-cid]').forEach((d) => { if (d.open) { const b = d.querySelector('[data-body]'); b.innerHTML = conceptBody(byId.get(d.dataset.cid)); b.dataset.filled = '1'; } });
+    box.append(...tmp.childNodes);
+    shown += next.length;
+  };
+  more();
+  wireCards(box, (id) => byId.get(id), prog, done);
+  const io = new IntersectionObserver((ents) => { if (ents.some((e) => e.isIntersecting) && shown < list.length) more(); }, { rootMargin: '800px' });
+  io.observe(root.querySelector('[data-sentinel]'));
+  root.addEventListener('click', (e) => {
+    const f = e.target.closest('[data-fs]');
+    if (f) {
+      fs = Math.min(READ_SIZES.length - 1, Math.max(0, fs + Number(f.dataset.fs)));
+      localStorage.setItem(READ_FS_KEY, String(fs));
+      box.style.fontSize = `${READ_SIZES[fs]}px`;
+      return;
+    }
+    const fold = e.target.closest('[data-fold]');
+    if (fold) {
+      folded = !folded;
+      box.querySelectorAll('details[data-cid]').forEach((d) => { d.open = !folded; });
+      fold.textContent = folded ? 'सब खोलें' : 'सब समेटें';
+    }
+  });
+  return () => io.disconnect();
 }
 
 export { conceptSubjectKey, subjectIcon };

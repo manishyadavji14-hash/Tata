@@ -62,6 +62,10 @@ export async function render({ root, params, query, settings, navigate, setHeade
       <div class="flex flex-wrap gap-2" data-neg-presets>
         ${[0, 0.25, 0.33, 0.5, 1].map((n) => `<button class="tab tab-off" data-neg="${n}">−${n}</button>`).join('')}
       </div>
+      <label class="flex items-start gap-3 text-sm">
+        <input type="checkbox" name="shuffle" class="mt-0.5 h-5 w-5 accent-brand-600" ${settings.shuffleOpts === false ? '' : 'checked'}>
+        <span><b>🔀 विकल्पों का क्रम हर बार बदलें</b><span class="block text-[11px] text-slate-500">हर नए प्रयास में A, B, C, D की जगह बदल जाएगी, ताकि उत्तर अक्षर से नहीं, समझ से याद हो। "उपर्युक्त सभी / A और B दोनों" जैसे विकल्प वाले प्रश्न मूल क्रम में ही रहेंगे।</span></span>
+      </label>
       <div><label class="label">प्रश्न की भाषा / Question language</label>
         <div class="grid grid-cols-3 gap-2" data-langs>
           ${[['hi', 'हिंदी'], ['en', 'English'], ['both', 'दोनों / Both']].map(([v, l]) => `<button class="tab ${v === lang ? 'tab-on' : 'tab-off'}" data-lang="${v}">${l}</button>`).join('')}
@@ -126,9 +130,10 @@ export async function render({ root, params, query, settings, navigate, setHeade
         mode,
         parentId: parent?.id || null,
         title: mode === 'full' ? set.meta.title : `${set.meta.title} — ${MODE_LABEL[mode].split(' / ')[0]}`,
+        shuffleOpts: $in('shuffle').checked,
       });
       await db.put('attempts', attempt);
-      await saveSettings({ lang: chosenLang });
+      await saveSettings({ lang: chosenLang, shuffleOpts: $in('shuffle').checked });
       navigate(`exam/${attempt.id}`, { replace: true });
     }
   });

@@ -7,6 +7,7 @@ import { evaluate, recordTopicStats } from '../analytics.js';
 import { passageHtml, questionHtml, optionInner } from '../components.js';
 import { icon, modal, confirmDialog, toast } from '../ui.js';
 import { esc, fmtClock } from '../util.js';
+import { letterMaps } from '../optorder.js';
 
 const LANG_NEXT = { hi: 'en', en: 'both', both: 'hi' };
 const LANG_LABEL = { hi: 'हिंदी', en: 'English', both: 'हि + En' };
@@ -39,6 +40,8 @@ export async function render({ root, params, navigate, setLeaveGuard }) {
   let submitting = false;
   let lastTick = performance.now();
   let lastSave = Date.now();
+  // Display order of the options for this attempt (A, B, C… are positions; data-opt keeps the original id).
+  const optsOf = (q) => letterMaps(q, attempt.optOrder?.[q.q_no]);
   const resp = (q) => (attempt.responses[q.q_no] ||= { sel: null, visited: false, marked: false, time: 0 });
 
   root.innerHTML = `
@@ -148,11 +151,11 @@ export async function render({ root, params, navigate, setLeaveGuard }) {
       <div class="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">${esc(q.section)}</div>
       <div class="mb-4">${questionHtml(q, lang)}</div>
       <div class="space-y-2.5" role="radiogroup">
-        ${q.options.map((o) => `
-          <button class="opt ${r.sel === o.id ? 'opt-sel' : ''}" data-opt="${o.id}" role="radio" aria-checked="${r.sel === o.id}">
-            <span class="opt-badge ${r.sel === o.id ? 'border-brand-600 bg-brand-600 text-white' : ''}">${o.id}</span>
-            <div class="min-w-0 flex-1">${optionInner(o, lang)}</div>
-          </button>`).join('')}
+        ${(() => { const m = optsOf(q); return m.list.map((o) => `
+          <button class="opt ${r.sel === o.id ? 'opt-sel' : ''}" data-opt="${esc(o.id)}" role="radio" aria-checked="${r.sel === o.id}">
+            <span class="opt-badge ${r.sel === o.id ? 'border-brand-600 bg-brand-600 text-white' : ''}">${m.toDisp[o.id]}</span>
+            <div class="min-w-0 flex-1">${optionInner({ ...o, id: m.toDisp[o.id] }, lang)}</div>
+          </button>`).join(''); })()}
       </div>
       ${r.marked ? '<div class="mt-3 text-xs font-semibold text-violet-600">🔖 समीक्षा के लिए चिह्नित / Marked for review</div>' : ''}
       <div class="h-6"></div>`;
@@ -324,8 +327,9 @@ export async function render({ root, params, navigate, setLeaveGuard }) {
     if (paused || e.target.closest('input, textarea') || document.querySelector('#modal-root > div')) return;
     const k = e.key.toUpperCase();
     const map = { 1: 'A', 2: 'B', 3: 'C', 4: 'D', 5: 'E' };
-    const id = /^[A-E]$/.test(k) ? k : map[k];
-    if (id && qs[idx].options.some((o) => o.id === id)) { resp(qs[idx]).sel = id; drawQuestion(); save(); }
+    const L = /^[A-E]$/.test(k) ? k : map[k];
+    const id = L && optsOf(qs[idx]).toOrig[L]; // pressed position → original option id
+    if (id) { resp(qs[idx]).sel = id; drawQuestion(); save(); }
     else if (e.key === 'ArrowRight') go(idx + 1);
     else if (e.key === 'ArrowLeft') go(idx - 1);
   };

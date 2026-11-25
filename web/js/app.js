@@ -2,10 +2,10 @@
 import { db, getSettings, saveSettings } from './db.js';
 import { normalizeSet } from './schema.js';
 import { DEMO_SET } from './demo-set.js';
-import { icon, toast } from './ui.js';
+import { icon, toast, confirmDialog } from './ui.js';
 import { $, esc } from './util.js';
 
-export const APP_VERSION = '1.9.4';
+export const APP_VERSION = '1.9.5';
 
 const routes = {
   home: () => import('./views/home.js'),
@@ -57,7 +57,7 @@ export function applyTheme(theme) {
 // ---------- Navigation ----------
 export function navigate(path, { replace = false } = {}) {
   const h = `#/${path.replace(/^#?\/?/, '')}`;
-  if (replace) { history.replaceState(null, '', h); route(); } else location.hash = h;
+  if (replace) { history.replaceState(history.state, '', h); route(); } else location.hash = h;
 }
 
 export function setLeaveGuard(fn) { leaveGuard = fn; }
@@ -98,13 +98,32 @@ function setChrome(full) {
   v.className = full ? 'flex flex-1 flex-col' : 'flex-1 px-3 pb-24 pt-3';
 }
 
+// Every history entry of the app carries its position ({ idx }) so the back button knows whether
+// there is an in-app page to go back to, and a cancelled "leave?" dialog can restore the exact entry.
 let lastHash = location.hash;
+let lastIdx = Number.isInteger(history.state?.idx) ? history.state.idx : 0;
+let restoring = false;
+let routed = false;
+const entryIdx = () => (Number.isInteger(history.state?.idx) ? history.state.idx : null);
 async function route() {
   const target = location.hash;
+  if (restoring) { // we are only stepping back to the page the user chose to stay on
+    restoring = false;
+    if (target === lastHash) return;
+  }
+  const known = entryIdx();
   if (leaveGuard && target !== lastHash) {
     const ok = await leaveGuard();
-    if (!ok) { history.replaceState(null, '', lastHash); return; }
+    if (!ok) {
+      if (known === null) { restoring = true; history.back(); } // undo the new entry
+      else if (known !== lastIdx) { restoring = true; history.go(lastIdx - known); } // undo back/forward
+      else history.replaceState(history.state, '', lastHash);
+      return;
+    }
   }
+  lastIdx = known !== null ? known : routed ? lastIdx + 1 : 0;
+  routed = true;
+  if (known === null) history.replaceState({ ...(history.state || {}), idx: lastIdx }, '', location.href);
   lastHash = target;
   const seq = ++renderSeq;
   const { name, params, query } = parseHash();
@@ -133,20 +152,41 @@ async function route() {
   }
 }
 
-// Android hardware back button (called from the native wrapper). Returns true if handled.
+// Android hardware / gesture back (called from the native wrapper). Returns true if handled.
+// Order: close the top dialog → close the palette drawer → previous in-app page → (on the first
+// page) home → on home ask once before leaving the app. Nothing is lost by an accidental back.
+let exitAsking = false;
+const typedIn = (el) => [...el.querySelectorAll('textarea, input:not([type]), input[type=text], input[type=search], input[type=url], input[type=password]')]
+  .some((x) => x.value.trim() && x.value !== x.defaultValue);
 window.__abhyasBack = () => {
   const modals = document.querySelectorAll('#modal-root > div');
   if (modals.length) {
     const last = modals[modals.length - 1];
     const closeBtn = last.querySelector('[data-close]');
-    if (closeBtn) closeBtn.click();
+    if (!closeBtn) return true; // a dialog that must be answered (e.g. running task)
+    if (typedIn(last) && !last.dataset.backAsked) {
+      last.dataset.backAsked = '1';
+      confirmDialog('इस खिड़की में लिखा/चुना हुआ हट जाएगा। फिर भी बंद करें?', { title: 'बंद करें?', ok: 'हाँ, बंद करें', cancel: 'नहीं' })
+        .then((ok) => { if (ok) closeBtn.click(); else delete last.dataset.backAsked; });
+      return true;
+    }
+    closeBtn.click();
     return true;
   }
   const drawer = document.querySelector('[data-drawer-open]:not(.hidden)');
   if (drawer) { drawer.click(); return true; }
   const { name } = parseHash();
-  if (name === 'home') return false;
-  history.back();
+  if (name !== 'home') {
+    if (lastIdx > 0) history.back();
+    else navigate('home', { replace: true }); // opened directly on an inner page: go home, don't quit
+    return true;
+  }
+  if (exitAsking) return true;
+  exitAsking = true;
+  confirmDialog('क्या आप Abhyas CBT से बाहर निकलना चाहते हैं?', { title: 'ऐप बंद करें?', ok: 'बाहर निकलें', cancel: 'ऐप में रहें' }).then((ok) => {
+    exitAsking = false;
+    if (ok && window.AndroidBridge?.exitApp) window.AndroidBridge.exitApp();
+  });
   return true;
 };
 

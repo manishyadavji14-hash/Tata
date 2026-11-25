@@ -94,7 +94,7 @@ export async function render({ root, query, setHeader }) {
   });
   root.addEventListener('click', async (e) => {
     const t = e.target.closest('[data-tab]');
-    if (t) { tab = t.dataset.tab; history.replaceState(null, '', `#/jobs?tab=${tab}`); draw(); return; }
+    if (t) { tab = t.dataset.tab; history.replaceState(history.state, '', `#/jobs?tab=${tab}`); draw(); return; }
     if (await jobActions(e, jobs)) draw();
   });
   return () => { off(); clearTimeout(pending); };

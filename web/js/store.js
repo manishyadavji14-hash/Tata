@@ -1,6 +1,7 @@
 // Domain-level data helpers on top of the IndexedDB layer.
 import { db } from './db.js';
 import { uid } from './util.js';
+import { makeOptOrder } from './optorder.js';
 
 export async function listSets() {
   const sets = (await db.all('sets')).filter((s) => s.kind !== 'practice');
@@ -97,7 +98,7 @@ export async function inProgressAttempts() {
   return (await allAttempts()).filter((a) => a.state === 'in_progress');
 }
 
-export function createAttempt(set, { qNos, durationMin, pos, neg, lang, mode = 'full', parentId = null, title }) {
+export function createAttempt(set, { qNos, durationMin, pos, neg, lang, mode = 'full', parentId = null, title, shuffleOpts = true }) {
   const responses = {};
   for (const qn of qNos) responses[qn] = { sel: null, visited: false, marked: false, time: 0 };
   return {
@@ -105,6 +106,8 @@ export function createAttempt(set, { qNos, durationMin, pos, neg, lang, mode = '
     config: { durationMin, pos, neg }, lang, state: 'in_progress',
     startedAt: Date.now(), submittedAt: null, remainingMs: durationMin * 60000, elapsedMs: 0,
     current: 0, responses, result: null,
+    // Fresh random option order for every attempt (original ids are still what gets stored/scored).
+    optOrder: shuffleOpts ? makeOptOrder(set, qNos) : null,
   };
 }
 

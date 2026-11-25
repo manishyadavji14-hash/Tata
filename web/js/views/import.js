@@ -401,9 +401,9 @@ export async function render({ root, query, settings, navigate, setHeader }) {
   root.addEventListener('click', async (e) => {
     if (e.target.closest('[data-telegram]')) { openTelegram(); return; }
     const t = e.target.closest('[data-tab]');
-    if (t && !job) { tab = t.dataset.tab; history.replaceState(null, '', `#/import?tab=${tab}`); draw(); return; }
+    if (t && !job) { tab = t.dataset.tab; history.replaceState(history.state, '', `#/import?tab=${tab}`); draw(); return; }
     const am = e.target.closest('[data-aimode]');
-    if (am && !job) { aiMode = am.dataset.aimode; history.replaceState(null, '', `#/import?tab=ai&mode=${aiMode}`); drawAi(); return; }
+    if (am && !job) { aiMode = am.dataset.aimode; history.replaceState(history.state, '', `#/import?tab=ai&mode=${aiMode}`); drawAi(); return; }
     const act = e.target.closest('[data-act]')?.dataset.act;
     if (act === 'copy') copyPrompt();
     if (act === 'sample') { const w = downloadText('abhyas_sample_practice_set.json', JSON.stringify(SCHEMA_EXAMPLE, null, 2)); toast(`सेव हुआ → ${w}`, 'success'); }

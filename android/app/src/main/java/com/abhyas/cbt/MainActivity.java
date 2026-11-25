@@ -304,6 +304,12 @@ public class MainActivity extends Activity {
 
     /** Methods callable from JavaScript as window.AndroidBridge.* */
     class Bridge {
+        /** Called after the user confirmed "ऐप बंद करें?" on the home screen. */
+        @JavascriptInterface
+        public void exitApp() {
+            runOnUiThread(MainActivity.super::onBackPressed);
+        }
+
         @JavascriptInterface
         public String saveFile(String name, String content, String mime) {
             String safe = name.replaceAll("[^\\p{L}\\p{N}._ -]", "_");

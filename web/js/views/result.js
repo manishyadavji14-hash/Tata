@@ -4,6 +4,7 @@ import { evaluate, pickQuestions, LEVEL_UI } from '../analytics.js';
 import { MODE_LABEL } from './pretest.js';
 import { icon } from '../ui.js';
 import { esc, fmtDur, fmtDate, plainText } from '../util.js';
+import { dispLetter } from '../optorder.js';
 
 export async function render({ root, params, setHeader }) {
   const attempt = await db.get('attempts', params[0]);
@@ -106,7 +107,7 @@ export async function render({ root, params, setHeader }) {
         return `<a href="#/solutions/${encodeURIComponent(attempt.id)}?q=${i.q_no}" class="flex items-center gap-3 py-2">
           <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-rose-100 text-xs font-bold text-rose-700 dark:bg-rose-900/40 dark:text-rose-300">${i.q_no}</span>
           <span class="min-w-0 flex-1"><span class="block truncate text-sm">${esc(plainText(q?.question_hi || q?.question_en, 80))}</span>
-          <span class="block text-[11px] text-slate-500">${esc(i.topic)} • आपका ${i.sel} • सही ${i.correct}</span></span>
+          <span class="block text-[11px] text-slate-500">${esc(i.topic)} • आपका ${dispLetter(q, attempt.optOrder?.[i.q_no], i.sel)} • सही ${dispLetter(q, attempt.optOrder?.[i.q_no], i.correct)}</span></span>
           <span class="text-right text-sm font-bold text-rose-600">${fmtDur(i.time)}</span></a>`;
       }).join('')}</div>` : '<div class="text-sm text-emerald-600">👍 कोई टाइम ट्रैप नहीं मिला।</div>'}
       ${r.slowSkips.length ? `<div class="mt-2 text-[11px] text-slate-500">इसके अलावा ${r.slowSkips.length} प्रश्नों पर ज़्यादा समय लगाकर छोड़ दिया: Q.${r.slowSkips.map((i) => i.q_no).join(', ')}</div>` : ''}

@@ -5,6 +5,7 @@ import { solutionCard } from '../components.js';
 import { openDoubtChat } from '../chat.js';
 import { icon, toast, modal, pickFile } from '../ui.js';
 import { esc, imageFileToDataUrl } from '../util.js';
+import { displayQuestion, dispLetter } from '../optorder.js';
 
 const FILTERS = [['all', 'All'], ['correct', 'Correct'], ['wrong', 'Incorrect'], ['skipped', 'Unattempted'], ['bookmarked', 'Bookmarked']];
 const CHUNK = 12;
@@ -24,6 +25,12 @@ export async function render({ root, params, query, settings, setHeader }) {
   const qmap = new Map(set.questions.map((q) => [q.q_no, q]));
   const qs = qNos.map((n) => qmap.get(n)).filter(Boolean);
   const bookmarks = await bookmarkSet(set.id);
+  // Show every question with the same (shuffled) option letters the student saw in this attempt.
+  const order = (q) => attempt?.optOrder?.[q.q_no] || null;
+  const card = (q) => {
+    const it = items.get(q.q_no) || null;
+    return solutionCard(set, displayQuestion(q, order(q)), lang, it && { ...it, sel: dispLetter(q, order(q), it.sel) }, { bookmarked: bookmarks.has(q.q_no), editable: true });
+  };
   let lang = settings.lang || 'both';
   let filter = 'all';
   let section = '';
@@ -65,7 +72,7 @@ export async function render({ root, params, query, settings, setHeader }) {
   };
   const more = () => {
     const next = filtered.slice(shown, shown + CHUNK);
-    list.insertAdjacentHTML('beforeend', next.map((q) => solutionCard(set, q, lang, items.get(q.q_no) || null, { bookmarked: bookmarks.has(q.q_no), editable: true })).join(''));
+    list.insertAdjacentHTML('beforeend', next.map(card).join(''));
     shown += next.length;
   };
   const redraw = () => {
@@ -113,8 +120,8 @@ export async function render({ root, params, query, settings, setHeader }) {
     }
     q.question_media = { ...(q.question_media || {}), image_base64: data };
     await db.put('sets', set);
-    const card = list.querySelector(`[data-q="${qn}"]`);
-    if (card) card.outerHTML = solutionCard(set, q, lang, items.get(qn) || null, { bookmarked: bookmarks.has(qn), editable: true });
+    const el = list.querySelector(`[data-q="${qn}"]`);
+    if (el) el.outerHTML = card(q);
     toast(data ? 'चित्र सेव हुआ' : 'चित्र हटाया', 'success', 1500);
   }
 
@@ -137,7 +144,8 @@ export async function render({ root, params, query, settings, setHeader }) {
     const ask = e.target.closest('[data-ask]');
     if (ask) {
       const qn = Number(ask.dataset.ask);
-      openDoubtChat(set, qmap.get(qn), { userAnswer: items.get(qn)?.sel || null });
+      const q = qmap.get(qn);
+      openDoubtChat(set, displayQuestion(q, order(q)), { userAnswer: dispLetter(q, order(q), items.get(qn)?.sel) || null });
     }
   });
   root.querySelector('[data-section]').onchange = (e) => { section = e.target.value; redraw(); };
